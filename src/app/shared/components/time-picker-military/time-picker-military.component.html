@@ -1,0 +1,24 @@
+  <div class="unext-time-picker-military-ctn">
+    <span class="placeholder">{{placeHolder}}</span>
+    <ng-container *ngIf="timeFormat === 0">
+       <input
+        type="time"
+        matInput
+        class="time-input"
+        id="{{elementName}}"
+        name={{elementName}}
+        disabled={{timeDisabled}}
+        [(ngModel)]="timeSelected"
+        (ngModelChange)="writeValue(timeSelected)"
+      >
+    </ng-container>
+    <!-- It's not a matInput-->
+    <div *ngIf="timeFormat === 1" class="ctn-time-picker-24">
+      <input type="number"  min="0" max="23" [disabled]="timeDisabled"
+        [(ngModel)]="hoursValue"  (ngModelChange)="onHoursChange(hoursValue)" placeholder="--" (blur)="onBlur()">
+      <span class="divader">:</span>
+      <input type="number"  min="0"  max="59" [disabled]="timeDisabled"
+        [(ngModel)]="minutesValue" (ngModelChange)="onMinutesChange(minutesValue)" placeholder="--"  (blur)="onBlur()">
+      <span *ngIf="showResetBtn" class="reset" (click)="reset()">x</span>
+    </div>
+</div>

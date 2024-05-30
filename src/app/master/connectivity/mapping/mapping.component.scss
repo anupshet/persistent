@@ -1,0 +1,13 @@
+@import '../../../../assets/scss/base/variables-peak';
+main {
+  margin-left: ($custom-space-xxlarge * 3) + $custom-space-small;
+  margin-right: -$custom-space-small;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.connectivity-model-container{
+  position: relative;
+  margin:0px -10px;
+  padding:0px 10px;
+}

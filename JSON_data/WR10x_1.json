@@ -1,0 +1,15 @@
+{"QA":{	
+	"URL":	"https://unity-test.qcnet.com",
+	"Username":	"sudhir_paranjape+evalauto@bio-rad.com",
+	"Password":	"Welcome1",
+  "FirstName":	"Sudhir",
+  "DepartmentName": "Automation",
+	"InstrumentName": "ARCHITECT c16000",
+	"ProductName": "Assayed Chemistry",
+	"Analyte2": "Glucose",
+	"Analyte1": "Protein, Total, Serum"
+},
+"DEV": {},
+"STAGE": {},
+"DEV2": {}
+}

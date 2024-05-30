@@ -1,0 +1,86 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+
+<section class="corrective-actions">
+  <h2>{{'CORRECTIVEACTIONS.CORRECTIVEACTIONS' | translate}}</h2>
+  <nav>
+    <button (click)="addForm()" mat-button class="add-button"
+      [disabled]="outlieredLots ? outlieredLots.length < 0 : true">
+      <mat-icon [svgIcon]="icons.addCircleOutline[24].name"></mat-icon>
+      <span>{{'CORRECTIVEACTIONS.ADDCORRECTIVEACTION' | translate}}</span>
+    </button>
+  </nav>
+  <section *ngIf="correctiveActionForm">
+    <perfect-scrollbar>
+      <form [formGroup]="correctiveActionForm">
+        <div formArrayName="correctiveFormsArray" class="form-array">
+          <div class="corrective-action"
+            *ngFor="let correctiveFormGroup of correctiveFormsArray?.controls; let i = index">
+            <mat-icon class="delete-form" (click)="removeForm(i, correctiveFormGroup)">close</mat-icon>
+            <div [formGroup]="correctiveFormGroup">
+              <mat-form-field class="mat-select-custom">
+                <mat-label>{{'CORRECTIVEACTIONS.SELECTLOTS' | translate}}</mat-label>
+                <mat-select formControlName="lots" #matSelectRef multiple
+                  [(ngModel)]="correctiveFormGroup.get('selectedOptions').value"
+                  (openedChange)="handleCheckboxSelection(correctiveFormGroup)" panelClass="corrective-actions-panel">
+                  <mat-select-trigger>
+                    <span *ngIf="(correctiveFormGroup.get('selectedOptions').value.length - 1) === optionsLength">
+                      All Lots
+                    </span>
+                    <span
+                      *ngIf="correctiveFormGroup.get('selectedOptions').value.length && (correctiveFormGroup.get('selectedOptions').value.length - 1) !== optionsLength">
+                      <span
+                        *ngFor="let instrument of correctiveFormGroup.get('lotData').value;let instrumentIndex = index">
+                        <span *ngIf="instrument.selected">{{instrument.instrumentName}}{{
+                          instrument.customNameOrSerialNumber ? ': ' : ' - '}}
+                          <span *ngFor="let control of instrument.controls;let controlIndex = index">
+                            <span *ngIf="control.selected">{{control.controlName}}:
+                              <span *ngFor="let option of control.lots;let lotIndex = index">
+                                <span *ngIf="option.selected">{{ option.lotName }}<span
+                                    *ngIf="lotIndex < control.lastSelectedIndex">, </span></span>
+                              </span>
+                              <span *ngIf="controlIndex < instrument.lastSelectedIndex"> - </span>
+                            </span>
+                          </span>
+                          <span>{{instrumentIndex < correctiveFormGroup.get('lotData').value.lastInstrumentIndex ? ' '
+                              : '' }}</span>
+                          </span>
+                        </span>
+                      </span>
+                  </mat-select-trigger>
+                  <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}"
+                    class="corrective-action-scroll">
+                    <div class="corrective-actions-form-container">
+                      <mat-option class="corrective-action-item" [value]="0"
+                        (click)="toggleAllSelection(i,correctiveFormGroup)"
+                        [disabled]="correctiveFormGroup.get('isSelectAllDisabled').value">{{'CORRECTIVEACTIONS.SELECTALL' | translate}}</mat-option>
+                      <span *ngFor="let instrument of correctiveFormGroup.get('lotData').value">
+                        <span class="mat-optgroup-label instrument-label">{{instrument.instrumentName}}</span>
+                        <mat-optgroup *ngFor="let control of instrument.controls" [label]="control.controlName">
+                          <mat-option *ngFor="let option of control.lots" [disabled]="option.isDisabled" [value]="option"
+                            (onSelectionChange)="changeSelectedStatus(option, control, instrument, correctiveFormGroup, $event.source.selected)"
+                            (click)="handleSelectAllCheckbox(i,correctiveFormGroup, option)">
+                            {{ option.lotName }}
+                          </mat-option>
+                        </mat-optgroup>
+                      </span>
+                    </div>
+                  </perfect-scrollbar>
+                  <div class="form-buttons">
+                    <button class="apply-button" mat-raised-button
+                      (click)="onApply(i, correctiveFormGroup)">{{'CORRECTIVEACTIONS.APPLY' | translate}}</button>
+                    <button class="cancel-button" type="reset" mat-button
+                      color="primary" (click)="cancelDropdown(i)">{{'CORRECTIVEACTIONS.CANCEL' | translate}}</button>
+                  </div>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>{{'CORRECTIVEACTIONS.CORRECTIVEACTION' | translate}}</mat-label>
+                <textarea matInput formControlName="lotComment" [perfectScrollbar]="config"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </form>
+    </perfect-scrollbar>
+  </section>
+</section>

@@ -1,0 +1,72 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="flex-1">
+  <div class="field-item">
+    <mat-form-field>
+      <mat-select name="country" id="country" maxLength="2" [(ngModel)]="address.country"
+        placeholder="{{'ADDRESSFORM.COUNTRY' | translate}}" errMsgRequired="Required"
+        [required]="isRequired('country')">
+        <mat-option *ngFor="let country of countriesList" [value]="country.countryCode">
+          {{ country.countryName }}
+        </mat-option>
+      </mat-select>
+      <mat-error>{{'ADDRESSFORM.CHOOSECOUNTRY' | translate}}</mat-error>
+    </mat-form-field>
+  </div>
+</div>
+<div class="flex-1">
+  <div class="field-item">
+    <mat-form-field>
+      <input matInput name="streetAddress1" id="streetAddress1" minLength="2" maxLength="100" [(ngModel)]="address.streetAddress1"
+        placeholder="{{'ADDRESSFORM.ADDRESS' | translate}}" [required]="isRequired('streetAddress1')">
+      <mat-error>{{'ADDRESSFORM.ENTERADDRESS' | translate}}</mat-error>
+    </mat-form-field>
+  </div>
+</div>
+<div class="flex-1">
+  <div class="field-item">
+    <mat-form-field>
+      <input matInput name="streetAddress2" id="streetAddress2" maxLength="100" [(ngModel)]="address.streetAddress2"
+        placeholder="{{'ADDRESSFORM.SECONDLINE' | translate}}">
+    </mat-form-field>
+  </div>
+</div>
+<div class="flex-1">
+  <div class="field-item">
+    <mat-form-field>
+      <input matInput name="streetAddress3" id="streetAddress3" maxLength="100" [(ngModel)]="address.streetAddress3"
+        placeholder="{{'ADDRESSFORM.THRIDLINE' | translate}}">
+    </mat-form-field>
+  </div>
+</div>
+<div class="flex-1">
+  <div class="flex-container flex-wrap flex-column-mobile">
+    <div class="flex-1 padding-right">
+      <div class="field-item">
+        <mat-form-field>
+          <input matInput name="city" id="city" minLength="2" maxLength="60" [(ngModel)]="address.city"
+            placeholder="{{'ADDRESSFORM.CITY' | translate}}" [required]="isRequired('city')">
+          <mat-error>{{'ADDRESSFORM.ENTERCITY' | translate}}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="flex-1">
+      <div class="field-item">
+        <mat-form-field>
+          <input matInput name="zipCode" id="zipCode" minLength="1" maxLength="20" [(ngModel)]="address.zipCode"
+            placeholder="{{'ADDRESSFORM.CODE' | translate}}" [required]="isRequired('zipCode')">
+          <mat-error>{{'ADDRESSFORM.ZIPCODE' | translate}}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="flex-1">
+  <div class="field-item">
+    <mat-form-field>
+      <input matInput name="state" id="state" minLength="2" maxLength="3" [(ngModel)]="address.state"
+        placeholder="{{'ADDRESSFORM.STATE' | translate}}"
+        [required]="isRequired('state')">
+      <mat-error>{{'ADDRESSFORM.REGION' | translate}}</mat-error>
+    </mat-form-field>
+  </div>
+</div>

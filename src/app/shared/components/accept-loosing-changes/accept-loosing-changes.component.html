@@ -1,0 +1,21 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="br-dialog">
+  <div class="hdr">
+    <div (click)="closeDialog()">
+      <mat-icon [svgIcon]="icons.close[48].name" class="close"></mat-icon>
+    </div>
+    <mat-dialog-content class="mat-typography">
+      <p class="grey">
+        {{'ACCEPTLOOSING.PLEASE' | translate}}
+      </p>
+    </mat-dialog-content>
+    <br />
+    <br />
+    <mat-dialog-actions align="end">
+      <button mat-button color="primary" [mat-dialog-close]="true" (click)="onCancel()">
+        {{'ACCEPTLOOSING.STAY' | translate}}</button>
+      <button mat-button mat-flat-button (click)="onAccept()">
+        {{'ACCEPTLOOSING.CONTINUE' | translate}}</button>
+    </mat-dialog-actions>
+  </div>
+</div>

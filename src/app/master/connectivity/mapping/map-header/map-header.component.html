@@ -1,0 +1,47 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="top-panel">
+  <p *ngIf="hasUnmappedCode()">{{'MAPHEADER.CODEMAP' | translate}}</p>
+  <p *ngIf="!hasUnmappedCode()">{{'MAPHEADER.UNMAPPED' | translate}}</p>
+  <div class="code-wrapper">
+    <div class="btns-slider">
+      <perfect-scrollbar #horizontalScroll (psXReachStart)="updateEnabled()" (psXReachEnd)="updateDisabled()"
+        (psScrollX)="updateScrollX($event)" [config]="{ suppressScrollY: true , suppressScrollX: false}">
+        <div class="btns-group">
+          <ng-template [ngIf]="unmappedChips != null && unmappedChips?.length > 0">
+            <ng-template ngFor let-chip [ngForOf]="unmappedChips" let-chipIndex="index">
+              <ng-template [ngIf]="!chip.disabled">
+                <div [ngClass]="hasPermissionToAccess([permissions.ConnectivityMapping])?'btn-wrapper':'btn-wrapper-disabled'">
+                  <button class="mat-small btn-code mb-0 mr-20" [class.select]="selectedChipIndex === chipIndex"
+                          (click)="onChipClick(chip, chipIndex)" [matTooltip]="displayParentCodeToolTip(chip)">
+                    <strong>{{chip.code}}</strong>
+                  </button>
+                  <span class="link mr-20" *ngIf="hasPermissionToAccess([permissions.ConnectivityMapping])"
+                        (click)="onDisableClick(chip, chipIndex)" mat-button color="primary">{{'MAPHEADER.DISABLE' | translate}}</span>
+                </div> <!-- /flex -->
+              </ng-template>
+            </ng-template>
+          </ng-template>
+        </div>
+      </perfect-scrollbar>
+      <mat-icon [svgIcon]="icons.navigateNext[24].name" *ngIf="arrow" class="navigate-right" (mousedown)="onSliderMouseDown('right')"
+        (click)="moveSlider('right')"></mat-icon>
+      <mat-icon [svgIcon]="icons.navigateBefore[24].name" *ngIf="arrowLeft" class="navigate-left mr-5"
+        (mousedown)="onSliderMouseDown('left')" (click)="moveSlider('left')"></mat-icon>
+    </div>
+
+    <!-- Display configuration dropdown for instrument mapping -->
+    <div class="configuration-dropdown"
+      *ngIf="entityType === 4 && configurationsList?.length > 0 && shadowUnmappedInstChips?.length > 0">
+      <mat-form-field>
+        <!-- i18n need to display non in languages, but use none as literal for BE -->
+        <mat-select (selectionChange)="onConfigurationChange($event.value)" [(ngModel)]="selectedConfiguration" placeholder="{{'MAPHEADER.CONFIGURATIONSNAME' | translate}}">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let configuration of configurationsList" [matTooltip]="configuration.name"
+            [value]="configuration">
+            {{ configuration.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>

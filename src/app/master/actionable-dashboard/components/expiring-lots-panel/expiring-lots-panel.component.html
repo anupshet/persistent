@@ -1,0 +1,23 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div *ngIf="expiredItems?.length>0" class="expiring-lots-panel-component">
+  <mat-card>
+        <mat-card-title>
+            <!-- <h2 class="mat-display-1 mb-20">Expiring lots</h2> -->
+            <h2 class="mat-display-1 mb-20">{{'EXPIRINGLOTS.EXPIRINGLOTS' | translate | titlecase }}</h2>
+          </mat-card-title>
+        <mat-card-subtitle>
+            <span class="mat-display-3 expiring-count">{{expiredItems?.length}}</span>
+        </mat-card-subtitle>
+        <mat-card-content>
+          <unext-expiring-lots-list [expiredItems]="expiredItems" (actionableItem)="onLotsClicked($event)"></unext-expiring-lots-list>
+        </mat-card-content>
+  </mat-card>
+</div>
+
+
+
+
+
+
+
+

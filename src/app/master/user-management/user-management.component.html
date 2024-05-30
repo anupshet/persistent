@@ -1,0 +1,314 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="user-management-component">
+  <div *ngIf="showSaveWarning" class="flex space-between lose-changes-wrapper mr-10 ml-10" id="spec_warningBox">
+    <span class="lose-changes-msg">{{'USERMANAGEMENT.LOSECHANGES' | translate}}</span>
+    <span>
+      <button mat-stroked-button color="primary" [mat-dialog-close]="true">{{'USERMANAGEMENT.EXITWITHOUTSAVING' | translate}}</button>
+      <button mat-flat-button color="primary" class="ml-15"
+        (click)="saveRecord(i, true)" [disabled]='checkValuesAreEqual() || !userForm.valid'
+        [checkForPermission]="{'permissionsAllowed':[permissions.UserAdd,permissions.UserEdit],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+        {{'USERMANAGEMENT.SAVEANDEXIT' | translate}}</button>
+    </span>
+  </div>
+
+  <button mat-icon-button class="close" (click)="close()" [disabled]="showSaveWarning">
+    <mat-icon [svgIcon]="icons.close[24].name"></mat-icon>
+  </button>
+
+  <div class="sec-header">
+    <div class="filter-header">
+      <div class="category-filter">
+        <mat-form-field>
+          <mat-label>{{'USERMANAGEMENT.CATEGORY' | translate}}</mat-label>
+          <mat-select [disabled]="!dataSource || isAddUser || isEditUser" [(ngModel)]="selectedCategory"
+            [value]="selectedCategory">
+            <mat-option value={{userFields.Name}}>{{'USERMANAGEMENT.NAME' | translate}}
+            </mat-option>
+            <mat-option value={{userFields.Email}}>{{'USERMANAGEMENT.EMAIL' | translate}}
+              </mat-option>
+            <mat-option value={{userFields.Role}}>{{'USERMANAGEMENT.ROLE' | translate}}
+            </mat-option>
+            <mat-option value={{userFields.Location}}>{{'USERMANAGEMENT.LOCATION' | translate}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="search-field">
+        <mat-form-field>
+          <input matInput [(ngModel)]="searchInput" name="searchInput" (keydown.enter)="onUserSearch()"
+            [disabled]="!dataSource || isAddUser || isEditUser" placeholder="{{'USERMANAGEMENT.KEYWORD' | translate}}">
+        </mat-form-field>
+      </div>
+      <button mat-button color="primary" class="search-btn spec-search-btn"
+        [disabled]="!(selectedCategory && searchInput && searchInput.trim()) || isAddUser || isEditUser || !dataSource"
+        (click)="onUserSearch()"> {{'USERMANAGEMENT.SEARCH' | translate}}
+      </button>
+      <button *ngIf="(selectedCategory > 0 || (searchInput && searchInput.trim()))" class="heading spec-reset-btn"
+        mat-button color="primary"
+        [disabled]="!dataSource || isAddUser || isEditUser" (click)="reset()">
+        <mat-icon class="set-width"
+          [svgIcon]="(!dataSource || isAddUser || isEditUser) ? icons.refreshBlueDisabled[24].name : icons.refreshBlue[24].name">
+        </mat-icon>
+        <span>{{'USERMANAGEMENT.RESET' | translate}}</span>
+      </button>
+    </div>
+  </div>
+  <div class="add-user-btn">
+    <button color="primary" mat-button class="spec-add-user-btn" (click)="addUserForm()"
+      [disabled]="!dataSource || isAddUser || isEditUser || hasUserCountExceeds"
+      [checkForPermission]="{'permissionsAllowed': [permissions.UserAdd, permissions.UserAddViewOnly],'hideIfNotPermitted':true,'disableIfNotPermitted': false}">
+      <mat-icon [svgIcon]="icons.addCircleOutline[24].name" class="addCircleOutline">
+      </mat-icon>
+      <span class="ml-4"
+      matTooltip="{{'USERMANAGEMENT.MAXUSERSERROR' | translate}}"
+      [matTooltipDisabled]="!hasUserCountExceeds" matTooltipClass="add-user-tooltip">{{'USERMANAGEMENT.ADDUSER' | translate}}</span>
+    </button>
+  </div>
+
+  <div class="main-ctn" [ngClass]="{'extend-afterwarning': showSaveWarning}">
+    <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}">
+      <form [formGroup]="userForm" autocomplete="off"
+        [checkForPermission]="{'permissionsAllowed': [permissions.UserListView],'hideIfNotPermitted':true,'disableIfNotPermitted': false}">
+        <mat-table #table [dataSource]="userData | paginate: paginationConfig" matSort
+          (matSortChange)="sortList($event)" matSortActive="UserName" matSortDirection="asc" matSortDisableClear>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="UserName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="isAddUser || isEditUser">
+              <span class="heading">{{'USERMANAGEMENT.NAME' | translate}}</span>
+              <mat-icon class="arrow-icon" [svgIcon]="icons.sortActive[24].name"
+                [ngClass]="{'rotate' : sortInfo?.direction === 'asc'}"
+                *ngIf="sortInfo?.active === userColumns[0] && sortInfo?.direction"></mat-icon>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let user;let i = index">
+              <div *ngIf="!user.isEditable" (click)="openFormForEdit(i)" class="user-edit"
+                [ngClass]="{'user-edit-disable' : isAddUser || isEditUser || user.disableAccountUserManager}">
+                {{user.contactInfo.firstName}} {{user.contactInfo.lastName}}
+              </div>
+              <div *ngIf="user.isEditable" class="user-fields">
+                <div class="single-order-field">
+                  <mat-form-field>
+                    <mat-label>{{'USERMANAGEMENT.FIRSTNAME' | translate}}</mat-label>
+                    <input type="text" matInput name="firstName" id="firstName" formControlName="firstName">
+                    <mat-error *ngIf='userForm?.controls?.firstName?.errors?.required'>{{'USERMANAGEMENT.ENTERFIRSTNAME' | translate}}</mat-error>
+                    <mat-error *ngIf='userForm?.controls?.firstName?.errors?.maxlength'>{{'USERMANAGEMENT.HUNDRED' | translate}}</mat-error>
+                    <mat-error *ngIf='userForm?.controls?.firstName?.errors?.pattern'>{{'USERMANAGEMENT.INVALIDFIRSTNAME' | translate}}</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="single-order-field">
+                  <mat-form-field>
+                    <mat-label>{{'USERMANAGEMENT.LASTNAME' | translate}}</mat-label>
+                    <input type="text" matInput name="lastName" id="lastName" formControlName="lastName">
+                    <mat-error *ngIf='userForm?.controls?.lastName?.errors?.required'>{{'USERMANAGEMENT.ENTERLASTNAME' | translate}}</mat-error>
+                    <mat-error *ngIf='userForm?.controls?.lastName?.errors?.maxlength'>{{'USERMANAGEMENT.HUNDRED' | translate}}</mat-error>
+                    <mat-error *ngIf='userForm?.controls?.lastName?.errors?.pattern'>{{'USERMANAGEMENT.INVALIDLASTNAME' | translate}}</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Email Column -->
+          <ng-container matColumnDef="UserEmail">
+            <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="isAddUser || isEditUser">
+              <span class="heading">{{'USERMANAGEMENT.EMAIL' | translate}}</span>
+              <mat-icon class="arrow-icon" [svgIcon]="icons.sortActive[24].name"
+                [ngClass]="{'rotate' : sortInfo?.direction === 'asc'}"
+                *ngIf="sortInfo?.active === userColumns[1] && sortInfo?.direction"></mat-icon>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let user">
+              <ng-container *ngIf="!user.isEditable">
+                {{user.contactInfo.email}}
+              </ng-container>
+              <ng-container *ngIf="user.isEditable">
+                <div class="email-field">
+                  <mat-form-field>
+                    <mat-label>{{'USERMANAGEMENT.EMAIL' | translate}}</mat-label>
+                    <input type="email" matInput name="userEmail" id="userEmail" formControlName="userEmail">
+                    <mat-error *ngIf='userForm?.controls?.userEmail?.errors?.required'>{{'USERMANAGEMENT.EMAILADDRESS' | translate}}</mat-error>
+                    <mat-error *ngIf='userForm?.controls?.userEmail?.errors?.email'>{{'USERMANAGEMENT.VALIDEMAILADDRESS' | translate}}</mat-error>
+                    <mat-error *ngIf='userForm?.controls?.userEmail?.errors?.maxlength'>{{'USERMANAGEMENT.HUNDRED' | translate}}</mat-error>
+                    <mat-error *ngIf='userForm?.controls?.userEmail?.errors?.duplicateEmail'>{{'USERMANAGEMENT.SAMEEMAILADDRESS' | translate}}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </ng-container>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Role Column -->
+          <ng-container matColumnDef="UserRole">
+            <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="isAddUser || isEditUser">
+              <span class="heading">{{'USERMANAGEMENT.ROLE' | translate}}</span>
+              <mat-icon class="arrow-icon" [svgIcon]="icons.sortActive[24].name"
+                [ngClass]="{'rotate' : sortInfo?.direction === 'asc'}"
+                *ngIf="sortInfo?.active === userColumns[2] && sortInfo?.direction"></mat-icon>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let user">
+              <div class="list-item" *ngIf="!user.isEditable">
+                <div *ngFor="let role of user.userRoles">
+                  {{role}}
+                </div>
+              </div>
+              <ng-container *ngIf="user.isEditable">
+                <mat-form-field class="user-role">
+                  <mat-label>{{'USERMANAGEMENT.ROLE' | translate}}</mat-label>
+                  <mat-select formControlName="userRole" name="userRole" id="userRole" placeholder="{{'USERMANAGEMENT.ROLE' | translate}}"
+                     (selectionChange)="disableRoles($event)" multiple>
+                    <mat-option [disabled]="role.isDisabled" *ngFor="let role of rolesOptions" [value]="role">
+                      {{role.roleName}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf='userForm?.controls?.userRole?.errors?.required'>{{'USERMANAGEMENT.SELECTROLE' | translate}}</mat-error>
+                </mat-form-field>
+              </ng-container>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Location Column -->
+          <ng-container matColumnDef="UserLocation">
+            <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="isAddUser || isEditUser">
+              <span class="heading">{{'USERMANAGEMENT.LOCATION' | translate}}</span>
+              <mat-icon class="arrow-icon" [svgIcon]="icons.sortActive[24].name"
+                [ngClass]="{'rotate' : sortInfo?.direction === 'asc'}"
+                *ngIf="sortInfo?.active === userColumns[3] && sortInfo?.direction"></mat-icon>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let user;let i = index">
+              <div class="list-item" *ngIf="!user.isEditable">
+                <ng-container *ngIf="!!user.labLocation; else noLocations">
+                  <div *ngFor="let location of user.labLocation"
+                    [matTooltip]="!!user.labLocation && location.labLocationName?.length > 32 ? location.labLocationName : null">
+                    {{location.labLocationName | truncate:[32]}}
+                  </div>
+                </ng-container>
+                <ng-template #noLocations>{{'USERMANAGEMENT.RESET' | translate}}
+                  No Locations
+                </ng-template>
+              </div>
+              <div class="locations-contols-container" *ngIf="user.isEditable">
+                <ng-container
+                  *ngTemplateOutlet="isAUMSelected ? locationAll : locationSelect; context: { $implicit: location }">
+                </ng-container>
+                <div class="bottom-controls">
+                  <button mat-icon-button
+                    [checkForPermission]="{'permissionsAllowed': [permissions.UserDelete],'hideIfNotPermitted':true,'disableIfNotPermitted': false}"
+                    *ngIf="!isAddUser && currentUserData?.userOktaId !== user?.userOktaId && !user?.isPrimaryContact && !isViewOnly"
+                    class="icn-delete spec-delete" type="button" (click)="openConfirmDialog(user)">
+                    <mat-icon [svgIcon]="icons.delete[24].name"></mat-icon>
+                  </button>
+                  <button mat-button mat-stroked-button class="cancel-button" type="reset"
+                    (click)="user.isEditable = !user.isEditable; cancelFormEdit()" color="primary">{{'USERMANAGEMENT.CANCEL' | translate}}
+                  </button>
+                  <ng-container *ngIf="isAddUser; else updateUser">
+                    <button class="spec_add_location add-button" (click)="user.isEditable = !isSuccess; saveRecord(i)"
+                      type="button" mat-raised-button color="primary"
+                      [checkForPermission]="{'permissionsAllowed': [permissions.UserAdd],'hideIfNotPermitted':true,'disableIfNotPermitted': false}"
+                      [disabled]="(!userForm.valid || isSingleGroupError)">{{'USERMANAGEMENT.ADD' | translate}}
+                    </button>
+                  </ng-container>
+                  <ng-template #updateUser>
+                    <button class="spec_update_location update-button"
+                      (click)="user.isEditable = !isSuccess; saveRecord(i)" type="button" mat-raised-button
+                      color="primary"
+                      [checkForPermission]="{'permissionsAllowed': [permissions.UserEdit],'hideIfNotPermitted':true,'disableIfNotPermitted': false}"
+                      [disabled]="checkValuesAreEqual() || !this.userForm.valid || isSingleGroupError || !this.checklistSelection.isSelected">
+                      {{'USERMANAGEMENT.UPDATE' | translate}}
+                    </button>
+                  </ng-template>
+                </div>
+              </div>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="userColumns; sticky: true"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: userColumns;"></mat-row>
+        </mat-table>
+
+        <ng-template #locationSelect let-location>
+          <div class="panel-item-selection-container">
+            <mat-form-field [ngClass]="{'location-custom-error' : isSingleGroupError}">
+              <mat-label>{{'USERMANAGEMENT.LOCATION' | translate}}</mat-label>
+              <mat-select [(ngModel)]="locationOptions" formControlName="userLocation" name="userLocation"
+                class="spec-location-select" panelClass="location-panel" id="userLocation" placeholder="{{'USERMANAGEMENT.LOCATION' | translate}}"
+                multiple>
+                <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}">
+                  <mat-option class="location-overlay" disabled>
+                    <mat-tree [dataSource]="locationDataSource " [treeControl]="treeControl">
+                      <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+                        <button mat-icon-button disabled></button>
+                        <div class="box">
+                          <mat-checkbox #leafItemCheckBox class="checklist-leaf-node spec-leaf-checkbox"
+                            [checked]="checklistSelection.isSelected(node)"
+                            (change)="leafItemSelectionToggle(node, leafItemCheckBox)"
+                            [disabled]="node.isDefaultLocation">
+                            <div #leafNode [matTooltip]="isTextTruncated(leafNode) ? node.displayName : null"
+                              class="truncate">{{ node.displayName }}</div>
+                          </mat-checkbox>
+                        </div>
+                      </mat-tree-node>
+                      <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding
+                        class="spec-tree-node">
+                        <div class="box">
+                          <mat-checkbox #parentItemCheckBox [checked]="descendantsAllSelected(node)"
+                            [indeterminate]="descendantsPartiallySelected(node)" class="spec-parent-checkbox"
+                            (change)="parentItemSelectionToggle(node, parentItemCheckBox)"
+                            [disabled]="node.isDefaultLocation">
+                            <div class="truncate" #parentNode
+                              [matTooltip]="isTextTruncated(parentNode) ? node.displayName : null">
+                              {{node.displayName }}</div>
+                          </mat-checkbox>
+                          <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.displayName"
+                            class="spec-expand-colapse-button">
+                            <mat-icon class="mat-icon-rtl-mirror">
+                              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                            </mat-icon>
+                          </button>
+                        </div>
+                      </mat-tree-node>
+                    </mat-tree>
+                  </mat-option>
+                  <mat-option class="pseudo-options" *ngFor="let locationName of locationOptions"
+                    [value]="locationName">
+                    {{locationName}}</mat-option>
+                </perfect-scrollbar>
+              </mat-select>
+              <mat-error *ngIf='userForm?.controls?.userLocation?.errors?.required'>{{'USERMANAGEMENT.SELECTLOCATION' | translate}}</mat-error>
+            </mat-form-field>
+            <div class="location-error" *ngIf='isSingleGroupError'>
+              <mat-error>{{'USERMANAGEMENT.SELECTLOCATIONFROMGROUP' | translate}}</mat-error>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template #locationAll let-location>
+          <div class="all-location">{{'USERMANAGEMENT.ALLLOCATIONS' | translate}}</div>
+        </ng-template>
+      </form>
+      <div class="single-item spec_users_loading" *ngIf="!dataSource">{{'USERMANAGEMENT.LOADINGUSERS' | translate}}</div>
+      <div class="single-item spec_no_users_found" *ngIf="dataSource && dataSource?.data?.length <= 0">{{'USERMANAGEMENT.NOUSERS' | translate}}</div>
+    </perfect-scrollbar>
+  </div>
+
+  <div class="pagination-container" *ngIf="(userData && userData.length > 0) && totalPages > 1">
+    <pagination-template class="spec-pagination-control" id="paginationUsers" #p="paginationApi"
+      (pageChange)="onUserPageChange($event)" [maxSize]="maxSize">
+      <div class="custom-pagination">
+        <button mat-stroked-button color="primary" class="pagination-button spec-prev-button" (click)="p.previous()"
+          [ngClass]="{'selected disable-button' : p.isFirstPage()}"
+          [disabled]="p.isFirstPage()  || isAddUser || isEditUser">
+          <mat-icon [svgIcon]="icons.arrowBack[24].name"></mat-icon>
+        </button>
+        <div *ngFor="let page of p.pages, let index = index">
+          <button mat-stroked-button color="primary" class="pagination-button spec-page-button"
+            [ngClass]="{ 'selected' : p.getCurrent() === page.value, 'disable-button': isAddUser || isEditUser}"
+            (click)="p.setCurrent(page.value)" [disabled]="isAddUser || isEditUser">
+            {{ page.value }}
+          </button>
+        </div>
+        <button mat-stroked-button color="primary" class="pagination-button spec-next-button" (click)="p.next()"
+          [ngClass]="{'selected disable-button' : p.isLastPage()}"
+          [disabled]="p.isLastPage() || isAddUser || isEditUser">
+          <mat-icon class="rotateArrow" [svgIcon]="icons.arrowBack[24].name"></mat-icon>
+        </button>
+      </div>
+    </pagination-template>
+  </div>
+</div>

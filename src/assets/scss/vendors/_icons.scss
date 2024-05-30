@@ -1,0 +1,247 @@
+@import "icons-var";
+
+@font-face {
+  font-family: 'icomoon';
+  src:
+    url('#{$icomoon-font-path}/icomoon.ttf?aa6i4s') format('truetype'),
+    url('#{$icomoon-font-path}/icomoon.woff?aa6i4s') format('woff'),
+    url('#{$icomoon-font-path}/icomoon.svg?aa6i4s#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+%icon {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  @extend %icon;
+}
+
+
+@function unicode($str) {
+  @return unquote("\"") + $str + unquote("\"");
+}
+
+$fa-css-prefix:  icon !default;
+
+.#{$fa-css-prefix}-linkChain:before {
+    content: unicode($icon-linkChain);
+    color: $gray-600;
+}
+
+.#{$fa-css-prefix}-statusError:before {
+  content: unicode($icon-statusError);
+  color: $red-light;
+}
+.#{$fa-css-prefix}-statusProcessing:before {
+  content: unicode($icon-statusProcessing);
+  color: $blue;
+}
+.#{$fa-css-prefix}-cardAdd:before {
+  content: unicode($icon-cardAdd);
+  color: $blue-darked;
+}
+.#{$fa-css-prefix}-cardEdit:before {
+  content: unicode($icon-cardEdit);
+  color: $gray-800;
+}
+.#{$fa-css-prefix}-cardView:before {
+  content: unicode($icon-cardView);
+  color: $gray-800;
+}
+.#{$fa-css-prefix}-fileError:before {
+  content: unicode($icon-fileError);
+  color: $red-light;
+}
+.icon-statusDone:before {
+  content: unicode($icon-statusDone);
+  color: $green;
+}
+.#{$fa-css-prefix}-statusQueue:before {
+  content: unicode($icon-statusQueue);
+  color: $blue-darked;
+}
+.#{$fa-css-prefix}-upload:before {
+  content: unicode($icon-upload);
+}
+.#{$fa-css-prefix}-list:before {
+  content: unicode($icon-list);
+}
+.#{$fa-css-prefix}-edit2:before {
+  content: unicode($icon-edit2);
+}
+.#{$fa-css-prefix}-more:before {
+  content: unicode($icon-more);
+}
+.#{$fa-css-prefix}-archive:before {
+  content: unicode($icon-archive);
+  color: $gray-800;
+}
+.#{$fa-css-prefix}-arrow:before {
+  content: unicode($icon-arrow);
+}
+.#{$fa-css-prefix}-menu:before {
+  content: unicode($icon-menu);
+}
+.#{$fa-css-prefix}-activity:before {
+  content: unicode($icon-activity);
+  color: $br-blueish;
+}
+.#{$fa-css-prefix}-asterisk:before {
+  content: unicode($icon-asterisk);
+  color: $br-color-warn;
+}
+.#{$fa-css-prefix}-avatar:before {
+  content: unicode($icon-avatar);
+  color: $blue-light;
+}
+.#{$fa-css-prefix}-cancel:before {
+  content: unicode($icon-cancel);
+  color: $br-blueish;
+}
+.#{$fa-css-prefix}-check:before {
+  content: unicode($icon-check);
+  color: $br-blueish;
+}
+.#{$fa-css-prefix}-comments:before {
+  content: unicode($icon-comments);
+  color: $br-blueish;
+}
+.#{$fa-css-prefix}-download:before {
+  content: unicode($icon-download);
+  color: $br-blueish;
+}
+.#{$fa-css-prefix}-edit:before {
+  content: unicode($icon-edit);
+}
+.#{$fa-css-prefix}-expand:before {
+  content: unicode($icon-expand);
+  color: $br-blueish;
+}
+.#{$fa-css-prefix}-home:before {
+  content: unicode($icon-home);
+  color: $br-blueish;
+}
+.#{$fa-css-prefix}-info:before {
+  content: unicode($icon-info);
+  color: $gray-400;
+}
+.#{$fa-css-prefix}-instruments:before {
+  content: unicode($icon-instruments);
+}
+.#{$fa-css-prefix}-lab2:before {
+  content: unicode($icon-lab2);
+}
+.#{$fa-css-prefix}-labs:before {
+  content: unicode($icon-labs);
+  color: $gray-700;
+}
+.#{$fa-css-prefix}-labs-f:before {
+  content: unicode($icon-labs-f);
+}
+.#{$fa-css-prefix}-notification:before {
+  content: unicode($icon-notification);
+  color: $br-blueish;
+}
+.#{$fa-css-prefix}-notification-f:before {
+  content: unicode($icon-notification-f);
+  color: $br-blueish;
+}
+.#{$fa-css-prefix}-plan:before {
+  content: unicode($icon-plan);
+  color: $br-blueish;
+}
+.#{$fa-css-prefix}-print:before {
+  content: unicode($icon-print);
+}
+.#{$fa-css-prefix}-print-f:before {
+  content: unicode($icon-print-f);
+  color: $br-blueish;
+}
+.#{$fa-css-prefix}-recommended:before {
+  content: unicode($icon-recommended);
+}
+.#{$fa-css-prefix}-repeat:before {
+  content: unicode($icon-repeat);
+}
+.#{$fa-css-prefix}-save:before {
+  content: unicode($icon-save);
+  color: $br-blueish;
+}
+.#{$fa-css-prefix}-search:before {
+  content: unicode($icon-search);
+  color: $br-blueish;
+}
+.#{$fa-css-prefix}-search2:before {
+  content: unicode($icon-search2);
+}
+.#{$fa-css-prefix}-settings:before {
+  content: unicode($icon-settings);
+  color: $gray-600;
+}
+.#{$fa-css-prefix}-settings2:before {
+  content: unicode($icon-settings2);
+  color: $br-blueish;
+}
+.#{$fa-css-prefix}-settings-f:before {
+  content: unicode($icon-settings-f);
+}
+.#{$fa-css-prefix}-settings-vol:before {
+  content: unicode($icon-settings-vol);
+}
+.#{$fa-css-prefix}-settings-vol2:before {
+  content: unicode($icon-settings-vol2);
+}
+.#{$fa-css-prefix}-viewmore:before {
+  content: unicode($icon-viewmore);
+}
+.#{$fa-css-prefix}-warning:before {
+  content: unicode($icon-warning);
+}
+.#{$fa-css-prefix}-file:before {
+  content: unicode($icon-file);
+}
+.#{$fa-css-prefix}-upload-arrow:before {
+  content: unicode($icon-upload-arrow);
+}
+.#{$fa-css-prefix}-Actions:before {
+  content: unicode($icon-Actions);
+  color: $gray-600;
+}
+.#{$fa-css-prefix}-Comment:before {
+  content: unicode($icon-Comment);
+  color: $gray-600;
+}
+.#{$fa-css-prefix}-Reviewers:before {
+  content: unicode($icon-Reviewers);
+  color: $gray-600;
+}
+.#{$fa-css-prefix}-stat:before {
+  content: unicode($icon-stat);
+}
+.#{$fa-css-prefix}-ancor:before {
+  content: unicode($icon-ancor);
+}
+.#{$fa-css-prefix}-cheveron-left:before {
+  content: unicode($icon-cheveron-left);
+}
+.#{$fa-css-prefix}-cheveron-right:before {
+  content: unicode($icon-cheveron-right);
+}
+.#{$fa-css-prefix}-chevron-down:before {
+    content: unicode($icon-chevron-down);
+}
+
+.#{$fa-css-prefix}-chevron-up:before {
+  content: unicode($icon-chevron-up);
+}
+

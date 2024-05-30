@@ -1,0 +1,86 @@
+//input paddings
+.mat-form-field-wrapper {
+  .mat-form-field-subscript-wrapper {
+    margin-top: $custom-space-xxsmall;
+  }
+}
+
+.thumb-label-bottom .mat-slider-thumb-label {
+  top: 8px;
+  border-radius: 0 50% 50%;
+}
+
+.mat-slider-thumb-label {
+  transform: rotate(45deg);
+  border-radius: 50% 50% 0;
+}
+
+.mat-slider-thumb {
+  transform: scale(0);
+}
+
+.mat-slider-thumb-label-text {
+  opacity: 1;
+}
+
+.mat-progress-bar-fill::after {
+  background-color: $orange;
+}
+
+.mat-select-value-text,
+.mat-option {
+  font-size: mat-font-size($br-typography, body-2);
+}
+
+.mat-ink-bar {
+  // background-color: rgba($blue-dark, 0.8);
+  bottom: 7px;
+  height: 3px;
+}
+
+.mat-ink-bar {
+  background-color: #f9aa47 !important;
+}
+
+
+.mat-tab-header,
+.mat-tab-nav-bar {
+  border-bottom: 1px solid rgba($black, 0);
+}
+
+.mat-tab-link {
+  height: 35px;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+
+//spinner
+.br-small-spinner {
+  width: 16px;
+  height: 16px;
+}
+
+.spinner-ctn {
+  width: 18px;
+  display: block;
+  float: left;
+  margin-right: $custom-space-small + $custom-space-xsmall;
+}
+
+.mat-menu-panel {
+  max-width: 380px;
+}
+
+//primary color of checkbox
+.mat-pseudo-checkbox-checked {
+  background: $blue;
+}
+
+//mat form field
+.mat-form-field {
+  margin-top: $custom-space-small;
+}

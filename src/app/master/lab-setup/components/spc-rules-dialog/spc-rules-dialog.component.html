@@ -1,0 +1,27 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="spc-rules-dialog-component">
+  <div class="flex hdr">
+    <h2 mat-dialog-title>
+      <span *ngIf="data.ruleName">{{ data.ruleName }}</span>
+      <span> {{'SPCRULESDIALOGCOMPONENT.RULE' | translate}}</span>
+    </h2>
+    <button mat-icon-button (click)="close();">
+      <mat-icon [svgIcon]="icons.close[24].name"></mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="data.ruleId">
+      <h4><b>{{'SPCRULESDIALOGCOMPONENT.CHARTTITLE_WITHIN' | translate}}</b></h4>
+      <img class="img-rules" *ngIf="data.imagePath" src="assets/images/rules/loc/{{ data.imagePath }} Within.svg">
+      <p class="caption mt-20"> {{ data.description.within }} </p>
+      <h4><b>{{'SPCRULESDIALOGCOMPONENT.CHARTTITLE_ACCROSS' | translate}}</b></h4>
+      <img class="img-rules" *ngIf="data.imagePath" src="assets/images/rules/loc/{{ data.imagePath }} Across.svg">
+      <p class="caption mt-20"> {{ data.description.across }} </p>
+  </div>
+
+  <div *ngIf="data.ruleId === null">
+    <p class="subtitle mb-40">{{'SPCRULESDIALOGCOMPONENT.CHARTTITLE_WITHIN' | translate}}</p>
+    <img class="img-rules" *ngIf="data.imagePath" src="assets/images/rules/loc/{{ data.imagePath }}.svg">
+    <p class="caption mt-20">{{ data.description }}</p>
+  </div>
+</div>

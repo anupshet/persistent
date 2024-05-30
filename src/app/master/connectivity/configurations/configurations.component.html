@@ -1,0 +1,86 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="configurations-component" *ngIf="showListing">
+  <perfect-scrollbar>
+    <div class="configuration-header">
+      <span class="title">{{'CONFIGURATION.CONFIGURATIONS' | translate}}</span>
+      <button color="primary" *ngIf="!isTechnologist" class="spec-create-link" mat-button
+        (click)="createConfiguration()">
+        <mat-icon [svgIcon]="icons.addCircleOutline[24].name" class="addCircleOutline"></mat-icon>
+        <span class="upper-case ml-5">{{'CONFIGURATION.CREATE' | translate}}</span>
+      </button>
+    </div>
+
+    <div class="configuration-list">
+      <mat-table class="configuration-list-table" #table [dataSource]="dataSource" matSort
+        (matSortChange)="sortList($event)" matSortActive="name" matSortDirection="asc" matSortDisableClear>
+
+        <!-- Configuration Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell class="col-header" *matHeaderCellDef mat-sort-header>
+            <span class="heading">{{'CONFIGURATION.CONFIGURATIONNAME' | translate}}</span>
+            <mat-icon class="arrow-icon" [svgIcon]="icons.sortActive[24].name"
+              [ngClass]="{'rotate' : sortInfo?.direction === 'asc'}"
+              *ngIf="sortInfo?.active === displayedColumns[0] && sortInfo?.direction">
+            </mat-icon>
+          </mat-header-cell>
+          <mat-cell class="col-name" *matCellDef="let element">{{ element.name }}</mat-cell>
+        </ng-container>
+
+        <!-- Transformer Column -->
+        <ng-container matColumnDef="transformerName">
+          <mat-header-cell class="col-header" *matHeaderCellDef mat-sort-header>
+            <span class="heading">{{'CONFIGURATION.TRANSFORMERTYPE' | translate}}</span>
+            <mat-icon class="arrow-icon" [svgIcon]="icons.sortActive[24].name"
+              [ngClass]="{'rotate' : sortInfo?.direction === 'asc'}"
+              *ngIf="sortInfo?.active === displayedColumns[1] && sortInfo?.direction">
+            </mat-icon>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.transformerName }}</mat-cell>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell class="col-header" *matHeaderCellDef></mat-header-cell>
+          <mat-cell class="col-action" *matCellDef="let element">
+            <span class="icn-delete-span">
+              <mat-icon
+                *ngIf="displayDeleteIcon(element) && hasPermissionToAccess([permissions.ConnectivityConfiguration])"
+                [svgIcon]="icons.delete[24].name" class="icn-delete spec-delete"
+                (click)="onDeleteConfigClicked(element)"></mat-icon>
+            </span>
+            <button mat-raised-button color="primary" *ngIf="element.isConfigured && !isTechnologist" class="spec-edit-edge"
+              (click)="createOrEditConfiguration(element)">{{'CONFIGURATION.EDIT' | translate}}</button>
+            <button mat-raised-button color="primary" *ngIf="element.isConfigured && isTechnologist" class="spec-edit-edge"
+              (click)="createOrEditConfiguration(element)">{{'CONFIGURATION.VIEW' | translate}}</button>
+            <button mat-raised-button color="primary"
+              *ngIf="!element.isConfigured && hasPermissionToAccess([permissions.ConnectivityConfiguration])"
+              class="spec-configure" (click)="createConfiguration(element.transformerId)">{{'CONFIGURATION.CONFIGURE' |
+              translate}}</button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </perfect-scrollbar>
+</div>
+
+<div *ngIf="showCommonForm">
+  <unext-common-configuration [accountId]="accountId" [labLocationId]="labLocationId"
+    (showListing)="showConfigurations($event)" [existingConfigurationsNames]="existingConfigurationsNames"
+    [selectedTransformerId]="selectedTransformerId">
+  </unext-common-configuration>
+</div>
+<div *ngIf="showTransformersForm">
+  <unext-transformer-configuration [accountId]="accountId" [labLocationId]="labLocationId"
+    [existingConfigurationsNames]="existingConfigurationsNames" [selectedTransformer]="selectedTransformer"
+    (showConfigurations)="showConfigurations($event)">
+  </unext-transformer-configuration>
+</div>
+
+<div *ngIf="showEdgeForm">
+  <unext-instructions-rules [accountId]="accountId" [labLocationId]="labLocationId"
+    [existingConfigurationsNames]="existingConfigurationsNames" [selectedInstruction]="selectedInstruction"
+    (showConfigurations)="showConfigurations($event)"></unext-instructions-rules>
+</div>

@@ -1,0 +1,25 @@
+{
+  "QA": {
+    "URL": "https://qcpcentralqa.global.bio-rad.com/",
+    "Username": "amruta_karale+qaqcpadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "MainMenu": "Code List",
+    "SubMenu": "Units",
+    "SubMenuOption": "Unit Names",
+    "UnitCategory": "absorbance",
+    "UnitSystemType": "SI Unit",
+    "UnitName": "mA/min",
+    "NewUnitName": "AutomationTest_",
+    "FileName": "units.csv",
+    "PageOptions": [
+      "10",
+      "25",
+      "50",
+      "100"
+    ],
+    "PageButton": "2"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

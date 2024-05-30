@@ -1,0 +1,65 @@
+@import '../../../../../../../assets/scss/variables';
+@import '../../../../../../../assets/scss/base/variables-peak';
+
+.radius-5 {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding-right: 8px;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.mark {
+
+  span {
+    display: none;
+
+    &.show {
+      display: block;
+    }
+  }
+
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  background: none;
+  color: $black;
+  &.red {
+    &:before {
+      border: 2px solid $br-color-warn;
+    }
+  }
+  &.yellow {
+    &:before {
+      border: 2px solid $yellow;
+    }
+  }
+  &.green {
+    &:before {
+      border: 2px solid $green;
+    }
+  }
+
+  &.grey {
+    &:before {
+      border: 2px solid $gray-400;
+    }
+  }
+  &.greyed-out {
+    color: $gray-400;
+  }
+  &:before {
+    content: '';
+    border-radius: 4px;
+    position: absolute;
+    top: 0px;
+    bottom: -1px;
+    right: -4px;
+    left: -9px;
+    z-index: -1;
+  }
+}
+

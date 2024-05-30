@@ -1,0 +1,12 @@
+{"QA":{
+	"DataTable":	"Data Table",
+	"Reports":	"Reports",
+	"SPCRules":	"SPC Rules",
+	"Connectivity":	"Connectivity",
+	"LabSetup":	"Lab Setup",
+	"UserManagement":	"User Management"
+},
+"DEV": {},
+"STAGE": {},
+"DEV2": {}
+}

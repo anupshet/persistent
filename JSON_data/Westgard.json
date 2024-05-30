@@ -1,0 +1,29 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "Username": "UnityNextRegressionTestUser+1@bio-rad.com",
+		"Password": "Welcome1",
+		"FirstName": "Automation",
+		"LastName": "User",
+    "DepartmentName": "Westgard",
+    "InstrumentName": "ARCHITECT c16000",
+    "ProductName": "Cardiac Markers Plus LT",
+    "Analyte1": "AST (ASAT/GOT)",
+    "Analyte2": "Barbiturates (class)",
+    "Analyte3": "C3 (Complement)"
+  },
+  "STAGE": {
+    "URL": "https://unity-stage.qcnet.com/",
+    "Username": "amruta_karale+stagelab@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Amruta",
+    "LastName": "Karale",
+    "LabName": "Lab stage",
+    "DepartmentName": "Westgard",
+    "InstrumentName": "ADVIA 1200",
+    "ProductName": "Assayed Chemistry",
+    "Analyte1": "Amylase",
+    "Analyte2": "Calcium",
+    "Analyte3": "Haptoglobin"
+  }
+}

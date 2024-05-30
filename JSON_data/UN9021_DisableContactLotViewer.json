@@ -1,0 +1,17 @@
+{
+	"DEV": {
+		"URL": "https://unity-dev.qcnet.com/login",
+		"AMUsername": "tushar_adeshara+accountmanager@bio-rad.com",
+		"AMPassword": "Welcome1",
+		"AMFirstName": "Tushar",
+		"AccountInfoPageHeading": "Account Information",
+		"NoGroupMessage": "No groups found",
+		"Lab": "Lab",
+		"Group1":"Abhi LotViewer",
+    "AccountNameColumn": "Account Name",
+	  "KeywordAccount": "Abhi LotViewer",
+	  "ColumnNo1": "1"
+	},
+	"QA": {},
+	"STAGE": {}
+}

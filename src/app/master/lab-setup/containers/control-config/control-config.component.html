@@ -1,0 +1,12 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div *ngIf="labConfigurationControlsList.length > 0 ">
+  <unext-control-entry [isDefineOwnControlAvailable] ="isDefineOwnControlAvailable()" [labConfigurationControls]="labConfigurationControlsList"
+    [currentlySelectedControls]="currentlySelectedControls" (loadLots)="onLoadLots($event.controlId, $event.pointIndex)"
+    [lotList]="lotList" [instrumentId]="instrumentId" [title]="labSetupControlHeaderTitle" [selectedLeaf]="selectedNodeDisplayName"
+    (deletedControl)="onDeleteControl($event)" (saveLabConfigrationControl)="saveConfigControl($event)"
+    (addNonBRControlDefinition)="addNonBRControlDefinition($event)"
+    [showSettings]="showSettings" (resetControl)="onResetForm($event)" [settings]="settingsSpcRuleset"
+    [floatPointData]="floatPointData" (duplicateLots)="duplicateLots($event)" [sourceNode]="sourceNode"
+    [instrumentDisplayName]="instrumentDisplayName" [isParentArchived]="isParentArchived" [isToggledToNotArchived]="isToggledToNotArchived" (isDefineControlsClosed)="isDefineControlsClosed($event)">
+  </unext-control-entry>
+</div>

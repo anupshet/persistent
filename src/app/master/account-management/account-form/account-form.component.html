@@ -1,0 +1,244 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class='account-form-container'>
+  <div class='close-icon' (click)='close()'>
+    <mat-icon>close</mat-icon>
+  </div>
+
+  <form [formGroup]='accountForm'>
+    <div class='form-main-container'>
+      <div *ngIf='displayWarning' class='flex space-between lose-changes-wrapper mr-10 ml-10' id='spec_warningBox'>
+        <span class='lose-changes-msg'>{{'ACCOUNTFORM.ABOUTTOLOOSECHANGES' | translate}}</span>
+        <span>
+          <button mat-stroked-button color='primary' [mat-dialog-close]='true'
+            (click)='onExitWithoutSaving()'>
+            {{'ACCOUNTFORM.EXITWITHOUTSAVING' | translate}}
+          </button>
+          <button mat-flat-button color='primary' class='ml-15' [disabled]='!accountForm.valid || updateChangesMade '
+            [checkForPermission]="{'permissionsAllowed':[permissions.AccountAdd,permissions.AccountEdit],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+            (click)='saveAndExit()'>
+            {{'ACCOUNTFORM.SAVEANDEXIT' | translate}}
+          </button>
+        </span>
+      </div>
+      <div class='dialog-heading flex-container'></div>
+
+      <div class='content-scroll' [class.warning-scroll]="displayWarning">
+        <div class='account-form'>
+          <div class='account-info inner-item'>
+            <div class='account-items account-item-1'>
+              <div class='form-heading-2' *ngIf="this.editMode">
+                <div class='single-item'>
+                  <div class='item-label'>
+                   {{'ACCOUNTFORM.ACCOUNTNUMBER' | translate}}
+                  </div>
+                  <div class='item-value' name='accountNumber' id='accountNumber'>
+                    {{ accountForm.controls.accountNumber.value }}
+                  </div>
+                </div>
+              </div>
+
+              <ng-container *ngIf="!this.editMode; else updateAccountForm">
+                <div class='account-column account-col-1'>
+                  <mat-form-field>
+                      <mat-label>{{'ACCOUNTFORM.ACCOUNTNAME' | translate}}</mat-label>
+                    <input matInput name='accountName' id='accountName' formControlName='accountName' />
+                    <mat-error *ngIf='f.accountName.errors && f.accountName.errors.required'>{{'ACCOUNTFORM.ENTERACCOUNTNAME' | translate}}</mat-error>
+                    <mat-error *ngIf='f.accountName.errors && f.accountName.errors.maxlength'>{{'ACCOUNTFORM.LENGTHALLOWED200' | translate}}</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class='account-column account-col-2'>
+                  <mat-form-field>
+                    <mat-label>
+                      {{'ACCOUNTFORM.LEGACYPRIMARYLAB' | translate}}</mat-label>
+                    <input matInput name='legacyPrimaryLabNumber' id='legacyPrimaryLab'
+                      formControlName='legacyPrimaryLabNumber' />
+                    <mat-error *ngIf='f.legacyPrimaryLabNumber.errors && f.legacyPrimaryLabNumber.errors.maxlength'>{{'ACCOUNTFORM.LENGTHALLOWED10' | translate}}</mat-error>
+                  </mat-form-field>
+                </div>
+              </ng-container>
+
+              <ng-template #updateAccountForm>
+                <div class='account-column account-col-2'>
+                  <div class='double-account-field'>
+                    <mat-form-field>
+                        <mat-label>{{'ACCOUNTFORM.ACCOUNTNAME' | translate}}</mat-label>
+                      <input matInput name='accountName' id='accountName' formControlName='accountName' />
+                      <mat-error *ngIf='f.accountName.errors && f.accountName.errors.required'>{{'ACCOUNTFORM.ENTERACCOUNTNAME' | translate}}</mat-error>
+                      <mat-error *ngIf='f.accountName.errors && f.accountName.errors.maxlength'>{{'ACCOUNTFORM.LENGTHALLOWED200' | translate}}</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                      <mat-label>
+                        {{'ACCOUNTFORM.LEGACYPRIMARYLAB' | translate}}</mat-label>
+                      <input matInput name='legacyPrimaryLabNumber' id='legacyPrimaryLab'
+                        formControlName='legacyPrimaryLabNumber' />
+                      <mat-error *ngIf='f.legacyPrimaryLabNumber.errors && f.legacyPrimaryLabNumber.errors.maxlength'>{{'ACCOUNTFORM.LENGTHALLOWED10' | translate}}</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+            <div class='account-items account-item-1'>
+              <div class='account-column account-col-1'>
+                <div class='single-account-field'>
+                  <mat-form-field>
+                    <mat-label>{{'ACCOUNTFORM.ADDRESS' | translate}}</mat-label>
+                    <input matInput name='address' id='address'
+                      formControlName='address' />
+                    <mat-error *ngIf='f.address.errors && f.address.errors.required'>
+                      {{'ACCOUNTFORM.ENTERADDRESS' | translate}}</mat-error>
+                    <mat-error *ngIf='f.address.errors && f.address.errors.maxlength'>
+                      {{'ACCOUNTFORM.LENGTHALLOWED100' | translate}}</mat-error>
+                    <mat-error *ngIf='f.address.errors && f.address.errors.invalidAddress'>{{'ACCOUNTFORM.INVALIDADDRESS' | translate}}</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class='double-account-field'>
+                  <mat-form-field>
+                    <mat-label>{{'ACCOUNTFORM.COUNTRY' | translate}}</mat-label>
+                    <mat-select name='country' id='country'
+                      formControlName='country'>
+                      <mat-option *ngFor='let countries of countriesList' [value]='countries.countryCode'>
+                        {{ countries.countryName }}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf='f.country.errors && f.country.errors.required'>
+                      {{'ACCOUNTFORM.SELECTCOUNTRY' | translate}}</mat-error>
+                    <mat-error *ngIf='f.country.errors && f.country.errors.invalidAddress'>{{'ACCOUNTFORM.INVALIDADDRESS' | translate}}</mat-error>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>{{'ACCOUNTFORM.STATE' | translate}}</mat-label>
+                    <input matInput name='state' id='state'
+                      formControlName='state' />
+                    <mat-error *ngIf='f.state.errors && f.state.errors.required'>{{'ACCOUNTFORM.ENTERSTATE' | translate}}</mat-error>
+                    <mat-error *ngIf='f.state.errors && f.state.errors.maxlength'>{{'ACCOUNTFORM.LENGTHALLOWED3' | translate}}</mat-error>
+                    <mat-error *ngIf='f.state.errors && f.state.errors.invalidAddress'>{{'ACCOUNTFORM.INVALIDADDRESS' | translate}}</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class='double-account-field'>
+                  <mat-form-field>
+                    <mat-label>{{'ACCOUNTFORM.ACCOUNTFIRSTNAME' | translate}}</mat-label>
+                    <input matInput name='firstName' id='firstName'
+                      formControlName='firstName' />
+                    <mat-error *ngIf='f.firstName.errors && f.firstName.errors.required'>
+                      {{'ACCOUNTFORM.FIRSTNAME' | translate}}</mat-error>
+                    <mat-error *ngIf='f.firstName.errors && f.firstName.errors.maxlength'>
+                      {{'ACCOUNTFORM.LENGTHALLOWED50' | translate}}</mat-error>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>{{'ACCOUNTFORM.ACCOUNTLASTNAME' | translate}}</mat-label>
+                    <input matInput name='lastName' id='lastName'
+                      formControlName='lastName' />
+                    <mat-error *ngIf='f.lastName.errors && f.lastName.errors.required'>
+                      {{'ACCOUNTFORM.LASTNAME' | translate}}</mat-error>
+                    <mat-error *ngIf='f.lastName.errors && f.lastName.errors.maxlength'>
+                      {{'ACCOUNTFORM.LENGTHALLOWED50' | translate}}</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class='account-column account-col-2'>
+                <div class='double-account-field'>
+                  <mat-form-field>
+                    <mat-label>{{'ACCOUNTFORM.LINE2' | translate}}</mat-label>
+                    <input matInput name='address2' id='address2'
+                      formControlName='address2' />
+                    <mat-error *ngIf='f.address2.errors && f.address2.errors.maxlength'>
+                      {{'ACCOUNTFORM.LENGTHALLOWED100' | translate}}</mat-error>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>{{'ACCOUNTFORM.LINE3' | translate}}</mat-label>
+                    <input matInput name='address3' id='address3'
+                      formControlName='address3' />
+                    <mat-error *ngIf='f.address3.errors && f.address3.errors.maxlength'>
+                      {{'ACCOUNTFORM.LENGTHALLOWED100' | translate}}</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class='double-account-field'>
+                  <mat-form-field>
+                    <mat-label>{{'ACCOUNTFORM.CITY' | translate}}</mat-label>
+                    <input matInput name='city' id='city'
+                      formControlName='city' />
+                    <mat-error *ngIf='f.city.errors && f.city.errors.required'>
+                      {{'ACCOUNTFORM.ENTERCITY' | translate}}</mat-error>
+                    <mat-error *ngIf='f.city.errors && f.city.errors.maxlength'>
+                      {{'ACCOUNTFORM.LENGTHALLOWED60' | translate}}</mat-error>
+                    <mat-error *ngIf='f.city.errors && f.city.errors.invalidAddress'>{{'ACCOUNTFORM.INVALIDADDRESS' | translate}}</mat-error>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>{{'ACCOUNTFORM.ZIPCODE' | translate}}</mat-label>
+                    <input matInput name='zipCode' id='zipCode'
+                      formControlName='zipCode' />
+                    <mat-error *ngIf='f.zipCode.errors && f.zipCode.errors.required'>
+                      {{'ACCOUNTFORM.ENTERZIPCODE' | translate}}</mat-error>
+                    <mat-error *ngIf='f.zipCode.errors && f.zipCode.errors.maxlength'>
+                      {{'ACCOUNTFORM.LENGTHALLOWED20' | translate}}</mat-error>
+                    <mat-error *ngIf='f.zipCode.errors && f.zipCode.errors.invalidAddress'>{{'ACCOUNTFORM.INVALIDADDRESS' | translate}}</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class='double-account-field'>
+                  <mat-form-field>
+                    <mat-label>{{'ACCOUNTFORM.ACCOUNTEMAIL' | translate}}</mat-label>
+                    <input matInput name='email' id='email'
+                      formControlName='email' />
+                    <mat-error *ngIf='f.email.errors && f.email.errors.required'>
+                      {{'ACCOUNTFORM.EMAILADDRESS' | translate}}</mat-error>
+                    <mat-error *ngIf='f.email.errors && f.email.errors.email'>
+                      {{'ACCOUNTFORM.VALIDEMAILADDRESS' | translate}}</mat-error>
+                    <mat-error *ngIf='f.email.errors && f.email.errors.maxlength'>
+                      {{'ACCOUNTFORM.LENGTHALLOWED100' | translate}}</mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <mat-label>{{'ACCOUNTFORM.PHONE' | translate}}</mat-label>
+                    <input matInput name='phone' id='phone'
+                      formControlName='phone' />
+                    <mat-error *ngIf='f.phone.errors && f.phone.errors.maxlength'>
+                      {{'ACCOUNTFORM.LENGTHALLOWED25' | translate}}</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class='account-items account-item-1'>
+              <div class='account-column account-col-1'>
+                <div class='single-account-field-m'>
+                  <unext-language-dropdown
+                    *ngIf="isLocalizationActive"
+                    label="ACCOUNTFORM.LANGUAGEFIELDLABEL"
+                    tooltip="ACCOUNTFORM.LANGUAGEFIELDTOOLTIP"
+                    [control]="accountForm.controls['languagePreference']"
+                    [errors]="languageValidators">
+                  </unext-language-dropdown>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class='flex-container bottom-controls'>
+          <div>
+            <button mat-button class='cancel-button' type='button' color='primary'
+              [checkForPermission]="{'permissionsAllowed':[permissions.AccountAdd,permissions.AccountEdit],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+              (click)='close()'>
+              {{'ACCOUNTFORM.CANCEL' | translate}}
+            </button>
+            <ng-container *ngIf='!editMode'>
+                <button class='spec_add_account' mat-raised-button color='primary'
+                [checkForPermission]="{'permissionsAllowed':[permissions.AccountAdd],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+                (click)='handleAddressValidation(false, false)' [disabled]='isProcessing || !accountForm.valid || clicked'>
+                {{'ACCOUNTFORM.ADDACCOUNT' | translate}}
+                </button>
+            </ng-container>
+            <ng-container *ngIf='editMode'>
+              <button class='spec_update_account' mat-raised-button color='primary'
+                [disabled]='updateChangesMade || !accountForm.valid || isProcessing'
+                [checkForPermission]="{'permissionsAllowed':[permissions.AccountEdit],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+                (click)='handleAddressValidation(false, true)'>
+                {{'ACCOUNTFORM.UPDATEACCOUNT' | translate}}
+              </button>
+            </ng-container>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </form>
+</div>

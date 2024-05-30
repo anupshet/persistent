@@ -1,0 +1,45 @@
+<div class="product-renewal-details-component">
+  <div class="flex-container ctn-1" [ngClass]="{'mb-40': selectedInstruments?.length === 1}">
+    <p class="mat-h1 mb-0">{{'PRODUCTLOTRENEWAL.PROVIDENEWLOT' | translate}} {{ productName }}</p>
+    <button mat-button [mat-dialog-close]="true">
+      <mat-icon [svgIcon]="icons.close[24].name"></mat-icon>
+    </button>
+  </div>
+
+  <div class="dialog-content">
+    <perfect-scrollbar [config]="{suppressScrollY: false}">
+      <div mat-dialog-content>
+
+        <div *ngIf="selectedLots?.length === 1" id="spec_singleLot" class="mat-body black mb-40">
+          <span>{{'PRODUCTLOTRENEWAL.LOTNUMBER' | translate}} </span>
+          <span class="strong">{{selectedLots[0].lotNumber}}</span>
+        </div>
+        <mat-form-field *ngIf="selectedLots?.length > 1">
+          <mat-select placeholder="{{'PRODUCTLOTRENEWAL.LOTNUMBERPLACEHOLDER' | translate}}" class="spec_multipleLot" [(ngModel)]="selectedLot" (selectionChange)="lotChanged()" id="lotnumber" name="lotnumber" required>
+            <mat-option *ngFor="let item of selectedLots" [value]="item">
+              {{item.lotNumber + " - Exp. "}}{{item.expirationDate | uNextDate:'shortDate' }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <label *ngIf="selectedInstruments?.length === 1" class="mat-body black" for="instrumentInfo">{{'PRODUCTLOTRENEWAL.ON' | translate}} </label>
+        <label *ngIf="selectedInstruments?.length > 1" class="mat-body" for="instrumentInfo">{{'PRODUCTLOTRENEWAL.THESEINSTRUMENTS' | translate}} </label>
+        <label *ngIf="selectedInstruments?.length === 1" id="singleInstrument" class="mat-body black strong">{{ selectedInstruments[0].displayName }}</label>
+        <section *ngIf="selectedInstruments?.length > 1" id="multipleInstrument" class="multipleInstrument">
+          <mat-checkbox *ngFor="let instrument of selectedInstruments" class="multipleInstrument" [(ngModel)]="instrument.isInstrumentChecked" (change)="onInstrumentChanged()">
+            {{instrument.displayName}}
+          </mat-checkbox>
+        </section>
+      </div>
+    </perfect-scrollbar>
+  </div>
+
+  <div mat-dialog-actions class="flex-container ctn-3">
+    <button mat-button color="primary" title="Cancel" [mat-dialog-close]="false">
+            {{'PRODUCTLOTRENEWAL.CANCEL' | translate}}
+    </button>
+    <button mat-raised-button color="primary" id="changelot" (click)="changeLot()" title="Changelot" [value]="isInstrumentValid"
+            [disabled]="!isLotValid || !isInstrumentValid || isProcessing">
+            {{'PRODUCTLOTRENEWAL.CHANGELOT' | translate}}
+    </button>
+  </div>
+</div> <!-- /product-renewal-details-component -->

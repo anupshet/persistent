@@ -1,0 +1,32 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div #popup class="chart-popup">
+
+  <div *ngIf="dataPoint">
+    <strong class="chart-date">
+      <span class="date">{{dataPoint.measuredDateTime | uNextDate: 'mediumDate' }} {{dataPoint.measuredDateTime | uNextDate: 'shortTime' }}</span>
+    </strong>
+    <div class="levels">
+      <div class="level-info">
+       <span>{{'LJCHARTPOPUP.LEVEL' | translate}}</span> {{dataPoint?.level}}: {{dataPoint?.value | uNextNumeric: decimalLevels[levelIndex]}}
+        <table>
+          <tr>
+            <th class="no-wrap">{{'LJCHARTPOPUP.ZSCORE' | translate}}</th>
+            <th>{{'LJCHARTPOPUP.REASON' | translate}}</th>
+            <th>{{'LJCHARTPOPUP.MEAN' | translate}}</th>
+            <th>{{'LJCHARTPOPUP.SD' | translate}}</th>
+            <th>{{'LJCHARTPOPUP.CV' | translate}}</th>
+          </tr>
+          <tr>
+            <td class="vertical-align-top">{{dataPoint?.zScoreResult?.zScore | uNextNumeric:true }}</td>
+            <td class="vertical-align-top">
+              <span class="mb-0 block" *ngFor="let reason of dataPoint.reasons">{{ reason }}</span>
+            </td>
+            <td class="vertical-align-top">{{dataPoint?.mean | uNextNumeric: decimalLevels[levelIndex] }}</td>
+            <td class="vertical-align-top">{{dataPoint?.sd | uNextNumeric: decimalLevels[levelIndex] }}</td>
+            <td class="vertical-align-top">{{dataPoint?.cv | uNextNumeric }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

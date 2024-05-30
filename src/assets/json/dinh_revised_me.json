@@ -1,0 +1,442 @@
+{
+	"data": {
+		"get_lab_header_info": {
+			"lab_number": "100297",
+			"lab_name": "Bell Hospital",
+			"department": "Attention: Gerry Brown",
+			"address": {
+				"street": "901 Lakeshore Dr, Ishpeming, MI 49849",
+				"country": "USA"
+			}
+		},
+		"get_lab_lot_test": [
+			{
+				"lab_instrument": {
+					"instrument_id": 1347,
+					"instrument_name": "Dimension EXL",
+					"instrument_custom_name": "Dimension EXL",
+					"instrument_serial": "no-serial"
+				},
+				"lot_test_config": [
+					{
+						"lot_config": {
+							"product_name": "Cardiac Markers Plus LT",
+							"master_lot_id": 1362,
+							"lot_number": "67650",
+							"lot_expiration_date": "2023-11-30 00:00:00"
+						},
+						"test_config": [
+							{
+								"lab_unit_name": "ng/L",
+								"lab_unit_id": 62,
+								"test": {
+									"id": 7095,
+									"analyte_name": "Troponin-I",
+									"method_name": "Chemiluminescence",
+									"instrument_id": "1347",
+									"instrument_name": "Dimension EXL",
+									"reagent_category_id": 1,
+									"reagent_category_name": "Generic Reagent",
+									"reagent_id": 866,
+									"reagent_name": "TNIH REF RF627",
+									"calibrator_name": "LOCI TNIH Cal REF RC627",
+									"testspec": [
+										{
+											"id": 7578,
+											"reagent_lot_number": "Unspecified ***",
+											"calibrator_lot_number": "Unspecified ***"
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"lot_config": {
+							"product_name": "Spinal Fluid",
+							"master_lot_id": 1819,
+							"lot_number": "56470",
+							"lot_expiration_date": "2022-09-30 00:00:00"
+						},
+						"test_config": [
+							{
+								"lab_unit_name": "mg/dL",
+								"lab_unit_id": 14,
+								"test": {
+									"id": 183,
+									"analyte_name": "Glucose",
+									"method_name": "Hexokinase",
+									"instrument_id": "1347",
+									"instrument_name": "Dimension EXL",
+									"reagent_category_id": 1,
+									"reagent_category_name": "Generic Reagent",
+									"reagent_id": 823,
+									"reagent_name": "LUC REF DF40",
+									"calibrator_name": "CHEM I Cal REF DC18B/C",
+									"testspec": [
+										{
+											"id": 201,
+											"reagent_lot_number": "Unspecified ***",
+											"calibrator_lot_number": "Unspecified ***"
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"lot_config": {
+							"product_name": "Urine Chemistry",
+							"master_lot_id": 1250,
+							"lot_number": "88110",
+							"lot_expiration_date": "2022-06-30 00:00:00"
+						},
+						"test_config": [
+							{
+								"lab_unit_name": "mg/dL",
+								"lab_unit_id": 14,
+								"test": {
+									"id": 467,
+									"analyte_name": "Creatinine",
+									"method_name": "Alkaline picrate method, IFCC−IDMS Standardized",
+									"instrument_id": "1347",
+									"instrument_name": "Dimension EXL",
+									"reagent_category_id": 1,
+									"reagent_category_name": "Generic Reagent",
+									"reagent_id": 810,
+									"reagent_name": "CRE2 REF DF33B",
+									"calibrator_name": "CHEM I Cal REF DC18C",
+									"testspec": [
+										{
+											"id": 201,
+											"reagent_lot_number": "Unspecified ***",
+											"calibrator_lot_number": "Unspecified ***"
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"lot_config": {
+							"product_name": "Multiqual 1,2,3",
+							"master_lot_id": 1174,
+							"lot_number": "45860",
+							"lot_expiration_date": "2022-09-30 00:00:00"
+						},
+						"test_config": [
+							{
+								"lab_unit_name": "g/dL",
+								"lab_unit_id": 15,
+								"test": {
+									"id": 8934,
+									"analyte_name": "Creatinine",
+									"method_name": "Alkaline picrate method, IFCC−IDMS Standardized",
+									"instrument_id": "1347",
+									"instrument_name": "Dimension EXL",
+									"reagent_category_id": 1,
+									"reagent_category_name": "Generic Reagent",
+									"reagent_id": 810,
+									"reagent_name": "CRE2 REF DF33B",
+									"calibrator_name": "CHEM I Cal REF DC18C",
+									"testspec": [
+										{
+											"id": 8934,
+											"reagent_lot_number": "Slide Gen #25",
+											"calibrator_lot_number": "Unspecified ***"
+										}
+									]
+								}
+							}
+						]
+					}															
+				]
+			}
+		],
+		"get_lab_me_data": [
+			{
+				"master_lot_id": 1362,
+				"has_data_submitted": false,
+				"is_within_established_parameter": false,
+				"sdi_warning_threshold": 2,
+				"cvr_warning_threshold": 2,
+				"lms_outlier": [
+					{
+						"testspec_id": 7578,
+						"test_id": 7095,
+						"master_lot_id": 1362,
+						"level": 1,
+						"mean": null,
+						"sd": null,
+						"cv": null,
+						"num_points": null,
+						"is_accepted": null,
+						"outier_info": {},
+						"peer": {
+							"mean": 104.8,
+							"sd": 39.11,
+							"cv": 37.3,
+							"num_points": 1282,
+							"num_labs": 49,
+							"cvr": null,
+							"sdi": null
+						},
+						"method": {
+							"mean": 141.9,
+							"sd": 128.4,
+							"cv": 90.4,
+							"num_points": 16678,
+							"num_labs": 507,
+							"cvr": null,
+							"sdi": null
+						}
+					},
+					{
+						"testspec_id": 7578,
+						"test_id": 7095,
+						"master_lot_id": 1362,
+						"level": 2,
+						"mean": null,
+						"sd": null,
+						"cv": null,
+						"num_points": null,
+						"is_accepted": null,
+						"outier_info": {},
+						"peer": {
+							"mean": 4423,
+							"sd": 742.3,
+							"cv": 16.8,
+							"num_points": 2758,
+							"num_labs": 88,
+							"cvr": null,
+							"sdi": null
+						},
+						"method": {
+							"mean": 3782,
+							"sd": 1998,
+							"cv": 52.8,
+							"num_points": 29286,
+							"num_labs": 733,
+							"cvr": null,
+							"sdi": null
+						}
+					},
+					{
+						"testspec_id": 7578,
+						"test_id": 7095,
+						"master_lot_id": 1362,
+						"level": 3,
+						"mean": 14069,
+						"sd": 500.1,
+						"cv": 3.6,
+						"num_points": 30,
+						"is_accepted": false,
+						"outier_info": {
+							"outlier_reason": "Mean",
+							"outlier_type": "mean",
+							"min_value": -774.697,
+							"max_value": 8521.667
+						},
+						"peer": {
+							"mean": 15278,
+							"sd": 2983,
+							"cv": 19.5,
+							"num_points": 7367,
+							"num_labs": 155,
+							"cvr": null,
+							"sdi": null
+						},
+						"method": {
+							"mean": 13666,
+							"sd": 7460,
+							"cv": 54.6,
+							"num_points": 39526,
+							"num_labs": 987,
+							"cvr": null,
+							"sdi": null
+						}
+					},
+					{
+						"testspec_id": 7578,
+						"test_id": 7095,
+						"master_lot_id": 1362,
+						"level": 4,
+						"mean": null,
+						"sd": null,
+						"cv": null,
+						"num_points": null,
+						"is_accepted": null,
+						"outier_info": {},
+						"peer": {
+							"mean": 136.5,
+							"sd": 0.58,
+							"cv": 0.4,
+							"num_points": 4,
+							"num_labs": 1,
+							"cvr": null,
+							"sdi": null
+						},
+						"method": {
+							"mean": 289.7,
+							"sd": 245.4,
+							"cv": 84.7,
+							"num_points": 737,
+							"num_labs": 19,
+							"cvr": null,
+							"sdi": null
+						}
+					},
+					{
+						"testspec_id": 7578,
+						"test_id": 7095,
+						"master_lot_id": 1362,
+						"level": 5,
+						"mean": 50.53,
+						"sd": 2.63,
+						"cv": 5.2,
+						"num_points": 29,
+						"is_accepted": true,
+						"outier_info": {},
+						"peer": {
+							"mean": 49.58,
+							"sd": 5.05,
+							"cv": 10.2,
+							"num_points": 2861,
+							"num_labs": 89,
+							"cvr": 0.5,
+							"sdi": 0.19
+						},
+						"method": {
+							"mean": 47.93,
+							"sd": 23.26,
+							"cv": 48.5,
+							"num_points": 22812,
+							"num_labs": 489,
+							"cvr": 0.1,
+							"sdi": 0.11
+						}
+					},
+					{
+						"testspec_id": 7578,
+						"test_id": 7095,
+						"master_lot_id": 1362,
+						"level": 6,
+						"mean": null,
+						"sd": null,
+						"cv": null,
+						"num_points": null,
+						"is_accepted": null,
+						"outier_info": {},
+						"peer": {
+							"mean": 117.2,
+							"sd": 29.45,
+							"cv": 25.1,
+							"num_points": 487,
+							"num_labs": 18,
+							"cvr": null,
+							"sdi": null
+						},
+						"method": {
+							"mean": 169.8,
+							"sd": 104.8,
+							"cv": 61.7,
+							"num_points": 4190,
+							"num_labs": 117,
+							"cvr": null,
+							"sdi": null
+						}
+					}
+				]
+			},
+			{
+				"master_lot_id": 1819,
+				"has_data_submitted": false,
+				"is_within_established_parameter": null,
+				"sdi_warning_threshold": 2,
+				"cvr_warning_threshold": 2,
+				"lms_outlier": null
+			},
+			{
+				"master_lot_id": 1250,
+				"has_data_submitted": true,
+				"is_within_established_parameter": true,
+				"sdi_warning_threshold": 2,
+				"cvr_warning_threshold": 2,
+				"lms_outlier": null
+			},
+			{
+				"master_lot_id": 1174,
+				"has_data_submitted": true,
+				"is_within_established_parameter": false,
+				"sdi_warning_threshold": 2,
+				"cvr_warning_threshold": 2,
+				"lms_outlier":[
+					{
+						"testspec_id": 8934,
+						"test_id": 8418,
+						"master_lot_id": 1174,
+						"level": 1,
+						"mean": 3.50,
+						"sd": 2.12,
+						"cv": 60.6,
+						"num_points": 2,
+						"is_accepted": false,
+						"outier_info": {
+							"outlier_type": "cv",
+							"min_value": -11,
+							"max_value":  11 
+						},
+						"peer": {
+							"mean": null,
+							"sd": null,
+							"cv": null,
+							"num_points": null,
+							"num_labs": null,
+							"cvr": 0.0,
+							"sdi": -0.58
+						},
+						"method": {
+							"mean": 103.8,
+							"sd": 2.22,
+							"cv": 2.1,
+							"num_points": 4,
+							"num_labs": 1,
+							"cvr": null,
+							"sdi": null
+						}
+					},
+					{
+						"testspec_id": 8934,
+						"test_id": 8418,
+						"master_lot_id": 1174,
+						"level": 2,
+						"mean": 2.00,
+						"sd": 0.000,
+						"cv": 0.0,
+						"num_points": 1,
+						"is_accepted": true,
+						"outier_info": {},
+						"peer": {
+							"mean": 28.40,
+							"sd": 45.47,
+							"cv": 160.1,
+							"num_points": 15,
+							"num_labs": 7,
+							"cvr": 0.0,
+							"sdi": -0.58
+						},
+						"method": {
+							"mean": 28.30,
+							"sd": 44.67,
+							"cv": 157.9,
+							"num_points": 30,
+							"num_labs": 7,
+							"cvr": 0.0,
+							"sdi": -0.59
+						}
+					}
+				] 
+			}															
+		]
+	}
+}

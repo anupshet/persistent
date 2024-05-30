@@ -1,0 +1,23 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/base/variables-peak';
+@import '../../../assets/scss/mixins';
+@import '../../../assets/scss/vendors/angular-material/mixins';
+
+.tabs-group {
+  background-color: $gray-200;
+  text-transform: uppercase;
+
+  ::ng-deep .mat-tab-header {
+    background-color: $white;
+  }
+
+  ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+      font-weight: bold;
+      color: $black;
+  }
+
+}
+
+

@@ -1,0 +1,34 @@
+.panel-item-selection-container {
+
+  margin-left: -10px;
+
+  mat-tree {
+    background: transparent;
+
+    .mat-tree-node {
+      min-height: 35px;
+
+      .mat-icon-button {
+        height: 35px;
+        width: 30px;
+        line-height: 35px;
+      }
+    }
+  }
+
+  mat-icon {
+    vertical-align: top;
+  }
+
+  .box {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      display: block;
+      margin-top: -10px;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}

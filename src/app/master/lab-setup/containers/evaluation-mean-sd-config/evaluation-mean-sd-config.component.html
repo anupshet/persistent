@@ -1,0 +1,16 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div *ngIf="analyteForNamingList && entity && analyteList">
+<unext-evaluation-mean-sd
+[entity]="entity"
+[analyteList]="analyteList"
+(requestedAnalyteIds)="loadAnalyteEvaluationMeanSdData($event)"
+(requestFloatingSatistics)="loadAnalyteFloatingStatisticsData($event)"
+(entityEvaluationMeanSdGroup)="submitEvaluationMeanSdGroupData($event)"
+[analyteFloatingStatisticsGroup]="analyteFloatingStatisticsGroup"
+[analyteEvaluationMeanSdGroup]="analyteEvaluationMeanSdGroup"
+[analyteForNamingList]="analyteForNamingList"
+[runSettings]="runSettings"
+(entityFloatingPoint)="submitFloatingPointAndSettingsData($event)"
+[showControlLotInfo] = "showControlLotInfo">
+</unext-evaluation-mean-sd>
+</div>

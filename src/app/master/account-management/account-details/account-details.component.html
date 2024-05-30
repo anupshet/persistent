@@ -1,0 +1,675 @@
+<!-- © 2024 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="account-settings-container">
+  <div *ngIf='displayWarning' class='flex space-between lose-changes-wrapper mr-10 ml-10' id='spec_warningBox'>
+      <span class='lose-changes-msg'>{{'ACCOUNTDETAILS.CHANGES' | translate}}</span>
+    <span>
+      <button mat-stroked-button color='primary'
+        (click)='onExitWithoutSaving()'>
+        {{'ACCOUNTDETAILS.EXIT' | translate}}
+      </button>
+      <button mat-flat-button color='primary' class='ml-15'
+        [disabled]='isSaveButtonDisabled()'
+        [checkForPermission]="{'permissionsAllowed':[permissions.LocationAdd,permissions.LocationEdit],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+        (click)='saveAndExit()'>
+        {{'ACCOUNTDETAILS.SAVEEXIT' | translate}}
+      </button>
+    </span>
+  </div>
+  <div class='dialog-heading flex-container'></div>
+  <div class="close-icon" (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </div>
+  <div class="form-main-container" [ngClass]="{'form-change-tracker': displayWarning }">
+    <div class="account-settings-section">
+      <div class="account-container">
+
+        <!-- Account Info -->
+        <div class="account-info inner-item">
+          <div class="form-heading-1">
+            {{'ACCOUNTDETAILS.ACCOUNTINFO' | translate}}
+          </div>
+          <div class="row-items">
+            <div class="single-item">
+              <div class="item-label">{{'ACCOUNTDETAILS.ACCOUNTNAME' | translate}}</div>
+              <div id="spec_account_name" class="item-value">{{displayName}}</div>
+            </div>
+            <div class="single-item">
+            </div>
+            <div class="single-item">
+              <div class="item-label">{{'ACCOUNTDETAILS.ACCOUNTNUM' | translate}}</div>
+              <div id="spec_account_number" class="item-value">{{formattedAccountNumber}}</div>
+            </div>
+          </div>
+        </div>
+        <!-- Account Info -->
+
+        <!-- Group Info & Group List -->
+        <div class="group-info inner-item">
+          <div class="row-items">
+              <div class="form-heading-1">
+                  {{'ACCOUNTDETAILS.GROUPINFO' | translate}}
+              </div>
+            <ng-container
+              *ngIf=" !loadLocationForm && !addGroupBtnSelected && !editGroupButton && !displayDeleteWarning">
+              <button
+                [checkForPermission]="{'permissionsAllowed':[permissions.GroupAdd] ,'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+                color="primary" mat-button class="group-button" (click)="addAGroup()">
+                <mat-icon [svgIcon]="icons.addCircleOutline[24].name" class="addCircleOutline mr-2"></mat-icon>
+                <span>{{'ACCOUNTDETAILS.ADDGROUP' | translate}}</span>
+              </button>
+            </ng-container>
+          </div>
+          <div class="row-items" *ngIf="!loadLocationForm">
+              <div class="single-item spec_groups_loading" *ngIf="!sortedGroupsList">
+                {{'ACCOUNTDETAILS.GROUPS' | translate}}</div>
+              <div class="single-item spec_groups_none_found" *ngIf="sortedGroupsList && sortedGroupsList?.length <= 0">{{'ACCOUNTDETAILS.NOGROUPS' | translate}}</div>
+            <perfect-scrollbar [config]="" class="group-scroll-list">
+              <div class="group-list">
+                <div class="single-item group-name" *ngFor="let group of sortedGroupsList">
+                  <div class="group-list-child">
+                    <div class="flex-container">
+                      <ng-container *ngIf="!(addGroupBtnSelected || editGroupButton || displayDeleteWarning)">
+                        <div
+                          [checkForPermission]="{'permissionsAllowed':[permissions.GroupEdit],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+                          class="location-single-item enable-edit-group" (click)="editGroup(group)">
+                          {{group.displayName}}
+                        </div>
+                      </ng-container>
+                      <div *ngIf="addGroupBtnSelected || editGroupButton || displayDeleteWarning"
+                        class="location-single-item disable-edit-group">{{group.displayName}}</div>
+                      <div class="edit-delete-container">
+                        <span>
+                          <ng-container *ngIf="group.children === null">
+                            <mat-icon class="group-delete spec-delete"
+                              [checkForPermission]="{'permissionsAllowed':[permissions.GroupDelete],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+                              [class.disabled]="addGroupBtnSelected || editGroupButton || displayDeleteWarning"
+                              [svgIcon]="icons.delete[24].name"
+                              (click)="onDeleteGroup(group); $event.stopPropagation()"></mat-icon>
+                          </ng-container>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </perfect-scrollbar>
+          </div>
+
+          <div class="row-items" *ngIf="loadLocationForm">
+            <div class="single-item" *ngIf="selectedGroup">
+              <div class="item-label">{{'ACCOUNTDETAILS.GROUPNAME' | translate}}</div>
+              <div class="item-value spec_group_name_form">{{selectedGroup.displayName}}</div>
+            </div>
+          </div>
+          <div [formGroup]="groupForm" class="add-group-items" *ngIf="addGroupBtnSelected || editGroupButton ">
+            <mat-form-field>
+              <mat-label>{{'ACCOUNTDETAILS.GROUPNAME' | translate}}</mat-label>
+              <input matInput formControlName="groupName" #groupNameValue>
+            </mat-form-field>
+            <div>
+              <mat-error class="group-form-error"
+                *ngIf="duplicateGroupErrorMsg && groupNameValue?.value!=editedGroup?.name">{{'ACCOUNTDETAILS.GROUPNAMEEXISTS' | translate}}
+              </mat-error>
+              <mat-error class="group-form-error"
+              *ngIf="groupForm?.touched && groupForm.get('groupName')?.errors?.required">
+              {{'ACCOUNTDETAILS.ENTERGROUP' | translate}}</mat-error>
+              <mat-error class="group-form-error"
+                *ngIf="groupForm?.touched && groupForm.get('groupName')?.errors?.maxlength && !duplicateGroupErrorMsg">
+                {{'ACCOUNTDETAILS.MAXIMUMLENGTH' | translate}}
+              </mat-error>
+            </div>
+            <div class="group-buttons-parent">
+              <button mat-stroked-button color="primary"
+              class="group-buttons-child spec-cancel-group" (click)="onCancelGroup()"
+              [disabled]="displayWarning">{{'ACCOUNTDETAILS.CANCEL' | translate}}</button>
+              <button *ngIf="addGroupBtnSelected" mat-flat-button color="primary"
+                class="group-buttons-child spec-add-group"
+                (click)="saveGroup()" [disabled]="!groupForm?.valid || isAddGroupClicked">{{'ACCOUNTDETAILS.ADDGROUPS' | translate}}</button>
+              <button *ngIf="editGroupButton" mat-flat-button color="primary"
+                class="group-buttons-child spec-add-group"
+                (click)="saveEditedGroup(groupNameValue.value)"
+                [disabled]="!groupForm?.valid || isAddGroupClicked">{{'ACCOUNTDETAILS.CHANGEGROUP' | translate}}
+              </button>
+            </div>
+          </div>
+          <div *ngIf='displayDeleteWarning' class='flex space-between lose-delete-changes-wrapper mr-10 ml-10'
+            id='spec_warningBox'>
+            <span class='lose-changes-delete-msg'>{{'ACCOUNTDETAILS.YOU' | translate}} {{
+              editedGroup?.name}} {{'ACCOUNTDETAILS.OK' | translate}}</span>
+            <span>
+              <button mat-stroked-button color='primary' class='ml-15 delete-buttons'
+                (click)='onCancelGroup()'>
+                {{'ACCOUNTDETAILS.CANCEL' | translate}}
+              </button>
+              <button mat-flat-button color='primary' class='ml-15 delete-buttons spec-confirm-delete'
+                (click)='deleteGroup()'>
+                {{'ACCOUNTDETAILS.DELETE' | translate}}
+              </button>
+            </span>
+          </div>
+        </div>
+        <!-- Group Info & Group List -->
+
+        <!-- Group List with Locations List -->
+        <div class="location-group-list" *ngIf="!loadLocationForm">
+          <div class="row-items">
+            <div class="single-item edit-location-content" *ngIf="groups && groups.length > 0">
+                <div class="edit-locations">
+                    {{'ACCOUNTDETAILS.LOCATIONS' | translate}}
+                </div>
+            </div>
+            <div class="single-item group-dropdown" *ngIf="groups && groups.length > 1">
+              <mat-form-field>
+                <mat-label class="item-label">{{'ACCOUNTDETAILS.CHOOSE' | translate}}</mat-label>
+                <mat-select panelClass="group-panel-width" [(ngModel)]="selectedGroup"
+                  (selectionChange)="getLocationsAsPerGroup($event.value)" class="group-select"
+                  [disabled]="editGroupButton || displayDeleteWarning">
+                  <mat-option *ngFor="let group of sortedGroupsList" [value]="group">{{group.displayName}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <ng-container
+              *ngIf="selectedGroup && !addGroupBtnSelected && !editGroupButton && !displayDeleteWarning && groups && groups.length > 0">
+              <button color="primary" class="add-location" mat-button (click)="openLocationForm()"
+                [checkForPermission]="{'permissionsAllowed':[permissions.LocationAdd],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+                <mat-icon [svgIcon]="icons.addCircleOutline[24].name" class="addCircleOutline"></mat-icon>
+                    <span>{{'ACCOUNTDETAILS.ADDLOCATION' | translate}}</span>
+              </button>
+            </ng-container>
+          </div>
+          <div class="row-items">
+              <div class="single-item spec_locations_loading" *ngIf="groupSelected && !locationsData">{{'ACCOUNTDETAILS.LOADINGLOCATION' | translate}}
+            </div>
+            <div class="single-item spec_locations_none_found"
+              *ngIf="locationsData && locationsData?.length <= 0 && groups && groups.length > 0">{{'ACCOUNTDETAILS.NOLOCATIONS' | translate}}</div>
+          </div>
+          <perfect-scrollbar [config]="" class="location-list-container"
+            *ngIf="locationsData && locationsData.length > 0">
+            <div class="location-list-parent" *ngIf="!displayDeleteWarning && !editGroupButton">
+              <div class="location-parent-single-item"
+                *ngFor="let location of locationsData | paginate: paginationConfig">
+                <span class="location-single-item"
+                  [checkForPermission]="{'permissionsAllowed':[permissions.ViewLocation],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+                  (click)="openLocationForm(location)">{{location.labLocationName}}</span>
+                <button mat-icon-button class="icn-delete spec-location-delete" *ngIf="!location.hasChildren"
+                  [checkForPermission]="{'permissionsAllowed':[permissions.LocationDelete],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+                  (click)="openDeleteLocationDialog(location)">
+                  <mat-icon [svgIcon]="icons.delete[24].name"></mat-icon>
+                </button>
+              </div>
+            </div>
+          </perfect-scrollbar>
+          <div class="pagination-container"
+            *ngIf="(locationsData && locationsData.length > 0) && totalPages > 1 && !editGroupButton">
+            <pagination-template class="spec-pagination-control" #p="paginationApi" id="paginationGroups"
+              (pageChange)="onLocationPageChange($event)" [maxSize]="maxSize">
+              <div class="custom-pagination">
+                <button mat-stroked-button color="primary" class="pagination-button spec-prev-button"
+                  (click)="p.previous()" [ngClass]="{'selected disable-button' : p.isFirstPage()}"
+                  [disabled]="p.isFirstPage()">
+                  <mat-icon [svgIcon]="icons.arrowBack[24].name"></mat-icon>
+                </button>
+                <div *ngFor="let page of p.pages, let index = index">
+                  <button mat-stroked-button color="primary" class="pagination-button spec-page-button"
+                    [ngClass]="{ 'selected' : p.getCurrent() === page.value }" (click)="p.setCurrent(page.value)">
+                    {{ page.value }}
+                  </button>
+                </div>
+                <button mat-stroked-button color="primary" class="pagination-button spec-next-button" (click)="p.next()"
+                  [ngClass]="{'selected disable-button' : p.isLastPage()}" [disabled]="p.isLastPage()">
+                  <mat-icon class="rotateArrow" [svgIcon]="icons.arrowBack[24].name"></mat-icon>
+                </button>
+              </div>
+            </pagination-template>
+          </div>
+        </div>
+
+        <!-- Group List with Locations List -->
+
+        <!-- Location Form -->
+        <div class="location-form-container" *ngIf="loadLocationForm">
+          <div class="location-info inner-item row-items">
+            <form [formGroup]='locationForm' *ngIf="locationForm">
+              <div class="form-heading-1 location-item-1 item-highlight">
+                {{'ACCOUNTDETAILS.LOCATIONS' | translate}}
+              </div>
+              <perfect-scrollbar [config]="">
+                <div class="form-location" [ngClass]="{'location-tracker': displayWarning }">
+                  <div class="location-items location-item-2 row-items">
+                    <div class="form-heading-2">
+                      {{'ACCOUNTDETAILS.LICENSEINFORMATION' | translate}}
+                    </div>
+                    <div class="single-order-field">
+                      <mat-form-field>
+                        <mat-label>{{'ACCOUNTDETAILS.ORDERNUMBER' | translate}}</mat-label>
+                        <input matInput type="text" name="orderNumber" id="orderNumber" formControlName="orderNumber">
+                        <mat-error
+                          *ngIf="checkForhasError('orderNumber', 'maxlength')">{{'ACCOUNTDETAILS.ENTERED' | translate}}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="location-items location-item-3">
+                    <div class="license-column">
+                      <div class="single-license-field">
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.UNITYNEXT' | translate}}
+                          </mat-label>
+                          <mat-select placeholder="{{'ACCOUNTDETAILS.UNITYNEXT' | translate}}" formControlName="unityNextTier" id="unityNextTier"
+                            name="unityNextTier" (selectionChange)="changeUnityNextTier(); checkForLicensedFields(); handleAddOns(true);">
+                            <mat-option [value]="unityNextTierOptions.None">{{'ACCOUNTDETAILS.NONE' | translate}}
+                            </mat-option>
+                            <mat-option [value]="unityNextTierOptions.PeerQc">
+                               {{'ACCOUNTDETAILS.PEER' | translate}}</mat-option>
+                            <mat-option [value]="unityNextTierOptions.DailyQc">
+                              {{'ACCOUNTDETAILS.DAILYQC' | translate}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div class="single-license-field"
+                        *ngIf="qcLotViewerInstalledPrdoucts() || connectivityNextTierInstalledPrdoucts() || unityNextTierInstalledProducts()">
+                        <mat-form-field *ngIf="unityNextTierInstalledProducts()">
+                          <mat-label>{{'ACCOUNTDETAILS.INSTALLED' | translate}} </mat-label>
+                          <input matInput name="utInstalledProduct" id="utInstalledProduct"
+                            formControlName="unityNextInstalledProduct">
+                          <mat-error
+                          *ngIf="checkForhasError('unityNextInstalledProduct', 'maxlength')">{{'ACCOUNTDETAILS.ENTEREDMORE' | translate}}</mat-error>
+                        <mat-error
+                          *ngIf="checkForhasError('unityNextInstalledProduct', 'pattern')">{{'ACCOUNTDETAILS.ALPHAMETRIC' | translate}}</mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="single-license-field">
+                        <div class="field-datepicker">
+                          <mat-form-field>
+                              <input matInput name="licenseAssignDate" id="licenseAssignDate"
+                              [matDatepickerFilter]="licenseDateFilter" [matDatepicker]="licenseAssignDate"
+                              formControlName="licenseAssignDate"
+                              [placeholder]="assignDatePlaceholder[isLicenseActivated.toString()]"
+                              (dateInput)="onLicenseAssignDateChange()" (dateChange)="onLicenseAssignDateChange()">
+                            <mat-datepicker-toggle matSuffix [for]="licenseAssignDate"></mat-datepicker-toggle>
+                            <mat-datepicker #licenseAssignDate></mat-datepicker>
+                            <mat-error
+                              *ngIf="checkForhasError('licenseAssignDate', 'weekendNotAllowed') || checkForhasError('licenseAssignDate', 'matDatepickerFilter')">
+                              {{'ACCOUNTDETAILS.PLEASE' | translate}}
+                            </mat-error>
+                            <mat-error
+                              *ngIf="checkForhasError('licenseAssignDate', 'required')">{{'ACCOUNTDETAILS.ASSIGN' | translate}}
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="license-column">
+                      <div class="single-license-field">
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.CONNECTIVITY' | translate}}
+                          </mat-label>
+                          <mat-select placeholder="{{'ACCOUNTDETAILS.TIER' | translate}}"
+                            id="connectivityTier"
+                            name="connectivityTier" formControlName="connectivityTier"
+                            (selectionChange)="changeConnectivityNextTier(); checkForLicensedFields();">
+                            <mat-option [value]="connectivityTierOptions.None">
+                              {{'ACCOUNTDETAILS.NONE' | translate}}
+                            </mat-option>
+                            <mat-option [value]="connectivityTierOptions.UNUpload">
+                              {{'ACCOUNTDETAILS.UNUPLOAD' | translate}}</mat-option>
+                            <mat-option [value]="connectivityTierOptions.UNConnect">
+                              {{'ACCOUNTDETAILS.UNCONNECT' | translate}}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div class="single-license-field"
+                        *ngIf="qcLotViewerInstalledPrdoucts() || connectivityNextTierInstalledPrdoucts() || unityNextTierInstalledProducts()">
+                        <mat-form-field *ngIf="connectivityNextTierInstalledPrdoucts()">
+                          <mat-label>{{'ACCOUNTDETAILS.PRODUCT' | translate}} </mat-label>
+                          <input matInput name="ctInstalledProduct" id="ctInstalledProduct"
+                            formControlName="connectivityInstalledProduct">
+                          <mat-error
+                          *ngIf="checkForhasError('connectivityInstalledProduct', 'maxlength')">{{'ACCOUNTDETAILS.ENTEREDMORE' | translate}}</mat-error>
+                        <mat-error
+                          *ngIf="checkForhasError('connectivityInstalledProduct', 'pattern')">{{'ACCOUNTDETAILS.ALPHAMETRIC' | translate}}</mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="single-license-field">
+                        <div class="field-datepicker">
+                          <mat-form-field>
+                            <input matInput name="licenseExpirationDate" id="licenseExpirationDate"
+                            [matDatepickerFilter]="licenseDateFilter" [matDatepicker]="licenseExpireDate"
+                            formControlName="licenseExpirationDate"
+                            [placeholder]="expiryDatePlaceholder[isLicenseActivated.toString()]"
+                            [min]="getMinDate()">
+                            <mat-datepicker-toggle matSuffix [for]="licenseExpireDate"></mat-datepicker-toggle>
+                            <mat-datepicker #licenseExpireDate></mat-datepicker>
+                            <mat-error *ngIf="checkForhasError('licenseExpirationDate', 'weekendNotAllowed')
+                              || checkForhasError('licenseExpirationDate', 'matDatepickerFilter')">
+                              {{'ACCOUNTDETAILS.PLEASECHOOSE' | translate}}
+                            </mat-error>
+                            <mat-error
+                              *ngIf="checkForhasError('licenseExpirationDate', 'required')">{{'ACCOUNTDETAILS.EXPIRY' | translate}}
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="license-column">
+                      <div class="single-license-field">
+                        <mat-form-field>
+                          <mat-label *ngIf="locationForm.controls['connectivityTier'].value === 0">{{'ACCOUNTDETAILS.TRANSFORMER' | translate}}
+                          </mat-label>
+                          <mat-select matInput name="transformers" id="transformers" class="spec_transformers"
+                          formControlName="transformers" panelClass="transformers-panel-width"
+                          placeholder="{{'ACCOUNTDETAILS.TRANSFORME' | translate}}"
+                          multiple>
+                            <mat-option *ngFor="let transfomer of transformers" [value]="transfomer">
+                              {{ transfomer.displayName }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error
+                            *ngIf="checkForhasError('transformers', 'required')">{{'ACCOUNTDETAILS.PLEASESELECT' | translate}}
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+
+                      <div class="single-license-field align-item-end"
+                        *ngIf="qcLotViewerInstalledPrdoucts() || connectivityNextTierInstalledPrdoucts() || unityNextTierInstalledProducts()">
+                      </div>
+
+                      <div class="single-license-field align-item-end">
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.LICENSE' | translate}}</mat-label>
+                          <mat-select matInput name="licenseLength" id="licenseLength" formControlName="licenseLength"
+                          placeholder="{{'ACCOUNTDETAILS.LICENSE' | translate}}"
+                          (selectionChange)="calculateLicenseExpireDate()">
+                            <mat-option *ngFor="let lengthOfLicense of licenseMonths" [value]="lengthOfLicense">
+                              {{ lengthOfLicense }} {{'ACCOUNTDETAILS.MONTH' | translate}}{{ lengthOfLicense > 1 ? 's' : '' }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="license-column">
+                      <div class="single-license-field">
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.QC' | translate}}
+                          </mat-label>
+                          <mat-select matInput name="qcLotViewer" id="qcLotViewer" formControlName="lotViewerLicense"
+                            placeholder="{{'ACCOUNTDETAILS.GROUPS' | translate}}QC"
+                            (selectionChange)="changeQCLotViewer(); checkForLicensedFields();">
+                            <mat-option [value]="1">{{'ACCOUNTDETAILS.YES' | translate}}</mat-option>
+                            <mat-option [value]="0">{{'ACCOUNTDETAILS.NO' | translate}}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div class="single-license-field"
+                        *ngIf="qcLotViewerInstalledPrdoucts() || connectivityNextTierInstalledPrdoucts() || unityNextTierInstalledProducts()">
+                        <mat-form-field *ngIf="qcLotViewerInstalledPrdoucts()">
+                          <mat-label>{{'ACCOUNTDETAILS.PRODUCT' | translate}} </mat-label>
+                          <input matInput name="qcInstalledProduct" id="qcInstalledProduct"
+                            formControlName="lotViewerInstalledProduct">
+                          <mat-error
+                          *ngIf="checkForhasError('lotViewerInstalledProduct', 'maxlength')">{{'ACCOUNTDETAILS.ENTEREDMORE' | translate}}</mat-error>
+                          <mat-error
+                          *ngIf="checkForhasError('lotViewerInstalledProduct', 'pattern')">{{'ACCOUNTDETAILS.ALPHAMETRIC' | translate}}</mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="single-license-field">
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.NUMBER' | translate}}
+                            <span *ngIf="isLicenseActivated">*</span>
+                          </mat-label>
+                          <input matInput name="licenseNumberUsers" id="licenseNumberUsers"
+                            formControlName="licenseNumberUsers">
+                          <mat-error
+                            *ngIf="checkForhasError('licenseNumberUsers', 'required')">{{'ACCOUNTDETAILS.NUMBERUSER' | translate}}
+                          </mat-error>
+                          <mat-error
+                            *ngIf="checkForhasError('licenseNumberUsers', 'maxlength')">{{'ACCOUNTDETAILS.NUMBERSSIX' | translate}}</mat-error>
+                          <mat-error
+                            *ngIf="checkForhasError('licenseNumberUsers', 'pattern')">{{'ACCOUNTDETAILS.ENTEREDNUMBERS' | translate}}
+                          </mat-error>
+                          <mat-error
+                            *ngIf="checkForhasError('licenseNumberUsers', 'userCount')">{{'ACCOUNTDETAILS.USERCOUNT' | translate}}
+                          </mat-error>
+                          <mat-error
+                          *ngIf="checkForhasError('licenseNumberUsers', 'min')">{{'ACCOUNTDETAILS.MINUSERS' | translate}}
+                        </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="license-column" *ngIf="unityNextTierInstalledProducts()">
+                      <div class="single-license-field"  >
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.ADDONS' | translate}} </mat-label>
+                          <mat-select #addOnsMatSelect placeholder="{{'ACCOUNTDETAILS.ADDONS' | translate}}"
+                                      formControlName="addOns"
+                                       multiple [matTooltip]="addOnsMatSelect.triggerValue">
+                            <mat-optgroup *ngFor="let addOn of addOnsList" [label]="addOn.displayName">
+                              <mat-option *ngFor="let item of addOn.addOnItems" [value]="item.value" (onSelectionChange)="onAddOnSelectionChanged($event)" 
+                              [style.font-weight]="item.value == 'valueAssignment' ? 'bold' : ''">
+                               {{item.displayName}}
+                              </mat-option>
+                            </mat-optgroup>
+                          </mat-select>
+                          <mat-error *ngIf="checkForhasError('addOns', 'required') && locationForm.get('addOns').touched">{{'ACCOUNTDETAILS.SELECTADDONS' | translate}}
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <!-- hiding this for now, will be needing this dropdown in the future.-->
+                    <!-- <div class="license-column">
+                      <div class="single-license-field">
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.CROSSOVERSTUDY' | translate}} *</mat-label>
+                          <mat-select matInput name="crossoverStudy" id="crossoverStudy" placeholder="{{'ACCOUNTDETAILS.CROSSOVERSTUDY' | translate}}"
+                             formControlName="crossOverStudy">
+                            <mat-option [value]="1">{{'ACCOUNTDETAILS.YES' | translate}}</mat-option>
+                            <mat-option [value]="0">{{'ACCOUNTDETAILS.NO' | translate}}</mat-option>
+                          </mat-select>
+                          <mat-error *ngIf="checkForhasError('crossOverStudy', 'required')">{{'ACCOUNTDETAILS.VALUES' | translate}}
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div> -->
+                  </div>
+                  <div class="form-heading-2">
+                    {{'ACCOUNTDETAILS.LOCATION' | translate}}
+                  </div>
+                  <div class="location-items location-item-5">
+                    <div class="location-column">
+                      <div class="double-location-field">
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.SHIP' | translate}}</mat-label>
+                          <input matInput name="shipTo" id="shipTo" formControlName="shipTo">
+                          <mat-error
+                            *ngIf="checkForhasError('shipTo', 'required')">{{'ACCOUNTDETAILS.ACCOUNT' | translate}}
+                          </mat-error>
+                          <mat-error
+                            *ngIf="checkForhasError('shipTo', 'maxlength')">{{'ACCOUNTDETAILS.ENTEREDMORE' | translate}} </mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.SOLDACCOUNT' | translate}}</mat-label>
+                          <input matInput name="soldTo" id="soldTo" formControlName="soldTo">
+                          <mat-error
+                            *ngIf="checkForhasError('soldTo', 'required')">{{'ACCOUNTDETAILS.SOLD' | translate}}
+                          </mat-error>
+                          <mat-error
+                            *ngIf="checkForhasError('soldTo', 'maxlength')">{{'ACCOUNTDETAILS.ENTEREDMORE' | translate}}</mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="single-location-field">
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.ADDRESS' | translate}}
+                          </mat-label>
+                          <input matInput name="labLocationAddress" id="labLocationAddress"
+                            formControlName="labLocationAddress">
+                          <mat-error
+                            *ngIf="checkForhasError('labLocationAddress', 'required')">{{'ACCOUNTDETAILS.ENTERADDRESS' | translate}}
+                          </mat-error>
+                          <mat-error
+                            *ngIf="checkForhasError('labLocationAddress', 'maxlength')">{{'ACCOUNTDETAILS.HUNDRED' | translate}}</mat-error>
+                          <mat-error *ngIf="checkForhasError('labLocationAddress', 'invalidAddress')">{{'ACCOUNTDETAILS.INVALIDADDRESS' | translate}}</mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="double-location-field">
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.COUNTRY' | translate}}</mat-label>
+                          <mat-select name="labLocationCountryId" id="labLocationCountryId" maxLength="2"
+                            placeholder="{{'ACCOUNTDETAILS.COUNTRIES' | translate}}"
+                            formControlName="labLocationCountryId">
+                            <mat-option *ngFor="let country of countriesList" [value]="country.countryCode">
+                              {{ country.countryName }}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error
+                            *ngIf="checkForhasError('labLocationCountryId', 'required')">{{'ACCOUNTDETAILS.VALUES' | translate}}
+                          </mat-error>
+                          <mat-error *ngIf="checkForhasError('labLocationCountryId', 'invalidAddress')">{{'ACCOUNTDETAILS.INVALIDADDRESS' | translate}}</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.STATES' | translate}}</mat-label>
+                          <input matInput name="labLocationState" id="labLocationState"
+                            formControlName="labLocationState">
+                          <mat-error
+                            *ngIf="checkForhasError('labLocationState', 'required')">{{'ACCOUNTDETAILS.STATE' | translate}}</mat-error>
+                          <mat-error
+                            *ngIf="checkForhasError('labLocationState', 'minlength')">{{'ACCOUNTDETAILS.CHARACTER' | translate}}</mat-error>
+                          <mat-error
+                            *ngIf="checkForhasError('labLocationState', 'maxlength')">{{'ACCOUNTDETAILS.FIFTY' | translate}}</mat-error>
+                          <mat-error
+                            *ngIf="checkForhasError('labLocationState', 'invalidAddress')">{{'ACCOUNTDETAILS.INVALIDADDRESS' | translate}}</mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="single-location-field">
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.LABCONTACTEMAIL' | translate}}
+                          </mat-label>
+                          <input matInput name="labContactEmail" id="labContactEmail" formControlName="labContactEmail">
+                          <mat-error
+                            *ngIf="checkForhasError('labContactEmail', 'required')">{{'ACCOUNTDETAILS.EMAIL' | translate}}
+                          </mat-error>
+                          <mat-error
+                            *ngIf="checkForhasError('labContactEmail', 'email')">{{'ACCOUNTDETAILS.VALIDEMAIL' | translate}}
+                          </mat-error>
+                          <mat-error *ngIf="checkForhasError('labContactEmail', 'maxlength')">{{'ACCOUNTDETAILS.FIFTYCHAR' | translate}}</mat-error>
+                          <mat-error *ngIf="checkForhasError('labContactEmail', 'existsInOtherGroup')">{{'ACCOUNTDETAILS.EMAILEXISTS' | translate}}
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="single-location-field">
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.COMMENT' | translate}}</mat-label>
+                          <input matInput name="comments" id="comments" formControlName="comments">
+                          <mat-error
+                            *ngIf="checkForhasError('comments', 'maxlength')">{{'ACCOUNTDETAILS.SEVENTYFIVE' | translate}}</mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="location-column">
+                      <div class="single-location-field">
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.LABNAME' | translate}}</mat-label>
+                          <input matInput name="labLocationName" id="labLocationName" formControlName="labLocationName">
+                          <mat-error
+                            *ngIf="checkForhasError('labLocationName', 'required')">{{'ACCOUNTDETAILS.ENTERLAB' | translate}}</mat-error>
+                          <mat-error
+                            *ngIf="checkForhasError('labLocationName', 'maxlength')">{{'ACCOUNTDETAILS.TWOHUNDRED' | translate}}</mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="single-location-field">
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.ADDRESSLINE' | translate}}</mat-label>
+                          <input matInput name="labLocationAddressSecondary" id="labLocationAddressSecondary"
+                            formControlName="labLocationAddressSecondary">
+                          <mat-error
+                            *ngIf="checkForhasError('labLocationAddressSecondary', 'maxlength')">{{'ACCOUNTDETAILS.HUNDREDCHAR' | translate}}</mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="double-location-field">
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.CITIES' | translate}}</mat-label>
+                          <input matInput name="labLocationCity" id="labLocationCity" formControlName="labLocationCity">
+                          <mat-error
+                            *ngIf="checkForhasError('labLocationCity', 'required')">{{'ACCOUNTDETAILS.ENTERCITY' | translate}}
+                          </mat-error>
+                          <mat-error
+                            *ngIf="checkForhasError('labLocationCity', 'maxlength')">{{'ACCOUNTDETAILS.SIXTY' | translate}}</mat-error>
+                          <mat-error *ngIf="checkForhasError('labLocationCity', 'invalidAddress')">{{'ACCOUNTDETAILS.INVALIDADDRESS' | translate}}</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.ZIPCODES' | translate}}</mat-label>
+                          <input matInput name="locationZipCode" id="locationZipCode" formControlName="locationZipCode">
+                          <mat-error
+                            *ngIf="checkForhasError('locationZipCode', 'required')">{{'ACCOUNTDETAILS.ZIPCODE' | translate}}</mat-error>
+                          <mat-error
+                            *ngIf="checkForhasError('locationZipCode', 'maxlength')">{{'ACCOUNTDETAILS.ENTEREDMORE' | translate}}</mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="double-location-field">
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.LABFIRSTNAME' | translate}}</mat-label>
+                          <input matInput name="labContactFirst" id="labContactFirst" formControlName="labContactFirst">
+                          <mat-error
+                            *ngIf="checkForhasError('labContactFirst', 'required')">{{'ACCOUNTDETAILS.FIRSTNAME' | translate}}
+                          </mat-error>
+                          <mat-error
+                            *ngIf="checkForhasError('labContactFirst', 'maxlength')">{{'ACCOUNTDETAILS.FIFTYCHAR' | translate}}</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                          <mat-label>{{'ACCOUNTDETAILS.LABLASTNAME' | translate}}
+                          </mat-label>
+                          <input matInput name="labContactLast" id="labContactLast" formControlName="labContactLast">
+                          <mat-error
+                            *ngIf="checkForhasError('labContactLast', 'required')">{{'ACCOUNTDETAILS.LASTNAME' | translate}}
+                          </mat-error>
+                          <mat-error
+                            *ngIf="checkForhasError('labContactLast', 'maxlength')">{{'ACCOUNTDETAILS.FIFTYCHAR' | translate}}</mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="single-account-field-m">
+                        <unext-language-dropdown
+                          *ngIf="isLocalizationActive"
+                          label="ACCOUNTDETAILS.LANGUAGEFIELDLABEL"
+                          tooltip="ACCOUNTDETAILS.LANGUAGEFIELDTOOLTIP"
+                          [control]="locationForm.controls['labLanguagePreference']"
+                          [errors]="languageValidators">
+                        </unext-language-dropdown>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </perfect-scrollbar>
+              <footer>
+                <div class="flex-container bottom-controls">
+                  <div>
+                    <!-- add isProcessing when integrating with API -->
+                      <button mat-button class="cancel-button" (click)="backToExistingView()" color="primary"
+                              [checkForPermission]="{'permissionsAllowed':[permissions.LocationAdd,permissions.LocationEdit],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+                          {{'ACCOUNTDETAILS.CAN' | translate}}
+                      </button>
+                    <ng-container *ngIf="!editLocationMode">
+                        <button class="spec_add_location" (click)="checkFormValidity(true, false)" mat-raised-button color="primary"
+                                [checkForPermission]="{'permissionsAllowed':[permissions.LocationAdd],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+                                [disabled]='!locationForm.valid || isSaveButtonDisabled()'>
+                            {{'ACCOUNTDETAILS.ADDLOCATIONS' | translate}}
+                        </button>
+                    </ng-container>
+                    <ng-container *ngIf="editLocationMode">
+                        <button class="spec_update_location" mat-raised-button color="primary"
+                            [checkForPermission]="{'permissionsAllowed':[permissions.LocationEdit],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+                            (click)="checkFormValidity(false, true)"
+                            [disabled]='!locationForm.valid || isSaveButtonDisabled()'>
+                            {{'ACCOUNTDETAILS.UPDATE' | translate}}
+                        </button>
+                    </ng-container>
+                  </div>
+                </div>
+              </footer>
+            </form>
+          </div>
+        </div>
+        <!-- Location Form -->
+      </div>
+    </div>
+  </div>
+</div>

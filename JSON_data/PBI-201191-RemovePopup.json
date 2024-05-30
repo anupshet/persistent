@@ -1,0 +1,14 @@
+{
+	"QA": {
+		"URL": "http://localhost:4200/",
+		"Username": "sampada_gulhane+devconn@bio-rad.com",
+		"Password": "Welcome1",
+		"FirstName": "Sampada",
+		"deptName": "Connectivity Dept",
+		"instrumentName": "Point Instrument",
+		"controlName": "Anemia"
+	},
+	"DEV": {},
+	"STAGE": {},
+	"DEV2": {}
+}

@@ -1,0 +1,2 @@
+Instrument,Product,Level,Test,CalibratorLot,ReagentLot,Run Date,Run Time,Result
+ICode_PT,PCode_PT,1,ACode_PT,CAL#1,REAG #1,2021/01/01,21:00:00,5.461

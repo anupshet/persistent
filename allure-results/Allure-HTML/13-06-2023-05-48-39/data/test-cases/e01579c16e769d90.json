@@ -1,0 +1,52 @@
+{
+  "uid" : "e01579c16e769d90",
+  "name" : "Test case 5 :Verify the presence of error dialog for Clear Selection button and More than one dept",
+  "fullName" : "Test Suite:Verify Error Dialog box for Selection parameter filters on Report page.Test case 5 :Verify the presence of error dialog for Clear Selection button and More than one dept",
+  "historyId" : "688aea144b0bad58d7257a1c147f4ff1",
+  "time" : {
+    "start" : 1686658760310,
+    "stop" : 1686658760311,
+    "duration" : 1
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "skipped",
+  "statusMessage" : "Temporarily disabled with xit",
+  "statusTrace" : "",
+  "flaky" : false,
+  "newFailed" : false,
+  "newBroken" : false,
+  "newPassed" : false,
+  "retriesCount" : 0,
+  "retriesStatusChange" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "Test Suite:Verify Error Dialog box for Selection parameter filters on Report page"
+  }, {
+    "name" : "testClass",
+    "value" : "Test Suite:Verify Error Dialog box for Selection parameter filters on Report page"
+  }, {
+    "name" : "testMethod",
+    "value" : "Test case 5 :Verify the presence of error dialog for Clear Selection button and More than one dept"
+  }, {
+    "name" : "package",
+    "value" : "Test Suite:Verify Error Dialog box for Selection parameter filters on Report page"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "e01579c16e769d90.json",
+  "parameterValues" : [ ]
+}

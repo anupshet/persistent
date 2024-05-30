@@ -1,0 +1,462 @@
+{
+	"DEV": {
+		"URL": "http://localhost:4200/",
+		"UserName": "rana_thakur+DevLumLS@bio-rad.com",
+		"Password": "Welcome1",
+		"FirstName": "Rana",
+		"LastName": "Thakur",
+		"Email": "Rana_Thakur+LocalDemo2@bio-rid.com",
+		"Role":"Lab User Manager",
+		"Role1":"Lab Supervisor",
+
+		"correctiveAction": "Calibrator changed ",
+		"comment": "Audit Trail Automation Comment",
+		"startNewLotNumber": "Lot 26460",
+		"selectNewLot": "23000",
+		"AuditTrailAPI": "https://dojixk5wef.execute-api.us-west-2.amazonaws.com/Stage/at",
+		"AuditTrailAPIStatusCode": "200",
+			"payLoadGearIcon":{
+				"account_id": "930f1142-637f-4ad1-9512-684a29138d8b",
+				"accountNumber": "104305",
+				"accountName": "Bangalore Lab",
+				"group_id": "99d37010-24ae-46cf-aac4-0fe803a4e333",
+				"groupName": "Bangalore",
+				"user_id": "37496f22-b82a-4504-8dba-9865e27ac742",
+				"location_id": "c0e1be36-855b-43e6-81b4-729e04f3f2a5",
+				"locationName": "HSR Layout",
+				"userRoles": [
+					"LabSupervisor",
+					"LabUserManager"
+				],
+				"eventDateTime": "2023-02-13T12:21:47.410Z",
+				"localDateTime": "2023-02-13T12:21:47.410Z",
+				"awsCorrelationId": "",
+				"auditTrail": {
+					"device_id": "",
+					"run_id": "",
+					"runDateTime": "2023-02-13T12:21:47.410Z",
+					"eventType": "User Management",
+					"action": "View",
+					"actionStatus": "Success",
+					"priorValue": {},
+					"currentValue": {},
+					"hierarchy": {
+						"account": [
+							{
+								"id": "930f1142-637f-4ad1-9512-684a29138d8b",
+								"name": "Bangalore Lab",
+								"groups": [
+									{
+										"id": "99d37010-24ae-46cf-aac4-0fe803a4e333",
+										"name": "Bangalore",
+										"locations": [
+											{
+												"id": "c0e1be36-855b-43e6-81b4-729e04f3f2a5",
+												"name": "HSR Layout",
+												"departments": [
+													{
+														"id": "",
+														"name": "",
+														"instruments": [
+															{
+																"id": "",
+																"name": "",
+																"controls": [
+																	{
+																		"id": "",
+																		"name": "",
+																		"analytes": [
+																			{
+																				"id": "",
+																				"name": ""
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			},
+		"payLoadAddUser":{
+			"account_id": "930f1142-637f-4ad1-9512-684a29138d8b",
+			"accountNumber": "104305",
+			"accountName": "Bangalore Lab",
+			"group_id": "99d37010-24ae-46cf-aac4-0fe803a4e333",
+			"groupName": "Bangalore",
+			"user_id": "37496f22-b82a-4504-8dba-9865e27ac742",
+			"location_id": "c0e1be36-855b-43e6-81b4-729e04f3f2a5",
+			"locationName": "HSR Layout",
+			"userRoles": [
+				"LabSupervisor",
+				"LabUserManager"
+			],
+			"eventDateTime": "2023-02-14T06:55:47.791Z",
+			"localDateTime": "2023-02-14T06:55:47.791Z",
+			"awsCorrelationId": "",
+			"auditTrail": {
+				"device_id": "",
+				"run_id": "",
+				"runDateTime": "2023-02-14T06:55:47.791Z",
+				"eventType": "User Management",
+				"action": "Add",
+				"actionStatus": "Success",
+				"priorValue": {},
+				"currentValue": {
+					"userRoles": [
+						"LabUserManager"
+					],
+					"userLocations": {
+						"groups": [
+							{
+								"id": "99d37010-24ae-46cf-aac4-0fe803a4e333",
+								"locations": [
+									{
+										"id": "c0e1be36-855b-43e6-81b4-729e04f3f2a5",
+										"departments": [
+											"930ec37f-ef2d-432b-852d-f2b05f8b822c",
+											"5e2803fb-a369-45a1-a591-0a3b417f573f",
+											"81d0016b-eab4-4b14-bac3-531feb511c46",
+											"644c5c02-a3c0-4a6b-9f85-d30916e77097"
+										],
+										"isDefaultLocation": true
+									}
+								]
+							}
+						]
+					}
+				},
+				"hierarchy": {
+					"account": [
+						{
+							"id": "930f1142-637f-4ad1-9512-684a29138d8b",
+							"name": "Bangalore Lab",
+							"groups": [
+								{
+									"id": "99d37010-24ae-46cf-aac4-0fe803a4e333",
+									"name": "Bangalore",
+									"locations": [
+										{
+											"id": "c0e1be36-855b-43e6-81b4-729e04f3f2a5",
+											"name": "HSR Layout",
+											"departments": [
+												{
+													"id": "",
+													"name": "",
+													"instruments": [
+														{
+															"id": "",
+															"name": "",
+															"controls": [
+																{
+																	"id": "",
+																	"name": "",
+																	"analytes": [
+																		{
+																			"id": "",
+																			"name": ""
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		"payLoadUpdateAddUser":{
+			"account_id": "930f1142-637f-4ad1-9512-684a29138d8b",
+			"accountNumber": "104305",
+			"accountName": "Bangalore Lab",
+			"group_id": "99d37010-24ae-46cf-aac4-0fe803a4e333",
+			"groupName": "Bangalore",
+			"user_id": "37496f22-b82a-4504-8dba-9865e27ac742",
+			"location_id": "c0e1be36-855b-43e6-81b4-729e04f3f2a5",
+			"locationName": "HSR Layout",
+			"userRoles": [
+				"LabSupervisor",
+				"LabUserManager"
+			],
+			"eventDateTime": "2023-02-14T09:42:25.484Z",
+			"localDateTime": "2023-02-14T09:42:25.484Z",
+			"awsCorrelationId": "",
+			"auditTrail": {
+				"device_id": "",
+				"run_id": "",
+				"runDateTime": "2023-02-14T09:42:25.484Z",
+				"eventType": "User Management",
+				"action": "Update",
+				"actionStatus": "Success",
+				"priorValue": {
+					"userRoles": [
+						"LabUserManager"
+					]
+				},
+				"currentValue": {
+					"userRoles": [
+						"LabSupervisor",
+						"LabUserManager"
+					],
+					"id": "1065467b-2fb4-4a72-a1c2-f1b22ac12458"
+				},
+				"hierarchy": {
+					"account": [
+						{
+							"id": "930f1142-637f-4ad1-9512-684a29138d8b",
+							"name": "Bangalore Lab",
+							"groups": [
+								{
+									"id": "99d37010-24ae-46cf-aac4-0fe803a4e333",
+									"name": "Bangalore",
+									"locations": [
+										{
+											"id": "c0e1be36-855b-43e6-81b4-729e04f3f2a5",
+											"name": "HSR Layout",
+											"departments": [
+												{
+													"id": "",
+													"name": "",
+													"instruments": [
+														{
+															"id": "",
+															"name": "",
+															"controls": [
+																{
+																	"id": "",
+																	"name": "",
+																	"analytes": [
+																		{
+																			"id": "",
+																			"name": ""
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		"payLoadDeleteUser":{
+			"account_id": "930f1142-637f-4ad1-9512-684a29138d8b",
+			"accountNumber": "104305",
+			"accountName": "Bangalore Lab",
+			"group_id": "99d37010-24ae-46cf-aac4-0fe803a4e333",
+			"groupName": "Bangalore",
+			"user_id": "37496f22-b82a-4504-8dba-9865e27ac742",
+			"location_id": "c0e1be36-855b-43e6-81b4-729e04f3f2a5",
+			"locationName": "HSR Layout",
+			"userRoles": [
+				"LabSupervisor",
+				"LabUserManager"
+			],
+			"eventDateTime": "2023-02-14T09:47:14.084Z",
+			"localDateTime": "2023-02-14T09:47:14.084Z",
+			"awsCorrelationId": "",
+			"auditTrail": {
+				"device_id": "",
+				"run_id": "",
+				"runDateTime": "2023-02-14T09:47:14.084Z",
+				"eventType": "User Management",
+				"action": "Delete",
+				"actionStatus": "Success",
+				"priorValue": {},
+				"currentValue": {
+					"id": "1065467b-2fb4-4a72-a1c2-f1b22ac12458",
+					"userRoles": [
+						"Lab Supervisor",
+						"Lab User Manager"
+					],
+					"userLocations": {
+						"groups": [
+							{
+								"id": "99d37010-24ae-46cf-aac4-0fe803a4e333",
+								"locations": [
+									{
+										"id": "c0e1be36-855b-43e6-81b4-729e04f3f2a5",
+										"departments": [
+											"930ec37f-ef2d-432b-852d-f2b05f8b822c",
+											"5e2803fb-a369-45a1-a591-0a3b417f573f",
+											"81d0016b-eab4-4b14-bac3-531feb511c46",
+											"644c5c02-a3c0-4a6b-9f85-d30916e77097"
+										],
+										"isDefaultLocation": true
+									},
+									{
+										"id": "3ca7f22f-fc85-4a09-96b9-283398efcc7d",
+										"departments": [
+											"80205f31-664d-4904-a2a6-24721c340b8b",
+											"2c7a3a7b-07b1-43f5-b17b-69dd0d865e2d",
+											"9272dae6-52a2-4d6f-a6fc-8a47d708669c",
+											"662d5bb9-30fd-4fbe-9ae9-14f623806fe4",
+											"634c702f-f34f-4a7e-bb47-60f337245fc5",
+											"d06fa552-37b4-470a-8b01-e7eb16ea7e1f",
+											"55a15842-0568-48b3-a53d-cf079e1ffc5d",
+											"c7889ebd-ea7d-41b7-a60b-9c0bb8477fe6"
+										],
+										"isDefaultLocation": false
+									},
+									{
+										"id": "a6749c3e-546c-4e31-9e3f-51d2db5bc29e",
+										"departments": [
+											"8cb9e343-d65a-425a-8a6a-76d9fd1e9539",
+											"e0a8bebd-a022-44c4-8c28-77818a54d393",
+											"117e9ee8-7373-4052-acad-09eabd96234e",
+											"10657b4f-8230-4f9e-bb4a-4b3c9173fd2f",
+											"bae239c9-64e1-47b2-9749-71f482caf271"
+										],
+										"isDefaultLocation": false
+									}
+								]
+							}
+						]
+					}
+				},
+				"hierarchy": {
+					"account": [
+						{
+							"id": "930f1142-637f-4ad1-9512-684a29138d8b",
+							"name": "Bangalore Lab",
+							"groups": [
+								{
+									"id": "99d37010-24ae-46cf-aac4-0fe803a4e333",
+									"name": "Bangalore",
+									"locations": [
+										{
+											"id": "c0e1be36-855b-43e6-81b4-729e04f3f2a5",
+											"name": "HSR Layout",
+											"departments": [
+												{
+													"id": "",
+													"name": "",
+													"instruments": [
+														{
+															"id": "",
+															"name": "",
+															"controls": [
+																{
+																	"id": "",
+																	"name": "",
+																	"analytes": [
+																		{
+																			"id": "",
+																			"name": ""
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		"payLoadLabSetting":{
+			"account_id": "930f1142-637f-4ad1-9512-684a29138d8b",
+			"accountNumber": "104305",
+			"accountName": "Bangalore Lab",
+			"group_id": "99d37010-24ae-46cf-aac4-0fe803a4e333",
+			"groupName": "Bangalore",
+			"user_id": "37496f22-b82a-4504-8dba-9865e27ac742",
+			"location_id": "c0e1be36-855b-43e6-81b4-729e04f3f2a5",
+			"locationName": "HSR Layout",
+			"userRoles": [
+				"LabSupervisor",
+				"LabUserManager"
+			],
+			"eventDateTime": "2023-02-14T10:58:50.232Z",
+			"localDateTime": "2023-02-14T10:58:50.232Z",
+			"awsCorrelationId": "",
+			"auditTrail": {
+				"device_id": "",
+				"run_id": "",
+				"runDateTime": "2023-02-14T10:58:50.232Z",
+				"eventType": "Lab Setup",
+				"action": "View",
+				"actionStatus": "Success",
+				"priorValue": {},
+				"currentValue": {},
+				"hierarchy": {
+					"account": [
+						{
+							"id": "930f1142-637f-4ad1-9512-684a29138d8b",
+							"name": "Bangalore Lab",
+							"groups": [
+								{
+									"id": "99d37010-24ae-46cf-aac4-0fe803a4e333",
+									"name": "Bangalore",
+									"locations": [
+										{
+											"id": "c0e1be36-855b-43e6-81b4-729e04f3f2a5",
+											"name": "HSR Layout",
+											"departments": [
+												{
+													"id": "",
+													"name": "",
+													"instruments": [
+														{
+															"id": "",
+															"name": "",
+															"controls": [
+																{
+																	"id": "",
+																	"name": "",
+																	"analytes": [
+																		{
+																			"id": "",
+																			"name": ""
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		}
+
+    },
+
+    "QA": {},
+	"STAGE": {},
+	"DEV2": {}
+}

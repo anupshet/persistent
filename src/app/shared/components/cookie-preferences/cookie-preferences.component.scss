@@ -1,0 +1,99 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../../../assets/scss/variables';
+
+h1 {
+  font-size: 35px;
+}
+
+h1, h2, h3 {
+  font-weight:900;
+}
+
+#alink {
+  text-decoration: none;
+  color: $blue;
+}
+
+p {
+  margin: 0.5rem 0 1.8rem 0;
+  padding: 0;
+  letter-spacing: .25px;
+  font-size: 21px;
+  color: $gray-700;
+  font-weight: 350;
+}
+
+.cookie-preferences-dialog {
+  overflow:visible;
+  margin: 50px;
+}
+
+.green-dot {
+  height: 25px;
+  width: 25px;
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red-dot {
+  height: 25px;
+  width: 25px;
+  background-color: $red-light;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 40px;
+  margin-top: 5px;
+}
+
+.cookie-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 35px;
+}
+
+.cookie-preferences-dialog {
+  overflow:visible;
+}
+
+.mat-dialog-content {
+  display: block;
+  padding: 1px 300px;
+  max-height: 65vh;
+}
+
+.mat-button {
+  margin: -21px;
+  margin-bottom: 40px;
+  font-size: 17px;
+}
+
+.mat-icon {
+  height: 28px;
+}
+
+.mat-dialog-title {
+  margin-bottom:  40px;
+}
+
+.mat-button, .mat-raised-button {
+  text-transform: none;
+  letter-spacing: 1.25px;
+}
+
+.nav-bar-lang {
+  display: inline-flex;
+  position: fixed;
+  color: $gray-900;
+  right: 35px;
+}
+
+.nav-bar-lang svg {
+  fill: $gray-900;
+}

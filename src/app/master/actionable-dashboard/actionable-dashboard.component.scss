@@ -1,0 +1,81 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+
+@import "../../../assets/scss/variables";
+@import '../../../assets/scss/base/variables-peak';
+@import '../../../assets/scss/mixins';
+
+.actionable-dashboard-component {
+  padding: ($custom-space-base + $custom-space-xsmall) 0 0 ($custom-space-base + $custom-space-xsmall);
+
+  .flex-container.ctn-1 {
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+
+    h2 {
+      color: $br-black-text-medium-emphasis;
+    }
+  }
+
+  .flex-container.ctn-2 {
+    flex-direction: row;
+
+    .flex-item {
+      margin-right: $custom-space-base;
+      min-width: 250px;
+      width: 30%;
+    }
+  }
+}
+
+// Below code moved from dashboard
+.card-list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-left: -4px;
+
+  .module {
+    margin: ($custom-space-base + $custom-space-small) ($custom-space-small + $custom-space-xsmall) ($custom-space-small + $custom-space-xsmall);
+
+    @include media(desktop-and-up) {
+      &:first-child {
+        margin: ($custom-space-base + $custom-space-small) ($custom-space-small + $custom-space-xsmall) ($custom-space-small + $custom-space-xsmall) ($custom-space-base + $custom-space-small);
+      }
+    }
+  }
+}
+
+hr {
+  margin-top: ($custom-space-small + $custom-space-xsmall);
+  margin-bottom: ($custom-space-small + $custom-space-xsmall);
+  border: 0;
+  border-top: 1px solid rgba($black, 0.1);
+}
+
+.We-are-waiting-for- {
+  margin: ($custom-space-base + $custom-space-small) 0 0 ($custom-space-base + $custom-space-small);
+  width: 891px;
+  height: 28px;
+  font-size: $custom-type-size-large;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: $line-height-medium;
+  letter-spacing: normal;
+  color: $gray-700;
+}
+
+.preferencesHeader {
+  padding-left: ($custom-space-base + $custom-space-small);
+  color: rgba($gray-700, 0.8);
+}
+
+.card-link.half-opacity:hover {
+  color: $gray-700;
+}
+
+.content-wrapper {
+  height: calc(100vh - 120px);
+}

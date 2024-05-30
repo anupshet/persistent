@@ -1,0 +1,47 @@
+@import '../../../../../assets/scss/base/variables-peak';
+@import '../../../../../assets/scss/base/utilities';
+@import '../../../../../assets/scss/mixins/border-radius';
+@import '../../../../../assets/scss/variables';
+
+.evalution-form-wrapper{
+    & .current-value{
+      @include border-radius(3px);
+      background-color: rgba($black, 0.08);
+      padding:4px $custom-type-size-xsmall;
+    }
+  & .evalution-mean-scroll-wrapper{
+    height: calc(100vh - 230px);
+    & .float-point-shadow{ 
+      box-shadow: 0px 7px 1px -6px rgba(0,0,0,0.2);
+      }
+    & .mat-icon-button{
+      width: $custom-type-size-xxlarge;
+      height: $custom-type-size-xxlarge;
+      line-height: $custom-type-size-xxlarge;
+      & mat-icon{
+        &.info-icon{
+          color: $gray-400;
+          width: $custom-type-size-small;
+          height: $custom-type-size-small;
+          line-height: $custom-type-size-small;
+        }
+      }
+    }
+  }
+  .float-type{
+    width: 262px;
+  }
+}
+.lose-changes-wrapper{
+  @include border-radius(3px);
+  padding:$custom-type-size-xxsmall;
+  border: 1px solid $carmine;
+& .lose-changes-msg{
+  color: $carmine;
+}
+}
+.dialog-close-button.mat-icon-button{
+  width: $custom-type-size-xxlarge;
+      height: $custom-type-size-xxlarge;
+      line-height: $custom-type-size-xxlarge;
+}

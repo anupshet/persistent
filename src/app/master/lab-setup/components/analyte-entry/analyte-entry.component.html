@@ -1,0 +1,285 @@
+<!-- © 2024 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<mat-card class="analyte-entry-component" [ngClass]="{'one-column':!showSettings || summaryDataEntry}">
+  <unext-lab-setup-header *ngIf="!showSettings" [currentNode]="type.Analyte" [title]="headerTitleText" [isDataUpdated]="analyteForm.touched">
+  </unext-lab-setup-header>
+  <unext-overlay-component *ngIf="greyOutForm() || greyOutAddForm()" [height]="overlayHeight" [width]="overlayWidth">
+  </unext-overlay-component>
+  <mat-card-content #content id="spec_content"   class="analyte-entry-card-content">
+    <form id="spec_analyteEntryForm" class="spc_controlForm column-left-450 analyte-form" [formGroup]="analyteForm">
+      <div class="summary" [ngClass]="showSettings ? 'column mr-25':'column'">
+        <div formGroupName="defaultControls">
+
+          <div *ngIf="showSettings" class="flex bdr mb-15 pb-15 space-between flex-end">
+            <label class="gray">{{'ANALYTEENTRY.DATAENTRY' | translate}}</label>
+            <mat-radio-group id="spec_summarydataentry" formControlName="summaryDataEntry"
+              [disabled]="hasAnalyteDataPoints || hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])">
+              <div class="flex">
+                <div class="radio-flex mr-20">
+                  <label>{{'ANALYTEENTRY.SUMMARY' | translate}}</label>
+                  <mat-radio-button color="primary"
+                    (change)="onSummaryDataEntryChange(true)" [value]="true">
+                  </mat-radio-button>
+                </div>
+
+                <div class="radio-flex">
+                  <label>{{'ANALYTEENTRY.POINT' | translate}}</label>
+                  <mat-radio-button color="primary"
+                    (change)="onSummaryDataEntryChange(false)" [value]="false">
+                  </mat-radio-button>
+                </div>
+              </div>
+            </mat-radio-group>
+          </div>
+
+          <div class="analyte-lavels mat-checkbox-group mb-0 pb-10"
+          *ngIf="levels?.length > 0 && hasPermissionToAccess([permissions.SettingsLevelsInUse])">
+            <label class="gray">{{'ANALYTEENTRY.LEVELSIN' | translate}}</label>
+            <div class="d-flex w-flex">`
+              <div formArrayName="levels" class="mr-10" *ngFor="let level of levels">
+                <ng-container>
+                  <mat-checkbox class="levels-in-use" [checked]="level.levelInUse"
+                                (change)="level.levelInUse=$event.checked;onChangeLevelInUse($event);appNavigationService.eventCapture('Levels')"
+                                [disabled]="hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly]) || level.disabled">
+                    {{ level.decimalPlace }}
+                  </mat-checkbox>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="showSettings" class="flex decimal-places mb-15"
+            [checkForPermission]="{'permissionsAllowed':[permissions.SettingsDecimalPlaces],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+            <label>{{'ANALYTEENTRY.DECIMALPLACES' | translate}} </label>
+            <br-select id="spec_decimalplaces" formControlName="decimalPlaces" [data]="decimalPlace" [emitValue]="true"
+              [disabled]="hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])"
+              (selectedChanged)="onSelect($event)">
+            </br-select>
+          </div>
+
+          <div *ngIf="!showSettings" class="panel-content-checkbox-border mb-25">
+            <mat-checkbox formControlName="defaultReagents" (change)="onDefaultReagentManufacturerClick($event)"
+              [disabled]="hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])">
+              {{'ANALYTEENTRY.ALLANALYTESUSE' | translate}} {{defaultManufacturer?.name}} {{'ANALYTEENTRY.REAGENTS' | translate}}
+            </mat-checkbox>
+            <br />
+            <mat-checkbox formControlName="defaultCalibrators" (change)="onDefaultReagentCalibratorClick($event)"
+              [disabled]="hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])">
+              {{'ANALYTEENTRY.ALLANALYTESUSE' | translate}} {{defaultManufacturer?.name}} {{'ANALYTEENTRY.CALIBRATORS' | translate}}
+            </mat-checkbox>
+            <br />
+            <div *ngIf="setReagentCalibratorValue()">
+              <mat-checkbox formControlName="selectReagentLots" [(ngModel)]="selectReagentLots"
+                [disabled]="hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])"
+                (change)="onSelectReagentLotsChanged($event)">
+                {{'ANALYTEENTRY.SELECTREAGENT' | translate}}
+              </mat-checkbox>
+              <br />
+              <mat-checkbox formControlName="selectCalibratorLots" [(ngModel)]="selectCalibratorLots"
+                [disabled]="hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])"
+                (change)="onSelectCalibratorLotsChanged($event)">
+                {{'ANALYTEENTRY.SELECTCALIBRATOR' | translate}}
+              </mat-checkbox>
+            </div>
+          </div>
+          <mat-checkbox class="pl-20" id="spec_selectAllAnalytes" *ngIf="false && !showSettings"
+            [disabled]="hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])"
+            formControlName="selectAllAnalytes" (change)="selectAllAnalytes($event)">
+            <!-- Select all disabled until later release. -->
+            <strong>{{'ANALYTEENTRY.SELECTALL' | translate}}</strong>
+          </mat-checkbox>
+        </div>
+        <div class="border" *ngIf="!showSettings">
+          <mat-icon matPrefix class="searchIcon">search</mat-icon>
+          <mat-form-field class="searchAnalyteInput">
+            <input matInput type="text" name="searchAnalyte" id="searchAnalyte" [minLength]="minLengthForSearchAnalyte" [maxLength]="maxLengthForSearchAnalyte"
+              placeholder="{{'ANALYTEENTRY.SEARCHPLACEHOLDER' | translate}}" (input)="onSearchChange($event.target.value)">
+          </mat-form-field>
+        </div>
+        <div formArrayName="analytes">
+          <section id="multipleAnalytes" class="multipleAnalytes">
+            <div *ngIf="!showNoAnalytes()" class="noAnalytes">{{'ANALYTEENTRY.SEARCHNORESULTS' | translate}}</div>
+            <div [ngClass]="[isAnalyteVisible(pointIndex) ? 'panel-content-checkbox-border mb-10' : 'hidden']"
+              *ngFor="let analyte of analytesGetter?.controls; let pointIndex = index;" [formGroupName]="pointIndex">
+              <button mat-icon-button *ngIf="!showSettings && analyte?.value?.analyte" class="btn-remove"
+                [checkForPermission]="{'permissionsAllowed':[permissions.AnalyteAdd, permissions.AnalyteEdit],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+                (click)="cf_onRemoveItem(pointIndex)">
+                <mat-icon [svgIcon]="icons.close[24].name"></mat-icon>
+              </button>
+              <div class="spec_analyteParentDiv" (click)="checkSelectedAnalytesCount(pointIndex)">
+                <mat-checkbox [hidden]="showSettings"
+                  [disabled]="(!(analyte?.value?.analyte) && totalAnalytesSelected >= analyteAddLimit) || hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])"
+                  formControlName="analyte" class="analyte spec_analyte" (change)="onSelectAnalyte(pointIndex)">
+                  {{labConfigurationAnalytes[pointIndex]?.name}}</mat-checkbox>
+                <mat-error *ngIf="notAllowedIndex === pointIndex">
+                  {{analyteAddLimit}} {{'ANALYTEENTRY.ADDANALYTES' | translate}}
+                </mat-error>
+              </div>
+              <div *ngIf="analyte?.value?.analyte" class="spec_analyteInfo" formGroupName="analyteInfo">
+                <br-select id="spec_reagentManufacturer" class="reagentManufacturer"
+                  [hidden]="defaultReagents && isReagentManufacturerPresent[pointIndex]"
+                  formControlName="reagentManufacturer" [data]="reagentManufacturers[pointIndex]"
+                  [displayAttribute]="'name'"
+                  [disabled]="analytesAddClicked || hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])"
+                  [placeholder]="reagentManufacturerPlaceholder" [emitValue]="true"
+                  (selectedChanged)="onReagentManufacturerSelect($event?.manufacturerId,pointIndex)">
+                </br-select>
+                <div class="reagent">
+                  <br-select id="spec_reagents" class="reagents" formControlName="reagents"
+                    [data]="reagents[pointIndex]" [errorMessage]="reagentErrorMsg" [displayAttribute]="'name'"
+                    [disabled]="analytesAddClicked || hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])"
+                    [placeholder]="reagentPlaceholder" [emitValue]="true"
+                    (selectedChanged)="onReagentSelect($event?.id,pointIndex)">
+                  </br-select>
+
+                  <div *ngIf="reagentFlag[pointIndex]" class="red">
+                    {{'ANALYTEENTRY.SELECTEDCONTROL' | translate}}
+                  </div>
+
+                  <span [hidden]="!reagents[pointIndex]" class="br-text-primary link" id="spec_dontSeeReagent"
+                    [checkForPermission]="{'permissionsAllowed':[permissions.AnalyteAdd, permissions.AnalyteEdit],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+                    (click)="requestNewConfiguration(newRequestConfigType.Reagent)">
+                    {{'ANALYTEENTRY.REAGENT' | translate}}
+                  </span>
+                  <br-select id="spec_reagentLots"
+                    [hidden]="(!showSettings && (!selectReagentLots || !isReagentLotNumberPresent[pointIndex])) || reagentFlag[pointIndex]"
+                    class="reagentLots" formControlName="reagentLots" [data]="reagentLots[pointIndex]"
+                    [displayAttribute]="'lotNumber'"
+                    [disabled]="analytesAddClicked || hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])"
+                    [placeholder]="lotNumberPlaceholder" [emitValue]="true" (selectedChanged)="onSelect($event)">
+                  </br-select>
+                  <span
+                    [hidden]="reagentFlag[pointIndex] || !showSettings && (!selectReagentLots || !isReagentLotNumberPresent[pointIndex])"
+                    [checkForPermission]="{'permissionsAllowed':[permissions.AnalyteAdd, permissions.AnalyteEdit],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+                    class="br-text-primary link" id="spec_dontSeeReagentLot"
+                    (click)="requestNewConfiguration(newRequestConfigType.ReagentLot)">
+                    {{'ANALYTEENTRY.REAGENTLOT' | translate}}
+                  </span>
+                </div>
+                <br-select id="spec_calibratorManufacturer" class="calibratorManufacturer"
+                  [hidden]="(defaultCalibrators && isCalibratorManufacturerPresent[pointIndex]) || reagentFlag[pointIndex]"
+                  formControlName="calibratorManufacturer" [data]="calibratorManufacturers[pointIndex]"
+                  [displayAttribute]="'name'"
+                  [disabled]="analytesAddClicked || hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])"
+                  [placeholder]="calibratorManufacturerPlaceholder" [emitValue]="true"
+                  (selectedChanged)="onCalibratorManufacturerSelect($event?.manufacturerId,pointIndex)">
+                </br-select>
+                <div>
+                  <br-select class="calibrator" formControlName="calibrator" [data]="calibrators[pointIndex]"
+                    [hidden]="reagentFlag[pointIndex]" [errorMessage]="calibratorErrorMsg" [displayAttribute]="'name'"
+                    [disabled]="analytesAddClicked || hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])"
+                    [placeholder]="calibratorPlaceholder" [emitValue]="true"
+                    (selectedChanged)="onCalibratorSelect($event?.id,pointIndex)">
+                  </br-select>
+                  <span [hidden]="reagentFlag[pointIndex] || !calibrators[pointIndex]" class="br-text-primary link"
+                    [checkForPermission]="{'permissionsAllowed':[permissions.AnalyteAdd, permissions.AnalyteEdit],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+                    id="spec_dontSeeCalibrator" (click)="requestNewConfiguration(newRequestConfigType.Calibrator)">
+                    {{'ANALYTEENTRY.CALIBRATOR' | translate}}
+                  </span>
+                  <br-select id="spec_calibratorLots"
+                    [hidden]="(!showSettings && (!selectCalibratorLots || !isCalibratorLotNumberPresent[pointIndex])) || reagentFlag[pointIndex]"
+                    class="calibratorLots" formControlName="calibratorLots" [data]="calibratorLots[pointIndex]"
+                    [displayAttribute]="'lotNumber'"
+                    [disabled]="analytesAddClicked || hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])"
+                    [placeholder]="lotNumberPlaceholder" [emitValue]="true" (selectedChanged)="onSelect($event)">
+                  </br-select>
+                  <span [hidden]="reagentFlag[pointIndex] || !showSettings && (!selectCalibratorLots || !isCalibratorLotNumberPresent[pointIndex])"
+                    class="br-text-primary link" id="spec_dontSeeCalibratorLot"
+                    [checkForPermission]="{'permissionsAllowed':[permissions.AnalyteAdd, permissions.AnalyteEdit],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+                    (click)="requestNewConfiguration(newRequestConfigType.CalibratorLot)">
+                    {{'ANALYTEENTRY.CALIBRATORLOT' | translate}}
+                  </span>
+                </div>
+                <div>
+                  <br-select id="spec_method" class="method" formControlName="method" [data]="methods[pointIndex]"
+                    [hidden]="reagentFlag[pointIndex]" [errorMessage]="methodErrorMsg"
+                    [displayAttribute]="'name'"
+                    [disabled]="analytesAddClicked || hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])"
+                    [placeholder]="methodPlaceholder" [emitValue]="true" (selectedChanged)="onSelect($event)">
+                  </br-select>
+                  <br-select id="spec_unit" class="unit" formControlName="unit" [data]="units[pointIndex]"
+                    [hidden]="reagentFlag[pointIndex]" [errorMessage]="unitErrorMsg" [displayAttribute]="'name'"
+                    [disabled]="analytesAddClicked || hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])"
+                    [placeholder]="unitOfMeasurePlaceholder" [emitValue]="true" (selectedChanged)="onSelect($event)">
+                  </br-select>
+                </div>
+                <div *ngIf="!reagentFlag[pointIndex] && _units[pointIndex]?.length==1 && (this.getGroupAtIndex(pointIndex).controls.analyteInfo['controls']['idx'].invalid
+                  || this.duplicateAnalytes.indexOf(this.labConfigurationAnalytes[pointIndex].id) >= 0)" class="red">
+                  {{'ANALYTEENTRY.SELECTEDCONTROL' | translate}}
+                </div>
+                <!--  AJ Added  159349 if Analytes Differ by only unit of measurement a different error message is displayed-->
+                <div *ngIf="!reagentFlag[pointIndex] && _units[pointIndex]?.length>1 && (this.getGroupAtIndex(pointIndex).controls.analyteInfo['controls']['idx'].invalid
+                || this.duplicateAnalytes.indexOf(this.labConfigurationAnalytes[pointIndex].id) >= 0)" class="red">
+                  {{'ANALYTEENTRY.SAMEANALYTE' | translate}}
+                </div>
+                <div id="spec_analyteentry_unabletomakethechange" *ngIf="isUnableToMakeTheChangeError" class="red">{{'ANALYTEENTRY.NOCHANGE' | translate}}
+                </div>
+                <div id="spec_analyteentry_changesnotallowed" *ngIf="isChangesNotAllowedError" class="red">{{'ANALYTEENTRY.NOTALLOWED' | translate}}
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <!-- /column -->
+      <div class="column point-summary-column" formGroupName="defaultControls" [hidden]="!showSettings">
+        <div *ngIf="showSettings">
+          <div [hidden]="summaryDataEntry"
+            *ngIf="hasPermissionToAccess([permissions.EvalMeanSDCV, permissions.EvalMeanSDCVViewOnly])">
+            <h6 class="mat-h6 mb-0">{{'ANALYTEENTRY.DATAOPTIONS' | translate}}</h6>
+            <div class="flex bdr mb-10 pb-15"></div>
+            <div class="flex space-between">
+              <label>{{'ANALYTEENTRY.MEANSD' | translate}}</label>
+            </div>
+            <div class="flex alignend mt-15">
+              <button mat-stroked-button color="primary" (click)="onSubmit(analyteForm?.value, true)">{{'ANALYTEENTRY.SETVALUES' | translate}}</button>
+            </div>
+          </div>
+          <div class="flex bdr mb-15 pb-15"></div>
+          <unext-spc-rules-component id="spec_spcruleselement" [settings]="settingsNew" [maxLevelInUse]="maxLevelInUse"
+            *ngIf="hasPermissionToAccess([permissions.RulesChanges, permissions.AnalyteEditViewOnly])" [showSpcRules]="!summaryDataEntry"
+            [disableForm]="hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])" (isFormValidEmitter)="setSpcValidity($event)"
+            (rulesPristineEmitter)="checkRulesPristine($event)">
+          </unext-spc-rules-component>
+        </div>
+      </div>
+      <!-- /column -->
+    </form>
+    <div *ngIf="!showSettings" class="text-center">
+        <span class="br-text-primary link dontseeanalyte" id="spec_dontSeeAnalyte"
+        [checkForPermission]="{'permissionsAllowed':[permissions.AnalyteAdd, permissions.AnalyteEdit],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+        (click)="requestNewConfiguration(newRequestConfigType.Analyte)">
+        {{'ANALYTEENTRY.SEEANALYTE' | translate}}
+        </span>
+    </div>
+
+    <div class="column-left-450 archive-analyte-section">
+      <div class="column">
+        <div class="ctn-archived-toggle" [formGroup]="analyteForm" *ngIf="hideArchiveToggle() && hasPermissionToAccess([permissions.Archiving])">
+          <label>{{'ANALYTEENTRY.ARCHIVEANALYTE' | translate}}</label>
+          <mat-slide-toggle color="primary" name="archivedItems" formControlName="archived" class="archive-toggle"
+            id="spec_archive" (change)="onArchiveToggle($event,content)" [disabled]="hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])"></mat-slide-toggle>
+        </div>
+      </div>
+    </div>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-icon-button class="icn-delete" id="spec_delete" *ngIf="!hasAnalyteDataPoints && showSettings && hasPermissionToAccess([permissions.AnalyteDelete])
+    && !hasPermissionToAccess([permissions.AnalyteAddViewOnly, permissions.AnalyteEditViewOnly])"
+      (click)="deleteAnalyte()">
+      <mat-icon [svgIcon]="icons.delete[24].name"></mat-icon>
+    </button>
+    <button mat-button color="primary" class="cancel-button" (click)="resetForm()"
+      [checkForPermission]="{'permissionsAllowed':[permissions.AnalyteAdd, permissions.AnalyteEdit],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+      [disabled]="isFormSubmitting || checkFormDefaultStatus()">{{'ANALYTEENTRY.CANCEL' | translate}}</button>
+    <!--  AJT 1/19/2022 unityDebounceClicks added as a directive for bug fix 228817
+       throttletime is milliseconds and overrides the default 500 in the directive
+       can be customized as needed to eliminate duplicates from fast clicks by user -->
+    <button unityDebounceClicks mat-button mat-flat-button color="primary" type="submit"
+      [checkForPermission]="{'permissionsAllowed':[permissions.AnalyteAdd, permissions.AnalyteEdit],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+      [disabled]="checkFormDefaultStatus() || isFormSubmitting" (throttledClick)="onSubmit(analyteForm?.value, false, showSettings)"
+      [throttleTime]="500">
+      <span *ngIf="!showSettings">{{'ANALYTEENTRY.ADD' | translate}}</span>
+      <span *ngIf="showSettings">{{'ANALYTEENTRY.UPDATE' | translate}}</span>
+    </button>
+  </mat-card-actions>
+</mat-card>

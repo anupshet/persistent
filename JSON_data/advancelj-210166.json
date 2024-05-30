@@ -1,0 +1,27 @@
+{
+    "DEV":{"URL": "http://localhost:4200/",
+    "Username": "sudhir_paranjape+dev263134@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sudhir",
+    "Department":"AdvancedLJ",
+    "Instrument":"PBI-210166",
+    "Control":"Assayed Chemistry",
+    "Analyte":"Cortisol",
+    "Analyte2":"Digoxin",
+    "Analyte3":"Folate",
+    "Analyte4":"FSH"
+},
+"QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "Username": "UnityNextRegressionTestUser+1@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Regression",
+    "Department": "AdvancedLJ",
+    "Instrument": "Alinity c",
+    "Control": "Cardiac Markers Plus LT",
+    "Analyte": "Amylase",
+    "Analyte2":"Ammonia",
+    "Analyte3":"Cholesterol, HDL",
+    "Analyte4":"Cholesterol, Total"
+}
+}

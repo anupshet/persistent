@@ -1,0 +1,30 @@
+{
+  "DEV":
+  {
+    "URL": "https://unity-dev.qcnet.com/login",
+		"Username": "tushar_adeshara+accountmanager@bio-rad.com",
+		"Password": "Welcome1",
+		"FirstName": "Tushar",
+    "UserNameColumn":"Name",
+		"ColumnNo1": "1",
+		"EmailColumn": "Email",
+		"ColumnNo2": "2",
+		"RoleColumn": "Role",
+		"ColumnNo3": "3",
+		"TerritoryIDColumn": "Territory Id",
+    "ColumnNo4":"4",
+    "NoOfItemsPerPage":20,
+		"Country":"Albania",
+		"KeywordLab": "demo",
+		"KeywordAccount": "abc",
+		"KeywordContact": "sample",
+		"KeywordGroup": "good",
+		"KeywordLicense": "connectivity",
+		"KeywordAddress": "pune",
+		"KeywordAccountNumber": "100",
+		"AccountNameColumn": "Account Name",
+    "AccountNumberColumn": "Account Number",
+		"AddressColumn": "Address",
+		"LocationColumn": "Location(S)"
+  }
+}

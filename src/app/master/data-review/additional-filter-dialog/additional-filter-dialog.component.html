@@ -1,0 +1,43 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+
+<div class="additional-filter-dialog-container">
+    <div id="menuselector" #menuTrigger="matMenuTrigger" (menuClosed)="closeMenu()" [matMenuTriggerFor]="menuLocations">
+        <mat-icon [svgIcon]="navIconName" class="filter-icon"></mat-icon>
+        <span class="mat-small">
+        </span>
+    </div>
+
+    <div class="mat-col-container">
+        <form [formGroup]="additionalFilterForm">
+            <mat-menu #menuLocations="matMenu" xPosition="before" class="additional-filter-dialog menu-box">
+                <div class="data-col-spec"></div>
+                <div class="addtional-filter-menu" (click)="$event.stopPropagation();">
+                    <div class="filter-header">
+                        <span class="additional-filter-title">{{'ADDITIONALFILTER.ADDITIONALFILTERS' | translate }}</span>
+                        <span class="close-icon" (click)="closeMenu()">
+                            <mat-icon [svgIcon]="icons.close[24].name" clss="close-icon"></mat-icon>
+                        </span>
+                    </div>
+                    <div class="additional-filter-row">
+                        <div class="additional-filter-row-container">
+                            <div class="action-item">
+                                <mat-checkbox class="ml-10 checkbox-name form-control" formControlName="last30DaysCheckbox" value={{last30DaysValue}} (change)="onChange($event)"
+                                    name="last30DaysValue"><span class="checkbox-text" >{{'ADDITIONALFILTER.LAST30DAYS' | translate }}</span></mat-checkbox>
+                                <span class="filter-result-icon-last30Days">{{filterCountResult?.last30Days}}</span>
+                            </div>
+                            <div class="action-item">
+                                <mat-checkbox class="ml-10 checkbox-name form-control" formControlName="violationsCheckbox" value={{violationsValue}} (change)="onChange($event)"
+                                    name="violationsValue">{{'ADDITIONALFILTER.VIOLATIONS' | translate }}</mat-checkbox>
+                                <span class="filter-result-icon-violation">{{filterCountResult?.violations}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-line"></div>
+                    <div class="filter-bottom">
+                        <button type="submit" class="filter-update" [disabled]="updateButtonDisabled" (click)="onUpdate()">{{'ADDITIONALFILTER.UPDATE' | translate }}</button>
+                    </div>
+                </div>
+            </mat-menu>
+        </form>
+    </div>
+</div>

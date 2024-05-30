@@ -1,0 +1,23 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div id="login-body" *ngIf="isVisible">
+  <div *ngIf="isIE11">
+    <unext-banner-info (closeClicked)="isIE11 = false"></unext-banner-info>
+  </div>
+  <div class="Rectangle">
+    <span class="Unity-Next"> Unity Next </span>
+    <div class="right-side-rectangle">
+      <div class="nav-bar-lang">
+        <unext-nav-bar-login-lang [navIconName]="icons.lang[24].name"></unext-nav-bar-login-lang>
+      </div>
+      <img src="assets/images/logo.svg" class="logo">
+    </div>
+  </div>
+
+  <div id="login-container" *ngIf="!isAuthenticated"></div>
+  <div id="error-message" *ngIf="!isAuthenticated && hasLicenseExpired">
+    <mat-error>
+      {{'LOGINCOMPONENT.LICENSE' | translate}}
+    </mat-error>
+  </div>
+</div>
+<!-- </div> -->

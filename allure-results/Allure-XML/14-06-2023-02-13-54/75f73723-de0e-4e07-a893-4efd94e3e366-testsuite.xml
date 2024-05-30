@@ -1,0 +1,62 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1686732240803' stop='1686732329830'>
+    <name>Test Suite:Verify Error Dialog box for Selection parameter filters on Report page</name>
+    <title>Test Suite:Verify Error Dialog box for Selection parameter filters on Report page</title>
+    <test-cases>
+        <test-case start='1686732240806' status='failed' stop='1686732329825'>
+            <name>Test case 1 :Verify Search logic</name>
+            <title>Test case 1 :Verify Search logic</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1686732240951' status='passed' stop='1686732240951'>
+                    <name>Test case 1:Verify Search logic for Location and Department"</name>
+                    <title>Test case 1:Verify Search logic for Location and Department"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686732240952' status='passed' stop='1686732240952'>
+                    <name>Test case 2:Verify Presence of error dialog when clicked on clear selection button"</name>
+                    <title>Test case 2:Verify Presence of error dialog when clicked on clear selection button"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686732246887' status='passed' stop='1686732246887'>
+                    <name>Cookies not Displayed</name>
+                    <title>Cookies not Displayed</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686732280226' status='passed' stop='1686732280227'>
+                    <name>Reports Icon Displayed</name>
+                    <title>Reports Icon Displayed</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686732280228' status='passed' stop='1686732280228'>
+                    <name>Clicked on reports Icon</name>
+                    <title>Clicked on reports Icon</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686732320307' status='failed' stop='1686732320307'>
+                    <name>Reports icon is not displayed</name>
+                    <title>Reports icon is not displayed</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Cookies not displayed' source='31452ab5-ce01-47f8-afb9-ceb8b274c5b7-attachment.png' type='image/png' size='97954'/>
+                <attachment title='FailedStep' source='b0493247-f8c0-408d-b126-57b714d28b6d-attachment.png' type='image/png' size='105704'/>
+            </attachments>
+            <failure>
+                <message>Expected false to be true.</message>
+                <stack-trace>Error: Failed expectation
+                    at C:\Users\anup_shet\Desktop\Required\Git Repo\FEcode\cdg-unity-next-spa\SPA\e2e\dynamic-reports-phase2\UN-15677-SearchLogic.spec.ts:30:25
+                    at runMicrotasks (&lt;anonymous>)
+                    at processTicksAndRejections (internal/process/task_queues.js:93:5)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

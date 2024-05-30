@@ -1,0 +1,102 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../../../../assets/scss/variables";
+
+.filter-one-component {
+  padding: 28px 28px 0px 28px;
+  margin: 15px 0px;
+  background: $white;
+  border-radius: 5px;
+
+  .selection-parameter {
+    display: flex;
+
+    .mat-form-field-report-type {
+      width: 250px;
+      margin: 0px 60px 0px 0px;
+    }
+
+    .mat-form-field-date {
+      width: 250px;
+      margin: 0px 60px 0px 0px;
+    }
+
+  }
+
+  .top {
+    display: flex;
+    align-items: center;
+  }
+
+  .btn-reset {
+    text-transform: uppercase;
+    color: $blue;
+    display: flex;
+    width: 120px;
+    align-items: center;
+    margin-bottom: -5px;
+    cursor: pointer;
+    letter-spacing: 1px;
+
+    span {
+      font-size: 12px;
+    }
+  }
+
+  .btns-reporting {
+    display: flex;
+
+    .selection-msg {
+
+      position: absolute;
+      margin: -23px 0px 0px 0px;
+      font-size: 13px;
+      color: $selection-msg;
+
+    }
+
+  }
+
+  .btn-cancel {
+    text-transform: uppercase;
+    color: $blue;
+    border: 1px solid $blue;
+    height: 40px;
+    margin-right: 14px;
+    margin-top: 5px;
+    font-size: 14.6px;
+    font-weight: bolder;
+    min-width: 120px;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:disabled {
+      opacity: 0.5;
+      color: $gray-600;
+      border: 1px solid $gray-600;
+    }
+  }
+
+  .btn-create {
+    text-transform: uppercase;
+    color: $white;
+    border: 1px solid $blue;
+    height: 40px;
+    margin-right: 10px;
+    margin-top: 5px;
+    font-size: 14.6px;
+    font-weight: bolder;
+    min-width: 120px;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:disabled {
+      color: $white;
+      background: $br-slidegen-grey !important;
+      border: 1px solid $br-slidegen-grey !important;
+    }
+  }
+}

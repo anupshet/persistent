@@ -1,0 +1,102 @@
+/*© 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.*/
+@import "../../../../../assets/scss/variables";
+@import "../../../../../assets/scss/base/variables-peak";
+@import "../../../../../assets/scss/mixins";
+@import "../instructions.component.scss";
+
+.instructions-rules-component {
+  padding: 40px 34px 20px 208px;
+  letter-spacing: 0.16px;
+
+  .heading {
+    font-size: 25px;
+    font-weight: 500;
+    margin: 10px 0px;
+  }
+
+  mat-radio-button {
+    margin: 8px 35px 4px 0;
+  }
+
+  .error-msg {
+    margin: 15px 0px;
+    font-size: 18px;
+    color: $carmine;
+  }
+
+  .ctn-form {
+    padding: 0px 30px 0px 0px;
+    width: 75%;
+    position: absolute;
+    height: 80%;
+    margin-left: -168px;
+
+    .dynamic-form {
+      position: relative;
+      height: 90%;
+
+      perfect-scrollbar.dynamic-form-scrollbar {
+        height: 87% !important;
+      }
+    }
+  }
+
+  .scrollbar-wrapper {
+    height: calc(100vh - 320px);
+  }
+
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .radio-btn-col {
+      flex: 0 0 20px;
+    }
+
+    .left-col,
+    .right-col {
+      width: 45%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    mat-error {
+      text-align: end;
+    }
+
+    mat-form-field {
+      width: 175px;
+      max-width: 190px;
+      margin: 0 15px auto auto;
+
+      .mat-form-field-infix {
+        padding-top: 0;
+      }
+    }
+
+    span {
+      display: inline-block;
+      width: 190px;
+      margin-right: 30px;
+      color: rgba($black, 0.8);
+    }
+  }
+
+  .fix-position-1 {
+    margin-right: -32px;
+  }
+
+  .buttons {
+    float: right;
+
+    .mat-button {
+      margin: 10px 0px 0px 90px;
+    }
+  }
+}
+
+::ng-deep .panel-width.mat-select-panel {
+  min-width: fit-content !important;
+}

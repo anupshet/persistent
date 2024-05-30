@@ -1,0 +1,74 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<mat-dialog-content class="duplicate-node-entry-component">
+  <div class="flex flex-end">
+    <button mat-icon-button class="dialog-close-button spec-close-button" (click)="closeDialog()">
+      <mat-icon [svgIcon]="icons.close[48].name" class=""></mat-icon>
+    </button>
+  </div>
+  <h2 mat-dialog-title>{{'DUPLICATENODEENTRY.STARTNEWLOTOF' | translate}}
+    {{ duplicateNodeInfo?.sourceNode.displayName }} {{ currentLotNumber }}</h2>
+  <form *ngIf="duplicateNodeInfoCounter > 0" [formGroup]="duplicateFormGroup">
+    <div class="overflow-hidden" formArrayName="duplicateNodeArray" *ngIf="lotList?.length >= 1 || isNonBrLot; else tplNoLots">
+      <div *ngFor="let node of duplicateControlGroupsGetter.controls; let  index = index" [formGroupName]="index">
+        <br-select *ngIf="lotList?.length >= 1" formControlName="lotNumber" class="spc_lotNumberSelect" [data]="lotList"
+          [displayAttribute]="'lotWithExpirationDate'" [emitValue]="emitValue" [placeholder]="selectLotPlaceholder"
+          [showAsDropdown]="true" (selectedChanged)="onLotChange($event)">
+        </br-select>
+        <div *ngIf="(!lotList || lotList?.length <= 0) && isNonBrLot" class="input-row">
+          <unext-custom-lot-management #customLotManagement (formData)="checkNonBrMasterLotForm($event)"
+            [lotsList]="allAvailableLots"></unext-custom-lot-management>
+        </div>
+        <mat-checkbox class="ml-10 spec_retainFixedCvCheckbox" formControlName="retainFixedCV">
+            {{'DUPLICATENODEENTRY.RETAINFIXED' | translate}}
+        </mat-checkbox>
+        <mat-radio-group class="ml-10 radio-group spec_duplicateInstRadio" formControlName="duplicateLotInstruments"
+          (change)="onCurrentMultipleInstrumentChange($event.value)">
+            <mat-radio-button class="spec_onThis" color="primary" [value]="operationType.Copy">
+                {{'DUPLICATENODEENTRY.ONTHISINSTRUMRNT' | translate}} ({{ duplicateNodeInfo.parentDisplayName }})
+            </mat-radio-button>
+          <mat-radio-button class="spec_onMultiple" color="primary" [value]="operationType.Duplicate"
+            [disabled]="((lotList?.length > 0) && !duplicateFormGroup.controls?.duplicateNodeArray?.controls[index]?.get('lotNumber').value) || (isNonBrLot && !isCustomMasterLotFormValid && instrumentList?.length === 1) || instrumentList?.length < 2">
+            {{'DUPLICATENODEENTRY.ONMULTIPLE' | translate}}</mat-radio-button>
+          <p class="grey ml-25">{{'DUPLICATENODEENTRY.RETAINALLANALYTES' | translate}}</p>
+        </mat-radio-group>
+        <mat-checkbox class="all-instruments spec_allInstrumentsCheckbox"
+          *ngIf="instrumentList && instrumentList.length >= countToShowSelectAll && showInstrumentCheckboxes"
+          formControlName="selectAllInstruments" (change)="selectAllInstruments($event)">
+            <strong>{{'DUPLICATENODEENTRY.ALLINSTRUMENTS' | translate}}</strong>
+        </mat-checkbox>
+        <div formArrayName="instrumentsArray" class="instruments-array">
+
+          <div *ngFor="let instrument of instrumentArrayGetter?.controls; let i = index;" [formGroupName]="i"
+            class="flex-checkbox mt-10">
+            <div class="mb-5" *ngIf="instrumentArrayGetter?.controls?.length > 1">
+              <mat-checkbox class="spec_instrumentCheckbox" formControlName="instrument"
+                (change)="onSelectInstrument($event)">
+                <span class="instrument-name">{{ getInstrumentName(instrumentList[i]) }}</span>
+              </mat-checkbox>
+              <span *ngIf="instrumentList[i]?.departmentName" class="department-name small grey block ml-25">
+                {{instrumentList[i]?.departmentName}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #tplNoLots>
+      <p class="mt-40 mb-10">{{'DUPLICATENODEENTRY.NEWLOTS' | translate}}</p>
+      <p>{{'DUPLICATENODEENTRY.CONTACT' | translate}}</p>
+    </ng-template>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions
+  *ngIf="(lotList?.length >= 1 || ((!lotList || lotList?.length <= 0) && isNonBrLot))"
+  class="flex flex-right pb-15">
+    <button mat-button color="primary" (click)="resetForm()"
+            [disabled]="!(duplicateFormGroup.valid && isCustomMasterLotFormValid)">
+        {{'DUPLICATENODEENTRY.CANCEL' | translate}}
+    </button>
+    <button mat-flat-button color="primary" type="submit"
+            [disabled]="!(duplicateFormGroup.valid && isCustomMasterLotFormValid && hasPermissionToAccess([permissions.ControlAdd])) || hasPermissionToAccess([permissions.StartNewLotViewOnly]) || !hasPermissionToAccess([permissions.StartNewLot])"
+            (click)="duplicateNode(duplicateFormGroup.value)" class="spec_submit">
+        {{'DUPLICATENODEENTRY.STARTNEWLOT' | translate}}
+    </button>
+</mat-dialog-actions>

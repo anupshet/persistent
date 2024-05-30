@@ -1,0 +1,47 @@
+@import "../../../../../assets/scss/base/variables-peak";
+
+.flex-ctn-1 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .flex-item-1 {
+    span {
+      font-weight: bold !important;
+    }
+
+    time {
+      margin-right: 40px;
+      font-weight: bold;
+      display: inline-block;
+      min-width: 120px;
+    }
+  }
+
+  .flex-item-2 {
+    text-align: right;
+
+    button {
+      font-weight: bold;
+      font-size: $custom-type-size-base;
+    }
+  }
+}
+
+.details {
+  ul {
+    padding-left: 10px;
+  }
+
+  time {
+    width: 100%;
+    min-width: 200px;
+  }
+
+  span {
+    margin-left: 40px;
+  }
+}
+.cursor-pointer {
+  cursor: pointer;
+}

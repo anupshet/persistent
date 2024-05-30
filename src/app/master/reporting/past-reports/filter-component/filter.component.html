@@ -1,0 +1,57 @@
+<!-- /* © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.*/ -->
+<div class="filter-row">
+  <form [formGroup]="pastReportsFormGroup">
+    <div class="flex mr-25" [ngClass]="{'sideNavExpanded': isSideNavExpanded}">
+      <!-- Start report type -->
+      <mat-form-field appearance="fill" class="mat-form-field-report-type">
+        <mat-label>{{'FILTERREPORT.TYPEOF' | translate}}</mat-label>
+        <mat-select formControlName="reportTypes" (selectionChange)="reportsChange($event)" multiple #reportMat>
+          <div (mouseleave)="reportMat.close()">
+            <mat-option *ngFor="let report of reportList; let i = index;" [key]="report.name"
+              [value]="report.value">{{report.name}}</mat-option>
+          </div>
+        </mat-select>
+      </mat-form-field>
+      <!-- End report type -->
+
+      <!-- Start Year -->
+      <mat-form-field appearance="fill">
+        <mat-label>{{'FILTERREPORT.YEAR' | translate}}</mat-label>
+        <mat-select formControlName="year" (selectionChange)="onSelectionChangeYear($event)">
+          <mat-option *ngFor="let r of listYear" [value]="r">{{r}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- End Year -->
+
+      <!-- Start Month -->
+      <mat-form-field appearance="fill">
+        <mat-label>{{'FILTERREPORT.MONTH' | translate}}</mat-label>
+        <mat-select formControlName="month" (selectionChange)="onSelectionChangeMonth($event)">
+          <mat-option *ngFor="let r of listMonth" [value]="r">{{r | numberToMonth}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- End Month -->
+
+      <div>
+        <!-- Start Signed By -->
+        <mat-form-field appearance="fill" class="mat-form-field-report-type">
+          <mat-label>{{'FILTERREPORT.SIGNEDBY' | translate}}</mat-label>
+          <mat-select formControlName="signedBy">
+            <mat-option *ngFor="let r of signedBylist; let i = index;" [value]="r">{{r}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- End Signed By -->
+
+        <!-- Start Refresh -->
+        <div class="refresh-container ml-20">
+          <span (click)="resetForm()">
+            <mat-icon class="refrresh-icon">refresh</mat-icon>
+            <span class="refresh"> {{'FILTERREPORT.RESET' | translate}}</span>
+          </span>
+        </div>
+      </div>
+
+    </div><!-- flex-->
+  </form>
+</div>
+<!-- End Filter Component -->

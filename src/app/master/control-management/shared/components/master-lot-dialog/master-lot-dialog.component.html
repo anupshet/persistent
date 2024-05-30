@@ -1,0 +1,11 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<h2 mat-dialog-title>{{ data?.title }}</h2>
+<mat-dialog-content class="mat-typography">
+  <unext-custom-lot-management #customLotManagement [data]="data?.formData" [lotsList]="data?.lotsList" (isFormUpdated)="formUpdated($event)"></unext-custom-lot-management>
+</mat-dialog-content>
+<div class="button-section">
+  <mat-dialog-actions align="end">
+    <button class="cancel-btn" mat-button color="primary" (click)="onCancel()">{{ cancelButtonText }}</button>
+    <button mat-raised-button color="primary" (click)="onUpdateData()" [disabled]="customLotManagement?.masterLotDataForm?.invalid || masterLotFormStatus || !hasPermissionToAccess([permissions.NonBRLotManagement])">{{submitButtonText}}</button>
+  </mat-dialog-actions>
+</div>

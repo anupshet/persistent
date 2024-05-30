@@ -1,0 +1,73 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../../../../assets/scss/variables';
+
+.connectivity-status-component {
+	background-color: $gray-200;
+
+	h2 {
+		text-align: center;
+	}
+
+	.status-wrapper-pagination {
+		height: calc(100vh - 190px);
+	}
+
+	.status-wrapper {
+		height: calc(100vh - 135px);
+	}
+}
+
+.conn-scrollbar {
+	overflow-y: scroll;
+}
+
+.conn-scrollbar::-webkit-scrollbar {
+	-webkit-appearance: none;
+}
+
+.conn-scrollbar::-webkit-scrollbar:vertical {
+	width: 13px;
+}
+
+.conn-scrollbar::-webkit-scrollbar:horizontal {
+	height: 13px;
+}
+
+.conn-scrollbar::-webkit-scrollbar-thumb {
+	border-radius: 8px;
+	border: 2px solid white;
+	/* should match background, can't be transparent */
+	background-color: #999;
+}
+
+.pagination-container {
+	margin: 0px 45px 10px 45px;
+
+	.custom-pagination {
+		display: flex;
+		justify-content: center;
+		padding: 10px 0;
+
+		.pagination-button {
+			margin: 0 10px;
+			padding: 0;
+			min-width: 45px;
+			background: $blue-darker;
+			color: $white;
+		}
+
+		.mat-stroked-button.mat-primary.selected {
+			background: $white;
+			border: 1px solid rgba($gray-600, 0.4);
+			color: $blue-darker;
+
+			&.disable-button {
+				color: $gray-600;
+			}
+		}
+
+		.rotateArrow {
+			transform: rotate(180deg);
+		}
+	}
+}

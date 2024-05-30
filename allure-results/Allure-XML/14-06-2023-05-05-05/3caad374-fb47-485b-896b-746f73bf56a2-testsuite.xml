@@ -1,0 +1,42 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1686742514857' stop='1686742555571'>
+    <name>Test Suite:Verify Error Dialog box for Selection parameter filters on Report page</name>
+    <title>Test Suite:Verify Error Dialog box for Selection parameter filters on Report page</title>
+    <test-cases>
+        <test-case start='1686742514860' status='failed' stop='1686742555565'>
+            <name>Test case 1 :Verify Search logic</name>
+            <title>Test case 1 :Verify Search logic</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1686742515002' status='passed' stop='1686742515003'>
+                    <name>Test case 1:Verify Search logic for Location and Department"</name>
+                    <title>Test case 1:Verify Search logic for Location and Department"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686742515003' status='passed' stop='1686742515003'>
+                    <name>Test case 2:Verify Presence of error dialog when clicked on clear selection button"</name>
+                    <title>Test case 2:Verify Presence of error dialog when clicked on clear selection button"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686742555327' status='failed' stop='1686742555327'>
+                    <name>Reports icon is not displayed</name>
+                    <title>Reports icon is not displayed</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='FailedStep' source='40afcf11-dec3-4bea-8c39-47efc3fa183f-attachment.png' type='image/png' size='34063'/>
+            </attachments>
+            <failure>
+                <message>Expected false to be true.</message>
+                <stack-trace>Error: Failed expectation
+                    at C:\Users\anup_shet\Desktop\Required\Git Repo\FEcode\cdg-unity-next-spa\SPA\e2e\dynamic-reports-phase2\UN-15677-SearchLogic.spec.ts:33:23
+                    at processTicksAndRejections (internal/process/task_queues.js:93:5)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

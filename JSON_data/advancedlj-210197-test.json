@@ -1,0 +1,16 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "Username": "UnityNextRegressionTestUser+1@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Regression",
+    "Department": "AdvancedLJ",
+    "Instrument": "Alinity c",
+    "Control": "Cardiac Markers Plus LT",
+    "Analyte": "Ammonia",
+    "image1": "YaxisDropdown-test",
+    "image2": "DefaultYaxisSelection-test",
+    "image3": "ChartsAsPerCumulativeMean-test",
+    "image4": "ChartsAsPerEvalMean-test"
+  }
+}

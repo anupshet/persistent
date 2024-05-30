@@ -1,0 +1,61 @@
+ <!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="main-area">
+  <perfect-scrollbar>
+    <mat-accordion class="reports-list">
+      <mat-expansion-panel hideToggle="true" #expandPanel [disabled]="true"
+        *ngFor="let report of reports; let i = index">
+
+        <mat-expansion-panel-header *ngIf="reports && report.year === year">
+          <mat-panel-description>
+            <div class="flex-ctn-1">
+              <div class="flex-item-1">
+                <time
+                  datetime="01-01">{{reportHelperService.convertMonthYearToDate(report.month - 1, report.year) | uNextDate:'MMMM yyyy'}}</time>
+                <span class="mat-body-1">{{'REPORTPANEL.ALLREPORTS' | translate}}</span>
+                <span class="mat-body-1" *ngIf="isMonthlyEvalReport">{{'REPORTPANEL.EVALUATION' | translate}}</span>
+                <span class="mat-body-1" *ngIf="isLabComparison">{{'REPORTPANEL.LABCOMPARISON' | translate}}</span>
+              </div>
+              <div class="flex-item-2">
+                <button mat-icon-button color="primary" (click)="expandPanel.expanded = !expandPanel.expanded">
+                  <span class="count">({{report.reportMetaList.length.valueOf()}})</span>
+                  <i class="icon-chevron-down"></i>
+                </button>
+              </div>
+            </div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="details">
+          <ul>
+            <!-- (PART1) This is the first link that would initiate grabbing the base64 string needed for downloading -->
+            <li *ngFor="let reportMeta of report.reportMetaList">
+              <a *ngIf="!reportMeta.reportResultInfo.jsonFileUrl" class="mat-body-1" target="_blank"
+                (click)="prepDownloadButton(reportMeta)" class="cursor-pointer">
+                <time datetime="01-01">{{reportMeta.reportGeneratedTime | uNextDate: 'MMMM d, y, hh:mm a'}}</time>
+              </a>
+              <!-- (PART2) If the download link above gets clicked it gets replaced with a generated href URL
+                So we dont have to redownload the base64
+              -->
+              <a *ngIf="reportMeta.reportResultInfo.jsonFileUrl" class="btn btn-default" [download]="generatedReportName(reportMeta)"
+                [href]="reportMeta.reportResultInfo.jsonFileUrl">
+                <time datetime="01-01">{{reportMeta.reportGeneratedTime | uNextDate: 'MMMM d, y, hh:mm a'}}</time>
+              </a>
+              <span class="mat-body-1">{{reportMeta.requestedBy.fullName || 'unKnown'}}</span>
+              <!-- (PART3!) this hidden divClick gets us around the 2nd click problem when streaming and downloading
+                It gets called
+              -->
+              <a #divClick style="visibility: hidden;" *ngIf="reportMeta.reportResultInfo.jsonFileUrl" class="btn btn-default" [download]="generatedReportName(reportMeta)"
+                [href]="reportMeta.reportResultInfo.jsonFileUrl"
+                placeholder="{{'UNITYREPORT.REPORT' | translate}}">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <!-- Not being used right now as of 2020/02/07
+      <div class="start-line">
+      <button>{{'DUPLICATENODEENTRY.STARTNEWLOT' | translate}}</button>
+    </div> -->
+  </perfect-scrollbar>
+</div>

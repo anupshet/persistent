@@ -1,0 +1,58 @@
+// Style guide: base.utilities
+
+
+@mixin base\utilities {
+  .fake-divider {
+    width: 1px;
+    height: 21px;
+    background: $gray-200;
+    display: inline-block;
+    position: relative;
+    margin: 0 $custom-space-small;
+  }
+
+  .required {
+    @extend %smaller-text;
+    color: $gray-600;
+  }
+
+  .upper-case {
+    text-transform: uppercase;
+  }
+
+  .label {
+    @extend %smaller-text;
+  }
+
+  label {
+    @extend %label-text;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .flex{
+    display: flex; 
+    &.item-center{
+      align-items: center;
+    }
+    &.space-between{
+      justify-content: space-between;
+      align-items: center;
+    }
+    &.flex-end{
+    justify-content: flex-end;
+    }
+  }
+  .w-60{
+    width: 60px;
+  }
+  .w-50{
+    width: 50px;
+  }
+  .w-46{
+    width: 46px;
+  }
+  .h-26{
+    height: 26px;
+  }
+}

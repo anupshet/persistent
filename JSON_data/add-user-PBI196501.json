@@ -1,0 +1,33 @@
+{
+  "DEV": {
+    "URL": "https://unity-dev.qcnet.com",
+    "QCPAdmin": "sudhir_paranjape+devqcpadmin@bio-rad.com",
+    "UnityNextAdmin": "sudhir_paranjape+devdl@bio-rad.com",
+    "LotViewerAdmin": "sudhir_paranjape+lotadmindev@bio-rad.com",
+    "Password": "Welcome1",
+    "QCPAdminFirstName": "Sudhir",
+    "QCPAdminLastName": "PAdmin",
+    "QCPDailyFirstName": "Sudhir",
+    "QCPDailyLastName": "PDaily",
+    "CTSFirstName": "Sudhir",
+    "CTSLastName": "PCTS",
+    "MarketingFirstName": "Sudhir",
+    "MarketingLastName": "PMKT",
+    "UnityNextAdminFirstName": "Sudhir",
+    "UnityNextAdminLastName": "Paranjape",
+    "UnityNextUserFirstName": "SudhirUser",
+    "UnityNextUserLastName": "ParanjapeUser",
+    "LotViewerAdminFirstName": "Sudhir",
+    "LotViewerAdminLastName": "Paranjape",
+    "LotViewerUserFirstName": "SudhirLotUser",
+    "LotViewerUserLastName": "ParanjapeLotUser",
+    "Email": "sudhirparanjape",
+    "QCPAdminRole": "QCPAdmin",
+    "QCPDailyUserRole": "QCPDailyUser",
+    "MarketingUserRole": "MarketingUser",
+    "CTSUserRole": "CTSUser"
+  },
+  "QA": {},
+  "DEV2": {},
+  "STAGE": {}
+}

@@ -1,0 +1,111 @@
+{
+  "uid" : "2520acf65c387529",
+  "name" : "Test case 1 :Verify Search logic",
+  "fullName" : "Test Suite:Verify Error Dialog box for Selection parameter filters on Report page.Test case 1 :Verify Search logic",
+  "historyId" : "b08c010dedd2371c46f7f918ae3e4959",
+  "time" : {
+    "start" : 1686836039114,
+    "stop" : 1686836113785,
+    "duration" : 74671
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "newBroken" : false,
+  "newPassed" : false,
+  "retriesCount" : 0,
+  "retriesStatusChange" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Test case 1:Verify Search logic for Location and Department\"",
+      "time" : {
+        "start" : 1686836039242,
+        "stop" : 1686836039242,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0,
+      "stepsCount" : 0,
+      "hasContent" : false
+    }, {
+      "name" : "Test case 2:Verify Presence of error dialog when clicked on clear selection button\"",
+      "time" : {
+        "start" : 1686836039243,
+        "stop" : 1686836039243,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0,
+      "stepsCount" : 0,
+      "hasContent" : false
+    }, {
+      "name" : "Cookies not Displayed",
+      "time" : {
+        "start" : 1686836084804,
+        "stop" : 1686836084804,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0,
+      "stepsCount" : 0,
+      "hasContent" : false
+    } ],
+    "attachments" : [ {
+      "uid" : "b86e17d61a6075bf",
+      "name" : "Cookies not displayed",
+      "source" : "b86e17d61a6075bf.png",
+      "type" : "image/png",
+      "size" : 97198
+    } ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 1,
+    "stepsCount" : 3,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "Test Suite:Verify Error Dialog box for Selection parameter filters on Report page"
+  }, {
+    "name" : "testClass",
+    "value" : "Test Suite:Verify Error Dialog box for Selection parameter filters on Report page"
+  }, {
+    "name" : "testMethod",
+    "value" : "Test case 1 :Verify Search logic"
+  }, {
+    "name" : "package",
+    "value" : "Test Suite:Verify Error Dialog box for Selection parameter filters on Report page"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "2520acf65c387529.json",
+  "parameterValues" : [ ]
+}

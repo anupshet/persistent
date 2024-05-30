@@ -1,0 +1,25 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<ng-container>
+<div class="nav-bar-lang">
+  <unext-nav-bar-lang [navIconName]="icons.langDark[24].name"></unext-nav-bar-lang>
+</div>
+<div class="cookie-disclaimer-dialog">
+  <h2 class="your-privacy-matters spec-your-privacy-matters"> {{'COOKIEDISCLAIMER.PRIVACY' | translate}} </h2>
+  <div>
+    <span class="cookie-disclaimer-message">
+      {{'COOKIEDISCLAIMER.BEFORE' | translate}}
+    </span>
+  </div>
+  <div>
+    &nbsp;
+  </div>
+  <div class="button-container">
+    <button class="accept-and-continue-button spec-accept-and-continue" mat-button mat-flat-button (click)="onAcceptAndContinue()">{{'COOKIEDISCLAIMER.ACCEPT' | translate}}</button>
+    <button class="decline-cookies-button spec-decline-cookies" mat-button mat-stroked-button color="primary"
+      (click)="onDeclineCookies()">{{'COOKIEDISCLAIMER.DECLINE' | translate}}</button>
+  </div>
+  <div class="preferences-container">
+    <button class="manage-cookie-preferences" mat-button (click)="onManageCookiePreferences()">{{'COOKIEDISCLAIMER.MANAGE' | translate}}</button>
+  </div>
+</div>
+</ng-container>

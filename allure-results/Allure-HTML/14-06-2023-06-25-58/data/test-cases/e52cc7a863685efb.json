@@ -1,0 +1,201 @@
+{
+  "uid" : "e52cc7a863685efb",
+  "name" : "Test case 1 :Verify Search logic",
+  "fullName" : "Test Suite:Verify Error Dialog box for Selection parameter filters on Report page.Test case 1 :Verify Search logic",
+  "historyId" : "b08c010dedd2371c46f7f918ae3e4959",
+  "time" : {
+    "start" : 1686747365491,
+    "stop" : 1686747443368,
+    "duration" : 77877
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "failed",
+  "statusMessage" : "Expected false to be true.",
+  "statusTrace" : "Error: Failed expectation\n                    at C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\SPA\\e2e\\dynamic-reports-phase2\\UN-15677-SearchLogic.spec.ts:30:25\n                    at runMicrotasks (<anonymous>)\n                    at processTicksAndRejections (internal/process/task_queues.js:93:5)",
+  "flaky" : false,
+  "newFailed" : false,
+  "newBroken" : false,
+  "newPassed" : false,
+  "retriesCount" : 0,
+  "retriesStatusChange" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "Expected false to be true.",
+    "statusTrace" : "Error: Failed expectation\n                    at C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\SPA\\e2e\\dynamic-reports-phase2\\UN-15677-SearchLogic.spec.ts:30:25\n                    at runMicrotasks (<anonymous>)\n                    at processTicksAndRejections (internal/process/task_queues.js:93:5)",
+    "steps" : [ {
+      "name" : "Test case 1:Verify Search logic for Location and Department\"",
+      "time" : {
+        "start" : 1686747365620,
+        "stop" : 1686747365620,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "Test case 2:Verify Presence of error dialog when clicked on clear selection button\"",
+      "time" : {
+        "start" : 1686747365621,
+        "stop" : 1686747365621,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "Cookies not Displayed",
+      "time" : {
+        "start" : 1686747372780,
+        "stop" : 1686747372780,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "Reports Icon Displayed",
+      "time" : {
+        "start" : 1686747405980,
+        "stop" : 1686747405980,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "Clicked on reports Icon",
+      "time" : {
+        "start" : 1686747405981,
+        "stop" : 1686747405981,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "Wrong Filter Selected",
+      "time" : {
+        "start" : 1686747433718,
+        "stop" : 1686747433718,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "keyword Entered",
+      "time" : {
+        "start" : 1686747433893,
+        "stop" : 1686747433893,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : false,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0
+    }, {
+      "name" : "Unable to Click Search button",
+      "time" : {
+        "start" : 1686747433917,
+        "stop" : 1686747433917,
+        "duration" : 0
+      },
+      "status" : "failed",
+      "statusMessage" : "Error: Failed expectation\n                    at C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\SPA\\e2e\\dynamic-reports-phase2\\UN-15677-SearchLogic.spec.ts:30:25\n                    at runMicrotasks (<anonymous>)\n                    at processTicksAndRejections (internal/process/task_queues.js:93:5)",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "hasContent" : true,
+      "stepsCount" : 0,
+      "shouldDisplayMessage" : true,
+      "attachmentsCount" : 0
+    } ],
+    "attachments" : [ {
+      "uid" : "d9a77c43dfebe64f",
+      "name" : "Cookies not displayed",
+      "source" : "d9a77c43dfebe64f.png",
+      "type" : "image/png",
+      "size" : 97198
+    }, {
+      "uid" : "396bae99a0afdd79",
+      "name" : "FailedStep",
+      "source" : "396bae99a0afdd79.png",
+      "type" : "image/png",
+      "size" : 94540
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "stepsCount" : 8,
+    "shouldDisplayMessage" : true,
+    "attachmentsCount" : 2
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "Test Suite:Verify Error Dialog box for Selection parameter filters on Report page"
+  }, {
+    "name" : "testClass",
+    "value" : "Test Suite:Verify Error Dialog box for Selection parameter filters on Report page"
+  }, {
+    "name" : "testMethod",
+    "value" : "Test case 1 :Verify Search logic"
+  }, {
+    "name" : "package",
+    "value" : "Test Suite:Verify Error Dialog box for Selection parameter filters on Report page"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "e52cc7a863685efb.json",
+  "parameterValues" : [ ]
+}

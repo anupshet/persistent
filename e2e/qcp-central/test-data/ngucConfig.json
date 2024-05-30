@@ -1,0 +1,18 @@
+{
+  "DEV2": {
+    "URL": "https://qcpcentraldev2aws.global.bio-rad.com/",
+    "Username": "amruta_karale+qcpdev2admin@bio-rad.com",
+    "Password": "Welcome1",
+    "MainMenu": "Manage Configuration",
+    "SubMenu": "NGUC Config",
+    "Instrument": "VITROS 250",
+    "NewAnalyte": "11-Deoxycortisol",
+    "NewInstrument": "VITROS 350",
+    "NewMethod": "Electrochemical",
+    "NewReagent": "10 mL vial",
+    "FileName": "oldConfigs.csv"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "QA": {}
+}

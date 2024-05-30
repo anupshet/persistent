@@ -1,0 +1,31 @@
+@import '../../../../../assets/scss/main';
+@import '../../../../../assets/scss/variables';
+
+:host {
+  width: 100%;
+}
+mat-icon{
+  &.addCircleOutline{
+    margin-right: $custom-space-xsmall;
+  }
+}
+.control-management-component-hdr {
+  display: flex;
+  margin: $custom-space-base 0 $custom-space-base + $custom-space-small $custom-space-base;
+  h2 {
+    font-size: 24px;
+    display: inline;
+    padding-right: 0;
+    margin: 0;
+  }
+  button {
+    color: $blue;
+    span {
+      text-transform: uppercase;
+    }
+    mat-icon {
+      fill: $blue;
+      margin-right: $custom-space-xsmall;
+    }
+  }
+}

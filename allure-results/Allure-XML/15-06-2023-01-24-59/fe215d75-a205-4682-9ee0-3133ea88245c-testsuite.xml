@@ -1,0 +1,80 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1686815705511' stop='1686815833582'>
+    <name>Test Suite:Verify Error Dialog box for Selection parameter filters on Report page</name>
+    <title>Test Suite:Verify Error Dialog box for Selection parameter filters on Report page</title>
+    <test-cases>
+        <test-case start='1686815705513' status='failed' stop='1686815833578'>
+            <name>Test case 1 :Verify Search logic</name>
+            <title>Test case 1 :Verify Search logic</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1686815705651' status='passed' stop='1686815705651'>
+                    <name>Test case 1:Verify Search logic for Location and Department"</name>
+                    <title>Test case 1:Verify Search logic for Location and Department"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686815705652' status='passed' stop='1686815705652'>
+                    <name>Test case 2:Verify Presence of error dialog when clicked on clear selection button"</name>
+                    <title>Test case 2:Verify Presence of error dialog when clicked on clear selection button"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686815705660' status='passed' stop='1686815705660'>
+                    <name>search button clicked</name>
+                    <title>search button clicked</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686815759411' status='passed' stop='1686815759411'>
+                    <name>Cookies not Displayed</name>
+                    <title>Cookies not Displayed</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686815793417' status='passed' stop='1686815793417'>
+                    <name>Reports Icon Displayed</name>
+                    <title>Reports Icon Displayed</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686815793418' status='passed' stop='1686815793418'>
+                    <name>Clicked on reports Icon</name>
+                    <title>Clicked on reports Icon</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686815821356' status='passed' stop='1686815821356'>
+                    <name>Right Filter Selected</name>
+                    <title>Right Filter Selected</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686815821507' status='passed' stop='1686815821507'>
+                    <name>keyword Entered</name>
+                    <title>keyword Entered</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686815824219' status='failed' stop='1686815824220'>
+                    <name>search functionaliyt failed</name>
+                    <title>search functionaliyt failed</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Cookies not displayed' source='8135be0c-2331-4667-98fe-21af8fdd4d33-attachment.png' type='image/png' size='97954'/>
+                <attachment title='FailedStep' source='65bd7fac-fbec-4366-878b-7f17466fa584-attachment.png' type='image/png' size='57578'/>
+            </attachments>
+            <failure>
+                <message>Expected false to be true.</message>
+                <stack-trace>Error: Failed expectation
+                    at C:\Users\anup_shet\Desktop\Required\Git Repo\FEcode\cdg-unity-next-spa\SPA\e2e\dynamic-reports-phase2\UN-15677-SearchLogic.spec.ts:30:25
+                    at runMicrotasks (&lt;anonymous>)
+                    at processTicksAndRejections (internal/process/task_queues.js:93:5)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

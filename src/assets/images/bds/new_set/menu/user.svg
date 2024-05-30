@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="74px" height="55px" viewBox="0 0 74 55" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>menu/icon/user</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="menu/icon/user">
+            <g id="icon-color/menu-background-default" fill="#414756">
+                <rect id="Rectangle" x="9.09494702e-13" y="0" width="74" height="55"></rect>
+            </g>
+            <path d="M37,21 C38.66,21 40,22.34 40,24 C40,25.66 38.66,27 37,27 C35.34,27 34,25.66 34,24 C34,22.34 35.34,21 37,21 Z M37,35.2 C34.5,35.2 32.29,33.92 31,31.98 C31.03,29.99 35,28.9 37,28.9 C38.99,28.9 42.97,29.99 43,31.98 C41.71,33.92 39.5,35.2 37,35.2 Z M37,18.5 C31.7564271,18.5 27.5,22.7564271 27.5,28 C27.5,33.2435729 31.7564271,37.5 37,37.5 C42.2435729,37.5 46.5,33.2435729 46.5,28 C46.5,22.7564271 42.2435729,18.5 37,18.5 Z M37,17 C43.072,17 48,21.928 48,28 C48,34.072 43.072,39 37,39 C30.928,39 26,34.072 26,28 C26,21.928 30.928,17 37,17 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

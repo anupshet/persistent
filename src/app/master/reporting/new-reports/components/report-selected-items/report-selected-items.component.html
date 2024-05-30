@@ -1,0 +1,143 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<mat-expansion-panel hideToggle (opened)="openGroup()" (closed)="closeGroup()" class="selectedItemsPanel"
+  [style.height]="panelHeight">
+  <!-- setting both collapsedHeight and expandedHeight same -->
+  <mat-expansion-panel-header #selectedItems [collapsedHeight]="'panelHeaderHeight'"
+    [expandedHeight]="'panelHeaderHeight'" (click)="toggleArrowIcon()">
+    <div class="heading">
+      <span class="selectedItems" *ngIf="possibleHeadersList.selectedItems === headerText"> {{'REPORTSELECTEDITEMS.SELECTEDITEMS' | translate}} </span>
+      <span class="selectedItems" *ngIf="possibleHeadersList.reportDetails === headerText"> {{'REPORTSELECTEDITEMS.REPORTDETAILS' | translate}} </span>
+      <mat-icon class="expandedIconArrowDown" [svgIcon]="icons.expandedIconArrowDown[24].name" *ngIf="toggleIcon"></mat-icon>
+      <mat-icon class="expandedIconArrowUp" [svgIcon]="icons.expandedIconArrowUp[24].name" *ngIf="!toggleIcon"></mat-icon>
+    </div>
+  </mat-expansion-panel-header>
+  <div class="collapse">
+    <!-- using mat-stretch-tabs so that there will be no gaps between the tabs -->
+    <mat-tab-group mat-stretch-tabs [selectedIndex]="0" animationDuration="0ms">
+      <!-- Location and Departmen Tab -->
+      <mat-tab label="{{'REPORTSELECTEDITEMS.LOCATIONANDDEPARTMENT' | translate}}" *ngIf="instrumentGroupByDept">
+        <perfect-scrollbar [config]="{suppressScrollX: false, suppressScrollY: true}">
+          <div class="outer-block" [style.height]="wrapperHeight">
+            <div class="inner-block">
+              <ng-container>
+                <ng-container *ngIf="allCheck; else noItemsTemplate">
+                  <ng-container *ngIf="labConfigData?.locations as locationList;">
+                    <ng-container *ngFor="let location of locationList;let i = index">
+                      <div *ngIf="location.isChecked">
+                        <span class="textStyle">
+                          {{location.name}}
+                        </span>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                  <ng-container *ngFor="let dept of labConfigData?.departments;let i = index">
+                    <li *ngIf="isDepartmentChecked ? dept.isChecked : dept.isFiltered === false">
+                      <span class="textStyle">
+                        {{dept.name }}
+                      </span>
+                    </li>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </perfect-scrollbar>
+      </mat-tab>
+
+      <!-- Instrument Tab -->
+      <mat-tab label="{{'REPORTSELECTEDITEMS.INSTRUMENT' | translate}}">
+        <perfect-scrollbar [config]="{suppressScrollX: false, suppressScrollY: true}">
+          <div class="outer-block" [style.height]="wrapperHeight">
+            <div class="inner-block">
+              <ng-container *ngIf="allCheck; else noItemsTemplate">
+                <ng-container *ngIf="labConfigData?.instruments as instrumentList;">
+                  <ng-container *ngFor="let instrument of instrumentList;let i = index">
+                    <div *ngIf="isInstrumentChecked ? instrument.isChecked : instrument.isFiltered === false">
+                      <span class="textStyle">
+                        {{instrument.name}} <!-- Here it is the name of the Instrument -->
+                      </span>
+                    </div>
+                    <ng-container *ngFor="let group of instrument.groups;let j = index">
+                      <li *ngIf="isInstrumentChecked ? group.isChecked : group.isFiltered === false">
+                        <span class="textStyle">
+                          {{getDisplayNameForInstrument(group)}} <!-- Here listItems is the array of Instruments-->
+                        </span>
+                      </li>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </perfect-scrollbar>
+      </mat-tab>
+
+      <!-- Control Tab -->
+      <mat-tab label="{{'REPORTSELECTEDITEMS.CONTROL' | translate}}">
+        <perfect-scrollbar [config]="{suppressScrollX: false, suppressScrollY: true}">
+          <div class="outer-block" [style.height]="wrapperHeight">
+            <div class="inner-block">
+              <ng-container *ngIf="allCheck; else noItemsTemplate">
+                <ng-container *ngIf="labConfigData?.controls as controlList;">
+                  <ng-container *ngFor="let control of controlList;let i = index">
+                    <li *ngIf="isControlChecked ? control.isChecked : control.isFiltered === false">
+                      <span>
+                        {{control.name}} <!-- Here it is the name of the control -->
+                      </span>
+                    </li>
+                    <ng-container *ngIf="getDisplayNameForControlGroup(control.groups) as lotNumbers">
+                      <ng-container *ngIf="lotNumbers.length > 1">
+                        <div class="padding">
+                          <span class="textStyle">
+                            {{'REPORTSELECTEDITEMS.LOTS' | translate}}
+                          </span>
+                          <span class="textStyle" *ngFor="let x of lotNumbers ;let i=index">
+                            {{x}}
+                            <span *ngIf="lotNumbers.length-1 != i">,</span>
+                          </span>
+                        </div>
+                      </ng-container>
+                      <ng-container *ngIf="lotNumbers.length === 1">
+                        <div class="padding">
+                          <span class="textStyle">
+                            {{'REPORTSELECTEDITEMS.LOT' | translate}} {{lotNumbers}}
+                          </span>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </perfect-scrollbar>
+      </mat-tab>
+
+      <!-- Analyte Tab -->
+      <mat-tab label="{{'REPORTSELECTEDITEMS.ANALYTE' | translate}}">
+        <perfect-scrollbar [config]="{suppressScrollX: false, suppressScrollY: true}">
+          <div class="outer-block" [style.height]="wrapperHeight">
+            <div class="inner-block">
+              <ng-container *ngIf="allCheck; else noItemsTemplate">
+                <ng-container *ngIf="labConfigData?.analytes as analyteList;">
+                  <ng-container *ngFor="let analyte of analyteList;let i = index">
+                    <li *ngIf="isAnalyteChecked ? analyte.isChecked : analyte.isFiltered === false">
+                      <span class="textStyle">
+                        {{analyte.name | titlecase}} <!-- Here this is the array of Analytes -->
+                      </span>
+                    </li>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </perfect-scrollbar>
+      </mat-tab>
+    </mat-tab-group>
+    <ng-template #noItemsTemplate>
+      <span class="textStyle noItems">
+        {{'REPORTSELECTEDITEMS.NOITEMS' | translate}}
+      </span>
+    </ng-template>
+  </div>
+</mat-expansion-panel>

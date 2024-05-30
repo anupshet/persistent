@@ -1,0 +1,119 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+
+@import '../../scss/main';
+
+.pez {
+  text-align: center;
+  position: relative;
+  font-size: mat-font-size($br-typography, caption);
+  margin: 0 4px $custom-space-xsmall 0;
+  cursor: pointer;
+  background: $cyan;
+  color: $white;
+
+  border-radius: 4px;
+  width: 40px;
+  height: 18px;
+  display: inline-block;
+  padding: 0;
+
+  &.dialog-showen {
+    background: $gray-300;
+  }
+
+  &.hide {
+    visibility: hidden;
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+
+  em {
+    font-style: normal;
+    margin-left: 2px;
+  }
+
+  .callout-indicator-left {
+    display: none;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12.5px 0 12.5px 20px;
+    border-color: transparent transparent transparent $white;
+    position: absolute;
+    left: -13px;
+    top: -2px;
+  }
+
+  .callout-indicator-right {
+    display: none;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12.5px 20px 12.5px 0;
+    border-color: transparent $white transparent transparent;
+    position: absolute;
+    left: 25px;
+    top: -2px;
+  }
+
+  &.dialog-showen i {
+    display: block;
+  }
+
+  .content_number {
+    position: absolute;
+    font-family: 'Lato';
+    font-style: normal;
+    font-size: 10px;
+    margin-left: 2px;
+    top: -3px;
+    left: 20px;
+  }
+}
+
+.pez-placeholder {
+  text-align: center;
+  position: relative;
+  font-size: mat-font-size($br-typography, caption);
+  display: block;
+  padding: $custom-space-xxsmall;
+  margin: 0 0 $custom-space-xxsmall 0;
+  background: $white;
+  opacity: 0;
+
+  &.dialog-showen {
+    background: $white;
+  }
+
+  &.hide {
+    visibility: hidden;
+  }
+
+  &:last-child {
+    margin: 0;
+  }
+
+  em {
+    font-style: normal;
+    margin-left: 5px;
+  }
+
+  i {
+    display: none;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12.5px 0 12.5px 20px;
+    border-color: transparent transparent transparent $white;
+    position: absolute;
+    left: -13px;
+    top: -2px;
+  }
+
+  &.dialog-showen i {
+    display: block;
+  }
+}

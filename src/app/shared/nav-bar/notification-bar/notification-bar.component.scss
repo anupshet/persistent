@@ -1,0 +1,47 @@
+@import '../../../../assets/scss/variables';
+@import '../../../../assets/scss/base/variables-peak';
+@import '../../../../assets/scss/mixins';
+
+.icon-notification {
+  font-size: $custom-type-size-large;
+}
+
+  button{
+    cursor: pointer;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    position: relative;
+    bottom: 9px;
+
+    &.opener{
+      padding-right: $custom-space-small + $custom-space-xsmall;
+    }
+
+    &:focus,
+    &:hover {
+      .icon-notification{
+        &:before {
+          content: "";
+        }
+      }
+    }
+  }
+
+.opener {
+  .badge {
+    @include size($custom-type-size-small);
+    border-width: 1px;
+    line-height: 13px;
+    position: absolute;
+    top: 6px;
+    right: 11px;
+    box-shadow: none;
+  }
+}
+
+
+.badge{
+  padding: 0;
+}

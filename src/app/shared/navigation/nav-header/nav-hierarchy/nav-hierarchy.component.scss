@@ -1,0 +1,28 @@
+@import '../../../../../assets/scss/base/variables-peak';
+@import '../../../../../assets/scss/variables';
+@import '../../../../../assets/scss/base/headers';
+
+
+.breadcrumb-list{
+  ul{
+    margin: 0px;
+    padding: 0px;
+    li{
+        display: inline-flex;
+        list-style-type: none;
+        padding-top:$custom-space-xxsmall;
+        a {
+          cursor: pointer;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        span{
+          &.oblique{
+            padding: 0px $custom-space-xsmall;
+          }
+        }
+    }
+  }
+}

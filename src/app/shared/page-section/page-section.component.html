@@ -1,0 +1,179 @@
+<!--  © 2024 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="page-section-component mat-typography">
+  <div class="flex-container flex flex-item-center">
+    <div class="flex">
+      <h1 class="mat-h5 mb-0">
+        {{ pageTitleEntityName }}
+        <span *ngIf="pageTitleProductLot" class="mat-body-2"> {{'PAGESECTION.LOT' | translate}} {{ pageTitleProductLot }}</span>
+      </h1>
+      <div class="button-wrapper">
+        <button *ngIf="instrumentId" mat-button color="primary" class="spec_instrument_nav"
+          (click)="gotoInstrumentSettings(instrumentId)" [disabled]="inProgress"
+          [checkForPermission]="{'permissionsAllowed':[permissions.InstrumentEdit, permissions.InstrumentEditViewOnly],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+          <mat-icon [svgIcon]="icons.edit[24].name" class="edit-maticon"></mat-icon>
+          <span class="ml-10">{{'PAGESECTION.EDITINSTRUMENT' | translate}}</span>
+        </button>
+        <button *ngIf="controlId" mat-button color="primary" class="spec_control_nav" [disabled]="inProgress"
+          (click)="gotoControlSettings(controlId)"
+          [checkForPermission]="{'permissionsAllowed':[permissions.ControlEdit, permissions.ControlEditViewOnly],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+          <mat-icon [svgIcon]="icons.edit[24].name" class="edit-maticon"></mat-icon>
+          <span class="ml-10">{{'PAGESECTION.EDITCONTROL' | translate}}</span>
+        </button>
+        <button *ngIf="panelId && !isCustomSortMode" mat-button color="primary" class="spec_panel_nav"
+          [disabled]="inProgress" (click)="gotoEditPanel(panelId)"
+          [checkForPermission]="{'permissionsAllowed':[permissions.PanelsEdit, permissions.PanelsEditViewOnly],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+          <mat-icon [svgIcon]="icons.edit[24].name" class="edit-maticon"></mat-icon>
+          <span class="ml-10">{{'PAGESECTION.EDITPANEL' | translate}}</span>
+        </button>
+      </div>
+      <div *ngIf="isArchived">
+        <p>{{'PAGESECTION.ITEM' | translate}} {{levelName}} {{'PAGESECTION.LEVEL' | translate}}</p>
+      </div>
+    </div>
+    <!-- Data entry forms will always be visible -->
+    <div class="item-right spec_tabOrderChange" *ngIf="analyteEntryType === 1 && !inProgress">
+      <mat-radio-group>
+        <mat-radio-button color="primary" (change)="onTabOrderChange(true)" [checked]="isTabOrderRunEntry" value="true">
+          <span>{{'PAGESECTION.RUNENTRY' | translate}}</span>
+        </mat-radio-button>
+        <mat-radio-button color="primary" (change)="onTabOrderChange(false)" [checked]="!isTabOrderRunEntry"
+          value="false">
+          <span>{{'PAGESECTION.LEVELENTRY' | translate}}</span>
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <ng-container *ngIf="!inProgress;then content; else message ">
+  </ng-container>
+  <ng-template #content>
+    <div #datatable [ngClass]="{'disabled-section point-events-initial': isArchived}">
+      <div class="horizontal-scrollbar-wrapper">
+
+        <!-- Moving the submission overlay on top -->
+        <div class="sticky-controls" *ngIf="analyteForm && analyteEntryType === 1">
+          <br-entry-save [translationLabels]="translationLabels" [defaultDate]="selectedDateTime" [currentLanguage]='currentLanguage' [displayTime]="!isSummaryOnly" [enableSubmit]="canSubmit()"
+            [maxDate]="availableDateTo" [minDate]="availableDateFrom" [showDatePicker]="isSummaryOnly"
+            [isDisabled]="!hasPermissionToAccess([permissions.MultiDataEntryAdd])"
+            [showChangeDateButton]="!isSummaryOnly" [enableCancel]="isValuePresent" [timeZone]="timeZone"
+            (cancelEvent)="cancel()" (submitEvent)="submitAsync()" (dateTime)="updateSelectedDateTime($event)">
+          </br-entry-save>
+        </div>
+
+        <perfect-scrollbar [config]="{suppressScrollY: true, suppressScrollX: false}" [ngClass]="{
+                'has-5-levels': columnsToDisplay.length ===5,
+                'has-6-levels': columnsToDisplay.length ===6,
+                'has-7-levels': columnsToDisplay.length ===7,
+                'has-8-levels': columnsToDisplay.length ===8,
+                'has-9-levels': columnsToDisplay.length ===9 }">
+          <section class="scrollbar-wrapper"
+            [ngClass]="{'has-pagination': !controlId, 'has-sticky-controls': analyteForm && analyteEntryType === 1}">
+            <perfect-scrollbar [config]="{ suppressScrollY: false }">
+
+              <section class="main-pagination-wrapper">
+                <div class="formWrapper pb-5">
+                  <div *ngIf="analyteForm">
+                    <form #formReference [formGroup]="analyteForm" (keydown.enter)="$event.preventDefault()" novalidate
+                      class="analyte-form">
+                      <!-- here is the actual pagination code -->
+                      <!-- list required for --NGXPagination; Please apply styling -->
+                      <ul>
+                        <li *ngFor="let analyteSection of sortedAnalyteSections | paginate: config">
+                          <div class="analyte-section-item" #dataEntrySection>
+                            <unext-overlay-component *ngIf="analyteSection?.analyteInfo?.isArchived"
+                              [height]="dataEntrySection?.offsetHeight" [width]="dataEntrySection?.offsetWidth"
+                              [left]="dataEntrySection?.offsetLeft">
+                            </unext-overlay-component>
+
+                            <div *ngIf="analyteSection?.uniqueLot" class="{{analyteSection?.productName}} ml-10 mt-15 control-name" id="{{analyteSection?.analyteInfo.labTestId}}">
+                              {{analyteSection?.productName}}<span class="ml-2 mat-small grey"> {{'PAGESECTION.LOT' | translate}} {{analyteSection?.lotNumber}}</span>
+                            </div>
+                            <div
+                              *ngIf="analyteSection?.uniqueLot && hasProductMasterLotExpired(analyteSection?.analyteInfo?.productMasterLotExpiration, futureTimeStamp)"
+                              class="ctn-expired-lot mb-10 ml-10 mr-20">
+                              <div class="item-1">
+                                <span *ngIf="analyteSection?.hasAlreadyExpired; else lotAboutToExpireMsg">{{'PAGESECTION.LOT' | translate}} {{analyteSection?.lotNumber}} {{'PAGESECTION.EXPIRED' | translate}}</span>
+                                <ng-template #lotAboutToExpireMsg>
+                                  <span>{{'PAGESECTION.LOT' | translate}} {{analyteSection?.lotNumber}} {{'PAGESECTION.EXPIRING' | translate}}</span>
+                                </ng-template>
+                              </div>
+                              <button
+                                *ngIf="analyteSection?.showExpBtn && hasPermissionToAccess([permissions.StartNewLot, permissions.StartNewLotViewOnly])"
+                                mat-flat-button color="primary" class="mr-10"
+                                (click)="openDialogBoxForProduct(analyteSection)">
+                                  <span>{{'PAGESECTION.NEWLOT' | translate}}</span>
+                              </button>
+                            </div><!-- /ctn-expired-lot -->
+                            <div *ngIf="analyteSection?.analyteInfo?.isSummary; else analytePoint">
+                              <unext-analyte-summary-entry
+                                [translationLabels]="translationLabels"
+                                [analyteId]="analyteSection?.analyteInfo?.labTestId"
+                                [formControlName]="getFormControlName(analyteSection?.analyteInfo?.labTestId)"
+                                [isRunEntryMode]="isTabOrderRunEntry" (keydown.enter)="keytab($event)"
+                                [selectedDate]="selectedDateTime" [analyteEntryType]="analyteEntryType"
+                                [translationLabelDictionary]="translationLabelDictionary" [timeZone]="timeZone"
+                                [isProductMasterLotExpired]="hasProductMasterLotExpired(analyteSection?.analyteInfo?.productMasterLotExpiration, selectedDateTime)"
+                                (getLots)="getLotsAsync($event.labTestId)" [enableCommentArray]="commentArray"
+                                (isLotVisible)="isLotVisible($event)"
+                                [analyteSummaryView]="getAnalyteView(analyteSection?.analyteInfo?.labTestId)"
+                                [productName]="analyteSection?.productName"
+                                [productLotNumber]="analyteSection?.lotNumber" [globalLabels]="globalLabels"
+                                [dateTimeOffset]="dateTimeOffset" [isLastDataEntry]="isLastDataEntryVisible"
+                                [isArchived]="analyteSection?.analyteInfo?.isArchived"
+                                [isDisabled]="!hasPermissionToAccess([permissions.MultiDataEntryAdd])"
+                                (requestNewConfig)="requestNewConfiguration($event)">
+                              </unext-analyte-summary-entry>
+                            </div>
+                            <ng-template #analytePoint>
+                              <unext-analyte-multi-point
+                                [analyteId]="analyteSection?.analyteInfo?.labTestId"
+                                [formControlName]="getFormControlName(analyteSection?.analyteInfo?.labTestId)"
+                                [analytePointView]="getAnalyteView(analyteSection?.analyteInfo?.labTestId)"
+                                [isLastDataEntry]="isLastDataEntryVisible" [isRunEntryMode]="isTabOrderRunEntry"
+                                (keydown.enter)="keytab($event)" [analyteEntryType]="analyteEntryType"
+                                [selectedDate]="selectedDateTime" [timeZone]="timeZone"
+                                (getLots)="getLotsAsync($event.labTestId)"
+                                [translationLabelDictionary]="translationLabelDictionary"
+                                [isProductMasterLotExpired]="hasProductMasterLotExpired(analyteSection?.analyteInfo?.productMasterLotExpiration, selectedDateTime)"
+                                [enableCommentArray]="commentArray" (isLotVisible)="isLotVisible($event)"
+                                [lastEntryToggleClicked]="lastEntryToggleClicked"
+                                [isArchived]="analyteSection?.analyteInfo?.isArchived"
+                                (requestNewConfig)="requestNewConfiguration($event)"
+                                [correctiveActions]="correctiveActions"
+                                [isDisabled]="!hasPermissionToAccess([permissions.MultiDataEntryAdd])">
+                              </unext-analyte-multi-point>
+                            </ng-template>
+                          </div>
+                        </li>
+                      </ul>
+                    </form>
+                  </div>
+                </div>
+
+                <div class="pagination-wrapper">
+                  <div class="flex-container center">
+                    <pagination-controls [id]="config.id" [maxSize]="maxSize" [directionLinks]="directionLinks"
+                      [autoHide]="autoHide" [responsive]="responsive" [previousLabel]="labels.previousLabel"
+                      [nextLabel]="labels.nextLabel" [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+                      [screenReaderPageLabel]="labels.screenReaderPageLabel"
+                      [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel" (pageChange)="onPageChanging($event)"
+                      (pageBoundsCorrection)="onPageBoundsCorrection($event)"></pagination-controls>
+                  </div>
+                </div> <!-- /pagination-wrapper -->
+              </section> <!-- /main-pagination-wrapper -->
+
+            </perfect-scrollbar>
+          </section>
+        </perfect-scrollbar>
+
+
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #message>
+    <div class="ctn-message">
+      <h1>{{progressHeader}}</h1>
+      <p class="mt-35">{{progressMessage}}</p>
+    </div>
+  </ng-template>
+
+</div><!-- /page-section-component -->

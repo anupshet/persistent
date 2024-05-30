@@ -1,0 +1,223 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="heading-ctn ml-10 mt-10"
+  [class.no-previous-data]="!isSingleEntry && isLastDataEntry && _analyteSummaryView == null">
+  <span *ngIf="!isSingleEntry || isSingleEditMode">{{ analyteEntry?.analyteName }}</span>
+  <span *ngIf="!isSingleEntry && isLastDataEntry && _analyteSummaryView == null" class="box test-analyte-name"> {{'ANALYTESUMMARY.NOPREVIOUSDATA' | translate}}</span>
+</div>
+
+<div class="wrapper mat-typography analyte-summary-entry-component"
+  [ngClass]="{'modal-single-summary': isSingleEditMode }" (mouseenter)="mouseEnter(true)"
+  (mouseleave)="mouseEnter(false)">
+  <div class="flex-ctn mat-typography">
+    <div class="mr-20 fix-top-margin" *ngIf="isSingleEntry && _analyteSummaryView">
+      <br-date-time-picker [displayInline]="false" [canSelectDate]="!isDisabled"
+        [canSelectTime]="displayTime && !isDisabled" (dateSelected)="updateAnalyteDate($event)"
+        [selectedDateTime]="selectedDate" [availableDateTo]="availableDateTo" [availableDateFrom]="availableDateFrom"
+        [hideLabel]="true" [canInputDate]="false" [timeZone]="timeZone" [isEditMode]="isEditMode">
+      </br-date-time-picker>
+    </div>
+
+    <div class="item-2">
+      <table mat-table [dataSource]="labels">
+        <ng-container [matColumnDef]="columnsToDisplay[0]">
+          <td mat-cell *matCellDef="let row; let rowIndex=index;">
+            <span [ngClass]="{'br-uppercase': rowIndex === 1, 'br-capitalize': rowIndex !== 1}">{{ labels[rowIndex] | translate }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container *ngFor="let col of (columnsToDisplay | slice:1); let colIndex=index;" [matColumnDef]="col">
+
+          <td mat-cell *matCellDef="let row; let rowIndex=index;">
+            <span *ngIf="arrIndexFromLevelSummary[colIndex] == null; else levelHeader;"></span>
+            <ng-template #levelHeader>
+              <span *ngIf="rowIndex === 0" class="level-label level-{{col}}">{{col}}</span>
+            </ng-template>
+            <div *ngIf="arrIndexFromLevelSummary[colIndex]!== null; else emptyTemplate;">
+              <div [ngSwitch]="rowIndex">
+                <span class="ctn">
+                  <mat-form-field *ngSwitchCase="0" class="small">
+                    <input matInput maxlength="16" autocomplete="off" [brNumericValue]="regexRationalNumber"
+                      name="{{tabIndex[colIndex][rowIndex]}}" id="{{tabIndex[colIndex][rowIndex]}}"
+                      (ngModelChange)="analyteChanged()"
+                      [(ngModel)]="analyteEntry?.levelDataSet[arrIndexFromLevelSummary[colIndex]].data.mean"
+                      tabindex="{{tabIndex[colIndex][rowIndex]}}" (focus)="onNewFocus(colIndex);focus(true);"
+                      (focusout)="focus(false)" [disabled]="isProductMasterLotExpired || isArchived || isDisabled" />
+                    <mat-hint class="br-text-warn" *ngIf="errorMessage[rowIndex][colIndex]">{{
+                      errorMessage[rowIndex][colIndex] }}</mat-hint>
+                  </mat-form-field>
+
+                  <div class="box" *ngSwitchCase="0">
+                    <span class="test-analyte-mean" [matMenuTriggerFor]="menu" #trigger="matMenuTrigger"
+                      (mouseover)="trigger.openMenu()" (mouseout)="trigger.closeMenu()" [ngClass]="{
+                          'is-last-data-entry': isLastDataEntry,
+                          'small-font': _analyteSummaryView?.levelDataSet[arrIndexFromLevelSummary[colIndex]]?.decimalPlace === 4
+                          }" *ngSwitchCase="0">
+                          {{_analyteSummaryView?.levelDataSet[dictLevelToArrayIndex[col]]?.data.mean | uNextNumeric :
+                            _analyteSummaryView?.levelDataSet[dictLevelToArrayIndex[col]]?.decimalPlace}}
+                        </span>
+                        <mat-menu #menu="matMenu" [overlapTrigger]="false" yPosition="above" [hasBackdrop]="false" class="info-tooltip-component-mat-menu half">
+                          <div class="last-data-entry-popup">
+                            <div class="flex">
+                              <div class="item-1">
+                                <div>
+                                  <span class="gray">{{'ANALYTESUMMARY.LEVEL' | translate}} {{_analyteSummaryView?.levelDataSet[arrIndexFromLevelSummary[colIndex]]?.level}}</span>
+                                  <strong [ngClass]="{'strike': !_analyteSummaryView?.levelDataSet[arrIndexFromLevelSummary[colIndex]]?.data?.isAccepted}">
+                                    {{_analyteSummaryView?.levelDataSet[dictLevelToArrayIndex[col]]?.data.mean | uNextNumeric :
+                                      _analyteSummaryView?.levelDataSet[dictLevelToArrayIndex[col]]?.decimalPlace}}</strong>
+                                </div>
+                                <div class="bottom gray">
+                                  {{_analyteSummaryView?.analyteDateTime |  uNextDate: 'mediumDate' }}
+                                  <br />
+                                  {{_analyteSummaryView?.analyteDateTime |  uNextDate: 'shortTime' }}
+                                </div>
+                              </div> <!-- /item-1 -->
+                            </div> <!-- /flex -->
+                          </div><!-- /last-data-entry-popup -->
+                        </mat-menu>
+                      </div> <!-- /box-->
+                    </span> <!-- /ctn -->
+                    <span class="ctn">
+                      <mat-form-field *ngSwitchCase="1" class="small">
+                        <input matInput
+                          maxlength="16"
+                          autocomplete="off"
+                          [brNumericValue]="regexRationalNumber"
+                          name="{{tabIndex[colIndex][rowIndex]}}"
+                          id="{{tabIndex[colIndex][rowIndex]}}"
+                          (ngModelChange)="analyteChanged()"
+                          [(ngModel)]="analyteEntry?.levelDataSet[arrIndexFromLevelSummary[colIndex]].data.sd"
+                          tabindex="{{tabIndex[colIndex][rowIndex]}}"
+                          (focus)="onNewFocus(colIndex);focus(true);"
+                          (focusout)="focus(false);"
+                          [disabled]="isProductMasterLotExpired || isArchived" />
+                        <mat-hint class="br-text-warn" *ngIf="errorMessage[rowIndex][colIndex]">{{ errorMessage[rowIndex][colIndex] }}</mat-hint>
+                      </mat-form-field>
+
+                  <div class="box" *ngSwitchCase="1">
+                    <span [matMenuTriggerFor]="menu" #trigger="matMenuTrigger" (mouseover)="trigger.openMenu()"
+                      (mouseout)="trigger.closeMenu()" [ngClass]="{
+                          'is-last-data-entry': isLastDataEntry,
+                          'small-font': _analyteSummaryView?.levelDataSet[arrIndexFromLevelSummary[colIndex]]?.decimalPlace === 4
+                          }" *ngSwitchCase="1">
+                          {{_analyteSummaryView?.levelDataSet[dictLevelToArrayIndex[col]]?.data.sd | uNextNumeric :
+                            _analyteSummaryView?.levelDataSet[dictLevelToArrayIndex[col]]?.decimalPlace}}
+                        </span>
+                        <mat-menu #menu="matMenu" [overlapTrigger]="false" yPosition="above" [hasBackdrop]="false" class="info-tooltip-component-mat-menu half">
+                          <div class="last-data-entry-popup">
+                            <div class="flex">
+                              <div class="item-1">
+                                <div>
+                                  <span class="gray">{{'ANALYTESUMMARY.LEVEL' | translate}} {{_analyteSummaryView?.levelDataSet[arrIndexFromLevelSummary[colIndex]]?.level}}</span>
+                                  <strong [ngClass]="{'strike': !_analyteSummaryView?.levelDataSet[arrIndexFromLevelSummary[colIndex]]?.data?.isAccepted}">
+                                    {{_analyteSummaryView?.levelDataSet[dictLevelToArrayIndex[col]]?.data.sd | uNextNumeric :
+                                      _analyteSummaryView?.levelDataSet[dictLevelToArrayIndex[col]]?.decimalPlace}}</strong>
+                                </div>
+                                <div class="bottom gray">
+                                  {{_analyteSummaryView?.analyteDateTime |  uNextDate: 'mediumDate' }}
+                                  <br />
+                                  {{_analyteSummaryView?.analyteDateTime |  uNextDate: 'shortTime' }}
+                                </div>
+                              </div> <!-- /item-1 -->
+                            </div> <!-- /flex -->
+                          </div><!-- /last-data-entry-popup -->
+                        </mat-menu>
+                      </div>
+                    </span> <!-- /ctn -->
+                    <span class="ctn">
+                      <mat-form-field *ngSwitchCase="2"  class="small">
+                        <input matInput
+                          maxlength="16"
+                          autocomplete="off"
+                          [brNumericValue]="regexOnlyDigitsGreaterThanZero"
+                          name="{{tabIndex[colIndex][rowIndex]}}"
+                          id="{{tabIndex[colIndex][rowIndex]}}"
+                          (ngModelChange)="analyteChanged()"
+                          [(ngModel)]="analyteEntry?.levelDataSet[arrIndexFromLevelSummary[colIndex]].data.numPoints"
+                          tabindex="{{tabIndex[colIndex][rowIndex]}}"
+                          (focus)="onNewFocus(colIndex);focus(true);"
+                          (focusout)="focus(false);"
+                          [disabled]="isProductMasterLotExpired || isArchived"/>
+                        <mat-hint class="br-text-warn" *ngIf="errorMessage[rowIndex][colIndex]">{{ errorMessage[rowIndex][colIndex] }}</mat-hint>
+                      </mat-form-field>
+
+                  <div class="box" *ngSwitchCase="2">
+                    <span [matMenuTriggerFor]="menu" #trigger="matMenuTrigger" (mouseover)="trigger.openMenu()"
+                      (mouseout)="trigger.closeMenu()" [ngClass]="{
+                          'is-last-data-entry': isLastDataEntry,
+                          'small-font': _analyteSummaryView?.levelDataSet[arrIndexFromLevelSummary[colIndex]]?.decimalPlace === 4
+                          }" *ngSwitchCase="2">
+                          {{_analyteSummaryView?.levelDataSet[dictLevelToArrayIndex[col]]?.data.numPoints | uNextNumeric}}
+                        </span>
+                        <mat-menu #menu="matMenu" [overlapTrigger]="false" yPosition="above" [hasBackdrop]="false" class="info-tooltip-component-mat-menu half">
+                          <div class="last-data-entry-popup">
+                            <div class="flex">
+                              <div class="item-1">
+                                <div>
+                                  <span class="gray">{{'ANALYTESUMMARY.LEVEL' | translate}} {{_analyteSummaryView?.levelDataSet[arrIndexFromLevelSummary[colIndex]]?.level}}</span>
+                                  <strong [ngClass]="{'strike': !_analyteSummaryView?.levelDataSet[arrIndexFromLevelSummary[colIndex]]?.data?.isAccepted}">
+                                    {{_analyteSummaryView?.levelDataSet[dictLevelToArrayIndex[col]]?.data.numPoints | uNextNumeric}}
+                                  </strong>
+                                </div>
+                                <div class="bottom gray">
+                                  {{_analyteSummaryView?.analyteDateTime |  uNextDate: 'mediumDate' }}
+                                  <br />
+                                  {{_analyteSummaryView?.analyteDateTime |  uNextDate: 'shortTime' }}
+                                </div>
+                              </div> <!-- /item-1 -->
+                            </div> <!-- /flex -->
+                          </div><!-- /last-data-entry-popup -->
+                        </mat-menu>
+                      </div>
+                    </span> <!-- /ctn -->
+                    <div>
+                      <ng-template #emptyTemplate>
+                        <span class="ctn">
+                          <mat-form-field class="noshow small">
+                            <input matInput [disabled]="'true'" placeholder="{{'ANALYTESUMMARY.NA' | translate}}">
+                          </mat-form-field>
+                          <div class="box"></div>
+                        </span>
+                      </ng-template>
+                    </div>
+                  </div>
+                </div>
+
+        </ng-container>
+
+        <ng-template #emptyTemplate>
+          <span class="ctn">
+            <mat-form-field class="noshow small">
+              <input matInput [disabled]="true" placeholder="{{'ANALYTESUMMARY.NA' | translate}}">
+            </mat-form-field>
+            <div class="box"></div>
+          </span>
+        </ng-template>
+
+        <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+      </table>
+      <form [formGroup]="changeLotForm" *ngIf="!isProductMasterLotExpired">
+        <br-change-lot formControlName="changeLot" [selectedDate]="analyteEntry?.analyteDateTime"
+          (translationLabelDictionary)="translationLabelDictionary" (ngModelChange)="updateChangeLotData()"
+          (editDate)="toggleEditDate($event)" (getLots)="requestLots()" (isLotVisible)="isLotFormVisible($event)"
+          [showOptions]="showOptionsForm" [enableComment]="evaluateCommentField()" [labTestId]="analyteEntry?.labTestId"
+          [isSingleSummary]="isSingleSummary" [isArchived]="isArchived" [totalLevels]="(columnsToDisplay | slice:1)"
+          (requestNewConfig)="requestNewConfiguration($event)" [isDisabled]="isDisabled">
+        </br-change-lot>
+      </form>
+    </div>
+    <div class="item-3">&nbsp;</div>
+  </div> <!-- /flex-ctn -->
+
+    <div class="btns-right" [ngClass]="{'mr-10 mb-10': !isSingleEditMode}" *ngIf="!isProductMasterLotExpired && isSingleEntry">
+      <button mat-button  tabindex="5001" color="primary" id="cancelBtn" (click)="cancel()">{{'ANALYTESUMMARY.CANCEL' | translate}}</button>
+      <button  mat-raised-button *ngIf="!isEditMode" tabindex="5000"
+        color="primary" class="positive"
+        id="submitBtn" (click)="submit()" [disabled]="!enableSubmit"
+        matTooltip="{{'ANALYTESUMMARY.RESULTS' | translate}}"
+        matTooltipPosition="above"><em class="icon-public mr-5"></em>{{'ANALYTESUMMARY.PEERGROUP' | translate}}</button>
+      <button  mat-raised-button *ngIf="isEditMode" tabindex="5000" color="primary" id="submitBtn" (click)="submit()" [disabled]="!enableSubmit"
+        matTooltip="{{'ANALYTESUMMARY.SUBMIT' | translate}}"
+        matTooltipPosition="above">{{'ANALYTESUMMARY.SUBMIT' | translate}}</button>
+    </div>
+
+</div>

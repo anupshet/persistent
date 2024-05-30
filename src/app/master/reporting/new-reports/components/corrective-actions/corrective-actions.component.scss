@@ -1,0 +1,177 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../../../../../assets/scss/variables';
+@import '../../../../../../assets/scss/base/variables-peak';
+@import "../../../../../../assets/scss/vendors/angular-material/mixins";
+@import '../../../../../../assets/scss/mixins';
+
+.corrective-actions {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px 0px;
+  text-transform: uppercase;
+  margin: 0px 8px 0px 28px;
+  height: calc(100% - 27px);
+
+  h2 {
+    font-size: 18px;
+    letter-spacing: 1.25px;
+    color: $report-template-label-color;
+    line-height: 1.5;
+  }
+
+  .add-button {
+    span {
+      margin-left: 5px;
+    }
+
+    line-height: 1.14;
+    letter-spacing: normal;
+    color: $blue-darker;
+    padding: 0px;
+  }
+
+  section {
+    overflow: hidden;
+    padding: 10px 0px;
+
+    div.corrective-action {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      margin: 14px 0px;
+      padding: 14px 45px 21px 14px;
+      border: 1px solid $gray-800;
+
+      mat-icon {
+        @include md-icon-size($size: $custom-type-size-large);
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        color: $gray-600;
+        cursor: pointer;
+      }
+
+      textarea {
+        font-size: 14.6px;
+        line-height: 1.64;
+        letter-spacing: 0.44px;
+        color: $black;
+        min-height: 140px;
+        resize: none;
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+.form-buttons {
+  border-top: 1px solid $gray-400;
+  padding: 14px;
+
+  button {
+    border-radius: 4px;
+    font-size: 14.6px;
+    height: 36px;
+  }
+
+  .apply-button {
+    margin-right: 14px;
+    background-color: $component-cyan;
+  }
+
+  .cancel-button {
+    margin-left: 14px;
+    border: solid 1px $component-cyan;
+    background-color: $white;
+  }
+}
+
+.corrective-action-item {
+  border-bottom: solid 1px $gray-400;
+  white-space: nowrap;
+  height: 40px;
+  flex-grow: 0;
+  display: flex;
+  justify-content: flex-start;
+  padding: 22px 0 22px 14px;
+
+}
+
+.form-array {
+  margin-right: 20px;
+}
+
+.corrective-action-scroll {
+  height: 244px;
+}
+
+::ng-deep {
+  .corrective-actions-panel.mat-select-panel {
+    min-height: 310px;
+    min-width: 320px !important;
+    max-width: fit-content !important;
+  }
+
+  .corrective-actions-panel.mat-select-panel .mat-option,
+  .mat-form-field-appearance-legacy .mat-form-field-label {
+    font-size: 14px !important;
+    line-height: 1.71 !important;
+    letter-spacing: 0.42px;
+    text-transform: none;
+  }
+
+  .corrective-actions-panel.mat-select-panel .mat-option:not(.mat-option-disabled) {
+    color: $black !important;
+  }
+
+  .corrective-actions-panel.mat-select-panel .mat-option.mat-active:not(:hover):not(.mat-option-disabled) {
+    background: none;
+  }
+
+  .corrective-actions-panel.mat-select-panel .mat-optgroup-label {
+    font-weight: bold;
+    font-size: 14px !important;
+    letter-spacing: 0.25px;
+    color: $label-color;
+    height: 38px;
+  }
+
+  .corrective-actions-panel.mat-select-panel .mat-optgroup-label.instrument-label {
+    height: 32px;
+    padding-left: 0px;
+  }
+
+  .corrective-actions-panel.mat-select-panel .mat-option:not(:first-child) {
+    padding-left: 14px !important;
+  }
+
+  .corrective-actions-panel .mat-option.mat-option-disabled {
+    color: $review-summary-time;
+  }
+
+  .corrective-actions-panel mat-optgroup .mat-optgroup-label {
+    padding-left: 8px;
+  }
+
+  .mat-select-custom .mat-select-value-text {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: none;
+  }
+
+  .mat-select-custom .mat-form-field-label,
+  .mat-select-custom .mat-select-placeholder {
+    color: $grey-icon-counter !important;
+    text-transform: none;
+  }
+}
+
+.corrective-actions-form-container {
+  padding: 15px 25px 15px 15px;
+}

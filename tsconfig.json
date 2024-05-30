@@ -1,0 +1,45 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+  "downlevelIteration": true,
+  "module": "esnext",
+  "outDir": "./dist/out-tsc",
+  "baseUrl": "./",
+  "sourceMap": true,
+  "declaration": false,
+  "moduleResolution": "node",
+  "resolveJsonModule": true,
+  "emitDecoratorMetadata": true,
+  "experimentalDecorators": true,
+  "target": "es2015",
+  "skipLibCheck": true,
+  "typeRoots": [
+  "node_modules/@types",
+  "/dist-lib/br-component-library"
+  ],
+  "lib": [
+  "es2020",
+  "dom"
+  ],
+  "paths": {
+  "br-component-library": [
+  "dist-lib/br-component-library"
+  ],
+  "br-component-library/*": [
+  "dist-lib/br-component-library/*"
+  ],
+  "br-layout-guide/*": [
+  "dist-lib/br-layout-guide/*"
+  ],
+  "br-design-system/*": [
+  "dist-lib/br-design-system/*"
+  ],
+    "timers": [
+  "node_modules/timers-browserify"
+  ]
+  }
+  },
+  "angularCompilerOptions": {
+  "enableIvy": true
+  }
+  }

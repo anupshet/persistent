@@ -1,0 +1,47 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<mat-card class="lab-setup-wrapper">
+  <unext-lab-setup-header [currentNode]="type.Department" [title]="title"></unext-lab-setup-header>
+  <mat-card-content>
+    <form [formGroup]="departmentForm">
+      <div class="text-center mb-10">
+        <mat-checkbox [checked]="skipDepartmentAddClicked" (change)="toggleSkipDeptCheckBox()">
+          <span class="grey">{{'LABCONFIGURATIONDEPARTMENT.DEPARTMENTS' | translate}}</span>
+        </mat-checkbox>
+      </div>
+      <div formArrayName="departments">
+        <div *ngFor="let department of departmentsGetter.controls; let pointIndex = index;" [formGroupName]="pointIndex">
+          <div class="panel-content-border">
+            <mat-form-field>
+              <input matInput formControlName="departmentName" (ngModelChange)="valuechange($event,pointIndex)">
+              <mat-placeholder>{{'LABCONFIGURATIONDEPARTMENT.DEPARTMENT' | translate}}</mat-placeholder>
+            </mat-form-field>
+            <div *ngIf="departmentForm.controls.departments.controls[pointIndex].controls.departmentManagerGroup" class="departmentManagerGroup"
+              formGroupName="departmentManagerGroup">
+              <br-select formControlName="departmentManager" [data]="contacts" [errorMessage]="'Required'" [displayAttribute]="'displayName'"
+                [disabled]="skipDepartmentAddClicked" [placeholder]="managerNamePlaceholder" [emitValue]="true">
+              </br-select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <mat-error *ngIf="departmentForm.hasError('required')">{{'LABCONFIGURATIONDEPARTMENT.ERROROCCURED' | translate}}
+    </mat-error>
+    <br/>
+    <span class="br-text-primary link" (click)="addFormControl()">{{'LABCONFIGURATIONDEPARTMENT.ANOTHERDEPARTMENT' | translate}}
+    </span>
+    <br/>
+    <mat-error *ngIf="errorMessage">
+      {{errorMessage}}
+    </mat-error>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button color="primary" (click)="resetForm()" [disabled]="!departmentForm.touched || !departmentForm.dirty">{{'LABCONFIGURATIONDEPARTMENT.CANCEL' | translate}}</button>
+    <button mat-button mat-flat-button color="primary" type="submit" [disabled]="!isFormValid || !departmentForm.valid"
+      *ngIf="!skipDepartmentAddClicked" (click)="onSubmit(departmentForm.value)">{{'LABCONFIGURATIONDEPARTMENT.ADDDEPARTMENT' | translate}}
+    </button>
+    <button mat-button mat-flat-button color="primary" *ngIf="skipDepartmentAddClicked"
+      (click)="onDepartmentAddSkip()">{{'LABCONFIGURATIONDEPARTMENT.SKIPDEPARTMENT' | translate}}
+    </button>
+  </mat-card-actions>
+</mat-card>

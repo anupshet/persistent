@@ -1,0 +1,85 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../../../../../assets/scss/variables';
+
+.error-title {
+	margin-left: 10px;
+	padding-top: 15px !important;
+	border-bottom: solid 1px $bottom-border-color;
+	padding-bottom: 10px;
+	letter-spacing: 0.6px;
+	color: $label-color;
+}
+
+.error-title span {
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.error-row-container {
+	max-height: 230px;
+}
+
+.error-row {
+	padding: 10px;
+}
+
+.error-row .title {
+	font-size: 18px;
+	font-weight: 600;
+	color: $label-color;
+}
+
+.error-log {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 10px 0px 0px;
+}
+
+.details-view.ng-star-inserted {
+	margin: 0 25px 25px 25px;
+}
+
+.count-bold {
+	font-weight: bold;
+}
+
+.conn-scrollbar {
+	overflow-y: scroll;
+}
+
+.conn-scrollbar::-webkit-scrollbar {
+	-webkit-appearance: none;
+}
+
+.conn-scrollbar::-webkit-scrollbar:vertical {
+	width: 13px;
+}
+
+.conn-scrollbar::-webkit-scrollbar:horizontal {
+	height: 13px;
+}
+
+.conn-scrollbar::-webkit-scrollbar-thumb {
+	border-radius: 8px;
+	border: 2px solid $white;
+	/* should match background, can't be transparent */
+	background-color: #999;
+}
+
+.importErrorDetails {
+	padding: 10px 0px;
+}
+
+.error-detail {
+	margin-left: 52px
+}
+
+.transformer-error-detail {
+	padding: 10px 50px;
+}
+
+.import-error-hierarchyPath {
+	font-weight: 600;
+	font-size: 16px;
+	color: $label-color;
+}

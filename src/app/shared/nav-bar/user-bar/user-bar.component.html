@@ -1,0 +1,13 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="user-bar-component">
+  <button mat-icon-button class="trigger" [matMenuTriggerFor]="menuUser">
+    <mat-icon [svgIcon]="icons.person[24].name"></mat-icon>
+  {{userName}}
+  </button>
+
+  <mat-menu #menuUser="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item (click)="onSelect('Logout')">
+        <span class="mat-small">{{'USERBAR.LOGOUT' | translate}}</span>
+      </button>
+  </mat-menu>
+</div>

@@ -1,0 +1,14 @@
+{
+    "DEV": {
+        "URL": "http://localhost:4200/",
+        "Username": "mayank_jatay+BSAccountLT@bio-rad.com",
+        "Password": "BioBio1",
+        "FirstName": "User"
+      
+    },
+    "QA": {
+        "URL": "https://unity-test.qcnet.com/login"
+    },
+    "STAGE": {},
+    "DEV2": {}
+}

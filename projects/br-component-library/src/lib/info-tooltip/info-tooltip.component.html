@@ -1,0 +1,12 @@
+<div class="info-tooltip-component">
+  <span class="trigger" [matMenuTriggerFor]="menu" #trigger="matMenuTrigger" (click)="trigger.openMenu()">
+    <span [ngClass]="{'ic-info-24px': !biggerIcon, 'ic-info-48px': biggerIcon}"></span>
+  </span>
+
+  <mat-menu #menu="matMenu" [overlapTrigger]="false" class="info-tooltip-component-mat-menu">
+    <div>
+      <ng-template [ngTemplateOutlet]="template"></ng-template>
+    </div>
+  </mat-menu>
+</div>
+  

@@ -1,0 +1,29 @@
+@import "../../../../../../assets/scss/variables";
+
+.expiring-lots-list-component {
+
+  ul {
+    margin: 0 5px 0 0;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+      margin-bottom: 10px;
+    }
+  }
+
+  ul li ul {
+    margin-top: -5px;
+  }
+
+  .warn {
+    color: $br-color-warn-900;
+  }
+
+  .link-text {
+    color: $br-color-primary-800;
+    text-decoration: none;
+    cursor: pointer;
+    word-wrap: break-word;
+  }
+}

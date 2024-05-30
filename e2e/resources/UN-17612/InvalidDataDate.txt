@@ -1,0 +1,2 @@
+Instrument,Product,Level,Test,CalibratorLot,Reagent,Run Date,Run Time,Result
+ATInstrPoint,ATProdPoint,1,ATTestPoint,CAL#22255,REA#00455,a,4:59:00,15

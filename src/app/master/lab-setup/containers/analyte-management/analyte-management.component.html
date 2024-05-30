@@ -1,0 +1,25 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div
+  *ngIf="hasPermissionToAccess([permissions.AnalyteAdd,permissions.AnalyteEdit,permissions.AnalyteAddViewOnly,permissions.AnalyteEditViewOnly]); else nonAdminUser">
+  <div class="analyte-management-component-hdr">
+    <button *ngIf="!showSettings && !hideEditControlLink" class="spec_goToControlSettings" mat-button color="primary"
+      [checkForPermission]="{'permissionsAllowed':[permissions.ControlEdit, permissions.ControlEditViewOnly],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+      (click)="gotoControlSettings()">
+      <mat-icon [svgIcon]="icons.edit[24].name" class="edit-maticon"></mat-icon>
+      <span class="ml-10">{{'ANALYTEMANAGEMENT.EDIT' | translate}}</span>
+    </button>
+    <h2 *ngIf="showSettings || !hideEditControlLink" id="spec_analyteTitle">{{selectedNodeDisplayName}} </h2>
+    <button mat-icon-button *ngIf="showSettings" (click)="navigateToDataTable()"  class="btn-return mr-15">
+      <mat-icon [svgIcon]="icons.menu[24].name"></mat-icon>
+      <span id="spec_returnToData" class="mat-body-1">{{'ANALYTEMANAGEMENT.RETURNDATA' | translate}}</span>
+    </button>
+    <p *ngIf="showSettings && isArchived">{{'ANALYTEMANAGEMENT.ITEMARCHIVED' | translate}} {{levelName}} {{'ANALYTEMANAGEMENT.LEVEL' | translate}}</p>
+  </div>
+  <!-- /analyte-management-component-hdr-->
+  <unext-analyte-config-component [showSettings]="showSettings" [selectedNodeDisplayName]="selectedNodeDisplayName">
+  </unext-analyte-config-component>
+</div>
+<ng-template #nonAdminUser>
+  <p class="non-admin-user-message spec-message-analyte">
+    <span>{{'ANALYTEMANAGEMENT.NOANALYTE' | translate}}</span> {{selectedNodeDisplayName}} </p>
+</ng-template>

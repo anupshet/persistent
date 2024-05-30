@@ -1,0 +1,427 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@mixin base\table {
+  .table.br {
+    font-size: mat-font-size($br-typography, body-1);
+
+    thead {
+      &.thead-inverse th {
+        background: url(#{$bds-imgpath}/bg_tbl.png) repeat;
+        color: mat-color($mat-grey, A100);
+        font-weight: normal;
+      }
+
+      th {
+        border-top: none;
+
+        &:first-child {
+          padding-left: $custom-space-large;
+        }
+      }
+    }
+
+    tbody tr {
+      background: mat-color($mat-grey, A100);
+
+      &:hover,
+      &.selected {
+        background-color: $br-lightGrey;
+        cursor: pointer;
+      }
+
+      &.selected {
+        color: $br-black;
+      }
+
+      &.tr-fade {
+        color: $br-grey;
+      }
+
+      td:first-child {
+        padding-left: $custom-space-large;
+      }
+    }
+
+    &.read-only tbody tr:hover {
+      background-color: mat-color($mat-grey, A100);
+      cursor: default
+    }
+
+    .break {
+      display: block;
+      font-size: mat-font-size($br-typography, body-1);
+      margin-top: $custom-space-xsmall;
+      color: $br-grey;
+    }
+  }
+
+  .br-table-title {
+    border-bottom: 0;
+    margin-bottom: 0;
+
+    thead th {
+      border-bottom: 0;
+    }
+  }
+
+  .br-table-with-title {
+    border-top: 0;
+    margin-top: 0;
+
+    thead th {
+      border-top: 0;
+    }
+  }
+
+  .br-toggle-ctn {
+    display: none;
+  }
+
+  .br-toggle-tbl {
+    background: mat-color($mat-grey, A100);
+    padding: $custom-space-small;
+    margin-top: -$custom-space-base;
+    position: relative;
+
+    tr:first-child td {
+      border-top: 1px solid $br-whiteish;
+    }
+
+    td {
+      background: $br-whiteish;
+      border-top: 1px solid $br-lightOrange;
+    }
+  }
+
+  .tbl-inner {
+    max-height: 250px;
+    overflow-y: auto;
+  }
+
+  .bottom-padding {
+    padding-bottom: $custom-space-base;
+    background: mat-color($mat-grey, A100);
+  }
+
+  .td-bdr-right {
+    border-right: 1px solid $br-lightGrey;
+  }
+
+  .arrow-right {
+    background: url(#{$bds-imgpath}/icn_history_left.png);
+    background-size: 14px;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin: 0 0 -$custom-space-base $custom-space-small;
+  }
+
+  .collapsed .arrow-right,
+  .collapsed.arrow-right {
+    background: url(#{$bds-imgpath}/icn_history_down.png);
+    background-size: 14px;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin: 0 0 -$custom-space-base $custom-space-small;
+  }
+
+  .btn-close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: mat-color($mat-grey, A100);
+    border-radius: 1rem;
+    background: $br-strongOrange;
+    font-size: mat-font-size($br-typography, body-1);
+    line-height: 0.9rem;
+    padding: $custom-space-xxsmall $custom-space-xsmall $custom-space-xsmall;
+
+    &:before {
+      content: "×";
+    }
+  }
+
+  .tbl-top {
+    height: 1.5rem;
+    width: 100%;
+    background: $br-whiteish;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    i {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid $br-whiteish;
+      display: inline-block;
+      position: absolute;
+      top: -2px;
+      left: 50px;
+    }
+  }
+
+  .table {
+    &.table-sm.br-grid {
+      th {
+        color: $blue-dark;
+        font-weight: normal;
+        font-size: mat-font-size($br-typography, body-1);
+        border: 0;
+      }
+
+      td {
+        border: 0;
+      }
+    }
+
+    tbody tr.nohighlight:hover {
+      background: mat-color($mat-grey, A100);
+      cursor: auto;
+    }
+  }
+
+  .tbl-header {
+    background: url(#{$bds-imgpath}/bg_tbl.png) repeat;
+    color: mat-color($mat-grey, A100);
+    position: relative;
+    padding: $custom-space-small 0;
+    margin: 0;
+  }
+
+  .tbl-scroll-y {
+    padding-bottom: $custom-space-base;
+    background: mat-color($mat-grey, A100);
+    overflow-y: auto;
+  }
+
+
+  td .ins {
+    display: block;
+    margin: 0 0 -$custom-space-xsmall 0;
+    font-size: mat-font-size($br-typography, caption);
+    color: $br-grey;
+  }
+
+  .tdh-60 td {
+    height: 60px;
+  }
+
+  .br-tbl-scrollable {
+    table tbody tr:hover {
+      background: $br-white;
+    }
+    table tbody tr.selected:hover {
+      background: $br-lightGrey;
+    }
+  }
+
+  .tbls-wrapper {
+    border: 0;
+    margin:0 0 $custom-space-base 0;
+
+    td {
+      vertical-align: top;
+      height: 56px;
+      padding: $custom-space-small 0 $custom-space-xxsmall $custom-space-small;
+    }
+
+    .table-ctn {
+      overflow: hidden;
+      overflow-x: scroll;
+
+      tbody td,
+      tbody th {
+        vertical-align: top;
+      }
+
+      table {
+        margin-bottom: 0;
+      }
+
+      tbody {
+        display:block;
+        overflow:auto;
+
+        tr {
+          display: table;
+          width: 100%;
+          table-layout: fixed;
+
+          &:hover {
+            background: $br-white;
+            cursor: move;
+          }
+
+          .td {
+            width: 75px;
+            white-space: nowrap;
+            overflow: hidden;
+            padding-left: $custom-space-small;
+            padding-right: $custom-space-small;
+
+            &:first-child {
+              padding-left: $custom-space-small + $custom-space-xsmall;
+            }
+          }
+        }
+      }
+
+      thead {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+
+        th {
+          background: $blue-dark;
+          background-image:none;
+          width: 75px;
+          white-space: nowrap;
+          overflow: hidden;
+
+          &:first-child {
+            padding-left: $custom-space-small + $custom-space-xsmall;
+          }
+        }
+      }
+    }
+
+    .fake-tbl {
+      width: 280px;
+
+      .th {
+        height: 56px;
+        background: $blue-dark;
+        border-bottom: 2px solid $br-white;
+        margin-bottom: 1px;
+      }
+
+      .td {
+        height: 56px;
+        background: $br-white;
+        border-bottom: 1px solid rgb(233, 236, 239);
+        padding: $custom-space-small 0 $custom-space-xxsmall $custom-space-small;
+        overflow: hidden;
+      }
+    }
+
+    .fake {
+      border-top: 1px solid transparent;
+      width: 11px;
+
+      &:last-child {
+        display: none;
+      }
+    }
+
+    #fakeBody {
+      overflow: hidden;
+    }
+
+    .bdr-left {
+      height: 35px;
+      width:1px;
+      background: $gray-500;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .bdr-right {
+      height: 35px;
+      width: 1px;
+      background: $gray-500;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+
+    td.fake {
+      width: 15px;
+      padding: 0 0 0 $custom-space-small;
+      margin: 0;
+      z-index: 100;
+      position: relative;
+
+      em {
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+      }
+      &.last {
+        em {
+          border-right: none;
+        }
+      }
+    }
+
+    .aps {
+      position: absolute;
+      z-index: 10;
+      top: 0px;
+      color: $gray-500;
+      font-size: mat-font-size($br-typography, caption);
+    }
+
+    .bdr-top {
+        border-top: 1px solid $gray-500;
+
+        div.text {
+          margin-top: $custom-space-small;
+          padding-bottom: -$custom-space-small;
+        }
+      }
+
+
+    .table-ctn {
+      table thead {
+        width: 100%;
+
+        tr {
+          padding-top: $custom-space-base + $custom-space-xsmall;
+
+          th {
+            position: relative;
+            overflow: visible;
+          }
+        }
+      }
+
+      td {
+        overflow: hidden;
+      }
+    }
+
+    .td-1 {
+      background: $br-white;
+      padding:0;
+    }
+
+    .td-2 {
+      background: $blue-dark;
+      padding:0;
+    }
+  }
+
+
+  // sidebar-expanded
+  .sidebar-expanded.runs-table-component .ps-content { max-width: 2385px;}
+  .runs-table-component.has-4-levels .ps-content { width: 1430px !important; }
+  .runs-table-component.has-5-levels .ps-content { width: 2035px !important; }
+  .runs-table-component.has-6-levels .ps-content { width: 2385px !important;}
+
+}
+
+.analyte-point-view-component {
+  .mat-table .mat-row .mat-cell {
+    padding: 0 5px;
+  }
+}
+
+perfect-scrollbar.parent-horizontal-scrollbar > .ps.ps--active-x > .ps__rail-x {
+  opacity: 1 !important;
+  bottom: 5px !important;
+  z-index: 100;
+}

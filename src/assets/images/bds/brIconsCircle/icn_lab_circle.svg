@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="91px" height="91px" viewBox="0 0 91 91" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 6</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Mission-Control-Latest" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="OnBoarding-1" transform="translate(-1039.000000, -102.000000)">
+            <g id="Group-6" transform="translate(1042.000000, 105.000000)">
+                <g id="Group-2" stroke="#A4B9D2" stroke-width="6" fill="#FFFFFF">
+                    <circle id="Oval-2-Copy" cx="42.5" cy="42.5" r="41.9970703"></circle>
+                </g>
+                <g id="Test-icon" transform="translate(21.000000, 18.000000)">
+                    <path d="M8.97180984,33.2623032 C8.20187541,33.7898194 8.01184262,34.8277871 8.54574426,35.5867871 C9.0796459,36.3428194 10.1368918,36.531271 10.9068262,36.0052387 C11.6767607,35.4799484 11.8683016,34.4390129 11.3336459,33.6814968 C10.8004984,32.9254645 9.74249836,32.7370129 8.97180984,33.2623032" id="Fill-3" fill="#17485D"></path>
+                    <path d="M14.9718098,32.2623032 C14.2018754,32.7898194 14.0118426,33.8277871 14.5457443,34.5867871 C15.0796459,35.3428194 16.1368918,35.531271 16.9068262,35.0052387 C17.6767607,34.4799484 17.8683016,33.4390129 17.3336459,32.6814968 C16.8004984,31.9254645 15.7424984,31.7370129 14.9718098,32.2623032" id="Fill-3-Copy" fill="#17485D"></path>
+                    <path d="M28.9380721,8.74222581 L26.8854164,6.72564516 C26.8854164,6.72564516 25.8530557,5.07929032 27.3778426,3.84916129 C27.3778426,3.84916129 28.9146951,2.17312903 30.6936131,3.84916129 C31.1324984,4.26316129 42.2644984,15.2727419 42.2644984,15.2727419 C42.2644984,15.2727419 43.6535475,17.1639355 41.9915148,18.5921613 C41.9915148,18.5921613 40.3777443,20.1761935 38.689318,18.8154839 C38.3047279,18.5053548 32.0585311,12.3873548 32.0585311,12.3873548" id="Stroke-5" stroke="#17485D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <polyline id="Stroke-7" stroke="#17485D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="32.2350656 5.36367419 37.835 0.0929645161 45.9325082 7.97973871 40.9931639 13.1591903"></polyline>
+                    <path d="M27.227023,7.97996129 L2.85305574,31.9608 C2.85305574,31.9608 -2.89619016,38.0958645 2.20528525,43.035671 C2.20528525,43.035671 6.25403934,47.6564452 12.3275475,43.9237677 L31.8142033,24.6831548 L38.2089574,18.3692839" id="Stroke-9" stroke="#17485D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M31.8142033,24 L17.0240721,24" id="Stroke-11" stroke="#17485D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

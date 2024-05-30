@@ -1,0 +1,37 @@
+{
+  "QA": {
+    "URL": "https://qcpcentralqa.global.bio-rad.com/",
+    "Username": "amruta_karale+qaqcpadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "MainMenu": "Code List",
+    "SubMenu": "Reagents",
+    "SubMenuOption": "Reagent Lots",
+    "Manufacturer": "Bio-Rad",
+    "Instrument": "D-10",
+    "ExpiryDateYear": "2031",
+    "ExpiryDateMonth": "Dec",
+    "ExpiryDateDay": "25",
+    "Reagent": "CK REF OSR6X79",
+    "ReagentLotAdd": "TestReag1234",
+    "DefaultReagent": "Unspecified ***",
+    "ExpiryDate": "11/5/2068  2:57:51 PM",
+    "ExpectedConfirmDeletionMessage": "Do you want to delete this Reagent Lot? This cannot be undone.",
+    "WarningMessage": "Can not delete ReagentLot - Found 1 dependency in TestSpec",
+    "AddLotToastMessage": "Reagent Lot Added",
+    "EditLotToastMessage": "Reagent Lot Edited",
+    "DeleteLotToastMessage": "Deleted ..... Reagent Lot",
+    "UnspecifiedNotDeletedMessage": "Unspecified *** Reagent Lots cannot be deleted",
+    "FileName": "reagentLots.csv",
+    "DeleteConfirmationMessage": "Do you want to delete this Reagent Lot? This cannot be undone.",
+    "PageOptions": [
+      "10",
+      "25",
+      "50",
+      "100"
+    ],
+    "PageButton": "2"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

@@ -1,0 +1,29 @@
+{
+  "DEV": {
+    "URL": "https://unity-dev.qcnet.com/login",
+    "Username": "divya_lalwani+devadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Divya",
+    "Department": "Dept",
+    "Instrument": "Alinity c",
+    "Control": "Assayed Chemistry",
+    "Analyte": "Albumin",
+    "Exp": "26460 expires 31 Jul 2022"
+  },
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "Username": "UnityNextRegressionTestUser+1@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Regression",
+    "Department": "AdvancedLJ",
+    "Instrument": "Alinity c",
+    "Control": "Cardiac Markers Plus LT",
+    "Analyte": "Albumin",
+    "Exp": "Lot DONOTUSELOT01 expires 30 Apr 2032",
+    "ReagentLot": "lot1_AdvLJ",
+    "CalibratorLot": "Cal_lot1_AdvLJ",
+    "ReagentLot2": "lot2_AdvLJ",
+    "CalibratorLot2": "Cal_lot2_AdvLJ",
+    "date":"March 20, 2022"
+  }
+}

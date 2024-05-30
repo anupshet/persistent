@@ -1,0 +1,24 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<aside class="aside">
+  <h3>{{'ARCHIVEDPANEL.DISABLEDCODES' | translate}}</h3>
+
+  <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}">
+    <ng-template ngFor let-chip [ngForOf]="disabledChips" let-chipIndex="index">
+      <ng-template [ngIf]="chip.disabled">
+        <div class="mb-25 spec_disabled_chip">
+          <div [ngClass]="hasPermissionToAccess([permissions.ConnectivityMapping])?'btn-wrapper':'btn-wrapper-disabled'">
+          <button class="mat-small btn-code mb-0 spec_chip" (click)="onChipClick(chipIndex)" [matTooltip]="displayParentCodeToolTip(chip)"  [matTooltipPosition]="'left'">
+            <strong matTooltip="{{chip.code}}" matTooltipShowDelay="300">{{chip.code | truncate:[15]}}</strong>
+          </button>
+          <div class="flex spec_chipOptions" *ngIf="chipClickedIndex === chipIndex && isChipClicked">
+              <span class="link ml-15 spec_restore"
+                    (click)="onRestoreClick(chip, chipIndex)">{{'ARCHIVEDPANEL.RESTORE' | translate}}</span>
+              <span class="link mr-15 spec_delete"
+                    (click)="onDeleteClick(chip)">{{'ARCHIVEDPANEL.DELETE' | translate}}</span>
+          </div>
+          </div>
+        </div> <!-- /wrapper -->
+      </ng-template>
+    </ng-template>
+  </perfect-scrollbar>
+</aside>

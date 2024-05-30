@@ -1,0 +1,15 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="greeting-component" [ngClass]="{'display-inline': displayInline}">
+  <h1 class="mat-display-2 mb-25" [ngClass]="{'small-font': smallFont}">
+      <span id="greetingTextGood">{{'GREETING.GOOD' | translate}}</span>
+      <ng-container [ngSwitch]="currentDateTime | unextTimePeriod:timeZone">
+          <span *ngSwitchCase="0"
+              id="greetingTextDayPeriod"> {{'GREETING.MORNING' | translate}}</span>
+          <span *ngSwitchCase="1"
+              id="greetingTextDayPeriod"> {{'GREETING.AFTERNOON' | translate}}</span>
+          <span *ngSwitchCase="2"
+              id="greetingTextDayPeriod"> {{'GREETING.EVENING' | translate}}</span>
+          <span *ngSwitchDefault></span>
+      </ng-container>,&nbsp;<span id="greetingTextFirstName">{{firstName}}</span>
+  </h1>
+</div>

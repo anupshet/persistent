@@ -1,0 +1,17 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com",
+    "Username": "amruta_karale+autolab3@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Amruta",
+    "Department": "MultiEntry",
+    "Instrument": "ARCHITECT c16000",
+    "Control1": "Blood Gas Plus EGL",
+    "Lot": "29550",
+    "Levels": "3",
+    "C1Analyte1": "Chloride"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

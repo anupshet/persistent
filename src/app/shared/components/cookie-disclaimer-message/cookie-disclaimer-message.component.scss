@@ -1,0 +1,50 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../../../assets/scss/variables';
+
+.cookie-disclaimer-dialog {
+  margin: auto;
+  padding: 0px 100px;
+  max-width: 1160px;
+  margin-top: 20px;
+
+  .your-privacy-matters {
+    text-align: center;
+    font-size: 35.5px;
+    font-weight: 350;
+    letter-spacing: 0.25px;
+    color: rgba(0, 0, 0, 0.85);
+  }
+  .cookie-disclaimer-message {
+    margin-bottom: 20 px;
+    text-align: justify;
+    font-size: 16.5px;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+  }
+  .preferences-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    color: $blue;
+  }
+  .preferences-container .manage-cookie-preferences {
+    text-transform: capitalize;
+    font-size: 16.5px;
+    margin-top: 8px;
+  }
+}
+
+.nav-bar-lang {
+  display: inline-flex;
+  position: fixed;
+  color: $gray-900;
+  right: 35px;
+}

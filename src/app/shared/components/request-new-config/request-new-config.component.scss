@@ -1,0 +1,25 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved
+@import '../../../../assets/scss/layout/new-lab-setup';
+
+.br-dialog {
+  position: relative;
+  padding-bottom: 10px;
+
+  & .mat-dialog-content {
+    margin-top: $custom-type-size-xxxlarge;
+    text-align: justify;
+  }
+
+  .close-dialog {
+    position: absolute;
+    right: -12px;
+    top: -12px;
+  }
+
+  mat-icon {
+    &.close {
+      color: $dark-secondary-text;
+      cursor: pointer;
+    }
+  }
+}

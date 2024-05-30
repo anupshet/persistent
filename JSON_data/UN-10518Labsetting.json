@@ -1,0 +1,150 @@
+{
+  "QA": {},
+  "STAGE": {},
+  "DEV": {
+    "URL": "https://unity-dev.qcnet.com/",
+    "username": "Michael_Chern+dev040822@Bio-Rad.com",
+    "password": "Welcome1",
+    "newuser":"pooja_piplpalle+location10group1@bio-rad.com",
+    "NewuserPassword":"Irvine1",
+    "Newuserfirstname":"pooja",
+  "FirstName": "John",
+	"SelectedDecimal":"2",
+		"SelectedDecimal2":"4",
+   "AuditTrailAPI": "https://unity-dev-api.qcnet.com/tracking/at",
+        "AuditTrailAPIStatusCode": "200",
+        "action":"update",
+        "actionStatus":"Success",
+        "eventType":"Preferences",
+        "updateAtCallForLabsetting1":{
+            "account_id": "946bd4ef-63b3-4861-a5bf-c8c941701fc9",
+            "accountNumber": "103038",
+            "accountName": "John Lab",
+            "group_id": "b3cb7f43-0bf2-4f78-8d32-8ceb6314d673",
+            "groupName": "John Lab",
+            "user_id": "9229ba66-74f6-4555-a5a5-ca006213b779",
+            "oktaId": "00ufpvhf5o03Xbiq52p7",
+            "location_id": "f3c18cfa-5d73-498d-8d88-bdaf868d7d45",
+            "locationName": "John Lab",
+            "userRoles": [
+                "DeprecatedAdmin",
+                "LabSupervisor",
+                "AccountUserManager",
+                "LabUserManager"
+            ],
+            "eventDateTime": "2023-04-02T11:13:41.684Z",
+            "localDateTime": "2023-04-02T11:13:41.684Z",
+            "awsCorrelationId": "",
+            "hasDepartments": true,
+            "auditTrail": {
+                "device_id": "",
+                "run_id": "",
+                "runDateTime": "2023-04-02T11:13:41.684Z",
+                "eventType": "Preferences",
+                "action": "Update",
+                "actionStatus": "Success",
+                "priorValue": {
+                    "dataType": 0,
+                    "trackReagentCalibrator": false,
+                    "decimalPlaces": 4
+                },
+                "currentValue": {
+                    "dataType": 1,
+                    "trackReagentCalibrator": true,
+                    "decimalPlaces": 2
+                },
+                "hierarchy": {
+                    "account": [
+                        {
+                            "id": "946bd4ef-63b3-4861-a5bf-c8c941701fc9",
+                            "name": "John Lab",
+                            "groups": [
+                                {
+                                    "id": "b3cb7f43-0bf2-4f78-8d32-8ceb6314d673",
+                                    "name": "John Lab",
+                                    "locations": [
+                                        {
+                                            "id": "f3c18cfa-5d73-498d-8d88-bdaf868d7d45",
+                                            "name": "John Lab",
+                                            "departments": [
+                                                {
+                                                    "id": "",
+                                                    "name": ""
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+"updateAtCallForLabSetting":{
+    "account_id": "946bd4ef-63b3-4861-a5bf-c8c941701fc9",
+    "accountNumber": "103038",
+    "accountName": "John Lab",
+    "group_id": "b3cb7f43-0bf2-4f78-8d32-8ceb6314d673",
+    "groupName": "John Lab",
+    "user_id": "9229ba66-74f6-4555-a5a5-ca006213b779",
+    "oktaId": "00ufpvhf5o03Xbiq52p7",
+    "location_id": "f3c18cfa-5d73-498d-8d88-bdaf868d7d45",
+    "locationName": "John Lab",
+    "userRoles": [
+        "DeprecatedAdmin",
+        "LabSupervisor",
+        "AccountUserManager",
+        "LabUserManager"
+    ],
+    "eventDateTime": "2023-04-01T14:49:30.945Z",
+    "localDateTime": "2023-04-01T14:49:30.945Z",
+    "awsCorrelationId": "",
+    "hasDepartments": true,
+    "auditTrail": {
+        "device_id": "",
+        "run_id": "",
+        "runDateTime": "2023-04-01T14:49:30.945Z",
+        "eventType": "Preferences",
+        "action": "Update",
+        "actionStatus": "Success",
+        "priorValue": {
+            "dataType": 1,
+            "trackReagentCalibrator": true,
+            "decimalPlaces": 2
+        },
+        "currentValue": {
+            "dataType": 0,
+            "trackReagentCalibrator": false,
+            "decimalPlaces": 4
+        },
+        "hierarchy": {
+            "account": [
+                {
+                    "id": "946bd4ef-63b3-4861-a5bf-c8c941701fc9",
+                    "name": "John Lab",
+                    "groups": [
+                        {
+                            "id": "b3cb7f43-0bf2-4f78-8d32-8ceb6314d673",
+                            "name": "John Lab",
+                            "locations": [
+                                {
+                                    "id": "f3c18cfa-5d73-498d-8d88-bdaf868d7d45",
+                                    "name": "John Lab",
+                                    "departments": [
+                                        {
+                                            "id": "",
+                                            "name": ""
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+ }
+}

@@ -1,0 +1,120 @@
+@import '~@angular/material/theming';
+
+$br-typography: mat-typography-config(
+  $font-family: 'Lato, Roboto, Noto Sans, Arial, sans-serif',
+  $body-1: mat-typography-level(16px, 24px, 500), 
+  $body-2: mat-typography-level(15px, 28px, 500),
+  $title:  mat-typography-level(20px, 32px, 500)
+);
+
+$br-blue: (
+  50: #e3f6f9,
+  100: #b7e7f1,
+  200: #8bd7e9,
+  300: #65c7e1,
+  400: #4cbbdd,
+  500: #39b0da,
+  600: #31a2cc,
+  700: #278fba,
+  800: #247ea7,
+  900: #195e85,
+  A100: #b7e7f1,
+  A200: #8bd7e9,
+  A400: #4cbbdd,
+  A700: #278fba,
+  contrast: (
+  50: $black-87-opacity,
+  100: $black-87-opacity,
+  200: $black-87-opacity,
+  300: $black-87-opacity,
+  400: $black-87-opacity,
+  500: $black-87-opacity,
+  600: $black-87-opacity,
+  700: #ffffff,
+  800: #ffffff,
+  900: #ffffff,
+  A100: $black-87-opacity,
+  A200: $black-87-opacity,
+  A400: $black-87-opacity,
+  A700: #ffffff
+)
+);
+
+$br-orange: (
+  50: #fff7e0,
+  100: #ffeab1,
+  200: #ffdc7e,
+  300: #ffdc7e,
+  400: #ffc41f,
+  500: #ffba00,
+  600: #ffac00,
+  700: #ff9900,
+  800: #ff8700,
+  900: #ff6600,
+  A100: #ffeab1,
+  A200: #ffdc7e,
+  A400: #ffc41f,
+  A700: #ff9900,
+  contrast: (
+  50: $black-87-opacity,
+  100: $black-87-opacity,
+  200: $black-87-opacity,
+  300: $black-87-opacity,
+  400: $black-87-opacity,
+  500: $black-87-opacity,
+  600: $black-87-opacity,
+  700: $black-87-opacity,
+  800: $black-87-opacity,
+  900: #ffffff,
+  A100: $black-87-opacity,
+  A200: $black-87-opacity,
+  A400: $black-87-opacity,
+  A700: #ffffff
+)
+);
+
+$br-red: (
+  50: #ffebee,
+  100: #ffcdd2,
+  200: #ef9a9a,
+  300: #e57373,
+  400: #ef5350,
+  500: #f44336,
+  600: #e53935,
+  700: #d32f2f,
+  800: #c62828,
+  900: #b71c1c,
+  A100: #ff8a80,
+  A200: #ff5252,
+  A400: #ff1744,
+  A700: #d50000,
+  contrast: (
+  50: $dark-primary-text,
+  100: $dark-primary-text,
+  200: $dark-primary-text,
+  300: $dark-primary-text,
+  400: $dark-primary-text,
+  500: $light-primary-text,
+  600: $light-primary-text,
+  700: $light-primary-text,
+  800: $light-primary-text,
+  900: $light-primary-text,
+  A100: $dark-primary-text,
+  A200: $light-primary-text,
+  A400: $light-primary-text,
+  A700: $light-primary-text
+  )
+);
+
+$br-theme-primary: mat-palette($br-blue, 700, 200, 900);
+$br-theme-accent: mat-palette($br-orange, 900, 200, 900);
+$br-theme-warn: mat-palette($br-red, 700, 200, 900);
+$br-theme: mat-light-theme($br-theme-primary, $br-theme-accent, $br-theme-warn);
+
+$br-primary-palette: map-get($br-theme, primary);
+$br-accent-palette: map-get($br-theme, accent);
+$br-warn-palette: map-get($br-theme, warn);
+
+$br-primary: mat-color($br-primary-palette);
+$br-accent: mat-color($br-accent-palette);
+$br-warn: mat-color($br-warn-palette);

@@ -1,0 +1,12 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<mat-form-field matTooltip="{{tooltip | translate}}">
+  <mat-label>{{label | translate}}</mat-label>
+  <mat-select id="languagePreference" [formControl]="control">
+    <mat-option *ngFor='let country of languages' [value]='country.lcid'>
+      {{'LANGUAGELIST.' + country.name | translate}}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="control.touched && control.errors && showErrorByType('required')">
+    {{'ACCOUNTFORM.ENTERLANGUAGEPREFERENCE' | translate}}
+  </mat-error>
+</mat-form-field>

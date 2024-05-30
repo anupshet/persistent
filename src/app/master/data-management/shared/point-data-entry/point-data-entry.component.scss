@@ -1,0 +1,61 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../../../../assets/scss/variables';
+@import '../../../../../assets/scss/base/variables-peak';
+
+.input-field {
+  width: 100px;
+  display: block;
+  float: left;
+}
+
+.level-label {
+  position: absolute;
+  top: -42px;
+  left: 30%;
+
+  color: $white;
+  &.level-1 { background-color: $br-level-1; }
+  &.level-2 { background-color: $br-level-2; }
+  &.level-3 { background-color: $br-level-3; }
+  &.level-4 { background-color: $br-level-4; }
+  &.level-5 { background-color: $br-level-5; }
+  &.level-6 { background-color: $br-level-6; }
+  &.level-7 { background-color: $br-level-7; }
+  &.level-8 { background-color: $br-level-8; }
+  &.level-9 { background-color: $br-level-9; }
+
+  text-align: center;
+  border-radius: 18px;
+  width: 21px;
+  height: 18px;
+  font-size: 13px;
+  padding-top: 3px;
+}
+
+.component-insert-run {
+  padding: 0px 17px 19px 14px;
+}
+
+
+table.point-data-entry-table {
+
+  tbody,
+  td {
+    white-space: nowrap;
+    padding: 7px 12px;
+    padding: 0 50px 0 0;
+    text-align: left;
+  }
+
+  .level-cell-value {
+    position: relative;
+    width: 100px;
+    padding: 7px 2px 7px 0;
+    padding-top: 0;
+    vertical-align: middle;
+  }
+
+  mat-form-field {
+    width: 65px;
+  }
+}

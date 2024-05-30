@@ -1,0 +1,444 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../../../assets/scss/variables";
+@import "../../../../../assets/scss/base/variables-peak";
+@import "../../../../../assets/scss/mixins";
+
+.result-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-form-field {
+  .error {
+    white-space: nowrap;
+    position: absolute;
+    bottom: -20px;
+  }
+}
+
+.dialog-heading {
+  margin: 0;
+  background: $blue-darked;
+  color: $white;
+  padding: ($custom-type-size-xxsmall + $custom-type-size-xxxsmall) $custom-type-size-xlarge;
+
+  @include media(desktop-and-up) {
+    background: none;
+    color: $gray-700;
+    padding: $custom-type-size-xlarge (
+      $custom-type-size-xlarge + $custom-type-size-xxsmall
+    );
+}
+
+ul {
+  font-size: mat-font-size($br-typography, body-2);
+  color: $white;
+  flex-wrap: wrap;
+
+  @include media(desktop-and-up) {
+    display: flex;
+    color: $gray-700;
+  }
+
+  li {
+    margin: 0 $custom-type-size-xxsmall 0 0;
+    display: inline-block;
+  }
+
+  .time {
+    display: block;
+
+    @include media(tablet-and-down) {
+      display: block;
+    }
+  }
+
+  time {
+    font-size: mat-font-size($br-typography, caption);
+    color: rgba($white, 0.72);
+
+    @include media(desktop-and-up) {
+      color: $gray-600;
+      margin-left: 5px;
+    }
+  }
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: $white;
+  font-size: mat-font-size($br-typography, body-2);
+  text-transform: uppercase;
+}
+
+.buttons-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 11px;
+
+  @include media(desktop-and-up) {
+    margin: 0;
+    display: none;
+  }
+}
+
+.component-run-new-data {
+  .flex-item-1 {
+    .mat-form-field {
+      width: 200px;
+    }
+
+    .calibrator-field {
+      margin-left: $custom-type-size-xxsmall;
+
+      .mat-select {
+        width: 200px;
+        margin-left: $custom-type-size-xxsmall;
+      }
+    }
+  }
+}
+}
+
+.content-scroll {
+  overflow: auto;
+  max-height: calc(100vh - 128px);
+  padding: $custom-type-size-base $custom-type-size-xlarge;
+
+  @include media(desktop-and-up) {
+    padding: 0;
+  }
+}
+
+h3 {
+  font-size: $custom-type-size-xlarge;
+  line-height: 1.2;
+  margin: 0;
+  color: $white;
+
+  @include media(desktop-and-up) {
+    color: rgba($gray-700, 0.8);
+    margin: 0 0 -4px;
+  }
+}
+
+.desktop-hide {
+  @include media(desktop-and-up) {
+    display: none;
+  }
+}
+
+.mobile-hide {
+  @include media(desktop-and-up) {
+    display: none;
+  }
+}
+
+.levels {
+  margin: 0 -$custom-type-size-xlarge;
+
+  @include media(desktop-and-up) {
+    // display: flex;
+    white-space: nowrap;
+    margin: 0 0 ($custom-type-size-xlarge + $custom-type-size-xxsmall);
+    padding: 0 $custom-type-size-xxsmall;
+  }
+
+  h2 {
+    margin: 0 170px 15px 0;
+    font-size: $custom-type-size-base;
+    color: $gray-700;
+
+    @include media(desktop-and-up) {
+      font-weight: normal;
+      margin: 0 0 5px;
+    }
+  }
+
+  .level-info {
+    padding: ($custom-type-size-xxsmall + $custom-type-size-xxxsmall) $custom-type-size-xlarge;
+    border-bottom: 1px solid $gray-400;
+    position: relative;
+
+    @include media(phone) {
+      padding: ($custom-type-size-xxsmall + $custom-type-size-xxxsmall) $custom-type-size-xxsmall;
+    }
+
+    @include media(desktop-and-up) {
+      display: inline-block;
+      padding: 4px $custom-type-size-large;
+      border: none;
+      width: 33.33%;
+      border-left: 1px solid $gray-400;
+      padding: 0 $custom-type-size-xlarge;
+    }
+
+    &:first-child {
+      @include media(desktop-and-up) {
+        border-left: none;
+      }
+    }
+
+    h2.title {
+      display: flex;
+      position: relative;
+      height: 25px;
+      background: none;
+
+      span.content {
+        top: 0;
+        cursor: pointer;
+      }
+
+      div.content {
+        top: -4px;
+        margin: -24px 15px;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  }
+
+  table {
+    font-size: mat-font-size($br-typography, body-2);
+    color: $gray-700;
+    width: 100%;
+
+    @include media(desktop-and-up) {
+      margin: 0 0 $custom-type-size-xxsmall;
+    }
+
+    th {
+      font-size: mat-font-size($br-typography, caption);
+      color: $gray-600;
+
+      @include media(desktop-and-up) {
+        font-size: $custom-type-size-xxsmall;
+      }
+    }
+
+    th,
+    td {
+      padding: 0 8px;
+      text-align: left;
+      font-weight: normal;
+      border-left: 1px solid $gray-400;
+
+      &:first-child {
+        border: none;
+
+        @include media(desktop-and-up) {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}
+
+.levels.level-4 {
+  .level-info {
+    width: auto;
+    padding: 0 $custom-type-size-xlarge  !important;
+    display: inline-block;
+  }
+
+}
+
+.levels.level-5 {
+  .level-info {
+    @include media(desktop-and-up) {
+      width: 20% !important;
+    }
+  }
+}
+
+.levels.level-5 {
+  .level-info {
+    @include media(desktop-and-up) {
+      width: 17% !important;
+    }
+  }
+}
+
+footer {
+  padding-top: $custom-type-size-xxsmall;
+
+  @include media(desktop-and-up) {
+    border-top: 1px solid $gray-400;
+    display: flex;
+    align-items: center;
+    align-items: flex-end;
+    padding: 9px $custom-type-size-xlarge (
+      $custom-type-size-xxsmall + $custom-type-size-xxxsmall) ($custom-type-size-xlarge + $custom-type-size-xxsmall
+    );
+}
+
+.choose {
+  @include media(desktop-and-up) {
+    width: 220px;
+    min-width: 220px;
+    margin-right: 30px;
+  }
+}
+
+.comment {
+  @include media(desktop-and-up) {
+    margin-right: 59px;
+  }
+
+  &.mat-form-field-should-float {
+    textarea {
+      height: 30px;
+    }
+  }
+}
+
+.btn {
+  white-space: nowrap;
+  padding: 10px 22px;
+
+  @include media(desktop-and-up) {
+    display: block;
+    width: auto;
+    min-width: 0;
+    flex-shrink: 0;
+  }
+}
+
+.inputs-row {
+  @include media(desktop-and-up) {
+    display: flex;
+    flex-grow: 1;
+  }
+}
+}
+
+::ng-deep .action-panel-width.mat-select-panel {
+  min-width: fit-content !important;
+}
+
+textarea.mat-input-element {
+  height: 18px;
+  resize: none;
+}
+
+.mat-form-field {
+  margin: 0 0 35px;
+
+  @include media(desktop-and-up) {
+    margin: 0 0 8px;
+  }
+
+  .caret {
+    &:before {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      right: 7px;
+      top: 50%;
+      border: solid transparent;
+      border-top-color: $gray-700;
+      border-width: 5px 4px;
+    }
+  }
+}
+
+.radio-group {
+  position: absolute;
+  top: 12px;
+  right: 5px;
+
+  @include media(desktop-and-up) {
+    position: static;
+  }
+}
+
+.w-60 {
+  width: 70px;
+}
+
+// TODO: [Jaideep] Please make changes to this so that it matches the developers guidelines.
+.left-spacing {
+  position: absolute;
+  left: 145px;
+  color: red;
+}
+
+.delete-icon {
+  position: absolute;
+  z-index: 100;
+  left: calc(50% - 23px);
+  top: -30px;
+
+  .material-icons {
+    font-size: $custom-type-size-xxxlarge;
+    margin-top: -$custom-type-size-xxsmall;
+    margin-left: -8px;
+  }
+}
+
+.white-icon {
+  color: $white;
+}
+
+.flex-ctn-1 {
+  display: flex;
+  margin-top: $custom-type-size-xxsmall;
+
+  .flex-item-1 {
+    width: 480px;
+  }
+
+  .flex-item-2 {
+    width: 150px;
+    margin-right: 20px;
+  }
+
+  .flex-item-3 {
+    width: 120px;
+    margin-top: -1px;
+  }
+
+  .flex-item-4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 315px;
+    height: $custom-type-size-xlarge + $custom-type-size-base;
+    @include border-radius($custom-border-radius-base);
+    border: solid 1px $gray-400;
+    padding: $custom-type-size-xxxsmall $custom-type-size-xsmall;
+  }
+}
+
+.flex-ctn-2 {
+  display: flex;
+  align-items: center;
+
+  .flex-item-1 {
+    width: 220px;
+  }
+
+  .flex-item-2 {
+    flex-grow: 2;
+  }
+
+  .flex-item-3 {
+    display: flex;
+    width: 500px;
+  }
+}
+
+.expired-label {
+  padding: $custom-type-size-xsmall;
+  margin-left: 19px;
+  margin-top: -24px;
+  color: red;
+}

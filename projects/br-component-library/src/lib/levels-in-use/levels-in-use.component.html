@@ -1,0 +1,10 @@
+<div class="levels-in-use-container">
+  <div class="flex-container" [formGroup]="levelsGroup">
+    <div formArrayName="levelCheckboxes" *ngFor="let item of levelCheckboxes.controls; let i = index;">
+      <ng-container [formGroupName]="i">
+        <mat-checkbox class="levels-in-use" formControlName="level" (change)="onChangeLevelInUse()">{{ i + 1 }}
+        </mat-checkbox>
+      </ng-container>
+    </div>
+  </div>
+</div>

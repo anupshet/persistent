@@ -1,0 +1,65 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+
+
+<form [formGroup]="formGroup">
+  <div class="change-lot-component" [ngClass]="{'hidden': !isFormVisible}">
+    <div class="item-1 level-{{no}}">
+      <mat-form-field class="column" *ngIf="isPointEntry" formGroupName="BrChangeLotSelectLotForm">
+        <mat-select placeholder={{changeLotModel.labelCorrective}} [(ngModel)]="selectedActionId" formControlName="action"
+           name="selectedActionName" ngDefaultControl
+          [disabled]="isDisabled" class="spec-corrective-actions" (ngModelChange)="onActionChanged()">
+          <mat-option *ngFor="let correctiveAction of correctiveActions" [value]="correctiveAction.actionId"
+            class="spec-corrective-acitons-options">
+            {{correctiveAction.actionName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea tabindex="-1" matInput id="{{labTestId}}" [readonly]="isDisabled" matTextareaAutosize
+          matAutosizeMaxRows="4" maxLength="1500" [placeholder]="(changeLotModel.labelComment)" name="enteredCommentContent"
+          formControlName="comments" (ngModelChange)="onCommentChanged()">
+        </textarea>
+      </mat-form-field>
+      <div *ngIf="isInsertPastResultLinkVisible" formGroupName="BrChangeLotSelectLotForm">
+        <a (click)="toggleDateEdit()">{{changeLotModel.labelForgot}}</a>
+        <div>
+          {{changeLotModel.labelTestRuns}}
+        </div>
+      </div>
+    </div> <!-- /item-1 -->
+    <div class="item-2">
+      <div class="lot-dropdown mr-20" formGroupName="BrChangeLotSelectLotForm">
+        <br-select [placeholder]="(changeLotModel.labelCalibrator)" [data]="activeCalibratorLots"
+          formControlName="calibratorLotSelect" [displayAttribute]="'lotNumber'" [emitValue]="true"
+          (selectedChanged)="onCalibratorChanged($event)"
+          [hasError]="isLotExpired(changeLotModel.selectedCalibratorLot)"
+          [errorMessage]="(changeLotModel.labelExpired) + ' ' + (calibratorLotErrorMessageDate | date)"
+          [disabled]="!hasMoreThanOneCalibratorLot() || isDisabled">
+        </br-select>
+        <span class="br-text-primary link"
+          (click)="!isDisabled ? requestNewConfiguration(newRequestConfigType.CalibratorLot): false"
+          [ngClass]="{'disable': isDisabled}">{{changeLotModel.labelCalibratorLot}}
+        </span>
+      </div>
+
+      <div class="lot-dropdown" formGroupName="BrChangeLotSelectLotForm">
+        <br-select class="reagentLotSelect" [placeholder]="(changeLotModel.labelReagent)" [data]="activeReagentLots"
+          formControlName="reagentLotSelect" [displayAttribute]="'lotNumber'" [emitValue]="true"
+          (selectedChanged)="onReagentChanged($event)" [hasError]="isLotExpired(changeLotModel.selectedReagentLot)"
+          [errorMessage]="(changeLotModel.labelExpired) + ' ' + (reagentLotErrorMessageDate | date)"
+          [disabled]="!hasMoreThanOneReagentLot() || isDisabled">
+        </br-select>
+        <span class="br-text-primary link" id="spec_dontSeeReagentLot" [ngClass]="{'disable': isDisabled}"
+          (click)="!isDisabled ? requestNewConfiguration(newRequestConfigType.ReagentLot) : false">{{changeLotModel.labelReagentLot}}
+        </span>
+      </div>
+    </div>
+  </div><!-- /flex -->
+</form>
+
+<div (click)="toggleDisplayChangeLot()" class="toggle-trigger"
+  [ngClass]="{'isFormVisible': isFormVisible, 'hide': showOptions, 'disabled-section': isArchived}">
+  <span *ngIf="!isFormVisible" class="chevron" matTooltip={{changeLotModel.labelShow}}></span>
+  <span *ngIf="isFormVisible" class="chevron" matTooltip={{changeLotModel.labelHide}}></span>
+</div>
+

@@ -1,0 +1,28 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<mat-card *ngIf="viewAccountSelector" class="account-user-selector-component">
+  <div [ngClass]="{'full-height': userLab?.length > 2}">
+    <perfect-scrollbar [config]="{suppressScrollX: false}">
+      <div class="flex">
+        <div class="mb-20 mt-20 ml-20">
+          <h4 class="mat-h4">{{'ACCOUNTUSERSELECTOR.HELLO' | translate}} {{ firstName }}, {{'ACCOUNTUSERSELECTOR.SELECTLOCATION' | translate}}</h4>
+        </div>
+        <div class="ctn-groups">
+          <div class="group-name ml-40 mb-20" *ngFor="let group of userLab">
+            <span class="strong">{{ group.labName}}</span>
+            <mat-list role="list" class="mat-list-tight mb-25">
+              <mat-list-item class="location-name" *ngFor="let location of group.children; let i = index">
+                <mat-radio-group [(ngModel)]="userLocationId">
+                  <mat-radio-button color="primary" [value]="location.id" (click)="setNode(location)">{{
+                    group.children[i].displayName | truncate:[50]}}</mat-radio-button>
+                </mat-radio-group>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+        <div class="ctn-btns mb-10 mr-10">
+          <button class="proceedButton" color="primary" mat-flat-button (click)="proceed()" [disabled]="disableProceed">{{'ACCOUNTUSERSELECTOR.PROCEED' | translate}}</button>
+        </div>
+      </div> <!-- /flex-->
+    </perfect-scrollbar>
+  </div>
+</mat-card>

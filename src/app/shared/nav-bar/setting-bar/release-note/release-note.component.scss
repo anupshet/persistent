@@ -1,0 +1,20 @@
+@import "../../../../../assets/scss/variables";
+@import "../../../../../assets/scss/base/variables-peak";
+@import "../../../../../assets/scss/mixins";
+
+.btn-cta {
+  margin-left: 700px;
+}
+.report-area {
+  height: calc(100vh - 164px);
+  @include media(tablet-and-up) {
+    padding-top: 0;
+    height: calc(100vh - 71px);
+  }
+}
+.text-center {
+  text-align: center;
+}
+.d-block {
+  display: block;
+}

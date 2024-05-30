@@ -1,0 +1,99 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1686809414985' stop='1686809486500'>
+    <name>Test Suite:Verify Error Dialog box for Selection parameter filters on Report page</name>
+    <title>Test Suite:Verify Error Dialog box for Selection parameter filters on Report page</title>
+    <test-cases>
+        <test-case start='1686809414987' status='failed' stop='1686809486495'>
+            <name>Test case 1 :Verify Search logic</name>
+            <title>Test case 1 :Verify Search logic</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1686809415121' status='passed' stop='1686809415121'>
+                    <name>Test case 1:Verify Search logic for Location and Department"</name>
+                    <title>Test case 1:Verify Search logic for Location and Department"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686809415122' status='passed' stop='1686809415122'>
+                    <name>Test case 2:Verify Presence of error dialog when clicked on clear selection button"</name>
+                    <title>Test case 2:Verify Presence of error dialog when clicked on clear selection button"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686809415132' status='passed' stop='1686809415132'>
+                    <name>search button clicked</name>
+                    <title>search button clicked</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686809421454' status='passed' stop='1686809421454'>
+                    <name>Cookies not Displayed</name>
+                    <title>Cookies not Displayed</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686809454421' status='passed' stop='1686809454421'>
+                    <name>Reports Icon Displayed</name>
+                    <title>Reports Icon Displayed</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686809454422' status='passed' stop='1686809454422'>
+                    <name>Clicked on reports Icon</name>
+                    <title>Clicked on reports Icon</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Cookies not displayed' source='80a3e65a-c65f-4338-aaea-37a6964189e5-attachment.png' type='image/png' size='97164'/>
+            </attachments>
+            <failure>
+                <message>Failed: No element found using locator: By(xpath, .//span[@class='mat-option-text'][contains(text(),'Location and Department')])</message>
+                <stack-trace>NoSuchElementError: No element found using locator: By(xpath, .//span[@class='mat-option-text'][contains(text(),'Location and Department')])
+                    at C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\built\element.js:814:27
+                    at ManagedPromise.invokeCallback_ (C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:1376:14)
+                    at TaskQueue.execute_ (C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:3084:14)
+                    at TaskQueue.executeNext_ (C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:3067:27)
+                    at C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:2927:27
+                    at C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:668:7
+                    at runMicrotasks (&lt;anonymous>)
+                    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+                From: Task: WebDriver.executeScript()
+                    at Driver.schedule (C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\webdriver.js:807:17)
+                    at Driver.executeScript (C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\webdriver.js:878:16)
+                    at run (C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\built\browser.js:58:33)
+                    at ProtractorBrowser.to.&lt;computed> (C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\built\browser.js:66:16)
+                    at BrowserLibrary.clickJS (C:\Users\anup_shet\Desktop\Required\Git Repo\FEcode\cdg-unity-next-spa\SPA\e2e\utils\browserUtil.ts:221:17)
+                    at C:\Users\anup_shet\Desktop\Required\Git Repo\FEcode\cdg-unity-next-spa\SPA\e2e\page-objects\dynamic-reports-phase2.po.ts:173:15
+                    at new Promise (&lt;anonymous>)
+                    at DynamicReportsPhase2.FilterSelect (C:\Users\anup_shet\Desktop\Required\Git Repo\FEcode\cdg-unity-next-spa\SPA\e2e\page-objects\dynamic-reports-phase2.po.ts:162:12)
+                    at UserContext.&lt;anonymous> (C:\Users\anup_shet\Desktop\Required\Git Repo\FEcode\cdg-unity-next-spa\SPA\e2e\dynamic-reports-phase2\UN-15677-SearchLogic.spec.ts:36:20)
+                    at C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\jasminewd2\index.js:112:25
+                From: Task: Run it("Test case 1 :Verify Search logic") in control flow
+                    at UserContext.&lt;anonymous> (C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\jasminewd2\index.js:94:19)
+                    at attempt (C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4297:26)
+                    at QueueRunner.run (C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4217:20)
+                    at runNext (C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4257:20)
+                    at C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4264:13
+                    at C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4172:9
+                    at C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\jasminewd2\index.js:64:48
+                    at ControlFlow.emit (C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\events.js:62:21)
+                    at ControlFlow.shutdown_ (C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:2674:10)
+                    at C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\selenium-webdriver\lib\promise.js:2599:53
+                From asynchronous test: 
+                Error
+                    at Suite.&lt;anonymous> (C:\Users\anup_shet\Desktop\Required\Git Repo\FEcode\cdg-unity-next-spa\SPA\e2e\dynamic-reports-phase2\UN-15677-SearchLogic.spec.ts:25:3)
+                    at addSpecsToSuite (C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:1107:25)
+                    at Env.describe (C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:1074:7)
+                    at describe (C:\Users\anup_shet\AppData\Roaming\npm\node_modules\protractor\node_modules\jasmine-core\lib\jasmine-core\jasmine.js:4399:18)
+                    at Object.&lt;anonymous> (C:\Users\anup_shet\Desktop\Required\Git Repo\FEcode\cdg-unity-next-spa\SPA\e2e\dynamic-reports-phase2\UN-15677-SearchLogic.spec.ts:18:1)
+                    at Module._compile (internal/modules/cjs/loader.js:945:30)
+                    at Module.m._compile (C:\Users\anup_shet\Desktop\Required\Git Repo\FEcode\cdg-unity-next-spa\SPA\node_modules\ts-node\src\index.ts:422:23)
+                    at Module._extensions..js (internal/modules/cjs/loader.js:962:10)
+                    at Object.require.extensions.&lt;computed> [as .ts] (C:\Users\anup_shet\Desktop\Required\Git Repo\FEcode\cdg-unity-next-spa\SPA\node_modules\ts-node\src\index.ts:425:12)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

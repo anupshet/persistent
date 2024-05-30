@@ -1,0 +1,152 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<mat-card class="contact" >
+  <div>
+    <!-- <br-card-hdr [title]="getTitle()" [src]="getSource()"></br-card-hdr> -->
+  </div>
+  <div class="scroll-container">
+    <perfect-scrollbar>
+      <form class="form-content" [formGroup]="labconfigurationLocationForm"
+        (ngSubmit)="onSubmit(labconfigurationLocationForm.value)">
+        <mat-card-content>
+
+          <div class="flex-container">
+            <mat-form-field class="form-input-padding">
+              <mat-label class="form-group-header">{{'LABCONFIGURATIONLOCATION.LOCATIONNAME' | translate}}</mat-label>
+              <input matInput id="locationName" name="LocationName" formControlName="labLocationName"[errorStateMatcher]="errorStateMatcherMouseOver">
+              <mat-placeholder>{{'LABCONFIGURATIONLOCATION.CITY' | translate}}
+              </mat-placeholder>
+              <mat-error
+                *ngIf="labconfigurationLocationForm.invalid || (labconfigurationLocationForm.touched || mouseOverSubmit.value)">
+                <span *ngIf="labconfigurationLocationForm.controls.labLocationName.hasError('required')">
+                  {{'LABCONFIGURATIONLOCATION.REQUIRED' | translate}}</span>
+                <span *ngIf="labconfigurationLocationForm.controls.labLocationName.hasError(errorNames.noEmptyString)">
+                  {{'LABCONFIGURATIONLOCATION.EMPTYVALUE' | translate}}
+                  </span>
+                <span *ngIf="labconfigurationLocationForm.controls.labLocationName.hasError('minlength')">
+                  {{'LABCONFIGURATIONLOCATION.CHARACTERS' | translate}}</span>
+                <span *ngIf="labconfigurationLocationForm.controls.labLocationName.hasError('minlength')">
+                  {{'LABCONFIGURATIONLOCATION.CANNOTEXCEED' | translate}}</span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-input-padding">
+            <br-select formControlName="labLocationContact" [data]="contacts" [displayAttribute]="'firstName'"
+              [placeholder]="contactPlaceholder"
+              [hasError]="labconfigurationLocationForm.get('labLocationContact').hasError('required')"
+              [errorMessage]="'Required'" [emitValue]="true"></br-select>
+          </div>
+
+          <div formGroupName="labLocationAddress">
+            <div class="form-input-padding">
+              <br-select formControlName="country" [data]="countries" [displayAttribute]="'countryName'"
+                [placeholder]="countryPlaceholder"
+                [hasError]="labconfigurationLocationForm.controls.labLocationAddress.get('country').hasError('required')"
+                [errorMessage]="'Required'" [emitValue]="true"></br-select>
+            </div>
+
+            <mat-form-field class="form-input-padding">
+              <mat-label>{{'LABCONFIGURATIONLOCATION.ADDRESS' | translate}}</mat-label>
+              <input matInput formControlName="streetAddress1" [errorStateMatcher]="errorStateMatcherMouseOver">
+              <mat-placeholder>{{'LABCONFIGURATIONLOCATION.STREETADDRESS' | translate}}</mat-placeholder>
+              <mat-error
+                *ngIf="labconfigurationLocationForm.controls.labLocationAddress.invalid || (labconfigurationLocationForm.controls.labLocationAddress.touched || mouseOverSubmit.value)">
+
+                <span
+                  *ngIf="labconfigurationLocationForm.controls.labLocationAddress.controls.streetAddress1.hasError('required')">
+                  {{'LABCONFIGURATIONLOCATION.REQUIRED' | translate}}</span>
+                <span
+                  *ngIf="labconfigurationLocationForm.controls.labLocationAddress.controls.streetAddress1.hasError(errorNames.noEmptyString)">
+                  {{'LABCONFIGURATIONLOCATION.EMPTYVALUE' | translate}}</span>
+                <span
+                  *ngIf="labconfigurationLocationForm.controls.labLocationAddress.controls.streetAddress1.hasError('minlength')">
+                  {{'LABCONFIGURATIONLOCATION.CHARACTERS' | translate}}</span>
+                <span
+                  *ngIf="labconfigurationLocationForm.controls.labLocationAddress.controls.streetAddress1.hasError('minlength')">
+                  {{'LABCONFIGURATIONLOCATION.CANNOTEXCEED' | translate}}</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-input-padding">
+              <mat-label>{{'LABCONFIGURATIONLOCATION.ADDRESS2' | translate}}</mat-label>
+              <input matInput formControlName="streetAddress2" [errorStateMatcher]="errorStateMatcherMouseOver">
+              <mat-placeholder>{{'LABCONFIGURATIONLOCATION.STREETADDRESS' | translate}}</mat-placeholder>
+            </mat-form-field>
+
+            <mat-form-field class="form-input-padding">
+              <mat-label>{{'LABCONFIGURATIONLOCATION.CITY1' | translate}}</mat-label>
+              <input matInput formControlName="city" [errorStateMatcher]="errorStateMatcherMouseOver">
+              <mat-placeholder>{{'LABCONFIGURATIONLOCATION.CITY1' | translate}}</mat-placeholder>
+              <mat-error
+                *ngIf="labconfigurationLocationForm.controls.labLocationAddress.invalid || (labconfigurationLocationForm.controls.labLocationAddress.touched || mouseOverSubmit.value)">
+                <span
+                  *ngIf="labconfigurationLocationForm.controls.labLocationAddress.controls.city.hasError('required')">
+                  {{'LABCONFIGURATIONLOCATION.REQUIRED' | translate}}</span>
+                <span
+                  *ngIf="labconfigurationLocationForm.controls.labLocationAddress.controls.city.hasError(errorNames.noEmptyString)">
+                  {{'LABCONFIGURATIONLOCATION.EMPTYVALUE' | translate}}
+                </span>
+                <span
+                  *ngIf="labconfigurationLocationForm.controls.labLocationAddress.controls.city.hasError('minlength')">
+                  {{'LABCONFIGURATIONLOCATION.CHARACTERS' | translate}}</span>
+                <span
+                  *ngIf="labconfigurationLocationForm.controls.labLocationAddress.controls.city.hasError('minlength')">
+                  {{'LABCONFIGURATIONLOCATION.CANNOTCHARACTERS' | translate}}</span>
+              </mat-error>
+            </mat-form-field>
+            <div class="form-input-padding">
+              <br-select formControlName="state" [data]="states" [displayAttribute]="'name'"
+                [placeholder]="statePlaceHolder"
+                [hasError]="labconfigurationLocationForm.controls.labLocationAddress.get('state').hasError('required')"
+                [errorMessage]="'Required'" [emitValue]="true"></br-select>
+
+            </div>
+            <mat-form-field class="form-input-padding">
+              <mat-label>{{'LABCONFIGURATIONLOCATION.ZIPCODE' | translate}}</mat-label>
+              <input matInput formControlName="zipCode" [errorStateMatcher]="errorStateMatcherMouseOver">
+              <mat-placeholder>{{'LABCONFIGURATIONLOCATION.POSTALCODE' | translate}}</mat-placeholder>
+              <mat-error
+                *ngIf="labconfigurationLocationForm.controls.labLocationAddress.invalid || (labconfigurationLocationForm.controls.labLocationAddress.touched || mouseOverSubmit.value)">
+                <span
+                  *ngIf="labconfigurationLocationForm.controls.labLocationAddress.controls.zipCode.hasError('required')">
+                  {{'LABCONFIGURATIONLOCATION.REQUIRED' | translate}}</span>
+                <span
+                  *ngIf="labconfigurationLocationForm.controls.labLocationAddress.controls.zipCode.hasError(errorNames.noEmptyString)">
+                  {{'LABCONFIGURATIONLOCATION.EMPTYVALUE' | translate}}</span>
+                <span
+                  *ngIf="labconfigurationLocationForm.controls.labLocationAddress.controls.zipCode.hasError('minlength')">
+                  {{'LABCONFIGURATIONLOCATION.ONECHARACTER' | translate}}</span>
+                <span
+                  *ngIf="labconfigurationLocationForm.controls.labLocationAddress.controls.zipCode.hasError('minlength')">
+                  {{'LABCONFIGURATIONLOCATION.TWENTY' | translate}}</span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <mat-error *ngIf="labConfigLocationErrorMessage">
+            {{labConfigLocationErrorMessage}}
+          </mat-error>
+
+        </mat-card-content>
+      </form>
+    </perfect-scrollbar>
+  </div>
+
+  <mat-card-actions class="card-footer">
+    <div class="footer-btn">
+      <div class="footer-btn-group">
+        <button mat-button color="primary" type="reset" class="cancel-btn" (click)="setDefaultForm()"
+          [disabled]="!labconfigurationLocationForm.touched || ! labconfigurationLocationForm.dirty">
+          {{'LABCONFIGURATIONLOCATION.CANCEL' | translate}}
+        </button>
+        <span (mouseenter)="mouseOverSubmit.value = true" (mouseleave)="mouseOverSubmit.value = false">
+          <button mat-raised-button color="primary" type="submit" (click)="onSubmit(labconfigurationLocationForm.value)"
+            [disabled]="labconfigurationLocationForm.invalid">
+            {{'LABCONFIGURATIONLOCATION.ADDLOCATION' | translate}}
+          </button>
+        </span>
+      </div>
+    </div>
+  </mat-card-actions>
+
+</mat-card>

@@ -1,0 +1,587 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+// Your project
+@import 'assets/scss/main';
+
+// Okata log-in css
+@import '~@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
+
+@import '~angular-tree-component/dist/angular-tree-component.css';
+
+///////////////////////////////////////////// Okta css styles
+
+#okta-sign-in {
+  font-size: mat-font-size($br-typography, body-2);
+  margin: auto;
+  display: block;
+  margin-top: 112px;
+  margin-bottom: 269px !important;
+  width: 100%;
+  max-width: 817px;
+  .auth-header {
+    display: none;
+  }
+
+  &.no-beacon .auth-header {
+    padding-bottom: 0px;
+  }
+
+  .o-form {
+    .input-fix,
+    .textarea-fix {
+      border-top: 0px;
+      border-right: 0px;
+      border-left: 0px;
+      border-bottom: solid $black 1px;
+      border-radius: 0px
+    }
+
+    .input-tooltip {
+      display: none;
+    }
+
+    .o-form-input {
+      .input-icon + input,
+      .input-icon + input + input {
+        padding-left: 0px;
+      }
+    }
+
+
+    .custom-checkbox label {
+      color: $black;
+      font-family: Lato !important;
+      font-size: 16px !important;
+      letter-spacing: 0.19px;
+      width: 154px;
+      padding: 0px 10px 0px 25px;
+      height: 19px;
+      background: none;
+      white-space: nowrap;
+    }
+  }
+
+    input[type = checkbox] {
+      opacity: 0;
+      position: absolute;
+      left: -9999px;
+      top: 0;
+    }
+
+    .custom-checkbox label::before {
+      content: "";
+      display: inline-block;
+      height: 17px;
+      width: 17px;
+      border: 1px solid;
+      border-radius: 3px;
+    }
+
+    .custom-checkbox label::after {
+      content: "";
+      display: inline-block;
+      height: 4px;
+      width: 11px;
+      border-left: 2px solid white;
+      border-bottom: 2px solid white;
+      transform: rotate(-45deg);
+    }
+
+    .custom-checkbox label {
+      position: relative;
+    }
+
+    .custom-checkbox label::before,
+    .custom-checkbox label::after {
+        position: absolute;
+    }
+
+    /*Outer-box*/
+    .custom-checkbox label::before {
+        top: -1px;
+        left: -1px;
+    }
+
+    /*Checkmark*/
+    .custom-checkbox label::after {
+        left: 2px;
+        top: 4px;
+    }
+
+    /*Hide the checkmark by default*/
+    .custom-checkbox input[type="checkbox"] + label::after {
+      content: none;
+    }
+
+    .custom-checkbox input[type="checkbox"]:hover + label::before {
+      background: $gray-200;
+      outline: $gray-200 auto 1px;
+    }
+
+    .custom-checkbox input[type="checkbox"]:checked {
+      width: 17px;
+      height: 17px;
+    }
+
+    .custom-checkbox input[type="checkbox"]:checked + label::before {
+      outline: $blue-darker auto 1px;
+      background: $blue-darker;
+    }
+
+    .custom-checkbox input[type="checkbox"]:checked + label::after {
+      content: "";
+    }
+
+  &.auth-container {
+    h2,
+    h3 {
+      float: left;
+      min-width: 106px;
+      height: 19px;
+      margin-bottom: 65px;
+      font-size: mat-font-size($br-typography, body-2);
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: left;
+      color: $gray-700;
+      float: none;
+    }
+
+    .okta-sign-in-header {
+      border: none;
+    }
+
+    &.main-container {
+      border: 0;
+      -webkit-box-shadow: 0 0 !important;
+      box-shadow: 0 0 !important;
+      margin-bottom: 0px !important;
+    }
+
+    .input-icon:before,
+    .input-tooltip:before {
+      display: none;
+    }
+
+    .link {
+      &:link,
+      &:visited,
+      &:hover,
+      &:active {
+        color: $indigo !important;
+        font-size: mat-font-size($br-typography, body-2);
+      }
+    }
+
+    .okta-form-input-error .error-16-small:before {
+      content: '' !important;
+      content: '' !important;
+    }
+  }
+
+  .auth-org-logo {
+    float: left;
+    margin-left: -50px;
+  }
+
+  .auth-footer {
+    font-size: mat-font-size($br-typography, body-2);
+    height: 0px;
+    position: relative;
+    bottom: 60px;
+    left: 64%;
+    font-family: Lato;
+    font-size: 16px;
+    letter-spacing: 0.19px;
+  }
+
+  .auth-content .help-links li:nth-child(2) {
+    display: none;
+  }
+
+  .focused-input {
+    box-shadow: 0 0 10px #fff !important;
+  }
+
+  .ajax-form-editor .infobox,
+  .edit-form .infobox,
+  .form-content-wrap .infobox,
+  .m-form .infobox,
+  .o-form .infobox,
+  .read-only-form .infobox,
+  .v-form .infobox {
+    border: none !important;
+    color: $br-color-warn !important;
+  }
+
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    /* IE10+ CSS styles go here */
+    .ajax-form-editor .infobox,
+    .edit-form .infobox,
+    .form-content-wrap .infobox,
+    .m-form .infobox,
+    .o-form .infobox,
+    .read-only-form .infobox,
+    .v-form .infobox {
+      margin-top: 295px;
+    }
+  }
+
+  .help-wrap .infobox.infobox-error,
+  .infobox-error,
+  .infobox.infobox-subtle.infobox-error {
+    &:before {
+      display: none;
+    }
+  }
+
+  .infobox {
+    display: none;
+    padding: 0 !important;
+
+    > .icon {
+      display: none;
+    }
+  }
+
+  .o-form-has-errors .o-form-explain.o-form-input-error {
+    display: inline !important;
+    padding-left: 0 !important;
+  }
+
+  .o-form-head + .o-form-explain {
+    text-align: left;
+  }
+
+  .o-form-head {
+    margin-top: 0px !important
+  }
+
+  .o-form-button-bar .button {
+    display: block;
+    float: right;
+    background: linear-gradient($btn-bg, $btn-bg);
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 116px;
+    border: none;
+    height: 45px;
+
+    &:hover {
+      background: linear-gradient($btn-bg, $btn-bg);
+    }
+  }
+
+  .password-expired .o-form-button-bar .button {
+    width: 170px;
+  }
+}
+
+#login-container {
+  background-color: mat-color($mat-grey, A100);
+}
+
+
+.loginViewClass {
+  background-color: mat-color($mat-grey, A100) !important;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.primary-auth .help {
+  display: none !important;
+}
+
+.auth-footer .help-links {
+  display: block !important;
+}
+
+
+.forgot-password .auth-footer .link {
+  margin: -52px 0 20px 0 !important;
+  display: block !important;
+}
+
+a[data-se='back-button'] {
+  float: left !important;
+  text-align: left !important;
+  background: transparent !important;
+  display: block !important;
+  color: $indigo !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-decoration: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  line-height: 40px !important;
+  text-transform: none !important;
+  font-weight: normal !important;
+  margin-top: 5px !important;
+
+  &:before {
+    content: '< '
+  }
+
+  &:after {
+    content: url('assets/images/bio-rad-logo.png');
+    background-repeat: no-repeat;
+    margin-left: -10px;
+    display: block;
+    padding: 0;
+  }
+}
+
+a[data-se='back-link']:before {
+  content: '< '
+}
+
+/////////// reset btn
+a[data-se="email-button"] {
+  width: 133px !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+}
+
+/////////// sign-in
+input#okta-signin-submit {
+  width: 150px !important;
+  margin-top: 54px;
+  height: 36px;
+  padding: 10px 16px;
+  background-color: $blue-darker;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-none {
+  cursor: none;
+}
+
+// unity-busy-component
+.unity-busy-component {
+  text-align: center;
+  z-index: 10000;
+
+
+   .ng-busy-default-sign {
+     width: 200px;
+     padding: 20px 0 30px 10px;
+     margin-top: 60px;
+     border: 0;
+     border-radius: 10px;
+     border: 0;
+   }
+
+   .ng-busy-default-text  {
+     margin-left: -25px;
+   }
+
+   .ng-busy-backdrop {
+     opacity: 0.6
+   }
+ }
+
+.o-form-button-bar:after {
+  content: "Copyright © 2023 Bio-Rad Laboratories, Inc. All rights reserved.";
+  display: block;
+  width: 333px;
+  height: 16px;
+  float: left;
+  margin-left: 0px;
+  margin-top: 46px;
+  font-family: Lato;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  font-size: 10px;
+  line-height: 1.6;
+  letter-spacing: 0.32px;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.auth-content {
+  width: 381px;
+  height: 400px;
+  padding: 50px 0px 50px 180px !important;
+}
+
+.okta-form-title {
+  font-family: Lato !important;
+  font-family: Lato;
+  font-size: 35.5px !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.25px !important;
+  color: rgba(0, 0, 0, 0.85) !important;
+  white-space: nowrap;
+}
+
+.o-form-input-name-username{
+  font-family: Lato !important;
+  font-size: 16.7px !important;
+  letter-spacing: 0.15px !important;
+  line-height: 1.44 !important;
+  height: auto !important;
+}
+
+.o-form-input-name-password {
+  font-family: Lato !important;
+  font-size: 16.7px !important;
+  letter-spacing: 0.15px !important;
+  line-height: 1.44 !important;
+  height: auto !important;
+}
+
+.o-form-fieldset {
+  margin-top: 34px !important;
+}
+
+.o-form-label {
+  padding: 0px 10px 0px 0 !important;
+}
+
+.o-form-label label {
+  font-family: Lato !important;
+  font-size: 16.7px !important;
+  letter-spacing: 0.15px !important;
+  line-height: 1.44 !important;
+  height: auto !important;
+  font-weight: normal !important;
+}
+
+#okta-signin-username{
+  font-family: Lato !important;
+  height: 22px !important;
+}
+#okta-signin-password{
+  font-family: Lato !important;
+  height: 22px !important;
+}
+.o-form-content{
+  padding: 0px !important;
+}
+
+.Rectangle {
+  height: 83px !important; //AJT 215553 this plus height == height of Unity Next header
+  margin: 0 0 112px;
+  background-color: #51596c;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 35px; //AJT 215553 this plus height == height of Unity Next header
+}
+.Unity-Next {
+  width: 176px;
+  margin: 0 850px 2px 60px;
+  font-family: Lato;
+  font-size: 35.5px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.25px;
+  color: #fff;
+}
+
+.logo {
+  position: relative;
+  height: 43px;
+  width: 149px;
+  float:right;
+  padding-right: 60px;
+  padding-top: 3px;
+  cursor: default;
+}
+
+.report-main-div{
+  height: calc(100vh - 150px);
+}
+
+.report-generic-container .mat-dialog-container {
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.myPanelClass{
+  margin-top: 30px;
+  width: 355px;
+  height: 90px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 7px 0;
+}
+
+.dynamic-filter-select-panel {
+  width: 180px !important;
+  min-width: unset !important;
+  margin-top: 30px;
+  padding: 7px 0 !important;
+  transform: translateX(40px) !important;
+  .mat-option {
+    width: 180px;
+    height: fit-content !important;
+    white-space: normal;
+    align-items: baseline;
+    padding: 6px 0 6px 10px;
+    .mat-pseudo-checkbox {
+      top: 2px;
+    }
+    .mat-option-text {
+      flex-grow: 0;
+      font-family: Lato;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      word-break: break-word;
+      line-height: 1.71;
+      letter-spacing: 0.42px;
+      text-align: left;
+    }
+  }
+  .mat-option.mat-active {
+    background: $white !important;
+  }
+}
+
+.dynamic-filter{
+  .mat-select-trigger {
+    padding: 0px 10px 3px;
+  }
+}
+
+.links-bar:hover {
+  .manage-search-icon path, .missing-tests-icon path {
+    fill: $blue-darker;
+  }
+}
+
+.br-dialog-component-panel-class {
+  .mat-dialog-container{
+    padding: 0;
+  }
+}
+
+.disabled-reset-button {
+  .reset-icon path {
+    fill: $gray-400;
+  }
+}
+
+.long-text-tooltip {
+  background-color: $white;
+  border-radius: 4px;
+  box-shadow: 0px 5px 5px -3px $tooltip-border-one, 0px 8px 10px 1px $tooltip-border-two, 0px 3px 14px 2px $tooltip-border-three;
+  font-size: 12px;
+  color: $black !important;
+}

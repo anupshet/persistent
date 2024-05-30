@@ -1,0 +1,672 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="data-review-component">
+  <div class="data-review-filters">
+    <div class="test-selecter">
+      <div class="filter-selecter">
+        <div #departmentFilter class="correction-actionCollapse">
+          <mat-form-field (click)="$event.stopPropagation();" floatLabel="never">
+            <mat-label class="filter-label">{{ 'DATAREVIEW.DEPARTMENT' | translate }}</mat-label>
+            <mat-select name="department" id="department" maxLength="2" multiple 
+              class="dynamic-filter"
+              #matSelectDepartment
+              placeholder="{{'DATAREVIEW.DEPARTMENT' | translate }}"
+              disableOptionCentering
+              [(ngModel)]="selectedDepartments" 
+              [disabled]="isDisabledDepartment" 
+              (selectionChange)="changeFilterDepartment()"
+              [panelClass]="'dynamic-filter-select-panel'">
+              <mat-select-trigger>
+                <span *ngIf="selectedDepartments.length === departmentList.length+1">
+                  {{'DATAREVIEW.ALLDEPARTMENTS' | translate }}
+                </span>
+                <span *ngIf="selectedDepartments.length != departmentList.length+1">
+                  {{getSelectedItems(selectedDepartments)}}
+                </span>
+              </mat-select-trigger>
+              <mat-option  #matOption [value]="valueAll" (click)="toggleCheckboxesDepartment(matOption.selected)">
+                {{'DATAREVIEW.ALLDEPARTMENTS' | translate }}
+              </mat-option>
+              <div *ngFor="let department of departmentList">
+                <mat-option [value]="department">
+                  {{department.displayName}}
+                </mat-option> 
+              </div>
+            </mat-select>
+          </mat-form-field>
+        <div class="tooltipContent" [class.mat-elevation-z8]="true" [style.margin-left.px]="departmentFilter.offsetWidth - 10">
+          <div class="arrowBlock">
+          </div>
+          <div class="tooltipText">
+            <div class="tooltipTextContent">
+              <div class="tooltipTitleContainer">
+                <span class="tooltipTitle">{{'DATAREVIEW.DEPARTMENTS' | translate }}</span>
+              </div>
+              <div class="tooltipSelectedTextContainer">
+                <span class="tooltipSelectedText">{{'DATAREVIEW.SELECTED' | translate }}</span>
+              </div>
+              <div class="itemTextContainer" *ngIf="departmentTooltip.length === 0">
+                <span class="itemText">
+                  {{'DATAREVIEW.NONE' | translate }}
+                </span>
+              </div>
+              <perfect-scrollbar>
+                <div class="item-list-container">
+                  <div class="itemTextContainer" *ngFor="let department of departmentTooltip">
+                    <span class="itemText">
+                      <span *ngIf="department === departmentTooltip[departmentTooltip.length-1]">{{department.displayName}}</span>
+                      <span *ngIf="department != departmentTooltip[departmentTooltip.length-1]">{{department.displayName+','}}</span>
+                    </span>
+                  </div>
+                </div>
+              </perfect-scrollbar>
+            </div>
+          </div>
+        </div>
+       </div>
+       <div #instrumentFilter class="correction-actionCollapse">
+        <mat-form-field floatLabel="never">
+          <mat-label class="filter-label">{{ 'DATAREVIEW.INSTRUMENT' | translate }}</mat-label>
+          <mat-select multiple placeholder="{{'DATAREVIEW.INSTRUMENT' | translate }}" name="labInstrument" class="dynamic-filter" id="labInstrument" maxLength="2" disableOptionCentering [panelClass]="'dynamic-filter-select-panel'"
+            #matSelectInstrument [(ngModel)]="selectedInstruments" [disabled]="isDisabledInstrument" (selectionChange)="changeFilterInstrument()">
+            <mat-select-trigger>
+              <span *ngIf="selectedInstruments.length === labInstrumentList.length+1">
+                {{'DATAREVIEW.ALLINSTRUMENTS' | translate }}
+              </span>
+              <span *ngIf="selectedInstruments.length != labInstrumentList.length+1">
+                {{getSelectedItems(selectedInstruments)}}
+              </span>
+            </mat-select-trigger>
+            <mat-option #matOptionInstrument  [value]="valueAll"  (click)="toggleCheckboxesInstrument(matOptionInstrument.selected)">{{'DATAREVIEW.ALLINSTRUMENTS' | translate }}</mat-option>
+            <mat-option *ngFor="let labInstrument of labInstrumentList" [value]="labInstrument">
+             {{labInstrument.displayName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="tooltipContent" [class.mat-elevation-z8]="true" [style.margin-left.px]="instrumentFilter.offsetWidth - 10">
+          <div class="arrowBlock">
+          </div>
+          <div class="tooltipText">
+            <div class="tooltipTextContent">
+              <div class="tooltipTitleContainer">
+                <span class="tooltipTitle">{{'DATAREVIEW.INSTRUMENTS' | translate }}</span>
+              </div>
+              <div class="tooltipSelectedTextContainer">
+                <span class="tooltipSelectedText">{{'DATAREVIEW.SELECTED' | translate }}</span>
+              </div>
+              <div class="itemTextContainer" *ngIf="instrumentTooltip.length === 0">
+                <span class="itemText">
+                  {{'DATAREVIEW.NONE' | translate }}
+                </span>
+              </div>
+              <perfect-scrollbar>
+                <div class="item-list-container">
+                  <div class="itemTextContainer" *ngFor="let instrument of instrumentTooltip">
+                    <span class="itemText">
+                      <span *ngIf="instrument === instrumentTooltip[instrumentTooltip.length-1]">{{instrument.displayName}}</span>
+                      <span *ngIf="instrument != instrumentTooltip[instrumentTooltip.length-1]">{{instrument.displayName+','}}</span>
+                    </span>
+                  </div>
+                </div>
+              </perfect-scrollbar>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div #panelFilter class="correction-actionCollapse">
+      <mat-form-field floatLabel="never">
+        <mat-label class="filter-label">{{ 'DATAREVIEW.PANEL' | translate }}</mat-label>
+        <mat-select class="dynamic-filter" placeholder="{{'DATAREVIEW.PANEL' | translate }}" name="panelItem" id="panelItem" #matSelectPanel maxLength="2" disableOptionCentering [panelClass]="'dynamic-filter-select-panel'" multiple
+            [(ngModel)]="selectedPanels" (selectionChange)="changeFilterPanel()" [disabled]="isDisabledPanel">
+          <mat-select-trigger>
+            <span *ngIf="selectedPanels.length === panelItemList.length+1">
+              {{'DATAREVIEW.ALLPANELS' | translate }}
+            </span>
+            <span *ngIf="selectedPanels.length != panelItemList.length+1">
+              {{getSelectedItems(selectedPanels)}}
+            </span>
+          </mat-select-trigger>
+          <mat-option [value]="valueAll" #matOptionPanel (click)="toggleCheckboxesPanel(matOptionPanel.selected)">{{'DATAREVIEW.ALLPANELS' | translate }}</mat-option>
+          <mat-option *ngFor="let panelItem of panelItemList" [value]="panelItem">
+           {{panelItem.displayName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+        <div class="tooltipContent" [class.mat-elevation-z8]="true" [style.margin-left.px]="panelFilter.offsetWidth - 10">
+          <div class="arrowBlock">
+          </div>
+          <div class="tooltipText">
+            <perfect-scrollbar>
+              <div class="tooltipTextContent">
+                <div class="tooltipTitleContainer">
+                  <span class="tooltipTitle">{{'DATAREVIEW.PANELS' | translate }}</span>
+                </div>
+                <div class="tooltipSelectedTextContainer">
+                  <span class="tooltipSelectedText">{{'DATAREVIEW.SELECTED' | translate }}</span>
+                </div>
+                <div class="itemTextContainer" *ngIf="panelTooltip.length === 0">
+                  <span class="itemText">
+                    {{'DATAREVIEW.NONE' | translate }}
+                  </span>
+                </div>
+                <perfect-scrollbar>
+                  <div class="item-list-container">
+                    <div class="itemTextContainer" *ngFor="let panel of panelTooltip">
+                      <span class="itemText">
+                        <span *ngIf="panel === panelTooltip[panelTooltip.length-1]">{{panel.displayName}}</span>
+                        <span *ngIf="panel != panelTooltip[panelTooltip.length-1]">{{panel.displayName+','}}</span>
+                      </span>
+                    </div>
+                  </div>
+                </perfect-scrollbar>
+
+              </div>
+            </perfect-scrollbar>
+          </div>
+        </div>
+   </div>
+   <div class="correction-actionCollapse">
+      <div  class="report-type">
+        <button type="button" mat-button (click)="viewFilteredItems()" class="setting_button" [disabled]="isViewItemsDisabled">{{'DATAREVIEW.VIEWITEMS' | translate }}</button>
+      </div>
+    </div>
+    <div class="collapse-reset">
+      <button [class.disabled-reset-button]="isResetDisabled" [disabled]="isResetDisabled" class="reset_button" (click)="onResetFilter()">
+        <mat-icon class="reset-icon" [svgIcon]="icons.replay18[18].name"></mat-icon>
+        <span [ngClass]="('DATAREVIEW.RESET' | translate).length  >= 6 ? 'actionName-maximum' : ''" [matTooltip]="('DATAREVIEW.RESET' | translate).length  > 6 ? ('DATAREVIEW.RESET' | translate) : '' " matTooltipPosition="above" >{{'DATAREVIEW.RESET' | translate }}</span>
+      </button>       
+    </div>
+  </div>
+      <div class="filter-toolbar">
+        <div class="filter-style">
+          <span class="filters">
+            {{'DATAREVIEW.FILTERS' | translate }}:
+          </span>
+        </div>
+        <div class="filter-toolbar---action-item" [ngClass]="filterTypes[0].include? 'accepted-bg-color':'filter-div'" (click)="onClickFilters(filterTypes[0])">
+          <div class="filter-div">
+            <span class="action" [ngClass]="('DATAREVIEW.ACCEPTED' | translate).length  > 8 ? 'actionName-maximum' : ''" [matTooltip]="('DATAREVIEW.ACCEPTED' | translate).length  > 8 ? ('DATAREVIEW.ACCEPTED' | translate) : '' " matTooltipPosition="above" >
+              {{'DATAREVIEW.ACCEPTED' | translate }}
+            </span>
+            <div class="filter-results-icons badge-accept">
+              <span class="filter-count" id="acceptedCount">{{filterCounts?.accepted}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="filter-toolbar---action-item" [ngClass]="filterTypes[1].include? 'warning-bg-color':'filter-div'" (click)="onClickFilters(filterTypes[1])">
+          <div class="filter-div">
+            <span class="action" [ngClass]="('DATAREVIEW.WARNING' | translate).length  > 8 ? 'actionName-maximum' : ''" [matTooltip]="('DATAREVIEW.WARNING' | translate).length  > 8 ? ('DATAREVIEW.WARNING' | translate) : '' " matTooltipPosition="above">
+              {{'DATAREVIEW.WARNING' | translate }}
+            </span>
+            <div class="filter-results-icons badge-warning">
+              <span class="filter-count" id="warningCount">{{filterCounts?.warning}}</span>
+            </div>
+          </div>
+          </div>
+          <div class="filter-toolbar---action-item" [ngClass]="filterTypes[2].include? 'reject-bg-color':'filter-div'" (click)="onClickFilters(filterTypes[2])">
+          <div class="filter-div">
+            <span class="action" [ngClass]="('DATAREVIEW.REJECTED' | translate).length  > 8 ? 'actionName-maximum' : ''" [matTooltip]="('DATAREVIEW.REJECTED' | translate).length  > 8 ? ('DATAREVIEW.REJECTED' | translate) : '' " matTooltipPosition="above" >
+              {{'DATAREVIEW.REJECTED' | translate }}
+            </span>
+            <div class="filter-results-icons badge-reject">
+              <span class="filter-count" id="rejectCount">{{filterCounts?.rejected}}</span>
+            </div>
+          </div>
+          </div>
+          <div class="filter-toolbar---action-item" [ngClass]="filterTypes[3].include? 'actionAndComments-bg-color':'filter-div'" (click)="onClickFilters(filterTypes[3])">
+          <div class="filter-div">
+            <span class="action" [ngClass]="('DATAREVIEW.ACTIONS/COMMENTS' | translate).length  >= 17 ? 'actionName-maximum' : ''"  [matTooltip]="('DATAREVIEW.ACTIONS/COMMENTS' | translate).length  >= 17 ? ('DATAREVIEW.ACTIONS/COMMENTS' | translate) : '' " matTooltipPosition="above" >
+              {{'DATAREVIEW.ACTIONS/COMMENTS' | translate }}
+            </span>
+            <div class="filter-results-icons badge-action">
+              <span class="filter-count-action" id="ActionCommentCount">{{filterCounts?.actionAndComments}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="filter-div">
+          <unext-additional-filter-dialog #additionalFilterComponent [(filterTypes)]="filterTypes" [filterCountsObject] = "filterCountsNum" [navIconName]="icons.filter[24].name" (filterEmit)="additionalEventHandler($event)"></unext-additional-filter-dialog>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="links-section">
+    <div class="links-bar toggle-link" *ngIf="hasSupervisorAccess" (click)="toggleBetweenBenchAndSupervisor()">
+      <span class="links-text">{{ toggleLinkText | translate }}</span>
+    </div>
+    <div id="spec_missing_tests" class="links-bar" (click)="openMissingTestsPopUp()" *ngIf="hasPermissionToAccess([permissions.ViewMissingTests]) && missingTestsCount > 0">
+      <mat-icon class="missing-tests-icon" [svgIcon]="icons.missingTests[22].name"></mat-icon>
+      <span class="links-text">{{missingTestsCount}} {{'DATAREVIEW.MISSINGTESTS' | translate }}</span>
+    </div>
+    <div class="links-bar"  (click)="openManageExpectedTestsDialog()">
+      <mat-icon class="manage-search-icon" [svgIcon]="icons.manageSearch[24].name"></mat-icon>
+      <span class="links-text">{{'DATAREVIEW.MANAGEEXPECTEDTESTS' | translate }}</span>
+    </div>
+  </div>
+  <form class="data-columns" [formGroup]="formGroup">
+    <div class="table-container">
+      <perfect-scrollbar [config]="{ suppressScrollY: false , suppressScrollX: false}">
+        <div class="set-height">
+          <table mat-table [dataSource]="(dataReviewTableResults || []) | paginate: paginationConfig" formArrayName="selectedForReview" multiTemplateDataRows="true">
+            <ng-container matColumnDef="checkDataColumn">
+              <th mat-header-cell *matHeaderCellDef class="checkbox-column">
+                <div class="checkbox-header-column-contents">
+                  <div>
+                    <mat-checkbox id="spec_select_all_checkbox" [disabled]="!hasPermissionToAccess([permissions.BenchReview, permissions.SupervisorReview]) || isEditingRun || dataReviewTableResults && dataReviewTableResults?.length <= 0"
+                      [(value)]= "selectedAllRun" [checked]="selectedAllRun" 
+                      (change)="selectAllCheckboxChange($event)" class="check-box-style">
+                    </mat-checkbox>
+                  </div>
+                  <div>
+                    <mat-select id="spec_select_all_dropdown" disableOptionCentering panelClass="myPanelClass" class="drop-down-style"
+                      [disabled]="!hasPermissionToAccess([permissions.BenchReview, permissions.SupervisorReview]) || isEditingRun || dataReviewTableResults && dataReviewTableResults?.length <= 0">
+                      <mat-option
+                        value="SELECT ALL ANALYTE RUNS ON CURRENT PAGE" (click)="selectAllAnalyteRunsOnCurrentPage($event)">{{'DATAREVIEW.SELECTALL' | translate }}
+                        {{'DATAREVIEW.ANALYTERUNSONCURRENTPAGE' | translate }}
+                      </mat-option>
+                      <mat-option
+                        value="SELECT ALL ANALYTE RUNS ON ALL PAGES" (click)="selectAllAnalyteRunsOnAllPages($event)">{{'DATAREVIEW.SELECTALLANALYTE' | translate }}
+                        {{'DATAREVIEW.RUNSONALLPAGES' | translate }}</mat-option>
+                    </mat-select>
+                  </div>
+                </div>
+              </th>
+              <ng-container *matCellDef="let dataReviewResultItem">
+                <td mat-cell *ngIf="dataReviewResultItem.rowSpan > 0" [formGroupName]="dataReviewResultItem.rowNum"
+                  [attr.rowspan]="dataReviewResultItem.rowSpan > 0 ? dataReviewResultItem.rowSpan : null" class="checkbox-column">
+                  <mat-checkbox formControlName="selectedRun"></mat-checkbox>
+                </td>
+              </ng-container>
+            </ng-container>
+            <ng-container matColumnDef="Analyte">
+              <th mat-header-cell *matHeaderCellDef>
+                {{'DATAREVIEW.ANALYTE' | translate }}
+              <th>
+              <ng-container *matCellDef="let dataReviewResultItem">
+                <td mat-cell *ngIf="dataReviewResultItem.rowSpan > 0" [formGroupName]="dataReviewResultItem.rowNum"
+                  class="analyte-column" [attr.rowspan]="dataReviewResultItem.rowSpan > 0 ? dataReviewResultItem.rowSpan : null">
+                  <div class="analyte_box">
+                    <div class="analyte-details">
+                      <div class="analyte-name">
+                        {{dataReviewResultItem.analyteName}}
+                      </div>
+                      <div class="icon-container">
+                        <br-pez-cell #pezCell [actionTitle]="actionTitle" [commentTitle]="commentTitle" [atText]="atText" [actionLogsTitle]="actionLogsTitle" [actions]="dataReviewResultItem?.userActions"
+                          [comments]="dataReviewResultItem?.userComments" [interactions]="dataReviewResultItem?.userInteractions"
+                          [pezDateTimeOffset]="dateTimeOffset" [allowInteractionsHover]="true"
+                          (showReviewSummaryDialog)="openReviewSummaryDialog($event, dataReviewResultItem)">
+                        </br-pez-cell>
+                      </div>
+                      <div class="analyte_lj">
+                        <div class="advanced-lj-button" (click)="openAdvancedLjDialog(dataReviewResultItem.labTestId, dataReviewResultItem.labInstrumentId, dataReviewResultItem.decimalPlaces, dataReviewResultItem.runDateTime)">
+                          <span class="lj_text">LJ</span> <span class="ic-lj"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div></div>
+                    <div class="analyte-info-item">
+                      <div class="analyte_reagent_calibrator_lots reagent_lot">
+                        {{dataReviewResultItem.reagentLotNumber}}
+                      </div>
+                      <div class="analyte_reagent_calibrator_lots calibrator_lot">
+                        {{dataReviewResultItem.calibratorLotNumber}}
+                      </div>
+                    </div>
+                    <div class="analyte-info-item">
+                      <div class="analyte_actions">
+                        <mat-form-field class="flex-item-1 choose" floatLabel="never">
+                          <mat-select formControlName="action" placeholder="{{'DATAREVIEW.CHOOSE' | translate}}"
+                            panelClass="action-panel-width"
+                            name="selectedActionName" ngDefaultControl class="analyte_actions_selection" [(ngModel)]="correctiveAction[dataReviewResultItem.rowNum]" >
+                            <mat-option *ngFor="let action of actions" [value]="action.actionId">
+                              {{action.actionName}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div class="analyte_comments">
+                        <mat-form-field class="flex-item-2 comment" floatLabel="never">
+                          <input #commentsText formControlName="comment" class="comments" matInput autocomplete="off" 
+                          maxLength="1500" placeholder="{{ 'DATAREVIEW.USERCOMMENT' | translate }}" [(ngModel)]="usercomments[dataReviewResultItem.rowNum]"
+                          name="enteredCommentContent">
+                        </mat-form-field>
+                        <ng-container *ngIf="usercomments[dataReviewResultItem.rowNum]?.length >= 20 ">
+                          <div class="tooltipContent" [class.mat-elevation-z8]="true" [style.margin-top.px]="commentsText.offsetWidth - 10">
+                            <div class="arrowBlock">
+                            </div>
+                            <div class="tooltipText">
+                              <div class="tooltipTextContent">
+                                <div class="tooltipTitleContainer">
+                                  <span class="tooltipTitle">{{ 'DATAREVIEW.COMMENTS' | translate }}</span>
+                                </div>
+                                <div class="itemTextContainer">
+                                  <span class="itemText">{{usercomments[dataReviewResultItem.rowNum]}}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </ng-container>
+            </ng-container>
+            <ng-container matColumnDef="Date">
+              <th mat-header-cell *matHeaderCellDef class="date-column not-padded">
+                {{ 'DATAREVIEW.DATE' | translate }}
+              <th>
+              <td mat-cell *matCellDef="let dataReviewResultItem" class="date-column not-padded" [ngClass]="{
+                'first-row-border': dataReviewResultItem.resultIndex === 0,
+                'is-reject': dataReviewResultItem.levelResult.resultStatus === ResultStatusRejected,
+                'is-warning': dataReviewResultItem.levelResult.resultStatus === ResultStatusWarning }">
+                {{dataReviewResultItem.levelResult.measuredDateTime | uNextDate: 'mediumDate'}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Time">
+              <th mat-header-cell *matHeaderCellDef class="time-column">
+                {{ 'DATAREVIEW.TIME' | translate }}
+              <th>
+              <td mat-cell *matCellDef="let dataReviewResultItem" class="time-column" [ngClass]="{
+                'first-row-border': dataReviewResultItem.resultIndex === 0,
+                'is-reject': dataReviewResultItem.levelResult.resultStatus === ResultStatusRejected,
+                'is-warning': dataReviewResultItem.levelResult.resultStatus === ResultStatusWarning }">
+               {{dataReviewResultItem.levelResult.measuredDateTime | uNextDate: 'shortTime'}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Level">
+              <th mat-header-cell *matHeaderCellDef class="level-column">
+                {{ 'DATAREVIEW.LEVEL' | translate }}
+              <th>
+              <td mat-cell *matCellDef="let dataReviewResultItem" class="level-column" [ngClass]="{
+                'first-row-border': dataReviewResultItem.resultIndex === 0,
+                'is-reject': dataReviewResultItem.levelResult.resultStatus === ResultStatusRejected,
+                'is-warning': dataReviewResultItem.levelResult.resultStatus === ResultStatusWarning }">
+                {{dataReviewResultItem?.levelResult.controlLevel}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Results">
+              <th mat-header-cell *matHeaderCellDef class="results-column column-padding">
+                {{ 'DATAREVIEW.RESULTS' | translate }}
+              <th>
+              <td mat-cell *matCellDef="let dataReviewResultItem" class="results-column column-padding" [ngClass]="{
+                'first-row-border': dataReviewResultItem.resultIndex === 0,
+                'is-reject': dataReviewResultItem.levelResult.resultStatus === ResultStatusRejected,
+                'is-warning': dataReviewResultItem.levelResult.resultStatus === ResultStatusWarning }">
+                <div *ngIf="dataReviewResultItem?.id !== runIdInEdit"
+                  [ngClass]="!dataReviewResultItem?.levelResult.isAccepted ? 'rejection-formatting' : ''">
+                  {{ dataReviewResultItem.levelResult.resultValue | uNextNumeric : dataReviewResultItem.decimalPlaces }}
+                </div>
+                <div *ngIf="dataReviewResultItem?.id === runIdInEdit">
+                  <mat-form-field class="mat-form-field-no-padding">
+                    <input id="spec_datareview_result_entry_{{dataReviewResultItem.resultIndex}}" class="data-result-input" name="level"
+                      matInput [brNumericValue]="regexRationalNumber" [(ngModel)]="runInEdit.results[dataReviewResultItem.resultIndex].resultValue"
+                      [ngModelOptions]="{standalone: true}" autocomplete="off" placeholder=""
+                      [disabled]="!hasPermissionToAccess([permissions.SingleDataEntryEdit]) || isUpdatingRun">
+                  </mat-form-field>
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Z-score">
+              <th mat-header-cell *matHeaderCellDef class="zscore-column column-padding">
+                {{ 'DATAREVIEW.ZSCORE' | translate }}
+              <th>
+              <td mat-cell *matCellDef="let dataReviewResultItem" class="zscore-column column-padding" [ngClass]="{
+                'first-row-border': dataReviewResultItem.resultIndex === 0,
+                'is-reject': dataReviewResultItem.levelResult.resultStatus === ResultStatusRejected,
+                'is-warning': dataReviewResultItem.levelResult.resultStatus === ResultStatusWarning }">
+                  {{
+                    (dataReviewResultItem.levelResult.zScoreData?.display || !!dataReviewResultItem.levelResult.zScoreData?.zScore)
+                      ? (dataReviewResultItem.levelResult.zScoreData?.zScore | uNextNumeric : true)
+                      : '-'
+                  }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Rules">
+              <th mat-header-cell *matHeaderCellDef class="rules-column column-padding">
+                {{ 'DATAREVIEW.RULES' | translate }}
+              <th>
+              <td mat-cell *matCellDef="let dataReviewResultItem" class="rules-column column-padding" [ngClass]="{
+                'first-row-border': dataReviewResultItem.resultIndex === 0,
+                'is-reject': dataReviewResultItem.levelResult.resultStatus === ResultStatusRejected,
+                'is-warning': dataReviewResultItem.levelResult.resultStatus === ResultStatusWarning }">
+                <div *ngFor="let reason of dataReviewResultItem?.levelResult.reasons">
+                  {{reason}}<br />
+                </div>
+                <div *ngIf="!dataReviewResultItem?.levelResult?.reasons?.length">-</div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Eval Mean">
+              <th mat-header-cell *matHeaderCellDef class="eval-mean-column column-padding">
+                {{ 'DATAREVIEW.EVALMEAN' | translate }}
+              <th>
+              <td mat-cell *matCellDef="let dataReviewResultItem" class="eval-mean-column column-padding" [ngClass]="{
+                'first-row-border': dataReviewResultItem.resultIndex === 0,
+                'is-reject': dataReviewResultItem.levelResult.resultStatus === ResultStatusRejected,
+                'is-warning': dataReviewResultItem.levelResult.resultStatus === ResultStatusWarning }">
+                {{ !!dataReviewResultItem.levelResult.targetMean
+                  ? (dataReviewResultItem.levelResult.targetMean | uNextNumeric : dataReviewResultItem.decimalPlaces)
+                  : '-'
+                }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Eval SD">
+              <th mat-header-cell *matHeaderCellDef class="eval-sd-column column-padding">
+                {{ 'DATAREVIEW.EVALSD' | translate }}
+              <th>
+              <td mat-cell *matCellDef="let dataReviewResultItem" class="eval-sd-column column-padding" [ngClass]="{
+                'first-row-border': dataReviewResultItem.resultIndex === 0,
+                'is-reject': dataReviewResultItem.levelResult.resultStatus === ResultStatusRejected,
+                'is-warning': dataReviewResultItem.levelResult.resultStatus === ResultStatusWarning }">
+                {{ !!dataReviewResultItem.levelResult.targetSD
+                  ? (dataReviewResultItem.levelResult.targetSD | uNextNumeric : dataReviewResultItem.decimalPlaces)
+                  : '-'
+                }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Eval CV">
+              <th mat-header-cell *matHeaderCellDef class="eval-cv-column column-padding">
+                {{ 'DATAREVIEW.EVALCV' | translate }}
+              <th>
+              <td mat-cell *matCellDef="let dataReviewResultItem" class="eval-cv-column column-padding" [ngClass]="{
+                'first-row-border': dataReviewResultItem.resultIndex === 0,
+                'is-reject': dataReviewResultItem.levelResult.resultStatus === ResultStatusRejected,
+                'is-warning': dataReviewResultItem.levelResult.resultStatus === ResultStatusWarning }">
+                {{ !!dataReviewResultItem.levelResult.targetMean && !!dataReviewResultItem.levelResult.targetSD
+                  ? (getCalculatedCV(dataReviewResultItem.levelResult.targetSD, dataReviewResultItem.levelResult.targetMean) | uNextNumeric : dataReviewResultItem.decimalPlaces)
+                  : '-'
+                }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Peer Mean">
+              <th mat-header-cell *matHeaderCellDef class="peer-mean-column column-padding">
+                {{ 'DATAREVIEW.PEERMEAN' | translate }}
+              <th>
+              <td mat-cell *matCellDef="let dataReviewResultItem" class="peer-mean-column column-padding" [ngClass]="{
+                'first-row-border': dataReviewResultItem.resultIndex === 0,
+                'is-reject': dataReviewResultItem.levelResult.resultStatus === ResultStatusRejected,
+                'is-warning': dataReviewResultItem.levelResult.resultStatus === ResultStatusWarning }">
+                {{ !!dataReviewResultItem.levelResult.peerMean
+                  ? (dataReviewResultItem.levelResult.peerMean | uNextNumeric : dataReviewResultItem.decimalPlaces)
+                  : '-'
+                }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Peer SD">
+              <th mat-header-cell *matHeaderCellDef class="peer-sd-column column-padding">
+                {{ 'DATAREVIEW.PEERSD' | translate }}
+              <th>
+              <td mat-cell *matCellDef="let dataReviewResultItem" class="peer-sd-column column-padding" [ngClass]="{
+                'first-row-border': dataReviewResultItem.resultIndex === 0,
+                'is-reject': dataReviewResultItem.levelResult.resultStatus === ResultStatusRejected,
+                'is-warning': dataReviewResultItem.levelResult.resultStatus === ResultStatusWarning }">
+                {{ !!dataReviewResultItem.levelResult.peerSD
+                  ? (dataReviewResultItem.levelResult.peerSD | uNextNumeric : dataReviewResultItem.decimalPlaces)
+                  : '-'
+                }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Peer CV">
+              <th mat-header-cell *matHeaderCellDef class="peer-cv-column column-padding">
+                {{ 'DATAREVIEW.PEERCV' | translate }}
+              <th>
+              <td mat-cell *matCellDef="let dataReviewResultItem" class="peer-cv-column column-padding" [ngClass]="{
+                'first-row-border': dataReviewResultItem.resultIndex === 0,
+                'is-reject': dataReviewResultItem.levelResult.resultStatus === ResultStatusRejected,
+                'is-warning': dataReviewResultItem.levelResult.resultStatus === ResultStatusWarning }">
+                {{ !!dataReviewResultItem.levelResult.peerMean && !!dataReviewResultItem.levelResult.peerSD
+                  ? (getCalculatedCV(dataReviewResultItem.levelResult.peerSD, dataReviewResultItem.levelResult.peerMean) | uNextNumeric : dataReviewResultItem.decimalPlaces)
+                  : '-'
+                }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="By">
+              <th mat-header-cell *matHeaderCellDef class="by-column column-padding">
+                {{ 'DATAREVIEW.BY' | translate }}
+              <th>
+              <td mat-cell *matCellDef="let dataReviewResultItem" class="by-column column-padding" [ngClass]="{
+                'first-row-border': dataReviewResultItem.resultIndex === 0,
+                'is-reject': dataReviewResultItem.levelResult.resultStatus === ResultStatusRejected,
+                'is-warning': dataReviewResultItem.levelResult.resultStatus === ResultStatusWarning }">
+                <span *ngIf="dataReviewResultItem.addedBy === connectivityText">
+                  {{ "DATAREVIEW.CONNECTIVITY" | translate }}
+                </span>
+                <span *ngIf="dataReviewResultItem.addedBy != connectivityText" [ngClass]="(dataReviewResultItem.addedBy.length) >= 30 ? 'name-maximum-by' : ''" [matTooltip]="(dataReviewResultItem.addedBy.length >= 30 ) ? dataReviewResultItem.addedBy : ''" matTooltipPosition="above" matTooltipClass="long-text-tooltip">
+                  {{ dataReviewResultItem.addedBy }}
+                </span>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Status">
+              <th mat-header-cell *matHeaderCellDef class="status-column column-padding">
+                {{ 'DATAREVIEW.STATUS' | translate }}
+              <th>
+              <td mat-cell *matCellDef="let dataReviewResultItem; let i = index" class="status-column column-padding" [ngClass]="{
+                'first-row-border': dataReviewResultItem.resultIndex === 0,
+                'is-reject': dataReviewResultItem.levelResult.resultStatus === ResultStatusRejected,
+                'is-warning': dataReviewResultItem.levelResult.resultStatus === ResultStatusWarning }">
+                <div *ngIf="dataReviewResultItem?.id !== runIdInEdit">
+                  <span *ngIf="dataReviewResultItem.levelResult.isAccepted">{{ 'DATAREVIEW.ACCEPTED' | translate }}</span>
+                  <span *ngIf="!dataReviewResultItem.levelResult.isAccepted">{{ 'DATAREVIEW.REJECTED' | translate }}</span>
+                </div>
+                <div *ngIf="dataReviewResultItem?.id === runIdInEdit">
+                  <span class="accept-text">{{'DATAREVIEW.ACCEPT' | translate }}</span>&nbsp;
+                  <mat-slide-toggle color="primary" name="isAccepted" [checked]="dataReviewResultItem.levelResult.isAccepted" (change)="toggleAccepted($event, runInEdit.results[dataReviewResultItem.resultIndex])"
+                    [disabled]="!hasPermissionToAccess([permissions.SingleDataEntryEdit]) || isUpdatingRun">
+                  </mat-slide-toggle>
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="settings">
+              <th mat-header-cell *matHeaderCellDef class="settings">
+                <div class="settings-icon">
+                  <unext-data-columns-settings [navIconName]="icons.settings[24].name" [checkedDataColumn]="selectedColumns" (data)="eventHandler($event)" [preferenceLayerChange] = "savePreferenceLayers"  [savePreferenceResponse]="savePreferenceData"></unext-data-columns-settings>
+                </div>
+              <th>
+              <ng-container *matCellDef="let dataReviewResultItem">
+                <td mat-cell *ngIf="dataReviewResultItem.rowSpan > 0" class="settings"
+                  [attr.rowspan]="dataReviewResultItem.rowSpan > 0 ? dataReviewResultItem.rowSpan : null">
+                  <div *ngIf="hasPermissionToAccess([permissions.SingleDataEntryEdit])">
+                    <div class="edit-icon-box">
+                      <span *ngIf="!isEditingRun" class="ic_edit edit-icon" (click)="toggleEditRun(dataReviewResultItem)"></span>
+                      <span *ngIf="dataReviewResultItem?.id === runIdInEdit" class='ic_edit_gray'></span>
+                      <br />
+                    </div>
+                    <div></div>
+                    <div class="update-cancel-box">
+                      <div *ngIf="dataReviewResultItem?.id === runIdInEdit">
+                        <button mat-button color="primary" class="cancel-button" [disabled]="false"
+                          (click)="toggleEditRun(dataReviewResultItem)">{{'DATAREVIEW.CANCELBUTTON' | translate }}</button>
+                        <button unityDebounceClicks mat-button color="primary" mat-raised-button class="update-button"
+                          [throttleTime]="500" [disabled]="!isEditRunFormChanged() || isUpdatingRun"
+                          matTooltip="Update" (click)="updateRun(dataReviewResultItem, runInEdit)">
+                          {{'DATAREVIEW.UPDATE' | translate }}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </ng-container>
+            </ng-container>
+
+            <ng-container matColumnDef="placeholderColumn">
+              <th mat-header-cell *matHeaderCellDef>placeholderColumn</th>
+              <td mat-cell *matCellDef [attr.colspan]="displayedColumns.length"></td>
+            </ng-container>
+
+            <ng-container matColumnDef="sectionHeaderColumn">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td class="section-header-row" mat-cell *matCellDef="let row" [attr.colspan]="displayedColumns.length"><span class="section-header-control"  [ngClass]="(row.customProductName.length || row.productName.length)  >= 30 ? 'name-maximum' : ''"  [matTooltip]="(row.customProductName.length || row.productName.length  >= 30) ? (!!row.customProductName ? row.customProductName : row.productName ) : ''" matTooltipPosition="above" matTooltipClass="primary-tooltip">{{ !!row.customProductName ? row.customProductName : row.productName }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {{ 'DATAREVIEW.LOT' | translate }}&nbsp;<span class="section-header-product-master-lot-number">{{ row.productMasterLotNumber }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {{ 'DATAREVIEW.EXPIRATIONABBR' | translate }} <span class="section-header-lot-expiration">{{ row.headerLotExpirationDate | uNextDate: 'mediumDate'}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span *ngIf="row.departmentName"><span class="section-header-department" [ngClass]="(row.departmentName.length)  >= 30 ? 'name-maximum' : ''"  [matTooltip]="(row.departmentName.length >= 30 ) ? row.departmentName : ''" matTooltipPosition="above" matTooltipClass="primary-tooltip">{{ row.departmentName }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="section-header-instrument" [ngClass]="(row.instrumentAlias.length || row.instrumentName.length) >= 30 ? 'name-maximum' : ''"  [matTooltip]="(row.instrumentAlias.length || row.instrumentName.length) >= 30 ? (!!row.instrumentAlias ? row.instrumentAlias : row.instrumentName)  : ''" matTooltipPosition="above" matTooltipClass="primary-tooltip" >{{ !!row.instrumentAlias ? row.instrumentAlias : row.instrumentName }}</span></td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="header-row"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['sectionHeaderColumn']; when: isHeaderRow" class="section-header"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns; when: isNotPlaceholderRow"
+              [ngClass]="(row?.id === runIdInEdit) ? 'edit-row' : (row.rowNum % 2 === 0 ? 'review-data' : 'review-data alternate-row-color')">
+            </tr>
+            <tr mat-row *matRowDef="let row; columns: ['placeholderColumn']; when: isPlaceholderRow"
+              [ngClass]="(row?.id === runIdInEdit) ? 'edit-row' : (row.rowNum % 2 === 0 ? 'placeholder-row' : 'placeholder-row alternate-row-color')">
+            </tr>
+          </table>
+          <div class="single-item" id="spec_data_review_loading"
+            *ngIf="!dataReviewTableResults">
+            {{ 'DATAREVIEW.LOADINGRUNS' | translate }}...
+          </div>
+          <div class="single-item" id="no-run-available"
+            *ngIf="!allItemsReviewFlag && dataReviewTableResults && dataReviewTableResults?.length <= 0">
+            {{ 'DATAREVIEW.NORUNSAVAILABLEFORREVIEW' | translate }}
+          </div>
+          <div class="single-item single-item2"  *ngIf="allItemsReviewFlag">
+            <span class="text-after-review" id="all-data-reviewed" *ngIf="!noNewResultFlag">{{ 'DATAREVIEW.ALLITEMSHAVEBEENREVIEWED' | translate }}</span>
+            <span class="text-after-review" id="No-new-results" *ngIf="noNewResultFlag">{{ 'DATAREVIEW.NONEWRESULTS' | translate }}</span>
+            <div class="btn-container">
+              <button class="btnStyle" mat-raised-button color="primary" (click)="goToDashboard()">{{ 'DATAREVIEW.GOTODASHBOARD' | translate }}</button>
+              <button class="btnStyle" mat-stroked-button color="primary" (click)="refreshResults()">{{ 'DATAREVIEW.REFRESHRESULTS' | translate }}</button>
+            </div>
+          </div>
+        </div>
+      </perfect-scrollbar>
+    </div>
+  </form>
+
+</div>
+<!-- Added Pagination codee -->
+<div class="footer_toolbar">
+  <div class="footer_toolbar_count">
+    <div class="selectedCount">
+      <span class="runCount">
+        {{itemsSelected}}/{{totalCount}}
+      </span>
+      <span class="selectedCountText">
+        {{ 'DATAREVIEW.TOTALRUNS' | translate }} <br>
+        {{ 'DATAREVIEW.SELECTED' | translate }}
+      </span>
+    </div>
+  </div>
+  <div class="pagination-container footer_pagination_controls">
+    <pagination-template class="spec-pagination-control" id="paginationDataReview" #p="paginationApi"
+      (pageChange)="onDataReviewPageChange($event)" [maxSize]="maxSize"
+      *ngIf="(dataReviewTableResults && dataReviewTableResults.length > 0) && totalPages > 1">
+      <div class="custom-pagination">
+        <button mat-stroked-button color="primary" class="pagination-button spec-prev-button" (click)="p.previous()"
+          [ngClass]="{'selected disable-button' : p.isFirstPage()}" [disabled]="p.isFirstPage()">
+          <mat-icon [svgIcon]="icons.arrowBack[24].name"></mat-icon>
+        </button>
+        <div *ngFor="let page of p.pages, let index = index">
+          <button mat-stroked-button color="primary" class="pagination-button spec-page-button"
+            [ngClass]="{ 'selected' : p.getCurrent() === page.value }" (click)="p.setCurrent(page.value)">
+            {{ page.value }}
+          </button>
+        </div>
+        <button mat-stroked-button color="primary" class="pagination-button spec-next-button" (click)="p.next()"
+          [ngClass]="{'selected disable-button' : p.isLastPage()}" [disabled]="p.isLastPage()">
+          <mat-icon class="rotateArrow" [svgIcon]="icons.arrowBack[24].name"></mat-icon>
+        </button>
+      </div>
+    </pagination-template>
+  </div>
+  <div class="footer_review_button">
+    <button mat-button color="primary" mat-raised-button id="spec_reviewed_button" class="reviewed-button" 
+      [disabled]="!isReviewedButtonEnabled || isSubmittingReview || isEditingRun" *ngIf="hasPermissionToAccess([permissions.BenchReview, permissions.SupervisorReview]) && (dataReviewTableResults && dataReviewTableResults.length > 0)" (click)="reviewSelectedRunReviews(null)">{{ 'DATAREVIEW.REVIEWED' | translate }}</button>
+  </div>
+</div>

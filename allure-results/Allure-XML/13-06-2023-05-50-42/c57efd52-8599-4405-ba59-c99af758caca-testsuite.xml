@@ -1,0 +1,122 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1686658853899' stop='1686658877382'>
+    <name>Test Suite:Verify Error Dialog box for Selection parameter filters on Report page</name>
+    <title>Test Suite:Verify Error Dialog box for Selection parameter filters on Report page</title>
+    <test-cases>
+        <test-case start='1686658853904' status='failed' stop='1686658877366'>
+            <name>Test case 1 :Verify the presence of error dialog for Clear Selection button and More than one dept</name>
+            <title>Test case 1 :Verify the presence of error dialog for Clear Selection button and More than one dept</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1686658854092' status='passed' stop='1686658854093'>
+                    <name>Test case 1:Verify Presence of  error dialog when more than 2 dept is selected"</name>
+                    <title>Test case 1:Verify Presence of  error dialog when more than 2 dept is selected"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686658854093' status='passed' stop='1686658854093'>
+                    <name>Test case 2:Verify Presence of error dialog when clicked on clear selection button"</name>
+                    <title>Test case 2:Verify Presence of error dialog when clicked on clear selection button"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686658863608' status='passed' stop='1686658863608'>
+                    <name>Cookies not Displayed</name>
+                    <title>Cookies not Displayed</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686658876477' status='failed' stop='1686658876477'>
+                    <name>Reports icon is not displayed</name>
+                    <title>Reports icon is not displayed</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Cookies not displayed' source='a21cfa0b-8861-4821-a32c-c82a1f55dfe9-attachment.png' type='image/png' size='97164'/>
+                <attachment title='FailedStep' source='31ce9c69-f84d-4e5f-8515-01d031a0701b-attachment.png' type='image/png' size='34317'/>
+            </attachments>
+            <failure>
+                <message>Expected false to be true.</message>
+                <stack-trace>Error: Failed expectation
+                    at C:\Users\anup_shet\Desktop\Required\Git Repo\FEcode\cdg-unity-next-spa\spa\e2e\dynamic-reports-phase2\UN-17225-ErrorDialogBox.spec.ts:33:23
+                    at runMicrotasks (&lt;anonymous>)
+                    at processTicksAndRejections (internal/process/task_queues.js:93:5)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1686658877368' status='pending' stop='1686658877373'>
+            <name>Test case 2 :Verify the presence of error dialog for selection parameter for instrument</name>
+            <title>Test case 2 :Verify the presence of error dialog for selection parameter for instrument</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>Temporarily disabled with xit</message>
+                <stack-trace></stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1686658877377' status='pending' stop='1686658877377'>
+            <name>Test case 3 :Verify the presence of error dialog for selection parameter for control</name>
+            <title>Test case 3 :Verify the presence of error dialog for selection parameter for control</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>Temporarily disabled with xit</message>
+                <stack-trace></stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1686658877378' status='pending' stop='1686658877378'>
+            <name>Test case 4:Verify the presence of error dialog for Clear Selection button and More than one dept</name>
+            <title>Test case 4:Verify the presence of error dialog for Clear Selection button and More than one dept</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>Temporarily disabled with xit</message>
+                <stack-trace></stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1686658877378' status='pending' stop='1686658877379'>
+            <name>Test case 5 :Verify the presence of error dialog for Clear Selection button and More than one dept</name>
+            <title>Test case 5 :Verify the presence of error dialog for Clear Selection button and More than one dept</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>Temporarily disabled with xit</message>
+                <stack-trace></stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1686658877379' status='pending' stop='1686658877379'>
+            <name>Test case 6 :Verify the presence of error dialog for selection parameter for instrument</name>
+            <title>Test case 6 :Verify the presence of error dialog for selection parameter for instrument</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>Temporarily disabled with xit</message>
+                <stack-trace></stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1686658877379' status='pending' stop='1686658877379'>
+            <name>Test case 7 :Verify the presence of error dialog for selection parameter for control</name>
+            <title>Test case 7 :Verify the presence of error dialog for selection parameter for control</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>Temporarily disabled with xit</message>
+                <stack-trace></stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

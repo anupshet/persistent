@@ -1,0 +1,27 @@
+{
+  "DEV": {},
+  "QA": {},
+  "STAGE": {},
+  "DEV2": {},
+  "LOCAL": {
+    "URL": "http://localhost:4200",
+    "username": "sudhir_paranjape+devqc@bio-rad.com",
+    "password": "Welcome1",
+    "expectedColumns":"LAB IDENTIFICATION,LAB CONTACT,ACCOUNT INFO,GROUP NAME,LOCATION(S),LICENSE TYPE,LICENSE STATUS",
+    "column1Header":"LAB IDENTIFICATION",
+    "column1Value":"Main Lab 123 Main St. Ste.#1, Irvine, CA, 92618, US",
+    "column2Header":"LAB CONTACT",
+    "column2Value":"Sample User sample_user1@bio-rad.com",
+    "column3Header":"ACCOUNT INFO",
+    "column3Value":"Kaiser Permanente U100503",
+    "column4Header":"GROUP NAME",
+    "column4Value":"Lab Group 1",
+    "column5Header":"LOCATION(S)",
+    "column5Value":"3",
+    "column6Header":"LICENSE TYPE",
+    "column6Value":"Connectivity",
+    "column7Header":"LICENSE STATUS",
+    "column7Value":"Active Exp. 10/14/2023",
+    "noOfItemsPerPage":25
+  }
+}

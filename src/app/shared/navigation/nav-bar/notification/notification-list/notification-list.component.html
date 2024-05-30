@@ -1,0 +1,55 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div (click)="captureViewEvent()" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu" xPosition="before"
+  class="ctn-notification-trigger spec_notification_icon"
+  [ngClass]="{'ctn-notification-trigger-disable': !expandNotificationList}">
+  <span *ngIf="notificationCount" class="notification-count">{{notificationCount}}</span>
+  <mat-icon [svgIcon]="icons.notificationsNone[24].name"></mat-icon>
+</div>
+
+<mat-menu #menu="matMenu" [overlapTrigger]="false" class="notification-list-mat-menu spec_notification_menu">
+  <div class="ctn-mat-menu" (click)="$event.stopPropagation();">
+    <div class="ctn-header">
+      <h2>{{'NAV.NOTIFICATION.TITLE' | translate}}</h2>
+      <button
+        *ngIf="notificationCount > 0 && ( hasPermissionToAccess([permissions.ReportsRun]) || hasPermissionToAccess([permissions.InstrumentAdd]) || hasPermissionToAccess([permissions.Archiving]))"
+        mat-icon-button (click)="clearAllNotifications();" class="spec_dismissAllNotification dismiss-all-notification">
+        {{'NAV.NOTIFICATION.CLEAR' | translate}}
+      </button>
+    </div>
+
+    <div *ngFor="let notification of notifications; let i = index">
+      <div class="ctn-body">
+        <div class="title spec_notificationTitle"
+          [ngClass]="{'red': [featureType.DataProcessingError, featureType.Archive, featureType.Archive, featureType.Panels, featureType.InstrumentCopyError].includes(notification.featureId)}">
+          {{notificationsTypeAndMessage[i]?.type}}
+        </div>
+        <div class="ctn-message spec_notificationMsg">
+          <span *ngIf="notification.featureId === featureType.InstrumentCopyError; else otherMsg">
+            <p [innerHTML]="notificationsTypeAndMessage[i]?.message"></p>
+          </span>
+          <ng-template #otherMsg>
+            <span>
+
+              <p>{{notificationsTypeAndMessage[i]?.message}}
+                <span *ngIf="notification.featureId === featureType.Panels">
+                  [<span class="mt-8 red">
+
+                    {{notifications[i].notificationSpecificData.panel.panelName}}
+                  </span>]
+                </span>
+              </p>
+              <p *ngIf="notification.featureId === this.featureType.DataProcessingError" class="mt-8">
+                {{'NAV.NOTIFICATION.DESCRIPTION' | translate}}
+              </p>
+            </span>
+          </ng-template>
+          <button mat-icon-button
+            [disabled]="!(hasPermissionToAccess([permissions.InstrumentAdd]) || hasPermissionToAccess([permissions.Archiving]))"
+            (click)="dismissNotification(notification.notificationUuid)" class="spec_dismiss_notification">
+            <mat-icon [svgIcon]="icons.close[18].name"></mat-icon>
+          </button>
+        </div>
+      </div> <!-- /ctn-body -->
+    </div>
+  </div> <!-- /ctn-mat-menu -->
+</mat-menu>

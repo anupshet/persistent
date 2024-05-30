@@ -1,0 +1,79 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="manage-expected-tests">
+  <div class="dialog-header">
+    <mat-icon class="close-button" [svgIcon]="icons.close[24].name" (click)="cancel()"></mat-icon>
+    <div *ngIf="displayWarning" class="flex space-between lose-changes-wrapper mr-10 mb-10" id="spec_warningBox">
+      <span class="lose-changes-msg">{{'EVALUATIONMEANSD.LOSECHANGES' | translate}}</span>
+      <span>
+        <button mat-stroked-button color="primary" (click)="resetTrackerService()">
+          {{'EVALUATIONMEANSD.EXITSAVING' | translate}}</button>
+        <button mat-flat-button color="primary" class="ml-15" (click)="saveExpectedTests()">
+          {{'EVALUATIONMEANSD.SAVEEXIT' | translate}}</button>
+      </span>
+    </div>
+    <div class="manage-expected-tests-header-container">
+      <span class="manage-expected-tests-header">
+        {{ 'MANAGEEXPECTEDTEST.MANAGEEXPECTEDTESTSHEADER' | translate }}
+      </span>
+    </div>
+    <div class="second-header-container">
+      <span class="second-header">
+        {{ manageExpectedTestsSubHeader | translate }}
+      </span>
+      <div class="additional-controls"></div>
+    </div>
+  </div>
+
+  <mat-dialog-content class="mat-typography">
+    <div class="tree-data" *ngIf="isTreeLoaded">
+      <perfect-scrollbar [config]="{ suppressScrollY: false , suppressScrollX: false}">
+        <span class="tree-selection-text">
+          {{ 'MANAGEEXPECTEDTEST.SELECTITEMSTOINCLUDE' | translate }}
+        </span>
+        <div class="tree-node-container" [formGroup]="formGroup">
+          <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+            <mat-tree-node id="{{ node.id }}" *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding class="test-node" matTreeNodePaddingIndent="26">
+              <button mat-icon-button disabled></button>
+              <div class="box">
+                <mat-checkbox id="{{ node.id }}-selection" class="checklist-leaf-node manage-expected-tests-checkbox-class"
+                  [checked]="checklistSelection.isSelected(node)" [indeterminate]="getLevelSelectionState(node) === null" (change)="toggleTestNode(node)">
+                  {{node.displayName}}
+                </mat-checkbox>
+                <div class="test-secondary-text" *ngIf="node.secondaryText">{{node.secondaryText}}</div>
+                <div class="level-checkboxes" *ngIf="node?.levels?.length > 0">
+                  <div class="level-checkbox" *ngFor="let levelSelection of node.levels">
+                    <mat-checkbox id="{{node.id}}_{{levelSelection.level}}-level-selection" formControlName="{{node.id}}_{{levelSelection.level}}" (change)="updateTestNodeBasedOnLevelsSelected(node)">
+                      <span class="level-checkbox-label">  {{ 'MANAGEEXPECTEDTEST.LEVEL' | translate }} {{ levelSelection.level }}</span>
+                    </mat-checkbox>
+                  </div>
+                </div>
+              </div>
+            </mat-tree-node>
+
+            <mat-tree-node id="{{ node.id }}" *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodePaddingIndent="26">
+              <button class="arrow-button" mat-icon-button matTreeNodeToggle (click)="expandWithGettingNewChildren(node)">
+                <mat-icon class="mat-icon-rtl-mirror">
+                  {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                </mat-icon>
+              </button>
+              <div class="box">
+                <mat-checkbox id="{{ node.id }}-selection" #parentItemCheckBox class="manage-expected-tests-checkbox-class"
+                  [checked]="descendantsAllSelected(node)" [indeterminate]="descendantsPartiallySelected(node)"
+                  (change)="parentItemSelectionToggle(node, parentItemCheckBox)">
+                  {{node.displayName}}</mat-checkbox>
+                  <div class="product-secondary-text" *ngIf="node.secondaryText">{{node.secondaryText}}</div>
+              </div>
+            </mat-tree-node>
+          </mat-tree>
+        </div>
+      </perfect-scrollbar>
+    </div>
+    <div class="loading-message" *ngIf="!isTreeLoaded">
+      {{ 'MANAGEEXPECTEDTEST.LOADINGMESSAGE' | translate }}
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button color="primary" (click)="cancel()">{{ 'MANAGEEXPECTEDTEST.CANCEL' | translate }}</button>
+    <button mat-flat-button color="primary" (click)="saveExpectedTests()" cdkFocusInitial [disabled]="hasPermissionToAccess([permissions.ManageExpectedTestsViewOnly]) || !hasFormBeenChanged">{{ 'MANAGEEXPECTEDTEST.APPLY' | translate }}</button>
+  </mat-dialog-actions>
+</div>

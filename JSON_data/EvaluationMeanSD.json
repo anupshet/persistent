@@ -1,0 +1,25 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com",
+    "Username": "UnityNextRegressionTestUser+1@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Automation",
+    "UserRoleUsername": "amruta_karale+autouser5@bio-rad.com",
+    "Department": "EvalMeanSD",
+    "Instrument": "ARCHITECT c16000",
+    "Control": "Cardiac Markers Plus LT",
+    "Analyte": "CRP (C-Reactive Protein)",
+    "Analyte2": "CRP, High Sensitivity"
+  },
+  "STAGE": {
+    "URL": "https://unity-stage.qcnet.com",
+    "Username": "amruta_karale+stagelab@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Amruta",
+    "UserRoleUsername": "amruta_karale+stageuser@bio-rad.com",
+    "Department": "EvalMeanSD",
+    "Instrument": "ARCHITECT c16000",
+    "Control": "Cardiac Markers Plus LT",
+    "Analyte": "CRP (C-Reactive Protein)"
+  }
+}

@@ -1,0 +1,57 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.-->
+<section class="unext-analytical-section">
+  <section class="unext-analytical-section-inner">
+    <div @slideInOut *ngIf="visible">
+      <div class="type-content">
+        <div class="flex-container">
+          <div class="flex-1 mr-10" #chartContainer
+            [ngClass]="{'full-width': !summary && chart, 'half-width': summary && chart}"
+            [checkForPermission]="{'permissionsAllowed':[permissions.ChartsAdvancedLJ],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+            *ngIf='chart && !isSummary'>
+            <unext-lj-chart [fullWidth]="fullWidthLJChart" [levelsInUse]="levelsInUse" [runsResult]="runsResult"
+              [ljChartRuns]="ljChartRuns" [labTimeZone]="labTimeZone" [initDiffRuns]="initDiffRuns">
+            </unext-lj-chart>
+          </div>
+          <div class="flex-1" [ngClass]="{'full-width': summary && !chart, 'half-width': summary && chart}"
+            *ngIf='summary'>
+            <perfect-scrollbar [config]="{suppressScrollY: true, suppressScrollX: suppressScrollX}">
+              <div class="level-{{levelsInUse?.length}}"></div>
+              <br-summary-statistics-table [monthSummaryByLevel]="monthSummaryByLevel | sortBy : 'asc' : 'controlLevel'"
+                [decimalFormatByLevel]="decimalPlaces" [labels]="summaryStatsLabels">
+              </br-summary-statistics-table>
+              <!-- dont remove fake-perfect-scrollbar-content. Scrollbar could have issues when async content -->
+              <div class="fake-perfect-scrollbar-content"></div>
+            </perfect-scrollbar>
+          </div>
+        </div>
+      </div>
+
+      <div class="control-row" *ngIf="!isSummary">
+        <div class="flex-ctn-1">
+
+          <div class="flex-1">
+            <mat-checkbox class="spec_toggle_chart" (change)="toggleChart()" [checked]="chart"
+              id="AnalyteDetailTableComponent.Levey-JenningsChart" [disabled]="summaryClick">
+              {{'ANALYTICALSECTION.LEVEY' | translate}}</mat-checkbox>
+
+            <mat-checkbox class="spec_toggle_summary" (change)="toggleSummary()" [checked]="summary"
+                id="AnalyteDetailTableComponent.SummaryStatistics"
+                [disabled]="chartClick">
+                {{'ANALYTICALSECTION.SUMMARY' | translate}}
+            </mat-checkbox>
+          </div>
+
+          <div class="flex-2" *ngIf='chart'>
+            <unext-level-toggle [levelsInUse]="levelsInUse"></unext-level-toggle>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div (click)="toggleDiv()" class="toggle-trigger spec_toggle_div" [ngClass]="{'opened': visible}"><span
+      class="chevron"></span></div>
+
+</section>

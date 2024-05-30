@@ -1,0 +1,76 @@
+@import '../../lab-setup.component';
+@import '../../../../../assets/scss/variables';
+
+.analyte-entry-component {
+
+  .panel-content-checkbox-border {
+    position: relative;
+    width: 480px;
+    .btn-remove {
+      position: absolute;
+      top: -8px;
+      right: -5px;
+      z-index: 2;
+    }
+  }
+}
+
+.analyte-entry-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.analyte-form {
+  display: flex;
+}
+
+.summary {
+  flex-grow: 1;
+}
+
+.mr-25 {
+  margin-right: 25px;
+}
+
+.archive-analyte-section {
+  max-width: 525px;
+}
+
+.border {
+  border-top: $analyte-search-border;
+  display: flex;
+  margin-bottom: 15px;
+
+  .searchIcon {
+    position: relative;
+    top: 30px;
+    color: $search-icon-color;
+    cursor: pointer;
+    margin-right: 8px;
+  }
+  
+  ::ng-deep .mat-form-field .mat-form-field-wrapper {
+    width: 487px !important;
+  }
+
+  ::ng-deep.mat-form-field-underline {
+    background-color: $search-input-color;
+  } 
+
+  .searchAnalyteInput {
+    margin-bottom: 0px;
+  }
+}
+
+.noAnalytes {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.gray {
+  margin: 0px 20px 0px 0px !important;
+}

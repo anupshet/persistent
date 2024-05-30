@@ -1,0 +1,141 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../../../../assets/scss/variables";
+
+.selectedItemsPanel {
+    width: calc(100% - 30px);
+    position: absolute;
+    bottom: 0;
+    transition: height 0.15s ease-out;
+}
+
+.heading {
+    width: 100%;
+    height: 40px;
+    background-color: $br-color-header-1;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+
+    p {
+        font-size: 18px;
+        font-weight: bold;
+        color: $white;
+        margin-bottom: 0px;
+    }
+
+    .selectedItems {
+        margin-right: 5px;
+        height: 24px;
+        flex-grow: 0;
+        font-family: Lato;
+        font-size: 16px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: 0.8px;
+        text-align: left;
+        color: $white;
+    }
+}
+
+mat-tab-group {
+    animation-duration: 0ms;
+}
+
+.collapse {
+    ::ng-deep .mat-tab-labels {
+        border-bottom: 1px solid $tabs-border;
+    }
+
+    ::ng-deep .mat-tab-body-wrapper .mat-tab-body {
+        background-color: $white;
+    }
+
+    .outer-block {
+        background-color: $white;
+        position: relative;
+        .inner-block {
+            column-count: auto;
+            column-width: 300px;
+            height: calc(100% - 15px);
+            column-fill: auto;
+            padding: 8px 28px 5px 28px;
+            position: relative;
+        }
+        li {
+            list-style-type: disc;
+            padding-left: 1%;
+        }
+
+        .padding {
+            padding-left: 24px;
+        }
+    }
+
+    ::ng-deep .mat-tab-label {
+        height: 40px;
+        align-self: stretch;
+        flex-grow: 0;
+        font-family: Lato;
+        font-size: 16px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: 0.48px;
+        text-align: center;
+        &.mat-tab-label-active {
+            color: $component-cyan; /* Change the color of the active tab label */
+        }
+    }
+
+    ::ng-deep mat-ink-bar {
+        background-color: $component-cyan !important;
+    }
+
+    .textStyle {
+        height: 623px;
+        align-self: stretch;
+        flex-grow: 0;
+        font-family: Lato;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.25;
+        letter-spacing: normal;
+        text-align: left;
+        color: rgba(0, 0, 0, 0.8);
+    }
+
+    .noItems {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: calc(100% - 50px);
+        height: 100%;
+        position: absolute;
+    }
+}
+
+mat-expansion-panel-header,
+mat-expansion-panel-header:hover {
+    padding: 0%;
+    width: 100%;
+    background-color: $br-color-header-1;
+    height: 40px;
+}
+
+mat-expansion-panel {
+    border-radius: 0%;
+}
+
+mat-panel-title {
+    justify-content: center;
+}
+
+::ng-deep .mat-expansion-panel-body {
+    padding: 0 !important;
+}

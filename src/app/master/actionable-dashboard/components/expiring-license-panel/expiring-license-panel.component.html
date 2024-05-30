@@ -1,0 +1,16 @@
+<div class="expiring-license-panel-component">
+  <mat-card style="min-height: 280px;">
+      <div class="card-content">
+        <mat-card-title>
+          <h2 class="mat-display-1 mb-20">{{'EXPIRINGLICENSEPANEL.LICENSEEXPIRE' | translate}}</h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+            <span class="mat-display-3 expiring-count">{{numberOfDaysToExpire}}</span>
+        </mat-card-subtitle>
+        <p class="time-frame mb-5">
+          <span>{{'EXPIRINGLICENSEPANEL.DAYSTO' | translate}} </span>{{ licenseExpirationDate | uNextDate:'mediumDate' }}
+        </p>
+        <strong>{{'EXPIRINGLICENSEPANEL.CONTACTBIORAD' | translate}}</strong>
+      </div>
+  </mat-card>
+</div>

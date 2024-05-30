@@ -1,0 +1,99 @@
+<!-- © 2023 Bio - Rad Laboratories, Inc.All Rights Reserved. -->
+
+<mat-card class="department-entry-component" [ngClass]="showSettings ? 'mat-card-styling-removed': 'mt-40'">
+  <unext-lab-setup-header *ngIf="!showSettings" [currentNode]="type.Department" [title]="title" [isDataUpdated]="departmentForm.touched || departmentForm.dirty">
+  </unext-lab-setup-header>
+  <unext-overlay-component *ngIf="greyOutForm()" [height]="overlayHeight" [width]="content.offsetWidth + '0'"
+    [left]="content.offsetLeft - '32'" [top]="'-60'">
+  </unext-overlay-component>
+  <mat-card-content #content id="spec_content">
+    <form class="flex mb-20" [formGroup]="departmentForm">
+      <div class="column">
+        <div formArrayName="departmentsArray">
+          <div *ngFor="let department of departmentsGetter.controls; let pointIndex = index;"
+            [formGroupName]="pointIndex">
+            <div [ngClass]="showSettings ? 'panel-content': 'panel-content-border'" class="mb-10">
+              <p *ngIf="archiveState">{{'DEPARTMENTENTRY.ARCHIVEDATLEVEL' | translate}}</p>
+              <mat-form-field>
+                <input matInput class="spec_departmentName" minlength="2" maxlength="50"
+                  formControlName="departmentName" (ngModelChange)="valuechange($event,pointIndex)" autocomplete="off">
+                <mat-placeholder>{{'DEPARTMENTENTRY.DEPARTMENT' | translate}}</mat-placeholder>
+              </mat-form-field>
+              <mat-error *ngIf="duplicateFound[pointIndex]">
+                {{'DEPARTMENTENTRY.DEPARTMENTEXIST' | translate}}
+              </mat-error>
+              <div *ngIf="departmentForm.controls.departmentsArray.controls[pointIndex].controls.departmentManagerGroup"
+                class="departmentManagerGroup" formGroupName="departmentManagerGroup">
+                <br-select class="spec_departmentManager" formControlName="departmentManager" [data]="contacts"
+                  [errorMessage]="'Required'" [displayAttribute]="'displayName'" [placeholder]="managerNamePlaceholder"
+                  [disabled]="hasPermissionToAccess([permissions.DepartmentAddViewOnly, permissions.DepartmentEditViewOnly])"
+                  [emitValue]="true" (selectedChanged)="onManagerNameChange($event)">
+                </br-select>
+              </div>
+            </div>
+            <div class="ctn-archived-toggle" *ngIf="showSettings && showArchivedFilterToggle">
+              <label>{{'DEPARTMENTENTRY.ARCHIVEDEPARTMENT' | translate}}</label>
+              <mat-slide-toggle color="primary" formControlName="archived" class="archive-toggle"
+                (change)="onArchiveToggle($event,content)"></mat-slide-toggle>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="showSettingsFields && showSettings" class="mb-15">
+          <!-- Hide the settings for now until a decision is made regarding inheritance of these settings. -->
+          <div class="flex decimal-places mb-15 bdr pb-15">
+            <label>{{'DEPARTMENTENTRY.DECIMALPLACES' | translate}}</label>
+            <br-select formControlName="decimalPlaces" [data]="decimalPlaceData" [errorMessage]="'Required'"
+              [emitValue]="true" (selectedChanged)="onSelect($event)"
+              [disabled]="hasPermissionToAccess([permissions.DepartmentAddViewOnly, permissions.DepartmentEditViewOnly])">
+            </br-select>
+          </div>
+          <!-- TODO: The following question is hidden and defaulted since the application does not support this feature yet -->
+          <!-- <div class="flex-container ctn-slider-toggle" *ngIf="showSettings">
+            <label class="mat-body-1">{{'DEPARTMENTENTRY.INTERNATIONALUNITS' | translate}}</label>
+            <mat-slide-toggle color="primary" formControlName="internationalUnits"></mat-slide-toggle>
+            </div> -->
+          <div class="flex summary-data-entry">
+            <label>{{'DEPARTMENTENTRY.SUMMARYINPUT' | translate}}</label>
+            <mat-slide-toggle color="primary" formControlName="dataEntryMode"></mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+      <!-- /column -->
+    </form>
+    <mat-error *ngIf="departmentForm.hasError('required')">{{'DEPARTMENTENTRY.ERROR' | translate}}
+    </mat-error>
+    <span class="br-text-primary link" *ngIf="(!showSettings && departmentForm.controls.departmentsArray.value.length < departmentAddLimit) &&
+      !hasPermissionToAccess([permissions.DepartmentAddViewOnly, permissions.DepartmentEditViewOnly])"
+          (click)="addFormControl()">
+        {{'DEPARTMENTENTRY.ANOTHERDEPARTMENT' | translate}}
+    </span>
+    <mat-error
+      *ngIf="!showSettings && departmentForm.controls.departmentsArray.value.length == departmentAddLimit">
+      {{departmentAddLimit}} {{'DEPARTMENTENTRY.DEPARTMENTSCANADD' | translate}}
+    </mat-error>
+    <mat-error *ngIf="errorMessage">
+      {{errorMessage}}
+    </mat-error>
+  </mat-card-content>
+  <mat-card-actions>
+    <button *ngIf="(showDeleteDepartment && showSettings && hasPermissionToAccess([permissions.DepartmentDelete]))
+      && !hasPermissionToAccess([permissions.DepartmentAddViewOnly, permissions.DepartmentEditViewOnly])"
+      id="spec_deleteButton" mat-icon-button class="icn-delete" (click)="deleteDepartment(departments[0])">
+      <mat-icon [svgIcon]="icons.delete[24].name"></mat-icon>
+    </button>
+    <button mat-button color="primary" (click)="resetForm()"
+      [disabled]="!departmentForm.touched || !departmentForm.dirty"
+      *ngIf="!hasPermissionToAccess([permissions.DepartmentAddViewOnly, permissions.DepartmentEditViewOnly])">{{'DEPARTMENTENTRY.CANCEL' | translate}}</button>
+    <button mat-button mat-flat-button id="spec_saveButton" color="primary" type="submit"
+        [disabled]="isFormSubmitting || !isFormValid || !departmentForm.valid"
+        (click)="onSubmit(departmentForm.value, true)"
+        *ngIf="!showSettings && !hasPermissionToAccess([permissions.DepartmentAddViewOnly, permissions.DepartmentEditViewOnly])">
+        {{'DEPARTMENTENTRY.ADDDEPARTMENT' | translate}}
+    </button>
+    <button mat-button mat-flat-button id="spec_updateButton" color="primary" type="submit" [disabled]="!enableSubmit()"
+        (click)="onSubmit(departmentForm.value, false)"
+        *ngIf="showSettings && !hasPermissionToAccess([permissions.DepartmentAddViewOnly, permissions.DepartmentEditViewOnly])">
+        {{'DEPARTMENTENTRY.UPDATE' | translate}}
+    </button>
+  </mat-card-actions>
+</mat-card>

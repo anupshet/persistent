@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="33px" viewBox="0 0 44 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>Instrument icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Onboarding" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ONBOARDING-Instrument-selected" transform="translate(-218.000000, -148.000000)">
+            <g id="Instrument-icon" transform="translate(218.000000, 148.000000)">
+                <circle id="Oval-3" fill="#17485D" cx="18.9062856" cy="4.0319348" r="1.05706464"></circle>
+                <circle id="Oval-3-Copy" fill="#17485D" cx="18.9062856" cy="7.00680495" r="1.05706464"></circle>
+                <g stroke="#17485D">
+                    <path d="M2,14.3869157 C1.44771525,14.3869157 1,14.8346309 1,15.3869157 L1,30.7235717 C1,31.2758564 1.44771525,31.7235717 2,31.7235717 L41.1356172,31.7235717 C41.687902,31.7235717 42.1356172,31.2758564 42.1356172,30.7235717 L42.1356172,15.3869157 C42.1356172,14.8346309 41.687902,14.3869157 41.1356172,14.3869157 L2,14.3869157 Z" id="Rectangle-13" stroke-width="2"></path>
+                    <path d="M14.2275977,1.25503368 C13.675313,1.25503368 13.2275977,1.70274893 13.2275977,2.25503368 L13.2275977,9.89948062 C13.2275977,10.4517654 13.675313,10.8994806 14.2275977,10.8994806 L36.9213344,10.8994806 C37.4736191,10.8994806 37.9213344,10.4517654 37.9213344,9.89948062 L37.9213344,2.25503368 C37.9213344,1.70274893 37.4736191,1.25503368 36.9213344,1.25503368 L14.2275977,1.25503368 Z" id="Rectangle-13-Copy" stroke-width="2"></path>
+                    <path d="M18.5929385,12.1557631 L18.5929385,13.6431982" id="Line-2" stroke-linecap="square"></path>
+                    <path d="M33.4672892,12.1557631 L33.4672892,13.6431982" id="Line-2-Copy" stroke-linecap="square"></path>
+                    <path d="M34.2110068,5.94974031 L25.2863963,5.94974031" id="Line-2-Copy-3" stroke-linecap="round"></path>
+                    <path d="M14.8743508,20.8240911 L5.94974031,20.8240911" id="Line-2-Copy-4" stroke-linecap="round"></path>
+                    <path d="M14.8743508,25.2863963 L5.94974031,25.2863963" id="Line-2-Copy-5" stroke-linecap="round"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

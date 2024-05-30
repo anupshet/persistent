@@ -1,0 +1,16 @@
+{
+	"QA": {
+		"URL": "https://unity-test.qcnet.com",
+		"Username": "amruta_karale+autolab5@bio-rad.com",
+		"Password": "Welcome1",
+		"FirstName": "Amruta",
+		"DepartmentName": "PriorDate",
+		"InstrumentName": "AU480",
+		"ControlName": "Multiqual 1,2,3",
+		"Analyte1": "Calcium",
+		"Analyte1Summary": "Digoxin"
+	},
+	"DEV": {},
+	"STAGE": {},
+	"DEV2": {}
+}

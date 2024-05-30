@@ -1,0 +1,74 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1686747365488' stop='1686747443373'>
+    <name>Test Suite:Verify Error Dialog box for Selection parameter filters on Report page</name>
+    <title>Test Suite:Verify Error Dialog box for Selection parameter filters on Report page</title>
+    <test-cases>
+        <test-case start='1686747365491' status='failed' stop='1686747443368'>
+            <name>Test case 1 :Verify Search logic</name>
+            <title>Test case 1 :Verify Search logic</title>
+            <labels/>
+            <parameters/>
+            <steps>
+                <step start='1686747365620' status='passed' stop='1686747365620'>
+                    <name>Test case 1:Verify Search logic for Location and Department"</name>
+                    <title>Test case 1:Verify Search logic for Location and Department"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686747365621' status='passed' stop='1686747365621'>
+                    <name>Test case 2:Verify Presence of error dialog when clicked on clear selection button"</name>
+                    <title>Test case 2:Verify Presence of error dialog when clicked on clear selection button"</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686747372780' status='passed' stop='1686747372780'>
+                    <name>Cookies not Displayed</name>
+                    <title>Cookies not Displayed</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686747405980' status='passed' stop='1686747405980'>
+                    <name>Reports Icon Displayed</name>
+                    <title>Reports Icon Displayed</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686747405981' status='passed' stop='1686747405981'>
+                    <name>Clicked on reports Icon</name>
+                    <title>Clicked on reports Icon</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686747433718' status='passed' stop='1686747433718'>
+                    <name>Wrong Filter Selected</name>
+                    <title>Wrong Filter Selected</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686747433893' status='passed' stop='1686747433893'>
+                    <name>keyword Entered</name>
+                    <title>keyword Entered</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1686747433917' status='failed' stop='1686747433917'>
+                    <name>Unable to Click Search button</name>
+                    <title>Unable to Click Search button</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments>
+                <attachment title='Cookies not displayed' source='37c293f4-3fc3-4472-9fb6-90d35f72d03f-attachment.png' type='image/png' size='97198'/>
+                <attachment title='FailedStep' source='4a08579a-17ae-4680-82b5-5b8970a616f6-attachment.png' type='image/png' size='94540'/>
+            </attachments>
+            <failure>
+                <message>Expected false to be true.</message>
+                <stack-trace>Error: Failed expectation
+                    at C:\Users\anup_shet\Desktop\Required\Git Repo\FEcode\cdg-unity-next-spa\SPA\e2e\dynamic-reports-phase2\UN-15677-SearchLogic.spec.ts:30:25
+                    at runMicrotasks (&lt;anonymous>)
+                    at processTicksAndRejections (internal/process/task_queues.js:93:5)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

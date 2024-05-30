@@ -1,0 +1,65 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../../../../assets/scss/variables';
+@import '../../../../../assets/scss/base/variables-peak';
+
+.lab-setup-close {
+  position: relative;
+
+  .btn-lab-close {
+    position: absolute;
+    top: -8px;
+    right: -6px;
+    z-index: 2;
+    color: #888;
+  }
+}
+
+.lab-setup-header {
+  h4 {
+    margin-bottom: $custom-type-size-xxsmall + $custom-type-size-xxxsmall;
+  }
+
+  h5 {
+    word-break: break-word;
+  }
+
+  h6 {
+    color: $br-black-text-medium-emphasis;
+    margin-bottom: $custom-type-size-xxlarge;
+    word-break: break-word;
+  }
+
+  & mat-icon {
+    margin: $custom-type-size-xxlarge 0;
+
+    &.setupBegin {
+      width: 75px;
+      height: 75px;
+    }
+
+    &.departments {
+      width: 79px;
+      height: 68px;
+    }
+
+    &.products {
+      width: 46px;
+      height: 70px;
+    }
+
+    &.tests {
+      width: 70px;
+      height: 69px;
+    }
+
+    &.instruments {
+      width: 95px;
+      height: 72px;
+    }
+
+    &.setupComplete {
+      width: 75px;
+      height: 75px;
+    }
+  }
+}

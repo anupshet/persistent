@@ -1,0 +1,67 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="breadcrumb-wrapper"
+  *ngIf="!hasPermissionToAccess([permissions.LotViewerSalesReport]) || hasPermissionToAccess([permissions.AccountListView, permissions.BioRadUserAdd , permissions.LocationListView ])">
+  <div>
+    <div *ngIf="!displayFixedNavHeader()">
+      <div *ngIf="hasPermissionToAccess([permissions.DepartmentEdit,permissions.DepartmentEditViewOnly, permissions.InstrumentEdit, permissions.InstrumentEditViewOnly])
+         || (hasPermissionToAccess(viewPermissions) && hasPermissionToAccess([permissions.LaunchLocation]))">
+        <unext-nav-hierarchy #navHierarchy *ngIf="!router?.url.includes('define-control')" [instrumentsGroupedByDept]="instrumentsGroupedByDept">
+        </unext-nav-hierarchy>
+      </div>
+      <unext-nav-current-location *ngIf="selectedNode && !router?.url.includes('reporting')"
+        [nodeType]="selectedNode?.nodeType" [displayTitle]="selectedNode?.displayName |  truncate:[50]" [useSmallFont]="isInDataReview()"
+        (navigateToSettings)="onNavigateToSettings()" (navigateToParent)="onNavigateToParent($event)" (navigateToDashboard)="onNavigateToDashboard($event)"
+        [instrumentsGroupedByDept]="instrumentsGroupedByDept">
+      </unext-nav-current-location>
+      <unext-nav-current-location *ngIf="router?.url.includes('reporting')" [nodeType]="selectedLeaf==null?selectedNode?.nodeType:selectedLeaf?.nodeType"
+        displayTitle="Reports" (navigateToSettings)="onNavigateToDashboard()"
+        (navigateToParent)="onNavigateToParent($event)" [instrumentsGroupedByDept]="instrumentsGroupedByDept" (navigateToDashboard)="onNavigateToDashboard($event)">
+      </unext-nav-current-location>
+      <div *ngIf="!selectedNode && router?.url.includes(_unRouting.actionableDashboard) && !isInDataReview()">
+        <h4 class="mat-h4 mb-0">{{ labLocation?.labLocationName | truncate:[50] }}</h4>
+      </div>
+      <div *ngIf="isInDataReview()">
+        <h4 class="mat-h4 mb-0"><a (click)="onNavigateToDashboard()"><mat-icon [svgIcon] ="icons.arrowBack[48].name" class="arrowBack"></mat-icon></a>
+          <span *ngIf="!(getDataReviewFeatureState$ | async).isSupervisorReview">{{'DATAREVIEW.NAVHEADER.BENCHREVIEW' | translate}}</span>
+          <span *ngIf="(getDataReviewFeatureState$ | async).isSupervisorReview">{{'DATAREVIEW.NAVHEADER.SUPERVISORREVIEW' | translate}}</span>
+        </h4>
+      </div>
+    </div>
+    <div *ngIf="displayFixedNavHeader()">
+      <div *ngIf="router?.url.includes(_unRouting.accountManagement)">{{ labLocation?.labLocationName | truncate:[50] }}
+      </div>
+      <h4 class="mat-h4 mb-0">{{ getDisplayTitle() }}</h4>
+    </div>
+  </div>
+
+  <div class="icon-tray">
+    <!-- Report Icon -->
+    <div *ngIf="hasPermissionToAccess(instrumentAccessPermissions) && hasPermissionToAccess(controlAccessPermissions) &&
+    hasPermissionToAccess(departmentAccessPermissions) && hasPermissionToAccess(analyteAccessPermissions) &&
+     hasPermissionToAccess(reportsAccessPermissions) && labLocation" class="reports-link">
+      <button mat-icon-button mat-min-fab (click)="routeToReports()" class="mr-20 grey"
+        [class.newNotification]="newNotification" (mouseenter)="openReportNotifications(menuTrigger)"
+        #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">
+        <mat-icon [svgIcon]="icons.reportsNotificationIcon[36].name" [matMenuTriggerFor]="menu"
+          #trigger="matMenuTrigger" (mouseover)="openReportNotifications(menuTrigger)" class="reports"
+          [@flyInOut]='newNotification' (@flyInOut.done)="onAnimationEvent($event)"></mat-icon>
+      </button>
+      <!-- displaying notifications on hover here -->
+      <mat-menu class="menuContent" #menu="matMenu" [overlapTrigger]="false" (closed)="onMenuClosed()">
+        <unext-report-notifications [notificationList]="notificationList" (click)="$event.stopPropagation();"
+          (refreshNotificationList)="getReportNotifications()" [opened]="opened"
+          (mouseleave)="closeReportNotifications(menuTrigger)"></unext-report-notifications>
+      </mat-menu>
+    </div>
+
+    <!-- Connectivity Icon -->
+    <div
+      *ngIf="hasPermissionToAccess([permissions.ConnectivityEnableDisableUser, permissions.ConnectivityEnableDisableUserViewOnly]) && hasConnectivityLicense && isLabSetupCompleted && !migrationPending"
+      class="connectivity-link">
+      <button matTooltip="{{'TRANSLATION.FILEUPLOAD' | translate}}" mat-icon-button mat-min-fab id="spc_route_to_connectivity_button"
+      (click)="routeToConnectivity()">
+      <mat-icon [svgIcon]="icons.publish[24].name" class="publish"></mat-icon>
+    </button>
+    </div>
+  </div>
+</div>

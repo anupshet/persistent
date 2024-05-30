@@ -1,0 +1,47 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="new-reports-wrapper" #newReportRef>
+    <!-- Create a flag isPreviewReport which will toggle between create and preview screen -->
+    <!-- show below components when isPreviewReport = false -->
+    <ng-container *ngIf="!isPreviewReport">
+        <unext-report-parameters-filter (searchReportApiCall)="searchReports($event)"
+             [(labConfigData)]="labConfigData" [sendTemplateDetails]="sendTemplateDetails"
+            (isClearSelection)="clearTemplateSelection($event)"></unext-report-parameters-filter>
+        <unext-search-in-labconfig [instrumentGroupByDept]="instrumentGroupByDept"
+            (searchClick)="onSearchFilter($event)"></unext-search-in-labconfig>
+        <unext-labconfig-selection [tempSelectionHolder]="tempSelectionHolder" [isClearSelection]="isClearSelection"
+            [canLoadQuickReport]="canLoadQuickReport" [(labConfigData)]="labConfigData"></unext-labconfig-selection>
+        <unext-report-selected-items [(labConfigData)]="labConfigData"
+            [(labconfigReference)]="labconfigReference"></unext-report-selected-items>
+    </ng-container>
+    <!-- isPreviewReport = false -->
+    <!-- show below components when  isPreviewReport = true -->
+    <ng-container *ngIf="isPreviewReport">
+        <div class="preview-report-wrapper" [class.hide]="isReportDetailsMaximized">
+            <!-- left side pdf view -->
+            <unext-report-preview [pdfUrl]="pdfUrl" [class.full-screen]="isReportFullScreenEnabled"
+            [pdfData]="pdfData" (isReportFullScreen)="setIsReportFullScreen($event)"></unext-report-preview>
+            <!-- right side pdf view -->
+            <ng-container *ngIf="isCorrectiveActions && allowToAddCorrectiveActions">
+                <unext-corrective-actions [class.hide]="isReportFullScreenEnabled"
+                    (correctiveActionFormStatus) = "onFormStatus($event)"
+                    (correctiveActionPayload) = "onFormValue($event)"
+                    [outlieredLots]="pdfData?.correctiveActionLots"></unext-corrective-actions>
+            </ng-container>
+        </div>
+        <div class="bottom-bar">
+            <div class="selected-items-section">
+                <unext-report-selected-items [(labConfigData)]="labConfigData" [headerText]="reportDetails"
+                    [class.maximize]="isReportDetailsMaximized" (toggleSelection)="toggleReportDetails($event)"
+                    [(labconfigReference)]="newReportReference"></unext-report-selected-items>
+            </div>
+            <div class="footer-section" *ngIf="pdfData">
+                <unext-report-preview-footer [pdfData]="pdfData" 
+                [correctiveActionsPayload] = "correctiveActionsPayload"
+                [correctiveActionsFormStatus]="correctiveActionsFormStatus"
+                (isRedirectToPreview)="changePreview($event)"
+                (sendTemplateInfo) ="sendTemplateDataForSelections($event)"></unext-report-preview-footer>
+            </div>
+        </div>
+    </ng-container>
+    <!-- isPreviewReport = true -->
+</div>

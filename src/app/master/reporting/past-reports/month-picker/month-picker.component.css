@@ -1,0 +1,18 @@
+.month-picker ::ng-deep .mat-form-field {
+  width: 240px;
+  margin-right: 60px;
+}
+
+.month-picker ::ng-deep .mat-form-field .mat-input-element {
+  width: 240px;
+  margin-right: 60px;
+}
+
+.month-picker ::ng-deep .mat-form-field .mat-calendar-arrow {
+  display: none !important;
+}
+
+.month-picker ::ng-deep .mat-form-field .mat-calendar-invert {
+  display: none !important;
+}
+/*# sourceMappingURL=month-picker.component.css.map */

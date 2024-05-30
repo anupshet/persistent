@@ -1,0 +1,30 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "Failed: No element found using locator: By(xpath, .//mat-nav-list//div[contains(text(),\"LargeData\")])",
+      "children" : [ {
+        "name" : "Verify Search Elements UI for LVS Role",
+        "uid" : "53b352e91a155a77",
+        "parentUid" : "8f99ef11ffcb17c2f7561021409ffce0",
+        "status" : "failed",
+        "time" : {
+          "start" : 1689855825876,
+          "stop" : 1689855852603,
+          "duration" : 26727
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "8f99ef11ffcb17c2f7561021409ffce0"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}

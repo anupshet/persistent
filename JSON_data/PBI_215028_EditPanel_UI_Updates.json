@@ -1,0 +1,14 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "Username": "UnityNextRegressionTestUser+1@bio-rad.com",
+    "Password": "Welcome1",
+    "PanelName": "PanelUIUpdates215028",
+    "samplePanelName": "SamplePanel",
+    "panelTextSize": "7",
+    "Department":"ConnectivityN-1-Automation"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

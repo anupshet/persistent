@@ -1,0 +1,91 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<aside class="aside">
+  <perfect-scrollbar #perfectscroll [config]="">
+
+    <div class="steps-list">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <button class="subtitle" (click)="routeTo('instrument');"
+                [ngClass]="{'highlight': entityType == entityTypeLabInstrument}"><span>{{'SIDENAVIGATION.INSTRUMENTS' |
+                  translate}}</span>
+                <span class="count">({{instrumentNav.unmappedCount}} <span>{{'SIDENAVIGATION.UNMAPPEDCODES' |
+                    translate}}</span>)</span>
+              </button>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="productPanelExpansionState" (opened)="productPanelExpansionState = true;"
+          (closed)="productPanelExpansionState = false;">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <button class="subtitle" (click)="routeTo('product', '-1')"
+                [ngClass]="{'highlight': entityType == entityTypeLabProduct}"><span>{{'SIDENAVIGATION.CONTROLS' |
+                  translate}}</span>
+                <span class="count" *ngIf="!productPanelExpansionState">({{productNav.unmappedCount}}
+                  <span>{{'SIDENAVIGATION.UNMAPPEDCODES' | translate}}</span>)</span>
+              </button>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="details">
+            <button (click)="routeTo('product');"
+              [ngClass]="{'highlight': (entityType == entityTypeLabProduct) && (entityId == null)}">
+              <strong class="title" (click)="routeTo('product');">{{'SIDENAVIGATION.ALLCONTROLS' | translate}}</strong>
+              <span class="count">({{productNav.unmappedCount}} <span>{{'SIDENAVIGATION.UNMAPPEDCODES' |
+                  translate}}</span>)</span>
+            </button>
+
+            <ng-template ngFor let-navChild [ngForOf]="productNav.children">
+              <button (click)="routeTo('product', navChild.entityId);"
+                [ngClass]="{'highlight': hasFocus(navChild, entityTypeLabProduct), 'hide': productHasUnmappedChip(navChild)}">
+                <span class="count">({{navChild.unmappedCount}})</span>
+                <strong class="title">{{navChild.title}}</strong>
+                <span class="category">{{navChild.subTitle}}</span>
+              </button>
+            </ng-template>
+
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel [expanded]="testPanelExpansionState" (opened)="testPanelExpansionState = true"
+          (closed)="testPanelExpansionState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <button class="subtitle" (click)="routeTo('test', '-1')"
+                [ngClass]="{'highlight': entityType == entityTypeLabTest}">
+                <span>{{'SIDENAVIGATION.TESTS' | translate}}</span>
+                <span class="grid-container">
+                  <span class="count-first-child" *ngIf="!testPanelExpansionState">
+                    ({{testNav.unmappedCount}} <span>{{'SIDENAVIGATION.UNMAPPEDCODES' | translate}}</span>)
+                  </span>
+                  <span class="count-second-child" *ngIf="!testPanelExpansionState">
+                    ({{testNav.unmappedLotCount}} <span>{{'SIDENAVIGATION.UNMAPPEDLOTCODES' | translate}}</span>)
+                  </span>
+                </span>
+              </button>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="details">
+            <button (click)="routeTo('test');"
+              [ngClass]="{'highlight': entityType == entityTypeLabTest && (entityId == null)}">
+              <strong class="title">{{'SIDENAVIGATION.ALLTESTS' | translate}}</strong>
+              <span class="count">({{testNav.unmappedCount}} <span>{{'SIDENAVIGATION.UNMAPPEDCODES' |
+                  translate}}</span><span>)</span></span>
+            </button>
+            <ng-template ngFor let-navChild [ngForOf]="testNav.children">
+              <button (click)="routeTo('test', navChild.entityId);"
+                [ngClass]="{'highlight': hasFocus(navChild, entityTypeLabTest), 'hide': testHasUnmappedChip(navChild)}">
+                <span class="count">({{navChild.unmappedCount}})</span>
+                <strong class="title">{{navChild.title}}</strong>
+                <span class="category">{{navChild.subTitle}}</span>
+              </button>
+            </ng-template>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </perfect-scrollbar>
+</aside>

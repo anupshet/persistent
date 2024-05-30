@@ -1,0 +1,16 @@
+{
+	"QA": {
+		"URL": "https://unity-test.qcnet.com",
+		"AdminUsername": "UnityNextRegressionTestUser+1@bio-rad.com",
+		"AdminPassword": "Welcome1",
+		"AdminFirstName": "Regression",
+		"Email": "UnityNextRegressionResetPassword+1@bio-rad.com",
+		"ResetPasswordMessage": "Email has been sent to UnityNextRegressionResetPassword+1@bio-rad.com with instructions on resetting your password."
+	},
+	"STAGE": {
+		"URL": "https://unity-stage.qcnet.com",
+		"AdminUsername": "sudhir_paranjape+stagelab@bio-rad.com",
+		"AdminPassword": "Welcome1",
+		"AdminFirstName": "Sudhir"
+	}
+}

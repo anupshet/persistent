@@ -1,0 +1,11 @@
+.levels-in-use-container {
+  .flex-container {
+    flex-wrap: wrap;
+    align-items: center;
+
+    .levels-in-use {
+      margin-right: 15px;
+    }
+
+  }
+}

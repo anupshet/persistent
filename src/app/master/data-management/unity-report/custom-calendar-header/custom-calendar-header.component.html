@@ -1,0 +1,18 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="mat-calendar-header">
+  <div class="mat-calendar-controls">
+    <div class="mat-calendar-spacer"></div>
+
+    <ng-content></ng-content>
+
+    <button mat-icon-button type="button" class="mat-calendar-previous-button"
+            [disabled]="!previousEnabled()" (click)="previousClicked()"
+            [attr.aria-label]="prevButtonLabel">
+    </button>
+
+    <button mat-icon-button type="button" class="mat-calendar-next-button"
+            [disabled]="!nextEnabled()" (click)="nextClicked()"
+            [attr.aria-label]="nextButtonLabel">
+    </button>
+  </div>
+</div>

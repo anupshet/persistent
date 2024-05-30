@@ -1,0 +1,107 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="dialog-container">
+    <div class="dialog-header">
+        <mat-icon class="close-button" [svgIcon]="icons.close[24].name" (click)="closeDialog()"></mat-icon>
+        <div class="title-div">
+            <span class="missing-tests-title" id="dialogTitle">
+                {{ 'MISSINGTESTS.MISSINGTESTSTITLE' | translate }}
+            </span>
+        </div>
+        <div class="subtitle-div-one">
+            <span class="missing-tests-subtitle-one">
+                {{ 'MISSINGTESTS.MISSINGTESTSSUBTITLEONE' | translate }}
+            </span>
+        </div>
+        <div class="subtitle-div-two">
+            <span class="missing-tests-subtitle-two">
+                {{ 'MISSINGTESTS.MISSINGTESTSSUBTITLETWO' | translate }}
+            </span>
+        </div>
+    </div>
+    <div class="dialog-content">
+        <div class="table-content">
+            <div class="table-container">
+                    <perfect-scrollbar>
+                        <table mat-table [dataSource]="(dataSource || []) | paginate: paginationConfig" class="missing-tests-table">
+                            <ng-container matColumnDef="departmentName">
+                                <th class="department-header" mat-header-cell *matHeaderCellDef> {{ 'MISSINGTESTS.DEPARTMENT' | translate }} </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <span [ngClass]="(element.departmentName.length) >= 30 ? 'long-name' : ''" [matTooltip]="(element.departmentName.length >= 30 ) ? element.departmentName : ''" matTooltipPosition="above" matTooltipClass="long-text-tooltip">
+                                        {{ element.departmentName }} 
+                                    </span>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="instrumentName">
+                                <th class="instrument-header" mat-header-cell *matHeaderCellDef> {{ 'MISSINGTESTS.INSTRUMENT' | translate }} </th>
+                                <td mat-cell *matCellDef="let element"> 
+                                    <span [ngClass]="(element.instrumentName.length) >= 30 ? 'long-name' : ''" [matTooltip]="(element.instrumentName.length >= 30 ) ? element.instrumentName : ''" matTooltipPosition="above" matTooltipClass="long-text-tooltip">
+                                        {{ element.instrumentName }} 
+                                    </span>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="controlName">
+                                <th class="control-header" mat-header-cell *matHeaderCellDef> {{ 'MISSINGTESTS.CONTROL' | translate }} </th>
+                                <td mat-cell *matCellDef="let element"> 
+                                    <span [ngClass]="(element.controlName.length) >= 30 ? 'long-name' : ''" [matTooltip]="(element.controlName.length >= 30 ) ? element.controlName : ''" matTooltipPosition="above" matTooltipClass="long-text-tooltip">
+                                        {{ element.controlName }} 
+                                    </span>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="lot">
+                                <th class="lot-header" mat-header-cell *matHeaderCellDef> {{ 'MISSINGTESTS.LOT' | translate }} </th>
+                                <td mat-cell *matCellDef="let element"> 
+                                    <span [ngClass]="(element.lot.length) >= 30 ? 'long-name' : ''" [matTooltip]="(element.lot.length >= 30 ) ? element.lot : ''" matTooltipPosition="above" matTooltipClass="long-text-tooltip">
+                                        {{ element.lot }} 
+                                    </span>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="analyteName">
+                                <th class="analyte-header" mat-header-cell *matHeaderCellDef> {{ 'MISSINGTESTS.ANALYTE' | translate }} </th>
+                                <td mat-cell *matCellDef="let element"> 
+                                    <span [ngClass]="(element.analyteName.length) >= 30 ? 'long-name' : ''" [matTooltip]="(element.analyteName.length >= 30 ) ? element.analyteName : ''" matTooltipPosition="above" matTooltipClass="long-text-tooltip">
+                                        {{ element.analyteName }} 
+                                    </span>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="level">
+                                <th class="level-header" mat-header-cell *matHeaderCellDef> {{ 'MISSINGTESTS.LEVEL' | translate }} </th>
+                                <td class="level-data" mat-cell *matCellDef="let element"> {{ element.level }} </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row class="rowData" *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                    </perfect-scrollbar>
+            </div>
+        </div>
+    </div>
+        <div class="pagination-container footer_pagination_controls">
+            <pagination-template class="spec-pagination-control" id="paginationMissingTests" #p="paginationApi" (pageChange)="onPageChange($event)"
+                *ngIf="(dataSource && dataSource.length > 0) && totalPages > 1" [maxSize]="maxSize">
+                <div class="custom-pagination">
+                    <button mat-stroked-button color="primary" class="pagination-button spec-prev-button" (click)="p.previous()"
+                        [ngClass]="{'selected disable-button' : p.isFirstPage()}" [disabled]="p.isFirstPage()">
+                        <mat-icon [svgIcon]="icons.arrowBack[24].name"></mat-icon>
+                    </button>
+                    <div *ngFor="let page of p.pages, let index = index">
+                        <button mat-stroked-button color="primary" class="pagination-button spec-page-button"
+                            [ngClass]="{ 'selected' : p.getCurrent() === page.value }" (click)="p.setCurrent(page.value)">
+                            {{ page.value }}
+                        </button>
+                    </div>
+                    <button mat-stroked-button color="primary" class="pagination-button spec-next-button" (click)="p.next()"
+                        [ngClass]="{'selected disable-button' : p.isLastPage()}" [disabled]="p.isLastPage()">
+                        <mat-icon class="rotateArrow" [svgIcon]="icons.arrowBack[24].name"></mat-icon>
+                    </button>
+                </div>
+            </pagination-template>
+            <mat-dialog-actions align="end">
+                <button mat-button color="primary" class="cancel-button" id="cancelButton"
+                    (click)="closeDialog()">
+                    <span class="button-text">  {{ 'MISSINGTESTS.CANCEL' | translate }} </span>
+                </button>
+                <button mat-button color="primary" class="okay-button" (click)="sendData()"> 
+                    <span class="button-text">  {{ 'MISSINGTESTS.OKAY' | translate }} </span>
+                </button>
+            </mat-dialog-actions>
+        </div>
+</div>

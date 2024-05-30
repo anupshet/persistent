@@ -1,0 +1,19 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="lab-bar-component">
+  <button mat-icon-button *ngIf="!options">
+    <mat-icon [svgIcon]="icons.scienceBeaker[32].name"></mat-icon>
+    {{labName}}
+  </button>
+  <section *ngIf="options">
+    <button mat-icon-button [matMenuTriggerFor]="menuLab">
+      <mat-icon [svgIcon]="icons.scienceBeaker[32].name"></mat-icon>
+      {{labName}}
+    </button>
+    <mat-menu #menuLab="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item *ngFor="let option of options" (click)="onSelect(option.name, option.id)">
+        <span class="dropdown">{{option.name}}</span>
+      </button>
+    </mat-menu>
+  </section>
+</div>
+<!-- /lab-bar-component -->

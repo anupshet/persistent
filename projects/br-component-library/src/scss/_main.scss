@@ -1,0 +1,13 @@
+﻿//partials from the main application
+@import '../../../../src/assets/scss/variables';
+@import '../../../../src/assets/scss/base/variables-peak';
+@import '../../../../src/assets/scss/layout/buttons';
+
+
+.br-uppercase {
+  text-transform: uppercase !important;
+}
+
+.br-capitalize {
+  text-transform: capitalize !important;
+}

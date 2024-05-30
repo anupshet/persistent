@@ -1,0 +1,31 @@
+{
+  "appenders": {
+    "console": {
+      "type": "console",
+      "category": "console"
+    },
+    "file": {
+      "category": "test-file-appender",
+      "type": "file",
+      "filename": "log4jslog.log",
+      "maxLogSize": 10240,
+      "backups": 3,
+      "pattern": "%d{dd/MM hh:m} %-5p %m"
+    }
+  },
+  "categories": {
+    "default": {
+      "appenders": [
+        "console",
+        "file"
+      ],
+      "level": "INFO"
+    },
+    "file": {
+      "appenders": [
+        "file"
+      ],
+      "level": "INFO"
+    }
+  }
+}

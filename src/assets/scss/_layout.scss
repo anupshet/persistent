@@ -1,0 +1,39 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+
+@import 'layout/body';
+@import 'layout/buttons';
+@import 'layout/common';
+@import 'layout/footer';
+@import 'layout/form-elements';
+@import 'layout/header-popup';
+@import 'layout/lab-details-panel';
+@import 'layout/menu-drops';
+@import 'layout/modal';
+@import 'layout/navigation';
+@import 'layout/page-reports';
+@import 'layout/page-setup';
+@import 'layout/panel';
+@import 'layout/slide-toggle';
+@import 'layout/table-edit-dialog';
+@import 'layout/table-settings';
+@import 'layout/data-review';
+
+@mixin layout\all {
+    @include layout\body;
+    @include layout\buttons;
+    @include layout\common;
+    @include layout\footer;
+    @include layout\form;
+    @include layout\headerpopup;
+    @include layout\labdetails;
+    @include layout\menu;
+    @include layout\modal;
+    @include layout\navigation;
+    @include layout\pagereport;
+    @include layout\pagesetup;
+    @include layout\panel;
+    @include layout\slidetoggle;
+    @include layout\tabledialog;
+    @include layout\tablesettings;
+    @include layout\datareview;
+}

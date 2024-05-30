@@ -1,0 +1,30 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "Username": "UnityNextRegressionTestUser+1@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sudhir",
+    "InstructionsName":"Flex-Point",
+    "Department1": "ConnectivityN-1-Automation",
+    "Dept1Instr1": "Alinity c",
+    "Dept1Instr1Prod1": "Cardiac Markers Plus LT",
+    "Dept1Instr1Prod1Analyte1": "Iron",
+    "DeptName": "test department",
+    "Instrument": "Alinity c",
+    "Control": "Blood Gas",
+    "Control2": "Pediatric",
+    "Action": "Instrument  electrode/cartridge change",
+    "InstrumentCode1": "AutomationInstru1",
+    "InstrumentCode2": "AutomationInstru2",
+    "InstrumentCode3": "AutomationInstru3",
+    "ProductCode1": "AutomationProd1",
+    "ProductCode2": "AutomationProd2",
+    "ProductCode3": "AutomationProd3",
+    "AnalyteCode1": "AutomationTest1",
+    "AnalyteCode2": "AutomationTest2",
+    "AnalyteCode3": "AutomationTest3"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

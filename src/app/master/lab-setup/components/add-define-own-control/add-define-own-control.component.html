@@ -1,0 +1,131 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<form [formGroup]="controlsForm" class="spec_controlForm flex column-left-450 mb-20">
+  <div formArrayName="ownControls">
+    <div class="panel-content-border mb-10 pb-10"  [ngClass]="{'no-border': viewMode == ControlManagementViewMode.Edit}" *ngFor="let ownControl of getOwnControls(); let i = index" [formGroupName]="i">
+      <div *ngIf="i > 0" class="close-button" (click)="onRemoveOwnControlForm(i)">
+        <mat-icon [svgIcon]="icons.close[18].name" class="close"></mat-icon>
+      </div>
+      <mat-form-field>
+        <input matInput formControlName="controlName" (ngModelChange)="onControlNameChange($event, i)" required>
+        <mat-placeholder>{{'ADDDEFINEOWNCONTROL.CONTROLNAME' | translate}}</mat-placeholder>
+        <mat-error *ngIf="ownControl.get('controlName').hasError('required')">
+          <span >{{'ADDDEFINEOWNCONTROL.CONTROLNAMEREQUIRED' | translate}}</span>
+        </mat-error>
+        <mat-error *ngIf="ownControl.get('controlName')?.hasError('maxlength') && !ownControl.get('controlName').hasError('invalidInput') && !ownControl.get('controlName').hasError('containsOnlyWhiteSpaces')">
+          <span>{{controlMaxLengthErrorMessage}}</span>
+        </mat-error>
+        <mat-error *ngIf="ownControl.get('controlName').hasError('invalidInput')">
+          <span>{{'ADDDEFINEOWNCONTROL.CONTROLNAMEALPHANUMERIC' | translate}}</span>
+        </mat-error>
+        <mat-error *ngIf="ownControl.get('controlName').hasError('containsOnlyWhiteSpaces') && !ownControl.get('controlName').hasError('required')">
+          <span>{{'ADDDEFINEOWNCONTROL.CONTROLNAMEREQUIRED' | translate}}</span>
+        </mat-error>
+      </mat-form-field>
+      <div *ngIf="displayDuplicateErrMsg[i] && !ownControl.get('controlName').hasError('invalidInput') && !ownControl.get('controlName').hasError('required') && !ownControl.get('controlName')?.hasError('maxlength') && !ownControl.get('controlName').hasError('containsOnlyWhiteSpaces')">
+        <mat-error><span class="errorText">{{'ADDDEFINEOWNCONTROL.CONTROLEXISTS' | translate}}</span>
+        </mat-error>
+      </div>
+      <mat-form-field>
+        <input matInput formControlName="manufacturer" required>
+        <mat-placeholder>{{'ADDDEFINEOWNCONTROL.MANUFACTURER' | translate}}</mat-placeholder>
+        <mat-error *ngIf="ownControl.get('manufacturer').hasError('required')">
+          <span>{{'ADDDEFINEOWNCONTROL.MANUFACTURERREQUIRED' | translate}}</span>
+        </mat-error>
+        <mat-error *ngIf="ownControl.get('manufacturer')?.hasError('maxlength') && !ownControl.get('manufacturer').hasError('invalidInput') && !ownControl.get('manufacturer').hasError('required') && !ownControl.get('manufacturer').hasError('containsOnlyWhiteSpaces')">
+          <span>{{manufacturerMaxLengthErrorMessage}}</span>
+        </mat-error>
+        <mat-error *ngIf="ownControl.get('manufacturer').hasError('invalidInput')">
+          <span>{{'ADDDEFINEOWNCONTROL.MANUFACTURERALPHANUMERIC' | translate}}</span>
+        </mat-error>
+        <mat-error *ngIf="ownControl.get('manufacturer').hasError('containsOnlyWhiteSpaces') && !ownControl.get('manufacturer').hasError('required')">
+          <span>{{'ADDDEFINEOWNCONTROL.MANUFACTURERREQUIRED' | translate}}</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field *ngIf="viewMode == ControlManagementViewMode.DefineAndAdd">
+        <input matInput formControlName="customName" (ngModelChange)="onCustomNameChange($event, i)">
+        <mat-placeholder>{{'ADDDEFINEOWNCONTROL.CUSTOMNAME' | translate}}</mat-placeholder>
+        <mat-error *ngIf="ownControl.get('customName')?.hasError('maxlength')">
+          <span>{{ customNameMaxLengthErrorMessage }}</span>
+        </mat-error>
+      </mat-form-field>
+      <div *ngIf="duplicateCustomNames[i] && !ownControl.get('customName')?.hasError('maxlength')">
+        <span class="errorText">{{ 'ADDDEFINEOWNCONTROL.CUSTOMNAMEEXISTS' | translate }}</span>
+      </div>
+      <div [ngClass]="{'input-row': viewMode != ControlManagementViewMode.Edit }">
+        <div class="input-container">
+            <ng-container *ngIf="viewMode != ControlManagementViewMode.Edit">
+              <unext-custom-lot-management #customLotManagement [lotsList]="controlToEdit?.lots" (formData)="getLotManagementData($event, i)" (isValidDate)="isValidDate($event,i)"></unext-custom-lot-management>
+            </ng-container>
+
+            <ng-container *ngIf="viewMode == ControlManagementViewMode.Edit">
+              <mat-form-field>
+                <mat-select formControlName="masterLotNumberDropdown" class="controlName spec-matrix-dropdown" placeholder="{{'ADDDEFINEOWNCONTROL.LOTNUMBER' | translate}}" required>
+                  <mat-option *ngFor="let lot of controlToEdit?.lots" [value]="lot">
+                    <div class="option-content">
+                      <span>{{ getExpirationStr(lot) }}</span>
+                      <mat-icon [svgIcon]="icons.edit[24].name" matTooltip="Edit" color="primary" (click)="editMasterLotData(lot)"
+                        [disabled]="!hasPermissionToAccess([permissions.NonBRLotManagement])">
+                      </mat-icon>
+                    </div>
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </ng-container>
+        </div>
+        <div class="right ht">
+          <button mat-button class="pr-0 add-new-lot-btn" *ngIf="viewMode == ControlManagementViewMode.Edit"
+            (click)="onAddNewLot()" [disabled]="!hasPermissionToAccess([permissions.NonBRLotManagement, permissions.NonBRLotManagementViewOnly])">
+            <mat-icon [svgIcon]="icons.addCircle[24].name" class="ic-add pb-21"></mat-icon>
+            <span class="add-lot">{{'ADDDEFINEOWNCONTROL.ADDNEWLOT' | translate}}</span>
+          </button>
+        </div>
+      </div>
+      <mat-form-field>
+        <mat-select formControlName="matrix" class="controlName spec-matrix-dropdown" placeholder="{{'ADDDEFINEOWNCONTROL.MATRIX' | translate}}" required>
+          <mat-option *ngFor="let data of matrixData" [value]="data">{{ data.name }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="ownControl.get('matrix').hasError('required')">
+          <span>{{'ADDDEFINEOWNCONTROL.MATRIXREQUIRED' | translate}}</span>
+        </mat-error>
+      </mat-form-field>
+
+      <label class="grey">{{'ADDDEFINEOWNCONTROL.LEVELSINUSE' | translate}}</label>
+      <div class="flex-container">
+        <div class="control-levels mat-checkbox-group mt-5" *ngFor="let item of levelCheckboxes; let j = index;" formArrayName="levelCheckboxesForm" >
+          <ng-container class="mr-20">
+            <mat-checkbox class="level-in-use" formControlName="{{j}}" [disabled]="selectedLevels[j]" required>{{ j + 1 }}</mat-checkbox>
+          </ng-container>
+        </div>
+      </div>
+      <div *ngIf="!anyLevelSelected(i)">
+        <span class="errorText checkboxErr">{{'ADDDEFINEOWNCONTROL.LEVELSREQUIRED' | translate}}</span>
+      </div>
+        <mat-form-field *ngIf="viewMode == ControlManagementViewMode.DefineAndAdd">
+          <mat-select formControlName="additionalInstruments" class="additional-instrument" placeholder="{{'ADDDEFINEOWNCONTROL.ADDITIONALINSTRUMENTS' | translate}}"
+            panelClass="additional-instrument-overlay" multiple>
+            <mat-option *ngFor="let additionalData of additionalInstrumentData" [value]="additionalData">
+              <span *ngIf="additionalData.name" class="instrument-name">{{ additionalData.name }}</span>
+              <span *ngIf="additionalData.instrumentName" class="instrument-name"> ( {{ additionalData.instrumentName }} )
+              </span><br />
+              <span *ngIf="additionalData.departmentName" class="department-name">{{ additionalData.departmentName }}</span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+  </div>
+</form>
+<span *ngIf="allowAddAnother && viewMode != ControlManagementViewMode.Edit" class="br-text-primary link" (click)="addOwnControlFormGroup()">{{'ADDDEFINEOWNCONTROL.ANOTHERCONTROL' | translate}}</span>
+<mat-card-actions class="action-container mr-0">
+  <div class="left" *ngIf="viewMode == ControlManagementViewMode.Edit && !controlToEdit?.anyLabLotTests">
+    <mat-icon *ngIf="hasPermissionToAccess([permissions.ControlDelete])" [svgIcon]="icons.delete[24].name" class="ic-delete" (click)="onDeleteControlClicked(controlToEdit)"></mat-icon>
+  </div>
+  <div class="right">
+    <button mat-button color="primary" [disabled]="controlsForm.pristine && !enableCancelButton" (click)="resetForm()">{{'ADDDEFINEOWNCONTROL.CANCEL' | translate}}</button>
+    <button mat-flat-button color="primary" type="submit"
+            [disabled]="!controlsForm.valid || displayDuplicateErrMsg[formIndex] || isDuplicateControlName || isDuplicateCustomName || controlsFormStatus || !hasPermissionToAccess([permissions.NonBRLotManagement]) || isLoading || !dateCheck"
+            class="spec_submit_control"
+            (click)="onSubmit()">
+      {{submitButtonText}}
+    </button>
+  </div>
+</mat-card-actions>

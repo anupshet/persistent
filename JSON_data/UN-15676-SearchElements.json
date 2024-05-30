@@ -1,0 +1,66 @@
+{
+	"DEV": {
+		"URL": "http://localhost:4200/",
+	"AUM_Username": "anup_shet+DevAUM@bio-rad.com",
+	"LUM_Username": "anup_shet+devLAbUserManager2@bio-rad.com",
+	"LS_Username": "anup_shet+devLabSupervisorLoction2@bio-rad.com",
+	"LVS_Username": "vinayak_yadav+LotViewerSales@bio-rad.com",
+	"LT_Username": "anup_shet+devLTLocation2@bio-rad.com",
+	"Tech_Username": "anup_shet+devTech3AllLoc@bio-rad.com",
+	"Biorad_Manager": "vinayak_yadav+Bio-RadManager@bio-rad.com",
+	"AUM_LS": "vinayak_yadav+Bio-RadManager@bio-rad.com",
+	"AUM_LUM_LS": "vinayak_yadav+Bio-RadManager@bio-rad.com",
+	"LUM_LS" : "anup_shet+devLUM_LS_Loc123@bio-rad.com",
+	"LUM_LT" : "anup_shet+devLUM_LT_Loc123@bio-rad.com",
+	"CTS" : "sudhir_paranjape+devcts@bio-rad.com",
+
+	"Password": "Welcome1",
+	"PasswordCTS": "NewPassword1",
+	"AMFirstName": "Anup",
+	"NoLocationsAccount": "Example Testing Lab X1",
+	"NotANoLocationsAccount": "Lab Group of America",
+	"LocationToBeSelected" : "Location 2",
+	"Lab" : "Lab",
+	"KeywordLab" : "Location 2 cts test",
+	"launchLabName" : "Location 2 cts test"
+		
+	},
+	"QA": {},
+	"STAGE": {},
+	"LOCAL": {
+		"URL": "http://localhost:4200/",
+	"AUM_Username": "anup_shet+DevAUM@bio-rad.com",
+	"LUM_Username": "anup_shet+devLAbUserManager2@bio-rad.com",
+	"LS_Username": "anup_shet+devLabSupervisorLoction2@bio-rad.com",
+	"LVS_Username": "vinayak_yadav+LotViewerSales@bio-rad.com",
+	"LT_Username": "anup_shet+devLTLocation2@bio-rad.com",
+	"AUM_LT_Username": "anup_shet+devAUM_TECH@bio-rad.com",
+	"AUM_Tech": "anup_shet+devAUM_TECH@bio-rad.com",
+	"AUM_LUM_LS_Username": "anup_shet+devAUM_LUM_LS_123@bio-rad.com",
+	"AUM_LUM_LT_Username": "anup_shet+Dev_AUM_LUM_LT@bio-rad.com",
+	"AUM_LUM_T_Username": "anup_shet+Dev_AUM_LUM_LT@bio-rad.com",
+		
+	"Tech_Username": "anup_shet+devTech3AllLoc@bio-rad.com",
+	"BM_Username": "vinayak_yadav+Bio-RadManager@bio-rad.com",
+	"AUM_LUM_Username": "anup_shet+devAUM_LUM@bio-rad.com",
+	"AUM_LS_Username": "anup_shet+devLum_ls_123Loc@bio-rad.com",
+	"LUM_LS_Username" : "anup_shet+devLUM_LS_Loc123@bio-rad.com",
+	"LUM_LT_Username" : "anup_shet+devLUM_LT_Loc123@bio-rad.com",
+	"LUM_Tech_Username" : "anup_shet+devLUM_TECH_Loc123@bio-rad.com",
+	"CTS" : "mayank_jatay+cts@bio-rad.com",
+		"Keyword":"AB",
+	"Password": "Welcome1",
+	
+	"AMFirstName": "Anup",
+	"NoLocationsAccount": "Example Testing Lab X1",
+	"NotANoLocationsAccount": "Lab Group of America",
+	"LocationToBeSelected" : "Location 2",
+	"Lab" : "Lab",
+	"KeywordLab" : "Location 2 cts test",
+	"launchLabName" : "Location 2 cts test"
+
+
+
+}
+
+} 	

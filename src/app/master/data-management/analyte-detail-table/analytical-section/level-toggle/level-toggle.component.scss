@@ -1,0 +1,57 @@
+@import '../../../../../../assets/scss/variables';
+@import '../../../../../../assets/scss/base/variables-peak';
+@import '../../../../../../assets/scss/mixins';
+
+mat-checkbox:hover {
+  cursor: pointer !important;
+}
+
+::ng-deep .level-checkbox-1.mat-checkbox-checked .mat-checkbox-background {
+  background-color: $br-level-1 !important;
+}
+
+::ng-deep .level-checkbox-2.mat-checkbox-checked .mat-checkbox-background {
+  background-color: $br-level-2 !important;
+}
+
+::ng-deep .level-checkbox-3.mat-checkbox-checked .mat-checkbox-background {
+  background-color: $br-level-3 !important;
+}
+
+::ng-deep .level-checkbox-4.mat-checkbox-checked .mat-checkbox-background {
+  background-color: $br-level-4 !important;
+}
+
+::ng-deep .level-checkbox-5.mat-checkbox-checked .mat-checkbox-background {
+  background-color: $br-level-5 !important;
+}
+
+::ng-deep .level-checkbox-6.mat-checkbox-checked .mat-checkbox-background {
+  background-color: $br-level-6 !important;
+}
+
+::ng-deep .level-checkbox-7.mat-checkbox-checked .mat-checkbox-background {
+  background-color: $br-level-7 !important;
+}
+
+::ng-deep .level-checkbox-8.mat-checkbox-checked .mat-checkbox-background {
+  background-color: $br-level-8 !important;
+}
+
+::ng-deep .level-checkbox-9.mat-checkbox-checked .mat-checkbox-background {
+  background-color: $br-level-9 !important;
+}
+
+.level-toggle-component {
+  span {
+    font-size: mat-font-size($br-typography, body-2);
+  }
+
+  .mr-4 {
+    margin-right: 1em;
+  }
+
+  .mr-4:last-child {
+    margin-right: 0 !important;
+  }
+}

@@ -1,0 +1,35 @@
+/*© 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.*/
+@import '../../../../../assets/scss/variables';
+
+.ctn-slider-button {
+
+  width: 100%;
+  .mat-slider-horizontal {
+    width: calc(100% - 182px);
+  }
+
+  .navigate-left,
+  .navigate-right {
+    fill: $link-color;
+    z-index: 1;
+  }
+
+  // use this and enter desired color code in our case blue desired is #007db5 in zeplin
+  // wrap the filer statement by the class added to the SVG
+  .filter-blue{
+    filter: invert(27%) sepia(63%) saturate(2288%) hue-rotate(176deg) brightness(101%) contrast(101%);
+}
+
+  button.mat-button {
+    padding: 0;
+    min-width: 30px;
+  }
+
+  button.mat-button[disabled] mat-icon {
+    fill: $br-grey;
+  }
+
+  .mat-slider-min-value.mat-slider-thumb-label-showing .mat-slider-thumb, .mat-slider-min-value.mat-slider-thumb-label-showing .mat-slider-thumb-label {
+    background-color: $component-cyan;
+  }
+}

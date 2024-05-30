@@ -1,0 +1,284 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../../../../src/assets/scss/variables";
+
+.mat-sidenav-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: 100%;
+  width: 50px;
+  background: $whitesmoke;
+  border-right: solid 1px $br-black-low-emphasis;
+}
+
+.mat-drawer-container {
+  position: static;
+  background: none;
+  height: 100%;
+}
+
+mat-nav-list {
+  clear: both;
+  padding-top: 0;
+}
+
+.ctn-sidenav-opened {
+  // margin-top: -30px;
+  background: $whitesmoke;
+  padding: 0 10px;
+}
+
+.sidenav-expansion-panel,
+.ctn-sidenav-opened {
+  width: 333px;
+}
+
+.sidenav-expansion-panel {
+  .perfect-scrollbar-wrapper {
+    height: calc(100vh - 145px);
+    width: 300px;
+  }
+
+  .sidenav-expansion-panel-header-controls button:first-child {
+    mat-icon {
+      fill: $black;
+    }
+  }
+
+  button.btn-sort {
+    mat-icon {
+      fill: $blue;
+    }
+  }
+
+  button.btn-sort-disabled {
+    mat-icon {
+      fill: $br-grey;
+    }
+  }
+
+  .sort-opts-panels {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 8px;
+  }
+
+  .sort-box {
+    border-color: $br-black-low-emphasis;
+    border-style: solid;
+    border-bottom-width: 1px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+  }
+
+  .top-bdr {
+    border-top: 1px solid $br-black-text-medium-emphasis;
+  }
+
+  .left-bdr {
+    border-left: 1px solid $br-black-text-low-emphasis;
+  }
+}
+
+.ctn-sidenav-closed {
+  button:first-child {
+    margin-left: 5px;
+  }
+
+  .fake-items {
+    height: 40px;
+    width: 35px;
+    border-bottom: 1px solid $br-black-low-emphasis;
+  }
+}
+
+.sidenav-expansion-panel-header-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+
+  label {
+    margin: 2px 25px 0 10px;
+  }
+
+  button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
+  }
+}
+
+.archived-items-section {
+  margin-top: 30px;
+
+  .archived-items-toggle-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-color: $br-black-low-emphasis;
+    border-style: solid;
+    border-bottom-width: 1px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+
+    label {
+      margin: 2px 25px 0 10px;
+    }
+  }
+}
+
+/*
+* child component NavSideBarLinkComponent
+*/
+.primary-dispaly-text {
+  margin-left: 10px;
+  word-wrap: break-word;
+}
+
+.sidenav-link {
+  display: inline-block;
+  height: auto;
+  line-height: 24px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  cursor: pointer;
+  width: 280px;
+  margin-left: 3px;
+  color: $blue;
+  padding-left: 5px;
+  border-color: $br-black-low-emphasis;
+  border-style: solid;
+  border-bottom-width: 1px;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+
+  &.selected,
+  &:hover {
+    width: 280px;
+    box-shadow: 4px 4px 5px 0px $br-black-low-emphasis;
+    background-color: $white;
+    transition: all 0.5s ease;
+  }
+
+  &.twoLines {
+    height: auto;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    line-height: 24px;
+  }
+
+  &.primary-dispaly-text {
+    word-break: break-all;
+    width: 215px;
+  }
+
+  .primary-dispaly-text {
+    margin-left: 2px;
+    position: relative;
+  }
+
+  span {
+    display: block;
+    color: $br-grey;
+    word-break: break-all;
+    width: 160px;
+  }
+
+  .d-flex {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    & .control-name {
+      margin-right: auto;
+    }
+
+    & .lot-number {
+      margin-right: 3px;
+    }
+  }
+}
+
+.archived {
+  color: $gray-500;
+}
+
+.fix-position {
+  position: absolute;
+  right: -3px;
+  top: -8px;
+}
+
+.panel-item-box {
+  padding: 6px 10px;
+  color: $gray-600;
+  background: $gray-100;
+  box-shadow: 0 0 1px $gray-600;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  .close.mat-icon {
+    color: $gray-600;
+    vertical-align: middle;
+  }
+
+  .bars {
+    height: 18px;
+    vertical-align: text-bottom;
+  }
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+  height: 20px !important;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.panel-item-box:last-child {
+  border: none;
+}
+
+.panel-items-list.cdk-drop-list-dragging .panel-item-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.panel-items-list.cdk-drop-list-dragging {
+  cursor: move;
+}
+
+.sub-vertical-align {
+  vertical-align: sub;
+}
+
+em.info {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  margin-top: 4px;
+}
+
+.ctn-cdkScrollable {
+  overflow-y: auto;
+  height: calc(100vh - 260px);
+  width: 305px;
+}

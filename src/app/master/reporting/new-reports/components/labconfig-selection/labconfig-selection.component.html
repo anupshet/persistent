@@ -1,0 +1,112 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="lab-config">
+  <div class="header" #labConfigHeader>
+    <div class="column-names d-flex">
+      <h5 *ngIf="instrumentGroupByDept" [ngClass]="{'underline': directionIndex == selectionDirection.department}">{{'LABCONFIGSELECTION.LOCATIONANDDEPARTMENT' | translate}}<span class="count" *ngIf="showCount">
+        ({{departmentsCount}})</span></h5>
+      <h5 [ngClass]="{'underline': directionIndex == selectionDirection.instrument}">{{'LABCONFIGSELECTION.INSTRUMENT' | translate}}<span class="count" *ngIf="showCount">
+          ({{instrumentsCount}})
+        </span></h5>
+      <h5 [ngClass]="{'underline': directionIndex == selectionDirection.control}">{{'LABCONFIGSELECTION.CONTROL' | translate}}<span class="count" *ngIf="showCount">
+          ({{controlsCount}})
+        </span></h5>
+      <h5 [ngClass]="{'underline': directionIndex == selectionDirection.analyte}">{{'LABCONFIGSELECTION.ANALYTE' | translate}} <span class="count" *ngIf="showCount">
+          ({{analytesCount}})
+        </span></h5>
+    </div>
+  </div>
+  <div class="labconfig-body">
+    <div class="column-data d-flex">
+      <div class="column" *ngIf="instrumentGroupByDept">
+        <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}">
+          <div class="category">
+            <ng-container *ngIf="labConfigData?.locations as locationList;">
+              <ng-container *ngFor="let location of locationList;let i = index">
+                <mat-checkbox disabled *ngIf="!location.isFiltered" [(ngModel)]="location.isChecked" unextTooltip [tooltip]="location.tooltipData"
+                  position="right" class="parent" [ngModelOptions]="{standalone: true}"
+                  (change)="onCheckChanged(labConfig.location,location.isChecked,i,null)">
+                  {{location.name | uppercase}}
+                </mat-checkbox>
+              </ng-container>
+            </ng-container>
+            <ng-container>
+              <ng-container *ngFor="let dept of labConfigData?.departments;let i = index">
+                <mat-checkbox [disabled]="dept.isDisabled" *ngIf="!dept.isFiltered" [(ngModel)]="dept.isChecked" unextTooltip [tooltip]="dept.tooltipData" position="right"
+                  class="child" [ngModelOptions]="{standalone: true}"
+                  (change)="onCheckChanged(labConfig.department,dept.isChecked,i,null)"
+                  (click)="onClick($event, labConfig.department, dept.isChecked, dept.isDisabled)">
+                  {{dept.name | uppercase}}
+                </mat-checkbox>
+              </ng-container>
+            </ng-container>
+          </div>
+        </perfect-scrollbar>
+      </div>
+      <div class="column">
+        <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}">
+          <ng-container *ngIf="labConfigData?.instruments as instrumentList;">
+            <ng-container *ngFor="let instrument of instrumentList;let i = index">
+              <mat-checkbox [disabled]="instrument.isDisabled" *ngIf="!instrument.isFiltered" [(ngModel)]="instrument.isChecked" unextTooltip [tooltip]="instrument.tooltipData"
+                position="right" class="parent" [ngModelOptions]="{standalone: true}"
+                (change)="onCheckChanged(labConfig.instrument,instrument.isChecked,i,null)"
+                (click)="onClickParentCheckbox($event, labConfig.instrument, instrument.isChecked, instrument, instrument.isDisabled)">
+                {{instrument.name | uppercase}}
+              </mat-checkbox>
+              <ng-container *ngFor="let group of instrument.groups;let j = index">
+                <mat-checkbox [disabled]="group.isDisabled" *ngIf="!group.isFiltered" [(ngModel)]="group.isChecked" unextTooltip [tooltip]="group.tooltipData" position="right"
+                  class="child" [ngModelOptions]="{standalone: true}"
+                  (change)="onCheckChanged(labConfig.instrument,group.isChecked,i,j)"
+                  (click)="onClick($event, labConfig.instrument, group.isChecked, group.isDisabled)">
+                  {{getDisplayNameForInstrument(group) | uppercase}}
+                </mat-checkbox>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </perfect-scrollbar>
+      </div>
+      <div class="column">
+        <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}">
+          <ng-container *ngIf="labConfigData?.controls as controlList;">
+            <ng-container *ngFor="let control of controlList;let i = index">
+              <mat-checkbox [disabled]="control.isDisabled" *ngIf="!control.isFiltered" [(ngModel)]="control.isChecked" unextTooltip [tooltip]="control.tooltipData" position="left"
+                class="parent" [ngModelOptions]="{standalone: true}"
+                (change)="onCheckChanged(labConfig.control,control.isChecked,i,null)"
+                (click)="onClickParentCheckbox($event, labConfig.control, control.isChecked, control, control.isDisabled)">
+                {{control.name | uppercase}}
+              </mat-checkbox>
+              <ng-container *ngFor="let group of control.groups;let j = index">
+                <mat-checkbox [disabled]="group.isDisabled" *ngIf="!group.isFiltered" [(ngModel)]="group.isChecked" unextTooltip [tooltip]="group.tooltipData" position="left"
+                  class="child" [ngModelOptions]="{standalone: true}"
+                  (change)="onCheckChanged(labConfig.control,group.isChecked,i,j)"
+                  (click)="onClick($event, labConfig.control, group.isChecked, group.isDisabled)">
+                  {{getDisplayNameForControlGroup(group) | uppercase}}
+                </mat-checkbox>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </perfect-scrollbar>
+      </div>
+      <div class="column">
+        <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}">
+          <ng-container *ngIf="labConfigData?.analytes as analyteList;">
+            <ng-container *ngFor="let analyte of analyteList;let i = index">
+              <mat-checkbox [disabled]="analyte.isDisabled" *ngIf="!analyte.isFiltered" [(ngModel)]="analyte.isChecked" unextTooltip [tooltip]="analyte.tooltipData" position="left"
+                class="parent" [ngModelOptions]="{standalone: true}"
+                (change)="onCheckChanged(labConfig.analyte,analyte.isChecked,i,null)"
+                (click)="onClick($event, labConfig.analyte, analyte.isChecked, analyte.isDisabled)">
+                {{analyte.name | uppercase}}
+              </mat-checkbox>
+            </ng-container>
+          </ng-container>
+        </perfect-scrollbar>
+      </div>
+    </div>
+    <div class="button-container">
+      <!-- Clear selection functionality is not working-UN-19790 -->
+      <button [disabled]="!showCount" mat-stroked-button color="primary"
+        (click)="openClearSelectionDialog()" class="clearSelectionBtn">
+        {{'LABCONFIGSELECTION.CLEARSELECTION' | translate}}
+      </button>
+    </div>
+  </div>
+</div>

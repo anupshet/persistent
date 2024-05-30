@@ -1,0 +1,311 @@
+//Style
+//
+//style.scss contains all files that comprizes CSS for br library components
+
+//text
+.br-text-primary {
+  color: $br-primary;
+}
+
+.br-text-accent {
+  color: $br-accent;
+}
+
+.br-text-warn {
+  color: $br-warn;
+}
+
+.br-text-on-primary {
+  color: mat-color($br-primary-palette, default-contrast);
+}
+
+.br-text-on-accent {
+  color: mat-color($br-accent-palette, default-contrast);
+}
+
+.br-text-on-warn {
+  color: mat-color($br-warn-palette, default-contrast);
+}
+
+.br-text-high-emphasis {
+  color: $br-black-text-high-emphasis;
+}
+
+.br-text-medium-emphasis {
+  color: $br-black-text-medium-emphasis;
+}
+
+.br-text-low-emphasis {
+  color: $br-black-text-low-emphasis;
+}
+
+.main-text {
+  @include mat-typography-level-to-styles($br-typography, body-2);
+  margin-bottom: $custom-space-xxsmall;
+}
+
+.sub-text {
+  color: $gray-600;
+  font-size: mat-font-size($br-typography, caption);
+  margin-bottom: $custom-space-xsmall;
+}
+
+//General styling
+simple-snack-bar {
+  color: mat-color($mat-grey, A100);
+}
+
+.mat-slide-toggle .mat-slide-toggle-ripple {
+  display: none;
+}
+
+.br-bg-primary {
+  background-color: $br-primary;
+}
+
+.br-bg-accent {
+  background-color: $br-accent;
+}
+
+.br-bg-warn {
+  background-color: $br-warn;
+}
+
+.br-disabled-opacity {
+  opacity: 0.5;
+}
+
+.mat-button, .mat-raised-button {
+  text-transform: uppercase;
+  letter-spacing: 1.25px;
+}
+
+.matrix-config-table > .mat-dialog-container {
+  padding-top: 0;
+}
+
+.mat-button-focus-overlay {
+  background: transparent !important;
+}
+// /*
+// *  card
+// */
+.mat-tooltip {
+  color: mat-color($mat-grey, A100);
+  border-radius: 2px;
+  margin: 14px;
+  max-width: 250px;
+  padding-left: 8px;
+  padding-right: 8px;
+  word-break: break-all;
+  word-break: break-word;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.mc-card-ctn {
+  position: relative;
+  margin: 0;
+  min-width: 388px;
+  width: 388px;
+  max-width: 388px;
+  min-height: 92vh;
+  background: mat-color($mat-grey, A100);
+  padding: 20px 0px 10px 10px;
+  margin: 0px 0 -60px 0;
+  z-index: 100;
+}
+
+.mc-background {
+  box-shadow: -5px 0 5px -5px $black; /* all latest browser */
+  -moz-box-shadow: -5px 0 5px -5px $black; /* Firefox older version*/
+  -webkit-box-shadow: -5px 0 5px -5px $black; /* Chrome/Safari older version */
+  z-index: 100;
+  background: mat-color($mat-grey, A100);
+  width: 100%;
+}
+
+.node-tree {
+  overflow: hidden;
+  padding: 0px;
+}
+
+.cdk-overlay-pane {
+  max-width: 100%;
+  display: inline-block;
+}
+
+pre {
+  overflow: unset;
+}
+
+.sidenav-container {
+  .ps__rail-y,
+  .ps__thumb-y {
+    opacity: 0.5;
+  }
+}
+
+.table-container {
+  .ps__rail-y {
+    background-color: transparent;
+    opacity: 1;
+  }
+
+  .ps__rail-y:focus,
+  .ps__rail-y:hover {
+    background-color: mat-color($mat-grey, A100);
+  }
+}
+
+.br-text-warn span {
+  color: $br-warn;
+}
+
+/*
+* Internet Explorer styles
+*/
+//ie10 and ie11
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  @import 'base/ie';
+}
+
+//ie8 and ie9
+body.ie {
+  @import 'base/ie';
+}
+
+.link:hover {
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+}
+
+ul.box {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+
+  li {
+    display: inline-block;
+  }
+}
+
+.msgErr {
+  color: $br-warn;
+  font-size: mat-font-size($br-typography, body-1);
+  margin-top: -10px;
+}
+
+
+.flex-box {
+  display: flex;
+
+  .flex-box-item {
+    flex: 1;
+    display: flex;
+
+    &.flex-box-item-center {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.fs-10 {
+  font-size: mat-font-size($br-typography, caption);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.dropdown-onboarding {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    color: $black;
+    width: 100%;
+    padding: 2px 0;
+    display: inline-block;
+    padding-left: 1rem;
+
+    span {
+      display: block;
+      font-size: mat-font-size($br-typography, body-1);
+      color: $gray-600;
+    }
+  }
+
+  a.selected,
+  a:hover {
+    color: mat-color($mat-grey, A100);
+    text-decoration: none;
+    background-color: $orange;
+
+    span {
+      display: block;
+      font-size: mat-font-size($br-typography, body-1);
+      color: mat-color($mat-grey, A100);
+    }
+  }
+}
+
+.dropdown-onboarding.frame {
+  background-color: rgba($br-orange, 0.22);
+  padding: 10px 0;
+}
+
+br-instrument:focus {
+  outline: 0;
+  border: 0;
+  outline-style: none;
+  -moz-outline-style: none;
+}
+
+.card-flexible-top {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.card-fixed-bottom {
+  height: 150px;
+  padding-top: 1rem;
+}
+
+.remove-notification {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  z-index: 10000;
+  font-size: $custom-type-size-xlarge;
+}
+
+mat-list.mat-list-tight .mat-list-item {
+  height: 40px !important
+  
+}
+
+// mat-select-multiple-dropdown-aligment
+.mat-select-multiple-dropdown-aligment {
+  margin: 35px 0;
+}
+
+.filter-row {
+  .mat-form-field-appearance-fill .mat-form-field-infix {
+    padding-bottom: 0.25em !important
+  }
+}

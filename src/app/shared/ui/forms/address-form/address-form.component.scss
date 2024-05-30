@@ -1,0 +1,21 @@
+@import '../../../../../assets/scss/variables';
+@import '../../../../../assets/scss/base/variables-peak';
+@import '../../../../../assets/scss/mixins';
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+@include media(desktop-and-up) {
+  .padding-right {
+    padding-right: 10px;
+  }
+}
+@include media(tablet-and-down) {
+  .flex-column-mobile {
+    flex-direction: column;
+  }
+}
+mat-form-field {
+  margin: 0;
+}

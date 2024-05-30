@@ -1,0 +1,16 @@
+{
+	"DEV": {
+		"URL": "https://unity-dev.qcnet.com",
+		"Username": "sudhir_paranjape+dev187076@bio-rad.com",
+		"Password": "Welcome1",
+		"FirstName": "Sudhir",
+		"DepartmentName": "Dept2",
+		"InstrumentName": "ARCHITECT c8000",
+		"ProductName": "Immunoassay Plus",
+		"Analyte": "Acetaminophen",
+		"Unit": "µg/mL"
+	},
+	"QA": {},
+	"STAGE": {},
+	"DEV2": {}
+}

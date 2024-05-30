@@ -1,0 +1,12 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "Username": "amruta_karale+userqc@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Amruta",
+    "DevURL": "https://unity-dev.qcnet.com"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

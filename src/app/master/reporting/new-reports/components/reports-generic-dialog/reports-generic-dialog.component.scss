@@ -1,0 +1,273 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../../../../assets/scss/variables";
+
+.mat-dialog-container {
+    border-radius: 5px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+.mat-dialog-actions {
+    padding: 0;
+}
+
+.generic-dialog-wrapper {
+    width: 420px;
+    min-height: 236px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 18px 0px 0px 0px;
+    background-color: $white;
+    position: relative;
+
+    .close-icon {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        right: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .mat-icon {
+            cursor: pointer;
+        }
+    }
+
+    .block-wrapper {
+        display: flex;
+        flex-direction: row;
+        min-height: 40px;
+    }
+
+    .first-block {
+        margin-top: 40px;
+        padding: 0px 50px;
+        justify-content: center;
+
+        .icon-title {
+            width: 24px;
+            height: 24px;
+            margin: 0px 10px 0px 0px;
+        }
+
+        .dialog-title {
+            font-family: Lato;
+            font-size: 25px;
+            letter-spacing: 0.25px;
+            text-align: left;
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .second-block {
+        margin: 20px 0px 35px 0px;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 18px;
+
+        .dialog-message {
+            height: 24px;
+            font-family: Lato;
+            font-size: 16px;
+            line-height: 1.5;
+            letter-spacing: 0.25px;
+            text-align: center;
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        .dialog-wrapper {
+            padding: 12px 5px 12px 0px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+            .dialog-message-icon {
+                width: 16%;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                margin: 0px 10px;
+
+                .mat-icon {
+                    height: 40px !important;
+                    width: 40px !important;
+                }
+            }
+
+            .dialog-message-icon-title {
+                margin: 0 5px 0px 0px;
+
+                .single-message {
+                    margin: 0;
+                    font-family: Lato;
+                    font-size: 14.5px;
+                    line-height: 1.5;
+                    font-weight: bold;
+                    text-align: left;
+                }
+
+             
+            }
+        }
+
+        .error-bg {
+            border-left: 5px solid $red-warning;
+            background: $red-warning-bg;
+        }
+
+        .warning-bg {
+            border-left: 5px solid $orange;
+            background: $orange-warning-bg;
+        }
+
+        .error-title-color {
+            color: $red-warning;
+        }
+
+        .warning-title-color {
+            color: $orange;
+        }
+    }
+
+    .second-padding {
+        padding: 0px 28px !important;
+    }
+
+    .simple-block {
+        padding: 0px 18px;
+        min-height: 165px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 25px;
+        letter-spacing: 0.25px;
+        text-align: center;
+    }
+
+    .second-block-form {
+        margin: 20px 35px 35px 35px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .form-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 350px;
+
+            .form-block {
+                width: 350px;
+
+                .mat-form-field {
+                    border-bottom: solid 1px $border-grey;
+                    background-color: $mat-form-bgcolor;
+                    width: 350px;
+
+                    ::ng-deep  .mat-form-field-infix {
+                        padding: 0.7em 0.5em 0 0.5em !important;
+                        border-top: 0 !important;
+                      }
+                }
+
+                .dialog-wrapper {
+                    padding: 12px 5px 12px 0px;
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+
+                    .dialog-message-icon {
+                        width: 16%;
+                        align-items: center;
+                        justify-content: center;
+                        display: flex;
+                        margin: 0px 10px;
+
+                        .mat-icon {
+                            height: 40px !important;
+                            width: 40px !important;
+                        }
+                    }
+
+                    .dialog-message-icon-title {
+                        margin: 0 5px 0px 0px;
+
+                        .single-message {
+                            margin: 0;
+                            font-family: Lato;
+                            font-size: 14.5px;
+                            line-height: 1.5;
+                            font-weight: bold;
+                            text-align: left;
+                        }
+
+                        .no-bold {
+                            font-weight: 500 !important;
+                        }
+                    }
+                }
+
+                .error-bg {
+                    border-left: 5px solid $red-warning;
+                    background: $red-warning-bg;
+                    margin-bottom: 25px;
+                }
+
+                .error-title-color {
+                    color: $red-warning;
+                }
+            }
+        }
+    }
+
+    .footer-block {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 64px;
+        width: 100%;
+        border-top: 1px solid $border-top-color;
+        padding: 10px 0px 5px 0px;
+
+        .footer-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            border-radius: 4px;
+            letter-spacing: 0.1em;
+
+            &:nth-child(2) {
+                margin-left: 15px;
+            }
+        }
+
+        .outline-btn {
+            color: $blue;
+            border: 1px solid $border-color;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: bolder;
+            letter-spacing: 1px;
+            padding: 3px 16px;
+        }
+
+        .error-outline-btn {
+            color: $red-warning !important;
+            border: 1px solid $red-warning;
+            background: $white !important;
+        }
+
+        .error-solid-btn {
+            background: $red-warning !important;
+        }
+    }
+}
+
+.generic-type2 {
+    width: 520px;
+}

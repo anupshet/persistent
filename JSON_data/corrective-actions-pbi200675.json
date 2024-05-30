@@ -1,0 +1,45 @@
+{
+  "DEV": {
+    "URL": "https://unity-dev.qcnet.com/login",
+    "Username": "sudhir_paranjape+dev397689@bio-rad.com",
+    "Password": "Welcome1",
+    "firstname": "Sudhir",
+    "ManagerName": "SudhirUser ParanjapeUser",
+    "Departmentname": "TESTINGTOOL",
+    "InstrumentName": "Access 2",
+    "ControlName": "Immunoassay Plus",
+    "AnalyteName": "Folate",
+    "correctionactionname": "Calibrator changed",
+    "Actionname": "Calibrator changed",
+    "CommentValue": "test"
+  },
+  "QA": {
+     "URL": "https://unity-test.qcnet.com/login",
+      "Username": "sudhir_paranjape+test186409@bio-rad.com",
+      "Password": "Welcome1",
+      "firstname": "Sudhir",
+      "ManagerName": "SudhirUser ParanjapeUser",
+      "Departmentname": "FeatureTesting",
+      "InstrumentName": "VirClia",
+      "ControlName": "Immunoassay Plus",
+      "AnalyteName": "Testosterone, Free",
+      "correctionactionname": "Calibrator new lot",
+      "Actionname": "Calibrator new lot",
+      "CommentValue": "test"
+  },
+  "STAGE":{
+    "URL": "https://unity-stage.qcnet.com/login",
+    "Username": "sudhir_paranjape+stage106430@bio-rad.com",
+    "Password": "Welcome1",
+    "firstname": "Sudhir",
+    "ManagerName": "SudhirUser ParanjapeUser",
+    "Departmentname": "FeatureTesting",
+    "InstrumentName": "ARCHITECT c8000",
+    "ControlName": "Cardiac Markers Plus LT",
+    "AnalyteName": "CK (Creatine Kinase)",
+    "correctionactionname": "Calibrator new lot",
+    "Actionname": "Calibrator new lot",
+    "CommentValue": "test"
+  }
+  
+}

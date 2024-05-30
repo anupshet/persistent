@@ -1,0 +1,30 @@
+.lotviewer-dialog-component {
+
+  position: relative;
+
+  .close {
+    position: absolute;
+    right: -10px;
+    top: -15px;
+    z-index: 100;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  h4 {
+    text-align: center;
+  }
+
+  .mat-dialog-content {
+    overflow: hidden;
+    // scrollable area by default is 65vh
+    max-height: 87vh !important; 
+  }
+}
+
+#pbi-report {
+  width: 92vw;
+  height: 90vh;
+}

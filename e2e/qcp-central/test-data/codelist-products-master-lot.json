@@ -1,0 +1,22 @@
+{
+  "QA": {
+    "URL": "https://qcpcentralqa.global.bio-rad.com/",
+    "Username": "amruta_karale+qaqcpadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "MainMenu": "Code List",
+    "SubMenu": "Products",
+    "SubMenuOption": "Product Master Lots",
+    "FileName": "productMasterLots.csv",
+    "ProductName": "Blood Gas",
+    "LotNumber": "28750",
+    "ExpiryDate": "10/31/2023  12:00:00 AM",
+    "Manufacturer": "Bio-Rad",
+    "MatrixName": "Plasma",
+    "ProductNameAdd": "Amplichek I",
+    "LotNumberAdd": "Test",
+    "NewProductName": "TestAutomation_Product"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

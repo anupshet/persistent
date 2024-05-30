@@ -1,0 +1,22 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com",
+    "Username": "sudhir_paranjape+test159372@bio-rad.com",
+    "UserRoleUsername": "sudhir_paranjape+test159372LabUser@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sudhir Paranjape",
+    "deptName": "Dept1",
+    "instName": "Instr1",
+    "cntrlName": "Control1",
+    "analyteName": "Ferritin",
+    "instName1": "Instrument1",
+    "instName2": "Instrument2",
+    "analyteN": "Analyte",
+    "instrument": "Instrument",
+    "control": "Control",
+    "analyte": "Analyte"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

@@ -1,0 +1,132 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="past-reports-table-component">
+  <!-- Start Table Component -->
+
+  <div class="table-wrapper">
+      <perfect-scrollbar [config]="{ suppressScrollY: false , suppressScrollX: false}">
+        <table mat-table [dataSource]="dataSource.data | paginate: configPagination" matSort matSortActive="createdOn"
+          matSortDirection="desc" matSortDisableClear (matSortChange)="sortData($event)">
+
+          <!-- Report Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header
+              sortActionDescription="Sort by name">
+              {{'PASTREPORTS.REPORTNAME' | translate}}
+            </th>
+            <td mat-cell *matCellDef="let element" class="mat-col"> {{getTranslationsForMultipleInstruments(element.name)}} </td>
+          </ng-container>
+
+          <!-- Type Column -->
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header
+              sortActionDescription="Sort by type">
+              {{'PASTREPORTS.TYPE' | translate}}
+            </th>
+            <td mat-cell *matCellDef="let element" class="mat-col">
+              <div *ngFor="let type of getReportTypes(element.type)">{{type | translate}}</div>
+            </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="year">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header
+              sortActionDescription="Sort by year">
+              {{'PASTREPORTS.YEAR' | translate}}
+            </th>
+            <td mat-cell *matCellDef="let element" class="mat-col"> {{element.year}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="month">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header
+              sortActionDescription="Sort by month">
+              {{'PASTREPORTS.MONTH' | translate}}
+            </th>
+            <td mat-cell *matCellDef="let element" class="mat-col"> {{getMonthLabel(element.month)}}</td>
+          </ng-container>
+
+          <!-- Signed By-->
+          <ng-container matColumnDef="signedBy">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header
+              sortActionDescription="Sort by signedBy">
+              {{'PASTREPORTS.SIGNEDBY' | translate}}
+            </th>
+            <td mat-cell *matCellDef="let element" class="mat-col"> {{element.signedBy}} </td>
+          </ng-container>
+
+          <!-- Template Name -->
+          <!-- <ng-container matColumnDef="templateName">
+            <th  mat-header-cell *matHeaderCellDef mat-sort-header
+              sortActionDescription="Sort by templateName">
+              {{'PASTREPORTS.TEMPLATE' | translate}}
+            </th>
+            <td mat-cell *matCellDef="let element" class="mat-col"> {{element.templateName}} </td>
+          </ng-container> -->
+
+          <!-- Created on-->
+          <ng-container matColumnDef="createdOn">
+            <th id="dateCreatedTh" mat-header-cell *matHeaderCellDef
+              mat-sort-header sortActionDescription="Sort by createdOn">
+              {{'PASTREPORTS.DATECREATED' | translate}}
+            </th>
+            <td mat-cell *matCellDef="let element" class="mat-col"> {{element.createdOn | uNextDate: 'mediumDate'}} </td>
+          </ng-container>
+
+          <!-- Actions-->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>
+
+            </th>
+            <td mat-cell *matCellDef="let element" class="mat-col">
+              <button
+                [checkForPermission]="{'permissionsAllowed':[permissions.ReportsViewSavedItems],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+                mat-raised-button color="primary" class="preview" (click)="openPreview(element)">
+                <a href="{{element.viewPreSigned}}" download target="_blank" hidden id="pdfTag"></a>
+                <mat-icon>preview</mat-icon>
+              </button>
+
+              <button
+                [checkForPermission]="{'permissionsAllowed':[permissions.ReportsViewSavedItems],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+                (click)="onDownload(element)" mat-raised-button color="primary" class="download">
+                <mat-icon>download</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </perfect-scrollbar>
+    <!-- End Table Component -->
+    <div *ngIf="dataSource.data.length === 0" class="no-data">{{'PASTREPORTS.NODATA' | translate}}
+    </div>
+  </div>
+
+  <!-- Start of Pagination -->
+  <div class="pagination-container"
+    *ngIf="dataSource.data && dataSource.data.length > 0 && dataSource.data.length > configPagination.itemsPerPage">
+    <pagination-template #pagination="paginationApi" (pageChange)="configPagination.currentPage = $event; scrollTop()">
+      <div class="custom-pagination">
+        <button mat-stroked-button color="primary" class="pagination-button spec-prev-button"
+          (click)="pagination.previous()" [ngClass]="{'selected disable-button' : pagination.isFirstPage()}"
+          [disabled]="pagination.isFirstPage()">
+          <mat-icon [svgIcon]="icons.arrowBack[24].name"></mat-icon>
+        </button>
+        <div *ngFor="let page of pagination.pages, let index = index">
+          <button mat-stroked-button color="primary" class="pagination-button spec-page-button"
+            [ngClass]="{ 'selected' : pagination.getCurrent() === page.value }"
+            (click)="pagination.setCurrent(page.value); scrollTop()">
+            {{ page.value }}
+          </button>
+        </div>
+        <button mat-stroked-button color="primary" class="pagination-button spec-next-button"
+          (click)="pagination.next()" [ngClass]="{'selected disable-button' : pagination.isLastPage()}"
+          [disabled]="pagination.isLastPage()">
+          <mat-icon class="rotateArrow" [svgIcon]="icons.arrowBack[24].name"></mat-icon>
+        </button>
+      </div>
+    </pagination-template>
+  </div>
+  <!-- End of  Pagination -->
+</div>

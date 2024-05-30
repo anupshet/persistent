@@ -1,0 +1,15 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="br-dialog">
+    <div class="hdr">
+        <mat-dialog-content class="mat-typography">
+            <p class="text-message">{{ 'REMAPANALYTE.REMAP' | translate }}
+                <button mat-icon-button class="connectivity-icon" (click)="navigateToMapping()">
+                    <mat-icon [svgIcon]="icons.publish[24].name" class="publish"></mat-icon>
+                </button>
+            </p>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+            <button class="spec-ok" mat-button mat-flat-button (click)="onSubmit()">{{ 'REMAPANALYTE.OK' | translate }}</button>
+        </mat-dialog-actions>
+    </div>
+</div>

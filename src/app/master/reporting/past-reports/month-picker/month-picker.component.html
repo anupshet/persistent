@@ -1,0 +1,21 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<mat-form-field class="month-picker" style="margin-top: 10px;">
+  <mat-label>{{'MONTHPICKER.CHOOSEMONTH' | translate}}</mat-label>
+  <input matInput
+         (click)="_openDatepickerOnClick(datepicker)"
+         (keydown.arrowdown)="_openDatepickerOnClick(datepicker)"
+         (keydown.enter)="_openDatepickerOnClick(datepicker)"
+         [(ngModel)]="inputCtrl"
+         [matDatepicker]="datepicker"
+         [max]="max"
+         [min]="min"
+         readonly
+         [style.margin-bottom.px]="inputCtrl ? 0 : 15"
+         style="cursor: pointer;"
+         [disabled]="dataSource.length == 0">
+         <mat-icon (click)="_openDatepickerOnClick(datepicker)" style="cursor: pointer;">arrow_drop_down</mat-icon>
+</mat-form-field>
+<mat-datepicker #datepicker
+                (monthSelected)="monthSelectHandler($event,datepicker)"
+                startView="year">
+</mat-datepicker>

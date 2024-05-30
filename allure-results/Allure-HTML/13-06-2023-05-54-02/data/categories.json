@@ -1,0 +1,30 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "Failed: No element found using locator: By(xpath, //div[@class='category']//mat-checkbox//label)",
+      "children" : [ {
+        "name" : "Test case 1 :Verify the presence of error dialog for Clear Selection button and More than one dept",
+        "uid" : "9b72be1188783aaa",
+        "parentUid" : "a28f6b6a9036df5174d5bf9ab283f429",
+        "status" : "failed",
+        "time" : {
+          "start" : 1686659052961,
+          "stop" : 1686659094470,
+          "duration" : 41509
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "a28f6b6a9036df5174d5bf9ab283f429"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}

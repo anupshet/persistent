@@ -1,0 +1,35 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+
+<header class="table-head">
+  <div class="flex-container">
+    <div class="search-account-form">
+      <mat-form-field class="field-category" *ngIf="searchCategoryList && searchCategoryList.length > 0">
+        <mat-label>{{'SEARCHINLABCONFIGCOMPONENT.FILTER' | translate}}</mat-label>
+        <mat-select [(ngModel)]="selectedCategory" [value]="selectedCategory"  (ngModelChange)='onOptionsSelected()' class="select-category">
+          <mat-option *ngIf="instrumentGroupByDept" [value]="searchCategoryList[0]">{{'SEARCHINLABCONFIGCOMPONENT.LOCATIONANDDEPARTMENT' | translate}}
+          </mat-option>
+          <mat-option [value]="searchCategoryList[1]">
+            {{'SEARCHINLABCONFIGCOMPONENT.INSTRUMENT' | translate}}</mat-option>
+          <mat-option [value]="searchCategoryList[2]">{{'SEARCHINLABCONFIGCOMPONENT.CONTROLANDLOT' | translate}}
+          </mat-option>
+          <mat-option [value]="searchCategoryList[3]">{{'SEARCHINLABCONFIGCOMPONENT.ANALYTE' | translate}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="input-keyword">
+        <input matInput type="text"  [(ngModel)]="searchInput" (keyup)="updateSearchBtn()" name="searchInput"
+          placeholder="{{'SEARCHINLABCONFIGCOMPONENT.KEYWORD' | translate}}" maxLength="100">
+      </mat-form-field>
+
+      <button class="search-btn spec-search-btn" color="primary" mat-button [disabled]="checkForDisable()"
+        *ngIf="!isSearched" (click)="searchFilter()">{{'SEARCHINLABCONFIGCOMPONENT.SEARCH' | translate}}</button>
+      <button mat-icon-button class="spec-search-clear-btn" mat-button color="primary"
+         *ngIf="isSearched" (click)="reset()">
+        <mat-icon [svgIcon]="icons.replay[24].name"></mat-icon>
+        <span>{{'SEARCHINLABCONFIGCOMPONENT.CLEARSEARCH' | translate}}</span>
+      </button>
+
+    </div>
+  </div>
+</header>

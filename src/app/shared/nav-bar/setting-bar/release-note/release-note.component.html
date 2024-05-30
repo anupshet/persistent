@@ -1,0 +1,22 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="text-center">
+  <div class="report-area">
+    <ngx-extended-pdf-viewer
+    [src]="pdfData"
+    [useBrowserLocale]="true"
+    height="100%"
+    [showDownloadButton]="false"
+    [showPresentationModeButton]="false"
+    [showOpenFileButton]="false"
+    [showPrintButton]="false"
+    [showRotateButton]="false"
+    [contextMenuAllowed]="false"
+    [showPropertiesButton]="false"
+    [showSecondaryToolbarButton]="false"
+    [showSpreadButton]="false"
+    [showScrollingButton]="false"
+    [showBorders]="false">
+  </ngx-extended-pdf-viewer>
+  </div>
+</div>
+<button color="primary" mat-button [mat-dialog-close]="true" tabindex="1">{{'RELEASE.CANCEL' | translate}}</button>

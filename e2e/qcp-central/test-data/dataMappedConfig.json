@@ -1,0 +1,23 @@
+{
+  "DEV2": {
+    "URL": "https://qcpcentraldev2aws.global.bio-rad.com/",
+    "Username": "amruta_karale+qcpdev2admin@bio-rad.com",
+    "Password": "Welcome1",
+    "MainMenu": "Manage Configuration",
+    "SubMenu": "Data Mapping",
+    "SubMenuOption": "Data Mapped Configurations",
+    "ManufacturerNonVitros": "Abbott",
+    "InstrumentNonVitros": "ARCHITECT c16000",
+    "AnalyteNonVitros": "Acetaminophen",
+    "ManufacturerVitros": "Ortho Clinical Diagnostics",
+    "InstrumentVitros": "VITROS 250",
+    "ReagentVitrosToBeSelected": "Dev2  Slide Gen # 20",
+    "ReagentVitrosDisplayed": "Dev2 Slide Gen # 20",
+    "OldVitrosReagent": "Slide generation #20",
+    "ReagentLot": "Slide Gen #20",
+    "FileName": "dataMappingConfigs.csv"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "QA": {}
+}

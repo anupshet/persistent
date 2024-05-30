@@ -1,0 +1,22 @@
+{
+    "DEV": {
+        "URL": "http://localhost:4200/login",
+        "Username": "mayank_jatay+BSAccountLT@bio-rad.com",
+        "Password": "BioBio1",
+        "Username1": "nitin_ghugare+leadtech18aug@bio-rad.com",
+        "Password1": "Welcome1",
+        "FirstName": "User",
+        "Department":["D1","D2","D3","D10","D11"],
+        "Instruments":" ADJ_Div ",
+        "Panels":" P2 "
+    
+       
+      
+       
+    },
+    "QA": {
+        "URL": "https://unity-test.qcnet.com/login"
+    },
+    "STAGE": {},
+    "DEV2": {}
+}

@@ -1,0 +1,11 @@
+@import '../../../../../../assets/scss/base/variables-peak';
+
+.flex-container {
+  padding: $custom-space-small;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.flex-3 {
+  margin: 0 $custom-space-small;
+}

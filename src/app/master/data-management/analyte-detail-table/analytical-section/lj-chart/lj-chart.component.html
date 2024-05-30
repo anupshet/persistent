@@ -1,0 +1,11 @@
+<!--© 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.-->
+<div class="lj-chart-component" (click)="openAdvancedLj()">
+  <!-- perfect sctollbar is commeted out PBI 190314 UAT: LJ Chart Point details pane is cut-off -->
+  <!-- <perfect-scrollbar [config]="{suppressScrollX: false, suppressScrollY: true}"> -->
+  <p class="label"></p>
+  <section #chartContainer class="chartContainer">
+    <svg #target class='svgStyle'></svg>
+    <unext-lj-chart-popup></unext-lj-chart-popup>
+  </section>
+  <!-- </perfect-scrollbar> -->
+</div>

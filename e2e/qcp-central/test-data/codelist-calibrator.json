@@ -1,0 +1,17 @@
+{
+    "QA": {
+        "URL": "https://qcpcentralqa.global.bio-rad.com/",
+        "Username": "amruta_karale+qaqcpadmin@bio-rad.com",
+        "Password": "Welcome1",
+        "MainMenu": "Code List",
+        "SubMenu": "Calibrators",
+        "SubMenuOption": "Calibrators",
+        "NewCalibName": "TestAuto_Calibrator",
+        "FileName": "calibrators.csv",
+        "Manufacturer": "Abbott",
+        "Calibrator": "25-OH Vitamin D Cal REF 08P4501"
+    },
+    "DEV": {},
+    "STAGE": {},
+    "DEV2": {}
+}

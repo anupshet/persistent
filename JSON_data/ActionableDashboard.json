@@ -1,0 +1,21 @@
+{
+	"QA": {
+		"URL": "http://localhost:4200",
+		"AmrutaUsername": "amruta_karale+actionable@bio-rad.com",
+		"AmrutaPassword": "Welcome1",
+		"AmrutaFirstName": "Amruta",
+		"AccountManagerUserName": "sudhir_paranjape+devaws@bio-rad.com",
+		"AccountManagerPassword": "Welcome1",
+		"AccountManagerFirstName": "Sudhir",
+		"AdminRole": "Admin",
+		"UserRole": "User",
+		"expEmptyMessage": "You're all caught up on action items.",
+		"expiringProductName": "Blood Gas",
+		"NewProductLot": "29900",
+		"expiringProductName2": "Assayed Chemistry",
+		"NewProductLot2": "26460"
+	},
+	"DEV": {},
+	"STAGE": {},
+	"DEV2": {}
+}

@@ -1,0 +1,23 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="br-dialog">
+  <div class="hdr">
+    <div (click)="closeDialog()">
+      <mat-icon [svgIcon]="icons.close[48].name" class="close"></mat-icon>
+    </div>
+    <mat-dialog-content class="mat-typography">
+      <p class="grey">{{'CONFIRMDIALOGDELETE.DELETETHIS' | translate}}
+        {{ data.displayName}}?</p>
+    </mat-dialog-content>
+    <div *ngIf="data.warningMessage">
+      <mat-dialog-content class="mat-typography">
+        <p>{{ data.warningMessage}}</p>
+      </mat-dialog-content>
+    </div>
+    <mat-dialog-actions align="end">
+      <button mat-button color="primary" [mat-dialog-close]="true" (click)="onCancel()">{{'CONFIRMDIALOGDELETE.CANCEL' |
+        translate}}</button>
+      <button mat-button mat-flat-button (click)="onSubmit()">{{'CONFIRMDIALOGDELETE.CONFIRMDELETE' |
+        translate}}</button>
+    </mat-dialog-actions>
+  </div>
+</div>

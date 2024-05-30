@@ -1,0 +1,61 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<form [formGroup]="reportsTemplate">
+  <mat-form-field class="mat-form-field-template-type">
+    <mat-label>{{'REPORTTEMPLATES.SELECTTEMPLATE' | translate}}</mat-label>
+      <mat-select
+      #selector
+      formControlName="templateControl"
+      placeholder="Select a template"
+      (selectionChange)="templateOnSelection($event)"
+      [disableOptionCentering]="true"
+      [(value)]="selectedOption"
+      panelClass="mat-select-css"
+      (click)="dropdownOpen = !dropdownOpen"
+      (clickOutside)="dropdownOpen = false"
+      [disabled]="templateDisabled()"
+      >
+      <div>
+        <div class="create-new-template-button"
+          *ngIf="showSaveNewTempButton && recentlySelectedTypes && recentlySelectedTypes.length > 0 && actionPermissions.update">
+          <mat-icon [svgIcon]="icons.addCircleOutline[24].name" class="addCircleOutline" class="plus-Icon"
+            (click)="saveNewTemplate()"></mat-icon>
+          <button mat-icon-button class="save-as-new-temp-btn"
+            (click)="saveNewTemplate()">
+            {{'REPORTTEMPLATES.SAVENEWTEMPLATE' | translate}}
+          </button>
+        </div>
+        <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}" [ngClass]="templateList?.length === 0 ? 'no-perfect-scroll' : 'perfect-scroll'">
+          <div class="template-menu-item" *ngIf="showClearTempButton">
+            <button mat-icon-button class="clear-temp-span"
+              (click)="clearTemplate(true)">
+              {{'REPORTTEMPLATES.CLEARTEMPLATE' | translate}}
+            </button>
+          </div>
+          <mat-option *ngIf="templateList?.length === 0" class="mat-option-none"></mat-option>
+          <mat-option (click)="selector.open()" *ngFor="let template of templateList" [value]="template"
+            class="mat-option-css">
+            {{ template?.templateName}}
+            <button mat-icon-button
+              *ngIf="(actionPermissions.update || actionPermissions.rename || actionPermissions.delete) && template?.isOwner"
+              class="mat-icon-float" [matMenuTriggerFor]="basic" (click)="$event.stopPropagation()"
+              (menuOpened)="menuOpened(template)" (menuClosed)="menuClosed()">
+              <mat-icon [svgIcon]="icons.templateMenu[24].name"></mat-icon>
+            </button>
+          </mat-option>
+        </perfect-scrollbar>
+      </div>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-menu #basic="matMenu" xPosition="before" class="template-mat-menu-panel">
+    <button mat-menu-item class="mat-option-css"
+      (click)="performAction(actionType.update)" *ngIf="actionPermissions.update" [disabled]="((templateRowSelected?.id === selectedOption?.id) ? isSelectedItemsUpdated : true)">
+     <mat-icon [svgIcon]="icons.contentUpdate[24].name"></mat-icon>{{'REPORTTEMPLATES.UPDATE' | translate}}</button>
+    <button mat-menu-item class="mat-option-css"
+      (click)="performAction(actionType.rename)" *ngIf="actionPermissions.rename"><mat-icon
+        [svgIcon]="icons.contentEdit[24].name"></mat-icon>{{'REPORTTEMPLATES.RENAME' | translate}}</button>
+    <button mat-menu-item class="mat-option-css"
+      (click)="performAction(actionType.delete)" *ngIf="actionPermissions.delete"><mat-icon
+        [svgIcon]="icons.contentDelete[24].name"></mat-icon>{{'REPORTTEMPLATES.DELETE' | translate}}</button>
+  </mat-menu>
+  </form>

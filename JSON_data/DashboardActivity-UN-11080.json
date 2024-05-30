@@ -1,0 +1,15 @@
+{
+  "QA": {
+    "URL": "https://unity-dev.qcnet.com",
+    "Username": "Michael_Chern+dev06242022@Bio-Rad.com",
+
+    "API":"https://unity-dev-api.qcnet.com/tracking/at",
+    "Password": "Welcome1",
+    "FirstName": "Nitin",
+    "statusCode":"200"
+
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

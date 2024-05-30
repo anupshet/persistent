@@ -1,0 +1,43 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="flex">
+  <ng-container *ngIf="actions != null && actions?.length >= 1;">
+    <span
+      (mouseenter)="onMouseEnterTriggerOpenPezDialog($event, 1)"
+      (mouseleave)="onMouseLeaveTriggerClosePezDialog()"
+      (click)="onClickTriggerReviewSummaryDialog($event)"
+      class="grey pez">
+      <span class="ic-pez ic-change-history-24px"></span>
+      <em class="spc_pezcell_actions_number content_number">{{ actions.length }}</em>
+      <i [class]="{ 'callout-indicator-right': hoverOnRight, 'callout-indicator-left': !hoverOnRight }"></i>
+    </span>
+  </ng-container>
+  
+  <ng-container
+    *ngIf="comments != null && comments?.length >= 1;">
+    <span
+      (mouseenter)="onMouseEnterTriggerOpenPezDialog($event, 2)"
+      (mouseleave)="onMouseLeaveTriggerClosePezDialog()"
+      (click)="onClickTriggerReviewSummaryDialog($event)"
+      class="grey pez">
+      <span class="ic-pez ic-chat-bubble-outline-24px"></span>
+      <em class="spc_pezcell_comments_number content_number">{{ comments.length }}</em>
+      <i [class]="{ 'callout-indicator-right': hoverOnRight, 'callout-indicator-left': !hoverOnRight }"></i>
+    </span>
+  </ng-container>
+  
+  <ng-container *ngIf="interactions != null && interactions?.length >= 1;">
+    <span
+      (mouseenter)="onMouseEnterTriggerOpenPezDialog($event, 3)"
+      (mouseleave)="onMouseLeaveTriggerClosePezDialog()"
+      (click)="onClickTriggerReviewSummaryDialog($event)"
+      class="grey pez">
+      <span class="flex">
+        <span class="ic-pez ic-history-18dp"></span>
+        <em class="spc_pezcell_interactions_number content_number">{{ interactions.length }}</em>
+      </span>
+      <i [class]="{ 'callout-indicator-right': hoverOnRight, 'callout-indicator-left': !hoverOnRight }"></i>
+    </span>
+  </ng-container>
+</div>
+
+

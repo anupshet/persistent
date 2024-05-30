@@ -1,0 +1,22 @@
+{
+  "DEV2": {
+    "URL": "https://qcpcentraldev2aws.global.bio-rad.com/",
+    "Username": "amruta_karale+qcpdev2admin@bio-rad.com",
+    "Password": "Welcome1",
+    "MainMenu": "Manage Configuration",
+    "SubMenu": "Valid Config",
+    "ValidSubMenuOption": "View Valid Config",
+    "ImportSubMenuOption": "Import Valid Config From Excel",
+    "ManufacturerNonVitros": "Roche",
+    "InstrumentNonVitros": "cobas c 501",
+    "ManufacturerVitros": "Ortho Clinical Diagnostics",
+    "InstrumentVitros": "VITROS 250",
+    "ReagentVitrosToBeSelected": "Automation - 187739 - Reagent",
+    "ReagentNonVitrosToBeSelected": "Automation - 187739 - NonMicroReagent",
+    "VitrosFile": "VITROS_DeleteConfig.xlsx",
+    "NonVitrosFile": "NonVITROS_DeleteConfig.xlsx"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "QA": {}
+}

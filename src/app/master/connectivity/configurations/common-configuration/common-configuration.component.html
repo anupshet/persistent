@@ -1,0 +1,33 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. AlformNamel Rights Reserved. -->
+<div class="common-configuration-component">
+  <div class="configuration-container">
+    <div class="Please-pick-your-con">
+      {{'TRANSFORMER.PICKCONFIGURATION' | translate}}
+    </div>
+    <div class="select-dropdown">
+      <mat-select class="select-content" [(value)]="selectedTransformerId"
+        (selectionChange)="createEdgeOrTransformer($event.value)" panelClass="panel-width">
+        <mat-option [value]="type.id" *ngFor="let type of assignedTransformerList">
+          {{type.displayName}}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+  <div class="form-wrapper">
+    <unext-transformer-configuration *ngIf="showTransformersForm" [accountId]="accountId"
+      [labLocationId]="labLocationId" [existingConfigurationsNames]="existingConfigurationsNames"
+      [selectedTransformer]="selectedInstruction" (showConfigurations)="showConfigurations($event)">
+    </unext-transformer-configuration>
+
+    <unext-instructions-rules *ngIf="showEdgeForm" [accountId]="accountId" [labLocationId]="labLocationId"
+      [existingConfigurationsNames]="existingConfigurationsNames" [selectedInstruction]="selectedInstruction"
+      (showConfigurations)="showConfigurations($event)"></unext-instructions-rules>
+  </div>
+
+  <div *ngIf="showCancel" class="button-wrapper">
+    <button mat-button mat-stroked-button color="primary" class="cancel-button" (click)="showConfigurations()">
+      <span class="spec-cancel">{{'TRANSFORMER.CANCEL' | translate}}</span>
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,71 @@
+[ {
+  "uid" : "d98aff9285a15af9",
+  "name" : "Test case 5 :Verify the presence of error dialog for Clear Selection button and More than one dept",
+  "time" : {
+    "start" : 1686658980734,
+    "stop" : 1686658980734,
+    "duration" : 0
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "160043fdab7c4133",
+  "name" : "Test case 7 :Verify the presence of error dialog for selection parameter for control",
+  "time" : {
+    "start" : 1686658980735,
+    "stop" : 1686658980735,
+    "duration" : 0
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "73970cb6a03e78e2",
+  "name" : "Test case 3 :Verify the presence of error dialog for selection parameter for control",
+  "time" : {
+    "start" : 1686658980733,
+    "stop" : 1686658980733,
+    "duration" : 0
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "daa40fac3ada8185",
+  "name" : "Test case 2 :Verify the presence of error dialog for selection parameter for instrument",
+  "time" : {
+    "start" : 1686658980729,
+    "stop" : 1686658980732,
+    "duration" : 3
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "5a7c0346d1ae465",
+  "name" : "Test case 4:Verify the presence of error dialog for Clear Selection button and More than one dept",
+  "time" : {
+    "start" : 1686658980733,
+    "stop" : 1686658980734,
+    "duration" : 1
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "73960d838f8e3a01",
+  "name" : "Test case 6 :Verify the presence of error dialog for selection parameter for instrument",
+  "time" : {
+    "start" : 1686658980734,
+    "stop" : 1686658980735,
+    "duration" : 1
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "c60aacec084ec9fa",
+  "name" : "Test case 1 :Verify the presence of error dialog for Clear Selection button and More than one dept",
+  "time" : {
+    "start" : 1686658940624,
+    "stop" : 1686658980728,
+    "duration" : 40104
+  },
+  "status" : "failed",
+  "severity" : "normal"
+} ]

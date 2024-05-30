@@ -1,0 +1,7 @@
+// Style guide: layout.tabledialog
+
+@mixin layout\tabledialog {
+  .table-field-edit-dialog > .mat-dialog-container {
+    padding-top: 0;
+  }
+}

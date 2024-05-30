@@ -1,0 +1,21 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div *ngIf="isIE11 && loggedIn">
+  <unext-banner-info [loggedIn]="loggedIn" (closeClicked)="isIE11 = false"></unext-banner-info>
+</div>
+<unext-nav-bar-top *ngIf="loggedIn" [version]="version"></unext-nav-bar-top>
+<unext-nav-bar *ngIf="loggedIn"></unext-nav-bar>
+
+
+<div class="main-grid" [unextBusy]="isBusy">
+  <unext-nav-side-bar *ngIf="loggedIn && !migrationNeeded && !hideSideNav"></unext-nav-side-bar>
+  <div [ngClass]="{'sideNavExpanded': !hideSideNav && (isSideNavExpanded$|async), 'nav-sidebar-placeholder': !hideSideNav}">
+    <div class="main-content-panel scroll-container">
+      <perfect-scrollbar [disabled]="isPerfectScrollbarEnabled">
+        <div class="horizontal-scroll-div"></div>
+        <router-outlet (activate)="onActivate($event)"></router-outlet>
+      </perfect-scrollbar>
+    </div> <!-- /main-content-panel -->
+  </div> <!-- /nav-sidebar-placeholder -->
+</div> <!-- /main-grid -->
+
+<unext-notification-manager></unext-notification-manager>

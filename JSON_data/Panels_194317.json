@@ -1,0 +1,22 @@
+{
+  "DEV": {
+    "URL": "https://unity-dev.qcnet.com",
+    "Username": "sudhir_paranjape+panels@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sudhir",
+    "Analyte1": "Haptoglobin",
+    "Analyte2": "Cholesterol, HDL",
+    "Analyte3": "Glucose",
+    "Analyte4": "Valproic Acid (Depakene)",
+    "Analyte5": "Bilirubin, Total/TBIL",
+    "Analyte6": "Prealbumin",
+    "Analyte7": "TIBC (Total Iron Binding Capacity)",
+    "Analyte8": "Alkaline Phosphatase",
+    "Analyte9": "CO2 (Carbon Dioxide)",
+    "Analyte10": "Lactic Acid",
+    "Panel": "194317_Panel"
+  },
+  "QA": {},
+  "STAGE": {},
+  "DEV2": {}
+}

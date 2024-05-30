@@ -1,0 +1,29 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../../../../assets/scss/main';
+@import '../../../../../assets/scss/variables';
+
+.analyte-management-component-hdr {
+  display: flex;
+  margin: $custom-space-base 0 ($custom-space-base + $custom-space-small) $custom-space-base;
+  h2 {
+    font-size: 24px;
+    display: inline;
+    padding-right: $custom-space-base;
+    margin: 0;
+  }
+  button {
+    color: $blue;
+    span {
+      text-transform: uppercase;
+    }
+  }
+
+  .btn-return {
+    width: auto;
+  }
+}
+
+.non-admin-user-message{
+  margin: 20px;
+  font-size: 23px;
+}

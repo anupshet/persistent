@@ -1,0 +1,111 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div *ngIf="selectedLocationName">
+  <div class="flex">
+
+    <!-- Single group and single location -->
+    <div class="nav-bar-button spec-location no-dropdown"
+      *ngIf="locationState === 0 && !hasNoLabLocationPermission  && !hasPermissionToAccess([permissions.LaunchLocation])">
+      <mat-icon [svgIcon]="navIconName"></mat-icon>
+      <span class="mat-small spec_labName">
+        {{selectedLocationName | truncate:[50]}}
+      </span>
+    </div>
+
+    <!-- Single group and multiple locations -->
+    <div>
+      <div class="nav-bar-button spec-locations" [matMenuTriggerFor]="menuLocations"
+        *ngIf="locationState === 1  && !hasNoLabLocationPermission  && !hasPermissionToAccess([permissions.LaunchLocation])">
+        <mat-icon [svgIcon]="navIconName"></mat-icon>
+        <span class="mat-small spec_labName">
+          {{selectedLocationName | truncate:[50]}}
+        </span>
+      </div>
+      <mat-menu #menuLocations="matMenu" [overlapTrigger]="false" xPosition="before">
+        <mat-list role="list"
+          *ngIf="locationState === 1  && !hasNoLabLocationPermission  && !hasPermissionToAccess([permissions.LaunchLocation])">
+          <div class="group-name">{{groupName}}</div>
+          <mat-list-item role="listitem" *ngFor="let labLocationMenu of labLocationList; let i = index">
+            <mat-radio-group [(ngModel)]="userLocationId">
+              <mat-radio-button color="primary" [value]="labLocationMenu.id" (click)="onNodeSelect(labLocationMenu)">
+                <span [ngClass]="{ 'bold-text': labLocationMenu.id === userLocationId}"
+                  [matTooltip]="labLocationMenu.labLocationName.length > 50 ? labLocationMenu.labLocationName : null">
+                  {{labLocationMenu.labLocationName | truncate:[50]}}</span>
+              </mat-radio-button>
+            </mat-radio-group>
+          </mat-list-item>
+        </mat-list>
+      </mat-menu>
+    </div>
+
+    <!-- Multiple groups and multiple locations with expand icon -->
+    <div>
+      <div class="nav-bar-button spec-locations" [matMenuTriggerFor]="menuGroups" #groupMenuTrigger="matMenuTrigger"
+        *ngIf="locationState === 2  && !hasNoLabLocationPermission  && !hasPermissionToAccess([permissions.LaunchLocation])"
+        (menuOpened)="groupMenuOpened()" (menuClosed)="groupMenuClosed()">
+        <mat-icon [svgIcon]="navIconName"></mat-icon>
+        <span class="mat-small spec_labName">
+          {{selectedLocationName | truncate:[50]}}
+        </span>
+      </div>
+      <mat-menu #menuGroups="matMenu" [overlapTrigger]="false" xPosition="before">
+        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree-wrapper">
+          <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+            <mat-radio-group [(ngModel)]="userLocationId" (click)="onNodeSelect(node)">
+              <mat-radio-button color="primary" [value]="node.id">
+                <span [ngClass]="{ 'bold-text': node.id === userLocationId}"
+                  [matTooltip]="node.displayName.length > 50 ? node.displayName : null">
+                  {{node.displayName | truncate:[50]}}</span>
+              </mat-radio-button>
+            </mat-radio-group>
+          </mat-tree-node>
+          <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+            <div class="mat-tree-node">
+              <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name"
+                (click)="collapseGroupNode(node)">
+                <mat-icon class="mat-icon-rtl-mirror">
+                  {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                </mat-icon>
+              </button>
+              <span [ngClass]="{ 'bold-text': node.displayName === groupName}">
+                {{node.displayName | truncate:[50]}}</span>
+            </div>
+            <div [class.tree-invisible]="!treeControl.isExpanded(node)" role="group">
+              <ng-container matTreeNodeOutlet></ng-container>
+            </div>
+          </mat-nested-tree-node>
+        </mat-tree>
+      </mat-menu>
+    </div>
+
+    <div *ngIf="hasAUMrole  && !hasAUMmultipleLocations" class="nav-bar-button no-dropdown">
+      <mat-icon [svgIcon]="navIconName"></mat-icon>
+      <span class="mat-small">
+        {{selectedLocationName | truncate:[50]}}
+      </span>
+    </div>
+    <div *ngIf="hasAUMrole  && hasAUMmultipleLocations" class="nav-bar-button" (click)="navigateAccountUserSelector()">
+      <mat-icon [svgIcon]="navIconName"></mat-icon>
+      <span class="mat-small">
+        {{'NAVBARLAB.CHANGELOCATION' | translate}}
+      </span>
+    </div>
+
+  </div><!-- /flex-->
+</div>
+
+<!--  CTSUser Only-->
+<div *ngIf="hasPermissionToAccess([permissions.LaunchLocation]) && showCTSUserLaunchLabAccountLocationSelector">
+  <div *ngIf="!hasSingleLocation" (click)="navigateAccountUserSelector()" class="nav-bar-button">
+    <mat-icon [svgIcon]="navIconName"></mat-icon>
+    <span class="mat-small">
+      {{'NAVBARLAB.CHANGELOCATION' | translate}}
+    </span>
+  </div>
+  <div *ngIf="hasSingleLocation" class="nav-bar-button">
+    <mat-icon [svgIcon]="navIconName"></mat-icon>
+    <span class="mat-small">
+      {{selectedLocationName | truncate:[50]}}
+    </span>
+  </div>
+
+</div>

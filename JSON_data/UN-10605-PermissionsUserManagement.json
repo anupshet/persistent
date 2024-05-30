@@ -1,0 +1,154 @@
+{
+	"DEV": {
+		"URL": "https://unity-dev.qcnet.com/login",
+    "AMUsername": "tushar_adeshara+accountmanager@bio-rad.com",
+		"AMPassword": "Welcome1",
+		"AMFirstName": "Tushar",
+    "defaultlocation" : "Lab 1A",
+
+    "UserName" : {
+      "Account User Manager" : "mayank_jatay+whiltelabsAUM@bio-rad.com",
+      "Lab User Manager" : "mayank_jatay+whiltelabsLUM@bio-rad.com",
+      "Lab Supervisor" : "mayank_jatay+whiltelabsLS@bio-rad.com",
+      "Lead Tech" : "mayank_jatay+whiltelabsLT@bio-rad.com",
+      "Tech" : "mayank_jatay+whiltelabsT@bio-rad.com",
+      "Lot Viewer Sales" : "mayank_jatay+harrislv@bio-rad.com",
+      "Bio-Rad Manager" : "mayank_jatay+mngr@bio-rad.com",
+      "CTS User" : "mayank_jatay+cts@bio-rad.com",
+      "Account User Manager + Lab Supervisor" : "mayank_jatay+whiltelabsAUMLS@bio-rad.com",
+      "Account User Manager + Lab User Manager + Lab Supervisor" : "mayank_jatay+whiltelabsAUMLUMLS@bio-rad.com",
+      "Lab User Manager + Lab Supervisor" : "mayank_jatay+whiltelabsLUMLS@bio-rad.com",
+      "Lab User Manager + Lead Tech" : "mayank_jatay+whiltelabsLUMLT@bio-rad.com",
+      "Lab User Manager + Tech" : "mayank_jatay+whiltelabsLUMT@bio-rad.com",
+      "Bio-Rad Manager + CTS User" : "mayank_jatay+BMCTS@bio-rad.com"
+    },
+
+    "Password" : {
+      "Account User Manager" : "Welcome1",
+      "Lab User Manager" : "Welcome1",
+      "Lab Supervisor" : "Welcome1",
+      "Lead Tech" : "Welcome1",
+      "Tech" : "Welcome1",
+      "Lot Viewer Sales" : "Welcome1",
+      "Bio-Rad Manager" : "Welcome1",
+      "CTS User" : "Welcome1",
+      "Account User Manager + Lab Supervisor" : "Welcome1",
+      "Account User Manager + Lab User Manager + Lab Supervisor" : "Welcome1",
+      "Lab User Manager + Lab Supervisor" : "Welcome1",
+      "Lab User Manager + Lead Tech" : "Welcome1",
+      "Lab User Manager + Tech" : "Welcome1",
+      "Bio-Rad Manager + CTS User" : "Welcome1"
+    },
+
+    "FirstName" : {
+      "Account User Manager" : "Mayank",
+      "Lab User Manager" : "Mayank",
+      "Lab Supervisor" : "Mayank",
+      "Lead Tech" : "Mayank",
+      "Tech" : "Mayank",
+      "Lot Viewer Sales" : "HARRIS",
+      "Bio-Rad Manager" : "Mayank",
+      "CTS User" : "Mayank",
+      "Account User Manager + Lab Supervisor" : "Mayank",
+      "Account User Manager + Lab User Manager + Lab Supervisor" : "Mayank",
+      "Lab User Manager + Lab Supervisor" : "Mayank",
+      "Lab User Manager + Lead Tech" : "Mayank",
+      "Lab User Manager + Tech" : "Mayank",
+      "Bio-Rad Manager + CTS User" : "Mayank"
+    },
+
+    "AddUserName" : "mayank_jatay+AddUser",
+    "AddUserEmailDomain" : "@bio-rad.com",
+    "AddUserRole" : "Lab User Manager",
+
+    "labSearchCategory" : "Lab Contact",
+    "labSearchKeyword" : "mayank_jatay+bluelablv@bio-rad.com",
+    "launchLabName" : "TestLab1",
+
+    "MultiLocWithinGrp" : ["Lab 1B", "Lab 1C"],
+    "MultiLocMultiGrp" : ["Lab 1B", "Lab 1C", "Lab 2A", "Lab 2B"]
+
+	},
+	"QA": {
+    "URL": "https://unity-test.qcnet.com/login",
+    "AMUsername": "tushar_adeshara+accountmanager@bio-rad.com",
+		"AMPassword": "Welcome1",
+		"AMFirstName": "Tushar",
+    "defaultlocation" : "Lab 1A",
+
+    "UserName" : {
+      "Account User Manager" : "mayank_jatay+qapagination1@bio-rad.com",
+      "Lab User Manager" : "mayank_jatay+qapagination2@bio-rad.com",
+      "Lab Supervisor" : "mayank_jatay+qapagination3@bio-rad.com",
+      "Lead Tech" : "mayank_jatay+qapagination4@bio-rad.com",
+      "Tech" : "mayank_jatay+qapagination5@bio-rad.com",
+      "Account User Manager + Lab Supervisor" : "mayank_jatay+qapagination6@bio-rad.com",
+      "Account User Manager + Lab User Manager + Lab Supervisor" : "mayank_jatay+qapagination7@bio-rad.com",
+      "Lab User Manager + Lab Supervisor" : "mayank_jatay+qapagination8@bio-rad.com",
+      "Lab User Manager + Lead Tech" : "mayank_jatay+qapagination9@bio-rad.com",
+      "Lab User Manager + Tech" : "mayank_jatay+qapagination10@bio-rad.com",
+      "1Account User Manager" : "mayank_jatay+qapagination11@bio-rad.com",
+      "2Lab User Manager" : "mayank_jatay+qapagination22@bio-rad.com",
+      "3Lab Supervisor" : "mayank_jatay+qapagination33@bio-rad.com",
+      "4Lead Tech" : "mayank_jatay+qapagination44@bio-rad.com",
+      "5Tech" : "mayank_jatay+qapagination55@bio-rad.com",
+      "6Account User Manager + Lab Supervisor" : "mayank_jatay+qapagination66@bio-rad.com",
+      "7Account User Manager + Lab User Manager + Lab Supervisor" : "mayank_jatay+qapagination77@bio-rad.com",
+      "8Lab User Manager + Lab Supervisor" : "mayank_jatay+qapagination88@bio-rad.com",
+      "9Lab User Manager + Lead Tech" : "mayank_jatay+qapagination99@bio-rad.com",
+      "10Lab User Manager + Tech" : "mayank_jatay+qapagination1010@bio-rad.com"
+    },
+    "Lot Viewer Sales" : "mayank_jatay+harrislv@bio-rad.com",
+    "Bio-Rad Manager" : "mayank_jatay+mngr@bio-rad.com",
+    "CTS User" : "mayank_jatay+cts@bio-rad.com",
+    "Bio-Rad Manager + CTS User" : "mayank_jatay+BMCTS@bio-rad.com",
+
+    "Password" : {
+      "Account User Manager" : "Welcome1",
+      "Lab User Manager" : "Welcome1",
+      "Lab Supervisor" : "Welcome1",
+      "Lead Tech" : "Welcome1",
+      "Tech" : "Welcome1",
+      "Lot Viewer Sales" : "Welcome1",
+      "Bio-Rad Manager" : "Welcome1",
+      "CTS User" : "Welcome1",
+      "Account User Manager + Lab Supervisor" : "Welcome1",
+      "Account User Manager + Lab User Manager + Lab Supervisor" : "Welcome1",
+      "Lab User Manager + Lab Supervisor" : "Welcome1",
+      "Lab User Manager + Lead Tech" : "Welcome1",
+      "Lab User Manager + Tech" : "Welcome1",
+      "Bio-Rad Manager + CTS User" : "Welcome1"
+    },
+
+    "FirstName" : {
+      "Account User Manager" : "Mayank",
+      "Lab User Manager" : "Mayank",
+      "Lab Supervisor" : "Mayank",
+      "Lead Tech" : "Mayank",
+      "Tech" : "Mayank",
+      "Lot Viewer Sales" : "HARRIS",
+      "Bio-Rad Manager" : "Mayank",
+      "CTS User" : "Mayank",
+      "Account User Manager + Lab Supervisor" : "Mayank",
+      "Account User Manager + Lab User Manager + Lab Supervisor" : "Mayank",
+      "Lab User Manager + Lab Supervisor" : "Mayank",
+      "Lab User Manager + Lead Tech" : "Mayank",
+      "Lab User Manager + Tech" : "Mayank",
+      "Bio-Rad Manager + CTS User" : "Mayank"
+    },
+
+    "AddUserName" : "mayank_jatay+AddUser",
+    "AddUserEmailDomain" : "@bio-rad.com",
+    "AddUserRole" : "Lab User Manager",
+
+    "labSearchCategory" : "Lab Contact",
+    "labSearchKeyword" : "mayank_jatay+bluelablv@bio-rad.com",
+    "launchLabName" : "TestLab1",
+
+    "MultiLocWithinGrp" : ["Lab 1B", "Lab 1C"],
+    "MultiLocMultiGrp" : ["Lab 1B", "Lab 1C", "Lab 2A", "Lab 2B"]
+
+  },
+	"STAGE": {},
+	"DEV2": {}
+}

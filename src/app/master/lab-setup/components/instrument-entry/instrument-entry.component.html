@@ -1,0 +1,168 @@
+<!-- © 2024 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<mat-card *ngIf="selectedNode" id="spec_instrumentEntryComponent" class="instrument-entry-component"
+  [ngClass]="{'one-column': !showSettingsFields || !showSettings || instrumentForm.value.instruments[0].summaryDataEntry }">
+  <unext-lab-setup-header *ngIf="!showSettings" [currentNode]="type.Instrument" [title]="title"
+    [isDataUpdated]="isInstrumentTouched()">
+  </unext-lab-setup-header>
+  <unext-overlay-component *ngIf="greyOutForm()" [height]="overlayHeight" [width]="overlayWidth">
+  </unext-overlay-component>
+  <mat-card-content #content id="spec_content">
+    <form id="spec_instrumentEntryForm" class="flex column-left-450 mb-20" [formGroup]="instrumentForm">
+      <div formArrayName="instruments" [ngClass]="showSettingsFields && showSettings ? 'column mr-50':'column'">
+        <div *ngFor="let instrument of instrumentsGetter.controls; let pointIndex = index;"
+          [formGroupName]="pointIndex">
+          <div *ngIf="showSettings  && !formValueNotSet">
+            <button mat-button color="primary" class="pl-0 mb-20" id="spec_addControl"
+              [checkForPermission]="{'permissionsAllowed':[permissions.ControlAdd, permissions.ControlAddViewOnly],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+              (click)="redirectToControl($event)">
+              <mat-icon [svgIcon]="icons.addCircleOutline[24].name"></mat-icon>{{'INSTRUMENTENTRY.ADDCONTROL' |
+              translate}}
+            </button>
+            <div *ngIf="showSettingsFields" class="flex summary-data-entry bdr pb-15">
+              <!-- Hide the settings for now until a decision is made regarding inheritance of these settings. -->
+              <label> {{'INSTRUMENTENTRY.SUMMARYDATAENTRY' | translate}}</label>
+              <mat-slide-toggle color="primary" formControlName="summaryDataEntry"></mat-slide-toggle>
+            </div>
+
+            <div *ngIf="showSettingsFields" class="flex decimal-places mb-15">
+              <!-- Hide the settings for now until a decision is made regarding inheritance of these settings. -->
+              <label>{{'INSTRUMENTENTRY.DECIMALPLACES' | translate}}</label>
+              <br-select class="decimalPlaces" formControlName="decimalPlaces" [data]="decimalPlaceData"
+                [emitValue]="true" (selectedChanged)="onDecimalDataChange($event)"
+                [disabled]="hasPermissionToAccess([permissions.InstrumentAddViewOnly, permissions.InstrumentEditViewOnly])">
+              </br-select>
+            </div>
+          </div>
+          <!-- /showSettings -->
+          <div class="panel-content-border mb-10">
+            <div class="manager-form-control">
+              <button mat-icon-button *ngIf="!showSettings && instrumentList && instrumentList[pointIndex]"
+                class="btn-remove" (click)="cf_onRemoveItem(pointIndex)">
+                <mat-icon matTooltip="{{'TRANSLATION.CLEARSELECTION' | translate}}" [matTooltipPosition]="'right'" [svgIcon]="icons.close[24].name">
+                </mat-icon>
+              </button>
+              <br-select class="instrumentManufacturer" formControlName="instrumentManufacturer" [filterFormControl]="instrumentForm?.controls?.instruments['controls'][pointIndex]?.controls['instrumentManufacturer']" [data]="manufacturers"
+                [displayAttribute]="'name'" [placeholder]="instrumentManufacturerPlaceholder" [emitValue]="true"
+                (selectedChanged)="onInstrumentManufacturerSelect($event, pointIndex)"
+                [disabled]="hasPermissionToAccess([permissions.InstrumentAddViewOnly, permissions.InstrumentEditViewOnly]) || !noChildren"
+                [enableSearch]="true" [searchPlaceholder]="manufacturerSearchPlaceholder"
+                [noSearchResultsText]="noResults"[showAsDropdown]="true">
+              </br-select>
+              <div *ngIf="instrumentList && instrumentList[pointIndex]" formGroupName="instrumentInfo">
+                <br-select class="instrumentModel" [filterFormControl]="instrumentForm?.controls?.instruments['controls'][pointIndex]?.controls['instrumentInfo']?.controls['instrumentModel']" formControlName="instrumentModel" [data]="instrumentList[pointIndex]"
+                  [displayAttribute]="'name'" (selectedChanged)="onInstrumentSelectChange($event, pointIndex)"
+                  [placeholder]="instrumentModelPlaceholder" [emitValue]="true"
+                  [disabled]="hasPermissionToAccess([permissions.InstrumentAddViewOnly, permissions.InstrumentEditViewOnly]) || !noChildren"
+                  [enableSearch]="true" [searchPlaceholder]="modelSearchPlaceholder" 
+                  [noSearchResultsText]="noResults"[showAsDropdown]="true">
+                </br-select>
+                <div>
+                  <mat-form-field>
+                    <input matInput formControlName="customName" maxlength="50"
+                      [checkForPermission]="{'permissionsAllowed':[permissions.InstrumentAdd, permissions.InstrumentEdit],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+                      (ngModelChange)="onNameChange($event, pointIndex)">
+                    <mat-placeholder>
+                      {{'INSTRUMENTENTRY.CUSTOMNAME' | translate}}
+                    </mat-placeholder>
+                    <mat-hint>
+                      {{'INSTRUMENTENTRY.HELPFUL' | translate}}
+                    </mat-hint>
+                  </mat-form-field>
+                  <mat-error *ngIf="duplicateFound[pointIndex] ">
+                    {{'INSTRUMENTENTRY.NAMEEXISTS' | translate}}
+                  </mat-error>
+                  <mat-error *ngIf="duplicateInstrumentModelFound[pointIndex]">
+                    {{'INSTRUMENTENTRY.INSTRUMENTEXISTS' | translate}}
+                  </mat-error>
+                </div>
+                <mat-form-field>
+                  <input matInput formControlName="serialNumber" maxlength="50"
+                    [checkForPermission]="{'permissionsAllowed':[permissions.InstrumentAdd, permissions.InstrumentEdit],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+                    (ngModelChange)="onSerialNoChange($event, pointIndex)">
+                  <mat-placeholder>
+                    {{'INSTRUMENTENTRY.SERIALNUMBER' | translate}}
+                  </mat-placeholder>
+                </mat-form-field>
+                <mat-error *ngIf="duplicateSerialFound[pointIndex]">
+                  {{'INSTRUMENTENTRY.SERIALEXISTS' | translate}}
+                </mat-error>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column" *ngIf="showSettingsFields">
+        <!-- Hide the settings for now until a decision is made regarding inheritance of these settings. -->
+        <div *ngIf="!instrumentForm.value.instruments[0].summaryDataEntry && showSettings  && !formValueNotSet"
+          id="spec_spcRules">
+          <unext-spc-rules-component [showSpcRules]="true" [disabled]="false">
+          </unext-spc-rules-component>
+        </div>
+      </div>
+    </form>
+    <mat-error *ngIf="!showSettings && instrumentForm.controls.instruments.value.length === instrumentAddLimit">
+      {{instrumentLimitMessage}}
+    </mat-error>
+    <div
+      *ngIf="!showSettings && !hasPermissionToAccess([permissions.InstrumentAddViewOnly, permissions.InstrumentEditViewOnly])">
+      <span class="br-text-primary link" (click)="addFormManufacturer()"
+        *ngIf="instrumentForm.controls.instruments.value.length < instrumentAddLimit && !hideAddInstrumentLink">{{'INSTRUMENTENTRY.ANOTHERINSTRUMENT'
+        | translate}}</span>
+      <div class="see-instrument text-center link mt-15">
+        <span class="br-text-primary" (click)="onRequestInstrumentConfig()">
+          {{'INSTRUMENTENTRY.DONTSEEINSTRUMENT' | translate}}
+        </span>
+      </div>
+    </div>
+    <br />
+    <unext-duplicate-instrument-entry *ngIf="showSettings" [duplicateNodeInfo]="duplicateNodeInfo"
+      (copyNodeRequest)="copyInstrument($event)">
+    </unext-duplicate-instrument-entry>
+  </mat-card-content>
+  <mat-card-actions class="mr-0">
+    <div [formGroup]="instrumentForm"
+      *ngIf="showArchivedFilterToggle && (instrumentList && instrumentList[0]) && !isParentArchived">
+      <div formArrayName="instruments">
+        <div [formGroupName]="0">
+          <div class="ctn-archived-toggle" formGroupName="instrumentInfo">
+            <label>{{'INSTRUMENTENTRY.ARCHIVEINSTRUMENT' | translate}}</label>
+            <mat-slide-toggle color="primary" name="isArchived" formControlName="isArchived" class="archive-toggle"
+              [disabled]="hasPermissionToAccess([permissions.InstrumentAddViewOnly, permissions.InstrumentEditViewOnly])"
+              (change)="onArchiveToggle($event,content)" id="spec_archive">
+            </mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button class="icn-delete" id="spec_deleteInstrument" *ngIf="(showSettings && !canDeleteInstrument  && !formValueNotSet && hasPermissionToAccess([permissions.InstrumentDelete]))
+       && !hasPermissionToAccess([permissions.InstrumentAddViewOnly, permissions.InstrumentEditViewOnly])"
+      (click)="deleteInstrument()">
+      <mat-icon [svgIcon]="icons.delete[24].name"></mat-icon>
+    </button>
+    <button
+      *ngIf="(!showSettings && !hasPermissionToAccess([permissions.InstrumentAddViewOnly, permissions.InstrumentEditViewOnly]));else showSettingsCancel"
+      mat-button color="primary" [disabled]="!isInstrumentTouched()" (click)="resetForm()">
+      {{'INSTRUMENTENTRY.CANCEL' | translate}}
+    </button>
+    <ng-template #showSettingsCancel>
+      <button mat-button color="primary" [disabled]="formState && archiveGetter.pristine && disableCancel()"
+        (click)="resetForm()"
+        *ngIf="!hasPermissionToAccess([permissions.InstrumentAddViewOnly, permissions.InstrumentEditViewOnly])">
+        {{'INSTRUMENTENTRY.CANCEL' | translate}}
+      </button>
+    </ng-template>
+    <button
+      *ngIf="(showSettings  && !formValueNotSet) && !hasPermissionToAccess([permissions.InstrumentAddViewOnly, permissions.InstrumentEditViewOnly])"
+      mat-flat-button color="primary" type="submit" id="spec_updateForm" [disabled]="disableUpdate()"
+      (click)="onSubmit(instrumentForm?.controls, false)">
+      {{'INSTRUMENTENTRY.UPDATE' | translate}}
+    </button>
+    <button
+      *ngIf="!showSettings && !hasPermissionToAccess([permissions.InstrumentAddViewOnly, permissions.InstrumentEditViewOnly])"
+      mat-flat-button color="primary" type="submit" id="spec_submitForm"
+      [disabled]="isFormSubmitting || !isFormValid || !instrumentForm.valid || !duplicateFoundFlag"
+      (click)="onSubmit(instrumentForm?.controls, true)">
+      {{'INSTRUMENTENTRY.ADDINSTRUMENT' | translate}}
+    </button>
+  </mat-card-actions>
+</mat-card>

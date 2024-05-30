@@ -1,0 +1,79 @@
+{
+	"DEV": {
+			"URL": "http://localhost:4200/",
+			"Username": "rana_thakur+localDemo13945@bio-rad.com",
+			"Password": "Welcome1",
+			"FirstName": "rana",
+			"PanelNAme":"DemoPanel",
+			"statusCode1":"200",
+			"dataEntryPayload":
+			{
+  "account_id": "930f1142-637f-4ad1-9512-684a29138d8b",
+  "accountNumber": "104305",
+  "accountName": "Bangalore Lab",
+  "group_id": "99d37010-24ae-46cf-aac4-0fe803a4e333",
+  "groupName": "Bangalore",
+  "user_id": "c30af513-78e8-4f7f-914c-162da76aec89",
+  "oktaId": "00un2gz5pkKGLI1eV2p7",
+  "location_id": "986b5fdf-0ba7-421e-ab02-75c603c62578",
+  "locationName": "Demo13945",
+  "userRoles": [
+    "LabSupervisor",
+    "LabUserManager"
+  ],
+  "eventDateTime": "2023-11-21T08:31:40.762Z",
+  "localDateTime": "2023-11-21T08:31:40.762Z",
+  "awsCorrelationId": "",
+  "hasDepartments": true,
+  "auditTrail": {
+    "device_id": "",
+    "run_id": "",
+    "runDateTime": "2023-11-21T08:31:40.762Z",
+    "eventType": "Data Review",
+    "action": "Review",
+    "actionStatus": "Success",
+    "priorValue": {},
+    "currentValue": {
+      "runReviews": [
+        {
+          "runId": 17473133,
+          "userAction": 1,
+          "userComment": "comment1"
+        }
+      ]
+    },
+    "hierarchy": {
+      "account": [
+        {
+          "id": "930f1142-637f-4ad1-9512-684a29138d8b",
+          "name": "Bangalore Lab",
+          "groups": [
+            {
+              "id": "99d37010-24ae-46cf-aac4-0fe803a4e333",
+              "name": "Bangalore",
+              "locations": [
+                {
+                  "id": "986b5fdf-0ba7-421e-ab02-75c603c62578",
+                  "name": "Demo13945",
+                  "departments": [
+                    {
+                      "id": "",
+                      "name": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+	},
+	"QA": {
+			"URL": "https://unity-test.qcnet.com/login"
+	},
+	"STAGE": {},
+	"DEV2": {}
+}

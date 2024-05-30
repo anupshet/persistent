@@ -1,0 +1,9 @@
+// Style guide: layout.footer
+
+@mixin layout\footer {
+  .footer {
+    width: 100%;
+    text-align: center;
+    margin: $custom-space-base 0;
+  }
+}

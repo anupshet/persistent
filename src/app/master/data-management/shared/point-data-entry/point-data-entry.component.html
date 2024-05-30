@@ -1,0 +1,30 @@
+<!--  © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<table class="point-data-entry-table level-{{levelValues?.length}}">
+  <tbody>
+    <tr>
+      <ng-template ngFor let-level [ngForOf]="levelValues" let-idx="index">
+        <td>
+          <mat-form-field>
+            <label class="level-label level-{{levelValues[idx].level}}">
+              {{levelValues[idx].level}}
+            </label>
+            <input matInput class="value-input"
+                   #dataInputEntry="matInput"
+                   maxlength="16"
+                   autocomplete="off"
+                   [(ngModel)]="levelValues[idx].value"
+                   [brNumericValue]="regexRationalNumber"
+                   (input)="valueChange.emit(levelValues);"
+                   (keydown.enter)="keytab($event)"
+                   tabindex={{idx+1+100}}
+                   [disabled]="isProductMasterLotExpired || isLeafArchived"
+                   (focus)="onFocus(true)"
+                   (focusout)="onFocus(false)"
+                   id={{idx+1+100}} />
+            <!-- TODO: Fix input type of numeric value  -->
+          </mat-form-field>
+        </td>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>

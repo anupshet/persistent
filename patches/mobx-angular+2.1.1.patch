@@ -1,0 +1,21 @@
+patch-package
+--- a/node_modules/mobx-angular/dist/utils/mobx-angular-debug.js
++++ b/node_modules/mobx-angular/dist/utils/mobx-angular-debug.js
+@@ -3,6 +3,17 @@
+ import { extras, spy, isObservableArray, isObservableObject } from 'mobx';
+ // function for turning debug on / off
+ export var mobxAngularDebug = (function () {
++    // This is a patch to fix the local storage access issue in IE11
++    // Reported this issue mobx-angular git hub page, hopefull they will fix it
++    // https://github.com/mobxjs/mobx-angular/issues/75
++    try
++    {
++        localStorage['mobx-angular-debug'];
++    }
++    catch (err) {        
++        return function () { };
++    }
++
+     if (typeof localStorage === 'undefined' || typeof console === 'undefined' || typeof window === 'undefined') {
+         return function () { };
+     }

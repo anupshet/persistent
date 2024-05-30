@@ -1,0 +1,131 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../../../../assets/scss/variables';
+@import '../../../../../assets/scss/base/variables-peak';
+
+.run-insert-component {
+
+  background-color: #FFF7E0;
+  border: 1px solid $gray-300;
+
+  position: relative;
+  text-align: left;
+
+  .lot-dropdown {
+    width: 220px;
+    margin-left: 10px;
+  }
+
+  .flex-ctn {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding-top: 5px;
+
+    .flex-item-1 {
+      width: 130px;
+      padding-bottom: 5px;
+    }
+
+    .flex-item-2 {
+      align-self: flex-end;
+      width: 700px;
+      margin-left: 60px;
+    }
+
+    &.flex-end {
+      justify-content: flex-end;
+    }
+  }
+
+
+  .flex {
+    display: flex;
+
+    &.column-left-procent-50 {
+      .column {
+        flex-grow: 1;
+      }
+
+      .column:first-child {
+        flex: 0 0 55%;
+      }
+    }
+  }
+
+  .alert {
+    color: $br-warn;
+  }
+
+  .link-text,
+  .link-text:hover {
+    cursor: pointer;
+    color: $blue-light;
+    font-size: mat-font-size($br-typography, body-1);
+  }
+
+  .text-color-grey,
+  .text-color-grey:hover {
+    color: $br-grey;
+  }
+
+  .info-ctn {
+
+    margin-top: -10px;
+
+    p {
+      width: 50%;
+      word-wrap: break-word;
+      line-height: 1.2;
+    }
+  }
+
+  .toggle-trigger {
+    cursor: pointer;
+    border: 1px solid $gray-300;
+    border-top: 0;
+    position: absolute;
+    z-index: 10;
+
+    bottom: -20px;
+    right: 20px;
+    background: #FFF7E0;
+
+    width: 70px;
+    padding: 0 5px;
+    height: 20px;
+    text-align: center;
+    border-bottom-right-radius: 5px;
+    -moz-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    -moz-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    margin: 0 auto;
+
+    &.isLotVisible {
+      .chevron:before {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  .chevron::before {
+    border-style: solid;
+    border-width: 2px 2px 0 0;
+    border-color: $blue-light;
+    content: '';
+    display: inline-block;
+    height: 10px;
+    transform: rotate(135deg);
+    vertical-align: top;
+    width: 10px;
+  }
+
+  .fix-negative-mb {
+    margin-bottom: -10px;
+  }
+
+  .fix-negative-mt {
+    margin-top: -10px;
+  }
+}

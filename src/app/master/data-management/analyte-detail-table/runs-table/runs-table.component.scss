@@ -1,0 +1,421 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../../../../assets/scss/variables';
+@import '../../../../../assets/scss/base/variables-peak';
+@import '../../../../../assets/scss/mixins';
+
+
+.runs-table-component{
+
+  min-width: 1110px;
+
+  .page-title-manual-container{
+      margin-left: $custom-space-small;
+    a{
+      color: $br-color-primary-700;
+      cursor: pointer;
+      display: inline;
+
+      &.isDataEntryFormsVisible {
+        margin-bottom: -12px;
+      }
+    }
+  }
+}
+.table-container {
+  margin: 20px 10px 10px;
+  background: $br-white;
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  &:hover {
+    z-index: 61;
+  }
+
+}
+
+.ps-content {
+  width: 100% !important;
+}
+
+.add-run-btn {
+  position: absolute;
+  z-index: 10;
+  left: 19px;
+  top: 30px;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.table-container {
+  position: relative;
+  z-index: 1;
+}
+
+.table-body {
+  width: 100%;
+
+  @media (max-width:1440px) {
+   width: 100%;
+  }
+
+  &.extended {
+    min-width: 900px;
+  }
+
+  position: relative;
+  height: calc(100vh - 620px);
+
+  .run-data-page-set-table {
+    margin: 0;
+    margin-top: 40px;
+    border-spacing: 0;
+  }
+
+  &.isAnalyticalSectionNotVisible {
+    height: 50vh;
+  }
+
+  &.runInsertVisable {
+    height: calc(100vh - 776px);
+  }
+
+  &.isRunInsertHasVisableLot {
+    height: calc(100vh - 900px);
+  }
+
+  &.isAnalyticalSectionNotVisible.runInsertVisable {
+    height: calc(100vh - 472px);
+  }
+
+  &.isAnalyticalSectionNotVisible.isRunInsertHasVisableLot {
+    height: calc(100vh - 604px);
+  }
+}
+
+.has-6-levels.long .table-body {
+  min-width: 2805px;
+}
+.has-5-levels.long .table-body{
+  min-width: 2405px;
+}
+.has-4-levels.long .table-body{
+  min-width: 2005px;
+}
+.has-3-levels.long .table-body{
+  min-width: 1550px;
+}
+
+.run-data-page-set-table {
+  border-spacing: 0;
+
+  tbody,
+  td,
+  th {
+    border-bottom: 1px solid $gray-400;
+  }
+
+  .header-level-content th {
+    border-bottom: none;
+  }
+
+  td {
+    background: $white;
+    white-space: nowrap;
+    padding: 0;
+    text-align: center;
+
+    &.td-even {
+      background: $gray-100;
+    }
+  }
+
+  th.th-even {
+    background: $gray-100;
+  }
+
+
+  thead {
+    text-transform: uppercase;
+    position: relative;
+    z-index: 5;
+    text-transform: uppercase;
+    font-size: $custom-type-size-xsmall;
+    color: rgba($grey-darked, 0.7);
+    font-weight: bold;
+    div th {
+      text-align: center;
+      color: rgba($grey-darked, 0.7);
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+    td {
+      padding-top: 7px;
+      padding-bottom: 7px;
+    }
+    div .cell-offset {
+      padding: 0 3px;
+      width: 6px;
+      padding: 0 18px;
+      width: 0;
+    }
+  }
+
+  tbody {
+    tr {
+      &:not(.create-data) {
+        cursor: pointer;
+        &:hover {
+          td {
+            background: $br-whiteish;
+          }
+        }
+        &.selected {
+          td {
+            background: rgb(231, 231, 231);
+          }
+        }
+      }
+
+      &.disabled-row {
+        cursor: default;
+        td {
+          background: lightgray !important;
+        }
+      }
+    }
+
+    .run-insert-row {
+      cursor: default !important;
+
+      td {
+        background: $br-whiteish;
+      }
+    }
+  }
+
+  .header-level {
+    th {
+      border: none;
+      padding-top: 15px;
+    }
+    .mat-small {
+      min-width: 100px;
+    }
+  }
+
+  .header-level-content {
+    .active-cell {
+      border-top: 2px solid $gray-400;
+      text-align: center;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .cell-date,
+    .cell-offset,
+    .cell-pez {
+      background: 0 0;
+    }
+  }
+
+  .cell-date {
+    width: 150px;
+    max-width: 150px;
+    min-width: 150px;
+    padding: 9px 0 11px 20px;
+    color: $gray-600;
+    text-align: left;
+    line-height: 1.333;
+    font-weight: normal;
+    color: $gray-600;
+    span {
+      display: block;
+    }
+    .date {
+      margin: 0 0 5px;
+    }
+  }
+
+  .cell-offset {
+    width: 1px;
+    max-width: 1px;
+    min-width: 1px;
+    padding: 0 8px;
+  }
+
+  .icon-container {
+    line-height: 2.5 !important;
+  }
+
+  .cell-pez {
+    min-width: 100px;
+    max-width: 100px;
+    width: 100px;
+    padding-left: 5px;
+    padding-right: 15px;
+  }
+
+  .header-level {
+    .cell-pez {
+      min-width: 100px;
+      max-width: 100px;
+      width: 100px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  .level-cell-value {
+    width: 75px;
+    min-width: 75px;
+    max-width: 75px;
+    padding: 2px 2px 2px 13px;
+  }
+
+  .level-cell-value.long {
+    width: 170px;
+    min-width: 170px;
+    max-width: 170px;
+    font-size: 13px;
+  }
+
+  .level-cell-z {
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+    padding: 2px 5px;
+  }
+
+  .level-cell-z.long {
+    width: 110px;
+    min-width: 110px;
+    max-width: 110px;
+    font-size: 13px;
+  }
+
+
+  .level-cell-reason {
+    width: 90px;
+    min-width: 90px;
+    max-width: 90px;
+    padding: 2px 13px 2px 5px;
+  }
+
+  .level-cell-reason.long {
+    width: 80px;
+    min-width: 80px;
+    max-width: 80px;
+    font-size: 13px;
+  }
+
+  button.control {
+    border: none;
+    background: none;
+    padding: 0;
+    color: $gray-600;
+  }
+}
+
+.pagination-container {
+  background-color: $br-white;
+  height: 46px;
+  width: 100%;
+}
+.page-btn {
+  color: $br-color-primary-700;
+  font-weight: normal;
+  font-style: normal;
+  padding-top: 11px;
+  cursor: pointer;
+  text-align: right;
+  height: 17px;
+}
+
+.next-btn {
+  text-align: left;
+}
+
+
+.active-cell-1 {
+  border-color: $br-level-1 !important;
+}
+
+.active-cell-2 {
+  border-color: $br-level-2 !important;
+}
+
+.active-cell-3 {
+  border-color: $br-level-3 !important;
+}
+
+.active-cell-4 {
+  border-color: $br-level-4 !important;
+}
+
+.active-cell-5 {
+  border-color: $br-level-5 !important;
+}
+
+.active-cell-6 {
+  border-color: $br-level-6 !important;
+}
+
+.active-cell-7 {
+  border-color: $br-level-7 !important;
+}
+
+.active-cell-8 {
+  border-color: $br-level-8 !important;
+}
+
+.active-cell-9 {
+  border-color: $br-level-9 !important;
+}
+
+.run-data-page-set-table {
+ width: 100%;
+}
+
+$isArchived: #e3e3e3;
+
+.run-data-page-set-table.archived tr {
+  cursor: default !important;
+  td {
+    background: $isArchived !important;
+  }
+  .td-even {
+    background: $isArchived !important;
+  }
+  &:hover {
+    td {
+      background: $isArchived !important;
+    }
+    .td-even {
+      background: $isArchived !important;
+    }
+  }
+}
+
+.table-container.archived,
+.run-data-page-set-table.archived {
+  background: $isArchived;
+}
+
+.run-insert-leveles-space {
+  height: 12px;
+  width: 100%;
+  background: $gray-200;
+}
+
+
+
+
+a.archived:hover {
+  cursor: default;
+}

@@ -1,0 +1,12 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="advanced-lj-levels-component">
+  <span class="levels-title">{{'ADVANCEDLJLEVELS.LEVELS' | translate}}</span>
+  <mat-checkbox *ngFor="let level of levels;" class="level-checkbox-{{level.levelNumber}} mr-4"
+    [(ngModel)]="level.isSelected" (change)="onLevelChange()"><span class="level-label">{{level.levelNumber}}</span>
+  </mat-checkbox>
+  &nbsp;
+  <mat-slide-toggle id="spec_isoverlay" color="primary" labelPosition="before"
+    [(ngModel)]="isOverlayChecked" (change)="onIsOverlayChange()" [disabled]="!isOverlayEnabled">
+    {{'ADVANCEDLJLEVELS.OVERLAY' | translate}}
+  </mat-slide-toggle>
+</div>

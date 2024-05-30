@@ -1,0 +1,28 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com",
+		"Username": "UnityNextRegressionTestUser+1@bio-rad.com",
+		"Password": "Welcome1",
+		"FirstName": "Automation",
+		"LastName": "User",
+    "DeptName": "Westgard",
+    "InstName": "ARCHITECT c16000",
+    "ControlName": "Cardiac Markers Plus LT",
+    "PointDataAnalyteName": "Alkaline Phosphatase",
+    "PointDataAnalyteName2": "Ammonia",
+    "PointDataAnalyteName1": "Amphetamine (class)",
+    "PointDataAnalyteName3": "Amylase"
+  },
+  "STAGE": {
+    "URL": "https://unity-stage.qcnet.com/",
+    "Username": "sampada_gulhane+stagenovlab@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sampada",
+    "DeptName": "Automation",
+    "InstName": "AU480",
+    "ControlName": "Multiqual 1,2,3",
+    "PointDataAnalyteName": "Albumin",
+    "PointDataAnalyteName2": "Chloride",
+    "PointDataAnalyteName1": "Calcium"
+  }
+}

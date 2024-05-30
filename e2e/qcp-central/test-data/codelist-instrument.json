@@ -1,0 +1,23 @@
+{
+  "QA": {
+    "URL": "https://qcpcentralqa.global.bio-rad.com/",
+    "Username": "amruta_karale+qaqcpadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "MainMenu": "Code List",
+    "SubMenu": "Instruments",
+    "FileName": "instruments.csv",
+    "Instrument": "VITROS 500",
+    "NewInstrumentName": "TestAutomation_Instrument",
+    "ManufacturerName": "Abbott",
+    "PageOptions": [
+      "10",
+      "25",
+      "50",
+      "100"
+    ],
+    "PageButton": "2"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

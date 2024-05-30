@@ -1,0 +1,4 @@
+Inst,Prod,Level,Test,Date,Time,Value,Reag,Calib
+AAInst,AAProductLotCode,1,AATest,2020/04/03,4:30:00,9.01,beck1,Crea
+AAInst,AAProductLotCode,1,AATest,2020/04/04,6:30:00,9.22,beck1,Crea
+

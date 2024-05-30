@@ -1,0 +1,30 @@
+{
+	"DEV":{
+			"URL": "http://localhost:4200/",
+			"AMUsername": "sudhir_paranjape+devqc@bio-rad.com",
+			"AMPassword": "Welcome1",
+			"AMFirstName": "Sudhir",
+			"LabName":"TestLab",
+			"CountryCreateAccount":"Iraq",
+			"AddressCreateAccount":"Addr1",
+			"Address2CreateAccount":"Addr2",
+			"Address3CreateAccount":"Addr3",
+			"StateCreateAccount":"MH",
+			"CityCreateAccount":"Pune",
+			"ZipCreateAccount":"411012",
+			"LabContactFirstName":"TestFName",
+			"LabContactLastName":"TestLName",
+			"LabContactEmail":"test1@bio-rad",
+			"LabContactEmailSearch":"sample_user2@bio-rad.com",
+			"ExistingEmail" : "sample_user1@bio-rad.com",
+			"GroupName1" : "A Good Group",
+			"GroupName2" : "Another Group",
+			"GroupName3" : "Lab Group of America",
+			"GroupNameNoLoc" : "Sample Group A",
+			"Groups" : "A Good Group,Another Group",
+			"Locations" : "Main Lab 1,Main Lab ,Main Lab 3,Main Lab 4,Main Lab 5,Main Lab 6"
+	},
+	"QA": {},
+	"STAGE": {},
+	"DEV2": {}
+}

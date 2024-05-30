@@ -1,0 +1,416 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "./theme";
+
+$br-color-primary: mat-color($br-primary-palette);
+$br-color-primary-constrast: (
+  default-contrast
+);
+$br-color-accent: mat-color($br-accent-palette);
+$br-color-accent-constrast: (
+  default-contrast
+);
+$br-color-warn: mat-color($br-warn-palette);
+$br-color-warn-constrast: (
+  default-contrast
+);
+
+$br-color-primary-050: mat-color($br-primary-palette, 50);
+$br-color-primary-100: mat-color($br-primary-palette, 100);
+$br-color-primary-200: mat-color($br-primary-palette, 200);
+$br-color-primary-300: mat-color($br-primary-palette, 300);
+$br-color-primary-400: mat-color($br-primary-palette, 400);
+$br-color-primary-500: mat-color($br-primary-palette, 500);
+$br-color-primary-600: mat-color($br-primary-palette, 600);
+$br-color-primary-700: mat-color($br-primary-palette, 700);
+$br-color-primary-800: mat-color($br-primary-palette, 800);
+$br-color-primary-900: mat-color($br-primary-palette, 900);
+
+$br-color-primary-accent-100: mat-color($br-primary-palette, A100);
+$br-color-primary-accent-200: mat-color($br-primary-palette, A200);
+$br-color-primary-accent-400: mat-color($br-primary-palette, A400);
+$br-color-primary-accent-700: mat-color($br-primary-palette, A700);
+
+$br-color-primary-contrast-050: mat-contrast($br-primary-palette, 50);
+$br-color-primary-contrast-100: mat-contrast($br-primary-palette, 100);
+$br-color-primary-contrast-200: mat-contrast($br-primary-palette, 200);
+$br-color-primary-contrast-300: mat-contrast($br-primary-palette, 300);
+$br-color-primary-contrast-400: mat-contrast($br-primary-palette, 400);
+$br-color-primary-contrast-500: mat-contrast($br-primary-palette, 500);
+$br-color-primary-contrast-600: mat-contrast($br-primary-palette, 600);
+$br-color-primary-contrast-700: mat-contrast($br-primary-palette, 700);
+$br-color-primary-contrast-800: mat-contrast($br-primary-palette, 800);
+$br-color-primary-contrast-900: mat-contrast($br-primary-palette, 900);
+
+$br-color-primary-contrast-accent-100: mat-contrast($br-primary-palette, A100);
+$br-color-primary-contrast-accent-200: mat-contrast($br-primary-palette, A200);
+$br-color-primary-contrast-accent-400: mat-contrast($br-primary-palette, A400);
+$br-color-primary-contrast-accent-700: mat-contrast($br-primary-palette, A700);
+
+$br-color-accent-050: mat-color($br-accent-palette, 50);
+$br-color-accent-100: mat-color($br-accent-palette, 100);
+$br-color-accent-200: mat-color($br-accent-palette, 200);
+$br-color-accent-300: mat-color($br-accent-palette, 300);
+$br-color-accent-400: mat-color($br-accent-palette, 400);
+$br-color-accent-500: mat-color($br-accent-palette, 500);
+$br-color-accent-600: mat-color($br-accent-palette, 600);
+$br-color-accent-700: mat-color($br-accent-palette, 700);
+$br-color-accent-800: mat-color($br-accent-palette, 800);
+$br-color-accent-900: mat-color($br-accent-palette, 900);
+
+$br-color-accent-accent-100: mat-color($br-accent-palette, A100);
+$br-color-accent-accent-200: mat-color($br-accent-palette, A200);
+$br-color-accent-accent-400: mat-color($br-accent-palette, A400);
+$br-color-accent-accent-700: mat-color($br-accent-palette, A700);
+
+$br-color-accent-contrast-050: mat-contrast($br-accent-palette, 50);
+$br-color-accent-contrast-100: mat-contrast($br-accent-palette, 100);
+$br-color-accent-contrast-200: mat-contrast($br-accent-palette, 200);
+$br-color-accent-contrast-300: mat-contrast($br-accent-palette, 300);
+$br-color-accent-contrast-400: mat-contrast($br-accent-palette, 400);
+$br-color-accent-contrast-500: mat-contrast($br-accent-palette, 500);
+$br-color-accent-contrast-600: mat-contrast($br-accent-palette, 600);
+$br-color-accent-contrast-700: mat-contrast($br-accent-palette, 700);
+$br-color-accent-contrast-800: mat-contrast($br-accent-palette, 800);
+$br-color-accent-contrast-900: mat-contrast($br-accent-palette, 900);
+
+$br-color-accent-contrast-accent-100: mat-contrast($br-accent-palette, A100);
+$br-color-accent-contrast-accent-200: mat-contrast($br-accent-palette, A200);
+$br-color-accent-contrast-accent-400: mat-contrast($br-accent-palette, A400);
+$br-color-accent-contrast-accent-700: mat-contrast($br-accent-palette, A700);
+
+$br-color-warn-050: mat-color($br-warn-palette, 50);
+$br-color-warn-100: mat-color($br-warn-palette, 100);
+$br-color-warn-200: mat-color($br-warn-palette, 200);
+$br-color-warn-300: mat-color($br-warn-palette, 300);
+$br-color-warn-400: mat-color($br-warn-palette, 400);
+$br-color-warn-500: mat-color($br-warn-palette, 500);
+$br-color-warn-600: mat-color($br-warn-palette, 600);
+$br-color-warn-700: mat-color($br-warn-palette, 700);
+$br-color-warn-800: mat-color($br-warn-palette, 800);
+$br-color-warn-900: mat-color($br-warn-palette, 900);
+
+$br-color-warn-accent-100: mat-color($br-warn-palette, A100);
+$br-color-warn-accent-200: mat-color($br-warn-palette, A200);
+$br-color-warn-accent-400: mat-color($br-warn-palette, A400);
+$br-color-warn-accent-700: mat-color($br-warn-palette, A700);
+
+$br-color-warn-contrast-050: mat-contrast($br-warn-palette, 50);
+$br-color-warn-contrast-100: mat-contrast($br-warn-palette, 100);
+$br-color-warn-contrast-200: mat-contrast($br-warn-palette, 200);
+$br-color-warn-contrast-300: mat-contrast($br-warn-palette, 300);
+$br-color-warn-contrast-400: mat-contrast($br-warn-palette, 400);
+$br-color-warn-contrast-500: mat-contrast($br-warn-palette, 500);
+$br-color-warn-contrast-600: mat-contrast($br-warn-palette, 600);
+$br-color-warn-contrast-700: mat-contrast($br-warn-palette, 700);
+$br-color-warn-contrast-800: mat-contrast($br-warn-palette, 800);
+$br-color-warn-contrast-900: mat-contrast($br-warn-palette, 900);
+
+$br-color-warn-contrast-accent-100: mat-contrast($br-warn-palette, A100);
+$br-color-warn-contrast-accent-200: mat-contrast($br-warn-palette, A200);
+$br-color-warn-contrast-accent-400: mat-contrast($br-warn-palette, A400);
+$br-color-warn-contrast-accent-700: mat-contrast($br-warn-palette, A700);
+
+// color variables currently in use
+$white: #fff;
+$gray-white:#f2f2f2;
+$gray-100: #f6f6f6;
+$gray-200: #edeeef;
+$gray-300: #d8d8d8;
+$gray-400: #ccc;
+$gray-450: #aaaaaa;
+$gray-500: #adb5bd;
+$gray-550: #999999;
+$gray-600: #888;
+$gray-700: #444;
+$gray-800: #343a40;
+$gray-900: #212529;
+$gray-901:#9B9B9B;
+$dark-gray: #636875;
+$light-gray: #dcdcdc;
+$black: #000;
+
+$blue-darked: #414756;
+$blue-dark: #457790;
+$blue: #278fba;
+$blue-light: #1f7294;
+$blue-darker: #007db6;
+$blue-lighter: #8593b2;
+$cyan: #278fba;
+$indigo: #3176c2;
+$green: #a8d67a;
+$orange: #f69b44;
+$orange-light: #dcb243;
+$green-light1:#d2e5d3;
+$yellow: #dbb14d;
+$red-light: #d50048;
+$light-red: #eccccd;
+$light-orange: #f3e1d0;
+$light-khaki: #f7e5cb;
+$dark-purple: #8600ff;
+$green-light: #2cdeb1;
+$green-dark: #06a855;
+$light-green:#50ae55;
+$pink: #fe13d0;
+$grey-darked: #666;
+$carmine: #b00020;
+$azure-white: #d3e3fd;
+$light-grey: #f6f4f2;
+$blue-light2:#278FBA;
+$red-border:#B00;
+$light-carmine:#d13135;
+
+// Navigation Header variables
+$br-color-header-1: #51596c;
+$br-color-header-2: #414756;
+$br-color-header-text-color: $white;
+
+$shadow: 0 4px 4px 2px rgba($black, 0.12);
+$transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+$body-bg: $gray-200;
+$body-color: $gray-700;
+
+$font-family-base: "Lato", "Noto Sans", Arial, Helvetica, sans-serif;
+
+$link-color: $indigo;
+$link-hover-color: $blue;
+$link-hover-decoration: none;
+
+// custom variables
+$badge-bg: $orange;
+$badge-color: $white;
+$badge-border: $white;
+
+$header-bg: #dcdbd8;
+$header-color: $body-color;
+$header-border: $gray-400;
+$header-border: $gray-400;
+$header-icon-color: $blue-darked;
+
+$drop-bg: $white;
+$drop-color: inherit;
+$drop-border: $gray-400;
+
+$menu-bg: $blue-darked;
+$menu-color: $white;
+$menu-bg-hover: #747985;
+$menu-divider: #2b303c;
+
+$setup-item-color: $white;
+$setup-item-bg: #38497a;
+$setup-item-border: #38497a;
+
+$setup-item-dep-bg: #456191;
+$setup-item-dep-border: #456191;
+$setup-item-dep-bg-select: #224683;
+$setup-item-dep-border-select: #0f2345;
+
+$setup-item-lab-bg: #457790;
+$setup-item-lab-border: #457790;
+$setup-item-lab-bg-select: #125d83;
+$setup-item-lab-border-select: #082f42;
+
+$setup-item-chem-bg: #448f8b;
+$setup-item-chem-border: #448f8b;
+$setup-item-chem-bg-select: darken(#448f8b, 5%);
+$setup-item-chem-border-select: darken(#448f8b, 10%);
+
+$setup-item-new-bg: transparent;
+$setup-item-new-border: #757c7f;
+$setup-item-new-head: #38497a;
+
+$btn-color: $white;
+$btn-bg: $br-color-primary;
+$btn-bg-hover: #6cb1ce;
+$btn-padding: 10px 25px 9px;
+
+$analytes-list-color: $gray-600;
+$analytes-list-hover-bg: #f69b44;
+$analytes-list-hover-color: $white;
+$analytes-list-selected-bg: #f7e5cb;
+
+$form-group-bg: #f3f6fa;
+$input-color: $body-color;
+$input-bg: none;
+$input-border: $body-color;
+$input-placeholder: #9b9b9b;
+$input-color-focus: $br-color-primary;
+$input-border-focus: $br-color-primary;
+$input-select-color: #9b9b9b;
+
+$info-icon: #b5c5cc;
+$reject: #b71c1c;
+
+$progress-bg: $gray-300;
+$progress-line: #f69b44;
+$progress-success: #7ec833;
+$progress-success-text: #649f28;
+$progress-note: $gray-600;
+
+$table-head-bg: rgba(240, 237, 233, 0.6);
+$table-th-color: $grey-darked;
+$table-th-color-hover: $blue-light;
+$table-row-selected: #f6f5f4;
+$table-foot-bg: #fcfbfb;
+$table-row-hover: #fff9f4;
+
+$lab-item-color: $white;
+$lab-item-bg: $blue-dark;
+$lab-item-border: $blue-dark;
+$lab-item-hover-bg: #305364;
+$lab-item-hover-border: #264268;
+$lab-item-green: #448f8b;
+$lab-item-blue: #38497a;
+
+$btn-color: $white;
+$btn-bg: $br-color-primary;
+$btn-padding: 10px 15px 9px;
+
+$analytes-list-color: $gray-600;
+$analytes-list-hover-bg: #f69b44;
+$analytes-list-hover-color: $white;
+$analytes-list-selected-bg: #f7e5cb;
+
+$input-color: $body-color;
+$input-bg: none;
+$input-border: $body-color;
+$input-placeholder: $body-color;
+$input-color-focus: $orange;
+$input-border-focus: $br-color-primary;
+$input-select-color: #9b9b9b;
+
+$info-icon: #b5c5cc;
+
+//br color codes initially defined
+$bds-imgpath: "/assets/images/bds/";
+
+$br-white: #fff;
+$br-whiteish: #fff9f4;
+$mud-white:#FFF0F0;
+
+$br-black: #000;
+
+$br-orange: #f69b44;
+$br-lightOrange: #ffd5ae;
+$br-strongOrange: #ff9633;
+
+$br-blueish: #17485d;
+$br-superLightBlue: #c7d0d5;
+$br-cardBlue: #4a90e2;
+
+$br-grey: #9b9b9b;
+$br-lightGrey: #eee;
+
+$br-shadow: $grey-darked;
+
+$br-modalBorder: #888;
+$br-color-border: #97b4dc;
+
+//br colors code accepted
+$br-teal: #23c6cc;
+$br-purple: #8600ff;
+$br-blue: #3176e0;
+
+$br-level-1: #00C5C5;
+$br-level-2: #004ADE;
+$br-level-3: #9F41F9;
+$br-level-4: #FF3CAB;
+$br-level-5: #FF7F0E;
+$br-level-6: #8C564B;
+$br-level-7: #BD007D;
+$br-level-8: #009FFF;
+$br-level-9: #5658A5;
+
+$br-black-text-high-emphasis: rgba(black, 0.87);
+$br-black-text-medium-emphasis: rgba(black, 0.6);
+$br-black-text-low-emphasis: rgba(black, 0.38);
+
+$br-white-text-high-emphasis: rgba(white, 1);
+$br-white-text-medium-emphasis: rgba(white, 0.6);
+$br-white-text-low-emphasis: rgba(white, 0.38);
+$gray-light: rgba(81, 89, 108, 0.2);
+
+// mat-button
+$button-primary-bg: $br-color-primary;
+$button-primary-disabled-bg: #ebebeb;
+$button-primary-color: #fff;
+$button-primary-deactivated-color: #b1c8d2;
+$button-secondary-bg: #1f7294;
+$button-secondary-disabled-color: #d3d3d3;
+
+$whitesmoke: #f5f5f5;
+$br-black-low-emphasis: rgba(black, 0.1);
+
+// .mat-slider
+$component-cyan: #278fba;
+
+$br-slidegen-grey: #e0e0e0;
+
+//notification Link
+$report-link: #537fcc;
+
+// mat-row
+$bottom-border-color: #979797;
+
+//Account & Location
+$location-single-item: rgb(44, 148, 195);
+$label-color: rgba(0, 0, 0, 0.87);
+$icon-close: #0000008a;
+$group-items: #9a9a9a;
+$group-buttons-border: rgba(0, 0, 0, 0.12);
+$group-buttons-background: rgba(98, 2, 238, 0);
+
+//Selected Items
+$tabs-border: #bcbcbc;
+
+//report-notifications
+$sub-name-text-color: #636875;
+$bottom-bar-color-hover-change: #7fafcc;
+$red-icon-counter: #d13135;
+$grey-icon-counter: rgba(0, 0, 0, 0.5);
+$green-icon-counter: #50ae55;
+$close-icon: rgba(0, 0, 0, 0.54);
+$review-summary-time: rgba(0, 0, 0, 0.38);
+
+// data-review
+$edit-mode-font-color: #1f1f1f;
+$bg-color-row-header: #D3E3FD;
+$mat-header-cell-font-color: #000000;
+$text_header_color: #6a6a6a;
+$text_header_underline_color: #c9c9c9;
+$edit-bg-color: #fff7e0;
+$table-row-alternate-color: #f9f9f9;
+$data-review-bg-color-warning: #f4c69b;
+$data-review-bg-color-rejected: #fddbdc;
+$group-header-color: #747a89;
+$disabled-text-color: #ccc;
+
+// data-review tooltip
+$tooltip-title: rgba(0, 0, 0, 0.8);
+
+// missing tests
+$table-header: #d3e3fd;
+$table-border: rgba(0, 0, 0, 0.2);
+$table-data-color: #1f1f1f;
+$tooltip-border-one: rgba(0, 0, 0, 0.2);
+$tooltip-border-two: rgba(0, 0, 0, 0.14);
+$tooltip-border-three: rgba(0, 0, 0, 0.12);
+
+
+$red-warning: #bb0000;
+$red-warning-bg : #fff0f0;
+$orange-warning-bg : #fdf1e5;
+$border-top-color : #ddd;
+$border-color : #dcdcdc;
+
+$border-grey : #606060;
+$mat-form-bgcolor : #f0f0f0;
+//report summary footer
+$report-template-label-color : rgba(0, 0, 0, 0.8);
+$selection-msg: #db2f2f;
+$option-active: rgba(0,0,0,0);
+
+// Analyte search
+$search-icon-color: #9e9e9e;
+$analyte-search-border: 0.3px solid #dcdcdc;
+$search-input-color: #949494;

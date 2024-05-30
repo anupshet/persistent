@@ -1,0 +1,263 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../assets/scss/mixins/border-radius";
+
+// Style guide: layout.menu
+
+@mixin layout\menu {
+  .mat-drawer-content {
+    overflow: visible;
+  }
+
+  .mat-menu-panel {
+    border: 1px solid $gray-400;
+    border-radius: 0 0 $custom-border-radius-base $custom-border-radius-base;
+    box-shadow: $shadow;
+
+    .mat-menu-content {
+      padding: 0;
+      width: 220px;
+    }
+
+    .mat-menu-item {
+      height: 35px;
+      line-height: 35px;
+    }
+
+    &.drop-type2 {
+      max-width: 364px;
+      margin-top: 1px;
+
+      .mat-menu-content {
+        width: 280px;
+
+        @include media(tablet-and-up) {
+          width: 358px;
+        }
+      }
+
+      .mat-menu-item:first-child {
+        border: none;
+      }
+
+      .mat-menu-item {
+        border-top: 1px solid $gray-400;
+        height: 54px;
+        line-height: 54px;
+        padding-left: $custom-space-large;
+      }
+    }
+  }
+
+  .nav-bar-setting.mat-menu-panel {
+    width: auto;
+    max-width: 100% !important;
+
+    & .mat-menu-content {
+      padding: 0;
+      width: 100%;
+    }
+  }
+
+  .info-tooltip-component-mat-menu.mat-menu-panel {
+    width: 450px;
+    max-width: 450px;
+    margin-left: -66px;
+    margin-top: 15px;
+    overflow: visible;
+    @include border-radius(7px);
+
+    .mat-menu-content {
+      width: auto;
+      padding: 15px 30px;
+      position: relative;
+
+      &:before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 10px 15px 10px;
+        border-color: transparent transparent #ffffff transparent;
+        position: absolute;
+        left: 40px;
+        top: -15px;
+      }
+    }
+  }
+
+  .info-tooltip-component-mat-menu.mat-menu-panel.mat-menu-before.mat-menu-above {
+    .mat-menu-content {
+      &:before {
+        left: 274px;
+      }
+    }
+  }
+
+  .info-tooltip-component-mat-menu.mat-menu-panel.mat-elevation-z4 {
+    width: 340px;
+    max-width: 450px;
+    border: 0px;
+    box-shadow: 0px 1px 17px rgba(0, 0, 0, 0.2);
+
+    & .mat-menu-content {
+      width: auto;
+      padding: 15px 30px;
+      position: relative;
+
+      &:before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 13px 10px 13px;
+        border-color: transparent transparent #ffffff transparent;
+        position: absolute;
+        left: 60px;
+        top: -10px;
+      }
+    }
+  }
+
+  .last-data-entry-popup-mat-menu {
+    width: 240px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0px 1px 17px rgba(0, 0, 0, 0.2);
+
+    & .mat-menu-content {
+      width: auto;
+      margin: 0;
+      padding: 0;
+      position: relative;
+
+      &:before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 13px 10px 13px;
+        border-color: transparent transparent #ffffff transparent;
+        position: absolute;
+        left: 110px;
+        top: -10px;
+      }
+    }
+  }
+
+  br-info-tooltip {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .loading:before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: url(/assets/images/bds/new_set/small/loading.svg) no-repeat;
+    background-size: 100% 100%;
+    margin-top: -$custom-space-xsmall;
+    animation: turns 1s linear infinite;
+  }
+
+  .checking:before {
+    color: $green;
+    font-family: "icomoon";
+    content: "\E904";
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    line-height: 20px;
+    margin-top: -$custom-space-small;
+  }
+
+  @keyframes turns {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .ctn-mat-menu-parsing-instructions-table.mat-menu-panel {
+    max-width: 400px;
+    width: 400px;
+
+    .mat-menu-content {
+      width: 390px;
+    }
+  }
+
+  .info-tooltip-component-mat-menu.mat-menu-panel {
+    width: 329px;
+    max-width: 329px;
+
+    &.half {
+      width: 165px;
+      max-width: 165px;
+    }
+
+    margin-left: -66px;
+    margin-top: 15px;
+    overflow: visible;
+    @include border-radius(7px);
+
+    .mat-menu-content {
+      width: auto;
+      padding: 15px 30px;
+      position: relative;
+
+      &:before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 10px 15px 10px;
+        border-color: transparent transparent #ffffff transparent;
+        position: absolute;
+        left: 65px;
+        top: -15px;
+      }
+    }
+
+    &.mat-menu-above .mat-menu-content {
+      margin-bottom: 20px;
+
+      &:before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 15px 10px 0 10px;
+        border-color: #fff transparent transparent transparent;
+        position: absolute;
+        left: 65px;
+        bottom: -15px;
+        top: auto;
+      }
+    }
+  }
+
+  .info-tooltip-component-mat-menu {
+    mat-spinner {
+      margin: 0 auto;
+    }
+  }
+
+  .analyte-detail-tooltip-template {
+    dt {
+      display: inline;
+    }
+
+    dd {
+      display: inline;
+      margin-left: 5px;
+      font-weight: 700;
+    }
+  }
+}

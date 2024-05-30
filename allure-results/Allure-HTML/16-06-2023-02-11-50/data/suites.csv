@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Fri Jun 16 14:12:00 IST 2023","Fri Jun 16 14:12:57 IST 2023","56450","","Test Suite:Verify Error Dialog box for Selection parameter filters on Report page","","Test Suite:Verify Error Dialog box for Selection parameter filters on Report page","Test case 1 :Verify Search logic","Test case 1 :Verify Search logic",""

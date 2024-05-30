@@ -1,0 +1,21 @@
+
+// Style guide: base.title
+
+
+@mixin base\title {
+    .page-title {
+      background: $gray-200;
+      // color: mat-color($mat-grey, A100);
+      color: $br-black-text-high-emphasis;
+      padding: $custom-space-small + $custom-space-xsmall $custom-space-base + $custom-space-small;
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+      font-size: mat-font-size($br-typography, headline);
+      line-height: $line-height-large;
+  
+    h1 {
+      margin: 0;
+    }
+  }
+}

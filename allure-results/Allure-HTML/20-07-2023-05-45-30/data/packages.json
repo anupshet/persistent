@@ -1,0 +1,26 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "PBI_231950: Verify the Functionality of Account listing screen",
+    "children" : [ {
+      "name" : "Verify Search Elements UI for LVS Role",
+      "uid" : "2cd8eb8a4e0d2f8",
+      "parentUid" : "85d92ea561613a05fdab6386ed06db81",
+      "status" : "failed",
+      "time" : {
+        "start" : 1689855335712,
+        "stop" : 1689855336760,
+        "duration" : 1048
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "85d92ea561613a05fdab6386ed06db81"
+  } ]
+}

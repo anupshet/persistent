@@ -1,0 +1,587 @@
+﻿// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+
+@mixin layout\common {
+  main {
+    overflow: auto;
+    height: calc(100vh - 161px);
+    position: relative;
+    width: 100%;
+  }
+
+  .table-body {
+    .ps__rail-x,
+    .ps__rail-y {
+      z-index: 10;
+    }
+  }
+
+ .is-archived perfect-scrollbar>.ps.ps--active-y>.ps__rail-y {
+    opacity: 1 !important;
+    display: block !important;
+  }
+
+  h2 {
+    margin: 0 0 $custom-space-base + $custom-space-xsmall;
+  }
+
+  .avatar {
+    @include size($custom-type-size-xlarge);
+    border-radius: 50%;
+    border: 2px solid $header-icon-color;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -$custom-space-small;
+    z-index: 1;
+    text-align: center;
+    transition: all .3s ease;
+
+    &:before {
+      @extend %icon;
+      content: $icon-avatar;
+      color: $header-icon-color;
+      transition: $transition;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      font-size: $custom-type-size-small;
+      line-height: 18px;
+
+      @include media(tablet-and-up) {
+        font-size: $custom-type-size-xsmall;
+      }
+    }
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  unext-side-nav {
+    .mat-drawer-content {
+      overflow: visible;
+    }
+  }
+
+  .mat-button-toggle {
+    font: $custom-type-size-small/$custom-type-size-xxlarge $font-family-base;
+    background: mat-color($mat-grey, A100);
+    color: $gray-600;
+    margin: 0 $custom-space-xsmall $custom-space-small;
+    border-radius: $custom-border-radius-base;
+    box-shadow: 0 2px 4px rgba($black,0.27);
+    border-bottom: 2px solid transparent;
+
+    &.mat-button-toggle-checked {
+      background: $gray-100;
+      color: $gray-700;
+    }
+
+    &.mat-button-toggle-standalone {
+      box-shadow: 0 2px 4px rgba($black,0.27);
+      border-radius: $custom-border-radius-base;
+    }
+
+    .mat-button-toggle-label-content {
+      line-height: 30px;
+      padding: 0 $custom-space-small + $custom-space-xsmall;
+    }
+
+    label {
+      margin: 0;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .content {
+    @include media(tablet-and-up) {
+      margin: 0 -$custom-space-base 0 -$custom-space-small;
+    }
+
+    > perfect-scrollbar {
+      > .ps {
+        > .ps-content {
+          padding: $custom-space-base $custom-space-small;
+
+          @include media(tablet-and-up) {
+            padding: $custom-space-base $custom-space-base;
+          }
+        }
+      }
+    }
+
+    .main-cell {
+      .ps-content {
+        padding: 0;
+      }
+    }
+  }
+
+  .icon-info {
+    color: $info-icon;
+    font-size: mat-font-size($br-typography, caption);
+    display: inline-block;
+    vertical-align: top;
+    margin: $custom-space-xsmall 0 0 0;
+
+    &:hover {
+      color: $blue-light;
+    }
+  }
+
+  button {
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .badge {
+    @include size (27px, 26px);
+    border-radius: 50%;
+    border: 2px solid $badge-border;
+    display: block;
+    text-align: center;
+    font: bold $custom-type-size-base/$custom-type-size-xlarge $font-family-base;
+    background: $badge-bg;
+    color: $badge-color;
+    box-shadow: 0 2px 4px 0 rgba($black, .5);
+  }
+
+  .mat-dialog-container {
+    border-radius: $custom-border-radius-large;
+  }
+
+  .cdk-run-edit {
+    z-index: 1001;
+
+    .mat-dialog-container {
+      max-width: 100vw;
+      width: 100vw;
+      margin: 0 auto;
+      padding: 0;
+      border-radius: 0;
+      box-shadow: 0 -1px 2px 0 rgba($black, 0.3);
+      position: fixed;
+      z-index: 1001;
+      max-height: 100vh;
+      overflow: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: visible;
+
+      @include media(desktop-and-up) {
+        top: auto;
+        height: auto;
+      }
+    }
+  }
+
+  .cdk-overlay-pez {
+    pointer-events: none;
+  }
+
+  .cdk-review-summary {
+    .mat-dialog-container {
+      max-width: calc(100vw - 40px);
+      margin: 0 auto;
+      padding: $custom-space-small + $custom-space-xsmall $custom-space-base;
+      box-shadow: 0 2px 4px 2px rgba($black,0.12);
+
+      @include media(tablet-and-up) {
+        max-width: 546px;
+      }
+    }
+  }
+
+  .cdk-overlay-backdrop.cdk-overlay-backdrop-showing.cdk-overlay-review-summary {
+    opacity: 0.2;
+    background: $black;
+
+    @include media(desktop-and-up) {
+      background: transparent;
+    }
+  }
+
+  modal-run-edit {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @include media(desktop-and-up) {
+      display: block;
+      height: auto;
+    }
+  }
+
+  modal-level-settings {
+    margin-top: -$custom-space-small;
+    width: 162px;
+    display: block;
+  }
+
+
+  .table-foot{
+    background: $table-foot-bg;
+    box-shadow: 0 2px 2px 0 rgba($black, 0.2);
+    padding: $custom-space-small + $custom-space-xsmall $custom-space-base;
+    height: 70px;
+    border-top: 1px solid $gray-400;
+    text-align: center;
+    @include media(tablet-and-up) {
+      text-align: right;
+    }
+
+    .btn{
+      min-width: 116px;
+    }
+  }
+
+  .mat-expansion-panel-header {
+    padding: 0;
+    margin: 0;
+    font-size: mat-font-size($br-typography, caption);
+    background: none;
+    display: inline;
+
+    &:hover {
+      background: none;
+
+      strong {
+        opacity: 1;
+      }
+    }
+
+    strong {
+      display: none;
+
+      @include media(tablet-and-up) {
+        color: $black;
+        opacity: .8;
+        display: inline;
+      }
+    }
+
+    i {
+      color: $blue-darked;
+      margin-left: $custom-space-xsmall;
+    }
+  }
+
+  .cdk-overlay-pane {
+    margin-top: 0;
+  }
+
+  .mat-snack-bar-container.add-result {
+    margin: 0;
+    background: mat-color($mat-grey, A100);
+    color: $gray-700;
+    margin-top: $custom-space-large;
+    max-width: none;
+    min-width: 280px;
+    padding: $custom-space-base;
+    box-shadow: 0 2px 4px 0 rgba($black, 0.5);
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0;
+
+    @include media(tablet-and-up) {
+      margin-top: $custom-space-base + $custom-space-small;
+      min-width: 360px;
+    }
+
+    snack-bar {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .ps__rail-y {
+    z-index: 30;
+  }
+
+  .nav-tree-opened {
+    padding-left: 250px;
+  }
+
+  .steps-list{
+    .mat-expansion-panel{
+      background: none;
+      display: block;
+      border-bottom: 1px solid rgba($gray-400, 0.43);
+      box-shadow: none;
+
+      &.mat-expanded{
+        &:hover {
+          background: $gray-100;
+        }
+      }
+    }
+
+    .mat-expansion-panel-header-description,
+    .mat-expansion-panel-header-title{
+      margin: 0;
+    }
+
+    .mat-expansion-panel-spacing{
+      margin: 0;
+    }
+
+    mat-expansion-panel-header{
+      background: none;
+    }
+
+    .mat-expansion-indicator{
+      display: none;
+    }
+
+    .mat-expansion-panel-body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .active{
+      .subtitle{
+        color: $blue-light;
+        font-weight: bold;
+        background: rgba($blue-light, .1);
+      }
+    }
+
+    .subtitle{
+      display: block;
+      text-transform: uppercase;
+      color: $gray-600;
+      font-size: mat-font-size($br-typography, caption);
+      font-weight: normal;
+      margin: 0;
+      padding: $custom-space-small + $custom-space-xsmall $custom-space-large + $custom-space-xsmall $custom-space-base $custom-space-small;
+      position: relative;
+      border: none;
+      margin: 0;
+      width: 100%;
+      text-align: left;
+      background: none;
+
+      &.active,
+      &:hover {
+        color: $blue-light;
+        background: rgba($blue-light, .1);
+        cursor: pointer;
+      }
+    }
+
+    .count{
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      color: $gray-600;
+      font-size: mat-font-size($br-typography, caption);
+      line-height: 17px;
+      margin-top: -$custom-space-small;
+    }
+
+    .details{
+      padding: $custom-space-xsmall 0 $custom-space-base;
+
+      button{
+        display: block;
+        position: relative;
+        padding: $custom-space-xsmall $custom-space-large;
+        font-size: mat-font-size($br-typography, button);
+        line-height: 1.33;
+        text-align: left;
+        background: none;
+        border: none;
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+
+        .count{
+          top: 20px;
+          word-wrap: break-word;
+          max-width: 40%;
+        }
+
+        &.active,
+        &:hover {
+          background: rgba($blue-light, .1);
+
+          .title{
+            font-weight: bold;
+            color: $gray-700;
+          }
+        }
+      }
+    }
+
+    .title{
+      display: block;
+      color: $gray-600;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      font-weight: normal;
+    }
+
+    .category{
+      display: block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      margin: 0;
+      color: $gray-600;
+      font-size: mat-font-size($br-typography, caption);
+
+      &.type2{
+        span{
+          &:before {
+            content: ' | ';
+          }
+        }
+      }
+
+      span{
+        &:before {
+          content: ' > ';
+        }
+
+        &:first-child {
+          &:before {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+
+  .half-opacity {
+    opacity: 0.5;
+
+    &:hover {
+      color: $gray-700;
+      cursor: default;
+    }
+  }
+
+  .inline {
+    display: inline;
+  }
+
+
+  .month-day {
+    color: $blue-light;
+    font-size: mat-font-size($br-typography, body-1);
+  }
+
+  .table-body br-date-time-picker label {
+    font-size: mat-font-size($br-typography, body-1);
+    color: $black;
+    margin-bottom: $custom-space-small;
+  }
+}
+// Disabled when section is archived
+.disabled-section {
+  pointer-events: none;
+  color: lightgray;
+  opacity:0.6;
+
+  &.point-events-initial {
+    pointer-events: initial;
+  }
+}
+
+//flex class
+.flex-container {
+  display: flex;
+
+  $list: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
+  @each $item in $list {
+    .flex-#{$item} {
+       flex: #{$item}
+    }
+  }
+}
+
+// margins
+$list: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 40 50 60 70 80 100 120;
+@each $item in $list {
+  .mb-#{$item} {
+      margin-bottom: #{$item}px !important;
+  }
+  .mt-#{$item} {
+    margin-top: #{$item}px !important;
+  }
+  .ml-#{$item} {
+    margin-left: #{$item}px !important;
+  }
+  .mr-#{$item} {
+    margin-right: #{$item}px !important;
+  }
+}
+
+// paddings
+@each $item in $list {
+  .pb-#{$item} {
+      padding-bottom: #{$item}px !important;
+  }
+  .pt-#{$item} {
+    padding-top: #{$item}px !important;
+  }
+  .pl-#{$item} {
+    padding-left: #{$item}px !important;
+  }
+  .pr-#{$item} {
+    padding-right: #{$item}px !important;
+  }
+}
+
+.hide-years-btn .mat-calendar-period-button {
+  display: none !important;
+}
+
+// For report viewer that needs to look like perfect scrollbar
+ngx-extended-pdf-viewer.report-preview-perfect-scrollbar #viewerContainer {
+  cursor: default!important;
+  overflow-x: hidden  !important;
+  > #viewer {
+    cursor: grab!important;
+  }
+  &::-webkit-scrollbar {
+    width: 11px;
+    min-height: 50px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background-color: $gray-200;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $gray-450;
+    border-radius: 6px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: $gray-550;
+    transition: background-color .2s linear;
+  }
+
+}

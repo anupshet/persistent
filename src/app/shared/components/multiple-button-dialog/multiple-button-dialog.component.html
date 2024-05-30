@@ -1,0 +1,28 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="br-dialog">
+  <div class="hdr">
+    <div (click)="closeDialog()" *ngIf="!isCloseIconDisabled">
+      <mat-icon [svgIcon]="icons.close[48].name" class="close"></mat-icon>
+    </div>
+    <h1 mat-dialog-title>{{ data.title }}</h1>
+    <mat-dialog-content class="mat-typography">
+      <ng-template ngFor let-message [ngForOf]="data.message" let-i="index">
+        <p [class.text-color-black]="isCloseIconDisabled" [class]="data.messageClass || 'grey'">{{ message }}</p>
+      </ng-template>
+    </mat-dialog-content>
+    <br />
+    <mat-dialog-actions align="end">
+      <ng-template ngIf="data.cancelButton">
+        <button mat-button color="primary" [mat-dialog-close]="true" (click)="closeDialog()">{{ data.cancelButtonText }}</button>
+      </ng-template>
+      <ng-template ngFor let-option [ngForOf]="data.buttons" let-i="index">
+        <ng-container [ngSwitch]="true">
+          <button *ngSwitchCase="option.raised" mat-button mat-raised-button [color]="option.color || null" (click)="onSubmit(option.returns)">{{ option.text }}</button>
+          <button *ngSwitchCase="option.stroked" mat-button mat-stroked-button [color]="option.color || null" (click)="onSubmit(option.returns)">{{ option.text }}</button>
+          <button *ngSwitchCase="option.flat" mat-button mat-flat-button [color]="option.color || null" (click)="onSubmit(option.returns)">{{ option.text }}</button>
+          <button *ngSwitchDefault mat-button [color]="option.color || null" (click)="onSubmit(option.returns)">{{ option.text }}</button>
+        </ng-container>
+      </ng-template>
+    </mat-dialog-actions>
+  </div>
+</div>

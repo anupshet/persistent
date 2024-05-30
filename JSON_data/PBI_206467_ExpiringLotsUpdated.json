@@ -1,0 +1,25 @@
+{
+  "QA": {
+    "URL": "http://localhost:4200/",
+    "Username": "sudhir_paranjape+dev181516@bio-rad.com",
+    "Password": "Welcome1",
+    "Username2": "sudhir_paranjape+panels@bio-rad.com",
+    "Password2": "Welcome1",
+    "FirstName": "Sudhir",
+    "DeptName": "NewAutomation",
+    "Instrument": "Test6",
+    "RepetativeLot": "Pediatric",
+    "RepetatedCount": "4",
+    "NonRepetativeLot": "Multiqual 1,2,3 (Liquichek Vista)",
+    "RepetativeLot2": "Multiqual 1,2,3 Unassayed",
+    "RepetatedCount2": "4",
+    "RepetatedCount3": "3",
+    "FutureLot": "56620",
+    "FutureLot2": "44340V",
+    "ExpiringLotCount1": "9",
+    "ExpiringLotCount2": "10"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

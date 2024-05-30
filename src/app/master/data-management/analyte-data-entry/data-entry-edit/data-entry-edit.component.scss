@@ -1,0 +1,98 @@
+@import '../../../../../assets/scss/variables';
+@import '../../../../../assets/scss/base/variables-peak';
+
+.data-entry-edit-component {
+  padding: 20px 20px 0 20px;
+}
+
+table {
+  width: 100%;
+  min-width: calc(270 + (6*90));
+
+  td {
+    height: 50px;
+    text-align: center;
+    margin: 0;
+    padding: 0 0 10px 0;
+    min-width: 90px;
+
+    span {
+      display: inline-block;
+      width: 96%;
+      text-transform: uppercase;
+      color: $gray-700;
+      border-style: solid;
+      border-width: 2px;
+      border-left: 0;
+      border-top: 0;
+      border-right: 0;
+    }
+
+    &.level-1 span {
+      border-color: $br-level-1;
+    }
+
+    &.level-2 span {
+      border-color: $br-level-2;
+    }
+
+    &.level-3 span {
+      border-color: $br-level-3;
+    }
+
+    &.level-4 span {
+      border-color: $br-level-4;
+    }
+
+    &.level-5 span {
+      border-color: $br-level-5;
+    }
+
+    &.level-6 span {
+      border-color: $br-level-6;
+    }
+
+    &.level-7 span {
+      border-color: $br-level-7;
+    }
+
+    &.level-8 span {
+      border-color: $br-level-8;
+    }
+
+    &.level-9 span {
+      border-color: $br-level-9;
+    }
+  }
+}
+
+
+.flex-ctn-hdr {
+  display: flex;
+  background: $white;
+
+  .flex-item-1 {
+    width: 233px;
+  }
+
+  .flex-item-2 {
+    flex-grow: 2;
+  }
+
+  .flex-item-3 {
+    width: 160px;
+  }
+}
+
+.delete-icon {
+  position: absolute;
+  z-index: 100;
+  left: calc(50% - 23px);
+  top: -30px;
+
+  .material-icons {
+    font-size: $custom-type-size-xxxlarge;
+    margin-top: -10px;
+    margin-left: -8px;
+  }
+}

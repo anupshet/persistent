@@ -1,0 +1,13 @@
+{
+  "DEV": {
+      "URL": "http://localhost:4200/",
+      "Username": "nitin_ghugare+leadtech18aug@bio-rad.com",
+      "Password": "Welcome1",
+      "FirstName": "ABCName"
+  },
+  "QA": {
+      "URL": "https://unity-test.qcnet.com/login"
+  },
+  "STAGE": {},
+  "DEV2": {}
+}

@@ -1,0 +1,18 @@
+{
+    "DEV": {
+        "URL": "http://localhost:4200/",
+        "Username": "shital_limbhore+bioradT-15018@bio-rad.com",
+        "Password": "BioBio1",
+        "FirstName": "User",
+        "DefaultColumnNames": ["DATE" ,"TIME", "LEVEL", "RESULTS", "Z-SCORE", "RULES", "EVAL MEAN", "EVAL SD", "EVAL CV", "BY", "STATUS"],
+        "NonDefaultColumnNames": ["PEER MEAN", "PEER SD", "PEER CV"],
+        "AllCheckBoxes" : ["Date", "Results", "Eval Mean", "Peer Mean", "By", "Time", "Z-score", "Eval SD", "Peer SD", "Status", "Level", "Rules", "Eval CV", "Peer CV"],
+        "DefaultSelectedCheckBoxes" : ["Date", "Results", "Eval Mean", "By", "Time", "Z-score", "Eval SD", "Status", "Level", "Rules", "Eval CV"],
+        "DefaultNonSelectedCheckBoxes" : ["Peer Mean", "Peer SD", "Peer CV"]
+    },
+    "QA": {
+        "URL": "https://unity-test.qcnet.com/login"
+    },
+    "STAGE": {},
+    "DEV2": {}
+}

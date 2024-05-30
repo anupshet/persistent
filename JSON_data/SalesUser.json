@@ -1,0 +1,11 @@
+{
+	"QA": {
+		"URL": "https://unity-test.qcnet.com",
+		"SalesUsername": "sudhir_paranjape+qasales24@bio-rad.com",
+		"SalesPassword": "Welcome1",
+		"SalesFirstName": "ALLISON"
+	},
+	"DEV": {},
+	"STAGE": {},
+	"DEV2": {}
+}

@@ -1,0 +1,15 @@
+{"DEV":{
+	"URL": "https://unity-dev.qcnet.com",
+	"LotViewerAdminUsername": "sudhir_paranjape+lotadmindev@bio-rad.com",
+	"UnityNextAdminUsername": "sudhir_paranjape+devdl@bio-rad.com",
+	"LotViewerAdminPassword": "Welcome1",
+	"UnityNextAdminPassword": "Welcome1",
+	"LotViewerAdminFirstName": "Sudhir",
+	"LotViewerUserFirstName": "SudhirLotUser",
+	"UnityNextAdminFirstName": "Sudhir",
+	"UnityNextUserFirstName": "SudhirUser"
+},
+"QA": {},
+"STAGE": {},
+"DEV2": {}
+}

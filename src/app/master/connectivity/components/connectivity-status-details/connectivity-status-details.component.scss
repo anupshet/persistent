@@ -1,0 +1,194 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../../../../assets/scss/variables';
+@import '../../../../../assets/scss/base/variables-peak';
+@import '../../../../../assets/scss/mixins';
+@import '../../../../../assets/scss/vendors/angular-material/mixins';
+
+
+.connectivity-status-details-component {
+
+  color: $gray-600;
+  border: 1px solid $gray-200;
+  border-radius: $custom-border-radius-large;
+  margin: 10px 40px;
+  padding: 0 10px;
+  width: fit-content;
+  background-color: white;
+  margin: 0 auto;
+
+  &.show-details {
+    border: 1px solid $gray-200;
+    border-radius: $custom-border-radius-large;
+    padding: 10px;
+    margin: 0 25px 25px 25px;
+
+    .flex-ctn {
+      border: 0;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .flex-ctn {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 0 0 15px 25px;
+
+
+    &:first-child {
+      margin-top: 10px;
+    }
+
+    .flex-item-1 {
+      flex-grow: 1;
+      text-align: center;
+
+      .flex-ctn-inner {
+        display: flex;
+        text-align: center;
+        justify-content: space-around;
+
+        .file-name {
+          flex-grow: 0;
+
+          // width: 250px;
+          .file-name-list {
+            padding-left: 0px;
+            display: block;
+            white-space: nowrap;
+            width: 30ch;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+
+    .flex-item-2 {
+      width: 200px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: center;
+      flex-direction: column;
+      padding-top: 10px;
+
+      mat-icon,
+      button {
+        border: 0;
+        height: fit-content;
+      }
+    }
+
+    .flex-item-3 {
+      width: 80px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: center;
+      padding-top: 10px;
+
+      mat-icon,
+      button {
+        border: 0;
+        height: fit-content;
+      }
+    }
+
+    .purple,
+    .orange,
+    .black,
+    .red {
+      font-size: $custom-type-size-xxlarge;
+    }
+  }
+
+  .details-view {
+    padding: 15px;
+    margin: 0 25px 25px 25px;
+
+
+    .item.w-150 {
+      text-align: center;
+    }
+
+    .space-around {
+      span {
+        display: inline-block;
+      }
+    }
+  }
+
+  .rejection-log {
+    font-size: 18px;
+  }
+
+  .w-120 {
+    width: 120px;
+    min-width: 120px;
+  }
+
+  .w-150 {
+    width: 150px;
+    min-width: 150px;
+  }
+
+  .w-200 {
+    width: 200px;
+    min-width: 200px;
+  }
+
+  .w-974 {
+    width: 974px;
+    min-width: 974x;
+  }
+
+  .black {
+    color: $black;
+  }
+
+  .hdr {
+    display: block;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: 12.5px;
+    letter-spacing: 2px;
+  }
+
+  .partition {
+    border-right: 3px solid $gray-200;
+  }
+
+  .right {
+    float: right;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .space-between {
+    justify-content: space-between;
+  }
+
+  .spec_refresh {
+    cursor: pointer;
+  }
+
+  .download {
+    background: #007db6;
+    min-width: 32px !important;
+    padding-top: 1px;
+    padding-bottom: 3px;
+  }
+}
+
+::ng-deep .fileName-tooltip {
+  background: rgb(165, 163, 163);
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  min-width: 200px;
+  max-width: fit-content !important;
+}

@@ -1,0 +1,10 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div *ngIf="instrumentSection">
+  <unext-page-section
+    *ngIf="!inProgress"
+    [instrumentSection]="instrumentSection"
+    [entityType]="entityType"
+    [isArchived]="isArchived"
+    [levelName]="levelName">
+  </unext-page-section>
+</div>

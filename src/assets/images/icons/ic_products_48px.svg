@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="51px" viewBox="0 0 33 51" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/ic_products</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="icon/qc_products" transform="translate(-8.000000, 1.000000)" stroke="#434958">
+            <g transform="translate(9.000000, 0.000000)">
+                <polygon id="Stroke-1" fill="#FFFFFF" points="5.35334265 10.2682224 5.35334265 0.397086355 25.7190551 0.397086355 25.7190551 10.2682224 15.9998352 10.2682224 10.3257187 10.2682224"></polygon>
+                <path d="M15.6252689,5.50462961 L15.6252689,9.77666532" id="Stroke-3"></path>
+                <path d="M10.176,5.50462961 L10.176,9.77666532" id="Stroke-3"></path>
+                <path d="M20.6522755,5.50462961 L20.6522755,9.77666532" id="Stroke-4"></path>
+                <path d="M9.21093423,13.6051146 C9.3800834,15.2383842 8.59707005,17.313214 6.86189418,19.8296041 L2.92498535,23.2068645 C2.92498535,23.2068645 0.258219161,25.1934882 0.385462005,28.2401744 L0.380890405,45.78683 C0.380890405,45.78683 0.385462005,48.7008097 3.17870911,49.2308409 L26.8786412,49.2308409 C26.8786412,49.2308409 29.846371,49.6281657 30.6723066,46.0522429 L30.6723066,28.6374992 C30.6723066,28.6374992 30.9892708,25.7235195 28.0055404,22.5449215 L23.8149078,19.0349546 C23.8149078,19.0349546 21.9733153,16.4523438 22.1637986,13.4596937 L22.1637986,10.7389396 L9.20098633,10.7389396 L9.21093423,13.6051146 Z" id="Stroke-5" fill="#FFFFFF"></path>
+                <path d="M10.7348006,22.8762903 L27.8782976,22.8762903" id="Stroke-7"></path>
+                <polyline id="Stroke-9" fill="#FFFFFF" points="1.59160226 30.6892842 17.3384756 30.6892842 17.3384756 41.6816707 1.59160226 41.6816707"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

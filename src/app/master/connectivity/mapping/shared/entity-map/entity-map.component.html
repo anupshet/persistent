@@ -1,0 +1,259 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<unext-connectivity-map-header [labLocationId]="labLocationId"></unext-connectivity-map-header>
+
+<unext-dropdown-filter (filterCardsEvent)="filterCardsByDropdown($event)" [entityType]="entityType"
+  [entityId]="entityId"></unext-dropdown-filter>
+
+<ng-template [ngIf]="cards">
+  <div class="cardContainer">
+    <perfect-scrollbar #verticalScroll [class.pushup]="dialogOpenState">
+      <div [ngSwitch]="entityType">
+        <!-- Instrument -->
+        <div *ngSwitchCase="entityTypeLabInstrument">
+          <div class="flex-container">
+            <ng-template ngFor let-card [ngForOf]="filteredCards" let-cardIndex="index">
+              <mat-card id="target" class="mapping" [class.focusedCard]="focusedCardIndex === cardIndex"
+                [class.selectedCard]="selectedCardIndex === cardIndex" (mouseenter)="focusedCardIndex = cardIndex"
+                (mouseleave)="focusedCardIndex = -1" (click)="onInstrumentCardSelected(card, cardIndex);"
+                (dblclick)="openChildEntity(cardIndex)">
+                <mat-card-header>
+                  <section class="truncateHeader">
+                    <mat-card-title matTooltip="{{card.instrumentModelName}}"
+                      matTooltipShowDelay="300" class="instrument-name">{{card.instrumentModelName}}</mat-card-title>
+                    <mat-card-subtitle matTooltip="{{card.locationName}} > {{card.departmentName}}" class="subtitle">
+                      {{card.locationName}}
+                      > {{card.departmentName}}</mat-card-subtitle>
+                  </section>
+                </mat-card-header>
+                <mat-card-content (mouseover)="focusedCodeIndex = cardIndex;" (mouseleave)="focusedCodeIndex = -1">
+                  <div *ngIf="card.codes && card.codes.length < 5 || focusedCardIndex === cardIndex; else moreThanFive">
+                    <div *ngFor="let code of card.codes; let codeIndex = index" class="codes mat-small"
+                      matTooltip="{{code.code}}" matTooltipShowDelay="300"
+                      (mouseover)="focusedLevelCodeIndex = codeIndex" (mouseleave)="focusedLevelCodeIndex = -1">
+                      <mat-icon *ngIf="code" [svgIcon]="icons.linkChain[32].name" class="ic-link-chain"></mat-icon>
+                      <div class="truncate">
+                        <span>{{code.code}}</span>
+                      </div>
+                      <span class="unlink-btn mat-small" *ngIf="code != null && focusedCodeIndex == cardIndex && focusedLevelCodeIndex === codeIndex &&
+                        selectedChip == null && hasPermissionToAccess([permissions.ConnectivityMapping])"
+                            (click)="unmap(card, codeIndex); $event.stopPropagation()">
+                          {{'ENTITYMAP.UNLINK' | translate}}
+                      </span>
+                    </div>
+                  </div>
+                  <span *ngIf="card.codes && card.badgeCount != 0" class="badge">
+                    <p class="badgeCount mat-small">{{card.badgeCount}} </p>
+                  </span>
+                  <ng-template #moreThanFive>
+                    <mat-icon [svgIcon]="icons.linkChain[32].name" class="ic-link-chain"></mat-icon>
+                    <span class="more-codes mat-small"> {{card.codes.length}} <span>
+                        {{'ENTITYMAP.LINKEDCODES' | translate}} </span></span>
+                  </ng-template>
+                </mat-card-content>
+              </mat-card>
+            </ng-template>
+          </div>
+        </div>
+
+        <!-- Product -->
+        <div *ngSwitchCase="entityTypeLabProduct">
+          <div class="flex-container">
+            <ng-template ngFor let-card [ngForOf]="filteredCards" let-cardIndex="index" class="cards">
+              <mat-card id="target" class="mapping" [class.focusedCard]="focusedCardIndex === cardIndex"
+                [class.selectedCard]="selectedCardIndex === cardIndex" (mouseenter)="focusedCardIndex = cardIndex"
+                (mouseleave)="focusedCardIndex = -1" (dblclick)="openChildEntity(cardIndex)">
+                <mat-card-header>
+                  <section class="truncateHeader">
+                    <mat-card-title class="name" matTooltip="{{card.productName}}" matTooltipShowDelay="300">
+                      {{card.productName}}</mat-card-title>
+                    <mat-card-subtitle class="subtitle" matTooltip="{{'ENTITYMAP.LOT' | translate}} {{card.productMasterLotNumber}}"
+                      matTooltipShowDelay="300"><span>
+                        {{'ENTITYMAP.LOT' | translate}}</span> {{card.productMasterLotNumber}} |
+                      <span *ngFor="let levelInUse of card.levels"> <span>{{'ENTITYMAP.LEVEL' | translate}}</span>
+                        {{levelInUse}}
+                      </span>
+                    </mat-card-subtitle>
+                  </section>
+                </mat-card-header>
+
+                <mat-card-content>
+                  <section class="chooseLevelSection"
+                    *ngIf="selectedChip !== null && (focusedCardIndex === cardIndex || selectedCardIndex === cardIndex)">
+                    <span class="flex-container" id="levelDiv">
+                      <div>
+                        <mat-label id="levelLabel" class="mat-small">
+                          {{'ENTITYMAP.CHOOSELEVEL' | translate}}
+                        </mat-label>
+                      </div>
+                      <div>
+                        <ng-template ngFor let-levelInUse [ngForOf]="card.productLevels" let-levelIndex="index">
+                          <button class="levelButton"
+                            [class.focusedLevel]="focusedLevelIndex === levelIndex && focusedCardIndex === cardIndex"
+                            [class.selectedLevel]="selectedLevelIndex === levelIndex && selectedCardIndex === cardIndex"
+                            (mouseenter)="focusedLevelIndex = levelIndex" (mouseleave)="focusedLevelIndex = -1"
+                            (click)="onProductLevelSelected(card, levelInUse.level, cardIndex);">{{levelInUse.level}}</button>
+                        </ng-template>
+                      </div>
+
+                    </span>
+                  </section>
+
+                  <section *ngIf="focusedCardIndex !== cardIndex && selectedCardIndex !== cardIndex">
+                    <section *ngIf="productCardHasCode(card)">
+                      <div *ngIf="mappedCodeCount(card) < 5; else moreThanFive">
+                        <section *ngFor="let level of card.productLevels; let codeIndex = index">
+                          <div *ngFor="let code of level.codes; let levelCodeIndex = index" button
+                            class="codes mat-small" matTooltip="{{code.code}} - {{'ENTITYMAP.LEVEL' | translate}} {{level.level}}"
+                            matTooltipShowDelay="300">
+                            <mat-icon [svgIcon]="icons.linkChain[32].name" class="ic-link-chain"></mat-icon>
+                            <div class="truncate">
+                              <span>{{(code.code.length) > 15 ? (code.code | slice:0:15)+ '..':(code.code)}}</span>
+                            </div>
+                            <span> - {{'ENTITYMAP.LEVEL' | translate}} </span>{{level.level}}
+                          </div>
+                        </section>
+                      </div>
+                      <span *ngIf="productCardHasCode(card) && card.badgeCount != 0" class="badge">
+                        <p class="badgeCount mat-small">{{card.badgeCount}} </p>
+                      </span>
+                      <ng-template #moreThanFive>
+                        <mat-icon [svgIcon]="icons.linkChain[32].name" class="ic-link-chain"></mat-icon>
+                        <span class="more-codes mat-small"> {{mappedCodeCount(card)}} <span>
+                            {{'ENTITYMAP.LINKEDCODES' | translate}} </span></span>
+                      </ng-template>
+                    </section>
+                  </section>
+
+                  <section *ngIf="(selectedChip == null && focusedCardIndex === cardIndex)">
+                    <section *ngFor="let level of card.productLevels; let codeIndex = index">
+                      <div *ngFor="let code of level.codes; let levelCodeIndex = index" button class="codes mat-small"
+                        matTooltip="{{code.code}} - {{'ENTITYMAP.LEVEL' | translate}} {{level.level}}"
+                        matTooltipShowDelay="300"
+                        (mouseover)="focusedCodeIndex = codeIndex; focusedLevelCodeIndex = levelCodeIndex;"
+                        (mouseleave)="focusedCodeIndex = -1; focusedLevelCodeIndex = -1;">
+                        <mat-icon [svgIcon]="icons.linkChain[32].name" class="ic-link-chain"></mat-icon>
+                        <div class="truncate">
+                          <span>{{(code.code.length) > 15 ? (code.code | slice:0:15)+ '..':(code.code)}}</span>
+                        </div>
+                        <span> - {{'ENTITYMAP.LEVEL' | translate}} </span>{{level.level}}
+                        <span class="unlink-btn mat-small"
+                              *ngIf="code != null && focusedCodeIndex === codeIndex && focusedLevelCodeIndex === levelCodeIndex && hasPermissionToAccess([permissions.ConnectivityMapping])"
+                              (click)="unmap(card, levelCodeIndex, level); $event.stopPropagation()">{{'ENTITYMAP.UNLINK' | translate}}</span>
+                      </div>
+                    </section>
+
+                    <span *ngIf="productCardHasCode(card) && card.badgeCount != 0" class="badge">
+                      <p class="badgeCount mat-small">{{card.badgeCount}} </p>
+                    </span>
+                  </section>
+
+                </mat-card-content>
+              </mat-card>
+            </ng-template>
+          </div>
+        </div>
+
+        <!-- Test -->
+        <div *ngSwitchCase="entityTypeLabTest">
+          <div class="flex-container">
+            <ng-template ngFor let-card [ngForOf]="filteredCards" let-cardIndex="index" class="cards">
+              <mat-card id="target" class="mapping" [class.focusedCard]="focusedCardIndex === cardIndex"
+                [class.selectedCard]="selectedCardIndex === cardIndex" (mouseenter)="focusedCardIndex = cardIndex"
+                (mouseleave)="focusedCardIndex = -1" (click)="onTestCardSelected(card, cardIndex);">
+                <mat-card-header>
+                  <section class="truncateHeader">
+                    <mat-card-title matTooltip="{{card.analyteName}}" matTooltipShowDelay="300" class="test-name">
+                      {{card.analyteName}}</mat-card-title>
+                    <mat-card-subtitle matTooltip="{{card.methodName}}" matTooltipShowDelay="300" class="subtitle">
+                      {{card.methodName}}</mat-card-subtitle>
+                  </section>
+                </mat-card-header>
+                <mat-card-content>
+                  <!-- not mapped -->
+                  <section
+                    *ngIf="selectedChip !== null && (focusedCardIndex === cardIndex || selectedCardIndex === cardIndex)">
+                    <div
+                      *ngIf="card.codes && card.codes.length < 5 || focusedCardIndex === cardIndex; else moreThanFive">
+                      <div *ngFor="let code of card.codes; let codeIndex = index" class="row codes mat-small"
+                        matTooltip="{{code.code}}" matTooltipShowDelay="300"
+                        (mouseenter)="focusedLevelCodeIndex = codeIndex" (mouseleave)="focusedLevelCodeIndex = -1">
+                        <mat-icon *ngIf="code" [svgIcon]="icons.linkChain[32].name" class="ic-link-chain"></mat-icon>
+                        <div class="truncate">
+                          <span>
+                            {{code.code}}<span *ngIf="code == null || focusedCodeIndex != cardIndex">
+                              {{getTestCodeCountText(card)}}</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- mapped -->
+                  <section *ngIf="focusedCardIndex !== cardIndex && selectedCardIndex !== cardIndex">
+                    <div *ngIf="card.codes && card.codes.length < 5; else moreThanFive">
+                      <div *ngFor="let code of card.codes" class="codes mat-small" matTooltip="{{code}}"
+                        matTooltipShowDelay="300">
+                        <mat-icon *ngIf="code" [svgIcon]="icons.linkChain[32].name" class="ic-link-chain"></mat-icon>
+                        <div class="truncate">
+                          <span>{{code.code}} {{getTestCodeCountText(card)}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  <!-- mapped and hovered over -->
+                  <section *ngIf="(selectedChip == null && focusedCardIndex === cardIndex)">
+                    <div
+                      *ngIf="card.codes && card.codes.length < 5 || focusedCardIndex === cardIndex; else moreThanFive">
+                      <div *ngFor="let code of card.codes; let codeIndex = index" class="codes mat-small"
+                        (mouseover)="focusedCodeIndex = codeIndex;" (mouseleave)="focusedCodeIndex = -1">
+                        <mat-icon *ngIf="code" [svgIcon]="icons.linkChain[32].name" class="ic-link-chain"></mat-icon>
+                        <div class="truncate">
+                          <span matTooltip="{{code.code}}" matTooltipShowDelay="300">{{code.code}}</span>
+                        </div>
+                        <span class="unlink-btn mat-small"
+                              *ngIf="code != null && focusedCodeIndex === codeIndex && hasPermissionToAccess([permissions.ConnectivityMapping])"
+                              (click)="unmap(card, codeIndex); $event.stopPropagation()">
+                            {{'ENTITYMAP.UNLINK' | translate}}
+                        </span>
+                        <br>
+                      </div>
+                      <div class="codes mat-small" *ngFor="let reagentLotCode of card.linkedReagentLotCodes">
+                        <div *ngIf="reagentLotCode.id !== null">
+                          <mat-icon [svgIcon]="icons.linkChain[32].name" class="ic-link-chain"></mat-icon>
+                          <span class="ml-3" matTooltip="{{reagentLotCode.code}}"
+                            matTooltipShowDelay="300">{{reagentLotCode.code}}</span>
+                            <span>
+                                - {{'ENTITYMAP.REAGENT' | translate}}
+                            </span>
+                        </div>
+                      </div>
+                      <div class="codes mat-small" *ngFor="let calibratorLotCode of card.linkedCalibratorLotCodes">
+                        <mat-icon [svgIcon]="icons.linkChain[32].name" class="ic-link-chain"></mat-icon>
+                        <span matTooltip="{{getFirstCalibratorLotCode(card)}}"
+                          matTooltipShowDelay="300">{{getFirstCalibratorLotCode(card)}}</span>
+                          <span>
+                            {{'ENTITYMAP.CALIBRATOR' | translate}}
+                          </span>
+                      </div>
+                    </div>
+                  </section>
+                  <ng-template #moreThanFive>
+                    <mat-icon [svgIcon]="icons.linkChain[32].name" class="ic-link-chain"></mat-icon>
+                    <span class="more-codes mat-small"> {{card.codes.length}} <span>
+                        {{'ENTITYMAP.LINKEDCODES' | translate}} </span></span>
+                  </ng-template>
+
+                  <span *ngIf="getUnmappedReagentLotCount(card) > 0" class="badge"
+                    (click)="openReagentCalibratorDialog(card)">
+                    <p class="badgeCount mat-small"> {{ getUnmappedReagentLotCount(card) }}</p>
+                  </span>
+                </mat-card-content>
+              </mat-card>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </perfect-scrollbar>
+    <unext-archived-panel></unext-archived-panel>
+  </div>
+</ng-template>

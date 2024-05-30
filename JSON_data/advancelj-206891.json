@@ -1,0 +1,23 @@
+{
+  "DEV": {
+    "URL": "http://localhost:4200/",
+    "Username": "divya_lalwani+devadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Divya",
+    "Department": "Dept",
+    "Instrument": "Alinity c",
+    "Control": "Assayed Chemistry",
+    "Analyte": "Albumin"
+  },
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "Username": "UnityNextRegressionTestUser+1@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Regression",
+    "Department": "AdvancedLJ",
+    "Instrument": "Alinity c",
+    "Control": "Cardiac Markers Plus LT",
+    "Analyte": "Albumin",
+    "Exp": "Lot DONOTUSELOT01 expires 30 Apr 2032"
+  }
+}

@@ -1,0 +1,15 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div *ngIf="displayName">
+  <div [matMenuTriggerFor]="menuUser" id="navBarUserNameText" class="nav-bar-button" matTooltip="{{'NAV.USER.LOGOUT' | translate}}">
+    <mat-icon [svgIcon]="navIconName"></mat-icon>
+    <span class="mat-small">
+      {{displayName | truncate:[16]}}
+    </span>
+  </div>
+
+  <mat-menu #menuUser="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item (click)="logOutOfApp()">
+      <span>{{'NAV.USER.LOGOUT' | translate}}</span>
+    </button>
+  </mat-menu>
+</div>

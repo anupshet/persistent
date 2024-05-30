@@ -1,0 +1,85 @@
+{
+  "id": "75994902-4444-5a42-60bf-9f39ecc6c143",
+  "labId": null,
+  "locationId": null,
+  "departmentId": null,
+  "instrumentId": null,
+  "codes": [
+      "inst_code"
+  ],
+  "product": [
+      {
+          "id": null,
+          "levelCodes": [
+              {
+                  "id": null,
+                  "codes": [
+                      "PRLOT74"
+                  ],
+                  "test": [
+                      {
+                          "id": null,
+                          "codes": [
+                              "RC00"
+                          ],
+                          "reagentLot": null,
+                          "calibratorLot": null
+                      },
+                      {
+                          "id": null,
+                          "codes": [
+                              "RC10"
+                          ],
+                          "reagentLot": [
+                              {
+                                  "id": null,
+                                  "codes": [
+                                      "R_11"
+                                  ]
+                              }
+                          ],
+                          "calibratorLot": null
+                      },
+                      {
+                          "id": null,
+                          "codes": [
+                              "RC01"
+                          ],
+                          "reagentLot": null,
+                          "calibratorLot": [
+                              {
+                                  "id": null,
+                                  "codes": [
+                                      "C_12"
+                                  ]
+                              }
+                          ]
+                      },
+                      {
+                          "id": null,
+                          "codes": [
+                              "RC11"
+                          ],
+                          "reagentLot": [
+                              {
+                                  "id": null,
+                                  "codes": [
+                                      "R_11"
+                                  ]
+                              }
+                          ],
+                          "calibratorLot": [
+                              {
+                                  "id": null,
+                                  "codes": [
+                                      "C_11"
+                                  ]
+                              }
+                          ]
+                      }
+                  ]
+              }
+          ]
+      }
+  ]
+}

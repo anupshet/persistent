@@ -1,0 +1,204 @@
+{
+	"DEV": {
+		"URL": "http://localhost:4200/",
+		"UserName": "nitin_ghugare+L1_TestWelcomeScreenDev@bio-rad.com",
+		"Password": "Welcome1",
+		"FirstName": "Mayank",
+		"departmentName": "TestWelcome",
+		"instrumentName": "VITROS 350",
+		"controlLot": "Lot 26460",
+		"data": [
+			8,
+			8
+		],
+		"correctiveAction": "Calibrator changed ",
+		"comment": "Audit Trail Automation Comment",
+		"startNewLotNumber": "Lot 26460",
+		"selectNewLot": "23000",
+		"AuditTrailAPI": "https://dojixk5wef.execute-api.us-west-2.amazonaws.com/Stage/at",
+		"AuditTrailAPIStatusCode": "200",
+		"dataEntryPayload": {
+			"account_id": "",
+			"accountNumber": "",
+			"accountName": "",
+			"group_id": "",
+			"groupName": "",
+			"user_id": "",
+			"location_id": "",
+			"locationName": "",
+			"userRoles": [
+				""
+			],
+			"eventDateTime": "",
+			"localDateTime": "",
+			"awsCorrelationId": "",
+			"auditTrail": {
+				"device_id": "",
+				"run_id": "",
+				"runDateTime": "",
+				"eventType": "",
+				"action": "",
+				"actionStatus": "",
+				"priorValue": {},
+				"currentValue": {
+					"levelData": [
+						{
+							"controlLevel": "",
+							"resultValue": ""
+						},
+						{
+							"controlLevel": "",
+							"resultValue": ""
+						},
+						{
+							"controlLevel": "",
+							"resultValue": ""
+						}
+					],
+					"isAction": false,
+					"action": "",
+					"isComment": false,
+					"comment": "",
+					"isReagentLot": true,
+					"reagentLot": "",
+					"reagentId": 881,
+					"isCalibratorLot": true,
+					"calibratorId": 107,
+					"calibratorLot": "*"
+				},
+				"hierarchy": {
+					"account": [
+						{
+							"id": "",
+							"name": "",
+							"groups": [
+								{
+									"id": "",
+									"name": "",
+									"locations": [
+										{
+											"id": "",
+											"name": "",
+											"departments": [
+												{
+													"id": "",
+													"name": "",
+													"instruments": [
+														{
+															"id": "",
+															"name": "",
+															"controls": [
+																{
+																	"id": "",
+																	"name": "",
+																	"analytes": [
+																		{
+																			"id": "",
+																			"name": ""
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		"startNewLotPayLoad": {
+			"account_id": "",
+			"accountNumber": "",
+			"accountName": "",
+			"group_id": "",
+			"groupName": "",
+			"user_id": "",
+			"location_id": "",
+			"locationName": "",
+			"userRoles": [
+				""
+			],
+			"eventDateTime": "",
+			"localDateTime": "",
+			"awsCorrelationId": "",
+			"auditTrail": {
+				"device_id": "",
+				"run_id": "",
+				"runDateTime": "",
+				"eventType": "",
+				"action": "",
+				"actionStatus": "",
+				"meta_id": [
+					""
+				],
+				"priorValue": {},
+				"currentValue": {
+					"parentNodes": [
+						{
+							"parentNodeId": "",
+							"displayName": ""
+						}
+					],
+					"nodeType": 5,
+					"targetProductMasterLotId": 1431,
+					"sourceNodeId": "",
+					"retainFixedCV": false,
+					"locationId": ""
+				},
+				"hierarchy": {
+					"account": [
+						{
+							"id": "",
+							"name": "",
+							"groups": [
+								{
+									"id": "",
+									"name": "",
+									"locations": [
+										{
+											"id": "",
+											"name": "",
+											"departments": [
+												{
+													"id": "",
+													"name": "",
+													"instruments": [
+														{
+															"id": "",
+															"name": "",
+															"controls": [
+																{
+																	"id": "",
+																	"name": "",
+																	"analytes": [
+																		{
+																			"id": "",
+																			"name": ""
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		}
+	},
+	"QA": {},
+	"STAGE": {},
+	"DEV2": {}
+}

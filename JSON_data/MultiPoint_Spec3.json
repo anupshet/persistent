@@ -1,0 +1,22 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com",
+    "Username": "amruta_karale+autolab5@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Amruta",
+    "UserRoleUsername": "amruta_karale+autouser5@bio-rad.com",
+    "Department": "MultiEntry",
+    "Instrument": "ARCHITECT c16000",
+    "Control1": "Blood Gas Plus EGL",
+    "Lot": "29550",
+    "Levels": "3",
+    "C1Analyte1": "Chloride",
+    "C1Analyte2": "Glucose",
+    "Control2": "Multiqual 1,2,3",
+    "C2Analyte1": "Acetaminophen",
+    "C2Analyte2": "Acid Phosphatase, Total"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

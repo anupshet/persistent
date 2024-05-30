@@ -1,0 +1,78 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="flex-ctn flex-ctn-1 mt-10" *ngIf="isPreviousYear && isSinglePageSummary && !isSameYearEntry">
+  <span class="analyte-date analyte-year">{{ analyteView?.analyteDateTime | uNextDate: 'mediumDate' }}</span>
+</div>
+<section class="wrapper analyte-summary-view-component" (click)="onClicked()">
+  <div *ngIf="analyteView && !isSinglePageSummary" class="flex-ctn flex-ctn-1">
+    <span id="spc_summary_view_analyte_name" class="analyte-info">{{ productName }}-{{productLotNumber}} {{ analyteView.analyteName }}</span>
+  </div>
+
+  <div class="flex-ctn">
+    <div *ngIf="!displayNoData; else summaryViewNoData" class="flex-item-1">
+
+      <div class="ctn-flex-item-1">
+        <span id="spc_summary_view_date" class="date br-text-primary mr-20" [ngClass]="{ 'analyte-date': isSinglePageSummary }"
+          [matTooltip]="isSinglePageSummary ? translationLabels.editdata  : null"
+          matTooltipPosition="right">
+        {{ analyteView?.analyteDateTime | uNextDate: 'mediumDate' }}
+        {{ (!isSinglePageSummary && isPreviousYear) ? (analyteView?.analyteDateTime | uNextDate: 'mediumDate')  : '' }}
+      </span>
+        <table mat-table [dataSource]="labels">
+          <ng-container [matColumnDef]="columnsToDisplay[0]">
+            <td class="cell-labels mat-small"
+            [matTooltip]="isSinglePageSummary ? translationLabels.editdata : null" mat-cell *matCellDef="let row; let rowIndex=index;">
+            <span [ngClass]="{'br-uppercase': rowIndex === 1, 'br-capitalize': rowIndex !== 1}">{{ labels[rowIndex] }}</span>
+          </td>
+          </ng-container>
+
+          <ng-container *ngFor="let col of (columnsToDisplay | slice: 1); let columnIndex = index;"
+                        [matColumnDef]="col">
+            <td mat-cell *matCellDef="let row; let rowIndex = index" [matTooltip]="isSinglePageSummary ? translationLabels.editdata : null">
+              <div *ngIf="getIndexFromLevelSummary(columnIndex)!== null; else emptyTemplate">
+                <div [ngSwitch]="rowIndex" class="fix-column-aligment">
+                  <span *ngSwitchCase="0">
+                    {{analyteView.levelDataSet[getIndexFromLevelSummary(columnIndex)].data.mean | uNextNumeric: analyteView.levelDataSet[getIndexFromLevelSummary(columnIndex)].decimalPlace}}
+                  </span>
+                  <span *ngSwitchCase="1">
+                    {{analyteView.levelDataSet[getIndexFromLevelSummary(columnIndex)].data.sd | uNextNumeric: analyteView.levelDataSet[getIndexFromLevelSummary(columnIndex)].decimalPlace}}
+                  </span>
+                  <span *ngSwitchCase="2">
+                    {{analyteView.levelDataSet[getIndexFromLevelSummary(columnIndex)].data.numPoints}}
+                  </span>
+                </div>
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-template #emptyTemplate>
+            <div>
+              <div>
+                <span class="noshow">12.3</span>
+              </div>
+            </div>
+          </ng-template>
+
+          <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+        </table>
+      </div> <!-- /ctn-flex-item-1 -->
+    </div> <!-- /flex-item-1 -->
+    <ng-template #summaryViewNoData>
+      <div class="hdr-ctn">
+        <p class="analyte-name mb-0">{{ productName }}-{{productLotNumber}} {{analyteNameNoData}}</p>
+        <span class="analyte-name">{{ translationLabels.nodata }}</span>
+      </div>
+    </ng-template>
+    <div class="flex-item-2">
+      <div class="pez-cell-block">
+        <br-pez-cell (click)="$event.stopPropagation();"
+                    [actions]="analyteView?.userActions"
+                    [comments]="analyteView?.userComments"
+                    [interactions]="analyteView?.userInteractions"
+                    [pezDateTimeOffset]="dateTimeOffset"
+                    (showReviewSummaryDialog)="openReviewSummaryDialog()">
+        </br-pez-cell>
+      </div>
+    </div>
+
+  </div>
+</section>

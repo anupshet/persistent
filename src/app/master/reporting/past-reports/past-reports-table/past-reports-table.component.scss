@@ -1,0 +1,172 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../../../assets/scss/variables";
+
+.table-wrapper {
+    padding: 0px 20px;
+    display: flex;
+    height: calc(100vh - 355px);
+    overflow: hidden;
+    flex-direction: column;
+    position: relative;
+
+    table {
+        width: 100%;
+        box-shadow: none;
+    }
+
+    thead {
+        box-shadow: none;
+    }
+
+    .mat-header-cell {
+        background: $white;
+        color: $blue-darker;
+        font-size: 16.7px;
+        line-height: 16.7px;
+        letter-spacing: 2px;
+    }
+
+    ::ng-deep .mat-sort-header-arrow {
+        color: $blue-darker;
+    }
+
+    ::ng-deep .mat-header-row {
+        box-shadow: none;
+    }
+
+    .preview,
+    .download {
+        background: $blue-darker;
+        min-width: 32px !important;
+        padding-top: 1px;
+        padding-bottom: 3px;
+        margin-left: 10px;
+    }
+}
+
+.pagination-container {
+    margin: 0px 45px 2px 45px;
+
+    .custom-pagination {
+        display: flex;
+        justify-content: center;
+        margin: 18px 0 0 0;
+
+        .pagination-button {
+            margin: 0 10px;
+            padding: 0;
+            min-width: 45px;
+            background: $blue-darker;
+            color: $white;
+        }
+
+        .mat-stroked-button.mat-primary.selected {
+            background: $white;
+            border: 1px solid rgba($gray-600, 0.4);
+            color: $blue-darker;
+
+            &.disable-button {
+                color: $gray-600;
+            }
+        }
+
+        .rotateArrow {
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.no-data {
+    text-align: center;
+    font-size: 18px;
+    position: absolute;
+    top: 80px;
+    width: 100%;
+}
+
+::ng-deep .mat-sort-header-arrow[style] {
+    // Hide default arrow stem
+    .mat-sort-header-stem {
+        display: none;
+    }
+
+    .mat-sort-header-indicator {
+        opacity: 1;
+        color: black;
+        font-weight: bold;
+
+        // Hide default arrow as its composed of left, right and middle
+        .mat-sort-header-pointer-left,
+        .mat-sort-header-pointer-right,
+        .mat-sort-header-pointer-middle {
+            display: none;
+        }
+    }
+}
+
+[aria-sort="ascending"] {
+    ::ng-deep .mat-sort-header-arrow {
+        .mat-sort-header-indicator {
+            &::before {
+                content: "\25B4";
+                top: -0em;
+                position: absolute;
+                color: $blue-darker;
+                font-size: 30px;
+                line-height: 10px;
+            }
+        }
+    }
+}
+
+.mat-col {
+    padding-right: 10px;
+    width: 120px;
+    max-width: 120px;
+    word-wrap: break-word;
+}
+
+[aria-sort="descending"] {
+    ::ng-deep .mat-sort-header-arrow {
+        .mat-sort-header-indicator {
+            &::before {
+                content: "\25BE";
+                top: -15px;
+                position: absolute;
+                color: $blue-darker;
+                font-size: 30px;
+            }
+        }
+    }
+}
+
+::ng-deep .mat-paginator-range-label,
+::ng-deep .mat-paginator-page-size {
+    display: none !important;
+}
+
+::ng-deep .mat-raised-button.btn-white {
+    background: $white !important;
+    color: $black !important;
+    width: 50px !important;
+    min-width: 50px !important;
+}
+
+::ng-deep .mat-raised-button.mat-custom-page,
+::ng-deep .mat-paginator-navigation-previous.mat-icon-button,
+::ng-deep .mat-paginator-navigation-next.mat-icon-button {
+    width: 50px !important;
+    min-width: 50px !important;
+    border-radius: 4px !important;
+}
+
+.past-reports-table-component {
+    .flex {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.hide-anchor {
+    display: none;
+}

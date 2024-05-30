@@ -1,0 +1,71 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<ng-template [ngIf]="isReportableEntity()">
+    <main>
+
+      <div class="ctn-control-panel">
+        <span class="mat-h3" class="inline">{{'UNITYREPORT.REPORT' | translate}}</span>
+        <span class="mat-h3" class="inline">{{instrumentModelName}}</span>
+        <div [checkForPermission]="{'permissionsAllowed':[permissions.ReportsRun],'hideIfNotPermitted':true,'disableIfNotPermitted':false}" class="flex-ctn">
+            <div class="flex-item-1">
+              <mat-form-field>
+                <input matInput readonly [matDatepicker]="picker" placeholder="{{'UNITYREPORT.MONTHYEAR' | translate}}" [max]="maxDate"
+                  [formControl]="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker startView="year" (monthSelected)="chosenMonthHandler($event, picker)"  [calendarHeaderComponent]="customCalendarHeader">
+                </mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="flex-item-2">
+              <button mat-raised-button color="primary" [disabled]="!enableCreateReport || isProcessing" (click)="onCreateReport()">{{'UNITYREPORT.CREATE' | translate}}</button>
+            </div>
+        </div><!-- /flex-ctn -->
+      </div><!-- /ctn-control-panel -->
+
+      <div [checkForPermission]="{'permissionsAllowed':[permissions.ReportsViewSavedItems],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+        <div class="sort-panel">
+          <div class="container-fluid">
+            <nav class="nav">
+            </nav>
+            <div class="filtration">
+              <div class="year-set">
+                <ul class="year-nav">
+                  <li *ngFor="let item of years | slice:0:5; let i = index" [class.active]="item.active">
+                    <a class="mat-body-2" (click)="onYearClicked(i, item.year)">
+                      {{item.year}}
+                    </a>
+                  </li>
+                </ul>
+                <mat-expansion-panel class="year-select" *ngIf="years.length > 5">
+                  <!-- TODO: Not going to populate
+                    <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <span class="mat-body-2">{{'UNITYREPORT.REPORT' | translate}}</span>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header> -->
+                  <div class="drop">
+                    <ul>
+                      <li *ngFor="let item of years | slice: 5; let i = index">
+                        <a (click)="onYearClicked(i + 5, item.year)">{{item.year}}</a>
+                      </li>
+                    </ul>
+                  </div>
+                </mat-expansion-panel>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <unext-report-panel
+        *ngIf="nodeAndGrandchildren"
+        #reportPanel
+        [nodeWithGrandchildren]="nodeAndGrandchildren"
+        [reportType]="selectedReportType"
+        [newReportList]="newReportsList"
+        [reports]="reports"
+        [year] = "selectedYear"
+        (previewClose)="onPreviewClose($event)">
+        </unext-report-panel>
+    </div> <!-- / checkForPermission -->
+
+    </main>
+  </ng-template>

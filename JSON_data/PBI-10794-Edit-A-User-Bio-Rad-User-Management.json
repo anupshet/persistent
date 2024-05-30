@@ -1,0 +1,28 @@
+{
+	"DEV": {
+		"URL": "https://unity-dev.qcnet.com/login",
+		"AMUsername": "tushar_adeshara+accountmanager@bio-rad.com",
+		"AMPassword": "Welcome1",
+		"AMFirstName": "Tushar",
+
+		"UserDetailsScreenEmail" : "mayank_jatay+testlv@bio-rad.com",
+
+		"PreviousDataEmail" : "mayank_jatay+testlv@bio-rad.com",
+
+		"CancelButtonFirstName" : "Aman",
+		"CancelButtonLastName" : "Verma",
+		"CancelButtonEmail" : "mayank_jatay+testlv@bio-rad.com",
+		"CancelButtonRole" : "LotViewerSales",
+		"CancelButtonTerritoryID" : "9875321",
+
+		"UpdateButtonFirstName" : "Aman",
+		"UpdateButtonlastName" : "Verma",
+		"UpdateButtonEmail" : "mayank_jatay+testlv@bio-rad.com",
+		"UpdateButtonRole" : "LotViewerSales",
+		"UpdateButtonTerritoryID" : "9875321"
+		
+	},
+	"QA": {},
+	"STAGE": {},
+	"DEV2": {}
+}

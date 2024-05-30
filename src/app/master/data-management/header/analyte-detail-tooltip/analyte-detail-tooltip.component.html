@@ -1,0 +1,35 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<br-info-tooltip [biggerIcon]="true">
+  <ng-template ng-label-tmp>
+
+    <div class="analyte-detail-tooltip-template">
+      <span class="analyte-header dark-grey mat-h2">{{'ANALYTEDETAILTOOLTIP.ANALYTEDETAILS' | translate}}</span>
+      <dl *ngIf="headerData" class="mat-body-1">
+        <dt>{{'ANALYTEDETAILTOOLTIP.INSTRUMENT' | translate}}</dt>
+        <dd *ngIf="headerData.instrumentAlias">{{ headerData.instrumentAlias }}</dd>
+        <dd *ngIf="!headerData.instrumentAlias">{{ headerData.instrumentName }}</dd><br/>
+        <dt>{{'ANALYTEDETAILTOOLTIP.PRODUCT' | translate}}</dt>
+        <dd>{{ headerData.customProductName ?  headerData.customProductName : headerData.productName }}</dd><br/>
+        <dt>{{'ANALYTEDETAILTOOLTIP.LOTNUMBER' | translate}}</dt>
+        <dd>{{ headerData.productMasterLotNumber }}</dd><br/>
+        <dt>{{'ANALYTEDETAILTOOLTIP.ANALYTE' | translate}}</dt>
+        <dd>{{ headerData.analyteName }}</dd><br/>
+        <dt>{{'ANALYTEDETAILTOOLTIP.REAGENTNAME' | translate}}</dt>
+        <dd>{{ headerData.reagentName }}</dd><br/>
+        <dt>{{'ANALYTEDETAILTOOLTIP.REAGENTLOTNUMBER' | translate}}</dt>
+        <dd *ngIf="headerData.reagentLotNumber">{{ headerData.reagentLotNumber }}</dd>
+        <dd *ngIf="!headerData.reagentLotNumber"></dd>
+        <br/>
+        <dt>{{'ANALYTEDETAILTOOLTIP.METHOD' | translate}}</dt>
+        <dd>{{ headerData.method }}</dd><br/>
+        <dt>{{'ANALYTEDETAILTOOLTIP.UNIT' | translate}}</dt>
+        <dd>{{ headerData.unit }}</dd><br/>
+        <dt>{{'ANALYTEDETAILTOOLTIP.CALIBRATOR' | translate}}</dt>
+        <dd> {{ headerData.calibrator }}</dd><br/>
+        <dt>{{'ANALYTEDETAILTOOLTIP.CALIBRATORLOTNUMBER' | translate}}</dt>
+        <dd *ngIf="headerData.calibratorLotNumber">{{ headerData.calibratorLotNumber }}</dd>
+      </dl>
+    </div>
+
+  </ng-template>
+</br-info-tooltip>

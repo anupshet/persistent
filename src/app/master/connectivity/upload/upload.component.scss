@@ -1,0 +1,675 @@
+// © 2024 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/base/variables-peak";
+@import "../../../../assets/scss/mixins";
+
+ul {
+  list-style-type: none;
+  display: flex;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  line-height: 0px;
+  height: 30px;
+}
+
+.edge-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.centered-holder {
+  height: calc(100vh - 201px);
+  display: table;
+  width: 100%;
+  @include media(tablet-and-up) {
+    height: calc(100vh -190px);
+  }
+
+  .holder {
+    display: table-cell;
+    vertical-align: middle;
+    padding: $custom-space-small;
+  }
+}
+
+.box {
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+  background: $br-white;
+  padding: ($custom-space-base + $custom-space-xsmall) ($custom-space-base + $custom-space-small);
+  min-height: 325px;
+
+  + .box {
+    margin-top: $custom-space-base;
+  }
+
+  h4 {
+    font-weight: normal;
+    margin: 0 0 $custom-space-base;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+  .descr {
+    flex-grow: 1;
+  }
+
+  .field,
+  .select-holder {
+    margin: 0 0 $custom-space-xsmall;
+  }
+
+  .form-group {
+    background: none;
+    border-radius: 0;
+    padding: ($custom-space-base - $custom-space-xxsmall) 0 0;
+  }
+
+  .mat-radio-button {
+    margin-bottom: -$custom-space-xxsmall;
+    display: inline-block;
+  }
+
+  .mat-checkbox {
+    display: block;
+  }
+
+  .checkbox-group {
+    padding: ($custom-space-base + $custom-space-xxsmall) 0 ($custom-space-large - $custom-space-xsmall);
+    max-width: 240px;
+  }
+
+  .mat-form-field-flex {
+    position: relative;
+  }
+
+  .date-picker-field {
+    min-width: 100px;
+  }
+
+  .mat-form-field {
+    width: 100%;
+    border: 0px $br-white;
+  }
+
+  &.uploading,
+  &.success,
+  &.info {
+    display: table;
+    height: 325px;
+    text-align: center;
+    line-height: 1.43;
+    padding: 0;
+
+    .selected {
+      display: table-cell;
+      vertical-align: middle;
+      padding: ($custom-space-base + $custom-space-xsmall) ($custom-space-base + $custom-space-small);
+    }
+  }
+
+  &.uploading {
+    background: $form-group-bg;
+
+    .title {
+      color: rgba($gray-700, 0.8);
+      font-weight: normal;
+      display: block;
+      margin: 0 0 ($custom-space-small + $custom-space-xsmall);
+      font-size: mat-font-size($br-typography, subheading-2);
+    }
+
+    p {
+      margin: 0 0 $custom-space-base;
+    }
+  }
+
+  &.success {
+    background: $gray-100;
+
+    [class*="material-icons"] {
+      color: $progress-success-text;
+      border: 2px solid $progress-success-text;
+      margin: ($custom-space-large + $custom-space-small) auto $custom-space-base;
+      position: relative;
+      @include size(48px);
+      display: block;
+      text-align: center;
+      font-size: $custom-type-size-xxlarge;
+      line-height: 46px;
+      border-radius: 50%;
+      overflow: hidden;
+      padding-left: $custom-space-xxsmall;
+    }
+
+    .title {
+      color: rgba($gray-700, 0.8);
+      font-weight: normal;
+      display: block;
+      margin: 0 0 ($custom-space-small + $custom-space-xsmall);
+      font-size: mat-font-size($br-typography, subheading-2);
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 0 0 $custom-space-base;
+    }
+  }
+
+  &.info {
+    [class*="icon-"] {
+      color: $blue-darked;
+      display: block;
+      font-size: $custom-type-size-xxxxlarge;
+      line-height: 60px;
+      margin: -$custom-space-xsmall 0 $custom-space-small;
+    }
+
+    .title {
+      color: rgba($gray-700, 0.8);
+      font-weight: normal;
+      display: block;
+      margin: 0 0 $custom-space-base;
+      font-size: mat-font-size($br-typography, subheading-2);
+      text-transform: uppercase;
+    }
+
+    .btn {
+      margin-bottom: $custom-space-small + $custom-space-xsmall;
+      min-width: 116px;
+    }
+
+    .link {
+      padding: 0;
+    }
+  }
+}
+
+.loader-anim {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin: 0 auto ($custom-space-large - $custom-space-xxsmall);
+  max-width: 44px;
+  height: 80px;
+  position: relative;
+  left: 7px;
+
+  span:after,
+  &:after,
+  &:before {
+    content: "";
+    border-radius: 50%;
+    background: $black;
+    position: absolute;
+  }
+
+  &:after {
+    @include size(5px);
+    top: 10px;
+    left: 25px;
+    animation: bubble3 1.1s infinite;
+  }
+
+  span:after {
+    @include size(4px);
+    top: 14px;
+    right: 4px;
+    animation: bubble2 0.7s infinite;
+  }
+
+  &:before {
+    @include size(6px);
+    content: "";
+    right: 0;
+    top: 0;
+    animation: bubble1 1.5s infinite;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+@keyframes bubble1 {
+  0% {
+    opacity: 0;
+    transform: translateX(-3px) translateY(5px);
+  }
+  20% {
+    opacity: 0.1;
+    transform: translateX(-2px) translateY(4px);
+  }
+  40% {
+    opacity: 0.25;
+    transform: translateX(1px) translateY(3px);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateX(1px) translateY(2px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(2px) translateY(1px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes bubble2 {
+  0% {
+    opacity: 0;
+    transform: translateX(-3px) translateY(5px);
+  }
+  20% {
+    opacity: 0.25;
+    transform: translateX(-2px) translateY(4px);
+  }
+  40% {
+    opacity: 0.5;
+    transform: translateX(-1px) translateY(3px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(1px) translateY(2px);
+  }
+  80% {
+    opacity: 0.75;
+    transform: translateX(2px) translateY(1px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes bubble3 {
+  0% {
+    opacity: 0;
+    transform: translateX(3px) translateY(5px);
+  }
+  20% {
+    opacity: 0.25;
+    transform: translateX(2px) translateY(4px);
+  }
+  40% {
+    opacity: 0.5;
+    transform: translateX(1px) translateY(3px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(1px) translateY(2px);
+  }
+  80% {
+    opacity: 0.75;
+    transform: translateX(2px) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+.range-set {
+  visibility: hidden;
+  display: flex;
+  justify-content: flex;
+
+  &.range-opened {
+    visibility: visible;
+    margin: 0px;
+    padding: 0px;
+  }
+}
+
+.input-file {
+  position: relative;
+  border: 1px dashed $gray-600;
+  border-radius: 10px;
+  padding: $custom-space-xsmall + $custom-space-xxsmall;
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: top;
+  @include size(100%, 488px);
+  overflow: hidden;
+  font-size: mat-font-size($br-typography, body-1);
+  width: 100%;
+  margin: 0 0 $custom-space-base;
+  @include media(tablet-and-up) {
+    min-width: 488px;
+    margin: $custom-space-xsmall ($custom-space-base + $custom-space-small) 0 0;
+    width: 520px;
+    height: 450px;
+  }
+
+  .aboveOthers {
+    z-index: 3;
+    margin: 0px;
+    padding: 0px;
+  }
+  .uploadFiles {
+    align-items: top;
+  }
+
+  .headerCenter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 10px auto;
+    position: relative;
+    text-align: center;
+  }
+
+  mat-icon {
+    &.publish {
+      width: 91px;
+      height: 91px;
+      color: $dark-secondary-text;
+    }
+    &.publish2 {
+      width: 46px;
+      height: 46px;
+      color: $dark-secondary-text;
+    }
+    &.close {
+      width: 14px;
+      height: 14px;
+      justify-content: center;
+      display: flex;
+    }
+  }
+
+  input {
+    cursor: pointer;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    @include size(100%);
+  }
+
+  .default,
+  .selected {
+    width: 100%;
+  }
+
+  &.selected {
+    .default {
+      display: none;
+    }
+
+    .selected {
+      display: block;
+    }
+  }
+
+  .selected {
+    .title {
+      min-height: 20px;
+    }
+  }
+
+  .border-upload-arrow {
+    display: block;
+    margin: 0 auto ($custom-space-xsmall + $custom-space-xxsmall);
+    @include size(48px);
+    border: 2px solid $blue;
+    border-radius: 50%;
+    line-height: 44px;
+    font-size: $custom-type-size-xxlarge;
+    color: $blue;
+  }
+
+  .icon-file {
+    font-size: $custom-type-size-xxxxlarge;
+    line-height: 48px;
+    display: block;
+    color: $blue;
+    margin: 0 0 ($custom-space-small + $custom-space-xsmall);
+  }
+
+  .title {
+    font-weight: normal;
+    display: block;
+    color: rgba($gray-700, 0.8);
+    min-height: 48px;
+  }
+
+  .fake-btn {
+    // margin: -$custom-space-xxsmall 0 ($custom-space-xsmall + $custom-space-xxsmall);
+    display: inline-block;
+    color: $indigo;
+    letter-spacing: -0.2px;
+  }
+}
+
+.box-on-drag .input-file {
+  background: $br-white;
+  border-style: solid;
+}
+
+.datepicker-set {
+  width: 110px;
+}
+
+.to {
+  font-size: $custom-type-size-xsmall;
+  color: $br-modalBorder;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+mat-datepicker-content.mat-datepicker-content {
+  box-shadow: 0 2px 4px 0 rgba($black, 0.22);
+  border-radius: 2px;
+}
+
+mat-calendar.mat-calendar {
+  width: 270px;
+  height: auto;
+
+  .mat-calendar-header {
+    padding-top: $custom-space-xsmall;
+  }
+
+  .mat-calendar-controls {
+    justify-content: space-between;
+    margin: 0 $custom-space-xxsmall $custom-space-xsmall;
+
+    .mat-calendar-spacer {
+      display: none;
+    }
+
+    .mat-icon-button {
+      width: 30px;
+      height: 30px;
+    }
+
+    .mat-calendar-previous-button {
+      order: 1;
+
+      &:after {
+        top: 50%;
+        left: 50%;
+        bottom: auto;
+        right: auto;
+        margin: -$custom-space-xsmall 0 0 -$custom-space-xxsmall;
+        @include size(8px);
+        border: 1px solid $gray-600;
+        border-width: 2px 2px 0 0;
+        transform: rotate(-135deg);
+      }
+
+      &:hover {
+        background: $orange;
+
+        &:after {
+          border-color: $br-white;
+        }
+      }
+    }
+
+    .mat-calendar-period-button {
+      order: 2;
+      font-weight: bold !important;
+      color: $br-black-text-high-emphasis;
+      text-transform: capitalize !important;
+      line-height: 30px !important;
+
+      .mat-calendar-arrow {
+        display: none;
+      }
+
+      &:hover {
+        background: $orange;
+        color: $br-white;
+      }
+
+      .mat-button-focus-overlay {
+        display: none;
+      }
+    }
+
+    .mat-calendar-next-button {
+      order: 3;
+
+      &:after {
+        top: 50%;
+        left: 50%;
+        bottom: auto;
+        right: auto;
+        margin: -$custom-space-xsmall 0 0 -$custom-space-xsmall;
+        @include size(8px);
+        border: 1px solid $gray-600;
+        border-width: 2px 2px 0 0;
+        transform: rotate(45deg);
+      }
+
+      &:hover {
+        background: $orange;
+
+        &:after {
+          border-color: $br-white;
+        }
+      }
+    }
+  }
+
+  .mat-calendar-table {
+    .mat-calendar-body-label {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      font-size: 0;
+      line-height: 0 !important;
+    }
+
+    .mat-calendar-table-header {
+      th {
+        font-size: mat-font-size($br-typography, caption);
+        text-transform: uppercase;
+        color: $gray-600;
+        padding: 0;
+      }
+    }
+
+    .mat-calendar-table-header-divider {
+      &:after {
+        height: 0;
+      }
+    }
+
+    .mat-calendar-body-cell-content {
+      font-size: mat-font-size($br-typography, body-2);
+      color: rgba($gray-700, 0.3);
+    }
+
+    .mat-calendar-body-cell {
+      &:hover {
+        .mat-calendar-body-cell-content {
+          color: $gray-700;
+          background: $gray-100;
+        }
+      }
+    }
+  }
+}
+
+small.red {
+  display: block;
+}
+
+.mat-input-element:disabled {
+  color: rgba($black, 1);
+}
+
+.flex-container {
+  padding-top: 20px;
+  justify-content: space-between;
+  display: flex;
+  margin-left: -100px; // make buttons extend outside container
+  margin-right: -125px;
+}
+
+.link a {
+  cursor: pointer;
+}
+
+.margin-bottom {
+  margin-bottom: $custom-space-small + $custom-space-xsmall;
+}
+
+.title {
+  background: none;
+  padding: 0;
+}
+
+.font-42 {
+  font-size: $custom-type-size-xxxxlarge;
+}
+
+.instructions-0 {
+  height: 25px;
+}
+
+.error-msg {
+  margin-top: -25px;
+}
+
+.selected {
+  .mat-icon {
+    height: 42px;
+    width: auto;
+  }
+  .blue {
+    color: $blue;
+  }
+}
+
+.slidegen-prompt {
+  min-width: 725px;
+  margin-left: -50px;
+  font-size: 16.7px;
+  padding: 5px;
+  letter-spacing: 0.5px;
+
+  .mat-radio-button {
+    margin: 0px 33px;
+    padding: 0px 3px;
+  }
+}

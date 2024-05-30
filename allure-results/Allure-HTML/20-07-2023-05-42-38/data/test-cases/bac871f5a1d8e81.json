@@ -1,0 +1,119 @@
+{
+  "uid" : "bac871f5a1d8e81",
+  "name" : "Verify Search Elements UI for LVS Role",
+  "fullName" : "PBI_231950: Verify the Functionality of Account listing screen.Verify Search Elements UI for LVS Role",
+  "historyId" : "2642ab4c84d43f0f8a2d603a5ef85e38",
+  "time" : {
+    "start" : 1689855164032,
+    "stop" : 1689855198815,
+    "duration" : 34783
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "failed",
+  "statusMessage" : "Failed: No element found using locator: By(xpath, //mat-nav-list//div[contains(text(),\"undefined\")])",
+  "statusTrace" : "NoSuchElementError: No element found using locator: By(xpath, //mat-nav-list//div[contains(text(),\"undefined\")])\n                    at C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\built\\element.js:814:27\n                    at ManagedPromise.invokeCallback_ (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:1376:14)\n                    at TaskQueue.execute_ (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:3084:14)\n                    at TaskQueue.executeNext_ (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:3067:27)\n                    at C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:2927:27\n                    at C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:668:7\n                    at processTicksAndRejections (internal/process/task_queues.js:93:5)\n                From: Task: WebDriver.executeScript()\n                    at Driver.schedule (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\webdriver.js:807:17)\n                    at Driver.executeScript (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\webdriver.js:878:16)\n                    at run (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\built\\browser.js:58:33)\n                    at ProtractorBrowser.to.<computed> (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\built\\browser.js:66:16)\n                    at BrowserLibrary.scrollToElement (C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\e2e\\utils\\browserUtil.ts:202:17)\n                    at DynamicReport.<anonymous> (C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\e2e\\page-objects\\UN-12458_QuickReport.po.ts:32:15)\n                    at step (C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\e2e\\page-objects\\UN-12458_QuickReport.po.ts:33:23)\n                    at Object.next (C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\e2e\\page-objects\\UN-12458_QuickReport.po.ts:14:53)\n                    at C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\e2e\\page-objects\\UN-12458_QuickReport.po.ts:8:71\n                    at new Promise (<anonymous>)\n                From: Task: Run it(\"Verify Search Elements UI for LVS Role\") in control flow\n                    at UserContext.<anonymous> (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasminewd2\\index.js:94:19)\n                    at attempt (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasmine-core\\lib\\jasmine-core\\jasmine.js:4297:26)\n                    at QueueRunner.run (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasmine-core\\lib\\jasmine-core\\jasmine.js:4217:20)\n                    at runNext (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasmine-core\\lib\\jasmine-core\\jasmine.js:4257:20)\n                    at C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasmine-core\\lib\\jasmine-core\\jasmine.js:4264:13\n                    at C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasmine-core\\lib\\jasmine-core\\jasmine.js:4172:9\n                    at C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasminewd2\\index.js:64:48\n                    at ControlFlow.emit (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\events.js:62:21)\n                    at ControlFlow.shutdown_ (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:2674:10)\n                    at C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:2599:53\n                From asynchronous test: \n                Error\n                    at Suite.<anonymous> (C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\e2e\\dynamic-reports-phase2\\UN-15834-ParameterSelections.spec.ts:1137:1)\n                    at addSpecsToSuite (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasmine-core\\lib\\jasmine-core\\jasmine.js:1107:25)\n                    at Env.describe (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasmine-core\\lib\\jasmine-core\\jasmine.js:1074:7)\n                    at describe (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasmine-core\\lib\\jasmine-core\\jasmine.js:4399:18)\n                    at Object.<anonymous> (C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\e2e\\dynamic-reports-phase2\\UN-15834-ParameterSelections.spec.ts:28:1)\n                    at Module._compile (internal/modules/cjs/loader.js:945:30)\n                    at Module.m._compile (C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\node_modules\\ts-node\\src\\index.ts:422:23)\n                    at Module._extensions..js (internal/modules/cjs/loader.js:962:10)\n                    at Object.require.extensions.<computed> [as .ts] (C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\node_modules\\ts-node\\src\\index.ts:425:12)",
+  "flaky" : false,
+  "newFailed" : false,
+  "newBroken" : false,
+  "newPassed" : false,
+  "retriesCount" : 0,
+  "retriesStatusChange" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "Failed: No element found using locator: By(xpath, //mat-nav-list//div[contains(text(),\"undefined\")])",
+    "statusTrace" : "NoSuchElementError: No element found using locator: By(xpath, //mat-nav-list//div[contains(text(),\"undefined\")])\n                    at C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\built\\element.js:814:27\n                    at ManagedPromise.invokeCallback_ (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:1376:14)\n                    at TaskQueue.execute_ (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:3084:14)\n                    at TaskQueue.executeNext_ (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:3067:27)\n                    at C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:2927:27\n                    at C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:668:7\n                    at processTicksAndRejections (internal/process/task_queues.js:93:5)\n                From: Task: WebDriver.executeScript()\n                    at Driver.schedule (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\webdriver.js:807:17)\n                    at Driver.executeScript (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\webdriver.js:878:16)\n                    at run (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\built\\browser.js:58:33)\n                    at ProtractorBrowser.to.<computed> (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\built\\browser.js:66:16)\n                    at BrowserLibrary.scrollToElement (C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\e2e\\utils\\browserUtil.ts:202:17)\n                    at DynamicReport.<anonymous> (C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\e2e\\page-objects\\UN-12458_QuickReport.po.ts:32:15)\n                    at step (C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\e2e\\page-objects\\UN-12458_QuickReport.po.ts:33:23)\n                    at Object.next (C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\e2e\\page-objects\\UN-12458_QuickReport.po.ts:14:53)\n                    at C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\e2e\\page-objects\\UN-12458_QuickReport.po.ts:8:71\n                    at new Promise (<anonymous>)\n                From: Task: Run it(\"Verify Search Elements UI for LVS Role\") in control flow\n                    at UserContext.<anonymous> (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasminewd2\\index.js:94:19)\n                    at attempt (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasmine-core\\lib\\jasmine-core\\jasmine.js:4297:26)\n                    at QueueRunner.run (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasmine-core\\lib\\jasmine-core\\jasmine.js:4217:20)\n                    at runNext (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasmine-core\\lib\\jasmine-core\\jasmine.js:4257:20)\n                    at C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasmine-core\\lib\\jasmine-core\\jasmine.js:4264:13\n                    at C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasmine-core\\lib\\jasmine-core\\jasmine.js:4172:9\n                    at C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasminewd2\\index.js:64:48\n                    at ControlFlow.emit (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\events.js:62:21)\n                    at ControlFlow.shutdown_ (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:2674:10)\n                    at C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\selenium-webdriver\\lib\\promise.js:2599:53\n                From asynchronous test: \n                Error\n                    at Suite.<anonymous> (C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\e2e\\dynamic-reports-phase2\\UN-15834-ParameterSelections.spec.ts:1137:1)\n                    at addSpecsToSuite (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasmine-core\\lib\\jasmine-core\\jasmine.js:1107:25)\n                    at Env.describe (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasmine-core\\lib\\jasmine-core\\jasmine.js:1074:7)\n                    at describe (C:\\Users\\anup_shet\\AppData\\Roaming\\npm\\node_modules\\protractor\\node_modules\\jasmine-core\\lib\\jasmine-core\\jasmine.js:4399:18)\n                    at Object.<anonymous> (C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\e2e\\dynamic-reports-phase2\\UN-15834-ParameterSelections.spec.ts:28:1)\n                    at Module._compile (internal/modules/cjs/loader.js:945:30)\n                    at Module.m._compile (C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\node_modules\\ts-node\\src\\index.ts:422:23)\n                    at Module._extensions..js (internal/modules/cjs/loader.js:962:10)\n                    at Object.require.extensions.<computed> [as .ts] (C:\\Users\\anup_shet\\Desktop\\Required\\Git Repo\\FEcode\\cdg-unity-next-spa\\spa\\node_modules\\ts-node\\src\\index.ts:425:12)",
+    "steps" : [ {
+      "name" : "Test case 1: To verify The search UI elements on Dynamic reports Page",
+      "time" : {
+        "start" : 1689855164174,
+        "stop" : 1689855164175,
+        "duration" : 1
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false,
+      "stepsCount" : 0
+    }, {
+      "name" : "Test case 2: To Verify that the user does not have access to Reports Icon",
+      "time" : {
+        "start" : 1689855164175,
+        "stop" : 1689855164175,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false,
+      "stepsCount" : 0
+    }, {
+      "name" : "Cookies Displayed",
+      "time" : {
+        "start" : 1689855171278,
+        "stop" : 1689855171278,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false,
+      "stepsCount" : 0
+    } ],
+    "attachments" : [ {
+      "uid" : "768262b64dea839c",
+      "name" : "Cookies displayed",
+      "source" : "768262b64dea839c.png",
+      "type" : "image/png",
+      "size" : 97164
+    } ],
+    "parameters" : [ ],
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true,
+    "stepsCount" : 3
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "PBI_231950: Verify the Functionality of Account listing screen"
+  }, {
+    "name" : "testClass",
+    "value" : "PBI_231950: Verify the Functionality of Account listing screen"
+  }, {
+    "name" : "testMethod",
+    "value" : "Verify Search Elements UI for LVS Role"
+  }, {
+    "name" : "package",
+    "value" : "PBI_231950: Verify the Functionality of Account listing screen"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "bac871f5a1d8e81.json",
+  "parameterValues" : [ ]
+}

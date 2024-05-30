@@ -1,0 +1,103 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div [ngBusy]="previewBusy">
+  <div [ngClass]="{'report-area-multi-action' : !existsOneLot, 'report-area-single-action' : existsOneLot, 'no-corrective-actions-permission': !hasReportsCorrectiveActionsEntryPermission}"
+    class="report-area">
+    <perfect-scrollbar>
+      <div class="heading">
+        <h3>{{'PREVIEWREPORT.SAVEREPORT' | translate}}</h3>
+
+        <button class="btn-close cursor-pointer" [mat-dialog-close]="true">
+          <mat-icon [svgIcon]="icons.close[24].name"></mat-icon>
+        </button>
+      </div>
+
+      <div class="report-holder" *ngIf="!noPdfGenerated">
+        <br />
+        <div *ngIf="pdfData" class="pdf-data-wrapper">
+          <ngx-extended-pdf-viewer [src]="pdfData" [useBrowserLocale]="true" height="100%" [showHandToolButton]="true"
+            [showFindButton]="true" [showDownloadButton]="false" [showBookmarkButton]="false"
+            [showPresentationModeButton]="false" [showOpenFileButton]="false" [showPrintButton]="true"
+            [showRotateButton]="false" [contextMenuAllowed]="true" [showPropertiesButton]="false"
+            [showSecondaryToolbarButton]="false" [showSpreadButton]="false" [showScrollingButton]="false"
+            [textLayer]="true" [showBorders]="false">
+          </ngx-extended-pdf-viewer>
+        </div>
+      </div>
+
+      <div *ngIf="noPdfGenerated" class="pdf-error">
+        <br />
+        {{'PREVIEWREPORT.UNAVAILABLE' | translate}}
+      </div>
+    </perfect-scrollbar>
+  </div>
+
+  <footer class="footer-holder" *ngIf="!noPdfGenerated">
+    <ng-template [ngIf]="existsOneLot">
+      <div *ngIf="hasReportsCorrectiveActionsEntryPermission" class="form-elements-single-action">
+        <div class="form-item-single-action" *ngIf="showCorrectiveActionsField && allowSave">
+          <mat-form-field>
+            <input matInput tabindex="0" placeholder="{{'PREVIEWREPORT.CORRECTIVE' | translate}}"
+              [(ngModel)]="correctiveActionsDefault" [maxLength]=1000>
+          </mat-form-field>
+        </div>
+        <div class="form-check-single-action">
+          <mat-checkbox *ngIf="allowSave" [(ngModel)]="btnActive">
+            {{'PREVIEWREPORT.CHECKBOX' | translate}}
+          </mat-checkbox>
+        </div>
+      </div>
+      <div class="btns">
+        <button mat-button color="primary" [mat-dialog-close]="true">
+          {{'PREVIEWREPORT.CANCEL' | translate}}</button>
+        <button mat-raised-button color="primary" *ngIf="allowSave" [disabled]="!btnActive" (click)="onSave()">
+          {{'PREVIEWREPORT.SAVE' | translate}}</button>
+      </div>
+    </ng-template>
+    <ng-template [ngIf]="!existsOneLot">
+      <div  [ngClass]="{'no-corrective-actions-permission': !hasReportsCorrectiveActionsEntryPermission}" class="form-elements">
+        <div class="form-item" *ngIf="showCorrectiveActionsField && allowSave && hasReportsCorrectiveActionsEntryPermission">
+          <perfect-scrollbar class="correctiveActionScrollBar"
+            [config]="{suppressScrollX: true, suppressScrollY: false}">
+            <ng-container *ngIf="!data?.fromNotification">
+              <div *ngFor="let product of instrument.children;let index = index;">
+                <mat-form-field>
+                  <input matInput placeholder="{{'PREVIEWREPORT.ACTIONS' | translate}} {{product.lotInfo.lotNumber}}"
+                    [(ngModel)]="correctiveActionsDict[product.lotInfo.lotNumber]" [maxLength]=1000>
+                </mat-form-field>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="data?.fromNotification && data?.instrumentChildren">
+              <div *ngFor="let product of data.instrumentChildren;let index = index;">
+                <mat-form-field>
+                  <input matInput placeholder="{{'PREVIEWREPORT.ACTIONS' | translate}} {{product.lotInfo.lotNumber}}"
+                    [(ngModel)]="correctiveActionsDict[product.lotInfo.lotNumber]" [maxLength]=1000>
+                </mat-form-field>
+              </div>
+            </ng-container>
+          </perfect-scrollbar>
+        </div>
+        <div class="form-check">
+          <mat-form-field *ngIf="hasReportsCorrectiveActionsEntryPermission">
+              <input matInput placeholder="{{'PREVIEWREPORT.LOTS' | translate}}"
+                     [(ngModel)]="correctiveActionsDefault" [maxLength]=1000>
+          </mat-form-field>
+          <div class="flex-ctn signatureDiv">
+            <div *ngIf="hasReportsCorrectiveActionsEntryPermission">
+                <mat-checkbox *ngIf="allowSave" [(ngModel)]="btnActive">
+                    {{'PREVIEWREPORT.CHECKBOX' | translate}}
+                </mat-checkbox>
+            </div>
+            <div *ngIf="hasReportsSaveAndDownloadPermission">
+                <button mat-button color="primary" [mat-dialog-close]="true">
+                    {{'PREVIEWREPORT.CANCEL' | translate}}
+                </button>
+                <button mat-raised-button color="primary" *ngIf="allowSave" [disabled]="!btnActive" (click)="onSave()">
+                    {{'PREVIEWREPORT.SAVE' | translate}}
+                </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </footer>
+</div>

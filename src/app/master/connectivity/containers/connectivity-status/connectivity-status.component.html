@@ -1,0 +1,33 @@
+<!--  © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.  -->
+<div class="connectivity-status-component">
+  <div class="conn-scrollbar" [ngClass]="totalPages > 1 ? 'status-wrapper-pagination':'status-wrapper'">
+    <h2 class="mat-display-1 mb-40 mt-40" >{{'CONNECTIVITY.DATAIMPORT' | translate}}</h2>
+    <div *ngFor="let importStatus of statusList | paginate: paginationConfig">
+      <unext-connectivity-status-details [importStatus]="importStatus" [timeZone]="labTimeZone"
+        (emitterObjectRefresh)="refreshStatuses($event)">
+      </unext-connectivity-status-details>
+    </div>
+  </div>
+
+  <div class="pagination-container" *ngIf="(statusList && statusList.length > 0) && totalPages > 1">
+    <pagination-template class="spec-pagination-control" #p="paginationApi" id="paginationStatus"
+      (pageChange)="onStatusPageChange($event)" [maxSize]="maxSize">
+      <div class="custom-pagination">
+        <button mat-stroked-button color="primary" class="pagination-button spec-prev-button" (click)="p.previous()"
+          [ngClass]="{'selected disable-button' : p.isFirstPage()}" [disabled]="p.isFirstPage()">
+          <mat-icon [svgIcon]="icons.arrowBack[24].name"></mat-icon>
+        </button>
+        <div *ngFor="let page of p.pages, let index = index">
+          <button mat-stroked-button color="primary" class="pagination-button spec-page-button"
+            [ngClass]="{ 'selected' : p.getCurrent() === page.value }" (click)="p.setCurrent(page.value)">
+            {{ page.value }}
+          </button>
+        </div>
+        <button mat-stroked-button color="primary" class="pagination-button spec-next-button" (click)="p.next()"
+          [ngClass]="{'selected disable-button' : p.isLastPage()}" [disabled]="p.isLastPage()">
+          <mat-icon class="rotateArrow" [svgIcon]="icons.arrowBack[24].name"></mat-icon>
+        </button>
+      </div>
+    </pagination-template>
+  </div>
+</div> <!-- /connectivity-status-component -->

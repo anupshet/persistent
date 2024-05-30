@@ -1,0 +1,15 @@
+{"QA": 
+  {
+    "URL": "https://qcpcentralqa.global.bio-rad.com/",
+    "Username": "amruta_karale+qaqcpadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "MainMenu": "Code List",
+    "SubMenu": "Units",
+    "SubMenuOption": "Unit System Types",
+    "NewSystemTypeName": "TestAuto_UnitSystemType",
+    "UnitSystemType": "Conventional Unit",
+    "FileName": "unitSystemTypes.csv",
+    "PageOptions" : ["10", "25", "50", "100"],
+    "PageButton": "2"
+  }
+}

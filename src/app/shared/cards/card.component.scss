@@ -1,0 +1,61 @@
+@import "../../../../../SPA/projects/br-component-library/src/scss/main";
+
+.card-component {
+  .panel-count-badge {
+    display: inline-flex;
+    width: $custom-type-size-xxlarge + $custom-type-size-xxsmall;
+    height: $custom-type-size-xxlarge;
+    margin-left: $custom-type-size-xxsmall;
+    border-radius: $custom-type-size-xxsmall;
+    text-align: center;
+    background-color: $br-black-text-medium-emphasis;
+    em {
+      font-style: normal;
+      width: 11px;
+      height: 21px;
+      color: $white;
+      padding-left: 11px;
+    }
+  }
+  mat-expansion-panel-header {
+    align-items: flex-start;
+    padding: $custom-type-size-xxlarge;
+    position: relative;
+  
+    button {
+      padding-left: 0px;
+    }
+  }
+  mat-panel-title{
+  &.mat-expansion-panel-header-title {
+    display: inherit;
+    flex-grow: unset;
+     margin-right: 0px;
+}
+  }
+  .mat-content{
+    display:inline-grid;
+  }
+  mat-icon {
+    color: $br-cardBlue;
+  }
+  .flex{
+    display:flex; 
+    align-items:center;
+    justify-content:space-between;
+    & .visibility-icon{
+      position: absolute;
+      right: $custom-type-size-base;
+      display: inline-flex;
+    }
+  }
+}
+
+mat-expansion-panel {
+  mat-expansion-panel-header {
+    height: auto!important; 
+    padding: 15px;
+  }
+}
+
+

@@ -1,0 +1,116 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../scss/main';
+
+.mat-dialog-container {
+  padding: 0px !important;
+}
+
+.mat-button {
+  min-width: 0px !important;
+}
+
+.br-dialog {
+  width: auto;
+
+
+.flex-ctn-1 {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14px;
+  .close-button {
+    margin-right: 14px;
+  }
+}
+
+.flex-ctn-2 {
+  display: flex;
+  justify-content: center;
+  padding: 14px;
+
+  button:first-child {
+    margin-right: 0.87em;
+  }
+  }
+
+  .icon-cancel {
+    color: $black-87-opacity;
+  }
+
+  .close-button {
+    flex: 1;
+    max-width: 36px;
+    padding: 0;
+  }
+
+  .dialog-title {
+    font-family: Lato;
+    font-size: 25px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.25px;
+    text-align: center;
+    color: $label-color;
+    margin: 0;
+    padding: 14px 48px;
+  }
+  
+  .dialog-message {
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.25px;
+    text-align: center;
+    color: $label-color;
+    gap: 10px;
+    margin: 0;
+    padding: 14px 48px;
+  }
+  
+  .border-line {
+    border-top: solid 1px $text_header_underline_color;
+    margin-top: 35px;
+    margin-bottom: 0;
+  }
+
+  .dialog-ok {
+    padding: 10px 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $blue-darker !important;
+    font-family: Lato;
+    font-size: 14.6px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.1;
+    letter-spacing: 1.25px;
+    text-align: center;
+    color: $white !important;
+  }
+  
+  .dialog-cancel {
+    padding: 10px 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $white !important;
+    border: solid 1px $light-gray !important;
+    font-family: Lato;
+    font-size: 14.6px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.1;
+    letter-spacing: 1.25px;
+    text-align: center;
+    color: $blue-darker !important;
+  }
+}

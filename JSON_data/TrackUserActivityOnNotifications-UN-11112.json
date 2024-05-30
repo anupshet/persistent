@@ -1,0 +1,308 @@
+{
+	"DEV": {
+		"URL": "https://unity-dev.qcnet.com/",
+		"UserName": "mayank_jatay+AuditTrailDev@bio-rad.com",
+		"Password": "Welcome1",
+		"FirstName": "Bruce",
+		"departmentName": "Noti",
+		"instrumentName": "Access",
+		"reportType": "Lab Histogram",
+		"AuditTrailAPI": "https://unity-dev-api.qcnet.com/tracking/at",
+		"NotificationAPISuccessStatusCode": "200",
+		"payLoadAccessNotification": {
+			"account_id": "",
+			"accountNumber": "",
+			"accountName": "",
+			"group_id": "",
+			"groupName": "",
+			"user_id": "",
+			"location_id": "",
+			"locationName": "",
+			"userRoles": [
+				""
+			],
+			"eventDateTime": "",
+			"localDateTime": "",
+			"awsCorrelationId": "",
+			"auditTrail": {
+				"device_id": "",
+				"run_id": "",
+				"runDateTime": "",
+				"eventType": "",
+				"action": "",
+				"actionStatus": "",
+				"priorValue": {},
+				"currentValue": {},
+				"hierarchy": {
+					"account": [
+						{
+							"id": "",
+							"name": "",
+							"groups": [
+								{
+									"id": "",
+									"name": "",
+									"locations": [
+										{
+											"id": "",
+											"name": "",
+											"departments": [
+												{
+													"id": "",
+													"name": "",
+													"instruments": [
+														{
+															"id": "",
+															"name": "",
+															"controls": [
+																{
+																	"id": "",
+																	"name": "",
+																	"analytes": [
+																		{
+																			"id": "",
+																			"name": ""
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		"payLoadNotificationSelected": {
+			"account_id": "",
+			"accountNumber": "",
+			"accountName": "",
+			"group_id": "",
+			"groupName": "",
+			"user_id": "",
+			"location_id": "",
+			"locationName": "",
+			"userRoles": [
+				""
+			],
+			"eventDateTime": "",
+			"localDateTime": "2",
+			"awsCorrelationId": "",
+			"auditTrail": {
+				"device_id": "",
+				"run_id": "",
+				"runDateTime": "",
+				"eventType": "",
+				"action": "",
+				"actionStatus": "",
+				"priorValue": {},
+				"currentValue": {
+					"ids": [
+						""
+					]
+				},
+				"hierarchy": {
+					"account": [
+						{
+							"id": "",
+							"name": "",
+							"groups": [
+								{
+									"id": "",
+									"name": "",
+									"locations": [
+										{
+											"id": "",
+											"name": "",
+											"departments": [
+												{
+													"id": "",
+													"name": "",
+													"instruments": [
+														{
+															"id": "",
+															"name": "",
+															"controls": [
+																{
+																	"id": "",
+																	"name": "",
+																	"analytes": [
+																		{
+																			"id": "",
+																			"name": ""
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		"payLoadClearIndividualNotification": {
+			"account_id": "",
+			"accountNumber": "",
+			"accountName": "",
+			"group_id": "",
+			"groupName": "",
+			"user_id": "",
+			"location_id": "",
+			"locationName": "",
+			"userRoles": [
+				""
+			],
+			"eventDateTime": "",
+			"localDateTime": "",
+			"awsCorrelationId": "",
+			"auditTrail": {
+				"device_id": "",
+				"run_id": "",
+				"runDateTime": "",
+				"eventType": "",
+				"action": "",
+				"actionStatus": "",
+				"priorValue": {},
+				"currentValue": {
+					"ids": [
+						""
+					]
+				},
+				"hierarchy": {
+					"account": [
+						{
+							"id": "",
+							"name": "",
+							"groups": [
+								{
+									"id": "",
+									"name": "",
+									"locations": [
+										{
+											"id": "",
+											"name": "",
+											"departments": [
+												{
+													"id": "",
+													"name": "",
+													"instruments": [
+														{
+															"id": "",
+															"name": "",
+															"controls": [
+																{
+																	"id": "",
+																	"name": "",
+																	"analytes": [
+																		{
+																			"id": "",
+																			"name": ""
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		"payLoadClearAllNotification": {
+			"account_id": "",
+			"accountNumber": "",
+			"accountName": "",
+			"group_id": "",
+			"groupName": "",
+			"user_id": "",
+			"location_id": "",
+			"locationName": "",
+			"userRoles": [
+				""
+			],
+			"eventDateTime": "",
+			"localDateTime": "",
+			"awsCorrelationId": "",
+			"auditTrail": {
+				"device_id": "",
+				"run_id": "",
+				"runDateTime": "",
+				"eventType": "",
+				"action": "",
+				"actionStatus": "",
+				"priorValue": {},
+				"currentValue": {
+					"ids": [
+						""
+					]
+				},
+				"hierarchy": {
+					"account": [
+						{
+							"id": "",
+							"name": "",
+							"groups": [
+								{
+									"id": "",
+									"name": "",
+									"locations": [
+										{
+											"id": "",
+											"name": "",
+											"departments": [
+												{
+													"id": "",
+													"name": "",
+													"instruments": [
+														{
+															"id": "",
+															"name": "",
+															"controls": [
+																{
+																	"id": "",
+																	"name": "",
+																	"analytes": [
+																		{
+																			"id": "",
+																			"name": ""
+																		}
+																	]
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		}
+	},
+	"QA": {},
+	"STAGE": {},
+	"DEV2": {}
+}

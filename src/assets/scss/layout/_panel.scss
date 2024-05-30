@@ -1,0 +1,244 @@
+// Style guide: layout.panel
+
+@mixin layout\panel {
+  .panel {
+    background: mat-color($mat-grey, A100);
+    box-shadow: $shadow;
+    margin: 0 -$custom-space-small;
+    z-index: 15;
+    position: relative;
+
+    @include media(tablet-and-up) {
+      width: 300px;
+      min-height: calc(100vh - 30px);
+      margin: 0 -$custom-space-small 0 0;
+    }
+
+    @include media(desktop-and-up) {
+      width: 400px;
+    }
+  }
+
+  .heading {
+    .icon {
+      width: 20%;
+      max-width: 62px;
+      display: block;
+      text-align: center;
+      margin: -$custom-space-xsmall $custom-space-small 0 0;
+    }
+
+    img {
+      height: auto;
+      vertical-align: top;
+    }
+
+    .title {
+      font-size: mat-font-size($br-typography, title);
+      line-height: 1;
+      display: block;
+      padding: 0 0 $custom-space-xsmall;
+    }
+
+    .descr {
+      width: 80%;
+    }
+
+    p {
+      margin: 0 0 $custom-space-xsmall;
+    }
+
+    .title,
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &.type-lab {
+      background: $setup-item-lab-bg;
+    }
+
+    &.type-chem {
+      background: $setup-item-chem-bg;
+    }
+
+    &.type-new {
+      background: $setup-item-new-head;
+    }
+  }
+
+  .subtitle {
+    font-size: mat-font-size($br-typography, subheading-2);
+    display: block;
+    font-weight: normal;
+    margin: 0 0 $custom-space-xxsmall;
+  }
+
+  .form-container {
+    @include media(tablet-and-up) {
+      height: calc(100vh - 172px);
+    }
+
+    .ps-content {
+      padding: $custom-space-base;
+
+      @include media(tablet-and-up) {
+        height: 1px;
+        min-height: 100%;
+      }
+    }
+  }
+
+  .aside-content {
+    @include media(tablet-and-up) {
+      height: calc(100vh - 110px);
+    }
+
+    .ps-content {
+      padding: $custom-space-base;
+    }
+  }
+
+  .notis-list {
+    @extend %listreset;
+    padding: $custom-space-xsmall 0 $custom-space-small;
+
+    li {
+      position: relative;
+      padding: 0 0 $custom-space-small $custom-space-base;
+
+      &:before {
+        border-radius: 50%;
+        position: absolute;
+        left: 0;
+        top: 9px;
+        @include size (6px);
+        background: $orange;
+        content: '';
+      }
+    }
+  }
+
+  .info-group,
+  .form-group {
+    margin: 0 0 9px;
+    background: $form-group-bg;
+    padding: $custom-space-small $custom-space-base $custom-space-base;
+    border-radius: $custom-border-radius-large;
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .fab-frame {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+
+    .info-group {
+      flex-grow: 1;
+    }
+  }
+
+  .info-group {
+    .label {
+      color: $gray-600;
+      font-size: mat-font-size($br-typography, caption);
+      font-weight: normal;
+      margin: $custom-space-xsmall 0 0;
+      display: block;
+    }
+
+    .value {
+      line-height: 1.2;
+      margin: 0 0 $custom-space-small + $custom-space-xsmall;
+
+      &:only-child {
+        margin: $custom-space-small 0 -1px;
+      }
+
+      + .value {
+        margin-top: -$custom-space-small;
+      }
+    }
+  }
+
+  .note-holder {
+    margin-top: auto;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .add {
+    border-radius: $custom-border-radius-large;
+    display: block;
+    width: 100%;
+    background: $form-group-bg;
+    border: 1px dashed $gray-300;
+    text-align: left;
+    color: $blue-dark;
+    padding: $custom-space-small + $custom-space-xsmall $custom-space-base;
+    margin: 0 0 $custom-space-small;
+    cursor: pointer;
+    transition: all .3s ease;
+
+    &:hover {
+      color: mat-color($mat-grey, A100);
+      background: $btn-bg-hover;
+    }
+  }
+
+  .btn-holder {
+    @include clearfix();
+    text-align: center;
+    padding: $custom-space-small;
+    border-top: 1px solid $gray-400;
+
+    button {
+      min-width: 166px;
+    }
+
+    button[type="reset"] {
+      float: left;
+      min-width: 0;
+
+      @include media(desktop-and-up) {
+        min-width: 106px;
+      }
+
+      + button[type="submit"] {
+        float: right;
+        min-width: 0;
+
+        @include media(desktop-and-up) {
+          min-width: 150px;
+        }
+      }
+    }
+
+    &.align-right {
+      text-align: right;
+    }
+  }
+
+  .link {
+    padding-top: $custom-space-small;
+
+    button {
+      cursor: pointer;
+      color: $blue-dark;
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      display: inline;
+
+      &:hover {
+        color: $link-hover-color;
+      }
+    }
+  }
+}

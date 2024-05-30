@@ -1,0 +1,17 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="flex-container" *ngIf="label && !isBrControlNotPresent">
+  <span class="data">{{label}}</span>
+  <div class="flex-item-1">
+    <mat-form-field>
+      <input matInput readonly [matDatepicker]="picker" placeholder="{{'QUICKACCESSREPORT.MONTH' | translate}}" [max]="maxDate" [formControl]="date" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="year" (monthSelected)="chosenMonthHandler($event, picker)"
+        panelClass="hide-years-btn">
+      </mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="flex-item-2">
+    <button mat-raised-button color="primary" class="create-btn" [disabled]="!isVisible || isDisabled || isBrControlNotPresent"
+      (click)="routeToReports()">{{'QUICKACCESSREPORT.CREATE' | translate}}</button>
+  </div>
+</div>

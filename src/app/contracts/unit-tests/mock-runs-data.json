@@ -1,0 +1,2138 @@
+{
+  "runs": [
+    {
+      "runDateTime": "2018-03-08T01:43:31.021Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 31.0,
+          "cv": 0.0,
+          "sd": 0.0,
+          "mean": 0.0,
+          "zScore": 0.0,
+          "measuredDateTime": "2018-03-08T01:43:31.021Z",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null,
+        null,
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2018-03-08T01:43:31.021Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        null,
+        {
+          "Level": 2,
+          "value": 42.0,
+          "cv": 66.315016537792076,
+          "sd": 3.4583281124458578,
+          "mean": 5.2150000000000007,
+          "zScore": 10.63664256367632,
+          "measuredDateTime": "2018-03-08T01:43:31.021Z",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null,
+        null
+      ],
+      "runReasons": [
+        "1-2S[W]",
+        "1-3S"
+      ]
+    },
+    {
+      "runDateTime": "2018-03-08T01:43:31.021Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        null,
+        null,
+        {
+          "Level": 3,
+          "value": 53.0,
+          "cv": 54.629028635347495,
+          "sd": 3.4525546097539621,
+          "mean": 6.32,
+          "zScore": 13.520423360755048,
+          "measuredDateTime": "2018-03-08T01:43:31.021Z",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": [
+        "1-2S[W]",
+        "1-3S"
+      ]
+    },
+    {
+      "runDateTime": "2018-03-08T01:43:31.021Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 130.62951568912345,
+          "sd": 12.394128448584032,
+          "mean": 9.488,
+          "zScore": -0.68484040932863754,
+          "measuredDateTime": "2018-03-08T01:43:31.021Z",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 133.00320028619973,
+          "sd": 16.721162339981031,
+          "mean": 12.572,
+          "zScore": -0.6322526978116757,
+          "measuredDateTime": "2018-03-08T01:43:31.021Z",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null,
+        null
+      ],
+      "runReasons": [
+        "1-2S[W]",
+        "1-3S"
+      ]
+    },
+    {
+      "runDateTime": "2018-03-03T01:02:30Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 7.11,
+          "cv": 0.0,
+          "sd": 0.0,
+          "mean": 0.0,
+          "zScore": 0.0,
+          "measuredDateTime": "2018-03-03T01:02:30",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 8.21,
+          "cv": 0.0,
+          "sd": 0.0,
+          "mean": 0.0,
+          "zScore": 0.0,
+          "measuredDateTime": "2018-03-03T01:02:30",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 9.31,
+          "cv": 0.0,
+          "sd": 0.0,
+          "mean": 0.0,
+          "zScore": 0.0,
+          "measuredDateTime": "2018-03-03T01:02:30",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2018-03-02T01:02:30Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.11,
+          "cv": 0.0,
+          "sd": 0.0,
+          "mean": 0.0,
+          "zScore": 0.0,
+          "measuredDateTime": "2018-03-02T01:02:30",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.22,
+          "cv": 0.0,
+          "sd": 0.0,
+          "mean": 0.0,
+          "zScore": 0.0,
+          "measuredDateTime": "2018-03-02T01:02:30",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.33,
+          "cv": 0.0,
+          "sd": 0.0,
+          "mean": 0.0,
+          "zScore": 0.0,
+          "measuredDateTime": "2018-03-02T01:02:30",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2018-03-02T01:02:30Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.11,
+          "cv": 0.0,
+          "sd": 0.0,
+          "mean": 0.0,
+          "zScore": 0.0,
+          "measuredDateTime": "2018-03-02T01:02:30",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.22,
+          "cv": 0.0,
+          "sd": 0.0,
+          "mean": 0.0,
+          "zScore": 0.0,
+          "measuredDateTime": "2018-03-02T01:02:30",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.33,
+          "cv": 0.0,
+          "sd": 0.0,
+          "mean": 0.0,
+          "zScore": 0.0,
+          "measuredDateTime": "2018-03-02T01:02:30",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2018-01-29T01:02:30Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 7.11,
+          "cv": 0.0,
+          "sd": 0.0,
+          "mean": 0.0,
+          "zScore": 0.0,
+          "measuredDateTime": "2018-01-29T01:02:30",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 8.21,
+          "cv": 0.0,
+          "sd": 0.0,
+          "mean": 0.0,
+          "zScore": 0.0,
+          "measuredDateTime": "2018-01-29T01:02:30",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 9.31,
+          "cv": 0.0,
+          "sd": 0.0,
+          "mean": 0.0,
+          "zScore": 0.0,
+          "measuredDateTime": "2018-01-29T01:02:30",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-29T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.23,
+          "cv": 7.1203753417328626,
+          "sd": 0.075062,
+          "mean": 1.054186,
+          "zScore": 2.3422504063307654,
+          "measuredDateTime": "2017-03-29T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 2,
+          "reasons": [
+            "1-2S(W)"
+          ]
+        },
+        {
+          "Level": 2,
+          "value": 2.32,
+          "cv": 3.066370857943248,
+          "sd": 0.062611,
+          "mean": 2.04186,
+          "zScore": 4.4423503857149713,
+          "measuredDateTime": "2017-03-29T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 3,
+          "reasons": [
+            "1-3S"
+          ]
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.7632965001749961,
+          "sd": 0.053555,
+          "mean": 3.037209,
+          "zScore": -0.69478106619362945,
+          "measuredDateTime": "2017-03-29T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-28T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.1,
+          "cv": 7.1813084289641491,
+          "sd": 0.075626,
+          "mean": 1.053095,
+          "zScore": 0.62022320366011952,
+          "measuredDateTime": "2017-03-28T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.1,
+          "cv": 3.0728124221995263,
+          "sd": 0.0627,
+          "mean": 2.040476,
+          "zScore": 0.94934609250398927,
+          "measuredDateTime": "2017-03-28T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.1,
+          "cv": 1.75536957697596,
+          "sd": 0.053288,
+          "mean": 3.035714,
+          "zScore": 1.2063879297402804,
+          "measuredDateTime": "2017-03-28T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-27T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.2167793700623113,
+          "sd": 0.076093,
+          "mean": 1.05439,
+          "zScore": -0.71478322578949371,
+          "measuredDateTime": "2017-03-27T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.0932718349536583,
+          "sd": 0.063148,
+          "mean": 2.041463,
+          "zScore": -0.65660036739088823,
+          "measuredDateTime": "2017-03-27T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.7666556345368234,
+          "sd": 0.053646,
+          "mean": 3.036585,
+          "zScore": -0.68197069679006994,
+          "measuredDateTime": "2017-03-27T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-26T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.12,
+          "cv": 7.2167793700623113,
+          "sd": 0.076093,
+          "mean": 1.05439,
+          "zScore": 0.86223437109852641,
+          "measuredDateTime": "2017-03-26T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.21,
+          "cv": 3.0932718349536583,
+          "sd": 0.063148,
+          "mean": 2.041463,
+          "zScore": 2.6689206308988433,
+          "measuredDateTime": "2017-03-26T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 2,
+          "reasons": [
+            "1-2S(W)"
+          ]
+        },
+        {
+          "Level": 3,
+          "value": 3.21,
+          "cv": 1.7666556345368234,
+          "sd": 0.053646,
+          "mean": 3.036585,
+          "zScore": 3.2325802482943717,
+          "measuredDateTime": "2017-03-26T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 3,
+          "reasons": [
+            "1-3S"
+          ]
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-25T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.2513379114373668,
+          "sd": 0.076556,
+          "mean": 1.05575,
+          "zScore": -0.72822509013010039,
+          "measuredDateTime": "2017-03-25T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.1137331701346391,
+          "sd": 0.063598,
+          "mean": 2.0425,
+          "zScore": -0.66826000817635745,
+          "measuredDateTime": "2017-03-25T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.7779423868312758,
+          "sd": 0.054005,
+          "mean": 3.0375,
+          "zScore": -0.69438014998611408,
+          "measuredDateTime": "2017-03-25T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-24T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.1,
+          "cv": 7.3216292201419479,
+          "sd": 0.077215,
+          "mean": 1.054615,
+          "zScore": 0.587774396166548,
+          "measuredDateTime": "2017-03-24T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.1,
+          "cv": 3.1225961844680077,
+          "sd": 0.063733,
+          "mean": 2.041026,
+          "zScore": 0.92532910736980978,
+          "measuredDateTime": "2017-03-24T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.1,
+          "cv": 1.7701193419934869,
+          "sd": 0.053739,
+          "mean": 3.035897,
+          "zScore": 1.1928580732801177,
+          "measuredDateTime": "2017-03-24T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-23T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.3595807782192546,
+          "sd": 0.077721,
+          "mean": 1.056052,
+          "zScore": -0.721195043810553,
+          "measuredDateTime": "2017-03-23T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.1450864940409557,
+          "sd": 0.064226,
+          "mean": 2.042106,
+          "zScore": -0.655591193597608,
+          "measuredDateTime": "2017-03-23T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.7824766649038704,
+          "sd": 0.054131,
+          "mean": 3.036842,
+          "zScore": -0.68060815429236565,
+          "measuredDateTime": "2017-03-23T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-22T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.2,
+          "cv": 7.1232444464297773,
+          "sd": 0.074948,
+          "mean": 1.052161,
+          "zScore": 1.972554304317661,
+          "measuredDateTime": "2017-03-22T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.1,
+          "cv": 3.1547026009278909,
+          "sd": 0.064373,
+          "mean": 2.040541,
+          "zScore": 0.92366364780264909,
+          "measuredDateTime": "2017-03-22T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.1,
+          "cv": 1.7735949142295153,
+          "sd": 0.053831,
+          "mean": 3.035135,
+          "zScore": 1.2049748286303463,
+          "measuredDateTime": "2017-03-22T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-21T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.1643207638500019,
+          "sd": 0.075484,
+          "mean": 1.05361,
+          "zScore": -0.71021673467224766,
+          "measuredDateTime": "2017-03-21T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.1795096849780111,
+          "sd": 0.064915,
+          "mean": 2.041667,
+          "zScore": -0.641870137872601,
+          "measuredDateTime": "2017-03-21T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.787220559459124,
+          "sd": 0.054262,
+          "mean": 3.036111,
+          "zScore": -0.66549334709373054,
+          "measuredDateTime": "2017-03-21T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-20T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.2043383734132469,
+          "sd": 0.076016,
+          "mean": 1.055142,
+          "zScore": -0.72539991580719876,
+          "measuredDateTime": "2017-03-20T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.2044827415722192,
+          "sd": 0.065463,
+          "mean": 2.042857,
+          "zScore": -0.654675160014056,
+          "measuredDateTime": "2017-03-20T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.8008700940324509,
+          "sd": 0.054695,
+          "mean": 3.037143,
+          "zScore": -0.67909315293902417,
+          "measuredDateTime": "2017-03-20T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-19T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.2,
+          "cv": 7.2043383734132469,
+          "sd": 0.076016,
+          "mean": 1.055142,
+          "zScore": 1.9056251315512514,
+          "measuredDateTime": "2017-03-19T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 3.2,
+          "cv": 3.2044827415722192,
+          "sd": 0.065463,
+          "mean": 2.042857,
+          "zScore": 17.676290423598065,
+          "measuredDateTime": "2017-03-19T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 3,
+          "reasons": [
+            "1-3S"
+          ]
+        },
+        {
+          "Level": 3,
+          "value": 3.2,
+          "cv": 1.8008700940324509,
+          "sd": 0.054695,
+          "mean": 3.037143,
+          "zScore": 2.977548221958136,
+          "measuredDateTime": "2017-03-19T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 2,
+          "reasons": [
+            "1-2S(W)"
+          ]
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-18T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.1,
+          "cv": 7.2831016214297852,
+          "sd": 0.076751,
+          "mean": 1.053823,
+          "zScore": 0.601646884079688,
+          "measuredDateTime": "2017-03-18T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.1,
+          "cv": 3.2176059291310497,
+          "sd": 0.065677,
+          "mean": 2.041176,
+          "zScore": 0.89565601352071478,
+          "measuredDateTime": "2017-03-18T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.1,
+          "cv": 1.7921163485316416,
+          "sd": 0.054396,
+          "mean": 3.035294,
+          "zScore": 1.1895359952937743,
+          "measuredDateTime": "2017-03-18T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-17T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.3276523657118178,
+          "sd": 0.07734,
+          "mean": 1.055454,
+          "zScore": -0.71701577450219667,
+          "measuredDateTime": "2017-03-17T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.2454083970811154,
+          "sd": 0.066285,
+          "mean": 2.042424,
+          "zScore": -0.64002413819114456,
+          "measuredDateTime": "2017-03-17T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.8072602626035617,
+          "sd": 0.054875,
+          "mean": 3.036364,
+          "zScore": -0.6626697038724344,
+          "measuredDateTime": "2017-03-17T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-16T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.3708814050872737,
+          "sd": 0.077924,
+          "mean": 1.057187,
+          "zScore": -0.73388173091730535,
+          "measuredDateTime": "2017-03-16T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.2733944954128438,
+          "sd": 0.0669,
+          "mean": 2.04375,
+          "zScore": -0.65396113602391892,
+          "measuredDateTime": "2017-03-16T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.8224526748971195,
+          "sd": 0.055357,
+          "mean": 3.0375,
+          "zScore": -0.67742110302220293,
+          "measuredDateTime": "2017-03-16T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-15T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.2,
+          "cv": 7.3708814050872737,
+          "sd": 0.077924,
+          "mean": 1.057187,
+          "zScore": 1.8327216261998853,
+          "measuredDateTime": "2017-03-15T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 3.1,
+          "cv": 3.2733944954128438,
+          "sd": 0.0669,
+          "mean": 2.04375,
+          "zScore": 15.788490284005977,
+          "measuredDateTime": "2017-03-15T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 3,
+          "reasons": [
+            "1-3S"
+          ]
+        },
+        {
+          "Level": 3,
+          "value": 3.3,
+          "cv": 1.8224526748971195,
+          "sd": 0.055357,
+          "mean": 3.0375,
+          "zScore": 4.7419477211554044,
+          "measuredDateTime": "2017-03-15T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 3,
+          "reasons": [
+            "1-3S"
+          ]
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-14T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.4123350380347341,
+          "sd": 0.078499,
+          "mean": 1.059032,
+          "zScore": -0.75200957973986893,
+          "measuredDateTime": "2017-03-14T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.3014515727612643,
+          "sd": 0.06752,
+          "mean": 2.045161,
+          "zScore": -0.6688536729857788,
+          "measuredDateTime": "2017-03-14T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.8376218856027724,
+          "sd": 0.05584,
+          "mean": 3.03871,
+          "zScore": -0.6932306590257884,
+          "measuredDateTime": "2017-03-14T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-13T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.23,
+          "cv": 6.9330401686835961,
+          "sd": 0.073028,
+          "mean": 1.053333,
+          "zScore": 2.4191679903598606,
+          "measuredDateTime": "2017-03-13T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 2,
+          "reasons": [
+            "1-2S(W)"
+          ]
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.3294636252324512,
+          "sd": 0.068143,
+          "mean": 2.046666,
+          "zScore": -0.68482456011622761,
+          "measuredDateTime": "2017-03-13T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.8527302631578948,
+          "sd": 0.056323,
+          "mean": 3.04,
+          "zScore": -0.71018944303393,
+          "measuredDateTime": "2017-03-13T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-12T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 6.97611384684203,
+          "sd": 0.07361,
+          "mean": 1.055172,
+          "zScore": -0.74951772856948784,
+          "measuredDateTime": "2017-03-12T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.3573128608219114,
+          "sd": 0.068767,
+          "mean": 2.048275,
+          "zScore": -0.70200823069204488,
+          "measuredDateTime": "2017-03-12T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.8676396463577869,
+          "sd": 0.056802,
+          "mean": 3.041379,
+          "zScore": -0.72847787049751866,
+          "measuredDateTime": "2017-03-12T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-11T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.1,
+          "cv": 7.06596897598738,
+          "sd": 0.074445,
+          "mean": 1.053571,
+          "zScore": 0.6236684800859702,
+          "measuredDateTime": "2017-03-11T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.1,
+          "cv": 3.3859974550778236,
+          "sd": 0.069292,
+          "mean": 2.046428,
+          "zScore": 0.77313398372106368,
+          "measuredDateTime": "2017-03-11T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.1,
+          "cv": 1.8653400388578236,
+          "sd": 0.056693,
+          "mean": 3.039285,
+          "zScore": 1.0709435027252054,
+          "measuredDateTime": "2017-03-11T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-10T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.1152142711654056,
+          "sd": 0.075105,
+          "mean": 1.055555,
+          "zScore": -0.73969775647426961,
+          "measuredDateTime": "2017-03-10T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.4177705907971494,
+          "sd": 0.070001,
+          "mean": 2.048148,
+          "zScore": -0.68781874544649169,
+          "measuredDateTime": "2017-03-10T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.8823707387017632,
+          "sd": 0.057238,
+          "mean": 3.04074,
+          "zScore": -0.71176491142248155,
+          "measuredDateTime": "2017-03-10T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-09T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.2,
+          "cv": 7.1152142711654056,
+          "sd": 0.075105,
+          "mean": 1.055555,
+          "zScore": 1.9232407962186262,
+          "measuredDateTime": "2017-03-09T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.1,
+          "cv": 3.4177705907971494,
+          "sd": 0.070001,
+          "mean": 2.048148,
+          "zScore": 0.74073227525321406,
+          "measuredDateTime": "2017-03-09T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.4,
+          "cv": 1.8823707387017632,
+          "sd": 0.057238,
+          "mean": 3.04074,
+          "zScore": 6.276599461895942,
+          "measuredDateTime": "2017-03-09T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 3,
+          "reasons": [
+            "1-3S"
+          ]
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-08T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.1619148107388533,
+          "sd": 0.075751,
+          "mean": 1.057692,
+          "zScore": -0.761600506924002,
+          "measuredDateTime": "2017-03-08T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.4492682926829268,
+          "sd": 0.07071,
+          "mean": 2.05,
+          "zScore": -0.70711356243812507,
+          "measuredDateTime": "2017-03-08T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.8991508746487453,
+          "sd": 0.057778,
+          "mean": 3.042307,
+          "zScore": -0.73223372217799321,
+          "measuredDateTime": "2017-03-08T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-07T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.2,
+          "cv": 6.7883079847908743,
+          "sd": 0.071413,
+          "mean": 1.052,
+          "zScore": 2.0724517944911978,
+          "measuredDateTime": "2017-03-07T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 2,
+          "reasons": [
+            "1-2S(W)"
+          ]
+        },
+        {
+          "Level": 2,
+          "value": 2.1,
+          "cv": 3.4870117187500003,
+          "sd": 0.071414,
+          "mean": 2.048,
+          "zScore": 0.72814854230263037,
+          "measuredDateTime": "2017-03-07T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.1,
+          "cv": 1.8991453615609741,
+          "sd": 0.057734,
+          "mean": 3.039999,
+          "zScore": 1.0392662902275989,
+          "measuredDateTime": "2017-03-07T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-06T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 6.8399978371548338,
+          "sd": 0.072105,
+          "mean": 1.054167,
+          "zScore": -0.75122390957631335,
+          "measuredDateTime": "2017-03-06T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.5234634146341466,
+          "sd": 0.072231,
+          "mean": 2.05,
+          "zScore": -0.69222356052110345,
+          "measuredDateTime": "2017-03-06T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.9186195986015557,
+          "sd": 0.058358,
+          "mean": 3.041666,
+          "zScore": -0.71397237739470509,
+          "measuredDateTime": "2017-03-06T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-05T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.1,
+          "cv": 6.9424828973154638,
+          "sd": 0.073047,
+          "mean": 1.052174,
+          "zScore": 0.65472914698755791,
+          "measuredDateTime": "2017-03-05T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.1,
+          "cv": 3.5670511068811508,
+          "sd": 0.073047,
+          "mean": 2.047826,
+          "zScore": 0.71425246758935945,
+          "measuredDateTime": "2017-03-05T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.1,
+          "cv": 1.9183450526960018,
+          "sd": 0.058301,
+          "mean": 3.03913,
+          "zScore": 1.0440644242808868,
+          "measuredDateTime": "2017-03-05T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-04T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.00339292927952,
+          "sd": 0.073854,
+          "mean": 1.054546,
+          "zScore": -0.73856527743927181,
+          "measuredDateTime": "2017-03-04T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.6098048780487808,
+          "sd": 0.074001,
+          "mean": 2.05,
+          "zScore": -0.67566654504668622,
+          "measuredDateTime": "2017-03-04T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.941228757585314,
+          "sd": 0.059031,
+          "mean": 3.040909,
+          "zScore": -0.693008758110147,
+          "measuredDateTime": "2017-03-04T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-03T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.11,
+          "cv": 7.00339292927952,
+          "sd": 0.073854,
+          "mean": 1.054546,
+          "zScore": 0.75085980447910894,
+          "measuredDateTime": "2017-03-03T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.3,
+          "cv": 3.6098048780487808,
+          "sd": 0.074001,
+          "mean": 2.05,
+          "zScore": 3.378332725233443,
+          "measuredDateTime": "2017-03-03T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 3,
+          "reasons": [
+            "1-3S"
+          ]
+        },
+        {
+          "Level": 3,
+          "value": 3.1,
+          "cv": 1.941228757585314,
+          "sd": 0.059031,
+          "mean": 3.040909,
+          "zScore": 1.0010164151039285,
+          "measuredDateTime": "2017-03-03T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-02T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.0606341809953816,
+          "sd": 0.074641,
+          "mean": 1.057143,
+          "zScore": -0.765571200814565,
+          "measuredDateTime": "2017-03-02T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.6523433027298537,
+          "sd": 0.07496,
+          "mean": 2.052381,
+          "zScore": -0.69878601921024563,
+          "measuredDateTime": "2017-03-02T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.9639437541757632,
+          "sd": 0.05976,
+          "mean": 3.042857,
+          "zScore": -0.71715194109772662,
+          "measuredDateTime": "2017-03-02T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-03-01T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.11254716981132,
+          "sd": 0.075393,
+          "mean": 1.06,
+          "zScore": -0.79582985157773334,
+          "measuredDateTime": "2017-03-01T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.6941605839416054,
+          "sd": 0.075915,
+          "mean": 2.055,
+          "zScore": -0.72449450042811248,
+          "measuredDateTime": "2017-03-01T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 1.9861740558292282,
+          "sd": 0.060479,
+          "mean": 3.045,
+          "zScore": -0.74405992162568713,
+          "measuredDateTime": "2017-03-01T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-02-28T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 0.1,
+          "cv": 7.11254716981132,
+          "sd": 0.075393,
+          "mean": 1.06,
+          "zScore": -12.733277625243723,
+          "measuredDateTime": "2017-02-28T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 3,
+          "reasons": [
+            "1-3S"
+          ]
+        },
+        {
+          "Level": 2,
+          "value": 2.1,
+          "cv": 3.6941605839416054,
+          "sd": 0.075915,
+          "mean": 2.055,
+          "zScore": 0.59276822762299852,
+          "measuredDateTime": "2017-02-28T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.1,
+          "cv": 1.9861740558292282,
+          "sd": 0.060479,
+          "mean": 3.045,
+          "zScore": 0.90940657087584387,
+          "measuredDateTime": "2017-02-28T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-02-27T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.156791370614715,
+          "sd": 0.076088,
+          "mean": 1.063158,
+          "zScore": -0.83006518767742676,
+          "measuredDateTime": "2017-02-27T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.7345442794700414,
+          "sd": 0.076853,
+          "mean": 2.057895,
+          "zScore": -0.75332127568214391,
+          "measuredDateTime": "2017-02-27T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 2.0075028680487552,
+          "sd": 0.061176,
+          "mean": 3.047368,
+          "zScore": -0.77429057146593561,
+          "measuredDateTime": "2017-02-27T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-02-26T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.1902477530475766,
+          "sd": 0.076696,
+          "mean": 1.066667,
+          "zScore": -0.86923698758735835,
+          "measuredDateTime": "2017-02-26T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.7724314702119393,
+          "sd": 0.077754,
+          "mean": 2.061111,
+          "zScore": -0.78595313424389635,
+          "measuredDateTime": "2017-02-26T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 2.027311475409836,
+          "sd": 0.061833,
+          "mean": 3.05,
+          "zScore": -0.80862969611695734,
+          "measuredDateTime": "2017-02-26T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-02-25T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.1,
+          "cv": 7.1902477530475766,
+          "sd": 0.076696,
+          "mean": 1.066667,
+          "zScore": 0.434611974548869,
+          "measuredDateTime": "2017-02-25T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.3,
+          "cv": 3.7724314702119393,
+          "sd": 0.077754,
+          "mean": 2.061111,
+          "zScore": 3.0723692671759637,
+          "measuredDateTime": "2017-02-25T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 3,
+          "reasons": [
+            "1-3S"
+          ]
+        },
+        {
+          "Level": 3,
+          "value": 3.1,
+          "cv": 2.027311475409836,
+          "sd": 0.061833,
+          "mean": 3.05,
+          "zScore": 0.80862969611696456,
+          "measuredDateTime": "2017-02-25T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-02-24T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.2,
+          "cv": 6.7270858990729332,
+          "sd": 0.071228,
+          "mean": 1.058824,
+          "zScore": 1.9820295389453582,
+          "measuredDateTime": "2017-02-24T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.8063530594670616,
+          "sd": 0.07859,
+          "mean": 2.064706,
+          "zScore": -0.82333630232854249,
+          "measuredDateTime": "2017-02-24T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 2.044749636498052,
+          "sd": 0.062425,
+          "mean": 3.052941,
+          "zScore": -0.8480736884261133,
+          "measuredDateTime": "2017-02-24T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-02-23T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 6.7650823529411763,
+          "sd": 0.071879,
+          "mean": 1.0625,
+          "zScore": -0.86951682688963394,
+          "measuredDateTime": "2017-02-23T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.8341993957703928,
+          "sd": 0.07932,
+          "mean": 2.06875,
+          "zScore": -0.866742309631872,
+          "measuredDateTime": "2017-02-23T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 2.0585357873210635,
+          "sd": 0.062914,
+          "mean": 3.05625,
+          "zScore": -0.89407762978033367,
+          "measuredDateTime": "2017-02-23T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-02-22T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.1,
+          "cv": 6.95075471698113,
+          "sd": 0.073678,
+          "mean": 1.06,
+          "zScore": 0.54290290181601075,
+          "measuredDateTime": "2017-02-22T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.1,
+          "cv": 3.9508058143861593,
+          "sd": 0.08165,
+          "mean": 2.066667,
+          "zScore": 0.40824249846907873,
+          "measuredDateTime": "2017-02-22T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.1,
+          "cv": 2.0958408401572965,
+          "sd": 0.063993,
+          "mean": 3.053333,
+          "zScore": 0.72925163689778949,
+          "measuredDateTime": "2017-02-22T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-02-21T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 6.999434362567956,
+          "sd": 0.074494,
+          "mean": 1.064286,
+          "zScore": -0.86296882970440658,
+          "measuredDateTime": "2017-02-21T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 3.9847853824581967,
+          "sd": 0.082542,
+          "mean": 2.071429,
+          "zScore": -0.86536551089142721,
+          "measuredDateTime": "2017-02-21T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 2.1137389103940869,
+          "sd": 0.06462,
+          "mean": 3.057142,
+          "zScore": -0.88427731352522143,
+          "measuredDateTime": "2017-02-21T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-02-20T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.0243006422372716,
+          "sd": 0.075106,
+          "mean": 1.069231,
+          "zScore": -0.92177722152690911,
+          "measuredDateTime": "2017-02-20T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 4.00616488614894,
+          "sd": 0.083205,
+          "mean": 2.076924,
+          "zScore": -0.92451174809206171,
+          "measuredDateTime": "2017-02-20T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 2.12455308410348,
+          "sd": 0.065044,
+          "mean": 3.061538,
+          "zScore": -0.94609802595166481,
+          "measuredDateTime": "2017-02-20T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-02-19T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.3,
+          "cv": 7.0243006422372716,
+          "sd": 0.075106,
+          "mean": 1.069231,
+          "zScore": 3.0725774239075436,
+          "measuredDateTime": "2017-02-19T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 3,
+          "reasons": [
+            "1-3S"
+          ]
+        },
+        {
+          "Level": 2,
+          "value": 2.1,
+          "cv": 4.00616488614894,
+          "sd": 0.083205,
+          "mean": 2.076924,
+          "zScore": 0.277339102217416,
+          "measuredDateTime": "2017-02-19T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.1,
+          "cv": 2.12455308410348,
+          "sd": 0.065044,
+          "mean": 3.061538,
+          "zScore": 0.59132279687596079,
+          "measuredDateTime": "2017-02-19T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-02-18T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.0118139534883719,
+          "sd": 0.075377,
+          "mean": 1.075,
+          "zScore": -0.99499847433567212,
+          "measuredDateTime": "2017-02-18T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 4.0072787176708111,
+          "sd": 0.083485,
+          "mean": 2.083334,
+          "zScore": -0.9981912918488326,
+          "measuredDateTime": "2017-02-18T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 2.1239352443337487,
+          "sd": 0.065134,
+          "mean": 3.066666,
+          "zScore": -1.0235207418552541,
+          "measuredDateTime": "2017-02-18T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-02-17T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.1,
+          "cv": 7.32935779559944,
+          "sd": 0.078624,
+          "mean": 1.072727,
+          "zScore": 0.34687881562881695,
+          "measuredDateTime": "2017-02-17T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.1,
+          "cv": 4.1976271712382305,
+          "sd": 0.087387,
+          "mean": 2.081819,
+          "zScore": 0.20805154084703931,
+          "measuredDateTime": "2017-02-17T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.1,
+          "cv": 2.200653080196211,
+          "sd": 0.06742,
+          "mean": 3.063636,
+          "zScore": 0.53936517353901348,
+          "measuredDateTime": "2017-02-17T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    },
+    {
+      "runDateTime": "2017-02-16T07:02:00Z",
+      "actions": [],
+      "comments": [],
+      "interactions": [],
+      "levels": [
+        {
+          "Level": 1,
+          "value": 1.0,
+          "cv": 7.303796296296297,
+          "sd": 0.078881,
+          "mean": 1.08,
+          "zScore": -1.0141859256348178,
+          "measuredDateTime": "2017-02-16T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 2,
+          "value": 2.0,
+          "cv": 4.189471679678622,
+          "sd": 0.08756,
+          "mean": 2.090001,
+          "zScore": -1.0278780264961169,
+          "measuredDateTime": "2017-02-16T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        {
+          "Level": 3,
+          "value": 3.0,
+          "cv": 2.1985342019543976,
+          "sd": 0.067495,
+          "mean": 3.07,
+          "zScore": -1.0371138602859447,
+          "measuredDateTime": "2017-02-16T07:02:00",
+          "isAccepted": false,
+          "resultStatus": 0
+        },
+        null
+      ],
+      "runReasons": []
+    }
+  ]
+}

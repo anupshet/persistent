@@ -1,0 +1,114 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+
+// Style guide: base.icons
+@mixin base\icons {
+
+    //Path should be updated later after asset images finalization
+    .br-icn-star-empty {
+        @include br-icon($imgname: 'new_set/large/star-empty', $height:24px, $width:24px);
+    }
+
+    .br-icn-star-filled {
+        @include br-icon($imgname: 'new_set/large/star-filled', $height:24px, $width:24px);
+    }
+}
+
+.ic-pez {
+    height: 12px;
+    width: 12px;
+    display: inline-block;
+}
+
+.ic-perm-identity-24px {
+    -webkit-mask-image: url('/assets/images/matIcons/ic_perm_identity_24px.svg');
+    mask-image: url('/assets/images/matIcons/ic_perm_identity_24px.svg');
+    background-image: url('/assets/images/matIcons/ic_perm_identity_24px.svg');
+}
+
+.ic-change-history-24px {
+    -webkit-mask-image: url('/assets/images/matIcons/ic_change_history_24px.svg');
+    mask-image: url('/assets/images/matIcons/ic_change_history_24px.svg');
+    background-image: url('/assets/images/matIcons/ic_change_history_24px.svg');
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 4px;
+    left: 5px;
+}
+
+.ic-history-18dp {
+  -webkit-mask-image: url('/assets/images/matIcons/ic_history_18dp.svg');
+  mask-image: url('/assets/images/matIcons/ic_history_18dp.svg');
+  background-image: url('/assets/images/matIcons/ic_history_18dp.svg');
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 4px;
+  left: 5px;
+}
+
+.ic-chat-bubble-outline-24px {
+    -webkit-mask-image: url('/assets/images/matIcons/ic_chat_bubble_outline_24px.svg');
+    mask-image: url('/assets/images/matIcons/ic_chat_bubble_outline_24px.svg');
+    background-image: url('/assets/images/matIcons/ic_chat_bubble_outline_24px.svg');
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 4px;
+    left: 5px;
+}
+
+.ic-lj {
+    -webkit-mask-image: url('/assets/images/icons/ic_lj_24px.svg');
+    mask-image: url('/assets/images/icons/ic_lj_24px.svg');
+    background-image: url('/assets/images/icons/ic_lj_24px.svg');
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ic_edit {
+    -webkit-mask-image: url('/assets/images/icons/ic_edit_24px.svg');
+    mask-image: url('/assets/images/icons/ic_edit_24px.svg');
+    background-image: url('/assets/images/icons/ic_edit_24px.svg');
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ic_edit_gray {
+    -webkit-mask-image: url('/assets/images/icons/ic_edit_gray_24px.svg');
+    mask-image: url('/assets/images/icons/ic_edit_gray_24px.svg');
+    background-image: url('/assets/images/icons/ic_edit_gray_24px.svg');
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+.ic-info-24px {
+    height: 16px;
+    width: 16px;
+    opacity: .3;
+    margin-top: 5px;
+    display: inline-block;
+    -webkit-mask-image: url('/assets/images/matIcons/ic_info_24px.svg');
+    mask-image: url('/assets/images/matIcons/ic_info_24px.svg');
+    background-image: url('/assets/images/matIcons/ic_info_24px.svg');
+}
+
+
+mat-icon.white svg {
+    fill: $white;
+}
+.ic-info-48px {
+  height: 25px;
+  width: 25px;
+  opacity: .3;
+  display: inline-block;
+  margin-top: 3px;
+  margin-left: 10px;
+  -webkit-mask-image: url('/assets/images/matIcons/ic_info_30px.svg');
+  mask-image: url('/assets/images/matIcons/ic_info_30px.svg');
+  background-image: url('/assets/images/matIcons/ic_info_30px.svg');
+}
+

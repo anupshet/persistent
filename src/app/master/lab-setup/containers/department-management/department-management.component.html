@@ -1,0 +1,25 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<mat-accordion multi="false">
+  <div class="flex-wrap" *ngIf="showSettings">
+    <div *ngFor="let department of location?.children; let pointIndex=index;" class="tile-card">
+      <div class="panel-content-border" *ngIf="department.nodeType !== nodeType.Panel">
+        <card class="spec_cardDetails" [title]="department.displayName" [count]="getCount(department)"
+          [actionLink]="newAction" [innerComponent]="componentTemplate" (linkClicked)="linkClicked($event)"
+          [selectedNodeId]="department.id" [disable]="department.isArchived" [showAddInstrumentLink]="showAddInstrumentLink">
+        </card>
+        <ng-template #componentTemplate>
+          <unext-department-config-component [location]="location" [departments]="[department]"
+            [showSettings]="showSettings"></unext-department-config-component>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</mat-accordion>
+<button class="addDepartmentButton upper-case" color="primary" mat-button *ngIf="showSettings"
+  (click)="addDepartmentButtonClick()"
+  [checkForPermission]="{'permissionsAllowed':[permissions.DepartmentAdd,permissions.DepartmentAddViewOnly],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+  <mat-icon [svgIcon]="icons.addCircleOutline[24].name" class=""></mat-icon>
+  <span>{{'DEPARTMENTMANAGEMENT.ADDDEPARTMENT' | translate}}</span>
+</button>
+<unext-department-config-component *ngIf="showEntryForm" [location]="location" [showSettings]="showSettings">
+</unext-department-config-component>

@@ -1,0 +1,27 @@
+@import '../../../../../assets/scss/base/variables-peak';
+@import '../../../../../assets/scss/layout/new-lab-setup';
+
+.lab-setup-feedback-component {
+    .fa {
+        &.to-rate{
+            margin: 0 3px;
+            color: $dark-primary-text;
+        }
+    }
+    .mat-stroked-button {
+        width: 280px;
+    }
+    .mat-card {
+        padding-left: $custom-space-large;
+        padding-right: $custom-space-large;
+        padding-bottom: $custom-space-large;
+    }
+    .lab-setup-wrapper{
+        max-width: 475px;
+        width: 100%;
+        padding: ($custom-type-size-xlarge + $custom-type-size-xxsmall) $custom-type-size-base;
+    }
+    .br-icn-star-empty {
+        background-color: $black;
+    }
+}

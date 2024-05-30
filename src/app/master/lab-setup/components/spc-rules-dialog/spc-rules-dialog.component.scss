@@ -1,0 +1,32 @@
+@import '../../../../../assets/scss/variables';
+
+.spc-rules-dialog-component {
+
+  .flex.hdr {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    h2 {
+      display: inline;
+    }
+    button {
+      float: right;
+      mat-icon {
+        fill: $black;
+      }
+    }
+  }
+  .subtitle {
+    font-size: 18px;
+  }
+  .img-rules {
+    width: 100%;
+    height: auto;
+  }
+  .caption {
+    font-size: mat-font-size($br-typography, caption);
+    color: $gray-600;
+    line-height: 1rem;
+  }
+}
+

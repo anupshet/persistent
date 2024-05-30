@@ -1,0 +1,21 @@
+<div class="banner">
+  <section>
+    <div (click)="closeBanner()" style="float: right;">
+      <mat-icon [svgIcon]="icons.close[48].name" class="close"></mat-icon>
+    </div>
+    <h1>{{'BANNERINFO.INTERNETEXPLORER' | translate}}</h1>
+    <p>{{'BANNERINFO.ENSURE' | translate}}</p>
+    <div class="browser-list">
+      <a class="logo chrome" href="https://www.google.com/chrome/" target="_blank" title="Download Chrome">Chrome</a>
+      <a class="logo edge" href="https://www.microsoft.com/en-us/edge" target="_blank" title="Download Edge">Edge</a>
+      <a class="logo firefox" href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" title="Download Firefox">Firefox</a>
+    </div>
+    <footer>
+      <p *ngIf="loggedIn; else guideText">{{'BANNERINFO.LEARNMORE' | translate}} <a href="https://www.qcnet.com/LinkClick.aspx?fileticket=Jz1QisRctUQ%3d&portalid=0" target="_blank">{{'BANNERINFO.REFERENCE' | translate}}</a></p>
+      <ng-template #guideText>
+        <p>{{'BANNERINFO.QUICKREFERENCE' | translate}}</p>
+      </ng-template>
+      <button (click)="closeBanner()">{{'BANNERINFO.GOTIT' | translate}}</button>
+    </footer>
+  </section>
+</div>

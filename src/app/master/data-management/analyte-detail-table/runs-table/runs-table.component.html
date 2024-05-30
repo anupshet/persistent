@@ -1,0 +1,167 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.-->
+<div class="runs-table-component" [ngClass]="{
+  'sidebar-expanded': isSideNavExpanded,
+  'has-3-levels': levelsInUse.length ===3,
+  'has-4-levels': levelsInUse.length ===4,
+  'has-5-levels': levelsInUse.length ===5,
+  'has-6-levels': levelsInUse.length ===6,
+  'long': isRenderingLongCell
+}">
+
+  <div class="page-title-manual-container" *ngIf="hasConnectivity">
+    <ng-template [ngIf]="pagedRows != null && runDataPageSet != null && isRunInsertStateReady">
+      <a class="manually-enter-test-run"
+      (click)="toggleDataEntryFormVisibility()"
+      [ngClass]="{ 'isDataEntryFormsVisible': isDataEntryFormsVisible}">{{'RUNSTABLE.ENTERDATA' | translate}}</a>
+    </ng-template>
+  </div>
+  <div class="table-container" [ngClass]="{ 'archived': isArchived}">
+    <div colspan="100%" *ngIf="isDataEntryFormsVisible && isRunInsertStateReady">
+      <div class="run-insert-leveles-space"></div>
+      <unext-run-insert [state]="runInsertState" [defaultReagentLotId]="defaultReagentLotId"
+        [lastRunReagentLotId]="lastRunReagentLotId" [defaultCalibratorLotId]="defaultCalibratorLotId"
+        [lastRunCalibratorLotId]="lastRunCalibratorLotId" [reagentLots]="reagentLots" [calibratorLots]="calibratorLots"
+        [defaultReagentLot]="defaultReagentLot" [defaultCalibratorLot]="defaultCalibratorLot" [currentLanguage]="currentLanguage"
+        [correctiveActions]="actions" [labTimeZone]="labTimeZone" [labTestId]="labTestId" [accountId]="accountId"
+        [labInstrumentId]="labInstrumentId" [labProductId]="labProductId" [controlLotIds]="controlLotIds"
+        [codeListTestId]="codeListTestId" [labId]="labId" [labUnitId]="labUnitId" [latestRunData]="runDataPageSet[0]"
+        [productMasterLotExpiration]="productMasterLotExpiration" [productId]="productId"
+        [productMasterLotId]="productMasterLotId" (onNewRunPost)="onNewRunPost($event)"
+        (lotVisibility)="isLotVisable($event)" (onInsertDifferentDate)="onInsertDifferentDate($event)" [testId]="testId"
+        (onSavedSelectedReagentId)="onSavedSelectedReagentId($event)"
+        (onSavedSelectedCalibratorId)="onSavedSelectedCalibratorId($event)" [isLeafArchived]="isLeafArchived">
+      </unext-run-insert>
+    </div>
+    <perfect-scrollbar [config]="{
+        suppressScrollY: true,
+        suppressScrollX: false
+      }" class="parent-horizontal-scrollbar">
+      <table datatable class="run-data-page-set-table" [ngClass]="{ 'archived': isArchived}">
+        <thead>
+          <tr class="header-level">
+            <th class="mat-small"></th>
+
+            <ng-template ngFor let-level [ngForOf]="levelsInUse" let-i="index">
+              <th class="cell-offset"></th>
+              <th [ngClass]="{ 'th-even': i % 2 === 0 }"></th>
+              <th [ngClass]="{ 'th-even': i % 2 === 0 }"><span>{{'RUNSTABLE.LEVEL' | translate}}</span> {{ level }}</th>
+              <th [ngClass]="{ 'th-even': i % 2 === 0 }"></th>
+            </ng-template>
+            <th class="cell-pez"></th>
+          </tr>
+
+          <tr class="header-level-content">
+            <th class="cell-date mat-small"></th>
+            <ng-template ngFor let-level [ngForOf]="levelsInUse" let-i="index">
+              <th class="cell-offset"></th>
+              <th class="active-cell level-cell-value level-cell-left active-cell-{{level}}" [ngClass]="{ 'th-even': i % 2 === 0, 'long': isRenderingLongCell }">
+                <span>{{'RUNSTABLE.VALUE' | translate}}</span>
+              </th>
+              <th class="active-cell level-cell-z active-cell-{{level}}" [ngClass]="{ 'th-even': i % 2 === 0, 'long': isRenderingLongCell }">
+                <span>{{'RUNSTABLE.Z' | translate}}</span>
+              </th>
+              <th class="active-cell level-cell-reason level-cell-right active-cell-{{level}}" [ngClass]="{ 'th-even': i % 2 === 0, 'long': isRenderingLongCell }">
+                <span>{{'RUNSTABLE.REASON' | translate}}</span>
+              </th>
+            </ng-template>
+            <th class="cell-pez"></th>
+          </tr>
+        </thead>
+      </table>
+
+      <div class="table-body extended" [ngClass]="{ 'isAnalyticalSectionNotVisible': !isAnalyticalSectionVisible,
+                        'runInsertVisable': isDataEntryFormsVisible,
+                        'isRunInsertHasVisableLot': isRunInsertHasVisableLot
+                      }" [style.min-width.px]="minWidth">
+        <perfect-scrollbar #mainScroll (psScrollY)="updateFixedScrollAndClosePezModal($event)"
+          [config]="{ supressScrollY: false, minScrollbarLength: 30 }">
+          <ng-template
+            [ngIf]="pagedRows != null && runDataPageSet != null && isRunInsertStateReady && reagentLots && calibratorLots">
+            <div class="virtual-scrollbar" [ngStyle]="styleVirtualScrollbar">
+              <div class="testtest" [ngStyle]="getRowContainerStyle()">
+                <table class="run-data-page-set-table" [ngClass]="{ 'archived': isArchived}">
+                  <tbody class="mat-body-2">
+                    <ng-template ngFor let-run [ngForOf]="pagedRows" let-runIdx="index">
+                      <tr *ngIf="run?.rowType === rowType.InsertComponent; else runRowType" class="run-insert-row"></tr>
+                      <ng-template #runRowType>
+                        <tr [class.selected]="selectedRunIndex === runIdx" mat-button
+                          (click)="openRunEditDialog(runIdx)">
+                          <td class="cell-date mat-small" matTooltip="{{viewEditDataToolTip}}"
+                            matTooltipPosition="right">
+                            <unext-date-time-cell [runDateTime]="run?.runDateTime" [isInsert]="run?.isInsert"
+                              [isRestartFloat]="run?.isRestartFloat"></unext-date-time-cell>
+                          </td>
+                          <ng-template ngFor let-level [ngForOf]="levelsInUse" let-lvIdx="index">
+                            <td class="cell-offset"></td>
+
+                            <ng-template [ngIf]="(run?.levelSections)[lvIdx] != null" [ngIfElse]="emptyLevel">
+                              <td class="level-cell-value level-cell-left" matTooltip="{{viewEditDataToolTip}}"
+                                matTooltipPosition="right"
+                                [ngClass]="{ 'td-even': lvIdx % 2 === 0, 'long': isRenderingLongCell }">
+                                <unext-value-cell [valueCell]="(run?.levelSections)[lvIdx]?.valueCell"
+                                  [decimalPlace]="decimalPlaces[lvIdx]"></unext-value-cell>
+                              </td>
+                              <td class="level-cell-z" matTooltip="{{viewEditDataToolTip}}" matTooltipPosition="right"
+                                [ngClass]="{ 'td-even': lvIdx % 2 === 0, 'long': isRenderingLongCell }">
+                                <unext-zscore-cell [zScoreCell]="(run?.levelSections)[lvIdx]?.zScoreCell">
+                                </unext-zscore-cell>
+                              </td>
+                              <td class="level-cell-reason level-cell-right" matTooltip="{{viewEditDataToolTip}}"
+                                matTooltipPosition="right"
+                                [ngClass]="{ 'td-even': lvIdx % 2 === 0,  'long': isRenderingLongCell }">
+                                <ng-template [ngIf]="(run?.levelSections)[lvIdx]?.reasons != null">
+                                  <unext-reason-cell [reasons]="(run?.levelSections)[lvIdx]?.reasons">
+                                  </unext-reason-cell>
+                                </ng-template>
+                              </td>
+                            </ng-template>
+
+                            <ng-template #emptyLevel>
+                              <td class="level-cell-value level-cell-left" [ngClass]="{ 'td-even': lvIdx % 2 === 0 }">
+                              </td>
+                              <td class="level-cell-z" [ngClass]="{ 'td-even': lvIdx % 2 === 0 }"></td>
+                              <td class="level-cell-reason level-cell-right" [ngClass]="{ 'td-even': lvIdx % 2 === 0 }">
+                              </td>
+                            </ng-template>
+                          </ng-template>
+                          <td class="cell-pez">
+                            <div class="icon-container">
+                              <br-pez-cell #pezCell [actions]="run?.pezCell?.actions"
+                              [actionTitle]="actionTitle" [commentTitle]="commentTitle" [atText]="atText" [comments]="run?.pezCell?.comments"
+                                [interactions]="run?.pezCell?.interactions" [pezDateTimeOffset]="dateTimeOffset"
+                                (showReviewSummaryDialog)="openReviewSummaryDialog($event, runIdx)">
+                              </br-pez-cell>
+                            </div>
+                          </td>
+                        </tr>
+                      </ng-template>
+                    </ng-template>
+                  </tbody>
+                  <tfoot
+                    *ngIf="indexes.last >= runRows.length && indexes.first != -1 && (prevPageLastRun != null || nextPageFirstRun != null)">
+                    <tr>
+                      <th colspan="18">
+                        <div class="pagination-container col-12 col-lg">
+                          <div class="row">
+                            <div class="page-btn col-6 mat-body-2" *ngIf="prevPageLastRun != null">
+                              <span (click)="updatePrevPage()">{{'RUNSTABLE.PREVIOUS' | translate}}</span>
+                            </div>
+                            <div class="page-btn col-6 mat-body-2" [ngClass]="{ 'next-btn': prevPageLastRun }" *ngIf="nextPageFirstRun != null">
+                              <span (click)="updateNextPage()">{{'RUNSTABLE.NEXT' | translate}}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </th>
+                    </tr>
+                  </tfoot>
+                </table>
+
+              </div>
+            </div>
+          </ng-template>
+        </perfect-scrollbar>
+      </div>
+    </perfect-scrollbar>
+  </div> <!-- /table-container -->
+
+</div><!-- /runs-table-component -->

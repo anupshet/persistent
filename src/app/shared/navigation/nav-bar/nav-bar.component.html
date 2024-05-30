@@ -1,0 +1,42 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="nav-bar-grid-wrapper">
+  <div class="nav-bar-grid">
+    <nav class="nav-bar">
+      <div class="flex-container">
+        <!-- AJT 14026 only lab user can navigate from logo -->
+          <button mat-button id="spc_header_logo_button" class="pointer mat-headline header-logo pl-0 pr-0"
+                  (click)="navigateToDashboard()" matTooltip="{{'TRANSLATION.GODASHBOARD' | translate}}"
+                  [disabled]="!(enableUnityNextLogo && isLabSetupCompleted && hasPermissionToAccess([permissions.PanelsView]))">
+              {{'NAV.TITLE' | translate}}
+          </button>
+        <span class="flex-container">
+
+          <unext-nav-bar-user *ngIf="userName" [displayName]="userName" [navIconName]="icons.accountCircle[18].name"
+            (logOut)="logOff($event)">
+          </unext-nav-bar-user>
+          <div class="flex-container">
+            <unext-nav-bar-lab *ngIf="userLab" [userLab]="userLab" (locationChanged)="onLocationChanged($event)">
+            </unext-nav-bar-lab>
+          </div>
+          <unext-nav-bar-setting [navIconName]="icons.settings[24].name" [userRoles]="userRoles"
+            [hasConnectivityLicense]="hasConnectivityLicense" [userLocationId]="userLocationId" [userLabId]="labId" [hasNonBrLicense]="hasNonBrLicense">
+          </unext-nav-bar-setting>
+          <!-- Below is TODO as It is available for future release so commented out for now -->
+          <unext-notification *ngIf="hasPermissionToAccess([permissions.LabSettingsViewOnly]) || hasPermissionToAccess([permissions.InstrumentAdd])"></unext-notification>
+          <unext-nav-bar-lang [navIconName]="icons.lang[24].name"></unext-nav-bar-lang>
+          <a href="https://www.qcnet.com/" target="_blank" class="logo">
+            <img src="assets/images/logo.svg" alt="Go to Qcnet" matTooltip="{{'TRANSLATION.GOQCNET' | translate}}">
+          </a>
+        </span>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- Once test case for nav header is complete this should uncomment -->
+<div class="unext-nav-header-grid-wrapper">
+  <div class="unext-nav-header-grid">
+    <unext-nav-header *ngIf="userLab || hasPermissionToAccess([permissions.AccountListView, permissions.LocationListView])" [hasConnectivityLicense]="hasConnectivityLicense"[migrationPending]="migrationPending" [userLabId]="labId">
+    </unext-nav-header>
+  </div>
+</div>

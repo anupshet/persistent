@@ -1,0 +1,32 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/login",
+    "Username": "UnityNextRegressionTestUser+1@bio-rad.com",
+    "Username2": "nitin_ghugare+testVitros1@bio-rad.com",
+    "LabUser": "UnityNextRegressionTestLabUser+1@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sudhir",
+    "Department": "ExpiredLotAutomation-PBI200529",
+    "Department2": "ExpiredLotAutomation-PBI200529-Dept2",
+    "OtherDepartment": "FeatureTesting",
+    "OtherInstrument": "ARCHITECT c8000",
+    "Instrument": "BioPlex 2200",
+    "Instrument2": "Alinity c",
+    "Control": "expiringLot882856",
+    "ControlName": "expiringLot882856",
+    "Control2": "Cardiac Markers LT",
+    "FutureLot1": "67620",
+    "FutureLot1Expiry": "exp. Jun 30 2022",
+    "FutureLot2": "67630",
+    "FutureLot2Expiry": "exp. Jan 31 2023",
+    "FutureLot3": "67650",
+    "FutureLot3Expiry": "exp. Nov 30 2023",
+    "FutureLot4": "99570",
+    "FutureLot4Expiry": "exp. Jan 31 2022",
+    "FutureLot5": "67640",
+    "FutureLot5Expiry": "exp. May 31 2023"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

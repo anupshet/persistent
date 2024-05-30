@@ -1,0 +1,22 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com",
+    "AccountManagerUsername": "sampada_gulhane+test5@bio-rad.com",
+    "AccountManagerPassword": "Welcome1",
+    "AccountManagerFirstName": "Sampada",
+    "AdminUsername": "sampada_gulhane+dev1@bio-rad.com",
+    "AdminPassword": "Welcome1",
+    "AdminFirstName": "Sampada",
+    "SampadaUsername": "sampada_gulhane+dev1@bio-rad.com",
+    "SampadaPassword": "Welcome1",
+    "SampadaFirstName": "Sampada",
+    "UserUsername": "sampada_gulhane+testuser@bio-rad.com",
+    "UserPassword": "Welcome1",
+    "UserFirstName": "Sampada",
+    "Email": "sampada_gulhane+q1aws@bio-rad.com",
+    "ResetPasswordMessage": "Email has been sent to sampada_gulhane+q1aws@bio-rad.com with instructions on resetting your password."
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

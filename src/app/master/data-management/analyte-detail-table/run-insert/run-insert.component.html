@@ -1,0 +1,107 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.-->
+<section class="run-insert-component" (mouseenter)="mouseEnter(true)" (mouseleave)="mouseEnter(false)">
+  <div [formGroup]="runDataInsertForm">
+
+    <p *ngIf="isProductMasterLotExpired" class="alert">{{'RUNINSERT.LOTEXPIRED' | translate}}</p>
+    <div class="flex column-left-procent-50 ml-20">
+      <section class="flex-ctn">
+        <br-date-time-picker formControlName="date" [translationLabels]="translationLabels" [availableDateFrom]="availableDateFrom"
+          [availableDateTo]="availableDateTo" [readOnlyDate]="!isPastResultInsertAllowed"
+          [errorMessage]="dateTimeErrorMessage" [currentLanguage]="currentLanguage"
+          [canInputDate]="canInputDate && hasPermissionToAccess([permissions.SingleDataEntryAdd])"
+          [canSelectDate]="hasPermissionToAccess([permissions.SingleDataEntryAdd])"
+          [canSelectTime]="hasPermissionToAccess([permissions.SingleDataEntryAdd])" [timeZone]="timeZone"
+          [displayInline]="true" [hideLabel]="'true'" (isTimeInputValid)="setTimeInputValid($event)">
+        </br-date-time-picker>
+        <div class="flex-item-2">
+          <unext-point-data-entry (valueChange)="onValueChange()" [levelValues]="levelValues"
+            [isProductMasterLotExpired]="isProductMasterLotExpired || !hasPermissionToAccess([permissions.SingleDataEntryAdd])"
+            (focus)="focus($event)" [isLeafArchived]="isLeafArchived"></unext-point-data-entry>
+        </div>
+      </section>
+    </div>
+    <p *ngIf="areValuesEmpty" class="alert">{{'RUNINSERT.ONEVALUE' | translate}}</p>
+    <div *ngIf="!isPastResultInsertAllowed" class="flex column-left-procent-50 ml-20 fix-negative-mt fix-negative-mb">
+      <a class="link-text" [ngClass]="{'text-color-grey': isPastResultInsertAllowed}"
+        (click)="isPastResultInsertAllowed ? true : toggleDisplayChangeDate()">{{'RUNINSERT.DIFFDATE' | translate}}</a>
+
+      <br-info-tooltip class="restratefloat-tooltip">
+        <ng-template ng-label-tmp>
+          <div>
+            <p class="mb-10"> {{'RUNINSERT.TESTRUNS' | translate}}</p>
+          </div>
+        </ng-template>
+      </br-info-tooltip>
+    </div>
+    <div class="flex column-left-procent-50 ml-20 fix-negative-mb">
+      <div class="column mr-40">
+        <mat-form-field *ngIf="isLotVisible" class="column  mr-20">
+          <mat-select placeholder="{{'RUNINSERT.CORRECTIVE' | translate}}"  [(ngModel)]="selectedActionId" formControlName="correctiveActions"
+            name="selectedActionName" ngDefaultControl
+            [disabled]="!hasPermissionToAccess([permissions.SingleDataEntryAdd])">
+            <mat-option *ngFor="let correctiveAction of correctiveActions" [value]="correctiveAction.actionId">
+              {{correctiveAction.actionName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="isLotVisible" class="column  mr-40 fix-negative-mt">
+          <textarea matInput matTextareaAutosize matAutosizeMaxRows="4" maxLength="1500"
+            [placeholder]="('RUNEDITDATA.COMMENT' | translate)" name="enteredCommentContent" formControlName="comments"
+            [readonly]="!hasPermissionToAccess([permissions.SingleDataEntryAdd])" (ngModelChange)="onCommentChanged()"
+            tabindex="4999">
+          </textarea>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="isLotVisible && !isProductMasterLotExpired" class="flex">
+        <div class="lot-dropdown">
+          <!-- i18n need to find an alternative to pass to br component -->
+          <br-select formControlName="reagentLotSelect" [placeholder]="('RUNINSERT.REAGENT' | translate)" [data]="activeReagentLots"
+            [disabled]="!hasPermissionToAccess([permissions.SingleDataEntryAdd])" [displayAttribute]="'lotNumber'"
+            [emitValue]="true" (selectedChanged)="onReagentChanged($event)"
+            [hasError]="isLotExpired(selectedReagentLot)"
+            [errorMessage]="expiredWarning + (selectedReagentLot?.shelfExpirationDate | date)"></br-select>
+          <span class="br-text-primary link"
+                [checkForPermission]="{'permissionsAllowed':[permissions.SingleDataEntryAdd],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+                (click)="requestNewConfiguration(newRequestConfigType.ReagentLot)">
+              {{'RUNINSERT.REAGENTLOT' | translate}}
+          </span>
+        </div>
+        <div class="lot-dropdown">
+          <!-- i18n need to find an alternative to pass to br component -->
+          <br-select formControlName="calibratorLotSelect" [placeholder]="('RUNINSERT.CALIBRATOR' | translate)"
+            [disabled]="!hasPermissionToAccess([permissions.SingleDataEntryAdd])" [data]="activeCalibratorLots"
+            [displayAttribute]="'lotNumber'" [emitValue]="true" (selectedChanged)="onCalibratorChanged($event)"
+            [hasError]="isLotExpired(selectedCalibratorLot)"
+            [errorMessage]="expiredWarning + (selectedCalibratorLot?.shelfExpirationDate | date)"></br-select>
+          <span class="br-text-primary link"
+                [checkForPermission]="{'permissionsAllowed':[permissions.SingleDataEntryAdd],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+                (click)="requestNewConfiguration(newRequestConfigType.CalibratorLot)">
+              {{'RUNINSERT.CALIBRATORLOT' | translate}}
+          </span>
+        </div>
+      </div>
+    </div><!-- /flex -->
+
+    <div class="flex-ctn flex-end"
+      [checkForPermission]="{'permissionsAllowed':[permissions.SingleDataEntryAdd],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+      <div class="mb-10 mr-20">
+        <button  mat-button tabIndex="5001" color="primary" class="mr-20" (click)="cancel()"
+        [disabled]="!enableCancelButton()">{{'RUNINSERT.CANCEL' | translate}}</button>
+              <!--  AJT 6/06/2022 unityDebounceClicks added as a directive for bug fix UN-7257
+       throttletime is milliseconds and overrides the default 500 in the directive
+       can be customized as needed to eliminate duplicates from fast clicks by user -->
+        <button unityDebounceClicks mat-raised-button tabIndex="5000" color="primary" class="positive"
+          (throttledClick)="insertRun()" [throttleTime]="500" [disabled]="isSubmitDisabled || isLeafArchived"
+          matTooltip="{{submitDataToolTip}}" i18n="@@RunInsertComponent.SendToPeerGroup">
+          Submit
+        </button>
+      </div>
+    </div> <!-- /controls -->
+
+    <div (click)="toggleDisplayChangeLot()" class="toggle-trigger" [ngClass]="{'isLotVisible': isLotVisible}">
+      <span *ngIf="!isLotVisible" class="chevron" matTooltip="{{'RUNINSERT.SHOW' | translate}}"></span>
+      <span *ngIf="isLotVisible" class="chevron" matTooltip="{{'RUNINSERT.HIDE' | translate}}"></span>
+    </div>
+  </div>
+</section>

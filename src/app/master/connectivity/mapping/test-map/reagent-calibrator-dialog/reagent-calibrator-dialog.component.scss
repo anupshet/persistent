@@ -1,0 +1,70 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../../../../assets/scss/variables";
+@import "../../../../../../assets/scss/base/variables-peak";
+
+.reagent-calibrator-subtitle {
+  color: rgba($black, 0.54);
+}
+
+.reagent-calibrator-title {
+  font-weight: bold;
+  font-size: mat-font-size($br-typography, title);
+  margin: 0 0;
+}
+
+.scrollbar-wrapper {
+  height: 500px;
+}
+
+.form-wrapper{
+  padding: 0px 10px 0px 0px;
+}
+
+.lotTitle {
+  color: $gray-600;
+}
+
+mat-error {
+  padding-top: $custom-space-base - $custom-space-xxsmall;
+}
+
+mat-form-field {
+  padding-bottom: $custom-space-small + $custom-space-xsmall;
+}
+
+mat-input {
+  padding-bottom: $custom-space-small + $custom-space-xsmall;
+}
+
+::ng-deep .mat-form-field-subscript-wrapper {
+  pointer-events: none;
+}
+
+.flex-container {
+  padding: 0;
+  flex-direction: column;
+  align-items: self-start;
+  display: block;
+}
+
+.flex-1 {
+  width: 100%;
+}
+
+.flex-2 {
+  text-align: right;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.mat-icon {
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:before {
+    color: $br-white-text-high-emphasis;
+  }
+}

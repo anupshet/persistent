@@ -1,0 +1,35 @@
+{
+	"QA": {
+		"URL": "https://unity-test.qcnet.com",
+		"Username": "sudhir_paranjape+test159372@bio-rad.com",
+		"Password": "Welcome1",
+		"FirstName": "Sudhir",
+		"UsernameUser": "sudhir_paranjape+test159372LabUser@bio-rad.com",
+		"PasswordUser": "Welcome1",
+		"FirstNameUser": "Sudhir",
+		"DepartmentName": "ArchiveAnalyteAutomation",
+		"InstrumentName": "ARCHITECT c16000",
+		"ProductName": "Assayed Chemistry",
+		"Analyte1": "Albumin",
+		"Analyte2": "Calcium",
+		"Analyte": "Analyte",
+		"Status": "Enabled",
+		"Status1": "Disabled"
+	},
+	"STAGE": {
+		"URL": "https://unity-stage.qcnet.com",
+		"Username": "sudhir_paranjape+stagelab@bio-rad.com",
+		"Password": "Welcome1",
+		"FirstName": "Sudhir",
+		"UsernameUser": "sudhir_paranjape+stagelabuser@bio-rad.com",
+		"PasswordUser": "Welcome1",
+		"FirstNameUser": "SudhirUser",
+		"DepartmentName": "Automation",
+		"InstrumentName": "ARCHITECT c16000",
+		"ProductName": "Assayed Chemistry",
+		"Analyte1": "Albumin",
+		"Analyte2": "Calcium"
+	},
+	"DEV": {},
+	"DEV2": {}
+}

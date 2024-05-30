@@ -1,0 +1,188 @@
+<!-- © 2024 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+
+<mat-card class="control-entry-component" [ngClass]="{'one-column':!showSettings || summary}">
+  <unext-lab-setup-header *ngIf="!showSettings" [currentNode]="type.Control" [title]="title" [isDataUpdated]="controlsForm.dirty" [showDefineOwnControlForm]="showDefineOwnControlForm" (closeDefineControlsTab)="closeDefineControlsTab()"></unext-lab-setup-header>
+  <button mat-button color="primary" class="pl-0 mb-20" *ngIf="showSettings" (click)="addAnalyte($event)"
+    [checkForPermission]="{'permissionsAllowed':[permissions.AnalyteAdd, permissions.AnalyteAddViewOnly],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+    <mat-icon [svgIcon]="icons.addCircleOutline[24].name"></mat-icon> {{'CONTROLENTRY.ADDANALYTE' | translate}}
+  </button>
+  <unext-overlay-component *ngIf="greyOutForm() || greyOutAddForm()" [height]="overlayHeight" [width]="overlayWidth">
+  </unext-overlay-component>
+  <mat-card-content #content id="spec_content">
+    <form [formGroup]="controlsForm" class="spec_controlForm flex column-left-450">
+      <div [ngClass]="showSettings ? 'column mr-20':'column'">
+        <div *ngIf="showSettings">
+          <!-- Hide the settings for now until a decision is made regarding inheritance of these settings. -->
+          <div class="flex bdr mb-15 pb-15 space-between flex-end"
+            [checkForPermission]="{'permissionsAllowed':[permissions.SettingsPointSummary],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+              <label class="gray">{{'CONTROLENTRY.DATAENTRY' | translate}}</label>
+            <mat-radio-group class="spec_dataEntryToggle" formControlName="dataEntryMode">
+              <div class="flex">
+                <div class="radio-flex mr-20">
+                  <label>{{'CONTROLENTRY.SUMMARY' | translate}}</label>
+                  <mat-radio-button color="primary" (change)="summaryToggleHandler(true)" [value]="true"></mat-radio-button>
+                </div>
+
+                <div class="radio-flex">
+                  <label>{{'CONTROLENTRY.POINT' | translate}}</label>
+                  <mat-radio-button color="primary" (change)="summaryToggleHandler(false)" [value]="false"></mat-radio-button>
+                </div>
+              </div>
+            </mat-radio-group>
+          </div>
+          <div *ngIf="levels?.length > 0 && hasPermissionToAccess([permissions.SettingsLevelsInUse])"
+            class="control-lavels mat-checkbox-group bdr mb-0 pb-15 d-block">
+            <label class="gray">{{'CONTROLENTRY.LEVELS' | translate}}</label>
+            <div class="d-flex w-flex">
+              <div formArrayName="levels" class="mr-20" *ngFor="let level of levels">
+                <ng-container>
+                  <mat-checkbox class="levels-in-use" [checked]="level.levelInUse" formControlName="{{level.decimalPlace}}"
+                    (change)="level.levelInUse=$event.checked;onChangeLevelInUse($event);appNavigationService.eventCapture('Levels')"
+                    [disabled]="hasPermissionToAccess([permissions.ControlAddViewOnly, permissions.ControlEditViewOnly]) || level.disabled">
+                    {{ level.decimalPlace }}
+                  </mat-checkbox>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div class="flex decimal-places mb-20"
+            [checkForPermission]="{'permissionsAllowed':[permissions.SettingsDecimalPlaces],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+            <label class="gray">{{'CONTROLENTRY.DECIMALPLACES' | translate}} </label>
+            <br-select *ngIf="controlsForm.controls.decimalPlaces" formControlName="decimalPlaces"
+              class="spec_decimalPlaces" [emitValue]="true" [data]="decimalPlaceData"
+              [disabled]="hasPermissionToAccess([permissions.ControlAddViewOnly, permissions.ControlEditViewOnly])"
+              (selectedChanged)="onDecimalDataChange($event)">
+            </br-select>
+          </div>
+        </div>
+        <div *ngIf="showDefineOwnControlForm ||  !showSettings" class="dup-lots-text">{{'CONTROLENTRY.CONTROLSETTINGS' | translate}}</div>
+        <div *ngIf="!showDefineOwnControlForm" formArrayName="controls">
+          <div class="panel-content-border mb-10"
+            *ngFor="let control of controlsGetter.controls; let pointIndex = index;" [formGroupName]="pointIndex">
+            <button mat-icon-button
+              *ngIf="!showSettings && lotList[pointIndex] && !controlsForm.pristine && flag[pointIndex]"
+              class="btn-remove"
+              (click)="cf_onRemoveItem(pointIndex, _lotsList[pointIndex].length == 0 && loadLotsFlag[pointIndex])">
+              <mat-icon matTooltip="{{'TRANSLATION.CLEARSELECTION' | translate}}" [matTooltipPosition]="'right'" [svgIcon]="icons.close[24].name">
+              </mat-icon>
+            </button>
+            <br-select class="control-name" formControlName="controlName" [filterFormControl]="getGroupAtIndex(pointIndex)?.controls['controlName']"
+              [data]="_labConfigurationControls" [displayAttribute]="'displayName'" [placeholder]="controlNamePlaceholder"
+              [emitValue]="true" (selectedChanged)="onControlSelectChange($event, pointIndex)"
+              [disabled]="isTestAvailable"
+              [enableSearch]="true" [searchPlaceholder]="controlSearchPlaceholder" [noSearchResultsText]="noResults"
+              [searchOverlayClass]="'br-search-control-overlay'" (searchFieldData)="checkSearchList($event)"[showAsDropdown]="true">
+              <div class="project-content"
+                *ngIf="hasNoSearchResultList && isDefineOwnControlAvailable && isDefineOwnControlVisible">
+                <mat-option (click)="onControlSelectChange(defineOwnControlOption, pointIndex)" [value]="defineOwnControlOption">
+                  <span class="br-text-primary link">{{defineOwnControlOption.name}}</span>
+                </mat-option>
+              </div>
+            </br-select>
+            <div *ngIf="lotList[pointIndex] && (!this.controlsForm.pristine || this.showSettings || loadLotsFlag[pointIndex])"
+              class="controlDisplay" formGroupName="controlInfo">
+              <div [ngClass]="{'hide' : !flag[pointIndex]}">
+                <br-select *ngIf="!showDefineOwnControlForm" formControlName="lotNumber" class="spec_lotNumberSelect" [data]="lotList[pointIndex]"
+                  (selectedChanged)="onLotChange($event,pointIndex)" [displayAttribute]="'lotWithExpirationDate'"
+                  [placeholder]="lotNumberPlaceholder" [emitValue]="true"
+                  [showAsDropdown]="true">
+                </br-select>
+                <mat-error *ngIf="_lotsList[pointIndex]?.length == 0 && loadLotsFlag[pointIndex]">
+                  <span>{{'CONTROLENTRY.NEWCONTROL' | translate}}</span>
+                  <button mat-icon-button id="spec_reset_error"
+                    (click)="cf_onRemoveItem(pointIndex, _lotsList[pointIndex].length == 0 && loadLotsFlag[pointIndex]); $event.stopPropagation();">
+                    <mat-icon [svgIcon]="icons.close[24].name"></mat-icon>
+                  </button>
+                </mat-error>
+                <mat-form-field>
+                  <input matInput formControlName="customName" class="spec_customNameDisplay" maxlength="50"
+                    [checkForPermission]="{'permissionsAllowed':[permissions.ControlAdd, permissions.ControlEdit],'hideIfNotPermitted':false,'disableIfNotPermitted':false}"
+                    (ngModelChange)="onCustomNameChange($event, pointIndex)">
+                  <mat-placeholder>{{'CONTROLENTRY.CUSTOMNAME' | translate}}
+                  </mat-placeholder>
+                </mat-form-field>
+                <mat-error *ngIf="duplicateCustomName[pointIndex]">
+                  {{'CONTROLENTRY.CUSTOMNAMEEXISTS' | translate}}
+                </mat-error>
+              </div>
+            </div>
+          </div>
+          <div
+            *ngIf="showSettings && lotList && lotList[pointIndex] && lotList[pointIndex].length > 1 && hasChildren && hasPermissionToAccess([permissions.StartNewLot, permissions.StartNewLotViewOnly])"
+            class="flex mt-15">
+            <button mat-stroked-button color="primary" type="submit"
+              (click)="openDuplicateNodeDialog()">{{'CONTROLENTRY.NEWLOT' | translate}}</button>
+          </div>
+        </div>
+        <div *ngIf="showDefineOwnControlForm">
+          <unext-add-define-own-control *ngIf="nonBrControlDefinitionsData" [title]="title" [viewMode]="controlManagementViewMode" [nonBrControlDefinitionsData] ="nonBrControlDefinitionsData" (addNonBRControlDefinition)="addNonBrControlDefinitionsWithLabSetup($event)" (closeDefineControlsTab)="closeDefineControlsTab()" [currentlySelectedControls]="currentlySelectedControls"></unext-add-define-own-control>
+        </div>
+      </div>
+      <div formGroupName="defaultControls" class="column spec_specRulesDisplay">
+        <div *ngIf="showSettings">
+          <div [hidden]="summary"
+            *ngIf="hasPermissionToAccess([permissions.EvalMeanSDCV, permissions.EvalMeanSDCVViewOnly])">
+              <h6 class="mat-h6 mb-0">{{'CONTROLENTRY.DATAOPTIONS' | translate}}</h6>
+            <div class="flex bdr mb-10 pb-15"></div>
+            <label>{{'CONTROLENTRY.EVALUATION' | translate}}</label>
+            <div class="flex alignend mt-15">
+              <button mat-stroked-button color="primary" (click)="onSubmit(controlsForm?.controls, true)"
+                [disabled]="!isTestAvailable">{{'CONTROLENTRY.SETVALUES' | translate}}</button>
+            </div>
+            <div class="flex bdr mb-15 pb-15"></div>
+          </div>
+          <unext-spc-rules-component [showSpcRules]="!summary" [settings]="settings"
+            *ngIf="showSettings && hasPermissionToAccess([permissions.RulesChanges, permissions.ControlEditViewOnly])"
+            [disableForm]="hasPermissionToAccess([permissions.ControlAddViewOnly, permissions.ControlEditViewOnly])">
+          </unext-spc-rules-component>
+        </div>
+      </div>
+    </form>
+    <mat-error *ngIf="controlsForm.hasError('required')">{{'CONTROLENTRY.ERROROCCURRED' | translate}}</mat-error>
+    <span *ngIf="!showDefineOwnControlForm && !showSettings && controlsForm.controls.controls.value.length < controlAddLimit && !hideAddControlLink
+    && !hasPermissionToAccess([permissions.ControlAddViewOnly, permissions.ControlEditViewOnly])"
+      class="br-text-primary link" (click)="addFormControl()">
+      {{'CONTROLENTRY.ANOTHERCONTROL' | translate}}</span>
+    <mat-error *ngIf="!showSettings && controlsForm.controls.controls.value.length === controlAddLimit">
+      {{controlLimitMessage}}
+    </mat-error>
+    <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
+
+    <div class="flex column-left-450">
+      <div class="column">
+        <div class="ctn-archived-toggle" [formGroup]="controlsForm" *ngIf="showArchivedFilterToggle && !isParentArchived && hasPermissionToAccess([permissions.Archiving])">
+            <label>{{'CONTROLENTRY.ARCHIEVE' | translate}}</label>
+          <mat-slide-toggle color="primary" name="archivedItems" formControlName="archived" id="spec_archive"
+            class="archive-toggle" (change)="onArchiveToggle($event,content);isControlArchieved($event.checked)"
+            [disabled]="hasPermissionToAccess([permissions.ControlAddViewOnly, permissions.ControlEditViewOnly])">
+          </mat-slide-toggle>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions *ngIf="!showDefineOwnControlForm" class="mr-0">
+    <button *ngIf="showSettings && !isTestAvailable && hasPermissionToAccess([permissions.ControlDelete])
+    && !hasPermissionToAccess([permissions.ControlAddViewOnly, permissions.ControlEditViewOnly])"
+      id="spec_delete_button" mat-icon-button class="icn-delete" (click)="deleteControl()">
+      <mat-icon [svgIcon]="icons.delete[24].name"></mat-icon>
+    </button>
+    <button mat-button color="primary"
+        *ngIf="!hasPermissionToAccess([permissions.ControlAddViewOnly, permissions.ControlEditViewOnly])"
+        (click)="resetForm()"
+        [disabled]="controlsForm.pristine">
+        {{'CONTROLENTRY.CANCEL' | translate}}
+    </button>
+    <button mat-flat-button color="primary" type="submit"
+      *ngIf="showSettings && !hasPermissionToAccess([permissions.ControlAddViewOnly, permissions.ControlEditViewOnly])"
+      [disabled]="(disableUpdate() || !controlsForm.valid || isDuplicateCustomName) && summeryPristine" class="spec_update_control"
+      (click)="onSubmit(controlsForm?.controls, false,true)">{{'CONTROLENTRY.UPDATE' | translate}}
+    </button>
+    <button mat-flat-button color="primary"
+        *ngIf="!showSettings && !hasPermissionToAccess([permissions.ControlAddViewOnly, permissions.ControlEditViewOnly])"
+        type="submit"
+        [disabled]="isFormSubmitting || isDuplicateCustomName || controlsForm.pristine || !controlsForm.valid"
+        class="spec_submit_control" (click)="onSubmit(controlsForm?.controls, false, false)">
+        {{'CONTROLENTRY.ADDCONTROL' | translate}}
+    </button>
+  </mat-card-actions>
+</mat-card>

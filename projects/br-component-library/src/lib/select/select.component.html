@@ -1,0 +1,51 @@
+<!--  © 2024 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div id="singleData" class="mat-body black" *ngIf="data?.length === 1">
+  <mat-form-field *ngIf="!showAsDropdown">
+    <input matInput placeholder="{{ placeholder }}" [value]="data[0][displayAttribute]" [disabled]="true">
+  </mat-form-field>
+
+  <mat-form-field *ngIf="showAsDropdown === true" id="multipleData">
+    <mat-select [(ngModel)]="selectedItem" (ngModelChange)="selectItem(selectedItem)" id="{{ elementName }}"
+      [disabled]="disabled" name="{{ elementName }}" placeholder="{{ placeholder }}">
+      <mat-option *ngFor="let item of data" [value]="item">
+        {{ item ? formatText(displayAttribute ? item[displayAttribute] : item) : '' }}
+      </mat-option>
+    </mat-select>
+    <mat-hint class="br-text-warn" *ngIf="hasError">{{ errorMessage }}</mat-hint>
+  </mat-form-field>
+</div>
+
+<mat-form-field id="multipleData" *ngIf="!enableSearch && data?.length > 1">
+  <mat-select [(ngModel)]="selectedItem" (ngModelChange)="selectItem(selectedItem)" [disabled]="disabled"
+    id="{{ elementName }}" name="{{ elementName }}" placeholder="{{ placeholder }}">
+    <mat-option *ngFor="let item of data" [value]="item">
+      {{ item ? formatText(displayAttribute ? item[displayAttribute] : item) : '' }}
+    </mat-option>
+  </mat-select>
+  <mat-hint class="br-text-warn" *ngIf="hasError">{{ errorMessage }}</mat-hint>
+</mat-form-field>
+
+<!-- Single select with search -->
+<mat-form-field id="selectWithSearch" class="single-select-search" *ngIf="!!enableSearch && data?.length > 1">
+  <input #searchInput class="search-input" [maxlength]="maxSearchCharacter" type="text" [placeholder]="tempPlaceHolder"
+    (focus)="togglePlaceHolder($event)" (focusout)="togglePlaceHolder($event)" matInput [matAutocomplete]="auto"
+    [formControl]="filterFormControl">
+  <div *ngIf="!enableClearSearch" class="drop-down-arrow">
+    <mat-icon>arrow_drop_down</mat-icon>
+  </div>
+  <button *ngIf="!!enableClearSearch && filterFormControl?.value?.length > 0" matSuffix mat-icon-button
+    aria-label="company" (click)="clearSearch()">
+    <mat-icon class="clear-search">clear</mat-icon>
+  </button>
+  <mat-autocomplete [class]="searchOverlayClass" #auto="matAutocomplete" [displayWith]="displayFnWrapper()"
+    (optionSelected)='selectItem($event.option.value)'>
+    <!-- For content projection inside the overlay -->
+    <ng-content select=".project-content"></ng-content>
+    <div class="br-select-list" *ngIf="filterData | async as retrievedItems">
+      <mat-option *ngFor="let item of retrievedItems" [value]="item" [ngClass]="allowSelection(item)">
+        <span
+          [innerHTML]="(item ? formatText(displayAttribute && !!item[displayAttribute] ? item[displayAttribute] : item) : '') | texthighlight: (filterFormControl?.value?.length >= minSearchCharacter ? filterFormControl?.value : '')"></span>
+      </mat-option>
+    </div>
+  </mat-autocomplete>
+</mat-form-field>

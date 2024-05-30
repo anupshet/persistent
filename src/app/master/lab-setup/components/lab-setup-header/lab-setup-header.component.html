@@ -1,0 +1,39 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="lab-setup-close">
+  <button mat-icon-button class="btn-lab-close" (click)="onClose()" *ngIf="showWhenIsLabSetup()">
+    <mat-icon [svgIcon]="icons.close[24].name">
+    </mat-icon>
+  </button>
+</div>
+<div [ngSwitch]="currentNode" class="mb-15">
+  <div *ngSwitchCase="type.Account" class="lab-setup-header type-account text-center">
+    <mat-icon [svgIcon]="icons.setupBegin[48].name" class="setupBegin"></mat-icon>
+    <h4 class="mat-h4">{{'LABSETUPDEFAULTCONTAINER.HELLO' | translate}} {{ fullName }}</h4>
+    <h6 class="mat-h6">{{'LABHEADER.BASICINFORMATION' | translate}}</h6>
+  </div>
+  <div *ngSwitchCase="type.Department" class="lab-setup-header type-department text-center">
+    <mat-icon [svgIcon]="icons.departments[48].name" class="departments"></mat-icon>
+    <h5 class="mat-h5">{{ title ? formatText(title) : '' }}</h5>
+  </div>
+  <div *ngSwitchCase="type.Instrument" class="lab-setup-header type-instrument text-center">
+    <mat-icon [svgIcon]="icons.instruments[48].name" class="instruments"></mat-icon>
+    <h5 class="mat-h5">{{ title ? formatText(title) : '' }}</h5>
+  </div>
+  <div *ngSwitchCase="type.Control" class="lab-setup-header type-control text-center">
+    <mat-icon [svgIcon]="icons.products[48].name" class="products"></mat-icon>
+    <h5 class="mat-h5">{{ title ? formatText(title) : '' }}</h5>
+  </div>
+  <div *ngSwitchCase="type.Analyte" class="lab-setup-header type-analyte text-center">
+    <mat-icon [svgIcon]="icons.tests[48].name" class="tests"></mat-icon>
+    <h5 class="mat-h5">{{ title ? formatText(title) : '' }}</h5>
+  </div>
+  <div *ngSwitchCase="type.Feedback" class="lab-setup-header type-feedback text-center">
+    <mat-icon [svgIcon]="icons.setupComplete[48].name" class="setupComplete"></mat-icon>
+    <h4 class="mat-h4">{{'LABHEADER.GREATWORK' | translate}}</h4>
+    <h6 class="mat-h6">{{'LABHEADER.ENETRTEXT' | translate}}</h6>
+  </div>
+  <div *ngSwitchCase="type.OwnControl" class="lab-setup-header type-analyte text-center">
+    <mat-icon [svgIcon]="icons.products[48].name" class="products"></mat-icon>
+    <h5 class="mat-h5">{{ title ? formatText(title) : '' }}</h5>
+  </div>
+</div>

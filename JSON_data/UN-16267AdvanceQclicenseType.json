@@ -1,0 +1,19 @@
+{
+	"DEV": {
+		"URL": "http://localhost:4200/login",
+		"AMUsername": "rana_thakur+DevBio-RadManager@bio-rad.com",
+		"AMPassword": "Welcome1",
+		"AMFirstName": "rana",
+		"AccountInfoPageHeading": "Account Information",
+		"NoGroupMessage": "No groups found",
+		"Lab": "Bangalore Lab",
+		"Group1":"Abhi LotViewer",
+    "AccountNameColumn": "Account Name",
+	"LocationNameColumn": "License Type",
+	"LocationKeyword": "Advance QC",
+	  "KeywordAccount": "Abhi LotViewer",
+	  "ColumnNo1": "1"
+	},
+	"QA": {},
+	"STAGE": {}
+}

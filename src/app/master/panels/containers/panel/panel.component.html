@@ -1,0 +1,62 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="panel-component">
+
+  <button mat-icon-button class="icn-close" (click)="togglePanelClose()"
+    [checkForPermission]="{'permissionsAllowed':[permissions.PanelsAdd, permissions.PanelsEdit],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+    <mat-icon [svgIcon]="icons.close[24].name"></mat-icon>
+  </button>
+
+
+  <section class="top mb-5">
+    <mat-form-field>
+      <p>{{'PANELCOMPONENT.PANEL' | translate}}</p>
+      <input matInput class="spec_panelName" [formControl]="panelName"
+        (input)="valuechange($event)" autocomplete="off" ngDefaultControl/>
+      <mat-error *ngIf="panelName.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </section> <!-- /top -->
+
+  <div class="flex-ctn">
+
+    <div class="flex-item-1">
+      <p>{{'PANELCOMPONENT.SELECT' | translate}}</p>
+      <unext-panel-item-selection [selectedItems]="selectedItems" (selectedItemsEvent)="selectedItemsEvent($event)"></unext-panel-item-selection>
+    </div> <!-- /flex-item-1 -->
+
+    <div class="flex-item-2 ml-20">
+      <div [ngClass]="{'ctn-drag-absolute': isDragging}">
+        <h2>{{'PANELCOMPONENT.PANELITEM' | translate}}</h2>
+        <p *ngIf="selectedItems?selectedItems?.length < 1 : false" class="grey">{{'PANELCOMPONENT.NO' | translate}}</p>
+
+        <div class="panel-items-controls mb-20">
+          <div>
+            <button *ngIf="showDeletePanel" class="spec_deleteButton icn-delete" mat-icon-button (click)="deletePanel()"
+              [checkForPermission]="{'permissionsAllowed':[permissions.PanelsDelete],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+              <mat-icon [svgIcon]="icons.delete[24].name"></mat-icon>
+            </button>
+          </div>
+          <div>
+              <button mat-stroked-button color="primary" class="mr-10" (click)="sortAlphabetically(selectedItems)"
+                      [disabled]="itemsSortedAlphabetical">
+                  {{'PANELCOMPONENT.AZ' | translate}}
+              </button>
+              <button mat-button color="primary" class="mr-10" (click)="resetForm()"
+                      [disabled]="!enableCancel()"
+                      [checkForPermission]="{'permissionsAllowed':[permissions.PanelsAdd, permissions.PanelsEdit],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+                  {{'PANELCOMPONENT.CANCEL' | translate}}
+              </button>
+              <button mat-flat-button class="spec_saveButton" color="primary" type="submit" [disabled]="!enableSubmit()"
+                      (click)="onSubmit()"
+                      [checkForPermission]="{'permissionsAllowed':[permissions.PanelsAdd, permissions.PanelsEdit],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+                  {{'PANELCOMPONENT.SAVE' | translate}}
+              </button>
+          </div>
+        </div> <!-- /panel-items-controls -->
+
+        <unext-panel-item-list *ngIf="selectedItems?selectedItems?.length > 0 : false" [selectedItems]="selectedItems"
+          (sortedItemsEvent)="sortedItemsEvent($event)" (draggingEvent)="draggingEvent($event)"></unext-panel-item-list>
+      </div>
+    </div> <!-- /flex-item-2 -->
+
+  </div> <!-- /flex-ctn -->
+</div> <!-- /panel-component -->

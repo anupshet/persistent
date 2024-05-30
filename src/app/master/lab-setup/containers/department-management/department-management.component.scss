@@ -1,0 +1,20 @@
+@import "../../../../../assets/scss/base/variables-peak";
+
+.mat-button{
+  display: flex;
+  align-items: center;
+  & mat-icon{
+    padding-right: $custom-type-size-xxsmall;
+  }
+  margin-left: 50%;
+}
+.flex-wrap{
+  flex-wrap: wrap;
+  display: flex;
+  & .panel-content-border{
+    margin: ($custom-space-small + $custom-space-xsmall);
+  }
+  & .tile-card{
+    width: 50%;
+  }
+}

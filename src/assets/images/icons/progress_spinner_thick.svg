@@ -1,0 +1,10 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0-2.667A5.333 5.333 0 1 0 8 2.667a5.333 5.333 0 0 0 0 10.666z" fill="url(#7obqjsscba)"/>
+    <defs>
+        <radialGradient id="7obqjsscba" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(8 0 0 8 8 8)">
+            <stop stop-color="#007DB6" stop-opacity="0"/>
+            <stop offset="0" stop-color="#007DB6" stop-opacity="0"/>
+            <stop offset="1" stop-color="#007DB6"/>
+        </radialGradient>
+    </defs>
+</svg>

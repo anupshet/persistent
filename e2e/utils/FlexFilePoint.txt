@@ -1,0 +1,8 @@
+Instrument,Product,Level,Test,CalibratorLot,Reagent,Run Date,Run Time,Result
+AutomationInstru1,AutomationProd1,1,AutomationTest1,CAL#22255,REA #00455,2022/04/15,20:59:00,5
+AutomationInstru2,AutomationProd2,1,AutomationTest2,CAL#22255,REA #00455,2022/04/16,20:59:00,10
+AutomationInstru3,AutomationProd3,1,AutomationTest3,CAL#22255,REA #00455,2022/04/17,20:59:00,15
+
+
+
+

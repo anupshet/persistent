@@ -1,0 +1,39 @@
+<div class="flex-container">
+  <div class="flex-3">
+    <mat-form-field>
+      <mat-select placeholder="{{'DROPDOWNFILTER.LOCATION' | translate}}"
+        [(ngModel)]="selectedLocations" (selectionChange)="changeLocationDropdown(selectedLocations)"
+        [class.disabled]="locationForm.disabled" multiple>
+        <mat-option *ngFor="let location of locationDropdown" [value]="location">{{location.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="flex-3" *ngIf="initDepartmentDropdown?.length >= 1">
+    <mat-form-field>
+      <mat-select placeholder="{{'DROPDOWNFILTER.DEPARTMENT' | translate}}"
+        [formControl]="departmentForm" [(ngModel)]="selectedDepartments"
+        (selectionChange)="changeDepartmentDropdown(selectedDepartments)" [class.disabled]="departmentForm.disabled"
+        multiple>
+        <mat-option *ngFor="let department of departmentDropdown" [value]="department">{{department.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="flex-3">
+    <mat-form-field>
+      <mat-select placeholder="{{'DROPDOWNFILTER.INSTRUMENT' | translate}}"
+        [formControl]="instrumentForm" [(ngModel)]="selectedInstruments"
+        (selectionChange)="changeInstrumentDropdown(selectedInstruments)" [class.disabled]="instrumentForm.disabled"
+        multiple>
+        <mat-option *ngFor="let instrument of instrumentDropdown" [value]="instrument">{{instrument.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="flex-1">
+    <button mat-button [disabled]="isResetDisabled" color="primary"
+      [class.disabled]="isResetDisabled" (click)="clearDropdownSelections();">
+      {{'DROPDOWNFILTER.RESET' | translate}}
+    </button>
+  </div>
+</div>

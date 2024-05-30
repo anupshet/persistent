@@ -1,0 +1,449 @@
+{
+  "DEV": {
+    "URL": "https://unity-dev.qcnet.com/",
+    "UserName": "pooja_piplpalle+Bug12873DEVLocatin1@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "pooja",
+    "departmentName": "Testing",
+    "instrumentName": "Advanced Instruments",
+    "reportType": "Monthly Evaluation",
+    "correctiveactioncomment":"Test",
+    "AuditTrailAPI": "https://unity-dev-api.qcnet.com/tracking/at",
+    "AuditTrailAPIStatusCode": "200",
+    "createReportPayload":{
+      "account_id": "62b4da10-161b-4d23-a4d5-4a6344ec2b28",
+      "accountNumber": "104434",
+      "accountName": "Bug12873",
+      "group_id": "56c68a25-4953-4ee8-a81b-d39ec569f455",
+      "groupName": "Location1",
+      "user_id": "4f5d4b8e-7048-4a00-beab-ea6620a935bf",
+      "oktaId": "00uk2e3z3dH2ZY34q2p7",
+      "location_id": "2841b1e1-b1f1-446c-977f-aac9369198df",
+      "locationName": "Location1Bug12873",
+      "userRoles": [
+          "LabSupervisor",
+          "LabUserManager"
+      ],
+      "eventDateTime": "2023-04-04T13:13:33.655Z",
+      "localDateTime": "2023-04-04T13:13:33.655Z",
+      "awsCorrelationId": "",
+      "hasDepartments": true,
+      "auditTrail": {
+          "device_id": "",
+          "run_id": "",
+          "runDateTime": "2023-04-04T13:13:33.655Z",
+          "eventType": "Report",
+          "action": "Create",
+          "actionStatus": "Success",
+          "priorValue": {},
+          "currentValue": {
+              "labInstrumentNodeId": "0308967e-4466-41b2-8444-26880a02282b",
+              "labLocationId": "2841b1e1-b1f1-446c-977f-aac9369198df",
+              "reportType": "0"
+          },
+          "hierarchy": {
+              "account": [
+                  {
+                      "id": "62b4da10-161b-4d23-a4d5-4a6344ec2b28",
+                      "name": "Bug12873",
+                      "groups": [
+                          {
+                              "id": "56c68a25-4953-4ee8-a81b-d39ec569f455",
+                              "name": "Location1",
+                              "locations": [
+                                  {
+                                      "id": "2841b1e1-b1f1-446c-977f-aac9369198df",
+                                      "name": "Location1Bug12873",
+                                      "departments": [
+                                          {
+                                              "id": "d41a4d1e-dd6d-4d36-a36c-0818de20436e",
+                                              "name": "Testing",
+                                              "instrument": [
+                                                  {
+                                                      "id": "0308967e-4466-41b2-8444-26880a02282b",
+                                                      "name": "Advanced Instruments"
+                                                  }
+                                              ]
+                                          }
+                                      ]
+                                  }
+                              ]
+                          }
+                      ]
+                  }
+              ]
+          }
+      }
+  },
+  "reviewreportpayload":{
+    "account_id": "62b4da10-161b-4d23-a4d5-4a6344ec2b28",
+    "accountNumber": "104434",
+    "accountName": "Bug12873",
+    "group_id": "56c68a25-4953-4ee8-a81b-d39ec569f455",
+    "groupName": "Location1",
+    "user_id": "4f5d4b8e-7048-4a00-beab-ea6620a935bf",
+    "oktaId": "00uk2e3z3dH2ZY34q2p7",
+    "location_id": "2841b1e1-b1f1-446c-977f-aac9369198df",
+    "locationName": "Location1Bug12873",
+    "userRoles": [
+        "LabSupervisor",
+        "LabUserManager"
+    ],
+    "eventDateTime": "2023-04-04T13:36:20.317Z",
+    "localDateTime": "2023-04-04T13:36:20.317Z",
+    "awsCorrelationId": "",
+    "hasDepartments": true,
+    "auditTrail": {
+        "device_id": "",
+        "run_id": "",
+        "runDateTime": "2023-04-04T13:36:20.317Z",
+        "eventType": "Report",
+        "action": "Review",
+        "actionStatus": "Success",
+        "priorValue": {},
+        "currentValue": {},
+        "hierarchy": {
+            "account": [
+                {
+                    "id": "62b4da10-161b-4d23-a4d5-4a6344ec2b28",
+                    "name": "Bug12873",
+                    "groups": [
+                        {
+                            "id": "56c68a25-4953-4ee8-a81b-d39ec569f455",
+                            "name": "Location1",
+                            "locations": [
+                                {
+                                    "id": "2841b1e1-b1f1-446c-977f-aac9369198df",
+                                    "name": "Location1Bug12873",
+                                    "departments": [
+                                        {
+                                            "id": "d41a4d1e-dd6d-4d36-a36c-0818de20436e",
+                                            "name": "Testing",
+                                            "instrument": [
+                                                {
+                                                    "id": "0308967e-4466-41b2-8444-26880a02282b",
+                                                    "name": "Advanced Instruments"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+},  
+"savereportatcall":{
+    "account_id": "62b4da10-161b-4d23-a4d5-4a6344ec2b28",
+    "accountNumber": "104434",
+    "accountName": "Bug12873",
+    "group_id": "56c68a25-4953-4ee8-a81b-d39ec569f455",
+    "groupName": "Location1",
+    "user_id": "4f5d4b8e-7048-4a00-beab-ea6620a935bf",
+    "oktaId": "00uk2e3z3dH2ZY34q2p7",
+    "location_id": "2841b1e1-b1f1-446c-977f-aac9369198df",
+    "locationName": "Location1Bug12873",
+    "userRoles": [
+        "LabSupervisor",
+        "LabUserManager"
+    ],
+    "eventDateTime": "2023-04-07T13:19:09.363Z",
+    "localDateTime": "2023-04-07T13:19:09.363Z",
+    "awsCorrelationId": "",
+    "hasDepartments": true,
+    "auditTrail": {
+        "device_id": "",
+        "run_id": "",
+        "runDateTime": "2023-04-07T13:19:09.363Z",
+        "eventType": "Report",
+        "action": "Save",
+        "actionStatus": "Success",
+        "priorValue": {},
+        "currentValue": {
+            "labInstrumentNodeId": "0308967e-4466-41b2-8444-26880a02282b",
+            "labLocationId": "2841b1e1-b1f1-446c-977f-aac9369198df",
+            "reportMetaId": "36FF34081DB640A5AAD0DC4E1A233861",
+            "reportType": "0"
+        },
+        "hierarchy": {
+            "account": [
+                {
+                    "id": "62b4da10-161b-4d23-a4d5-4a6344ec2b28",
+                    "name": "Bug12873",
+                    "groups": [
+                        {
+                            "id": "56c68a25-4953-4ee8-a81b-d39ec569f455",
+                            "name": "Location1",
+                            "locations": [
+                                {
+                                    "id": "2841b1e1-b1f1-446c-977f-aac9369198df",
+                                    "name": "Location1Bug12873",
+                                    "departments": [
+                                        {
+                                            "id": "d41a4d1e-dd6d-4d36-a36c-0818de20436e",
+                                            "name": "Testing",
+                                            "instrument": [
+                                                {
+                                                    "id": "0308967e-4466-41b2-8444-26880a02282b",
+                                                    "name": "Advanced Instruments"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+},
+"signReportPayload":{
+  "account_id": "62b4da10-161b-4d23-a4d5-4a6344ec2b28",
+  "accountNumber": "104434",
+  "accountName": "Bug12873",
+  "group_id": "56c68a25-4953-4ee8-a81b-d39ec569f455",
+  "groupName": "Location1",
+  "user_id": "4f5d4b8e-7048-4a00-beab-ea6620a935bf",
+  "oktaId": "00uk2e3z3dH2ZY34q2p7",
+  "location_id": "2841b1e1-b1f1-446c-977f-aac9369198df",
+  "locationName": "Location1Bug12873",
+  "userRoles": [
+      "LabSupervisor",
+      "LabUserManager"
+  ],
+  "eventDateTime": "2023-04-04T13:44:15.594Z",
+  "localDateTime": "2023-04-04T13:44:15.594Z",
+  "awsCorrelationId": "",
+  "hasDepartments": true,
+  "auditTrail": {
+      "device_id": "",
+      "run_id": "",
+      "runDateTime": "2023-04-04T13:44:15.594Z",
+      "eventType": "Report",
+      "action": "Sign",
+      "actionStatus": "Success",
+      "priorValue": {},
+      "currentValue": {
+          "labInstrumentNodeId": "0308967e-4466-41b2-8444-26880a02282b",
+          "labLocationId": "2841b1e1-b1f1-446c-977f-aac9369198df",
+          "reportMetaId": "6BBF1C4534FB45BAB30322F30BE28BBB",
+          "reportType": "0",
+          "correctiveActions": {
+              "instrumentInfo": {
+                  "productInfos": [
+                      {
+                          "analyteInfos": [
+                              {
+                                  "labTestId": "7b5e3d3d-7e39-42c1-86d4-c102701fd7ab",
+                                  "testSpecId": 7930,
+                                  "labUnitId": 81,
+                                  "productMasterLotId": 385,
+                                  "isArchived": false,
+                                  "sortOrder": 0
+                              }
+                          ],
+                          "sortOrder": 0,
+                          "productLotComment": "undefined",
+                          "productMasterLotId": 385
+                      }
+                  ],
+                  "instrumentId": "18",
+                  "instrumentName": "Advanced Instruments"
+              },
+              "yearMonth": "202304",
+              "reportType": "0",
+              "levelOfReport": "2",
+              "languageCode": "",
+              "deptName": "Testing",
+              "deptSupervisorName": "pooja piplpalle",
+              "entityId": "cac97ac4-b1ce-4aaa-90f0-6e1036019d80",
+              "customInstrumentName": "Advanced Instruments",
+              "labTimeZone": "America/New_York",
+              "streetAddress": "america, america",
+              "streetAddress2": "america",
+              "city": "Pune",
+              "subDivision": "MH",
+              "country": "DZ",
+              "labName": "Location1Bug12873",
+              "accountName": "104434",
+              "reportSignee": {
+                  "comments": "",
+                  "signedBy": "pooja piplpalle",
+                  "signedOn": "2023-04-04T13:44:13.903Z"
+              }
+          }
+      },
+      "hierarchy": {
+          "account": [
+              {
+                  "id": "62b4da10-161b-4d23-a4d5-4a6344ec2b28",
+                  "name": "Bug12873",
+                  "groups": [
+                      {
+                          "id": "56c68a25-4953-4ee8-a81b-d39ec569f455",
+                          "name": "Location1",
+                          "locations": [
+                              {
+                                  "id": "2841b1e1-b1f1-446c-977f-aac9369198df",
+                                  "name": "Location1Bug12873",
+                                  "departments": [
+                                      {
+                                          "id": "d41a4d1e-dd6d-4d36-a36c-0818de20436e",
+                                          "name": "Testing",
+                                          "instrument": [
+                                              {
+                                                  "id": "0308967e-4466-41b2-8444-26880a02282b",
+                                                  "name": "Advanced Instruments"
+                                              }
+                                          ]
+                                      }
+                                  ]
+                              }
+                          ]
+                      }
+                  ]
+              }
+          ]
+      }
+  }
+},
+"previewPastReportatcall":{
+    "account_id": "62b4da10-161b-4d23-a4d5-4a6344ec2b28",
+    "accountNumber": "104434",
+    "accountName": "Bug12873",
+    "group_id": "56c68a25-4953-4ee8-a81b-d39ec569f455",
+    "groupName": "Location1",
+    "user_id": "4f5d4b8e-7048-4a00-beab-ea6620a935bf",
+    "oktaId": "00uk2e3z3dH2ZY34q2p7",
+    "location_id": "2841b1e1-b1f1-446c-977f-aac9369198df",
+    "locationName": "Location1Bug12873",
+    "userRoles": [
+        "LabSupervisor",
+        "LabUserManager"
+    ],
+    "eventDateTime": "2023-04-06T12:34:38.316Z",
+    "localDateTime": "2023-04-06T12:34:38.316Z",
+    "awsCorrelationId": "",
+    "hasDepartments": true,
+    "auditTrail": {
+        "device_id": "",
+        "run_id": "",
+        "runDateTime": "2023-04-06T12:34:38.316Z",
+        "eventType": "Report",
+        "action": "View",
+        "actionStatus": "Success",
+        "priorValue": {},
+        "currentValue": {
+            "reportCreatedOn": "2023-04-04T14:04:12.045692Z",
+            "reportDownloadFileName": "Advanced Instruments 04-2023.pdf",
+            "reportType": "0"
+        },
+        "hierarchy": {
+            "account": [
+                {
+                    "id": "62b4da10-161b-4d23-a4d5-4a6344ec2b28",
+                    "name": "Bug12873",
+                    "groups": [
+                        {
+                            "id": "56c68a25-4953-4ee8-a81b-d39ec569f455",
+                            "name": "Location1",
+                            "locations": [
+                                {
+                                    "id": "2841b1e1-b1f1-446c-977f-aac9369198df",
+                                    "name": "Location1Bug12873",
+                                    "departments": [
+                                        {
+                                            "id": "d41a4d1e-dd6d-4d36-a36c-0818de20436e",
+                                            "name": "Testing",
+                                            "instrument": [
+                                                {
+                                                    "id": "0308967e-4466-41b2-8444-26880a02282b",
+                                                    "name": "Advanced Instruments"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+},
+"downloadatcall":{
+    "account_id": "62b4da10-161b-4d23-a4d5-4a6344ec2b28",
+    "accountNumber": "104434",
+    "accountName": "Bug12873",
+    "group_id": "56c68a25-4953-4ee8-a81b-d39ec569f455",
+    "groupName": "Location1",
+    "user_id": "4f5d4b8e-7048-4a00-beab-ea6620a935bf",
+    "oktaId": "00uk2e3z3dH2ZY34q2p7",
+    "location_id": "2841b1e1-b1f1-446c-977f-aac9369198df",
+    "locationName": "Location1Bug12873",
+    "userRoles": [
+        "LabSupervisor",
+        "LabUserManager"
+    ],
+    "eventDateTime": "2023-04-06T14:12:55.918Z",
+    "localDateTime": "2023-04-06T14:12:55.918Z",
+    "awsCorrelationId": "",
+    "hasDepartments": true,
+    "auditTrail": {
+        "device_id": "",
+        "run_id": "",
+        "runDateTime": "2023-04-06T14:12:55.918Z",
+        "eventType": "Report",
+        "action": "Download",
+        "actionStatus": "Success",
+        "priorValue": {},
+        "currentValue": {
+            "reportCreatedOn": "2023-04-04T14:04:12.045692Z",
+            "reportDownloadFileName": "Advanced Instruments 04-2023.pdf",
+            "reportType": "0"
+        },
+        "hierarchy": {
+            "account": [
+                {
+                    "id": "62b4da10-161b-4d23-a4d5-4a6344ec2b28",
+                    "name": "Bug12873",
+                    "groups": [
+                        {
+                            "id": "56c68a25-4953-4ee8-a81b-d39ec569f455",
+                            "name": "Location1",
+                            "locations": [
+                                {
+                                    "id": "2841b1e1-b1f1-446c-977f-aac9369198df",
+                                    "name": "Location1Bug12873",
+                                    "departments": [
+                                        {
+                                            "id": "d41a4d1e-dd6d-4d36-a36c-0818de20436e",
+                                            "name": "Testing",
+                                            "instrument": [
+                                                {
+                                                    "id": "0308967e-4466-41b2-8444-26880a02282b",
+                                                    "name": "Advanced Instruments"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+  },
+"QA": {},
+"STAGE": {},
+"DEV2": {}
+}

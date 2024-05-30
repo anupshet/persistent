@@ -1,0 +1,42 @@
+{
+  "QA1": {
+    "URL": "https://unity-test.qcnet.com/login",
+    "Username": "sudhir_paranjape+test186409@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sudhir",
+    "Department": "AdvancedLJ",
+    "Instrument": "Feature-Testing",
+    "Control": "Immunoassay Plus",
+    "Analyte": "Ferritin",
+    "Analyte2": "Amylase",
+    "Analyte3": "Albumin",
+    "image1": "PeerInstrument-30days-test",
+    "image2": "PeerInstrument-60days-test",
+    "image3": "PeerInstrument-90days-test",
+    "image4": "PeerInstrument-cumulative-test",
+    "image5": "MethodInstrument-30days-test'",
+    "image6": "MethodInstrument-60days-test",
+    "image7": "MethodInstrument-90days-test",
+    "image8": "MethodInstrument-cumulative-test"
+  },
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "Username": "UnityNextRegressionTestUser+1@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Regression",
+    "Department": "AdvancedLJ",
+    "Instrument": "Alinity c",
+    "Control": "Cardiac Markers Plus LT",
+    "Analyte": "Ammonia",
+    "Analyte2": "Amylase",
+    "Analyte3": "Cholesterol, HDL",
+    "image1": "PeerInstrument-30days-test",
+    "image2": "PeerInstrument-60days-test",
+    "image3": "PeerInstrument-90days-test",
+    "image4": "PeerInstrument-cumulative-test",
+    "image5": "MethodInstrument-30days-test'",
+    "image6": "MethodInstrument-60days-test",
+    "image7": "MethodInstrument-90days-test",
+    "image8": "MethodInstrument-cumulative-test"
+  }
+}

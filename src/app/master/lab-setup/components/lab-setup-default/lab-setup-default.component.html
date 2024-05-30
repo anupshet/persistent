@@ -1,0 +1,87 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<mat-card class="lab-setup-wrapper">
+  <unext-lab-setup-header [currentNode]="type.Account" [title]="title" [fullName]="fullName"></unext-lab-setup-header>
+  <mat-card-content>
+    <form [formGroup]="labSetupForm" novalidate>
+      <p class="mb-25">
+        <span>{{'LABSETUPDEFAULT.UNITY' | translate}}</span>
+        <br-info-tooltip>
+          <ng-template ng-label-tmp>
+            <p>{{'LABSETUPDEFAULT.POINTMODE' | translate}}</p>
+          </ng-template>
+        </br-info-tooltip>
+        <mat-radio-group formControlName="dataType">
+          <mat-radio-button color="primary" [value]="summary">
+            <span class="mat-body-1">
+              <span>{{'LABSETUPDEFAULT.SUMMARY' | translate}}</span>
+              <em class="mat-caption">{{'LABSETUPDEFAULT.MONTHLY' | translate}}</em>
+            </span>
+          </mat-radio-button>
+          <mat-radio-button color="primary" [value]="point">
+            <span class="mat-body-1">
+              <span>{{'LABSETUPDEFAULT.POINT' | translate}}</span>
+              <em class="mat-caption">{{'LABSETUPDEFAULT.DAILY' | translate}}</em>
+            </span>
+          </mat-radio-button>
+        </mat-radio-group>
+      </p>
+      <p class="mb-25">
+        <span>{{'LABSETUPDEFAULT.INSTRUMENTGROUPED' | translate}}</span>
+        <br-info-tooltip>
+          <ng-template ng-label-tmp>
+            <p>{{'LABSETUPDEFAULT.LARGERLABS' | translate}}.</p>
+          </ng-template>
+        </br-info-tooltip>
+        <mat-radio-group formControlName="instrumentsGroupedByDept">
+          <mat-radio-button color="primary" [value]="true">
+            <span class="mat-body-1">{{'LABSETUPDEFAULT.DEPARTMENT' | translate}}</span>
+          </mat-radio-button>
+          <mat-radio-button color="primary" [value]="false">
+            <span class="mat-body-1">{{'LABSETUPDEFAULT.NODEPARTMENTS' | translate}}</span>
+          </mat-radio-button>
+        </mat-radio-group>
+      </p>
+      <p class="mb-25">
+        <span>{{'LABSETUPDEFAULT.CALIBRATORLOT' | translate}}</span>
+        <br-info-tooltip>
+          <ng-template ng-label-tmp>
+            <p>{{'LABSETUPDEFAULT.LOTNUMBERS' | translate}}</p>
+          </ng-template>
+        </br-info-tooltip>
+        <mat-radio-group formControlName="trackReagentCalibrator">
+          <mat-radio-button color="primary" [value]="true">
+            <span class="mat-body-1">{{'LABSETUPDEFAULT.YES' | translate}}</span>
+          </mat-radio-button>
+          <mat-radio-button color="primary" [value]="false">
+            <span class="mat-body-1">{{'LABSETUPDEFAULT.NO' | translate}}</span>
+          </mat-radio-button>
+        </mat-radio-group>
+      </p>
+      <!-- TODO: The following question is hidden and defaulted since the application does not support this feature yet -->
+      <!-- <label class="mat-body-1">{{'LABSETUPDEFAULT.TYPICALLYSETMEANANDSD' | translate}}</label>
+      <mat-radio-group formControlName="fixedMean">
+        <mat-radio-button [value]="true">{{'LABSETUPDEFAULT.FIXED' | translate}}</mat-radio-button>
+        <mat-radio-button [value]="false">{{'LABSETUPDEFAULT.FLOAT' | translate}}
+        </mat-radio-button>
+      </mat-radio-group> -->
+      <div class="flex-box">
+        <p class="default-decimal-content">{{'LABSETUPDEFAULT.DECIMALPLACESCOMMENT' | translate}}</p>
+        <br-select class="decimalPlaces default-decimal-input-field" formControlName="decimalPlaces" [placeholder]="'LABSETUPDEFAULT.DECIMALPLACES' | translate" [data]="decimalPlacesData"></br-select>
+      </div>
+      <!-- TODO: The following question is hidden and defaulted since the application does not support this feature yet -->
+      <!-- <div class="flex-container ctn-slider-toggle">
+        <label class="mat-body-1">{{'LABSETUPDEFAULT.INSTRUMENTSGROUPEDBYDEFAULT' | translate}}</label>
+        <mat-slide-toggle color="primary" formControlName="siUnits"></mat-slide-toggle>
+      </div> -->
+      <mat-error id="error-message" *ngIf="errorMessage">
+        {{errorMessage}}
+      </mat-error>
+    </form>
+    <mat-card-actions align="end">
+        <button mat-button mat-flat-button color="primary" id="lets-go" type="submit" (click)="onSubmit(labSetupForm.value)"
+                [disabled]="(labSetupForm.invalid) || (!hasPermissionToAccess([permissions.DashboardConfiguration]))">
+            {{'LABSETUPDEFAULT.LETSGO' | translate}}
+        </button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>

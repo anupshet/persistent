@@ -1,0 +1,183 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+
+@import "../../../../assets/scss/variables";
+
+.additional-filter-dialog-container {
+  cursor: pointer;
+}
+
+.filter-icon {
+  height: 36px;
+  width: 36px;
+}
+
+.addtional-filter-menu {
+  width: 249px;
+  height: 235px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 0;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px 0 $grey-darked;
+  background-color: $white;
+}
+
+.data-col-spec {
+  height: 10px;
+  align-self: stretch;
+  flex-grow: 0;
+  background-color: $blue;
+}
+
+.additional-filter-title {
+  width: fit-content;
+  height: 25px;
+  flex-grow: 0;
+  font-family: Lato;
+  font-size: 21px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: $blue-darked;
+}
+
+.additional-filter-row {
+  height: 104px;
+  align-self: stretch;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 12px 8px;
+}
+
+.additional-filter-row-container {
+  width: 217px;
+  height: 80px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+}
+
+.action-item {
+  width: 217px;
+  height: 24px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0px;
+}
+
+.filter-result-icon-last30Days {
+  width: auto;
+  height: 24px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 8px;
+  background-color: $blue-lighter;
+  color: $white;
+  margin-right: 10px;
+}
+
+.checkbox-name {
+  width: 217px;
+}
+
+.filter-header {
+  height: 45px;
+  align-self: stretch;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 20px 0;
+}
+
+.filter-bottom {
+  height: 76px;
+  align-self: stretch;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.filter-update {
+  min-width: 96px;
+  height: 36px;
+  max-width: 120px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 4px;
+  background-color: $blue;
+  color: $white;
+  border: none
+}
+.filter-update:disabled {
+  background-color: $light-gray !important;
+}
+
+
+.checkbox-text {
+  width: 84px;
+  height: 24px;
+  flex-grow: 0;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 0.42px;
+  text-align: left;
+  color: $black;
+}
+
+.footer-line {
+  height: 1px;
+  align-self: stretch;
+  flex-grow: 0;
+  background-color: $gray-400;
+}
+
+.filter-result-icon-violation {
+  width: auto;
+  height: 24px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 8px;
+  border: solid 1px $light-carmine;
+  background-color: $white;
+  margin-right: 10px;
+}

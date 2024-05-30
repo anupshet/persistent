@@ -1,0 +1,57 @@
+{
+  "appLocale": "__spa_app_locale__",
+  "api": {
+    "httpCallTimeout": 30000,
+    "httpCallRetry": 0,
+    "codelistUrl": "__spa_codelist_url__",
+    "notificationUrl": "__spa_notification_url__",
+    "notificationAuthUrl": "__spa_notification_auth_url__",
+    "notificationSubscriptionTracker": "__spa_notification_subscription_tracker__",
+    "peerGroupReportingUrl": "__spa_peer_group_reporting_url__",
+    "sendEmailUrl": "__spa_send_email_url__",
+    "labDataUrl": "__spa_lab_data_url__",
+    "dataReviewUrl": "__spa_data_review_url__",
+    "portalUrl": "__spa_portal_url__",
+    "connectivityUrl": "__spa_connectivity_url__",
+    "multiFileUploadUrl": "__spa_multi_file_upload_url__",
+    "connectivityMappingUrl": "__spa_connectivity_mapping_url__",
+    "fileReceiveUrl": "__spa_file_receive_url__",
+    "fileUploadUrl": "__spa_file_upload_url__",
+    "parsingEngineUrl": "__spa_parsing_engine_url__",
+    "userManagementUrl": "__spa_usermanagement_url__",
+    "settingsUrl": "__spa_settings_url__",
+    "loggingUrl": "__spa_tracking_url__",
+    "panelsUrl": "__spa_panels_url__",
+    "labConfigurationUrl": "__spa_lab_configuration_url__",
+    "lotViewerUrl":"__spa_lot_viewer_url__",
+    "dynamicReportingUrl": "__spa_dynamic_reporting_url__",
+    "dynamicReportingGraphqlUrl": "__spa_dynamic_reporting_graphql__"
+  },
+  "subscriptionKey": "__ssm_hosting_provider_subscription_key__",
+  "logo": "__spa_logo__",
+  "googleAnalyticsId": "__spa_google_analytics_id__",
+  "auth": {
+    "clientId": "__spa_auth_client_id__",
+    "scopes": [ "openid", "email" ],
+    "orgUrl": "__spa_auth_org_url__",
+    "issuer": "__spa_auth_issuer__",
+    "authorizeUrl": "__spa_auth_authorize_url__",
+    "redirectUri": "__spa_auth_redirect_url__",
+    "loginUrl": "__spa_auth_login_url__",
+    "resetPassword": "__spa_auth_reset_password__",
+    "language": "__spa_auth_language__",
+    "pkce": true
+  },
+  "sso": {
+    "clientId": "__spa_auth_client_id__",
+    "scopes": [ "openid", "email" ],
+    "issuer": "__spa_auth_issuer_sso__",
+    "redirectUri": "__spa_auth_redirect_url_callback__",
+    "pkce": true,
+    "responseType": ["token", "id_token"]
+  },
+  "featureFlag": {
+    "apiKey": "__ff_localization_api_key__",
+    "contextKey": "__ff_localization_context_key__"
+  }
+}

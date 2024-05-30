@@ -1,0 +1,99 @@
+@import '../../../../../assets/scss/variables';
+@import '../../../../../assets/scss/base/variables-peak';
+@import '../../../../../assets/scss/mixins';
+
+
+.user-messages-modal-component {
+  text-align: left;
+
+  .flex-ctn {
+    display: flex;
+    justify-content: center;
+    margin-top: $custom-space-base + $custom-space-xsmall;
+
+    button:first-child {
+      margin-right: $custom-space-base;
+    }
+  }
+
+  .hdr {
+    padding: $custom-space-small + $custom-space-xsmall 0;
+  }
+
+  p {
+    color: $br-black-text-medium-emphasis;
+    margin-bottom: $custom-space-base + $custom-space-xsmall;
+  }
+
+  .checkbox-item {
+    width: 400px;
+    margin-bottom: $custom-space-small + $custom-space-xsmall;
+  }
+}
+
+
+
+
+.btn-cta {
+  margin-bottom: $custom-space-small;
+  font-weight: 500;
+}
+
+.btn {
+  margin-bottom: $custom-space-small;
+}
+
+.message-link-text,
+.message-link-text:hover {
+  cursor: pointer;
+  color: $br-color-primary-700 !important;
+}
+
+h5.mat-h5 {
+  margin: 0;
+  color: rgba(black, 0.87);
+  font-size: $custom-type-size-xlarge;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+.btn-close {
+  position: absolute;
+  top: 8px;
+  right: -8px;
+  color: $gray-700;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: mat-font-size($br-typography, body-2);
+  line-height: 1;
+
+  &:hover {
+    color: $blue-light;
+  }
+}
+
+h3 {
+  font-size: $custom-type-size-large;
+  font-weight: 500;
+  margin: 0 0 $custom-space-xsmall;
+}
+
+.form-item {
+  width: 100%;
+  margin: 0 0 $custom-space-base + $custom-space-small;
+}
+
+.btns {
+  overflow: hidden;
+  width: 100%;
+  text-align: right;
+}
+
+
+.message-link-text,
+.message-link-text:hover {
+  cursor: pointer;
+  color: $br-color-primary-700;
+}

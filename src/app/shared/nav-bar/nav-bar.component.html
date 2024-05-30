@@ -1,0 +1,14 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="nav-bar-component" style="visibility: hidden; height: 0px">
+
+  <h1 (click)="home($event)">{{title}}</h1>
+
+  <div class="items-right">
+    <unext-user-bar></unext-user-bar>
+    <unext-lab-bar></unext-lab-bar>
+    <button mat-icon-button (click)="openHelpCenter()">
+      <mat-icon [svgIcon]="icons.help[24].name"></mat-icon>
+    </button>
+    <unext-setting-bar></unext-setting-bar>
+  </div>
+</div> <!-- /nav-bar-component -->

@@ -1,0 +1,145 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../../../../assets/scss/variables";
+
+.footer-component {
+  height: 41px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .right-section {
+    display: flex;
+    align-items: center;
+  }
+
+  .left-section {
+    height: 36px;
+    display: flex;
+    align-items: center;
+
+    .mat-form-field-template-type {
+      width: 400px;
+      margin: 0px 60px 0px 0px;
+    }
+  }
+
+  .checkbox {
+    ::ng-deep .mat-checkbox-layout {
+      margin: 0;
+    }
+
+    .checkbox-text {
+      font-size: 16px;
+      letter-spacing: 0.19px;
+      color: $label-color;
+    }
+  }
+
+  .report-template {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.23px;
+    color: $report-template-label-color;
+    margin-right: 14px;
+  }
+
+  .btn-edit {
+    width: 161px;
+    height: 36px;
+    background: transparent;
+    border-radius: 4px;
+    color: $blue;
+    border: 1px solid $blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 120px;
+    margin-left: 34px;
+    padding: 10px 28px;
+    right: 0;
+    bottom: 0;
+
+    .edit-report-text {
+      text-transform: uppercase;
+      font-size: 14.6px;
+      font-weight: bold;
+      line-height: 1.1;
+      letter-spacing: 1.25px;
+      color: $blue;
+    }
+  }
+
+  .btn-save {
+    min-width: 165px;
+    height: 36px;
+    border: 1px solid $blue;
+    font-size: 14.6px;
+    font-weight: bolder;
+    min-width: 120px;
+    margin-left: 14px;
+    padding: 10px 28px;
+    display: flex;
+    align-items: center;
+
+    .save-report-text {
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 1.25px;
+      text-align: center;
+      color: $white;
+    }
+
+    &:disabled {
+      border: 1px solid $br-slidegen-grey;
+      background: $br-slidegen-grey !important;
+    }
+  }
+}
+
+.create-new-template-button {
+  height: 17px;
+  align-self: stretch;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  background-color: $blue;
+  overflow: hidden;
+}
+
+.plus-Icon {
+  fill: $white;
+}
+
+.save-as-new-temp-btn {
+  height: 16px;
+  flex-grow: 0;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.14;
+  letter-spacing: 1.25px;
+  text-align: center;
+  color: $white;
+}
+
+.perfect-scroll {
+  height: 48px;
+}
+
+::ng-deep .mat-select-css {
+  overflow: hidden !important;
+  min-height: 48px;
+}
+
+.mat-option-css {
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  background-color: $white !important;
+}

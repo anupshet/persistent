@@ -1,0 +1,11 @@
+//Smaller text eg.labels, notes
+%smaller-text {
+    font-size: mat-font-size($br-typography, body-2);
+    display: block;
+    font-weight: normal;
+    line-height: $line-height-small;
+}
+
+%label-text {
+    font-size: mat-font-size($br-typography, body-2);
+}

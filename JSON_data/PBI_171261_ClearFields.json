@@ -1,0 +1,19 @@
+{
+  "QA": {
+    "URL": "http://localhost:4200/",
+    "Username": "sampada_gulhane+dev20@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sampada",
+    "DeptName": "TestClearFieldsInstruments",
+    "ManufacturerName": "Abbott",
+    "InstrumentModel": "Alinity c",
+    "DeptNam2": "Automation",
+    "InstrumentModel2": "TestClearFieldsControls",
+    "ControlName": "Anemia",
+    "InstrumentModel3": "TestClearFieldsAnalytes",
+    "analyteName": "Ferritin"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

@@ -1,0 +1,74 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="transformer-configuration-component">
+  <div class="ctn-form">
+    <div class="heading spec-transformer-name">
+      {{selectedTransformer.name}} {{'TRANSFORMERCONFIGURATION.CONFIGURATION' | translate}} ({{selectedTransformer.transformerName}})</div>
+    <form class="dynamic-form" *ngIf="dynamicForm" [formGroup]="dynamicForm" novalidate>
+      <perfect-scrollbar class="dynamic-form-scrollbar">
+        <div class="form-wrapper">
+          <div class="form-fields">
+            <mat-label>{{'TRANSFORMERCONFIGURATION.CONFIGURATIONNAME' | translate}}</mat-label>
+            <mat-form-field>
+              <input class="truncate" formControlName="instructionName"
+                [matTooltip]="dynamicForm.controls['instructionName'].value" matInput required
+                placeholder="{{'TRANSFORMERCONFIGURATION.CONFIGURATIONNAME' | translate}}">
+            </mat-form-field>
+            <mat-error
+              *ngIf="(displayDuplicateErrMsg || dynamicForm?.controls['instructionName']?.errors?.displayDuplicateErrMsg)">
+              {{'TRANSFORMERCONFIGURATION.DUPLICATEERROR' | translate}}
+            </mat-error>
+          </div>
+          <div class="form-fields" *ngFor="let controls of dynamicFormfields.config" [ngSwitch]="controls.type">
+            <div *ngSwitchCase="'title'">
+              <mat-label>{{controls.label}}</mat-label>
+            </div>
+            <div *ngSwitchCase="'text'">
+              <mat-label>{{controls.label}}</mat-label>
+              <mat-form-field>
+                <input matInput [formControlName]="controls.key">
+              </mat-form-field>
+            </div>
+            <div *ngSwitchCase="'checkbox'">
+              <mat-label>{{controls.label}}</mat-label>
+              <mat-checkbox [formControlName]="controls.key" (change)="chooseOneValidation(controls)"></mat-checkbox>
+            </div>
+            <div *ngSwitchCase="'radio'" class="flex">
+              <mat-label>{{controls.label}}</mat-label>
+              <mat-radio-group [formControlName]="controls.key">
+                <mat-radio-button *ngFor="let control of controls.options" color="primary" [value]="setValue(control)">
+                  {{control}} </mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div *ngSwitchCase="'option'">
+              <mat-label>{{controls.label}}</mat-label>
+              <mat-form-field>
+                <mat-select [formControlName]='controls.key'>
+                  <span *ngIf="controls.validDateFormat">
+                    <mat-option *ngFor="let control of controls.validDateFormat" [value]='control'>{{control}}
+                    </mat-option>
+                  </span>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <ng-container *ngIf="dynamicForm.touched || dynamicForm.dirty ">
+              <div *ngIf="dynamicForm.controls[controls.key]?.errors">
+                <mat-error>{{displayErrorMessage(controls.key)}}</mat-error>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </perfect-scrollbar>
+
+      <div class="button-wrapper">
+        <button mat-button mat-stroked-button color="primary" (click)="onCancel()">
+          <span class="spec-cancel">{{'TRANSFORMERCONFIGURATION.CANCEL' | translate}}</span>
+        </button>
+        <button mat-button mat-flat-button color="primary" (click)="onSubmit()"
+          [disabled]="dynamicForm.invalid || hasFormValuesChanged"
+          *ngIf="hasPermissionToAccess([permissions.ConnectivityConfiguration])">
+          <span class="spec-save">{{'TRANSFORMERCONFIGURATION.SAVE' | translate}}</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

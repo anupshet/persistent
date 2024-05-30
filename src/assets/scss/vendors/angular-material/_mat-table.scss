@@ -1,0 +1,26 @@
+.mat-table {
+  .mat-header-row {
+    align-items: center;
+    font-weight: 800;
+    background-color: $gray-200;
+    border: none;
+    box-shadow: 0 2px 2px 0 rgba($black, 0.2);
+
+    .mat-header-cell span {
+      text-transform: uppercase;
+    }
+  }
+
+  .mat-row {
+    align-items: center;
+
+    .mat-cell {
+      font-size: mat-font-size($br-typography, body-2);
+    }
+
+  }
+
+  .mat-footer-row {
+    align-items: center;
+  }
+}

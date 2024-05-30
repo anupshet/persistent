@@ -1,0 +1,64 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="br-dialog">
+  <div class="hdr">
+    <div (click)="closeDialog()">
+      <mat-icon [svgIcon]="icons.close[48].name" class="close"></mat-icon>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="heading">
+        <h1>{{'LANGUAGESETTINGS.LANGUAGEFORMAT' | translate }}</h1>
+      </div>
+      <mat-grid-list cols="2" rowHeight="150px" gutterSize="20px">
+
+        <mat-grid-tile>
+          <h2>{{'LANGUAGESETTINGS.LANGUAGE' | translate }}</h2>
+          <mat-form-field>
+            <mat-select formControlName="language" (selectionChange)="languageChange($event)">
+              <mat-option *ngFor="let language of languageData" [value]="language.locale">
+                {{language.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <h2>{{'LANGUAGESETTINGS.DATEFORMAT' | translate }}</h2>
+          <mat-form-field>
+            <mat-select formControlName="date">
+              <mat-option *ngFor="let date of dateFormats" [value]="date.value">
+                {{date.date}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-grid-list cols="2" rowHeight="150px" gutterSize="20px">
+        <mat-grid-tile>
+          <h2>{{'LANGUAGESETTINGS.TIMEFORMAT' | translate }}</h2>
+          <mat-form-field>
+            <mat-select formControlName="time">
+              <mat-option *ngFor="let time of timeFormat" [value]="time.timeValue">
+                <span>{{time.time}}</span>
+              </mat-option> 
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <h2>{{'LANGUAGESETTINGS.NUMERICFORMAT' | translate }}</h2>
+          <mat-form-field>
+            <mat-select formControlName="numeric">
+              <mat-option *ngFor="let number of numericFormat" [(value)]="number.numericValue">
+                {{number.numeric}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <div class="buttons">
+        <button mat-flat-button (click)="closeDialog()" class="mr-5 cancel-button">{{'LANGUAGESETTINGS.CANCEL' | translate}}</button>
+        <button mat-flat-button (click)="submit()" [disabled]="!form.dirty" class="update">{{'LANGUAGESETTINGS.UPDATE' | translate}}</button>
+      </div>
+    </form>
+  </div>
+</div>

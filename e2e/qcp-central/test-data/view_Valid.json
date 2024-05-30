@@ -1,0 +1,16 @@
+{
+  "QA": {
+    "URL": "https://localhost:44332/",
+    "Username": "amruta_karale+devqcpadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "ManufacturerNonVitros": "Bio-Rad",
+    "InstrumentNonVitros": "D-10",
+    "ManufacturerVitros": "Ortho Clinical Diagnostics",
+    "InstrumentVitros": "VITROS 250",
+    "ReagentVitros": "ALB REF 198 8211 (Microslide)",
+    "FileName": "validConfigs.csv"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

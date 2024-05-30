@@ -1,0 +1,156 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../../../assets/scss/variables";
+@import "../../../../../assets/scss/base/variables-peak";
+@import "../../../../../assets/scss/mixins";
+
+.slidegen-form {
+  overflow: hidden;
+  min-height: 65px;
+}
+
+.slidegen-container {
+  .slidegen-row {
+    display: flex;
+    padding: 0px 30px;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 80%;
+    height: 75px;
+    position: relative;
+
+    .delete-slide-gen {
+      width: 40px;
+      height: 40px;
+      margin: 22px 0px 0px 0px;
+    }
+
+    .slidegen-item-1 {
+      width: 125px;
+      margin: 10px 20px 0px 0px;
+      height: 100%;
+    }
+
+    .slidegen-item-2 {
+      width: 113px;
+      margin: 0px 20px;
+    }
+    .slidegen-item-3 {
+      width: 113px;
+      margin: 0px 20px;
+    }
+    .slidegen-item-4 {
+      width: 20px;
+      margin: 28px 10px 0px 10px;
+    }
+
+    .slidegen-item-5 {
+      width: 113px;
+      margin: 0px 20px;
+    }
+    .slidegen-item-6 {
+      width: 113px;
+      margin: 0px 20px;
+    }
+
+    .add-slide-gen {
+      width: 24px;
+      height: 24px;
+      margin: 22px 0px 0px 0px;
+    }
+
+    .error-message-font {
+      font-size: 11.5px;
+    }
+
+    .validation-err {
+      position: absolute;
+      top: 52px;
+      left: 235px;
+      font-size: 0.8rem;
+
+      &.duplicateLot {
+        left: 70px;
+      }
+    }
+  }
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-right: 38px;
+
+  .buttons {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 300px;
+    margin-left: auto;
+
+    button {
+      text-transform: uppercase;
+      padding: 0px 25px;
+      min-width: 133px;
+
+      &.selected {
+        background: $blue;
+        color: $white;
+      }
+
+      &.border-less {
+        border: none;
+      }
+    }
+  }
+}
+
+.ctn-time-picker-24 {
+
+  .placeholder {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    font-size: 11px;
+    color: #9b9b9b;
+    font-family: "Lato", "Noto Sans", Arial, Helvetica, sans-serif;
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+ input {
+    border: 0;
+    width: 16px;
+    &:focus {
+      outline-width: 0;
+    }
+  }
+    
+    .divader {
+      display: inline-block;
+    }
+
+    .reset {
+      position: absolute;
+      right: 5px;
+      top: 10px;
+      font-size: 10px;
+      color: #555;
+      cursor: pointer;
+    }
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+
+

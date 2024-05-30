@@ -1,0 +1,19 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "Username": "sudhir_paranjape+eval@bio-rad.com",
+    "UserRoleUsername": "nitin_ghugare+archiveuser@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sudhir",
+    "Department": "NewAutomationPanelMSDE",
+    "Instrument": "ARCHITECT c16000",
+    "ControlName": "Assayed Chemistry",
+    "Analyte1": "Albumin",
+    "Analyte2": "Calcium",
+    "Analyte3": "Chloride",
+    "MultiPointPanelName": "Test1536PM_New"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

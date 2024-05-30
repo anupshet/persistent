@@ -1,0 +1,173 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../../scss/main';
+
+mat-table {
+  line-height: 1;
+  color: $black-87-opacity;
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+
+  mat-cell, mat-header-cell{
+    padding: 0;
+    border: none;
+    vertical-align: top;
+  }
+  mat-header-cell{
+    height: 18px;
+  }
+  mat-cell{
+    height: 22px;
+  }
+
+  div{
+    div{
+      color: $gray-600;
+      font-size: $custom-type-size-xxsmall;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  }
+  mat-header-row mat-header-cell{
+    color: rgba($gray-600, 0.7);
+    text-align: center;
+    padding: 0 2px 0 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+    justify-content: center;
+  }
+  mat-cell{
+    padding: 0 6px 0 6px;
+
+    &:first-child{
+      border-left: 1px solid $gray-200;
+    }
+    &:last-child{
+      border-right: 1px solid $gray-200;
+    }
+  }
+  mat-row{
+    mat-cell{
+      padding: 0 10px 0 6px;
+      white-space: nowrap;
+      justify-content: center;
+
+      &:first-child{
+        border-left: 1px solid $gray-200;
+      }
+      &:last-child{
+        border-right: 1px solid $gray-200;
+      }
+    }
+  }
+}
+
+mat-header-row, .mat-header-row {
+  min-height: 22px;
+  height: 22px;
+  border-bottom-width: 0;
+}
+
+mat-row, mat-footer-row {
+  min-height: 22px;
+  height: 22px;
+  border-bottom-width: 0;
+}
+
+.level-4 mat-row,
+.level-5 mat-row,
+.level-6 mat-row,
+.level-7 mat-row,
+.level-8 mat-row,
+.level-9 mat-row {
+  border-bottom-width: 1px !important;
+  border-bottom-color: #edeeef !important;
+}
+
+
+.header-group-row {
+  border: none;
+  align-items: stretch;
+}
+
+.header-group {
+  text-align: center;
+  width: 100%;
+  line-height: 20px;
+}
+
+mat-table {
+  &.level-1 {
+    mat-header-row {
+      border-top: 2px solid $br-level-1;
+    }
+    mat-header-cell, mat-cell{
+      background: rgba($br-level-1, 0.06);
+    }
+  }
+  &.level-2 {
+    mat-header-row {
+      border-top: 2px solid $br-level-2;
+    }
+    mat-header-cell, mat-cell{
+      background: rgba($br-level-2, 0.08);
+    }
+  }
+  &.level-3 {
+    mat-header-row {
+      border-top: 2px solid $br-level-3;
+    }
+    mat-header-cell, mat-cell{
+      background: rgba($br-level-3, 0.05);
+    }
+  }
+  &.level-4 {
+    mat-header-row {
+      border-top: 2px solid $br-level-4;
+    }
+    mat-header-cell, mat-cell{
+      background: rgba($br-level-4, 0.05);
+    }
+  }
+  &.level-5 {
+    mat-header-row {
+      border-top: 2px solid $br-level-5;
+    }
+    mat-header-cell, mat-cell{
+      background: rgba($br-level-5, 0.05);
+    }
+  }
+  &.level-6 {
+    mat-header-row {
+      border-top: 2px solid $br-level-6;
+    }
+    mat-header-cell, mat-cell{
+      background: rgba($br-level-6, 0.05);
+    }
+  }
+  &.level-7 {
+    mat-header-row {
+      border-top: 2px solid $br-level-7;
+    }
+    mat-header-cell, mat-cell{
+      background: rgba($br-level-7, 0.05);
+    }
+  }
+  &.level-8 {
+    mat-header-row {
+      border-top: 2px solid $br-level-8;
+    }
+    mat-header-cell, mat-cell{
+      background: rgba($br-level-8, 0.05);
+    }
+  }
+  &.level-9 {
+    mat-header-row {
+      border-top: 2px solid $br-level-9;
+    }
+    mat-header-cell, mat-cell{
+      background: rgba($br-level-9, 0.05);
+    }
+  }
+}

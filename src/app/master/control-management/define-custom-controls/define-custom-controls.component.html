@@ -1,0 +1,45 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="container">
+  <div *ngIf="!showForm" class="add-control">
+    <span (click)="showDefineControlForm()">
+      <button mat-icon-button color="primary">
+        <mat-icon [svgIcon]="icons.addCircle[24].name"></mat-icon>
+      </button>
+      <span class="pt-8">{{defineButtonText}}</span>
+    </span>
+  </div>
+  <div *ngIf="showForm">
+    <mat-card class="control-entry-component">
+      <button mat-icon-button class="btn-lab-close" (click)="closeDefineControlsTab()">
+        <mat-icon [svgIcon]="icons.close[24].name"></mat-icon>
+      </button>
+      <mat-card-content #content id="spec_content">
+        <unext-lab-setup-header [currentNode]="type.OwnControl"
+                                [title]="labsetuptitle"></unext-lab-setup-header>
+        <div class="spec_controlForm flex column-left-450">
+          <unext-add-define-own-control *ngIf="controlCards" [viewMode]="viewType" [nonBrControlDefinitionsData]="controlCards" (closeDefineControlsTab)="closeDefineControlsTab()" (addNonBRControlDefinition)="addNonBRControlDefinition($event)"></unext-add-define-own-control>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <mat-accordion multi="false">
+    <div class="flex-wrap" *ngIf="!showForm">
+      <div class="tile-card" *ngFor="let card of controlCards;let i=index">
+        <div class="panel-content-border">
+          <card class="spec_cardDetails" [title]="card.name" [innerComponent]="componentTemplate" (click)="getControlToEdit(card)">
+            <div class="project-content">
+              <div class="action-container" [disabled]="!hasPermissionToAccess([permissions.NonBRLotManagement])">
+                <mat-icon *ngIf="hasPermissionToAccess([permissions.ControlDelete]) && !card?.anyLabLotTests" svgIcon="delete" class="ic-delete" (click)="deleteControl(card)"></mat-icon>
+              </div>
+            </div>
+          </card>
+          <ng-template #componentTemplate>
+            <unext-add-define-own-control *ngIf="controlCards" [viewMode]="viewType" [controlToEdit]="controlToEdit" [nonBrControlDefinitionsData]="controlCards" (editCustomControl)="editCustomControl($event)" (deleteCustomControl)="deleteControl($event)" (currentSelectedNode)= "currentSelectedNode($event)"></unext-add-define-own-control>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </mat-accordion>
+</div>
+
+

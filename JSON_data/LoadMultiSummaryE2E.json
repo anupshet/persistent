@@ -1,0 +1,20 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "AmrutaUsername": "se_hong+test1@bio-rad.com",
+    "AmrutaPassword": "123456",
+    "AmrutaFirstName": "Se",
+    "AmrutaUserRoleUsername": "amruta_karale+user50@bio-rad.com",
+    "assignedLab": "Amruta's QA Lab",
+    "Dept1": "Persistent Dept 1",
+    "Dept2": "Disabled Codes",
+    "Dept2Instrument1": "SummaryTest",
+    "Dept2Instrument1Prod1": "Immunology",
+    "Dept2Instrument1Prod1Test1": "Glucose",
+    "Dept2Instrument1Prod1Test2": "Magnesium",
+    "Dept2Instrument1Prod1Test3": "Potassium"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

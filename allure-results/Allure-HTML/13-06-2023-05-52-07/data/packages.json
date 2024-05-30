@@ -1,0 +1,128 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "Test Suite:Verify Error Dialog box for Selection parameter filters on Report page",
+    "children" : [ {
+      "name" : "Test case 1 :Verify the presence of error dialog for Clear Selection button and More than one dept",
+      "uid" : "c60aacec084ec9fa",
+      "parentUid" : "e450205ff75ea74d30cbe705f18f76aa",
+      "status" : "failed",
+      "time" : {
+        "start" : 1686658940624,
+        "stop" : 1686658980728,
+        "duration" : 40104
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Test case 2 :Verify the presence of error dialog for selection parameter for instrument",
+      "uid" : "daa40fac3ada8185",
+      "parentUid" : "e450205ff75ea74d30cbe705f18f76aa",
+      "status" : "skipped",
+      "time" : {
+        "start" : 1686658980729,
+        "stop" : 1686658980732,
+        "duration" : 3
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Test case 3 :Verify the presence of error dialog for selection parameter for control",
+      "uid" : "73970cb6a03e78e2",
+      "parentUid" : "e450205ff75ea74d30cbe705f18f76aa",
+      "status" : "skipped",
+      "time" : {
+        "start" : 1686658980733,
+        "stop" : 1686658980733,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Test case 4:Verify the presence of error dialog for Clear Selection button and More than one dept",
+      "uid" : "5a7c0346d1ae465",
+      "parentUid" : "e450205ff75ea74d30cbe705f18f76aa",
+      "status" : "skipped",
+      "time" : {
+        "start" : 1686658980733,
+        "stop" : 1686658980734,
+        "duration" : 1
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Test case 5 :Verify the presence of error dialog for Clear Selection button and More than one dept",
+      "uid" : "d98aff9285a15af9",
+      "parentUid" : "e450205ff75ea74d30cbe705f18f76aa",
+      "status" : "skipped",
+      "time" : {
+        "start" : 1686658980734,
+        "stop" : 1686658980734,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Test case 6 :Verify the presence of error dialog for selection parameter for instrument",
+      "uid" : "73960d838f8e3a01",
+      "parentUid" : "e450205ff75ea74d30cbe705f18f76aa",
+      "status" : "skipped",
+      "time" : {
+        "start" : 1686658980734,
+        "stop" : 1686658980735,
+        "duration" : 1
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Test case 7 :Verify the presence of error dialog for selection parameter for control",
+      "uid" : "160043fdab7c4133",
+      "parentUid" : "e450205ff75ea74d30cbe705f18f76aa",
+      "status" : "skipped",
+      "time" : {
+        "start" : 1686658980735,
+        "stop" : 1686658980735,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "e450205ff75ea74d30cbe705f18f76aa"
+  } ]
+}

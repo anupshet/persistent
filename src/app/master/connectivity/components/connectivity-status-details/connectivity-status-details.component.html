@@ -1,0 +1,84 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="connectivity-status-details-component">
+  <div class="flex-ctn">
+    <div class="flex-item-1">
+      <div class="flex-ctn-inner">
+        <div class="flex-item-3">
+          <button *ngIf="showDownloadButton()" (click)="downloadStatusFile()"
+                   mat-raised-button color="primary" class="download"
+                  matTooltip="{{'CONNECTIVITYSTATUS.DOWNLOAD' | translate}} {{getDownloadFilename()}}">
+            <mat-icon>download</mat-icon>
+          </button>
+        </div>
+        <div class="file-name">
+          <span *ngIf="!importStatus.isEdge" class="hdr">{{'CONNECTIVITYSTATUS.FILENAME' | translate}}</span>
+          <span *ngIf="importStatus.isEdge" class="hdr">{{'CONNECTIVITYSTATUS.MESSAGENAME' | translate}}</span>
+          <span class="file-name-list" matTooltip="{{fileName}}" matTooltipClass="fileName-tooltip"
+            *ngFor="let fileName of importStatus.fileNames">
+            {{fileName}}
+            <br />
+          </span>
+        </div>
+        <div class="w-200">
+          <span class="hdr">{{'CONNECTIVITYSTATUS.BY' | translate}}</span>
+          <span>{{importStatus.userName}}</span>
+        </div>
+        <div class="w-200" *ngIf="importStatus.processedDateTime === null; else elseBlock">
+          <span class="hdr">{{'CONNECTIVITYSTATUS.UPLOADEDAT' | translate}}</span>
+          <span>{{getTimezoneFormattedDateTime(importStatus?.uploadedDateTime) | uNextDate: 'short'}}</span>
+        </div>
+        <div class="w-120 partition">
+          <span class="hdr">{{'CONNECTIVITYSTATUS.TOTAL' | translate}}</span>
+          <span class="black">{{(status === statusType.FileUploadError) && (importStatus.connErrorCode === null && importStatus.connErrorType === null) ? '-' : importStatus.totalCount}}</span>
+        </div>
+        <ng-template #elseBlock>
+          <div class="item w-200">
+            <span class="hdr">{{'CONNECTIVITYSTATUS.PROCESSEDAT' | translate}}</span>
+            <span>{{importStatus.processedDateTime === null ? '-' :
+              getTimezoneFormattedDateTime(importStatus?.processedDateTime) | uNextDate: 'short'}}</span>
+          </div>
+        </ng-template>
+
+        <div class="w-120">
+          <span class="hdr">{{'CONNECTIVITYSTATUS.IMPORTED' | translate}}</span>
+          <span class="black">{{(importStatus.processedCount === null) ? '0' : importStatus.processedCount}}</span>
+        </div>
+        <div class="w-120">
+          <span class="hdr">{{'CONNECTIVITYSTATUS.PENDING' | translate}}</span>
+          <span class="orange">{{pending}}</span>
+        </div>
+        <div class="w-120">
+          <span class="hdr">{{'CONNECTIVITYSTATUS.EXCLUDED' | translate}}</span>
+          <span class="black">{{(status === statusType.FileUploadError) ? '-' : importStatus.disabledCount}}</span>
+        </div>
+        <div class="w-120">
+          <span class="hdr">{{'CONNECTIVITYSTATUS.ERRORED' | translate}}</span>
+          <span class="purple">{{importStatus.errorCount}}</span>
+        </div>
+
+        <div class="flex-item-2">
+          <span *ngIf="(status === statusType.Refresh && pending > 0) || (importStatus.totalCount === null )" (click)="emitDataRefresh()">
+            <mat-icon class="spec_refresh info-icon" [svgIcon]="icons.statusRefresh[32].name"></mat-icon>
+          </span>
+
+          <button mat-stroked-button color="primary" *ngIf="pending > 0 && hasPermissionToAccess([permissions.ConnectivityMapping, permissions.ConnectivityMappingViewOnly])" (click)="routeToConnectivityMapping()"
+            class="spec_detail">
+            <span>{{'CONNECTIVITYSTATUS.MAPPING' | translate}}</span>
+          </button>
+          <span
+            *ngIf="(status === statusType.Done && pending === 0) && (importStatus.connErrorType === null || importStatus.connErrorCode === null)"
+            class="spec_done">
+            <mat-icon [svgIcon]="icons.statusDone[32].name" class="info-icon"></mat-icon>
+          </span>
+          <!-- Display ERROR DETAIL link if error is present in uploaded file(errorCount and connErrorType) -->
+          <button mat-stroked-button color="primary"
+            *ngIf="importStatus.connErrorType!== null || importStatus.connErrorCode!== null " (click)="emitData()"
+            class="spec_detail">
+            <span>{{'CONNECTIVITYSTATUS.ERRORDETAIL' | translate}}</span>
+          </button>
+        </div> <!-- /flex-item-2 -->
+      </div><!-- /flex-ctn-inner -->
+    </div><!-- /flex-item-1 -->
+  </div> <!-- /flex-ctn -->
+  <unext-error-log [emitterObjectId]="emitterObjectId"></unext-error-log>
+</div> <!-- /connectivity-status-details-component -->

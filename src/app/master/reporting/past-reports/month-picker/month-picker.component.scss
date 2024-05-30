@@ -1,0 +1,17 @@
+// © 2022 Bio-Rad Laboratories, Inc. All Rights Reserved.
+
+.month-picker{
+  position: relative;
+  top: 5px;
+  ::ng-deep .mat-form-field {
+      // .mat-input-element{
+      //   margin-top:8px;
+      // }
+      .mat-calendar-arrow {
+        display: none !important;
+      }
+      .mat-calendar-invert {
+        display: none !important;
+      }
+  }
+}

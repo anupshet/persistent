@@ -1,0 +1,24 @@
+{
+  "QA": {
+    "URL": "https://qcpcentralqa.global.bio-rad.com/",
+    "Username": "amruta_karale+qaqcpadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "MainMenu": "Code List",
+    "SubMenu": "Units",
+    "SubMenuOption": "Unit Categories",
+    "NewCategoryName": "TestAutomation_UnitCat",
+    "FileName": "unitCategories.csv",
+    "UnitCategory": "activity/vol",
+    "PageOptions": [
+      "10",
+      "25",
+      "50",
+      "100"
+    ],
+    "PageButton": "2",
+    "DuplicateCategoryWarning": "Unit Category already exists."
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

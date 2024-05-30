@@ -1,0 +1,57 @@
+{
+  "login": {
+      "email": "Michael_Chern+dev011521@Bio-Rad.com",
+      "password": "today20210119!!",
+      "wrong_password": "pass",
+      "welcome_message": "M",
+      "invalid_password": "Error: The password is invalid or the user does not have a password.",
+      "invalid_email": "Error: There is no user record corresponding to this identifier. The user may have been deleted."
+  },
+
+  "labsetup": {
+      "location": "Michael's Dev 011521",
+      "department": "Protractor-01",
+      "manufacturer": "Siemens",
+      "instrument": "Dimension EXL",
+      "product": " Multiqual 1,2,3 ",
+      "lotno": "45830",
+      "analyte": "Albumin",
+      "reagent": "",
+      "calibrator": "",
+      "method": "",
+      "unit": "g/dL",
+      "lotnumber": ""
+  },
+
+  "misc":{
+      "lblDepartManagement" : "ADD A DEPARTMENT",
+      "lblWhatDepartmentsAreIn": "What departments are in ",
+      "lblQuestionMark":"?",
+      "lblAddAnAnalyte": "ADD AN ANALYTE",
+      "lblAddAnalytesTo":"Add analytes to ",
+      "lblDailyDataOptions":"Daily data options",
+      "lblSignIn":"Sign In",
+      "sleep": 3000,
+      "statusverification": 60000
+  },
+  "fileupload":{
+      "fileToUpload" : "195141_rawData_short.txt",
+      "fileToUpload1" : "195141_rawData_short.txt",
+      "fileToUpload2" : "195142_rawData_short.txt",
+      "fileToUpload3" : "195143_rawData_short.txt",
+      "pointInstruction": "Mike-WC-Point",
+      "summaryInstruction": "Mike-WC-Summary",
+      "instCode": "ICode_PT",
+      "prodCodeL1": "PCode_PT - 1",
+      "prodCodeL2": "PCode_PT - 2",
+      "prodCodeL3": "PCode_PT - 3",
+      "testCode": "ACode_PT",
+      "link": "Link",
+      "unlink": "Unlink",
+      "disable": "Disable",
+      "mappingFile": "Map File",
+      "status": "Status",
+      "upload": "Upload",
+      "connectivity": "Connectivity"
+  }
+}

@@ -1,0 +1,130 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div *ngIf="showSpcRules" class="newspc-temp-style">
+  <!-- New SPC Ruleset work to be started ASAP!! -->
+  <div class="spc-rules-component">
+    <div class="flex toggle mb-20">
+      <label>{{'SPCRULESCOMPONENT.SPCRULES' | translate}}</label>
+    </div>
+    <div class="flex-1 mb-20 new-spc-rules">
+      <div class="table-header">
+        <table>
+          <tr>
+            <th class="mat-small left w-100">{{'SPCRULESCOMPONENT.RULE' | translate}}</th>
+            <th class="mat-small">{{'SPCRULESCOMPONENT.REJECT' | translate}}</th>
+            <th class="mat-small">{{'SPCRULESCOMPONENT.WARN' | translate}}</th>
+            <th class="mat-small">{{'SPCRULESCOMPONENT.DISABLE' | translate}}</th>
+          </tr>
+        </table>
+      </div>
+      <form [formGroup]="spcRulesForm">
+        <div class="table-body">
+          <!-- Task:169150 showing array of spc rules on the basis of display order -->
+          <table formArrayName="ruleSettings">
+            <tr *ngFor="let spcRule of rules; let index = index"
+              [ngClass]="{ 'bg-selected-row': index === selectedRowIndex }" [formGroupName]="index">
+              <td>
+                <table>
+                  <tr>
+                    <td>
+                      <table>
+                        <tr class="bdr">
+                          <td class="w-100" *ngIf="spcRule.entryFormat == 0 && spcRule.isVisible">
+                            <div class="flex space-between pt-10 pb-10">
+                              <span>
+                                <span>{{ spcRule.prefixText }}</span>
+                                <span [ngClass]="{ 'new-spc-rule-suffix-et': spcRule.suffixText === 'SPCRULESCOMPONENT.RULESUFFIXS' && getTranslation(spcRule.suffixText) !== 's' }">{{ spcRule.suffixText | translate }}</span>
+                              </span>
+
+                              <span (click)="onNameChange(index)" *ngIf="spcRule.isVisible"
+                                class="ic-info-24px"></span>
+                            </div>
+                          </td>
+                          <td class="w-100" *ngIf="spcRule.entryFormat == 1 && spcRule.isVisible">
+                            <div class="flex space-between row-space">
+                              <span>
+                                <span>
+                                  <mat-form-field class="w-50">
+                                    <mat-select formControlName="value" [disabled]="disableForm"
+                                      (selectionChange)="applySelectFilter($event,spcRule.ruleId)">
+                                      <mat-option *ngFor="let option of spcRule.valueOptions" [value]="option.value">
+                                        {{option.displayText}}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                </span>
+                                <span [ngClass]="{ 'new-spc-rule-suffix-et': spcRule.suffixText === 'SPCRULESCOMPONENT.RULESUFFIXS' && getTranslation(spcRule.suffixText) !== 's' }">{{spcRule.suffixText | translate}}</span>
+                              </span>
+                              <span (click)="onNameChange(index)" *ngIf="spcRule.isVisible"
+                                class="ic-info-24px"></span>
+                            </div>
+                          </td>
+                          <td class="w-100" *ngIf="spcRule.entryFormat == 2 && spcRule.isVisible">
+                            <div class="flex space-between row-space">
+                              <span>
+                                <span>{{spcRule.prefixText}}</span>
+                                <span>
+                                  <mat-form-field class="w-50">
+                                    <input matInput formControlName="value"
+                                      (keyup)="onSpcRuleValueChange($event, index)"
+                                      [checkForPermission]="{'permissionsAllowed':[permissions.ControlAdd, permissions.ControlEdit],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+                                      [attr.disabled]="disableForm?'':null">
+                                  </mat-form-field>
+                                </span>
+                                <span [ngClass]="{ 'new-spc-rule-suffix-et': spcRule.suffixText === 'SPCRULESCOMPONENT.RULESUFFIXS' && getTranslation(spcRule.suffixText) !== 's' }">{{spcRule.suffixText | translate}}</span>
+                              </span>
+                              <span (click)="onNameChange(index)" *ngIf="spcRule.isVisible"
+                                class="ic-info-24px"></span>
+                            </div>
+                          </td>
+                          <td *ngIf="spcRule.isVisible">
+                            <mat-radio-group class="ml-10" name=" {{ spcRule.name }}" formControlName="disposition" (change)="appNavigationService.eventCapture('ruleSettings')">
+                              <table class="tbl-fake">
+                                <tr>
+                                  <td class="no-bdr">
+                                    <mat-radio-button color="primary" class="radio-reject"
+                                      value="{{disposition.reject}}"
+                                      (change)="onRadioNewChange(index, disposition.reject);appNavigationService.eventCapture('ruleSettings')"
+                                      [disabled]="spcRule.disabledDisposition == disposition.reject?true:false || disableForm">
+                                    </mat-radio-button>
+                                  </td>
+                                  <td class="no-bdr">
+                                    <mat-radio-button color="primary" class="radio-warning"
+                                      value="{{disposition.warning}}"
+                                      (change)="onRadioNewChange(index, disposition.warning)"
+                                      [disabled]="spcRule.disabledDisposition == disposition.warning?true:false || disableForm">
+                                    </mat-radio-button>
+                                  </td>
+                                  <td class="no-bdr">
+                                    <mat-radio-button color="primary" class="radio-disabled"
+                                      value="{{disposition.disable}}"
+                                      (change)="onRadioNewChange(index, disposition.disable)" [disabled]="disableForm">
+                                    </mat-radio-button>
+                                  </td>
+                                </tr>
+                              </table>
+                            </mat-radio-group>
+                          </td>
+                        </tr>
+                      </table>
+                      <table *ngIf="spcRule.errorMessage">
+                        <tr>
+                          <td>
+                            <span [ngClass]="spcRule.text === messages?.warning ? 'error': 'warning'">
+                              {{spcRule.errorMessage}}
+                            </span>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

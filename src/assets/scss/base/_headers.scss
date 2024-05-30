@@ -1,0 +1,105 @@
+// headers
+// Style guide: base.headers
+@mixin base\headers {
+  h1, h2, h3, h4, h5, h6 {
+    margin: $custom-space-xsmall 0;
+  }
+
+  h1, h2 {
+    letter-spacing: -($custom-space-xxsmall - 2);
+    font-weight: 400;
+  }
+
+  h3,h4,h6 {
+    letter-spacing: normal;
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: $font-size-h1;
+  }
+
+  h2 {
+    font-size: $font-size-h2;
+  }
+
+  h3 {
+    font-size: $font-size-h3;
+  }
+
+  h4 {
+    font-size: $font-size-h4;
+    
+  }
+
+  h5 {
+    font-size: $font-size-h5;
+  }
+
+  h6 {
+    font-size: $font-size-h6;
+  }
+
+  // mat-h
+  h1.mat-h1, 
+  h2.mat-h2,  
+  h3.mat-h3, 
+  h4.mat-h4,  
+  h5.mat-h5, 
+  h6.mat-h6 {
+    color: $br-black-text-high-emphasis;
+    line-height: normal;
+    word-break: break-all;
+  }
+  
+  h1.mat-h1 { 
+    font-size: 101.95px; 
+    letter-spacing: -1.5; 
+    font-weight: 300; 
+  }
+
+  h2.mat-h2 { 
+    font-size: 63.72px; 
+    letter-spacing: -0.5; 
+    font-weight: 300;
+  }
+
+  h3.mat-h3 { 
+    font-size: 50.07px; 
+    letter-spacing: 0; 
+    font-weight: 400;
+  }
+
+  h4.mat-h4 { 
+    font-size: 35.46px; 
+    letter-spacing: 0.25; 
+    font-weight: 400;
+  }
+
+  h5.mat-h5,
+  h1.mat-h5,
+  h2.mat-h5  { 
+    font-size: 25.03px; 
+    letter-spacing: 0; 
+    font-weight: 400;
+  }
+
+  h6.mat-h6 { 
+    font-size: 20.86px; 
+    letter-spacing: 0.25px; 
+    font-weight: 400;
+  }
+
+  .br-uppercase {
+    text-transform: uppercase;
+  }
+
+  .br-capitalize {
+    text-transform: capitalize;
+  }
+
+  table .mat-small,
+  .mat-small {
+    font-size: $custom-type-size-xxsmall;
+  }
+}

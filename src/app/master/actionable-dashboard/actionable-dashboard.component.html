@@ -1,0 +1,56 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="content-wrapper">
+  <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}">
+    <div *ngIf="isAuthenticated">
+      <div class="actionable-dashboard-component">
+        <div *ngIf="!showLocationSelector">
+          <unext-greeting [firstName]="firstName" [timeZone]="labLocation?.locationTimeZone"></unext-greeting>
+        </div>
+        <div *ngIf="!isLabSetupCompleted && isUser" class="We-are-waiting-for-" id="LoginComponent.NoTest">
+            {{'ACTIONABLEDASHBOARD.WAITINGFORADMINISTRATOR' | translate}}
+        </div>
+        <div *ngIf="isMigrationCompleted()">
+          <!-- Lab setup not completed and technician role, so using this permission since technician doesnt have permission to add department -->
+          <div
+            *ngIf="(!isLabSetupCompleted && labLocation && !hasPermissionToAccess([permissions.DepartmentAdd]) && hasPermissionToAccess([permissions.ReportsCorrectiveActionsEntry])) && isViewReady"
+            class="We-are-waiting-for-" id="LoginComponent.NoTest">
+            {{'ACTIONABLEDASHBOARD.WAITINGFORADMINISTRATOR' | translate}}
+          </div>
+          <div *ngIf="showLocationSelector; else noAccountUserSelector">
+            <unext-account-user-selector (locationChanged)="onLocationChanged($event)"></unext-account-user-selector>
+          </div>
+          <ng-template #noAccountUserSelector>
+            <div>
+              <div class="flex-container ctn-2">
+                <div
+                  *ngIf="hasPermissionToAccess([permissions.DashboardExpiringLots]) && hasExpiringLots && isLabSetupCompleted"
+                  class="flex-item">
+                  <unext-expiring-lots (hasDataToDisplay)="onExpiryLotsFlagGenerated($event)"></unext-expiring-lots>
+                </div>
+                <div
+                  *ngIf="hasPermissionToAccess([permissions.DashboardExpiringLicense, permissions.Notifications]) && hasExpiringLicense && isLabSetupCompleted && labLocation"
+                  class="flex-item">
+                  <unext-expiring-license [location]="labLocation"
+                    (hasExpiryLicenceToDisplay)="onExpiryLicenceFlagGenerated($event)">
+                  </unext-expiring-license>
+                </div>
+
+                <div
+                  *ngIf="((hasPermissionToAccess([permissions.DashboardLotViewer]) && hasLotViewerLicense))  || (hasPermissionToAccess([permissions.LotViewerSalesReport]))"
+                  class="flex-item">
+                  <unext-lotviewer> </unext-lotviewer>
+                </div>
+
+                <div
+                  *ngIf="(hasPermissionToAccess([permissions.BenchReview, permissions.BenchReviewViewOnly, permissions.SupervisorReview, permissions.SupervisorReviewViewOnly])) && (labLocation?.unityNextTier === unityNextTierDailyQc)"
+                  class="flex-item">
+                  <unext-qc-review-result></unext-qc-review-result>
+                </div>
+              </div><!-- /ctn-2 -->
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </perfect-scrollbar>
+</div>

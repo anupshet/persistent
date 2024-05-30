@@ -1,0 +1,28 @@
+{
+	"DEV": {
+		"URL": "https://unity-dev.qcnet.com",
+		"Username": "sudhir_paranjape+dev187076@bio-rad.com",
+		"Password": "Welcome1",
+		"FirstName": "Sudhir",
+		"UsernameUser": "sudhir_paranjape+187076user@bio-rad.com",
+		"PasswordUser": "Welcome1",
+		"FirstNameUser": "SudhirUser",
+		"DepartmentName": "Dept1",
+		"InstrumentName": "cobas e 411",
+		"ProductName": "VIROTROL I",
+		"Analyte1": "HBc Ab, Total",
+		"Analyte2": "HBsAg",
+		"DepartmentName2": "Dept2",
+		"InstrumentName2": "ARCHITECT c8000",
+		"ProductName2": "Assayed Chemistry",
+		"Analyte3": "Albumin",
+		"ReagentOption": "reagent",
+		"ReagentLotOption": "reagent lot number",
+		"CalibratorOption": "calibrator",
+		"CalibratorLotOption": "calibrator lot number",
+		"reagent": "AlbG REF 7D53-23"
+	},
+	"QA": {},
+	"STAGE": {},
+	"DEV2": {}
+}

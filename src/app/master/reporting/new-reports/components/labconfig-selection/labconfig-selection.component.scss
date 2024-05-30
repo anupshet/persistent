@@ -1,0 +1,108 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../../../../assets/scss/variables";
+
+.lab-config {
+  position: relative;
+
+  .header {
+    background-color: $azure-white;
+    height: 50px;
+  }
+
+  .column-names {
+    padding: 14px 13px 0px;
+  }
+
+  .column-names h5 {
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: 1.25px;
+    width: 100%;
+    padding: 0px 7px;
+  }
+
+  .d-flex {
+    display: flex;
+  }
+
+  .labconfig-body {
+    background-color: $white;
+    padding: 14px 13px 28px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .category {
+    margin-bottom: 9px;
+    padding: 0px 3px;
+  }
+
+  .column {
+    width: 100%;
+    padding: 0px 5px;
+  }
+
+  .parent::ng-deep {
+    font-weight: bold;
+    letter-spacing: 0.25px;
+  }
+
+  mat-checkbox .label {
+    font-size: 14px;
+  }
+
+  mat-checkbox {
+    display: table;
+    padding: 5px 0px;
+    padding-right: 15px;
+    word-break: break-all;
+  }
+
+  .child {
+    margin-left: 22px;
+  }
+
+  .count {
+    color: $br-black-text-medium-emphasis;
+  }
+
+  ::ng-deep .mat-checkbox-layout {
+    white-space: inherit !important;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  ::ng-deep .mat-checkbox-label {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  ::ng-deep .mat-stroked-button .mat-button-wrapper {
+    line-height: 1.1;
+    letter-spacing: 1.25px;
+    font-weight: bold;
+  }
+
+  .mat-stroked-button {
+    border-color: $blue-darker;
+  }
+
+  .button-container {
+    justify-content: flex-end;
+    margin: 18px 0px;
+  }
+
+  .column-data {
+    height: calc(100vh - 615px);
+  }
+
+  perfect-scrollbar {
+    z-index: 0;
+  }
+}
+.underline {
+text-decoration: underline;
+}

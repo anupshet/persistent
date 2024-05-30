@@ -1,0 +1,12 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="flex-container flex-column">
+    <div>
+        <span *ngIf="address?.streetAddress" class="spec_streetAddress remove-upper">{{address?.streetAddress}}</span>
+    </div>
+    <div class="spec_otherAddress remove-upper">
+        <span *ngIf="address?.city">{{address?.city }}</span>
+        <span *ngIf="address?.state">, {{ address?.state}}</span>
+        <span *ngIf="address?.zipCode">, {{ address?.zipCode }}</span>
+        <span *ngIf="address?.country">, {{ address?.country }}</span>
+    </div>
+</div>

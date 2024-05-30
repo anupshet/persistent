@@ -1,0 +1,24 @@
+{
+	"DEV":{
+			"URL": "http://localhost:4200/",
+			"Username": "kalyani_paskanti+dev1@bio-rad.com",
+			"Password": "Biorad2021",
+			"FirstName": "Kalyani",
+			"LabName":"TestLab",
+			"DeptName" : "Shubh_Dept1",
+			"InstName" : "ARCHITECT c4000",
+			"cntrlName" : "Cardiac Markers Plus LT",
+			"lotNumber" : "67620",
+			"lotNumber1" : "67630",
+			"analyteName" : "CK (Creatine Kinase)",
+			"DefaultDecimal" : "1",
+			"Unit5": "µg/mL",
+			"Calibrator": "Cal 66300",
+			"Reagent" : "CK REF 7D63-21",
+			"UnitOfMeasure": "ng/mL",
+			"UnitOfMeasure2": "µg/dL"
+	},
+	"QA": {},
+	"STAGE": {},
+	"DEV2": {}
+}

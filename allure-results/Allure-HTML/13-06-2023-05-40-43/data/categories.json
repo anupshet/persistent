@@ -1,0 +1,30 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "Failed: Wait timed out after 20010ms",
+      "children" : [ {
+        "name" : "Test case 1 :Verify the presence of error dialog for Clear Selection button and More than one dept",
+        "uid" : "54c9a5d22fec0dfb",
+        "parentUid" : "866a792f3ce305a4bba3337fe3939251",
+        "status" : "failed",
+        "time" : {
+          "start" : 1686658254052,
+          "stop" : 1686658314250,
+          "duration" : 60198
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "866a792f3ce305a4bba3337fe3939251"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}

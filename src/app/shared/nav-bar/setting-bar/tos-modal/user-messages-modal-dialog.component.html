@@ -1,0 +1,39 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="user-messages-modal-component">
+  <div class="hdr">
+    <h5 class="mat-h5">{{'USER.ONE' | translate}}</h5>
+  </div>
+  <p>{{'USER.AGREE' | translate}}</p>
+  <form [formGroup]="messageForm" novalidate>
+    <div *ngFor="let message of userMessages">
+      <section class="checkbox-item">
+        <span *ngIf="message.requiresUserAction">
+          <mat-checkbox
+            (change)="onCheckboxChange($event, message)"
+            [value]="false"
+            [formControlName]="getFormControlName(message)"
+            required
+          >
+            {{message.message}}&nbsp;
+          </mat-checkbox>
+          <a class="message-link-text" (click)="openNewWindow(message)">
+            {{message.linkText}}
+          </a>
+        </span>
+        <span *ngIf="!message.requiresUserAction">
+          {{message.message}}&nbsp;
+          <a class="message-link-text" (click)="openNewWindow(message)">
+            {{message.linkText}}
+          </a>
+        </span>
+      </section>
+    </div>
+  </form>
+
+  <div class="flex-ctn">
+    <button color="primary" mat-raised-button [mat-dialog-close]="true" tabindex="0"
+      (click)="onDisagree()">{{'USER.DONT' | translate}}</button>
+    <button color="primary" mat-raised-button [disabled]="!isValid" (click)="onSubmit()">
+      {{'USER.CONTINUE' | translate}}</button>
+  </div>
+</div>

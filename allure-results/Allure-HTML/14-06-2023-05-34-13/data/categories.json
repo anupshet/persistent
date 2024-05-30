@@ -1,0 +1,30 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "Failed: No element found using locator: By(xpath, .//mat-label[contains(.,\"Filter\")])",
+      "children" : [ {
+        "name" : "Test case 1 :Verify Search logic",
+        "uid" : "6379bc497d4ffc24",
+        "parentUid" : "0b0da1c3cbadf0fdca03f1064a4a960f",
+        "status" : "failed",
+        "time" : {
+          "start" : 1686744259285,
+          "stop" : 1686744319156,
+          "duration" : 59871
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "0b0da1c3cbadf0fdca03f1064a4a960f"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}

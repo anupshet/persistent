@@ -1,0 +1,212 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/base/variables-peak";
+@import "../../../../assets/scss/mixins";
+@import "../../../../assets/scss/vendors/angular-material/mixins";
+
+.dialog-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .dialog-header {
+        .close-button {
+            width: 24px;
+            height: 24px;
+            float: right;
+            position: relative;
+            color: $close-icon;
+            cursor: pointer;
+          }
+        .subtitle-div-one {
+            margin: 20px 0px 10px;
+        }
+        .subtitle-div-two {
+            margin-bottom: 10px;
+        }
+        .missing-tests-title {
+            flex-grow: 0;
+            font-family: Lato;
+            font-size: 34px;
+            line-height: normal;
+            letter-spacing: 0.25px;
+            text-align: center;
+        }
+        .missing-tests-subtitle-one {
+            align-self: stretch;
+            flex-grow: 0;
+            font-family: Lato;
+            font-size: 21px;
+            line-height: normal;
+            letter-spacing: 0.25px;
+            text-align: left;
+        }
+        .missing-tests-subtitle-two {
+            align-self: stretch;
+            flex-grow: 0;
+            font-family: Lato;
+            font-size: 16px;
+            line-height: normal;
+            letter-spacing: 0.25px;
+            text-align: left;
+        }
+        .close-button {
+            width: 24px;
+            height: 24px;
+            float: right;
+            position: relative;
+            color: $close-icon;
+            cursor: pointer;
+        }
+    }
+
+    .dialog-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        max-height: none !important;
+    }
+    perfect-scrollbar {
+        max-height: 470px;
+    }
+    .table-content {
+        display: flex;
+        flex-direction: column;
+        
+        .table-container {
+            overflow-x: auto;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .missing-tests-table {
+            width: 100%;
+            border: solid 1px $table-border;
+            table-layout: fixed;
+            .mat-header-row {
+                height: 36px;
+                background-color: $table-header;
+            }
+            .mat-row {
+                height: 36px;
+            }
+            th {
+                flex-grow: 0;
+                font-family: Lato;
+                font-size: 12px;
+                font-weight: bold;
+                line-height: 1.67;
+                letter-spacing: 1.2px;
+                text-align: left;
+                color: $black;
+            }
+            .department-header,
+            .instrument-header,
+            .analyte-header {
+                width: 180px;
+            }
+            .control-header {
+                width: 280px;
+            }
+            .lot-header {
+                width: 60px;
+            }
+            .level-header {
+                width: 40px;
+                text-align: center;
+            }
+            th:nth-child(4),
+            td:nth-child(4) {
+                width: 120px;
+            }
+            .level-data {
+                padding-left: 20px;
+            }
+            td {
+                font-family: Lato;
+                font-size: 12px;
+                line-height: 1.67;
+                letter-spacing: 1.2px;
+                text-align: left;
+                color: $table-data-color;
+                padding-right: 10px;
+            }
+            tr:nth-child(even) {
+                background-color: $table-row-alternate-color;
+            }
+            .long-name {
+                width: 180px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                display: inline-block;
+                overflow: hidden;
+                position: relative;
+                top: 6px;
+            }
+        }
+    }
+
+    .pagination-container {
+        margin: 20px 0px 0px 180px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        .spec-pagination-control {
+            display: flex;
+        }
+        .custom-pagination {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            height: 36px;
+            .pagination-button {
+                margin: 0 10px;
+                padding: 0;
+                min-width: 45px;
+                background: $blue-darker;
+                color: $white;
+            }
+            .mat-stroked-button.mat-primary.selected {
+                background: $white;
+                border: 1px solid rgba($gray-600, 0.4);
+                color: $blue-darker;
+                &.disable-button {
+                    color: $gray-600;
+                }
+            }
+            .rotateArrow {
+                transform: rotate(180deg);
+            }
+        }
+        .mat-dialog-actions {
+            height: 36px;
+            width: fit-content;
+            padding: 16px;
+            bottom: 16px;
+            left: calc(100% - 180px);
+            min-height: unset;
+            position: sticky;
+            .okay-button,
+            .cancel-button {
+                height: 36px;
+                display: flex;
+                align-items: center;
+                border-radius: 4px;
+                font-family: Lato;
+                font-size: 14.6px;
+                line-height: 1.1;
+                font-weight: normal;
+                letter-spacing: 1.25px;
+            }
+            .okay-button {
+                background: $blue-darker;
+                color: $white;
+            }
+            .cancel-button {
+                color: $blue-darker;
+            }
+        }
+    }
+    
+}

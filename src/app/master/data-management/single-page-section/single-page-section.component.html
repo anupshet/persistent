@@ -1,0 +1,118 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div *ngIf="instrumentSection">
+
+  <div class="flex-container flex flex-item-center ml-20 mt-10">
+    <h1 class="mat-h5 mb-0">
+      {{ pageTitleEntityName }}
+      <span *ngIf="pageTitleProductLot" class="product-lot-title">- {{'SINGLEPAGESECTION.LOT' | translate}} {{ pageTitleProductLot }}</span>
+    </h1>
+    <unext-analyte-detail-tooltip [headerData]="headerData"></unext-analyte-detail-tooltip>
+    <button mat-button color="primary" class="spec_edit_nav" [disabled]="inProgress"
+      [checkForPermission]="{'permissionsAllowed':[permissions.AnalyteEdit, permissions.AnalyteEditViewOnly],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+      (click)="gotoEditAnalyte()">
+      <mat-icon [svgIcon]="icons.edit[24].name" class="edit-maticon"></mat-icon>
+      <span class="ml-10">{{'SINGLEPAGESECTION.EDIT' | translate}}</span>
+    </button>
+    <p *ngIf="isArchived">{{'SINGLEPAGESECTION.ARCHIVED' | translate}} {{levelName}}
+      {{'SINGLEPAGESECTION.LEVEL' | translate}}</p>
+  </div>
+  <div *ngIf="showPanelAncestorName" class="flex-container flex flex-item-center ml-10 mt-10">
+    <h1 class="mat-h5 mb-0">{{headerData?.instrumentName}} / {{headerData?.productName}}</h1>
+  </div>
+</div>
+<ng-container *ngIf="!inProgress;then content; else message ">
+</ng-container>
+<ng-template #content>
+  <unext-overlay-component *ngIf="isArchived" [height]="dataTable.offsetHeight" [width]="dataTable.offsetWidth"
+    [left]=dataTable.offsetLeft [top]=dataTable.offsetTop>
+  </unext-overlay-component>
+  <div #dataTable>
+    <unext-analytical-section [isSummary]="isSummary" [monthSummaryByLevel]="monthSummaryByLevel"
+      [decimalPlaces]="decimalPlaces">
+    </unext-analytical-section>
+
+    <perfect-scrollbar [config]="{ suppressScrollX: false, suppressScrollY: true }">
+      <div class="page-section-component">
+
+        <div *ngIf="hasConnectivity" class="page-title-manual-container">
+          <a class="manually-enter-summary" (click)="toggleDataEntryFormVisibility()">{{'SINGLEPAGESECTION.ENTERDATA' | translate}}</a>
+        </div>
+
+        <div class="flex-ctn">
+        </div>
+        <section class="scrollbar-wrapper" [ngClass]="{
+            'extended': !isAnalyticalSectionVisible,
+            'is-archived': isArchived
+          }">
+          <perfect-scrollbar [config]="{ suppressScrollX: false, suppressScrollY: false}">
+            <div class="formWrapper">
+              <div *ngIf="analyteForm">
+                <form [formGroup]="analyteForm" class="analyteForm" (keydown.enter)="$event.preventDefault()">
+                  <div *ngFor="let productSection of sortedProductSections">
+                    <div *ngFor="let analyteSection of productSection.analyteSections">
+                      <div *ngIf="isDataEntryFormsVisible">
+                        <br-analyte-summary-entry
+                          [translationLabels]="translationLabels"
+                          [formControlName]="getFormControlName(analyteSection?.analyteInfo.labTestId)"
+                          (getLots)="getLotsAsync($event.labTestId)" [enableSubmit]="canSubmit()"
+                          [enableCancel]="isValuePresent" [isRunEntryMode]="isTabOrderRunEntry"
+                          (keydown.enter)="keytab($event)" (submitEvent)="submitSingleSummAsync($event)"
+                          (dateSelected)="updateSelectedDateTime($event)" [selectedDate]="selectedDateTime"
+                          [availableDateTo]="availableDateTo" [availableDateFrom]="availableDateFrom"
+                          [analyteEntryType]="analyteEntryType" [currentLanguage]="currentLanguage"
+                          [translationLabelDictionary]="translationLabelDictionary" [timeZone]="timeZone"
+                          [isProductMasterLotExpired]="isProductMasterLotExpired" (cancelEvent)="cancel()"
+                          [isSingleSummary]="isSummary" [initialSelectedDate]="initialSelectedDate"
+                          [isDisabled]="!hasPermissionToAccess([permissions.SingleDataEntryAdd]) || isLeafArchived"
+                          (requestNewConfig)="requestNewConfiguration($event)">
+                        </br-analyte-summary-entry>
+                        <br-change-lot (reagentLot)="getReagentLot()"></br-change-lot>
+                      </div>
+
+                      <div class="ctn-flex-headers">
+                        <div class="flex-item-1">&nbsp;</div>
+                        <div class="flex-item-2">
+                          <table class="mat-typography">
+                            <tr>
+                              <ng-container *ngFor="let column of columnsToDisplay; let i = index">
+                                <td class="level-{{ column }}" [ngClass]="{ 'td-even': i % 2 === 0 }">
+                                  <span class="level">{{'SINGLEPAGESECTION.LEVEL' | translate}} {{ column }}</span>
+                                </td>
+                              </ng-container>
+                            </tr>
+                          </table>
+                        </div>
+                        <div class="flex-item-3">&nbsp;</div>
+                      </div> <!-- /ctn-flex-headers -->
+
+                      <div *ngIf="getAnalyteView(analyteSection?.analyteInfo?.labTestId)">
+                        <div *ngFor="let analyteViewSet of analyteViewSets; index as dataIndex;">
+                          <div>
+                            <br-analyte-summary-view class="spec_opendialog" mat-button
+                              (clicked)="openDataEditDialog(dataIndex)" [analyteView]="analyteViewSet"
+                              [isSameYearEntry]="analyteEntryYears[dataIndex]" [globalLabels]="globalLabels"
+                              [historyData]="historyData" [translationLabelDictionary]="translationLabelDictionary" [translationLabels]="translationLabels"
+                              [isSinglePageSummary]="isSummary" [dateTimeOffset]="dateTimeOffset">
+                            </br-analyte-summary-view>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </perfect-scrollbar>
+        </section>
+      </div>
+      <!-- /:page-section-component -->
+    </perfect-scrollbar>
+  </div>
+</ng-template>
+<ng-template #message>
+  <div align="center" style="transform: translateY(50%);">
+    <!-- Inline styling will be removed ones styling is done. -->
+    <h1>{{progressHeader}}</h1>
+    <p>{{progressMessage}}</p>
+  </div>
+</ng-template>

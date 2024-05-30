@@ -1,0 +1,21 @@
+// Style guide: layout.lab details
+
+@mixin layout\labdetails {
+  .text-indicating-required {
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: $line-height-large;
+    letter-spacing: normal;
+    text-align: left;
+    color: $gray-600;
+  }
+
+  .contact {
+    height: 100%;
+    //Active perfect scrollbar
+    .scroll-container {
+      height: calc(100vh - 245px);
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "editor.tabSize": 2,
+    "workbench.colorCustomizations": {
+    },
+    "angular.enable-strict-mode-prompt": false,
+    "git.ignoreLimitWarning": true,
+    "cSpell.words": [
+        "Analyte",
+        "rana",
+        "Reviewpermissions",
+        "thakur",
+        "Xicon"
+    ],
+    "liveServer.settings.port": 5501
+}

@@ -1,0 +1,41 @@
+<!-- © 2023 Bio - Rad Laboratories, Inc.All Rights Reserved. -->
+<div class="duplicate-instrument-entry-component panel-content-border">
+  <h2 mat-dialog-title>
+    <span>{{'DUPLICATEINSTRUMENTENTRY.COPYTHIS' | translate}}</span>
+  </h2>
+  <form [formGroup]="duplicateInstrumentForm">
+    <div formArrayName="duplicateInstrumentArray">
+      <div *ngFor="let node of duplicateInstrumentGroupGetter.controls; let  index = index" [formGroupName]="index">
+        <div *ngIf="duplicateInstrumentForm.controls.duplicateInstrumentArray.controls[index].controls.department">
+          <br-select class="spec_departments"
+            [hidden]="!isDepartmentAvailable || (departmentList && departmentList.length === 1)"
+            formControlName="department" [data]="departmentList" [displayAttribute]="'displayName'" [emitValue]="true"
+            [placeholder]="departmentPlaceholder" (selectedChanged)="onDepartmentChange($event)"
+            [disabled]="hasPermissionToAccess([permissions.InstrumentEditViewOnly])">
+          </br-select>
+        </div>
+        <mat-form-field>
+          <input matInput formControlName="customName" (ngModelChange)="onCustomNameChange()">
+          <mat-placeholder>{{'DUPLICATEINSTRUMENTENTRY.CUSTOMNAME' | translate}}
+          </mat-placeholder>
+        </mat-form-field>
+        <mat-error class="spec_instrumentExistsMsg" *ngIf="isInstrumentModelDuplicate && isDepartmentAvailable && (departmentList && departmentList.length > 1)">
+          {{'DUPLICATEINSTRUMENTENTRY.INSTRUMENTMODEL' | translate}}
+        </mat-error>
+        <mat-error class="spec_customNameExistsMsg" *ngIf="isCustomNameDuplicate">
+          {{'DUPLICATEINSTRUMENTENTRY.CUSTOMNAMEEXISTS' | translate}}
+        </mat-error>
+        <mat-error *ngIf="isCustomNameUnique">
+          {{'DUPLICATEINSTRUMENTENTRY.UNIQUECUSTOMNAME' | translate}}
+        </mat-error>
+      </div>
+    </div>
+
+    <button mat-flat-button color="primary" type="submit"
+            [disabled]="!duplicateInstrumentForm.valid || isInstrumentModelDuplicate || isCustomNameDuplicate"
+            *ngIf="hasPermissionToAccess([permissions.InstrumentAdd])"
+            (click)="copyInstrument(duplicateInstrumentForm.value)">
+        {{'DUPLICATEINSTRUMENTENTRY.COPY' | translate}}
+    </button>
+  </form>
+</div>

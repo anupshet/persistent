@@ -1,0 +1,140 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+
+<form [formGroup]="slideGenForm" *ngIf="availableReagentLotMetadata && availableReagentLotMetadata.length > 0"
+  id="slideGenForm" class="slidegen-form">
+  <div class="slidegen-container" formArrayName="slideGenList"
+    *ngFor="let slideGenItem of slideGenControls; index as index; last as isLast; first as isFirst">
+    <div class="slidegen-row" [formGroupName]="index">
+      <div class="delete-slide-gen">
+        <button mat-icon-button color="warn" class="spec-remove" (click)="removeInputControl(index)">
+          <mat-icon [svgIcon]="icons.delete[24].name" *ngIf="!isFirst"></mat-icon>
+        </button>
+      </div>
+      <mat-form-field class="slidegen-item-1" id="spec_slideGens">
+        <mat-select formControlName="reagentLotId" name="slidegen" placeholder="{{'CONNECTIVITYSLIDEGEN.REAGENTLOT' | translate}}"
+          (selectionChange)="reagentLotSelectionChange()">
+          <mat-option *ngFor="let slidegen of availableReagentLotMetadata" [value]="slidegen.id">
+            {{slidegen.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="slidegen-item-2">
+        <mat-form-field>
+          <input class="unity-datepicker spec-startDate" matInput [matDatepicker]="picker" placeholder="{{'CONNECTIVITYSLIDEGEN.DATE' | translate}}"
+            [min]="slideGenListValidationArr[index].startMinValue"
+            [max]="slideGenListValidationArr[index].startMaxValue" (dateChange)="startDateChange($event.value, index)"
+            formControlName="startDate"
+            [class.ng-invalid]="slideGenListValidationArr[index].isRowInValid"
+            readonly >
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker>
+          </mat-datepicker>
+          <mat-error
+            *ngIf="slideGenListArray.controls[index].get('startDate').errors?.required" class="error-message-font">
+            {{'CONNECTIVITYSLIDEGEN.STARTDATE' | translate}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="slidegen-item-3">
+
+        <mat-form-field *ngIf="timeFormat === 1">
+          <div class="ctn-time-picker-24">
+            <span class="placeholder">{{'CONNECTIVITYSLIDEGEN.TIME' | translate}}</span>
+            <input matInput  [(ngModel)]="selectedTime" style="display:none">
+            <input type="number"  min="0" max="23" [value]="hoursValue"
+              [(ngModel)]="hoursValue"  (change)="onHoursChange($event?.target?.value,index, 'start')" placeholder="--" (blur)="onBlur('start')">
+            <span class="divader">:</span>
+            <input type="number"  min="0"  max="59" [value]="minutesValue"
+              [(ngModel)]="minutesValue" (change)="onMinutesChange($event?.target?.value,index, 'start')" placeholder="--"  (blur)="onBlur('start')">
+          </div>
+          <mat-error
+          *ngIf="slideGenListArray.controls[index].get('startTime').errors?.required" class="error-message-font">
+          {{'CONNECTIVITYSLIDEGEN.STARTTIME' | translate}}
+        </mat-error>
+      </mat-form-field>
+
+        <mat-form-field [ngClass]="{'hidden': timeFormat === 1}">
+          <input name="time" type="time" matInput placeholder="{{'CONNECTIVITYSLIDEGEN.TIME' | translate}}" formControlName="startTime"
+            (change)="startTimeChange($event?.target?.value,index)"
+            [class.ng-invalid]="slideGenListValidationArr[index].isRowInValid" class="
+              spec-startTime" (click)="$event.preventDefault()">
+          <mat-error
+            *ngIf="slideGenListArray.controls[index].get('startTime').errors?.required" class="error-message-font">
+            {{'CONNECTIVITYSLIDEGEN.STARTTIME' | translate}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="slidegen-item-4">
+        {{'CONNECTIVITYSLIDEGEN.TO' | translate}}
+      </div>
+      <div class="slidegen-item-5">
+        <mat-form-field>
+          <input class="unity-datepicker spec-endDate" matInput [matDatepicker]="picker1" placeholder="{{'CONNECTIVITYSLIDEGEN.DATE' | translate}}"
+            [min]="slideGenListValidationArr[index].endMinValue" [max]="slideGenListValidationArr[index].endMaxValue"
+            (dateChange)="endDateChange($event.value, index)" formControlName="endDate"
+            readonly>
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+          <mat-error
+            *ngIf="slideGenListArray.controls[index].get('endDate').errors?.required" class="error-message-font">
+            {{'CONNECTIVITYSLIDEGEN.ENDDATE' | translate}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="slidegen-item-6">
+
+        <mat-form-field *ngIf="timeFormat === 1">
+          <div class="ctn-time-picker-24">
+            <span class="placeholder">{{'CONNECTIVITYSLIDEGEN.TIME' | translate}}</span>
+            <input matInput  [(ngModel)]="selectedTimeEnd" style="display:none">
+            <input type="number"  min="0" max="23" [value]="hoursValueEnd"
+              [(ngModel)]="hoursValueEnd"  (change)="onHoursChange($event?.target?.value,index, 'end')" placeholder="--" (blur)="onBlur('end')">
+            <span class="divader">:</span>
+            <input type="number"  min="0"  max="59" [value]="minutesValueEnd"
+              [(ngModel)]="minutesValueEnd" (change)="onMinutesChange($event?.target?.value,index, 'end')" placeholder="--"  (blur)="onBlur('end')">
+          </div>
+          <mat-error
+          *ngIf="slideGenListArray.controls[index].get('endTime').errors?.required" class="error-message-font">
+          {{'CONNECTIVITYSLIDEGEN.STARTTIME' | translate}}
+        </mat-error>
+      </mat-form-field>
+
+        <mat-form-field [ngClass]="{'hidden': timeFormat === 1}">
+          <input name="time" type="time" matInput placeholder="{{'CONNECTIVITYSLIDEGEN.TIME' | translate}}" formControlName="endTime"
+            (change)="endTimeChange($event?.target?.value,index)"
+            class="
+              spec-endTime" (click)="$event.preventDefault()">
+          <mat-error
+            *ngIf="slideGenListArray.controls[index].get('endTime').errors?.required" class="error-message-font">
+            {{'CONNECTIVITYSLIDEGEN.ENDDATE' | translate}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-icon-button color="primary" class="add-slide-gen spec-add" *ngIf="isLast"
+        [disabled]="checkForDisable('add')" (click)="addInputControl(index)">
+        <mat-icon [svgIcon]="icons.addCircle[24].name"></mat-icon>
+      </button>
+      <mat-error *ngIf="slideGenListValidationArr[index].isRowInValid && index === 0" class="validation-err">
+        {{'CONNECTIVITYSLIDEGEN.GREATER' | translate}}
+      </mat-error>
+      <mat-error *ngIf="slideGenListValidationArr[index].isRowInValid && index > 0" class="validation-err">
+        {{'CONNECTIVITYSLIDEGEN.DATAVALUES' | translate}}
+      </mat-error>
+      <mat-error
+        *ngIf="slideGenListValidationArr[index].isDuplicateReagentLot" class="validation-err duplicateLot">
+        {{'CONNECTIVITYSLIDEGEN.REAGENTLOTS' | translate}}
+      </mat-error>
+    </div>
+  </div>
+</form>
+
+<div class="flex-container">
+  <div class="buttons">
+    <button mat-stroked-button color="primary" type="button" class="border-less spec-cancel"
+      (click)="resetForm()">{{'CONNECTIVITYSLIDEGEN.CANCEL' | translate}}</button>
+    <button mat-raised-button color="primary" type="button" class="selected spec-confirm"
+      [disabled]="checkForDisable()"
+      (click)="submitSlideGenList()">{{'CONNECTIVITYSLIDEGEN.CONFIRM' | translate}}</button>
+  </div>
+</div>

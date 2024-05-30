@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="14px" viewBox="0 0 13 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title></title>
+    <g id="Miscellaneous" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Change-location" transform="translate(-825.000000, -14.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="Group-4" transform="translate(825.923032, 14.000000)">
+                <path d="M5.34430082,0 L5.34430082,3.06342495 L0,5.86046512 L0,14 L5.33019977,14 L5.83783784,14 L12,14 L12,0 L5.34430082,0 Z M5.34430082,12.5940803 L1.33960047,12.5940803 L1.33960047,6.73361522 L5.34430082,4.63213531 L5.34430082,12.5940803 Z M10.6745006,12.5940803 L9.3349001,12.5940803 L9.3349001,11.1881607 L7.99529965,11.1881607 L7.99529965,12.5940803 L6.65569918,12.5940803 L6.65569918,1.39112051 L10.6603995,1.39112051 L10.6603995,12.5940803 L10.6745006,12.5940803 Z" id="Shape"></path>
+                <rect id="Rectangle" x="2.18181818" y="7.53846154" width="2.18181818" height="2.15384615"></rect>
+                <rect id="Rectangle" x="2.18181818" y="10.7692308" width="2.18181818" height="2.15384615"></rect>
+                <rect id="Rectangle" x="7.63636364" y="1.07692308" width="2.18181818" height="2.15384615"></rect>
+                <rect id="Rectangle" x="7.63636364" y="4.30769231" width="2.18181818" height="2.15384615"></rect>
+                <rect id="Rectangle" x="7.63636364" y="7.53846154" width="2.18181818" height="2.15384615"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

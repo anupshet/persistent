@@ -1,0 +1,53 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<ng-template [ngIf]="loadDataTable">
+  <main class="data-managment-main">
+    <div class="flex-container flex flex-item-center ml-10 mt-10">
+      <h1 class="mat-h5 mb-0">
+        {{ pageTitleEntityName }}
+      </h1>
+      <unext-analyte-detail-tooltip [headerData]="headerData"></unext-analyte-detail-tooltip>
+      <button mat-button color="primary" [disabled]="inProgress"
+        [checkForPermission]="{'permissionsAllowed':[permissions.AnalyteEdit, permissions.AnalyteEditViewOnly],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+        (click)="gotoEditAnalyte()">
+        <mat-icon [svgIcon]="icons.edit[24].name" class="edit-maticon"></mat-icon>
+        <span class="ml-10">{{'SINGLEPAGESECTION.EDIT' | translate}}</span>
+      </button>
+      <p *ngIf="isArchived">{{'ANALYTEDETAILTABLE.THISITEM' | translate}} {{levelName}} {{'ANALYTEDETAILTABLE.LEVEL' | translate}}</p>
+    </div>
+    <div *ngIf="showPanelAncestorName" class="flex-container flex flex-item-center ml-10 mt-10">
+      <h1 class="mat-h5 mb-0">{{headerData?.instrumentName}} / {{headerData?.productName}}</h1>
+    </div>
+    <ng-container *ngIf="!inProgress;then content; else message ">
+    </ng-container>
+    <ng-template #content>
+      <div>
+        <ng-template [ngIf]="ljChartRuns">
+          <unext-analytical-section [levelsInUse]="levelsInUse" [decimalPlaces]="decimalPlaces"
+            [monthSummaryByLevel]="monthSummaryByLevel" [runsResult]="runsResult" [ljChartRuns]="ljChartRuns"
+            [labTimeZone]="labTimeZone" [initDiffRuns]="initDiffRuns">
+          </unext-analytical-section>
+        </ng-template>
+        <ng-template [ngIf]="runDataPageSet">
+          <unext-runs-table [actions]="actions" [runDataPageSet]="runDataPageSet" [levelsInUse]="levelsInUse"
+            [decimalPlaces]="decimalPlaces" [defaultReagentLotId]="defaultReagentLotId"
+            [defaultCalibratorLotId]="defaultCalibratorLotId" [nextPageFirstRun]="nextPageFirstRun"
+            [prevPageLastRun]="prevPageLastRun" [pageNumber]="pageNumber" [labTimeZone]="labTimeZone"
+            [labTestId]="labTestId" [labInstrumentId]="labInstrumentId" [labProductId]="labProductId"
+            [accountId]="accountId" [accountNumber]="accountNumber" [controlLotIds]="controlLotIds"
+            [codeListTestId]="codeListTestId" [labId]="labLocationId" [labUnitId]="labUnitId"
+            [productMasterLotExpiration]="productMasterLotExpiration" [productId]="productId"
+            [productMasterLotId]="productMasterLotId" [testId]="testId" (updateLJChartRuns)="updateLJChartRuns($event)"
+            (loadNextPage)="loadNextPage($event)" (loadPrevPage)="loadPrevPage($event)"
+            (isRunRestarted)="isRunRestarted($event)" [isArchived]="isArchived" [isLeafArchived]="isLeafArchived">
+          </unext-runs-table>
+        </ng-template>
+      </div>
+    </ng-template>
+    <ng-template #message>
+      <div align="center" style="transform: translateY(50%);">
+        <h1>{{progressHeader}}</h1>
+        <p>{{progressMessage}}</p>
+      </div>
+    </ng-template>
+  </main>
+</ng-template>

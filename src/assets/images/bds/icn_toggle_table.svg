@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="28px" viewBox="0 0 33 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>table toggle</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="MC:2-Quality-Control-Plan" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="ANALYTE-DETAIL-FROM-QUALITY-PLAN" transform="translate(-1208.000000, -76.000000)" stroke="#FFFFFF">
+            <g id="table-toggle" transform="translate(1208.000000, 76.000000)">
+                <g id="if_simpline_34_2305626-(1)" transform="translate(1.320000, 1.333333)">
+                    <path d="M11.88,3.33333333 L30.36,3.33333333" id="Shape" stroke-width="2"></path>
+                    <path d="M0,3.33333333 L5.28,3.33333333" id="Shape" stroke-width="2"></path>
+                    <path d="M23.76,12.6666667 L30.36,12.6666667" id="Shape" stroke-width="2"></path>
+                    <path d="M0,12.6666667 L17.16,12.6666667" id="Shape" stroke-width="2"></path>
+                    <path d="M13.2,22 L30.36,22" id="Shape" stroke-width="2"></path>
+                    <path d="M0,22 L6.6,22" id="Shape" stroke-width="2"></path>
+                    <ellipse id="Oval" stroke-width="2" cx="8.58" cy="3.33333333" rx="3.3" ry="3.33333333"></ellipse>
+                    <ellipse id="Oval" stroke-width="2" cx="20.46" cy="12.6666667" rx="3.3" ry="3.33333333"></ellipse>
+                    <ellipse id="Oval" stroke-width="2" cx="9.9" cy="22" rx="3.3" ry="3.33333333"></ellipse>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

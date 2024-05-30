@@ -1,0 +1,11 @@
+{
+  "QA": {},
+  "DEV": {
+    "URL": "http://localhost:4200/",
+    "Username": "rana_thakur+local13945@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Nitin"
+  },
+  "STAGE": {},
+  "DEV2": {}
+}

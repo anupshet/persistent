@@ -1,0 +1,48 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="flex-ctn" [ngClass]="{'flex-ctn-columns': displayInline}">
+  <span *ngIf="readOnlyDate" class="dateLabel" [ngClass]="{'dateHidden': !readOnlyDate}">
+    {{ timeZoneAdjustedDateTime | uNextDate: 'mediumDate' }}
+  </span>
+  <div class="flex-item-1" [ngClass]="{'dateHidden': readOnlyDate}">
+    <mat-form-field>
+      <input matInput class="dateInput" [matDatepicker]="picker" [min]="availableDateFrom ? availableDateFrom : null"
+        [max]="availableDateTo ? availableDateTo : null" [ngModel]="timeZoneAdjustedDateTime"
+        [disabled]="!canInputDate || isDisabled" (dateChange)="onDateChange($event)" id="{{elementName+'Date'}}"
+        name="{{elementName+'Date'}}" tabindex="97">
+      <mat-placeholder *ngIf="!hideLabel">{{translationLabels.date}}</mat-placeholder>
+      <mat-datepicker-toggle [disabled]="isDisabled" matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker [disabled]="!canSelectDate || isDisabled"></mat-datepicker>
+      <mat-hint class="br-text-warn" *ngIf="canSelectDate">{{ errorMessage }}</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div class="flex-item-2">
+    <span id="changeDate" class="mat-body-1 change-date"
+    [ngClass]="{'displayNone': !showChangeDateButton, 'disable': isDisabled}"
+    (click)="!isDisabled? dateChangeClicked(): false">{{translationLabels.change}}</span>
+    <div *ngIf="canSelectTime" [ngClass]="{'displayInline': displayInline}">
+      <mat-form-field [ngClass]="{'marginLeft': displayInline}" class="time">
+          <div *ngIf="isTimeInputSupported">
+            <ng-container *ngIf="timeFormat ===0">
+              <input  matInput type="time" [disabled]="!canSelectTime || isDisabled"
+              [(ngModel)]="selectedTime" (ngModelChange)="onTimeChange()" id="{{elementName+'Time'}}"
+              name="{{elementName+'Time'}}" tabindex="98">
+            </ng-container>
+            <div  *ngIf="timeFormat ===1" class="ctn-time-picker-24">
+              <!-- It's not a matInput-->
+              <input matInput  [(ngModel)]="selectedTime" style="display:none">
+              <input type="number"  min="0" max="23" [disabled]="!canSelectTime || isDisabled"  tabindex="99"
+              [(ngModel)]="hoursValue"  (ngModelChange)="onHoursChange(hoursValue)" placeholder="--" (blur)="onBlur()">
+            <span class="divader">:</span>
+            <input type="number"  min="0"  max="59" [disabled]="!canSelectTime || isDisabled"  tabindex="100"
+              [(ngModel)]="minutesValue" (ngModelChange)="onMinutesChange(minutesValue)" placeholder="--"  (blur)="onBlur()">
+            </div>
+          </div>
+        <input *ngIf="!isTimeInputSupported" matInput type="text" maxlength="5"
+          [disabled]="!canSelectTime || isDisabled" [(ngModel)]="selectedTime" (ngModelChange)="onTimeChange()"
+          id="{{elementName+'Time'}}" name="{{elementName+'Time'}}" tabindex="99">
+        <mat-hint class="br-text-warn nowrap" *ngIf="readOnlyDate && canSelectTime">{{ errorMessage }}</mat-hint>
+      </mat-form-field>
+    </div>
+  </div>
+</div>

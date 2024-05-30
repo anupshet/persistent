@@ -1,0 +1,6 @@
+<div class="level-toggle-component">
+  <span class="mr-4">{{'LEVELTOGGLE.LEVELS' | translate}} </span>
+  <mat-checkbox *ngFor="let level of levelsInUse; let idx = index" class="level-checkbox-{{level}} mr-4" (change)="onToggle(idx)"
+    [checked]="true"><span>{{level}}</span>
+    </mat-checkbox>
+</div>

@@ -1,0 +1,18 @@
+{
+  "QA": {
+    "URL": "https://qcpcentralqa.global.bio-rad.com/",
+    "Username": "amruta_karale+qaqcpadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "MainMenu": "Code List",
+    "SubMenu": "Products",
+    "SubMenuOption": "Products",
+    "NewProductName": "TestAutomation_Product",
+    "FileName": "products.csv",
+    "MatrixName": "Plasma",
+    "ManufacturerName": "Abbott",
+    "Products": "Assayed Chemistry"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

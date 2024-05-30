@@ -1,0 +1,76 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="br-dialog">
+  <div class="hdr">
+    <div (click)="closeDialog()">
+      <mat-icon [svgIcon]="icons.close[48].name" class="close"></mat-icon>
+    </div>
+    <div class="lab-settings-wrapper">
+      <p class="title spec-header">{{'LABSETTINGS.LAB' | translate}}</p>
+      <span class="text-message grey spec-message">{{'LABSETTINGS.CHANGE' | translate}}</span>
+      <form *ngIf="labSettingsForm" [formGroup]="labSettingsForm" novalidate>
+        <div class="form-field-wrapper">
+          <span>{{'LABSETTINGS.HOW' | translate}}</span>
+          <mat-radio-group formControlName="dataType">
+            <mat-radio-button color="primary" [value]="summary">
+              <span class="mat-body-1">
+                <span>{{'LABSETTINGS.SUMMARY' | translate}}</span>
+              </span>
+            </mat-radio-button>
+            <mat-radio-button color="primary" [value]="point">
+              <span class="mat-body-1">
+                <span>{{'LABSETTINGS.POINT' | translate}}</span>
+              </span>
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <div class="form-field-wrapper">
+          <span>{{'LABSETTINGS.WOULD' | translate}}</span>
+          <mat-radio-group formControlName="trackReagentCalibrator">
+            <mat-radio-button color="primary" [value]="true">
+              <span class="mat-body-1">{{'LABSETTINGS.YES' | translate}}</span>
+            </mat-radio-button>
+            <mat-radio-button color="primary" [value]="false">
+              <span class="mat-body-1">{{'LABSETTINGS.NO' | translate}}</span>
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <!-- TODO: The following question is hidden and defaulted since the application does not support this feature yet -->
+        <!-- <div class="form-field-wrapper">
+          <span>{{'LABSETTINGS.UNITS' | translate}}</span>
+          <mat-radio-group formControlName="siUnits">
+            <mat-radio-button color="primary" [value]="false">
+              <span class="mat-body-1">{{'LABSETTINGS.CONVENTIONAL' | translate}}</span>
+            </mat-radio-button>
+            <mat-radio-button color="primary" [value]="true">
+              <span class="mat-body-1">{{'LABSETTINGS.SIUNIT' | translate}}</span>
+            </mat-radio-button>
+          </mat-radio-group>
+        </div> -->
+
+        <div class="form-field-wrapper">
+          <div class="flex-box">
+            <p class="decimal-label">{{'LABSETTINGS.HOWMANY' | translate}}</p>
+            <mat-form-field>
+              <mat-select placeholder="{{'LABSETTINGS.DECIMAL' | translate}}" formControlName="decimalPlaces">
+                <mat-option *ngFor="let decimal of decimalPlacesData" [value]="decimal">
+                  {{decimal}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="buttons-wrapper">
+          <button mat-button mat-stroked-button class="back-button spec-back" (click)="onBackClick()"> {{'LABSETTINGS.BACK' | translate}}
+          </button>
+          <button [checkForPermission]="{'permissionsAllowed':[permissions.LabSettings],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+                  mat-button mat-flat-button class="update-button spec-update" color="primary"
+                  [disabled]="labSettingsForm.invalid || !hasValuesChanged" (click)="onUpdateClick(labSettingsForm.value)">{{'LABSETTINGS.UPDATE' | translate}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

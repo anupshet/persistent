@@ -1,0 +1,45 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<header class="header">
+  <div class="header-holder">
+    <div class="flex-container">
+      <div class="flex-16">
+        <div class="flex-container">
+          <div class="flex-3">
+            <div class="heading">
+              <h2>{{'HEADER.CONNECTIVITY' | translate}}</h2>
+            </div>
+          </div>
+          <div class="flex-13">
+            <ul class="mob-actions-bar flex-wrap">
+              <li routerLinkActive="active" [class.active]="isConfigurationsActive"
+                *ngIf="hasPermissionToAccess([permissions.ConnectivityConfiguration, permissions.ConnectivityConfigurationViewOnly])">
+                <a class="mat-body-2" (click)="routeToConnectivityConfigurations()">{{'HEADER.CONFIGURATION' | translate
+                  | uppercase}}</a>
+              </li>
+              <li routerLinkActive="active" [class.active]="isUploadActive"
+                *ngIf="hasPermissionToAccess([permissions.ConnectivityUpload, permissions.ConnectivityUploadViewOnly])">
+                <a class="spcrules-link mat-body-2" (click)="routeToFileUploadWithLabId()"
+                  [class.disabled-link]="!showUploadFileSection">
+                  {{'HEADER.FILEUPLOAD' | translate | uppercase}}
+                </a>
+              </li>
+              <li routerLinkActive="active" [class.active]="isStatusActive"
+                *ngIf="hasPermissionToAccess([permissions.ConnectivityStatus, permissions.ConnectivityStatusViewOnly])">
+                <a class="report-link mat-body-2" (click)="routeToConnectivityStatus()">{{'HEADER.STATUS' | translate |
+                  uppercase}}</a>
+              </li>
+              <li routerLinkActive="active" [class.active]="isMappingActive"
+                *ngIf="hasPermissionToAccess([permissions.ConnectivityMapping, permissions.ConnectivityMappingViewOnly])">
+                <a class="connectivity-link mat-body-2" (click)="routeToConnectivityMapping()"
+                  [class.disabled-link]="!showInstrumentMapping">{{'HEADER.MAPPING' | translate | uppercase}}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flex-1">
+        <mat-icon (click)="closeDialog()">close</mat-icon>
+      </div>
+    </div>
+  </div>
+</header>

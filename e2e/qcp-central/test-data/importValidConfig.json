@@ -1,0 +1,33 @@
+{"DEV2":
+{
+  "URL": "https://qcpcentraldev2aws.global.bio-rad.com/",
+  "Username": "amruta_karale+qcpdev2admin@bio-rad.com",
+  "Password": "Welcome1",
+  "MainMenu": "Manage Configuration",
+  "SubMenu": "Valid Config",
+  "SubMenuOption": "Import Valid Config From Excel",
+  "ErrorMsgVitros": "Please upload the valid configurations with Microslide reagents",
+  "ErrorMsgNonVitrso": "Please select Microslide Configurations checkbox to upload the valid configurations with Microslide reagents.",
+  "MissingLotError" : "UnityNextReagentLotName Missing in row number",
+  "InvalidLotError" : "Incorrect Microslide Reagent Lot Name. Please check the reagent not naming convention in row number",
+  "VitrosFile": "VITROS_DemoConfig.xlsx",
+  "NonVitrosFile": "NonVITROS_Demo.xlsx",
+  "VITROSOneToOneFile": "VITROS_Demo_OneToOne.xlsx",
+  "MissingReagLotFile": "VITROS_MissingReagentLot.xlsx",
+  "InvalidLotFile1": "VITROS_InvalidReagLot1.xlsx",
+  "InvalidLotFile2": "VITROS_InvalidReagLot2.xlsx",
+  "InvalidLotFile3": "VITROS_InvalidReagLot3.xlsx",
+  "InvalidLotFile4": "VITROS_InvalidReagLot4.xlsx",
+  "InvalidLotFile5": "VITROS_InvalidReagLot5.xlsx",
+  "DuplicateLotFile": "VITROS_DuplicateReagentLot.xlsx",
+  "VitrosExcelColumns": ["Analyte Code", "AnalyteName", "Unity Next Analyte Code","Unity Next AnalyteName", 
+  "Instrument Manufacturer","Current Instrument", "Current Instrument Name", "UnityNextInstrumentCode", 
+  "UnityNextInstrumentName", "MethodCode", "MethodName", "Unity Next MethodCode", "Unity Next MethodName", 
+  "ConventionalUnitCode", "ConventionalUnitName", "SiUnitCode", "SiUnitName", "CurrentReagentCode", 
+  "CurrentReagentName", "Reagent Manufacturer", "UnityNextReagent", "UnityNextReagentCode", "UnityNextReagentLotName", 
+  "Calibrator Manufacturer", "UnityNextCalibrator", "Edit By" ]
+},
+"DEV": {},
+"STAGE": {},
+"QA": {}
+}

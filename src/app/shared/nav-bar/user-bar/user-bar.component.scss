@@ -1,0 +1,16 @@
+@import '../../../../assets/scss/base/variables-peak';
+
+.user-bar-component {
+
+  .trigger {
+    width: auto;
+
+    mat-icon {
+      padding-left: 8px;
+    }
+  }
+
+  button span {
+    margin-left: $custom-space-small;
+  }
+}

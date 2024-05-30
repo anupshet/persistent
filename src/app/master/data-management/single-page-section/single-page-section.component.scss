@@ -1,0 +1,171 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../../../assets/scss/variables';
+@import '../../../../assets/scss/base/variables-peak';
+
+
+.page-section-component {
+  position: relative;
+  margin: 0 10px;
+  min-width: 900px;
+
+  .sticky-controls {
+    position: sticky;
+    z-index: 10000;
+  }
+
+  .mat-typography {
+    margin: -2px 0; // minus marging is to handle the white space around the level label
+
+    .td-even {
+      background: $gray-100;
+    }
+  }
+}
+
+.scrollbar-wrapper {
+  height: calc(100vh - 490px);
+
+  &.extended {
+    height: calc(100vh - 340px);
+  }
+}
+
+perfect-scrollbar>.ps.ps--active-x>.ps__rail-x {
+  bottom: 5px !important;
+}
+
+.formWrapper {
+  height: 100%;
+  overflow-y: visible;
+}
+
+.analyteForm {
+  display: block;
+}
+
+table {
+  width: 100%;
+  min-width: calc(270 + (6*90));
+
+  td {
+    text-align: center;
+    margin: 0;
+    min-width: 90px;
+
+    span {
+      display: inline-block;
+      width: 100%;
+      text-transform: uppercase;
+      color: $gray-700;
+      border-style: solid;
+      border-width: 2px;
+      border-left: 0;
+      border-top: 0;
+      border-right: 0;
+    }
+
+    &.level-1 span {
+      border-color: $br-level-1;
+    }
+
+    &.level-2 span {
+      border-color: $br-level-2;
+    }
+
+    &.level-3 span {
+      border-color: $br-level-3;
+    }
+
+    &.level-4 span {
+      border-color: $br-level-4;
+    }
+
+    &.level-5 span {
+      border-color: $br-level-5;
+    }
+
+    &.level-6 span {
+      border-color: $br-level-6;
+    }
+
+    &.level-7 span {
+      border-color: $br-level-7;
+    }
+
+    &.level-8 span {
+      border-color: $br-level-8;
+    }
+
+    &.level-9 span {
+      border-color: $br-level-9;
+    }
+  }
+
+  .product-lot-title,
+  .level {
+    font-size: $custom-type-size-xxsmall;
+  }
+}
+
+.flex-ctn {
+  display: flex;
+  background: $white;
+
+  .flex-item-1 {
+    width: 150px;
+  }
+
+  .flex-item-2 {
+    flex-grow: 2;
+  }
+
+  .flex-item-3 {
+    width: 120px;
+  }
+}
+
+.hdr-product {
+  padding: 10px 0 10px 30px;
+  margin: 0;
+  background: $white;
+
+  h5 {
+    margin: 0;
+
+    span {
+      opacity: 0.6;
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+.disabledAnalyteView {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.page-title-manual-container {
+  a {
+    color: $br-color-primary-700;
+    cursor: pointer;
+    padding: 0px 0px 10px 0px;
+    display: inline-block;
+  }
+}
+
+.ctn-flex-headers {
+  background: $white;
+  display: flex;
+
+  .flex-item-1 {
+    width: 215px;
+  }
+
+  .flex-item-2 {
+    flex-grow: 2;
+  }
+
+  .flex-item-3 {
+    width: 143px;
+  }
+}

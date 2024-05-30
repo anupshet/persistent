@@ -1,0 +1,48 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.-->
+<!-- This is where the page sections, point, and summary components will be rendered any time an instrument, product, or test is selected from the menu -->
+<div [ngSwitch]="entityType">
+  <div *ngSwitchCase="entityTypeLabInstrument">
+    <div *ngIf="instrumentSection">
+      <unext-page-section
+        *ngIf="!isLoading"
+        [instrumentSection]="instrumentSection"
+        [entityType]="entityType"
+        [isArchived]="isArchived"
+        [levelName]="levelName">
+      </unext-page-section>
+    </div>
+  </div>
+  <div *ngSwitchCase="entityTypeLabProduct">
+    <div *ngIf="instrumentSection">
+      <unext-page-section
+        *ngIf="!isLoading"
+        [instrumentSection]="instrumentSection"
+        [entityType]="entityType"
+        [isArchived]="isArchived"
+        [levelName]="levelName">
+      </unext-page-section>
+    </div>
+  </div>
+  <div *ngSwitchCase="entityTypeLabTest">
+    <div *ngIf="instrumentSection; else detailTable">
+      <unext-single-page-section
+        *ngIf="!isLoading"
+        [instrumentSection]="instrumentSection"
+        [entityType]="entityType"
+        [isSummary]="isSummary"
+        [isArchived]="isArchived"
+        [isLeafArchived]="isLeafArchived"
+        [levelName]="levelName">
+      </unext-single-page-section>
+    </div>
+
+    <ng-template #detailTable>
+      <unext-analyte-detail-table
+      [isArchived]="isArchived"
+      [isLeafArchived]="isLeafArchived"
+      [levelName]="levelName">
+    </unext-analyte-detail-table>
+    </ng-template>
+
+  </div>
+</div>

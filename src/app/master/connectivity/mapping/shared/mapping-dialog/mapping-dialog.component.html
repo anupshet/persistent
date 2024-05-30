@@ -1,0 +1,49 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="noScroll">
+  <mat-dialog-content>
+
+    <div *ngIf="!isCardClicked">
+      <div class="flex-container">
+        <div class="select_card">
+          {{messageType}}
+        </div>
+        <div>
+          <button mat-button color="primary" (click)="onCancelClick()">
+            {{'MAPPINGDIALOG.CANCEL' | translate}}</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isCardClicked">
+
+      <div class="flex-container">
+        <div>
+          <div class="type_message mat-body-1">
+            {{messageType}}
+          </div>
+          <label class="control-label map_message mat-small" id="codeMapMessage" [ngSwitch]="entityType">
+            <span *ngSwitchCase="entityTypeLabInstrument">
+              {{this.selectedChip?.code}} <span>{{'MAPPINGDIALOG.MAPPEDTO' | translate}}</span>
+              {{this.selectedInstrument?.instrumentModelName}}
+            </span>
+            <span *ngSwitchCase="entityTypeLabProduct">
+              {{this.selectedChip?.code}} <span>{{'MAPPINGDIALOG.MAPPEDTO' | translate}}</span>
+              {{this.selectedProduct?.productName}}, <span >{{'MAPPINGDIALOG.LEVEL' | translate}}</span>
+              {{this.selectedProductLevel?.level}}
+            </span>
+            <span *ngSwitchCase="entityTypeLabTest">
+              {{this.selectedChip?.code}} <span>{{'MAPPINGDIALOG.MAPPEDTO' | translate}}</span>
+              {{this.selectedTest?.analyteName}}
+            </span>
+          </label>
+        </div>
+        <div>
+          <button mat-button color="primary" (click)="onCancelClick()">
+            {{'MAPPINGDIALOG.CANCEL' | translate}}</button>
+          <button mat-raised-button color="primary" (click)="onConfirmClick()">
+            {{'MAPPINGDIALOG.LINK' | translate}}</button>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

@@ -1,0 +1,91 @@
+html {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	width: 100%;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	width: 100%;
+	font-size: 16px;
+	font-family: 'Lato', 'Helvetica Neue', 'Roboto', Arial, sans-serif;
+	color: rgba(0,0,0,.87);
+}
+.banner {
+	display: block;
+	width: 100%;
+	background-color: #636D83;
+	position: fixed;
+	z-index: 200;
+	padding-top: 20px;
+}
+.banner section {
+	display: block;
+	min-width: 600px;
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	color: #ffffff;
+	padding-bottom: 24px;
+}
+.banner .browser-list {
+	display: flex;
+	width: 320px;
+	justify-content: space-between;
+	padding: 16px 26px;
+	background-color: #ffffff;
+	border-radius: 66px;
+	margin: 24px auto 18px auto;
+}
+
+.banner .browser-list .logo {
+	width: 64px;
+	height: 64px;
+	display: block;
+	background-repeat: no-repeat;
+	text-indent: -10000px;
+}
+
+$assetPath : "/assets";
+.banner .browser-list .chrome {
+	background-image: url(/assets/images/logo-chrome.png);
+}
+.banner .browser-list .edge {
+	background-image: url(/assets/images/logo-edge.png);
+}
+.banner .browser-list .firefox {
+	background-image: url(/assets/images/logo-firefox.png);
+}
+
+.banner section a {
+	color: #ffffff;
+}
+.banner footer {
+	display: flex;
+	justify-content: space-between;
+}
+/* button is example only, modify Angular Material mat-stroked-button */
+.banner button {
+	border: 1px solid #ffffff;
+	padding: 0 15px;
+	line-height: 34px;
+	box-sizing: border-box;
+	position: relative;
+	cursor: pointer;
+	vertical-align: baseline;
+	text-align: center;
+	min-width: 64px;
+	border-radius: 4px;
+	font-size: 14px;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: .125em;
+	white-space: nowrap;
+	background: transparent;
+	color: #ffffff;
+	max-height: 40px; /* hack, for some reason the button was getting too high; may be fixed with Angular Material button use  */
+	margin-top: -10px;
+}
+

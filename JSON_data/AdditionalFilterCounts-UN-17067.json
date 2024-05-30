@@ -1,0 +1,27 @@
+{
+    "DEV": {
+        "URL": "http://localhost:4200/",
+        "Username": "mayank_jatay+BSAccountLT@bio-rad.com",
+        "Password": "BioBio1",
+        "FirstName": "User",
+        "AllTopFiltersCounts" : ["Accepted", "Warning", "Rejected", "Actions/Comments"],
+        "Department":"D2",
+        "Instrument":"G8",
+        "Control":"Diabetes",
+        "Analyte":"Hemoglobin A1c",
+        "AcceptedLevel1Pvalue":"5.17",
+        "AcceptedLevel2Pvalue":"10.18",
+        "RejectedLevel1Pvalue":"5.31",
+        "RejectedLevel2Pvalue":"10.31",
+        "WarningLevel1Pvalue":"5.21",
+        "WarningLevel2Pvalue":"10.29",
+        "ActionsCommentsLevel1Pvalue":"5.18",
+        "ActionsCommentsLevel2Pvalue":"10.18" ,
+        "LocationName":"Demo13945"
+    },
+    "QA": {
+        "URL": "https://unity-test.qcnet.com/login"
+    },
+    "STAGE": {},
+    "DEV2": {}
+}

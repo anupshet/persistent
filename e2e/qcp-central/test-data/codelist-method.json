@@ -1,0 +1,22 @@
+{
+  "QA": {
+    "URL": "https://qcpcentralqa.global.bio-rad.com/",
+    "Username": "amruta_karale+qaqcpadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "MainMenu": "Code List",
+    "SubMenu": "Methods",
+    "NewMethodName": "TestAutomation_Method",
+    "FileName": "methods.csv",
+    "Method": "Alkaline picrate-kinetic",
+    "PageButton": "2",
+    "PageOptions": [
+      "10",
+      "25",
+      "50",
+      "100"
+    ]
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

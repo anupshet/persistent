@@ -1,0 +1,64 @@
+@import "../../../../../assets/scss/variables";
+@import "../../../../../assets/scss/layout/common";
+
+
+.expiring-lots-panel-component {
+  width: 100%;
+  .mat-display-1 {
+    color: $br-black-text-medium-emphasis;
+  }
+  .expiring-count {
+    color: $black;
+    font-weight: 350;
+  }
+  .TOMORROW {
+    width: 93px;
+    height: 16px;
+    font-family: Lato;
+    font-size: 12.5px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.28;
+    letter-spacing: 2px;
+    color: rgba(176, 0, 32, 0.87);
+  }
+
+  .Virotrol-III {
+    width: 240px;
+    height: 28px;
+    font-family: Lato;
+    font-size: 16.7px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.68;
+    letter-spacing: 0.5px;
+    color: #007db6;
+  }
+  .MONDAY {
+    width: 68px;
+    height: 16px;
+    font-family: Lato;
+    font-size: 12.5px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.28;
+    letter-spacing: 2px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .Reagent-for-Alinity {
+    width: 240px;
+    height: 28px;
+    font-family: Lato;
+    font-size: 16.7px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.68;
+    letter-spacing: 0.5px;
+    color: #007db6;
+  }
+}

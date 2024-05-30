@@ -1,0 +1,331 @@
+// © 2024 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/base/variables-peak';
+
+
+.flex{
+  display: flex;
+  align-items: flex-start;
+}
+
+.horizontal-scrollbar-wrapper {
+  margin-top: 10px;
+}
+
+.page-section-component {
+  position: relative;
+
+  .sticky-controls {
+    position: sticky;
+    position: -webkit-sticky;
+    bottom: 15px;
+    z-index: 1;
+  }
+
+  h1 {
+    line-height: 1rem;
+    span {
+      line-height: 0;
+    }
+  }
+
+  .item-right {
+    min-width: 235px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+
+  .page-section-component .item-right {
+    min-width: 135px;
+    width: 135px;
+    padding-top: 15px;
+  }
+
+  mat-radio-button {
+    display: block;
+  }
+}
+
+.scrollbar-wrapper {
+  height: calc(100vh - 320px);
+
+  &.has-sticky-controls {
+    height: calc(100vh - 380px)
+  }
+
+  &.has-pagination {
+    height: calc(100vh - 380px); // 415px if pagination is always above footer and not in the scroll-able tbl area
+  }
+}
+
+.formWrapper {
+  height: 100%;
+  overflow-y: visible;
+  background: $white;
+}
+
+.analyte-form {
+  display: block;
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+
+    .analyte-section-item{
+      position: relative;
+    }
+  }
+
+  .control-name {
+    font-size: 22px;
+  }
+
+  li:last-child{
+    margin-bottom: 35px;
+  }
+}
+
+table {
+  width: 100%;
+  min-width: calc(270 + (6*90));
+
+  td {
+    height: 50px;
+    text-align: center;
+    margin: 0;
+    padding: 0 0 10px 0;
+    min-width: 90px;
+
+    h3 {
+      display: inline-block;
+      width: 96%;
+      text-transform: uppercase;
+      color: $gray-700;
+      border-style: solid;
+      border-width: 2px;
+      border-left: 0;
+      border-top: 0;
+      border-right: 0;
+    }
+
+    &.level-1 h3 {
+      border-color: $br-level-1;
+    }
+    &.level-2 h3 {
+      border-color: $br-level-2;
+    }
+    &.level-3 h3 {
+      border-color: $br-level-3;
+    }
+    &.level-4 h3 {
+      border-color: $br-level-4;
+    }
+    &.level-5 h3 {
+      border-color: $br-level-5;
+    }
+    &.level-6 h3 {
+      border-color: $br-level-6;
+    }
+    &.level-7 h3 {
+      border-color: $br-level-7;
+    }
+    &.level-8 h3 {
+      border-color: $br-level-8;
+    }
+    &.level-9 h3 {
+      border-color: $br-level-9;
+    }
+  }
+
+  .product-lot-title {
+    font-size: $custom-type-size-xxsmall;
+  }
+}
+
+
+.flex-ctn {
+  display: flex;
+  background: $br-white;
+
+  .flex-item-1 {
+    width: 160px;
+  }
+
+  .flex-item-2 {
+   flex-grow: 2;
+  }
+
+  .flex-item-3 {
+    width: 130px;
+  }
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &.flex-item-center {
+    height: 70px;
+    padding: 0 30px;
+  }
+
+  &.center {
+    justify-content: center;
+
+    // For pagination
+    background: $white;
+  }
+
+  h1 {
+    margin:0;
+    padding-top: 10px;
+  }
+}
+
+.hdr-product {
+  padding: 10px 0 10px 30px;
+  margin:0;
+  background: $white;
+
+  .mat-h5 {
+    margin: 0;
+
+    span {
+      opacity: 0.6;
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+.page-title-manual-container {
+  a {
+    color: $br-color-primary-700;
+    cursor: pointer;
+    padding: 0 0 20px 30px;
+    display: inline-block;
+  }
+}
+
+.active {
+  background: blue;
+}
+
+.main-pagination-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+
+}
+
+.sub-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+  span {
+    font-size: $custom-type-size-xxsmall;
+    color: rgba($grey-darked, 0.7);
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+  }
+}
+.sub-header.fix-margin span:first-child {
+  margin-left: -15px;
+  margin-right: 15px;
+}
+
+// Edge
+@supports (-ms-ime-align:auto) {
+  .sub-header span:first-child {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+// IE 10 & 11
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .sub-header span:first-child {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+// TODO
+.ps .pagination-wrapper {
+  height: calc(100vh - 400px);
+}
+.ps.ps--active-y .pagination-wrapper {
+  height: auto !important;
+}
+
+perfect-scrollbar.has-5-levels .flex-ctn,
+perfect-scrollbar.has-6-levels .flex-ctn,
+perfect-scrollbar.has-7-levels .flex-ctn,
+perfect-scrollbar.has-8-levels .flex-ctn,
+perfect-scrollbar.has-9-levels .flex-ctn,
+perfect-scrollbar.has-5-levels .scrollbar-wrapper,
+perfect-scrollbar.has-6-levels .scrollbar-wrapper,
+perfect-scrollbar.has-7-levels .scrollbar-wrapper,
+perfect-scrollbar.has-8-levels .scrollbar-wrapper,
+perfect-scrollbar.has-9-levels .scrollbar-wrapper {
+  width: 100%;
+}
+
+.ctn-message {
+  margin-top: 100px;
+  text-align: center;
+  color: $gray-600;
+}
+
+.ctn-unavailable-products {
+  background: $white;
+  padding: 10px 20px;
+  color: $gray-600;
+  font-size: $font-size-small;
+
+  .product-name {
+    color: $black;
+    font-weight: 900;
+    font-size: $font-size-base;
+  }
+
+  p {
+    text-align: center;
+  }
+}
+.ctn-show-last-entry {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ctn-expired-lot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 125px);
+  height: 50px;
+  border: 1px solid $red-light;
+  border-radius: $custom-border-radius-base;
+
+  .item-1 {
+    width: 50%;
+    height: 100%;
+    background: rgba(247, 7, 7, 0.151);
+    border-right: 1px solid $red-light;
+
+    span {
+      color: $reject;
+      font-size: 18px;
+      line-height: 50px;;
+      margin-left: 10px;
+    }
+  }
+}
+
+.button-wrapper {
+  margin-right: 10px;
+}

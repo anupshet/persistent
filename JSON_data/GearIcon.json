@@ -1,0 +1,13 @@
+{
+	"QA": {
+		"LabSetup": "Lab Setup",
+		"UserManagement": "User Management",
+		"ConnectivityMapping": "Connectivity Mapping",
+		"Dashboard": "Dashboard",
+		"AccountManagement": "Account Management",
+		"SpcRules": "SPC Rules"
+	},
+	"DEV": {},
+	"STAGE": {},
+	"DEV2": {}
+}

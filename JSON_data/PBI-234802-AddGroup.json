@@ -1,0 +1,14 @@
+{
+	"DEV": {
+		"URL": "https://unity-dev.qcnet.com/",
+		"AMUsername": "sudhir_paranjape+devqc@bio-rad.com",
+		"AMPassword": "Welcome1",
+		"AMFirstName": "Antonio",
+		"DummyGroupName": "oljdyhpsspzpkgavkygcngkrpqgrvoxuuyluvlwlnsfkrawcrua",
+		"LabName": "TestLab",
+		"sampleGroupName":"Test",
+		"groupNameTextSize":"5"
+	},
+	"STAGE": {},
+	"QA": {}
+}

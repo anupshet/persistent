@@ -1,0 +1,30 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="expiring-lots-list-component">
+  <ul>
+    <ng-container *ngFor="let expiredSortedItem of sortedItemListExpired">
+      <li>
+          <span class="when warn">{{expiredSortedItem?.sortedExpirationDate | uNextDate: 'mediumDate'}}</span>
+        <ul>
+          <ng-container *ngFor="let item of expiredSortedItem?.sortedDisplayNameItemList; let i = index;">
+            <li (click)="getLotinfofromLotlist(item.id)">
+              <span class="link-text">{{item.name}} <span *ngIf="item.count > 1" class="spec-lot-count"> ({{item.count}})</span></span>
+            </li>
+          </ng-container>
+        </ul>
+      </li>
+    </ng-container>
+
+    <ng-container *ngFor="let sortedItem of sortedItemList">
+      <li>
+          <span class="when" [ngClass]="{'warn': isExpiringTodayorTomorrow(sortedItem?.sortedExpirationDate)}">{{sortedItem?.sortedExpirationDate | uNextDate: 'mediumDate'}}</span>
+        <ul>
+          <ng-container *ngFor="let item of sortedItem?.sortedDisplayNameItemList; let i = index;">
+            <li (click)="getLotinfofromLotlist(item.id)">
+              <span class="link-text">{{item.name}} <span *ngIf="item.count > 1" class="spec-lot-count"> ({{item.count}})</span></span>
+            </li>
+          </ng-container>
+        </ul>
+      </li>
+    </ng-container>
+  </ul>
+</div>

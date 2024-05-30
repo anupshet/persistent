@@ -1,0 +1,57 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div>
+  <div [matMenuTriggerFor]="menuLocations" class="nav-bar-button">
+    <mat-icon [svgIcon]="navIconName"></mat-icon>
+    <span class="mat-small">
+    </span>
+  </div>
+  <mat-menu #menuLocations="matMenu" [overlapTrigger]="overlapTrigger" class="nav-bar-setting">
+    <button mat-menu-item (click)="navigateToAccountManagement()"
+      *ngIf="hasPermissionToAccess([permissions.AccountListView, permissions.LocationListView])">
+      <span>{{'NAV.SETTING.ACCOUNTMANAGEMENT' | translate}}</span>
+    </button>
+    <button mat-menu-item (click)="navigateToBioRadUserManagement()"
+      *ngIf="hasPermissionToAccess([permissions.BioRadUserAdd,permissions.BioRadUserEdit,permissions.BioRadUserDelete,permissions.BioRadUserListView])">
+      <span>{{'NAV.SETTING.BIORADMANAGEMENT' | translate}}
+      </span>
+    </button>
+    <button mat-menu-item (click)="navigateToUserManagement()" *ngIf="hasPermissionToAccess([permissions.UserAdd, permissions.UserEdit,permissions.UserDelete,
+       permissions.UserListView, permissions.UserAddViewOnly,permissions.UserEditViewOnly])&& locationNode">
+      <span>{{'NAV.SETTING.USERMANAGEMENT' | translate}}</span>
+    </button>
+    <!-- The CTS user should not see Lab Settings in the gear icon when they first log in as the have not launched a lab where this data is available. Any user with a location assigned will set the flag to true. -->
+    <button mat-menu-item
+      *ngIf="!migrationPending && hasPermissionToAccess([permissions.LabSettings,permissions.LabSettingsViewOnly]) && ctsUserLaunchLab"
+      (click)="openLabSettingsDialog()">
+      <span>{{'NAV.SETTING.LAB' | translate}}</span>
+    </button>
+    <button mat-menu-item *ngIf="isFeatureFlagActive"
+      (click)="openLabLanguageDialog()">
+      <span>{{'LANGUAGESETTINGS.LANGUAGESETTINGS' | translate }}</span>
+    </button>
+    <button mat-menu-item
+      *ngIf="!migrationPending && hasNonBrLicense && hasPermissionToAccess([permissions.NonBRLotManagement,permissions.NonBRLotManagementViewOnly]) && ctsUserLaunchLab"
+      (click)="navigateToManageControls()">
+        <span>{{'NAV.SETTING.MANAGEOWNCONTROLS' | translate}}</span>
+    </button>
+    <button mat-menu-item (click)="openReleaseNotes()"
+      *ngIf="!hasPermissionToAccess([permissions.LotViewerSalesReport])">
+      <span>{{'NAV.SETTING.RELEASENOTES' | translate}}</span>
+    </button>
+    <button mat-menu-item (click)="openReleaseNotesSP()"
+      *ngIf="hasPermissionToAccess([permissions.LotViewerSalesReport])">
+      <span>{{'NAV.SETTING.RELEASENOTES' | translate}}</span>
+    </button>
+    <button class="dbl-line" mat-menu-item (click)="openTermsOfUse()">
+      <span>{{'NAV.SETTING.TERMS' | translate}}</span>
+    </button>
+    <button mat-menu-item (click)="routeToHelpCenter()"
+      *ngIf="!hasPermissionToAccess([permissions.LotViewerSalesReport])">
+      <span>{{'NAV.SETTING.QUICKREF' | translate}}</span>
+    </button>
+    <button mat-menu-item (click)="routeToHelpCenterSP()"
+      *ngIf="hasPermissionToAccess([permissions.LotViewerSalesReport])">
+      <span>{{'NAV.SETTING.QUICKREF' | translate}}</span>
+    </button>
+  </mat-menu>
+</div>

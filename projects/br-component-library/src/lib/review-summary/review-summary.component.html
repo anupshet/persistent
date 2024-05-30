@@ -1,0 +1,95 @@
+<!-- © 2023 Bio - Rad Laboratories, Inc.All Rights Reserved. -->
+<section class="review-summary-component">
+
+  <div class="hd mb-3">
+    <div class="header">
+      <div class="flex-ctn-1">
+        <div *ngIf="!!data?.dateTimeData?.dateDayTime">
+          <span class="date">{{data.dateTimeData.dateDayTime | uNextDate: 'mediumDate' : 'labLocalTime'}}</span>
+          <span class="time"> {{data.dateTimeData.dateDayTime | uNextDate: 'shortTime'  : 'labLocalTime'}}</span>
+        </div>
+        <div *ngIf="!!data?.dateTimeData?.dateDay">
+          <span class="date">{{data.dateTimeData.dateDay | date: 'MMM d'}}</span>
+        </div>
+        <div *ngIf="!!data?.dateTimeData?.month" class="month">
+          <span class="date">{{data.dateTimeData.month | uNextDate: 'fullMonth'}}</span>
+        </div>
+        <button mat-icon-button class="close" (click)="closeDialog()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <div class="divider"></div>
+    </div>
+  </div>
+
+  <perfect-scrollbar>
+    <div class="scrollbar-wrapper">
+      <div class="row mr-2 ml-2" *ngIf='reviewData && reviewData.actions.length > 0'>
+        <div class="col-12">
+          <p class="big" id="ReviewSummaryComponent.Actions">{{reviewData.actions[0].labelHeader}}</p>
+
+          <section class="ctn-actions">
+            <ul class="reset">
+              <ng-template ngFor let-content [ngForOf]="reviewData.actions" let-i="index">
+                <li>
+                  <strong id="userAction{{i}}">{{content.userName}} </strong>
+                  <span class="small gray inline-block ml-2" id="ReviewSummaryComponent.DateAtTime">
+                    <span>{{content?.dateTime | uNextDate:'mediumDate' : content?.pezDateTimeOffset}} </span>
+                    <span>{{content?.dateTime | uNextDate:'shortTime' : content?.pezDateTimeOffset}} </span>
+                  </span>
+                  <p class="allow-string-break-330">
+                    {{content.text}}
+                  </p>
+                </li>
+              </ng-template>
+            </ul>
+          </section>
+        </div>
+        <div class="divider"></div>
+      </div>
+
+      <div class="row mr-2 ml-2" *ngIf='reviewData && reviewData.comments.length > 0'>
+        <div class="col-12">
+          <p class="big" id="ReviewSummaryComponent.Comments">{{reviewData.comments[0].labelHeader}}</p>
+          <section class="ctn-comments">
+            <ul class="reset">
+              <ng-template ngFor let-content [ngForOf]="reviewData.comments" let-i="index">
+                <li>
+                  <strong id="userComment{{i}}">{{content.userName}} </strong>
+                  <span class="small gray inline-block ml-2">
+                    <span>{{content?.dateTime | uNextDate:'mediumDate' : content?.pezDateTimeOffset}} </span>
+                    <span>{{content?.dateTime | uNextDate:'shortTime': content?.pezDateTimeOffset}} </span>
+                  </span>
+                  <p class="allow-string-break-330">
+                    {{content.text}}
+                  </p>
+                </li>
+              </ng-template>
+            </ul>
+          </section>
+        </div>
+        <div class="divider"></div>
+      </div>
+
+      <div class="row mr-2 ml-2" *ngIf='reviewData && reviewData.interactions.length > 0'>
+        <div class="col-12">
+          <p class="big" id="ReviewSummaryComponent.Actions">{{reviewData.interactions[reviewData.interactions.length - 1].labelHeader}}</p>
+          <section class="ctn-added">
+            <ul class="reset">
+              <ng-template ngFor let-content [ngForOf]="reviewData.interactions">
+                <li>
+                  <strong>{{content.userName}} {{content.text}} </strong>
+                  <span class="small gray inline-block ml-2">
+                    <span>{{content?.dateTime | uNextDate:'mediumDate' : content?.pezDateTimeOffset}} </span>
+                    <span>{{content?.dateTime | uNextDate:'shortTime': content?.pezDateTimeOffset}} </span>
+                  </span>
+                </li>
+              </ng-template>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+  </perfect-scrollbar>
+
+</section>

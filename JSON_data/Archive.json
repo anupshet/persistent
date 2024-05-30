@@ -1,0 +1,42 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com",
+    "Username": "sudhir_paranjape+test159372@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sudhir",
+    "UserRoleUsername": "sudhir_paranjape+test159372LabUser@bio-rad.com",
+    "Department": "Archive",
+    "Department1": "Archive1",
+    "Instrument": "ARCHITECT c16000",
+    "Control": "Cardiac Markers Plus LT",
+    "Analyte1": "CK (Creatine Kinase)",
+    "Analyte2": "CRP (C-Reactive Protein)",
+    "InstrumentName": "Instrument"
+  },
+  "STAGE": {
+    "URL": "https://unity-stage.qcnet.com",
+    "Username": "amruta_karale+stagelab@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Amruta",
+    "UserRoleUsername": "amruta_karale+stageuser@bio-rad.com",
+    "Department": "Archive",
+    "Instrument": "ARCHITECT c16000",
+    "Control": "Cardiac Markers Plus LT",
+    "Analyte1": "CK (Creatine Kinase)",
+    "Analyte2": "CRP (C-Reactive Protein)"
+  },
+  "DEV": {
+    "URL": "https://unity-dev.qcnet.com/",
+    "Username": "sampada_gulhane+dev20@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sampada",
+    "UsernameUser": "sudhir_paranjape+evalautouser@bio-rad.com",
+    "PasswordUser": "Welcome1",
+    "FirstNameUser": "SudhirUser",
+    "Department": "Automation",
+    "Instrument": "AU480",
+    "Control": "Anemia",
+    "Analyte": "Transferrin"
+  },
+  "DEV2": {}
+}

@@ -1,0 +1,15 @@
+ <!-- © 2024 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+ <unext-analyte-entry-component [selectedData]="selectedData"
+ (saveLabConfigurationAnalyte)="saveLabConfigurationAnalyte($event)" [instrumentId]="instrumentId"
+ [instrumentName]="instrumentName" [units]="units" [allReagents]="allReagents" [allCalibrators]="allCalibrators"
+ (loadUnits)="onLoadUnits($event)" (loadReagents)="onLoadReagents($event)" [controlId]="analyteParentNodeId"
+ (loadCalibrators)="onLoadCalibrators($event.reagentId, $event.index)" [reagentLots]="reagentLots" [methods]="methods"
+ [calibratorLots]="calibratorLots" (loadReagentLots)="onLoadReagentLots($event.reagentId, $event.index)"
+ (loadCalibratorLots)="onLoadCalibratorLots($event.calibratorId, $event.index)" [showSettings]="showSettings"
+ [errorObject]="errorObject" [settingsNew]="settingsNew" [labConfigurationAnalytes]="labConfigurationAnalytes"
+ [duplicateAnalytes]="duplicateAnalytes" [existingAnalyteTestSpecs]="existingAnalyteTestSpecs"
+ [defaultManufacturer]="manufacturer" [title]="titleDisplayName"
+ [trackByReagentAndCalibratorLot]="trackByReagentAndCalibratorLot" [errorMessage]="errorMessage"
+ (deleteAnalyteId)="onDeleteAnalyte()" [hasAnalyteDataPoints]="hasAnalyteDataPoints"
+ [currentSelected]="currentSelected" [floatPointData]='floatPointData'  [isParentArchived]="isParentArchived">
+</unext-analyte-entry-component>

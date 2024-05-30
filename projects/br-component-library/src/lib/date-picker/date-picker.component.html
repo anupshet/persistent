@@ -1,0 +1,10 @@
+<!-- © 2023 Bio - Rad Laboratories, Inc.All Rights Reserved. -->
+
+<!-- AJ believes this is no longer used -->
+
+<mat-form-field>
+<input  matInput [matDatepicker]="picker" [formControl]="serializedDate" [min]="availableDateFrom ? availableDateFrom : null" [max]="availableDateTo ? availableDateTo : null" (dateChange)="onDateChange($event.value)">
+  <mat-placeholder>{{translationLabels.date}}</mat-placeholder>
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

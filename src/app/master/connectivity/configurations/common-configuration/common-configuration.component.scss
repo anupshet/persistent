@@ -1,0 +1,57 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+.configuration-container {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+}
+
+.Please-pick-your-con {
+  height: 25px;
+  font-family: Lato;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.25px;
+  color: rgba(0, 0, 0, 0.87);
+  margin-left: 40px;
+  margin-right: 40px;
+
+}
+
+::ng-deep .select-content {
+  background-color: #f9f9f9;
+  min-width: 200px;
+  border-bottom-style: groove;
+}
+
+.common-configuration-component {
+  letter-spacing: 0.16px;
+  margin: 65px 0 30px 0px;
+  width: calc(100% - 40px);
+  height: calc(100% - 65px);
+  position: absolute;
+}
+
+.select-dropdown {
+  display: flex;
+  width: 328px;
+  min-width: fit-content;
+  height: 24px;
+
+  mat-label.configuration-type {
+    font-size: 20px;
+    width: 270px;
+  }
+}
+
+.cancel-button {
+  position: absolute;
+  top: 140px;
+  left: 245px;
+}
+
+.form-wrapper {
+  height: 94%;
+}

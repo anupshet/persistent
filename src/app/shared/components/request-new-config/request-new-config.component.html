@@ -1,0 +1,17 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="br-dialog">
+    <h5 class="mat-h5">{{'REQUESTNEWCONFIG.SETUP' | translate}} {{ data.name | lowercase }}</h5>
+    <div (click)="closeDialog()" class="close-dialog spec_closeDialog">
+      <mat-icon [svgIcon]="icons.close[48].name" class="close"></mat-icon>
+    </div>
+    <mat-dialog-content class="mat-typography">
+      <p class="grey" >{{'REQUESTNEWCONFIG.PROVIDE' | translate}} {{ data.name | lowercase }}. {{'REQUESTNEWCONFIG.AVAILABLE' | translate}}</p>
+    </mat-dialog-content>
+    <br />
+    <unext-upload-config-file></unext-upload-config-file>
+    <br />
+    <mat-dialog-actions align="end">
+      <button mat-button color="primary" [mat-dialog-close]="true">{{'REQUESTNEWCONFIG.CANCEL' | translate}}</button>
+      <button mat-button mat-flat-button id="spec_sendInformation" (click)="onSubmit()" [disabled]="!isValid || isProcessing">{{'REQUESTNEWCONFIG.SEND' | translate}}</button>
+    </mat-dialog-actions>
+</div>

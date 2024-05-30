@@ -1,0 +1,31 @@
+{
+  "name": "letcode-framework",
+  "version": "1.0.0",
+  "description": "Let's build a framework",
+  "main": "index.js",
+  "dependencies": {
+    "@types/jasmine": "^3.5.10",
+    "@types/jasminewd2": "^2.0.8",
+    "@types/node": "^13.13.8",
+    "allure-commandline": "^2.13.0",
+    "faker": "^5.1.0",
+    "jasmine": "^3.6.1",
+    "jasmine-allure-reporter": "^1.0.2",
+    "jasmine-spec-reporter": "^4.2.1",
+    "moment": "^2.29.1",
+    "protractor": "^7.0.0",
+    "protractor-fail-fast": "^3.1.0",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.9.3"
+  },
+  "scripts": {
+    "update": "webdriver-manager update",
+    "test": "protractor protractor.conf.js"
+  },
+  "keywords": [
+    "protractor",
+    "letcode"
+  ],
+  "author": "Koushik Chatterjee",
+  "license": "ISC"
+}

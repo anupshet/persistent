@@ -1,0 +1,16 @@
+@import "../../../../../assets/scss/variables";
+@import "../../../../../assets/scss/layout/common";
+
+.expiring-license-panel-component {
+  width: 100%;
+  .mat-display-1 {
+    color: $br-black-text-medium-emphasis;
+  }
+  .expiring-count {
+    color: $black;
+    font-weight: 350;
+  }
+  .time-frame {
+    color: $br-black-text-medium-emphasis;
+  }
+}

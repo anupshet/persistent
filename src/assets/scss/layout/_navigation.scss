@@ -1,0 +1,42 @@
+// Style guide: layout.navigation
+
+@mixin layout\navigation {
+  .nav-bar {
+    padding: 0 13px;
+
+    .mat-headline {
+      margin: 0;
+      letter-spacing: 0.72px;
+    }
+
+    .mat-small {
+      letter-spacing: 0.4px;
+    }
+  }
+
+  .logo {
+    display: flex;
+    cursor: pointer;
+    width: 74px;
+    & img{
+      width: 100%;
+      height: 100%;
+
+    }
+  }
+
+  .nav-bar-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 0 15px;
+    height: 45px;
+
+    .mat-icon {
+      width: 20px;
+      height: 20px;
+      margin: 0px 5px;
+    }
+  }
+}

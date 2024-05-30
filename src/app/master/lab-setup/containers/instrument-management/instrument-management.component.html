@@ -1,0 +1,17 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div *ngIf="hasPermissionToAccess(instrumentAccessPermissions)" id="spc_instrumentManagementComponent">
+    <p *ngIf="showAddInstrument && isArchived">{{'INSTRUMENTMANAGEMENT.ITEMARCHIVED' | translate}} {{levelName}} {{'INSTRUMENTMANAGEMENT.LEVEL' | translate}}</p>
+  <div *ngIf="!showAddInstrument">
+    <div class="control-management-component-hdr">
+      <h2>{{currentNode?.displayName}} </h2>
+      <button id="spc_returnToData" *ngIf="showSettings" mat-button color="primary" (click)="returnToData()">
+        <mat-icon [svgIcon]="icons.menu[24].name"></mat-icon>
+        <span class="mat-body-1">{{'INSTRUMENTMANAGEMENT.TODATE' | translate}}</span>
+      </button>
+      <p *ngIf="isArchived">{{'INSTRUMENTMANAGEMENT.ITEMARCHIVED' | translate}} {{levelName}} {{'INSTRUMENTMANAGEMENT.LEVEL' | translate}}</p>
+    </div>
+    <div *ngIf="showInstrumentConfig">
+      <unext-instrument-config [currentNode]="currentNode" [isParentArchived]="isParentArchived"></unext-instrument-config>
+    </div>
+  </div>
+</div>

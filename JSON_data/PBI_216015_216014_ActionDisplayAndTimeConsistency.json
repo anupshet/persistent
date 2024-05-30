@@ -1,0 +1,20 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "Username": "UnityNextRegressionTestUser+1@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sudhir",
+    "DeptName": "ConnectivityN-1-Automation",
+    "Instrument": "Alinity c",
+    "Instrument2": "PBI216014Instrument",
+    "Control": "PBI216015Control1",
+    "Control2": "Cardiac Markers Plus LT",
+    "Analyte": "Albumin",
+    "Analyte2": "Ferritin",
+    "Analyte3": "Folate",
+    "Action": "Control repeated level 1"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

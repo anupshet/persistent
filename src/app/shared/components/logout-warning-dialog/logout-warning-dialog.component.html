@@ -1,0 +1,25 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="br-dialog">
+  <div class="hdr">
+    <mat-dialog-content class="mat-typography">
+      <h2 class="logout-warning-title spec-logout-warning-title">
+        {{'LOGOUTWARNINGDIALOG.STILLTHERE' | translate}} </h2>
+      <p class="logout-warning-subtitle">
+        <span class="spec-logout-warning-subtitle">
+          {{'LOGOUTWARNINGDIALOG.SESSION' | translate}}
+        </span>
+        <strong>
+          <span class="spec-timeLeft"> {{ timeLeft }} </span>
+          <span *ngIf="!oneMinuteleft" class="spec-minutes">
+            {{'LOGOUTWARNINGDIALOG.MINUTES' | translate}} </span>
+          <span *ngIf="oneMinuteleft" class="spec-minute">
+            {{'LOGOUTWARNINGDIALOG.MINUTE' | translate}} </span>
+        </strong>
+      </p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button class="spec-continue" mat-button mat-flat-button (click)="onContinue()"> {{'LOGOUTWARNINGDIALOG.CONTINUE' | translate}} </button>
+      <button class="signout-button spec-signout" mat-button mat-stroked-button color="primary" (click)="onSignout()"> {{'LOGOUTWARNINGDIALOG.SIGNOUT' | translate}} </button>
+    </mat-dialog-actions>
+  </div>
+</div>

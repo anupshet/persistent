@@ -1,0 +1,30 @@
+
+::ng-deep {    
+  .br-dialog .mat-grid-tile .mat-figure {
+    position: static;
+    display: inline;
+  }
+  .br-dialog .mat-form-field {
+    margin-top: 0;
+    border: 3px solid #fafafa;
+    border-radius: 8px;
+    width: calc(100% - 30px);
+    padding: 10px
+}
+.buttons {
+  float: right;
+}
+.heading h1 {
+  text-align: center;
+  margin-bottom: 40px
+}
+.buttons .cancel-button {
+  color: #3f8eb2 !important;
+  font-weight: 600;
+  background-color: #fff!important;
+}
+.buttons .update {
+  color: #fff!important;
+}
+}
+

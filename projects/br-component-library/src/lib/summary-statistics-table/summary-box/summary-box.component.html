@@ -1,0 +1,20 @@
+<mat-table [dataSource]="getSummaryStatsRows(labMonthLevel)" class="level-{{ labMonthLevel.controlLevel }} mat-small">
+  
+  <ng-container matColumnDef="month">
+    <mat-header-cell *matHeaderCellDef id="spcSummaryboxTitle1">{{ labels?.month || 'MON' }}</mat-header-cell>
+    <mat-cell *matCellDef="let row;" class="mat-small">{{ row?.isNumPoints ? row.month : (row.month | uNextNumeric : row.decimal)}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="cumulative">
+    <mat-header-cell *matHeaderCellDef id="spcSummaryboxTitle2">{{ labels?.cumulative || 'CUM' }}</mat-header-cell>
+    <mat-cell *matCellDef="let row;" class="mat-small">{{ row?.isNumPoints ? row.cumulative : (row.cumulative | uNextNumeric : row.decimal)}}</mat-cell>
+  </ng-container>
+  <ng-container *matHeaderRowDef="displayedColumns">
+    <div class="mat-header-row header-group-row">
+      <div class="mat-header-cell" role="columnheader"></div>
+      <div id="spc_summarybox_heading" class="mat-header-cell header-group flex-2" role="columnheader">{{ labels?.level || 'Level' }} {{ labMonthLevel.controlLevel }}</div>
+    </div>
+    <mat-header-row></mat-header-row>
+  </ng-container>
+
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

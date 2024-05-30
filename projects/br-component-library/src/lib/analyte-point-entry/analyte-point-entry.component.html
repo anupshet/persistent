@@ -1,0 +1,77 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="analyte-point-entry-component" (mouseenter)="mouseEnter(true)" (mouseleave)="mouseEnter(false)">
+  <div class="heading-ctn" *ngIf="isMultiPointEntry() || isProductMasterLotExpired">
+    <div class="heading-ctn" *ngIf="isMultiPointEntry()">
+      <span class="mb-0 ml-25 test-analyte-name">{{ analyteEntry?.analyteName }}</span>
+    </div>
+    <div class="heading-spacer" *ngIf="isMultiPointEntry()"></div>
+    <div *ngIf="isProductMasterLotExpired" class="product-lot-expiration-error">This lot is expired. Please add a new lot.</div>
+  </div>
+
+  <div class="flex-ctn">
+    <div class="flex-item-1">
+
+      <mat-table [dataSource]="dataRows">
+
+        <ng-container [matColumnDef]="columnsToDisplay[0]">
+          <mat-cell class="date-picker" *matCellDef="let row; let rowIndex=index;">
+            <form [formGroup]="form">
+              <br-date-time-picker formControlName="analyteDate" *ngIf="rowIndex == 0 && isSinglePointEntry()"
+                (ngModelChange)="updateAnalyteDate()" [selectedDateTime]="analyteEntry?.analyteDateTime"
+                [readOnlyDate]="readOnlyDate" [timeZone]="timeZone" [displayInline]="false">
+              </br-date-time-picker>
+            </form>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container *ngFor="let col of columnsToDisplay | slice:1; let columnIndex=index;" [matColumnDef]="col">
+          <mat-cell *matCellDef="let row; let rowIndex=index;">
+            <div class="flex-cell" *ngIf="hasLevelSet(columnIndex); else emptyTemplate;">
+              <mat-form-field>
+                <input matInput id="{{ levelIdentifier + analyteEntry?.cumulativeLevels[columnIndex]}}"
+                  maxlength="16"
+                  autocomplete="off"
+                  [brNumericValue]="regexRationalNumber"
+                  (ngModelChange)="levelDataChange($event)"
+                  [(ngModel)]="(getLevel(columnIndex)).data.value"
+                  placeholder="Value"
+                  tabindex="{{getTabIndex(columnIndex, rowIndex)}}"
+                  [disabled]="isProductMasterLotExpired || isArchived"
+                  (focus)="focus(true)"
+                  (focusout)="focus(false)">
+              </mat-form-field>
+            </div>
+            <div>
+              <ng-template #emptyTemplate>
+                <mat-form-field class="hidden">
+                  <input matInput [disabled]="'true'" placeholder="NA">
+                </mat-form-field>
+              </ng-template>
+            </div>
+          </mat-cell>
+        </ng-container>
+
+        <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+      </mat-table>
+
+        <div class="mfix-margin">
+          <form [formGroup]="changeLotForm" *ngIf="!isProductMasterLotExpired">
+              <br-change-lot
+                [formControl]="changeLotForm.controls['changeLot']"
+                [isInsertPastResultLinkVisible]="isSinglePointEntry()"
+                [selectedDate]="analyteEntry?.analyteDateTime"
+                (ngModelChange)="updateChangeLotData()"
+                (editDate)="toggleEditDate($event)"
+                [translationLabelDictionary]="translationLabelDictionary"
+                (getLots)="requestLots()"
+                [showOptions]="showOptions"
+                [enableComment]="evaluateCommentField()"
+                [labTestId]="analyteEntry?.labTestId"
+                (requestNewConfig)="requestNewConfiguration($event)"
+                [totalLevels]="(columnsToDisplay | slice:1)">
+              </br-change-lot>
+          </form>
+        </div>
+      </div><!-- /flex-item-1 -->
+  </div>
+</div> <!-- /wrapper -->

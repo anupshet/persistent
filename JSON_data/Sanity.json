@@ -1,0 +1,28 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "Username": "sudhir_paranjape+test6@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sudhir",
+    "Department": "Automation",
+    "Instrument1ManufacturerName": "Abbott",
+    "Instrument1Model": "ARCHITECT c4000",
+    "Instrument": "ARCHITECT c4000",
+    "Control": "Assayed Chemistry",
+    "ControlLotNumber": "26450",
+    "Analyte": "Albumin",
+    "Reagent": "AlbG REF 7D53-23",
+    "Unit": "g/dL",
+    "Level2": "1",
+    "NewUserFirstName": "Sudhir",
+    "NewUserLastName": "Paranjape",
+    "NewUserEmail": "sudhirparanjape",
+    "DevURL": "https://unity-dev.qcnet.com",
+    "SalesUser": "tushar_adeshara+sales1@bio-rad.com",
+    "SalesPassword": "tushar_lotviewer@test123",
+    "SalesFirstName": "Tushar"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

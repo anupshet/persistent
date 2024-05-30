@@ -1,0 +1,12 @@
+{
+	"DEV": {
+		"URL": "http://localhost:4200/",
+		"AMUsername": "antonio_tavares+qa52720@bio-rad.com",
+		"AMPassword": "Welcome1x",
+		"AMFirstName": "Sudhir",
+		"NoLocationsAccount": "Example Testing Lab X1",
+		"NotANoLocationsAccount": "Lab Group of America"
+	},
+	"QA": {},
+	"STAGE": {}
+}

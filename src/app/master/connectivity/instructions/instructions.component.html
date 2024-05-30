@@ -1,0 +1,12 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+  <perfect-scrollbar [config]="{suppressScrollX: false, suppressScrollY: false}">
+
+    <div id="spec_instructions_table">
+        <section *ngIf="showInstructionsForm">
+          <unext-instructions-rules [accountId]="accountId" [existingInstructionNames]="existingInstructionNames"></unext-instructions-rules>
+        </section>
+        <section *ngIf="!showInstructionsForm">
+          <unext-instructions-table [accountId]="accountId"></unext-instructions-table>
+        </section>
+    </div>
+  </perfect-scrollbar>

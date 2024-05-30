@@ -1,0 +1,123 @@
+/* © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.*/
+@import '../../../../../assets/scss/variables';
+@import '../../../../../assets/scss/base/variables-peak';
+@import '../../../../../assets/scss/mixins';
+@import '../../../../../assets/scss/vendors/angular-material/mixins';
+
+
+.connectivity-instructions-details-component {
+
+  display: flex;
+  flex-flow: column nowrap;
+  height: calc(100vh - 200px);
+  color: $gray-600;
+
+  &.show-details {
+    border: 1px solid $blue;
+    border-radius: $custom-border-radius-large;
+    padding: 10px;
+    margin: 0 15px 25px 15px;
+
+    .flex-ctn {
+      border: 0;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .flex-ctn {
+    display: flex;
+    align-items: center;
+    border: 1px solid $gray-400;
+    border-radius: $custom-border-radius-large;
+    padding: 10px;
+    margin: 0 15px 25px 15px;
+
+
+    &:first-child {
+      margin-top: 15px;
+    }
+
+    .flex-item-1 {
+      flex-grow: 1;
+
+      .flex-ctn-inner {
+        display: flex;
+        text-align: center;
+
+        .file-name {
+          flex-grow: 1;
+          max-width: 300px;
+        }
+      }
+    }
+
+    .flex-item-2 {
+      width: 200px;
+      padding-right: 10px;
+
+      mat-icon,
+      button {
+        float: right;
+      }
+    }
+
+    .black,
+    .red {
+      font-size: $custom-type-size-xxlarge;
+    }
+  }
+
+  .details-view {
+    margin-top: auto;
+
+    .item.w-150 {
+      text-align: center;
+    }
+    .space-around {
+      span {
+        display: inline-block;
+      }
+    }
+  }
+
+  .rejection-log {
+    font-size: 18px;
+  }
+
+
+  .w-120 { width: 120px; min-width: 120px; }
+  .w-150 { width: 150px; min-width: 150px; }
+  .w-200 { width: 200px; min-width: 200px; }
+  .w-974 { width: 974px; min-width: 974x; }
+
+  .black {
+    color: $black;
+  }
+
+  .hdr {
+    display: block;
+    text-transform: uppercase;
+  }
+
+  .right {
+    float: right;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .space-between{
+    justify-content: space-between;
+  }
+
+  .icn-delete {
+    color: $red-light;
+  }
+}
+
+.edge-button {
+  display: flex;
+  justify-content: flex-end;
+}

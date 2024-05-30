@@ -1,0 +1,33 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<mat-expansion-panel class="card-component" (opened)="panelOpenState = false" (closed)="panelOpenState = true">
+  <mat-expansion-panel-header [collapsedHeight]="'*'" [expandedHeight]="'*'">
+    <mat-panel-title class="mb-0" style="display:flex; flex-direction:column;">
+      <div class="flex">
+        <div>
+          <span class="mat-headline mb-0">{{title}}</span>
+          <span class="panel-count-badge" *ngIf="count">
+            <em class="mat-body-1">{{count}}</em>
+          </span>
+        </div>
+      </div>
+      <div (click)="$event.stopPropagation()">
+          <ng-content select=".project-content" *ngIf="panelOpenState" ></ng-content>
+      </div>
+      <div class="flex">
+        <div>
+          <button color="primary" mat-button [disabled]="disable" (click)="redirectToRoute(actionLink.url)"
+            *ngIf="showAddInstrumentLink">
+            <mat-icon svgIcon="add" aria-hidden="false"></mat-icon>
+            {{actionLink.text}}
+          </button>
+        </div>
+        <!-- <div class="visibility-icon">
+          <mat-icon svgIcon="visibility_off" aria-hidden="false"></mat-icon>
+        </div> -->
+      </div>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <ng-template matExpansionPanelContent>
+    <ng-container *ngTemplateOutlet="innerComponent"></ng-container>
+  </ng-template>
+</mat-expansion-panel>

@@ -1,0 +1,43 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="lab-setup-feedback-component mt-40">
+  <mat-card class="lab-setup-wrapper">
+    <unext-lab-setup-header [currentNode]="labSetupFeedbackHeaderNode"></unext-lab-setup-header>
+    <mat-card-content>
+      <div class="lab-setup-rating-box mat-drawer-container mb-25">
+        <p>{{'LABSETUPFEEDBACK.SETUP' | translate}}</p>
+        <div *ngIf="displayRating" class='star-rating text-center'>
+          <ng-container>
+            <i *ngFor='let n of range; let $index = index;' class='fa to-rate' (click)='mark($index)' [ngClass]="{'br-icn-star-filled' : rating - 1 >= $index, 'br-icn-star-empty': rating - 1 < $index }"></i>
+          </ng-container>
+        </div>
+        <div class="text-center">
+          <a class="show-comment-form link-text-small" (click)="displayComment()" *ngIf="!isCommentVisible">
+            <span class="add-comment">{{'LABSETUPFEEDBACK.COMMENT' | translate}}</span>
+          </a>
+        </div>
+        <div class="text-center" *ngIf="isCommentVisible">
+          <mat-form-field class="comments">
+            <textarea id="spc_labsetupfeedback_comment" tabindex="-1" matInput [(ngModel)]="comment" (input)="onCommentChange()" matTextareaAutosize
+              matAutosizeMaxRows="4" maxLength="1000" [placeholder]="addACommentPlaceholder" name="enteredCommentContent"></textarea>
+          </mat-form-field>
+          <button id="spc_labsetupfeedback_comment_submit" mat-button mat-flat-button color="primary" (click)="addComment()" [disabled]="!isSubmitValid || isSubmitted">
+            {{'LABSETUPFEEDBACK.SUBMITCOMMENT' | translate}}
+          </button>
+        </div>
+      </div>
+      <p class="mb-25">{{'LABSETUPFEEDBACK.TESTDATA' | translate}}</p>
+      <h6 class="text-center mat-h6">{{'LABSETUPFEEDBACK.ENTRYOPTION' | translate}}</h6>
+      <p class="mb-17">{{'LABSETUPFEEDBACK.RESULTS' | translate}}</p>
+      <div class="text-center mb-25">
+        <button mat-stroked-button color="primary" (click)="home($event)">{{'LABSETUPFEEDBACK.DASHBOARD' | translate}}</button>
+      </div>
+      <div *ngIf="hasConnectivityLicense">
+        <h6 class="text-center mat-h6">{{'LABSETUPFEEDBACK.IMPORTOPTION' | translate}}</h6>
+        <p class="mb-17">{{'LABSETUPFEEDBACK.TESTRESULTS' | translate}}</p>
+        <div class="text-center">
+          <button mat-stroked-button color="primary" (click)="routeToConnectivityMapping()">{{'LABSETUPFEEDBACK.MULTIPLERESULTS' | translate}}</button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

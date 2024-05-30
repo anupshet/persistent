@@ -1,0 +1,24 @@
+{
+	"DEV": {
+			"URL": "http://localhost:4200/",
+			"Username": "rana_thakur+localDemo13945@bio-rad.com",
+			"Password": "Welcome1",
+			"FirstName": "rana",
+			"Setting":"Submit",
+			"InputDat":"1",
+			"InputDat1":"11",
+			"InputDat2":"12",
+			"InputDat3":"13",
+			"ControlName":"Anemia",
+			"AnalyteName":"Ferritin",
+			"DepartmentName":"welcome1",
+			"Instrument":"Access 2",
+			"PanelNAme":"DemoPanel"
+			
+	},
+	"QA": {
+			"URL": "https://unity-test.qcnet.com/login"
+	},
+	"STAGE": {},
+	"DEV2": {}
+}

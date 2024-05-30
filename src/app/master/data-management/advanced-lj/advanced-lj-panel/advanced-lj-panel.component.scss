@@ -1,0 +1,213 @@
+/*© 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.*/
+@import "../../../../../assets/scss/variables";
+@import "../../../../../assets/scss/base/variables-peak";
+@import "../../../../../assets/scss/mixins";
+
+.advanced-lj-panel-component {
+  position: relative;
+
+  .content-not-scroll,
+  .content-scroll {
+    padding: 24px;
+    padding: 24px 24px 24px 38px;
+  }
+
+  .content-not-scroll {
+    background: $gray-200;
+  }
+
+  .content-scroll {
+    background: $white;
+    height: calc(100vh - 336px);
+  }
+
+  .chart-event-filter-outer {
+    max-height: 35px;
+  }
+
+  .chart-event-filter-outer .mat-form-field-underline {
+    display: none;
+  }
+
+  .chart-event-filter-outer .mat-select-arrow {
+    background-color: #ffffff;
+    background-image: url("/assets/images/gear.svg");
+    background-position: top 1px right -2px;
+    width: 36px;
+    height: 36px;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    margin: 0px;
+  }
+
+  .chart-event-filter.mat-select-panel {
+    font-size: 16px;
+  }
+  .description-expand {
+    height: calc(100vh - 429px);
+  }
+
+  .flex {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    .box-1 {
+      width: 50%;
+    }
+
+    .box-2 {
+      flex: 1;
+      min-width: 500px;
+
+      .flex {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .ctn-unext-advanced-lj-levels {
+        padding: 3px 10px 0 10px;
+      }
+
+      .download-btn {
+        min-width: 36px !important;
+        padding: 0 8px !important;
+        mat-icon {
+          fill: $blue;
+        }
+
+        .mat-icon-disabled {
+          fill: $gray-400;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &[disabled] {
+          cursor: not-allowed;
+          color: $gray-400;
+        }
+      }
+    }
+  }
+
+  .analyte-display-name{
+    position: relative;
+    margin: 0px !important;
+  }
+
+  .chevron::before {
+    border-style: solid;
+    border-width: 2px 2px 0 0;
+    border-color: rgba($black, 0.54);
+    content: "";
+    display: inline-block;
+    margin-left: 10px;
+    height: 8px;
+    transform: rotate(135deg);
+    width: 8px;
+    cursor: pointer;
+    position: absolute;
+    top: 11px;
+  }
+  .opened.chevron::before {
+    transform: rotate(-45deg);
+  }
+
+  .description-block{
+    margin-block-start: 0em !important;
+    margin-block-end: 0em !important;
+  }
+}
+
+.bg-white {
+  border-radius: 3px;
+  border: solid 1px rgba(0, 0, 0, 0.12);
+  background-color: $white;
+}
+
+.ctn-advanced-lj-timeframe {
+  width: calc(100% - 200px);
+  margin: 0 auto;
+}
+
+.close-btn {
+  position: absolute;
+  z-index: 100;
+  top: 15px;
+  right: -10px;
+}
+
+.left-btn,
+.right-btn {
+  display: block;
+  height: 50px;
+  width: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 50%;
+  border: 1px solid $gray-200;
+  box-shadow: 0 1px 2px 0 rgba($black, 0.5);
+  background: $white;
+
+  position: absolute;
+  z-index: 100;
+  top: 100px;
+
+  .navigate-left,
+  .navigate-right {
+    fill: $link-color;
+    width: 32px;
+    height: 32px;
+    margin-left: -8px;
+  }
+}
+
+button:disabled,
+button[disabled] {
+  opacity: 1 !important;
+
+  .navigate-left,
+  .navigate-right {
+    fill: rgba(0, 0, 0, 0.54);
+  }
+}
+
+.left-btn {
+  left: -25px;
+}
+.right-btn {
+  right: -25px;
+}
+
+.dropdowns-options {
+  height: 45px;
+  align-items: center;
+  padding: 0 $custom-space-xlarge;
+
+  .dropdown-pair-1,
+  .dropdown-pair-2 {
+    display: inline-flex;
+    flex-direction: row;
+    width: 50%;
+
+    .mat-form-field {
+      width: 160px;
+    }
+
+    .space-right {
+      margin-right: $custom-space-large;
+    }
+  }
+
+  .dropdown-pair-2 {
+    justify-content: flex-end;
+  }
+}
+
+.annotation-canvas {
+  display: none;
+  min-width: 1px;
+  min-height: 1px;
+}

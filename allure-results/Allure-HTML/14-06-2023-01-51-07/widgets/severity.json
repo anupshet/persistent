@@ -1,0 +1,11 @@
+[ {
+  "uid" : "cc848589a85307f6",
+  "name" : "Test case 1 :Verify Search logic",
+  "time" : {
+    "start" : 1686730873929,
+    "stop" : 1686730962927,
+    "duration" : 88998
+  },
+  "status" : "failed",
+  "severity" : "normal"
+} ]

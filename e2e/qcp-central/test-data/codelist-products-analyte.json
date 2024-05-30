@@ -1,0 +1,26 @@
+{
+  "QA": {
+    "URL": "https://qcpcentralqa.global.bio-rad.com/",
+    "Username": "amruta_karale+qaqcpadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "MainMenu": "Code List",
+    "SubMenu": "Products",
+    "SubMenuOption": "Product Analytes",
+    "FileName": "productAnalytes.csv",
+    "ProductName": "Endocrine",
+    "Analytes": "Hemoglobin A1",
+    "ManufacturerName": "Bio-Rad",
+    "DeleteConfirmationMessage": "Do you want to delete this Product Analyte? This cannot be undone.",
+    "ToastMessageAdded": "Product Analyte Added",
+    "PageOptions": [
+      "10",
+      "25",
+      "50",
+      "100"
+    ],
+    "PageButton": "2"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

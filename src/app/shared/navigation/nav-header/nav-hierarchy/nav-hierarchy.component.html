@@ -1,0 +1,11 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="breadcrumb-list" *ngIf="breadcrumbList">
+  <ul class="spec_breadcrumb">
+    <li class="breadcrumb-item mat-body-1" *ngFor="let item of breadcrumbList; let i = index; let last = last">
+      <a matTooltip="{{toolTipLabels(item.nodeType)}}" (click)="onChooseNode(item, i)">
+        {{ item.displayName | truncate:[50]}}
+      </a>
+      <span *ngIf="!last" class="oblique"> / </span>
+    </li>
+  </ul>
+</div>

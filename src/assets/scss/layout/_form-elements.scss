@@ -1,0 +1,318 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+// Style guide: layout.form
+
+@mixin layout\form {
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+    min-height: 39px;
+  }
+
+  .mat-form-field-underline {
+    bottom: 0;
+  }
+
+  .mat-form-field-hint-spacer {
+    display: none;
+  }
+
+  input.mat-input-element {
+    @include mat-typography-level-to-styles($br-typography, body-2);
+    line-height: 1rem;
+
+    &[required] {
+      line-height: 1rem;
+
+      + .mat-form-field-labelwrapper {
+        &:after {
+          color: $br-color-warn;
+          position: absolute;
+          right: 0;
+          top: 18px;
+          font-size: $custom-type-size-xxsmall;
+          display: block;
+          z-index: 5;
+
+          .mat-focused &,
+          .mat-form-field-should-float & {
+            top: 18px;
+            padding-top: 0;
+          }
+        }
+      }
+    }
+  }
+
+
+  .mat-focused .mat-form-field-label {
+    color: $input-color-focus;
+  }
+
+  .mat-form-field-ripple {
+    background: $input-border-focus;
+  }
+
+  .mat-form-field-underline {
+    background: $input-color;
+  }
+
+  .mat-form-field-label {
+    padding-bottom: 17px;
+    color: $input-placeholder;
+    font-family: $font-family-base;
+  }
+
+  .mat-radio-group {
+    display: block;
+  }
+
+  .mat-radio-button {
+    font-family: inherit;
+  }
+
+  .mat-radio-group .mat-radio-label {
+    margin: 8px 16px 4px 0;
+  }
+
+
+  .mat-radio-button .mat-radio-ripple .mat-ripple-element {
+    background-color: $input-border-focus !important;
+  }
+
+  .mat-radio-button {
+    .mat-radio-inner-circle {
+      background-color: $input-border-focus;
+    }
+
+    &.mat-radio-disabled .mat-radio-outer-circle {
+      border-color: rgba($black, 0.12);
+    }
+
+    &.mat-radio-checked {
+      .mat-radio-outer-circle {
+        border-color: $input-border-focus;
+      }
+    }
+  }
+
+  .search-form {
+    > label {
+      font-size: mat-font-size($br-typography, subheading-2);
+      margin: 2px 0 -10px;
+      display: block;
+    }
+
+    .field {
+      position: relative;
+    }
+
+    .mat-form-field {
+      font-family: inherit;
+      width: 100%;
+    }
+
+    .mat-input-element {
+      padding-right: 25px !important;
+    }
+
+    .mat-form-field-label {
+      overflow: visible !important;
+      top: 20px;
+    }
+
+    .mat-form-field-should-float,
+    .mat-focused {
+      .mat-form-field-label {
+        top: 20px;
+        width: 100% !important;
+        @include text-hide-min();
+        transform: none !important;
+      }
+    }
+
+    .mat-form-field-should-float {
+      ~ .btn-holder {
+        opacity: 1;
+        visibility: visible;
+        height: auto;
+      }
+    }
+  }
+
+  .search-text-form {
+    .mat-icon-button {
+      top: -2px;
+      right: -7px;
+
+      .mat-icon {
+        @include md-icon-size($size: 18px);
+      }
+    }
+  }
+
+  .mat-checkbox-layout {
+    margin-bottom: 6px;
+
+    .mat-checkbox-inner-container {
+      @include size (18px);
+      margin-right: 7px;
+    }
+
+    .mat-checkbox-frame {
+      border-color: $gray-400;
+    }
+  }
+
+  .levels-in-use-container label.mat-checkbox-layout {
+    margin-bottom: 0;
+  }
+
+  .mat-form-field-underline.mat-disabled {
+    background: $gray-500 !important;
+  }
+
+  label {
+    margin: 0;
+  }
+  .mat-form-field {
+    .mat-datepicker-toggle {
+      [class*='icon-'] {
+        position: relative;
+        top: auto;
+        right: auto;
+      }
+    }
+  }
+  .mat-form-field {
+    [class*='icon-'] {
+      position: absolute;
+      right: 5px;
+      top: 2px;
+
+      + .mat-input-element {
+        padding-right: 25px;
+      }
+    }
+
+    .icon-search {
+      font-size: mat-font-size($br-typography, caption);
+      top: 7px;
+    }
+
+    + label {
+      margin-top: 26px;
+    }
+  }
+
+  .mat-checkbox-disabled.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+  .mat-checkbox-disabled.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background: $gray-400;
+  }
+
+  .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background: $input-border-focus;
+  }
+
+  .mat-checkbox-ripple > * {
+    background: $input-border-focus !important;
+    opacity: 0.2;
+  }
+  .level-data {
+    .mat-form-field-can-float {
+      &.mat-form-field-should-float {
+        .mat-form-field-label {
+          transform: translateY(-1.27125em) scale(0.86) perspective(100px)
+            translateZ(0.001px);
+        }
+      }
+    }
+  }
+
+  .mat-form-field-label {
+    font-family: $font-family-base !important;
+  }
+
+
+
+
+  //radio rules
+  .radio-reject {
+      &.mat-radio-checked {
+        .mat-radio-outer-circle {
+          border-color: $red-light !important;
+        }
+      }
+
+    .mat-radio-inner-circle {
+          background-color: $red-light !important;
+      }
+
+    .mat-radio-ripple .mat-ripple-element {
+          background-color: rgba($red-light, 0.26) !important;
+      }
+  }
+
+  .radio-warning {
+    &.mat-radio-checked {
+      .mat-radio-outer-circle {
+        border-color: $orange-light !important;
+      }
+    }
+
+  .mat-radio-inner-circle {
+        background-color: $orange-light !important;
+    }
+
+  .mat-radio-ripple .mat-ripple-element {
+        background-color: rgba($orange-light, 0.26) !important;
+    }
+  }
+}
+
+.form-content {
+  background-color: $form-group-bg;
+  padding: $custom-space-small $custom-space-base;
+  border-radius: $custom-border-radius-large;
+  margin-bottom: $custom-space-small;
+}
+
+.radio-flex {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  .mat-radio-button {
+    width: 20px;
+    margin: 0 auto;
+    margin-top: -5px;
+  }
+
+  label {
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .mat-radio-label-content {
+    display: none;
+  }
+}
+
+
+.ctn-slider-button {
+  .mat-slider-horizontal .mat-slider-ticks-container {
+    height: 10px !important;
+  }
+  .mat-slider-ticks {
+    height: 10px !important;
+    opacity: 1;
+    margin-top: 2px;
+  }
+
+  .mat-slider-horizontal .mat-slider-ticks {
+    background-image: repeating-linear-gradient(to right, rgba(135, 190, 211, 0.7), rgba(135, 190, 211, 0.7) 2px, transparent 0, transparent);
+  }
+
+  .mat-slider-horizontal .mat-slider-track-background {
+    background-color: #87bed3;
+  }
+}

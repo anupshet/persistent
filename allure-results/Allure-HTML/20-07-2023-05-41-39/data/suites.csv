@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Thu Jul 20 17:41:45 IST 2023","Thu Jul 20 17:42:06 IST 2023","20522","","PBI_231950: Verify the Functionality of Account listing screen","","PBI_231950: Verify the Functionality of Account listing screen","Verify Search Elements UI for LVS Role","Verify Search Elements UI for LVS Role",""

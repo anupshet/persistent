@@ -1,0 +1,249 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+// Style guide: layout.modal
+
+@mixin layout\modal {
+  .mat-dialog-container {
+    border-radius: $custom-border-radius-large;
+  }
+
+  .cdk-pez {
+    z-index: 1001;
+
+    .mat-dialog-container {
+      overflow: hidden;
+      padding: $custom-space-small + $custom-space-xsmall $custom-space-small;
+      -webkit-box-shadow: -8px 9px 22px -4px $br-black-text-medium-emphasis;
+      -moz-box-shadow: -8px 9px 22px -4px $br-black-text-medium-emphasis;
+      box-shadow: -8px 9px 22px -4px $br-black-text-medium-emphasis;
+    }
+  }
+
+  .cdk-review-summary {
+    z-index: 1001;
+
+    .mat-dialog-container {
+      max-width: 400px;
+      width: 400px;
+      margin: 0 auto;
+      padding: 0;
+      border-radius: 0;
+      box-shadow: 0 -1px 2px 0 rgba($black, 0.3);
+      position: fixed;
+      z-index: 1001;
+      max-height: 100vh;
+      height: 100vh;
+      overflow: auto;
+      top: 0;
+      right: 0;
+      overflow: visible;
+    }
+  }
+
+  .cdk-dialog-bottom {
+    .mat-dialog-container {
+      @include media(tablet-and-up) {
+        top: auto;
+        height: auto;
+      }
+    }
+  }
+
+  .cdk-overlay-backdrop.cdk-overlay-backdrop-showing.cdk-overlay-review-summary,
+  .cdk-overlay-backdrop.cdk-overlay-backdrop-showing.cdk-overlay-pez {
+    opacity: 0.2;
+    background: $black;
+
+    @include media(desktop-and-up) {
+      background: transparent;
+    }
+  }
+
+  .cdk-overlay-backdrop.cdk-overlay-backdrop-showing.cdk-overlay-run-edit {
+    opacity: 0.2;
+    background: $black;
+  }
+
+  .cdk-overlay-backdrop.cdk-overlay-backdrop-showing.cdk-overlay-review-summary {
+    opacity: 0;
+  }
+
+  dialog-new-product,
+  dialog-edit-product,
+  dialog-new-matrix,
+  dialog-edit-matrix,
+  dialog-new-manufacture,
+  dialog-edit-manufacture,
+  modal-run-edit {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @include media(desktop-and-up) {
+      display: block;
+      height: auto;
+    }
+  }
+
+  dialog-new-product,
+  dialog-edit-product,
+  dialog-new-matrix,
+  dialog-edit-matrix,
+  dialog-new-manufacture,
+  dialog-edit-manufacture {
+    @include media(tablet-and-up) {
+      height: auto;
+    }
+  }
+
+  modal-level-settings {
+    margin-top: -$custom-space-small;
+    width: 162px;
+    display: block;
+  }
+
+  .cdk-overlay-pane {
+    .arrow {
+      position: absolute;
+      top: 30px;
+      right: 18px;
+      display: none;
+
+      @include media(tablet-and-up) {
+        display: block;
+      }
+
+      &:after,
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include size(1px);
+        content: '';
+        transform: rotate(45deg);
+        z-index: -1;
+        box-shadow: 27px 1px 4px 7px rgba($black, 0.12);
+      }
+
+      &:after {
+        z-index: 10;
+        box-shadow: 23px 1px 0 8px $white;
+      }
+    }
+  }
+
+  .cdk-global-scrollblock {
+    overflow: hidden;
+  }
+
+  .modal-parsing.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+    opacity: 0.8;
+    background: $black;
+  }
+
+  .modal-parsing {
+    .mat-dialog-container {
+      border-radius: $custom-border-radius-base + $custom-border-radius-base;
+
+      @include media(tablet-and-up) {
+        padding: $custom-space-base $custom-space-base + $custom-space-small;
+      }
+    }
+  }
+
+  .cdk-create-account {
+    width: 100%;
+    z-index: 1001;
+    max-width: 95vw !important;
+  }
+
+  .cdk-location-form {
+    width: 100%;
+    z-index: 1001;
+    max-width: 95vw !important;
+  }
+
+  .cdk-biorad-user-management {
+    width: 100%;
+    z-index: 1001;
+    max-width: 95vw !important;
+  }
+
+  .cdk-instructions {
+    z-index: 1001;
+    width: 97%;
+    min-width: 97%;
+
+    .mat-dialog-container {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .cdk-instructions,
+  .cdk-reporting{
+    z-index: 1001;
+    width: 97%;
+    min-width: 97%;
+
+    .mat-dialog-container {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .cdk-instructions {
+    z-index: 1001;
+    width: 97%;
+    min-width: 97%;
+
+    .mat-dialog-container {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .mat-button-toggle-group-appearance-standard {
+    border: none;
+  }
+}
+
+.spc-rules-dialog.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 0;
+}
+
+.spc-rules-dialog {
+  .mat-dialog-container {
+    // border-radius: $custom-border-radius-base + $custom-border-radius-base;
+    // border-top-right-radius: 0;
+    // border-bottom-right-radius: 0;
+    border-radius: 0;
+    background: #f6f4f2;
+    padding: 20px;
+    overflow-x: hidden;
+    height: calc(100vh - 45px);
+  }
+}
+
+.cdk-AdvancedLj {
+  width: 92%;
+  height: calc(100vh - 50px);
+  min-width: 1100px;
+
+  .mat-dialog-container {
+    overflow: visible;
+    padding: 0;
+  }
+}
+
+.manage-expected-tests-dialog {
+  width: 1100px;
+  min-width: 1100px;
+  min-height: 770px;
+}
+.missing-tests-dialog {
+  width: 1100px;
+  min-width: 1100px;
+  min-height: 770px; 
+}

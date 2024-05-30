@@ -1,0 +1,52 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<form [formGroup]="levelEvaluationMSForm">
+  <div class="flex space-between">
+    <div class="flex item-center">
+     <label>
+        <span>{{'LEVELEVALUATIONMEANSD.LEVEL' | translate}} </span>
+        <span class="spec_level">{{(isFloatingStatistics && floatingStatisticsFlag) ? levelFloatingStatistics.level : levelEvaluationMeanSd.level}}</span>
+      </label>
+      <span class="current-value-mean w-46 h-26 ml-5 mr-5"
+        [hidden]="!floatingStatisticsFlag">{{currentValues?.mean}}</span>
+      <span class="w-50" [hidden]="floatingStatisticsFlag"></span>
+      <mat-form-field class="w-50">
+        <mat-label>{{'LEVELEVALUATIONMEANSD.MEAN' | translate}}</mat-label>
+        <input matInput class="spec_mean" formControlName="mean" [placeholder]="meanPlaceholder" maxlength="16" [brNumericValue]="regexRationalNumber"
+          (keyup)="onMeanChange()" autocomplete="off" unextRestrictDecimalPlaces [decimalPlaces]="decimalPlaces" [allowNegative]="true">
+      </mat-form-field>
+      <mat-radio-group class="spec_meanRadio ml-10" formControlName="meanEvaluationType" (change)="onMeanFixedFloatChange($event.value)">
+        <mat-radio-button color="primary" class="spec_meanEvaluationFixed" [value]="2">
+          {{'LEVELEVALUATIONMEANSD.FIXED' | translate}}</mat-radio-button>
+        <mat-radio-button color="primary" class="spec_meanEvaluationFloat" [value]="1">
+          {{'LEVELEVALUATIONMEANSD.FLOAT' | translate}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="flex item-center">
+      <span class="w-50" [hidden]="floatingStatisticsFlag"></span>
+      <span [hidden]="!floatingStatisticsFlag"
+        class="current-value-mean w-46 h-26 ml-5 mr-5">{{currentValues?.sd}}</span>
+      <mat-form-field class="w-50" (click)="enableDisableInput(sdPlaceholder)">
+        <mat-label>{{'LEVELEVALUATIONMEANSD.SD' | translate}}</mat-label>
+        <input matInput class="spec_sd" formControlName="sd" [placeholder]="sdPlaceholder" maxlength="16" (focusout)="inputsLoseFocus($event.target.value,sdPlaceholder)"
+          (keyup)="inputsChanged()" [brNumericValue]="regexRationalNumber" (focusin)="inputsGetsFocus($event.target.value,sdPlaceholder)"
+          autocomplete="off" unextRestrictDecimalPlaces [decimalPlaces]="decimalPlaces" [allowNegative]="false">
+      </mat-form-field>
+      <span class="w-50" [hidden]="floatingStatisticsFlag"></span>
+      <span [hidden]="!floatingStatisticsFlag"
+        class="current-value-mean w-46 h-26 ml-5 mr-5">{{currentValues?.cv}}</span>
+      <mat-form-field class="w-50" (click)="enableDisableInput(cvPlaceholder)">
+        <mat-label>{{'LEVELEVALUATIONMEANSD.CV' | translate}}</mat-label>
+        <input matInput class="spec_cv" formControlName="cv" [placeholder]="cvPlaceholder" maxlength="16" (focusout)="inputsLoseFocus($event.target.value,cvPlaceholder)"
+          (keyup)="inputsChanged()" [brNumericValue]="regexRationalNumber" (focusin)="inputsGetsFocus($event.target.value,cvPlaceholder)"
+          autocomplete="off" unextRestrictDecimalPlaces [decimalPlaces]="decimalPlaces" [allowNegative]="false">
+      </mat-form-field>
+      <mat-radio-group class="spec_sdCvRadio ml-10" formControlName="sdEvaluationType" (change)="onSdCvFixedFloatChange($event.value)">
+        <mat-radio-button color="primary" class="spec_sdcvEvaluationFixed" [value]="2" >
+          {{'LEVELEVALUATIONMEANSD.FIXED' | translate}}</mat-radio-button>
+        <mat-radio-button color="primary" class="spec_sdcvEvaluationFloat" [value]="1" >
+          {{'LEVELEVALUATIONMEANSD.FLOAT' | translate}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+</form>

@@ -1,0 +1,71 @@
+[ {
+  "uid" : "c416e68d13abc6ab",
+  "name" : "Test case 6 :Verify the presence of error dialog for selection parameter for instrument",
+  "time" : {
+    "start" : 1686658140209,
+    "stop" : 1686658140209,
+    "duration" : 0
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "cfe5211fba18a895",
+  "name" : "Test case 3 :Verify the presence of error dialog for selection parameter for control",
+  "time" : {
+    "start" : 1686658140207,
+    "stop" : 1686658140208,
+    "duration" : 1
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "af3d12478d695157",
+  "name" : "Test case 4:Verify the presence of error dialog for Clear Selection button and More than one dept",
+  "time" : {
+    "start" : 1686658140208,
+    "stop" : 1686658140208,
+    "duration" : 0
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "675b801b62227403",
+  "name" : "Test case 2 :Verify the presence of error dialog for selection parameter for instrument",
+  "time" : {
+    "start" : 1686658140202,
+    "stop" : 1686658140207,
+    "duration" : 5
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "5d54e89e57dc92ea",
+  "name" : "Test case 1 :Verify the presence of error dialog for Clear Selection button and More than one dept",
+  "time" : {
+    "start" : 1686658106086,
+    "stop" : 1686658140197,
+    "duration" : 34111
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "f767ea66d1df1221",
+  "name" : "Test case 7 :Verify the presence of error dialog for selection parameter for control",
+  "time" : {
+    "start" : 1686658140209,
+    "stop" : 1686658140209,
+    "duration" : 0
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+}, {
+  "uid" : "6f3e2536a2002e12",
+  "name" : "Test case 5 :Verify the presence of error dialog for Clear Selection button and More than one dept",
+  "time" : {
+    "start" : 1686658140208,
+    "stop" : 1686658140209,
+    "duration" : 1
+  },
+  "status" : "skipped",
+  "severity" : "normal"
+} ]

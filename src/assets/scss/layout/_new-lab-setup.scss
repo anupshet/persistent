@@ -1,0 +1,100 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+
+@import '../../../assets/scss/base/variables-peak';
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/base/headers';
+@import '../../../assets/scss/mixins/border-radius';
+
+.panel-content-border {
+  border: solid 1px $black-12-opacity;
+  @include border-radius($custom-border-radius-base);
+  padding: 0rem $custom-type-size-small;
+  margin-bottom: $custom-type-size-xxsmall;
+}
+
+.lab-setup-wrapper {
+  & .link-text-small {
+    color: $link-color;
+    cursor: pointer;
+    letter-spacing: -0.18px;
+    font-size: $custom-type-size-small;
+  }
+
+  & .lab-setup-rating-box {
+    border: solid 1px $black-12-opacity;
+    @include border-radius($custom-border-radius-base);
+    padding: $custom-type-size-base $custom-space-base + 9 $custom-type-size-base $custom-space-base + 9;
+  }
+
+  & .panel-content-border {
+    @extend .panel-content-border;
+  }
+
+  & .panel-content-checkbox-border {
+    border: solid 1px $black-12-opacity;
+    @include border-radius($custom-border-radius-base);
+    padding: $custom-type-size-small;
+    margin-bottom: $custom-type-size-xxsmall;
+  }
+}
+
+.lab-setting-wrapper {
+  max-width: 640px;
+  width: 100%;
+
+  & .panel-content-border {
+    @extend .panel-content-border;
+  }
+}
+
+.grey {
+  color: $gray-600;
+}
+
+mat-card {
+  &.mat-card {
+    margin: auto;
+    margin-top: $custom-type-size-base;
+    padding-left: $custom-space-base;
+    padding-right: $custom-space-base
+  }
+
+  &.lab-setup-wrapper {
+    max-width: 525px;
+  }
+
+  &.mat-card {
+    &.lab-setup-setting-wrapper {
+      box-shadow: none;
+      padding: 0px;
+    }
+  }
+
+  & mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0px !important;
+  }
+}
+
+.flex-justify {
+  justify-content: space-between;
+  align-items: center;
+
+  & .decimal-place {
+    width: $custom-type-size-xxxlarge + $custom-type-size-large;
+  }
+}
+
+.settings-divider-space {
+  min-height: $custom-type-size-xxxxxlarge + $custom-type-size-large;
+  border-bottom: 1px solid #0000001f;
+}
+
+.flex {
+  display: flex;
+
+  &.flex-item-center {
+    align-items: center;
+  }
+}

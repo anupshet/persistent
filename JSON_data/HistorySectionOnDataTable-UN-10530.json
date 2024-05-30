@@ -1,0 +1,21 @@
+{
+	"DEV": {
+		"URL": "https://unity-dev.qcnet.com/",
+		"UserName": "mayank_jatay+AutoAT@bio-rad.com",
+		"Password": "BioBio1",
+		"FirstName": "Tony",
+		"summaryDepartmentName": "Summary",
+		"pointDepartmentName": "D2",
+		"instrumentName": "Advanced Instrument",
+		"controlName": "Unassayed Chemistry",
+		"analyteName": "Acetaminophen",
+
+        "AuditTrailAPI": "https://unity-dev-api.qcnet.com/tracking/at",
+		"AuditTrailAPIStatusCode": "200",
+
+		"userName" : "Tony Stark"
+	},
+	"QA": {},
+	"STAGE": {},
+	"DEV2": {}
+}

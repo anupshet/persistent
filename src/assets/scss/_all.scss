@@ -1,0 +1,9 @@
+// making the imports explicit to the current directory since sasspath
+@import 'mixins';
+@import 'base';
+@import 'layout';
+
+@mixin responsive-all {
+  @include base\all;
+  @include layout\all;
+}

@@ -1,0 +1,16 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="notification-bar">
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="opener">
+    <span class="badge mat-small">{{numberOfNotifications}}</span>
+  </button>
+
+  <mat-menu #menu="matMenu" class="drop-type2">
+
+    <button mat-menu-item *ngFor="let notification of notifications">
+      <span [ngClass]="notification.isLoading ? 'loading' : 'checking'">{{ notification.description}}</span>
+    </button>
+
+  </mat-menu>
+
+</div>

@@ -1,0 +1,21 @@
+{
+  "QA": {
+    "ExistingFirstname": "TFS",
+    "ExistingLastname": "Dev",
+    "ExistingEmail": "tfs-dev@mailinator.com",
+    "URL": "https://unity-test.qcnet.com",
+    "AdminUsername": "marie_albayati+test5@bio-rad.com",
+    "AdminPassword": "123456",
+    "AdminFirstName": "Marie",
+    "FirstName": "First",
+    "LastName": "Last",
+    "EmailID": "abc@gmail.com",
+    "NewUserFirstName": "Sampada",
+    "NewUserLastName": "Gulhane",
+    "NewUserEmail": "sampadagulhane",
+    "IncorrectEmail": "sampadagulhanegmail.com"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

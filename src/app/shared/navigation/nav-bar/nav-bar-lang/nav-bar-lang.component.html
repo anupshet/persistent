@@ -1,0 +1,15 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div *ngIf="isFeatureFlagActive">
+    <div [matMenuTriggerFor]="language" class="nav-bar-button" matTooltip="{{'ACCOUNTFORM.LANGUAGEPREFERENCE' | translate}}" style="margin-left: 0px;">
+      <mat-icon [svgIcon]="navIconName"></mat-icon>
+      <span class="mat-small camel-case">
+        {{languageName}}
+      </span>
+    </div>
+
+    <mat-menu #language="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item *ngFor="let lang of langs; let i = index;" (click)="onLangChange(lang)">
+        <span>{{lang.name}}</span>
+      </button>
+    </mat-menu>
+  </div>

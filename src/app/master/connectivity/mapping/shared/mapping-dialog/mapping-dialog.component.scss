@@ -1,0 +1,43 @@
+@import '../../../../../../assets/scss/variables';
+@import '../../../../../../assets/scss/base/variables-peak';
+
+
+.noScroll {
+  overflow: hidden;
+
+  .mat-dialog-content {
+  
+    .flex-container {
+      justify-content: space-between;
+      align-items: center;
+      
+      .type_message {
+        margin-left: $custom-space-base + $custom-space-xsmall;
+        font-weight: bold;
+      }
+  
+      .map_message {
+        margin-left: $custom-space-base + $custom-space-xsmall;
+        word-wrap: break-word;
+      }
+    }
+  
+    .select_card {
+      margin-left: $custom-space-base + $custom-space-xsmall;
+      font-size: $custom-type-size-large;
+      font-weight: bold;
+    }
+  }
+}
+
+mat-error {
+  padding-top: $custom-space-base - $custom-space-xxsmall;
+}
+
+mat-form-field {
+  padding-bottom: $custom-space-small + $custom-space-xsmall;
+}
+
+mat-input {
+  padding-bottom: $custom-space-small + $custom-space-xsmall;
+}

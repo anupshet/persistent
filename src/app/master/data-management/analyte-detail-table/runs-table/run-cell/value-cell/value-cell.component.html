@@ -1,0 +1,26 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="mark radius-5" [ngClass]="[getBorderColor(valueCell?.resultStatus), !valueCell?.isAccepted ? 'strike' : '']">
+
+  <span
+    [ngClass]="{'show': getBorderColor(valueCell?.resultStatus) === 'red'}"
+    matTooltip="Rejection"
+    matTooltipPosition="below"
+  >
+      {{valueCell?.value | uNextNumeric: decimalPlace}}
+  </span>
+
+  <span
+    [ngClass]="{'show': getBorderColor(valueCell?.resultStatus) === 'yellow'}"
+    matTooltip="Warning"
+    matTooltipPosition="below"
+  >
+    {{valueCell?.value | uNextNumeric: decimalPlace}}
+  </span>
+
+  <span
+    [ngClass]="{'show': getBorderColor(valueCell?.resultStatus) !== 'red' && getBorderColor(valueCell?.resultStatus) !== 'yellow'}"
+  >
+  {{valueCell?.value | uNextNumeric: decimalPlace}}
+  </span>
+
+</div>

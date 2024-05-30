@@ -1,0 +1,20 @@
+{
+    "DEV": {
+        "URL": "http://localhost:4200/",
+        "Username": "pooja_piplpalle+Benchandsupervisorloc2@bio-rad.com",
+        "Password": "BioBio1",
+        "FirstName": "User",
+        "Department": ["Test"],
+        "Instrument": ["Advanced Instrument"],
+        "Control": ["Assayed Chemistry"],
+        "Analyte": ["Acetaminophen"],
+        "date": "Oct 27 2023",
+        "Time": "04:37 PM" 
+        
+    },
+    "QA": {
+        "URL": "https://unity-test.qcnet.com/login"
+    },
+    "STAGE": {},
+    "DEV2": {}
+}

@@ -1,0 +1,29 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<unext-connectivity-header [activeLink]="updatedPath" [hasInstructions]="hasInstructions" [labId]="labId">
+</unext-connectivity-header>
+
+<main>
+  <div class="component-container">
+    <div class="content">
+      <main>
+        <div class="component-container">
+          <unext-configurations [accountId]="accountId" [labLocationId]="labLocationId"
+            *ngIf="showConfigurations && hasPermissionToAccess([permissions.ConnectivityConfiguration, permissions.ConnectivityConfigurationViewOnly])">
+          </unext-configurations>
+          <unext-connectivity-map [accountId]="accountId" [labLocationId]="labLocationId"
+            [configurations]="configurations"
+            *ngIf="showMapping && hasPermissionToAccess([permissions.ConnectivityMapping, permissions.ConnectivityMappingViewOnly])">
+          </unext-connectivity-map>
+          <unext-connectivity-status
+            *ngIf="showStatus && hasPermissionToAccess([permissions.ConnectivityStatus, permissions.ConnectivityStatusViewOnly])">
+          </unext-connectivity-status>
+          <unext-upload-dialog (activeLink)="setNewPath($event)" [labId]="labId" [userId]="userId" [userName]="userName"
+            [accountLocationTimeZone]="accountLocationTimeZone" [accountId]="accountId" [accountNumber]="accountNumber"
+            [labLocationId]="labLocationId"
+            *ngIf="showUpload && hasPermissionToAccess([permissions.ConnectivityUpload, permissions.ConnectivityUploadViewOnly])">
+          </unext-upload-dialog>
+        </div>
+      </main>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,35 @@
+{
+	"QA": {
+		"URL": "https://unity-test.qcnet.com",
+		"AdminUsername": "UnityNextRegressionTestUser+1@bio-rad.com",
+		"AdminPassword": "Welcome1",
+		"AdminFirstName": "Automation",
+		"Email": "UnityNextRegressionTestLabUser+3@bio-rad.com",
+		"Password": "Welcome1",
+		"Firstname": "Regression3",
+		"User2Firstname": "Regression2",
+		"User2Lastname": "LabUser2",
+		"Email2": "UnityNextRegressionTestUser+2@bio-rad.com",		
+		"": "",
+		"LotViewerAdminUsername": "sudhir_paranjape+lotvieweradmin1@bio-rad.com",
+		"UnityNextAdminUsername": "sudhir_paranjape+eval@bio-rad.com",
+		"LotViewerAdminPassword": "Welcome1",
+		"UnityNextAdminPassword": "Welcome1",
+		"LotViewerAdminFirstName": "Sudhir",
+		"LotViewerUserFirstName": "sudhir14Dec",
+		"UnityNextAdminFirstName": "Sudhir",
+		"UnityNextUserFirstName": "SudhirUser"
+	},
+	"STAGE": {
+		"Email": "sudhir_paranjape+stagenew@bio-rad.com",
+		"Password": "Welcome1",
+		"Firstname": "SudhirNew",
+		"User2Firstname": "SudhirUser",
+		"User2Lastname": "ParanjapeUser",
+		"Email2": "sudhir_paranjape+stagelabuser@bio-rad.com",
+		"URL": "https://unity-stage.qcnet.com",
+		"AdminUsername": "sudhir_paranjape+stagelab@bio-rad.com",
+		"AdminPassword": "Welcome1",
+		"AdminFirstName": "Sudhir"
+	}
+}

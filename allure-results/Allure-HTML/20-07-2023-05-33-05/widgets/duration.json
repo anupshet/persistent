@@ -1,0 +1,11 @@
+[ {
+  "uid" : "a020657db7351bc4",
+  "name" : "Verify Search Elements UI for LVS Role",
+  "time" : {
+    "start" : 1689854593981,
+    "stop" : 1689854609219,
+    "duration" : 15238
+  },
+  "status" : "failed",
+  "severity" : "normal"
+} ]

@@ -1,0 +1,32 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<form [formGroup]="masterLotDataForm">
+  <div class="form-container">
+    <mat-form-field class="mr-20">
+      <input matInput formControlName="masterLotNumber" placeholder="{{'CUSTOMCONTROLLOTMANAGEMENT.LOTNUMBER' | translate}}" required>
+        <mat-error *ngIf="masterLotDataForm?.get('masterLotNumber')?.hasError('required')">
+          <span>{{'CUSTOMCONTROLLOTMANAGEMENT.LOTNUMBERMISSING' | translate}}</span>
+        </mat-error>
+        <mat-error *ngIf="masterLotDataForm.get('masterLotNumber')?.hasError('maxlength') && !masterLotDataForm.get('masterLotNumber')?.hasError('invalidInput') && !masterLotDataForm?.get('masterLotNumber')?.hasError('lotNumberExists')">
+          <span>{{lotNumberMaxLengthErrorMessage}}</span>
+        </mat-error>
+        <mat-error *ngIf="masterLotDataForm.get('masterLotNumber')?.hasError('invalidInput')">
+          <span>{{'CUSTOMCONTROLLOTMANAGEMENT.LOTNUMBERERROR' | translate}}</span>
+        </mat-error>
+        <mat-error *ngIf="masterLotDataForm?.get('masterLotNumber')?.hasError('lotNumberExists')">
+          <span>{{'CUSTOMCONTROLLOTMANAGEMENT.LOTNUMBEREXISTS' | translate}}</span>
+        </mat-error>
+        <mat-error *ngIf="masterLotDataForm?.get('masterLotNumber')?.hasError('containsOnlyWhiteSpaces') && !masterLotDataForm?.get('masterLotNumber')?.hasError('required') && !masterLotDataForm.get('masterLotNumber')?.hasError('maxlength')">
+          <span>{{'CUSTOMCONTROLLOTMANAGEMENT.LOTNUMBERMISSING' | translate}}</span>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="expirationDate" id="expirationDate" [matDatepicker]="expirationDate" [min]="startDate"
+        placeholder="{{'CUSTOMCONTROLLOTMANAGEMENT.EXPIRATIONDATE' | translate}}" formControlName="expirationDate" readonly>
+      <mat-datepicker-toggle matSuffix [for]="expirationDate"></mat-datepicker-toggle>
+      <mat-datepicker #expirationDate [startAt]="startDate"></mat-datepicker>
+      <mat-error *ngIf="masterLotDataForm?.get('expirationDate')?.hasError('required')">
+        <span>{{'CUSTOMCONTROLLOTMANAGEMENT.EXPIRATIONDATEMISSING' | translate}}</span>
+      </mat-error>
+    </mat-form-field>
+  </div>
+</form>

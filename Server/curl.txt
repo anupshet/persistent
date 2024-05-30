@@ -1,0 +1,4 @@
+curl  -i -X POST -H "Content-Type:application/json" -d '{  "email" : "admin",  "password" :  "admin" }'  http://localhost:3001/mock/login/auth
+
+curl  -H 'Content-Type: application/json' http://localhost:3001/mock/appusers
+

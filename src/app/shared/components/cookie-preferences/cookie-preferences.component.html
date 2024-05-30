@@ -1,0 +1,49 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="nav-bar-lang">
+  <unext-nav-bar-lang [navIconName]="icons.langDark[24].name"></unext-nav-bar-lang>
+</div>
+<mat-dialog-content class="cookie-preferences-dialog">
+<button mat-button mat-dialog-close><mat-icon>keyboard_arrow_left</mat-icon>{{'COOKIEPOLICY.BACK' | translate}}</button>
+<div class="cookie-content">
+  <h1 mat-dialog-title>{{'COOKIEPOLICY.PREFERENCES' | translate}}</h1>
+    <p>{{'COOKIEPOLICY.DISCLAIMER' | translate}}
+
+      <!-- This link will be added back when a cookie policy is written:
+      To learn more about how we use cookies, please visit our <a id="alink" href="/" target="_blank">Cookie Policy.</a></p> -->
+
+    <div class="cookie-container">
+      <div class="dot-container">
+        <div class="green-dot"></div>
+        <div><h3>{{'COOKIEPOLICY.STRICTSTATUS' | translate}}</h3></div>
+      </div>
+      <div>
+        <h2>{{'COOKIEPOLICY.STRICTTITLE' | translate}}</h2>
+        <p>{{'COOKIEPOLICY.STRICTDESC' | translate}}</p>
+      </div>
+    </div>
+
+    <div class="cookie-container">
+      <div class="dot-container">
+        <div class="red-dot"></div>
+        <div><h3>{{'COOKIEPOLICY.FUNCSTATUS' | translate}}</h3></div>
+      </div>
+      <div>
+        <h2>{{'COOKIEPOLICY.FUNCTITLE' | translate}}</h2>
+        <p>{{'COOKIEPOLICY.FUNCDESC' | translate}}</p>
+      </div>
+    </div>
+
+    <div class="cookie-container">
+      <div class="dot-container">
+        <div class="red-dot"></div>
+        <div><h3>{{'COOKIEPOLICY.ANALYTICSSTATUS' | translate}}</h3></div>
+      </div>
+      <div>
+        <h2>{{'COOKIEPOLICY.ANALYTICSTITLE' | translate}}</h2>
+        <p>{{'COOKIEPOLICY.ANALYTICSDESC' | translate}}</p>
+      </div>
+    </div>
+
+</div>
+</mat-dialog-content>
+

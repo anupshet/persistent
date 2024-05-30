@@ -1,0 +1,17 @@
+//  © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/base/variables-peak";
+@import "../../../assets/scss/mixins";
+
+main {
+  overflow: hidden;
+  height: calc(100vh - 135px);
+}
+
+.content {
+  margin: 0 (-$custom-space-small);
+}
+
+.component-container {
+  padding: 0 $custom-space-small;
+}

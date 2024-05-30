@@ -1,0 +1,12 @@
+{
+  "QA": {},
+  "DEV": {
+    "URL": "https://unity-dev.qcnet.com/",
+    "_Note":"----Has pegination Data------",
+    "Username": "rana_thakur+localDemo13945@bio-rad.com", 
+    "Password": "Welcome1",
+    "FirstName": "Nitin"
+  },
+  "STAGE": {},
+  "DEV2": {}
+}

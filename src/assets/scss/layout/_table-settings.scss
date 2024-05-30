@@ -1,0 +1,92 @@
+// Style guide: layout.tablesettings
+
+@mixin layout\tablesettings {
+  .table-settings{
+    position: relative;
+    z-index: 10;
+    text-align: right;
+    padding: $custom-space-xsmall 0 0;
+
+    .title {
+      background: $blue-darked;
+      border-radius: $custom-border-radius-base $custom-border-radius-base 0 0;
+      padding: $custom-space-xsmall $custom-space-small;
+      color: mat-color($mat-grey, A100);
+      display: block;
+      margin: 0 0 $custom-space-small + $custom-space-xsmall;
+    }
+
+    .mat-expansion-panel{
+      display: inline-block;
+      vertical-align: top;
+      text-align: left;
+      box-shadow: none;
+      padding: 0;
+      height: auto;
+      background: none;
+    }
+
+    .mat-expansion-panel-header {
+      display: inline;
+      padding: 0;
+      margin: 0;
+      font-size: mat-font-size($br-typography, caption);
+      background: none;
+
+      &:hover {
+        background: none;
+
+        strong{
+          opacity: 1;
+        }
+      }
+    
+      strong{
+        display: none;
+        @include media(tablet-and-up) {
+          color: $black;
+          opacity: .8;
+          display: inline;
+        }
+      }
+
+      i {
+        font-size: $custom-type-size-base;
+        color: $blue-darked;
+        margin-left: $custom-space-xsmall;
+      }
+    }
+
+    .mat-expansion-panel-header-title{
+      opacity: 1;
+      color: inherit;
+      margin: 0;
+    }
+
+    .mat-expansion-indicator{
+      display: none;
+    }
+
+    .mat-checkbox{
+      margin: 0 $custom-space-small;
+      display: block;
+    }
+
+    .mat-expansion-panel-content{
+      position: absolute;
+      top: 4px;
+      right: -10px;
+      width: 230px;
+      background: mat-color($mat-grey, A100);
+      box-shadow: $shadow;
+      border: 1px solid $gray-400;
+      border-radius: $custom-border-radius-base;
+      overflow: hidden;
+    }
+
+    .mat-expansion-panel-body{
+      margin: 0;
+      overflow: hidden;
+    }
+  }
+}

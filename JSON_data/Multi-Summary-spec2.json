@@ -1,0 +1,32 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "Username": "sampada_gulhane+evalauto@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Gayatri",
+    "Comment": "Test Comment",
+    "Test13": "13",
+    "Test11": "11",
+    "Test21": "21",
+    "Test31": "31",
+    "DepartmentName": "Dept1",
+    "InstrumentName": "AU480",
+    "ProductName": "Multiqual 1,2,3",
+    "AnalyteName": "Albumin",
+    "test": "Albumin",
+    "AnalyteLevels": "2",
+    "errorMsgforZeroSD": "SD should be zero",
+    "errorPoint": "Enter point value",
+    "DepartmentName1": "Dept1",
+    "InstrumentName1": "AU480",
+    "ControlName": "Multiqual 1,2,3",
+    "AnalyteName1": "Albumin",
+    "AnalyteName2": "Alkaline Phosphatase",
+    "AnalyteName3": "ALT (ALAT/GPT)",
+    "AnalyteName4": "Amylase",
+    "AnalyteName5": "Apolipoprotein A-I"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

@@ -1,0 +1,24 @@
+{
+    "DEV": {
+        "URL": "http://localhost:4200/",
+        "Password": "BioBio1",
+        "FirstName": "User",
+        "AUM": "mayank_jatay+BSAccount@bio-rad.com",
+        "LUM": "mayank_jatay+BSAccountLUM@bio-rad.com",
+        "LS": "mayank_jatay+BSAccountLS@bio-rad.com",
+        "LT": "mayank_jatay+BSAccountLT@bio-rad.com",
+        "T": "mayank_jatay+BSAccountT@bio-rad.com",
+        "LVS": "mayank_jatay+harrislv@bio-rad.com",
+        "BM": "mayank_jatay+mngr@bio-rad.com",
+        "AUMLS": "mayank_jatay+BSAccountAUMLS@bio-rad.com",
+        "AUMLUMLS": "mayank_jatay+BSAccountAUMLUMLS@bio-rad.com",
+        "LUMLS": "mayank_jatay+BSAccountLUMLS@bio-rad.com",
+        "LUMLT": "mayank_jatay+BSAccountLUMLT@bio-rad.com",
+        "LUMT": "mayank_jatay+BSAccountLUMT@bio-rad.com"
+    },
+    "QA": {
+        "URL": "https://unity-test.qcnet.com/login"
+    },
+    "STAGE": {},
+    "DEV2": {}
+}

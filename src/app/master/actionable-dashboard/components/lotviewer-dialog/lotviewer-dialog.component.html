@@ -1,0 +1,11 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="lotviewer-dialog-component">
+
+  <mat-icon mat-dialog-close [svgIcon]="icons.close[48].name" class="close"></mat-icon>
+
+  <mat-dialog-content  class="pt-20">
+    <div id="pbi-report" #reportContainer></div>
+    <h4 *ngIf="hidePowerBi" class="mat-h4">{{'LOTVIEWERDIALOG.NODATA' | translate}}</h4>
+  </mat-dialog-content>
+
+</div> <!-- /lotviewer-dialog-component -->

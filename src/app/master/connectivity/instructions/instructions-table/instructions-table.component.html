@@ -1,0 +1,63 @@
+<!-- /* © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.*/ -->
+<div *ngIf="!displayInstructionsForm && !uploadDialog && !updateForm">
+
+<div class="edge-button mt-10">
+  <button mat-button color="primary">
+    <mat-icon [svgIcon]="icons.addCircleOutline[24].name" class="edit-mat-icon"></mat-icon>
+    <span class="ml-5 edge_spec" (click)="onCreateInstruction()">{{'INSTRUCTIONSTABLE.INSTRUCTIONS' | translate}}</span>
+  </button>
+</div>
+
+<div class="connectivity-instructions-details-component">
+  <div class="flex-ctn" *ngFor="let i of instructionSet?.configs; let instructionIndex = index;">
+    <div class="flex-item-1" >
+      <div class="flex-ctn-inner">
+        <div class="file-name">
+          <span class="hdr">{{'INSTRUCTIONSTABLE.INSTRUCTIONNAME' | translate}}</span>
+            <span>{{i.name}}
+              <br />
+            </span>
+        </div>
+        <div class="w-150">
+          <span class="hdr">{{'INSTRUCTIONSTABLE.DATECREATED' | translate}}</span>
+          <span>{{i.createdTime | date: 'mediumDate' }}</span>
+        </div>
+      </div>
+    </div> <!-- /flex-item-1 -->
+
+    <div class="flex-item-2">
+      <button mat-stroked-button color="primary" (click)="updateInstructions(i);" class="spec_detail">
+        <span>{{'INSTRUCTIONSTABLE.UPDATE' | translate}}</span>
+      </button>
+      <button id="spec_delete" mat-icon-button class="icn-delete">
+        <mat-icon [svgIcon]="icons.delete[24].name" (click)="openDeleteInstructionDialog(i)"></mat-icon>
+      </button>
+    </div>
+     <!-- /flex-item-2 -->
+  </div>
+  <!-- / flex-ctn-->
+
+  <div class="details-view spec_detail_container">
+    <button mat-raised-button color="primary" (click)="onCancel()" class="ml-10 spec_back">
+      <span>{{'INSTRUCTIONSTABLE.FILEUPLOAD' | translate}}</span>
+    </button>
+  </div> <!-- /details-view-->
+</div> <!-- /connectivity-status-details-component -->
+</div>
+<div *ngIf="displayInstructionsForm">
+  <unext-parsing-instructions [accountId]="accountId" [existingInstructionNames]="existingInstructionNames"></unext-parsing-instructions>
+</div>
+
+<div *ngIf="uploadDialog">
+  <unext-upload-dialog [accountId]="accountId"></unext-upload-dialog>
+</div>
+
+<div *ngIf="updateForm">
+  <unext-instructions-rules
+    [accountId]="accountId"
+    [isEdit]="isEdit"
+    [selectedInstruction]="selectedInstruction"
+    [existingInstructionNames]="existingInstructionNames"
+    [selectedInstructionName]="selectedInstructionName"></unext-instructions-rules>
+</div>
+

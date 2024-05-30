@@ -1,0 +1,69 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+
+@import "../../../../../../assets/scss/variables";
+@import "../../../../../../assets/scss/base/variables-peak";
+@import "../../../../../../assets/scss/mixins";
+@import "../../../../../../assets/scss/vendors/angular-material/mixins";
+
+.flex-container {
+  justify-content: space-between;
+  align-items: center;
+
+  .spec-reset-btn {
+    font-size: 12px;
+    font-weight: normal;
+    color: $blue-darker;
+  }
+}
+
+.search-account-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 14px 0px 0px 0px;
+
+  .field-category {
+    width: 230px;
+    margin-right: 40px;
+    
+
+    .mat-form-field-appearance-fill .mat-form-field-infix {
+      padding: 0.25em 0 7px 0 !important;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+      padding-bottom: 0 !important;
+    }
+  }
+
+  .input-keyword {
+    width: 400px;
+    margin-right: 40px;
+
+    .mat-form-field-appearance-fill .mat-form-field-infix {
+      padding: 0.25em 0 7px 0 !important;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+      padding-bottom: 0 !important;
+    }
+  }
+
+  .search-btn{
+    font-size: 14.6px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+
+    &:disabled {
+      color: $br-grey;
+    }
+
+  }
+
+  .input-keyword {
+    input {
+      margin-right: 40px;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<mat-form-field>
+  <input
+      type="time"
+      matInput
+      class="time-input"
+      id="{{elementName}}"
+      name={{elementName}}
+      disabled={{timeDisabled}}
+      [(ngModel)]="timeSelected"
+      (ngModelChange)="writeValue(timeSelected)"
+      >
+  <mat-placeholder>{{placeHolder}}</mat-placeholder>
+</mat-form-field>

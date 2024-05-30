@@ -1,0 +1,164 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+
+@import "../../../../assets/scss/variables";
+
+.data-column-settings-column-container {
+
+  .columnHeader {
+    font-family: Lato;
+    font-size: 21px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    text-align: left;
+    color: $blue-darked;
+  }
+
+  .columns-Menu {
+    width: 660px;
+    height: 251px;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 0;
+    border-radius: 4px;
+    background-color: $white;
+  }
+
+  .columns-Menu-container {
+    width: 110px;
+    height: 132px;
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 12px 0px;
+  }
+
+  .close-icon {
+    float: right;
+    flex-grow: 0;
+    object-fit: contain;
+  }
+
+  .column-container {
+    padding: 0;
+  }
+
+  .colCheckBox {
+    width: 155px;
+    height: 40px;
+    padding: 0;
+  }
+
+  .checkboxItem {
+    width: 660px;
+    max-width: 660px;
+    flex-wrap: wrap;
+    display: flex;
+  }
+
+  .checkcolname {
+    padding: 0px 15px;
+  }
+
+  .columnFooter{
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding: 16px;
+  }
+
+  .col-setting-header {
+    height: 41px;
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 16px 24px 0;
+
+  }
+
+  button#updateBtn {
+      flex-grow: 0;
+      font-family: Lato;
+      font-size: 14.6px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.1;
+      letter-spacing: 1.25px;
+      text-align: center;
+  }
+
+  .menu-box .mat-menu-content {
+    margin: 0px !important;
+  }
+
+  .data-col-spec {
+    height: 10px;
+    align-self: stretch;
+    flex-grow: 0;
+    background-color: $blue;
+  }
+
+  .cdk-overlay-container.nav-bar-setting.mat-menu-panel {
+    width: 660px !important;
+    max-width: 660px !important;
+  }
+
+  .dataCol-footer-spec {
+    display: block;
+    height: 1px;
+    align-self: stretch;
+    flex-grow: 0;
+    background-color: $gray-400;
+  }
+
+  .mat-menu-content {
+    padding: 0px !important;
+    margin: 0px !important;
+  }
+
+  .column-label {
+    width: 115px;
+    height: 24px;
+    text-overflow: ellipsis;
+    flex-grow: 0;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: 0.42px;
+    text-align: left;
+    color: $black;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  .mat-checkbox-layout {
+    margin-bottom: 15px !important;
+  }
+
+  .settings-menu {
+    float: right;
+    margin-right: 24px;
+  }
+}

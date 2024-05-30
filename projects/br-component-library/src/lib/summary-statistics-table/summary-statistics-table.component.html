@@ -1,0 +1,46 @@
+<div class="statistics-container">
+  <!-- decoration table row , quality rows how table row -->
+  <span class="table-decor-body len-{{monthSummaryByLevel?.length}}">
+    <span class="fake-row"></span>
+    <span class="fake-row"></span>
+    <span class="fake-row"></span>
+    <span class="fake-row"></span>
+  </span>
+
+  <table class="statistics-table mat-small">
+    <tbody>
+      <tr>
+        <td class="title-cell">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody class="data-table-custom-name">
+              <tr>
+                <td id="spc_summarytable_mean">{{ labels?.mean || 'Mean' }}</td>
+              </tr>
+              <tr>
+                <td id="spc_summarytable_sd">{{ labels?.sd || 'SD' }}</td>
+              </tr>
+              <tr>
+                <td id="spc_summarytable_cv">{{ labels?.cv || 'CV' }}</td>
+              </tr>
+              <tr>
+                <td id="spc_summarytable_points">{{ labels?.points || 'Points' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td class="main-cell">
+          <div class="table-area-holder" *ngIf="monthSummaryByLevel">
+            <div class="table-level level-{{i+1}}" *ngFor="let level of monthSummaryByLevel; let i=index">
+              <br-summary-box [labels]="labels" [labMonthLevel]="level" [decimalFormat]="decimalFormatByLevel[i]"></br-summary-box>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

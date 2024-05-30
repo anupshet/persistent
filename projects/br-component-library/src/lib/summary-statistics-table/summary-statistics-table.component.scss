@@ -1,0 +1,111 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../scss/main';
+
+.statistics-container {
+  padding: 0;
+  background: $gray-100;
+  margin: 0 -$custom-space-small;
+  position: relative;
+  z-index: 1;
+  margin: $custom-space-small 0 0 0;
+  border: 1px solid $gray-100;
+}
+
+.table-decor-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 54px;
+  min-width: 520px;
+  width: 100%;
+
+  &.len-0 {
+    top: -6px;
+  }
+  &.len-5 {
+    min-width: 600px;
+  }
+  &.len-6 {
+    min-width: 700px;
+  }
+
+  .fake-row {
+    border-bottom: 1px solid #edeeef;
+    height: 21px;
+    display: block;
+  }
+}
+
+.statistics-table {
+  line-height: 1;
+  color: $black-87-opacity;
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  background: $gray-100;
+
+  td, th {
+    padding: 0;
+    border: none;
+    vertical-align: bottom;
+  }
+
+  td {
+    padding-top: 4px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+  .title-cell {
+    text-align: right;
+    font-size: $custom-type-size-xxsmall;
+    line-height: 12px;
+    color: $gray-700;
+    width: 10%;
+    padding-top: 5px;
+
+    th {
+      height: 40px;
+    }
+  }
+
+  .main-cell {
+    width: 100%;
+
+    th {
+      height: 18px;
+    }
+
+    td {
+      height: 22px;
+    }
+  }
+
+  .table-area-holder {
+    width: 100%;
+    display: flex;
+  }
+
+  .table-level {
+    display: block;
+    flex-grow: 1;
+    flex-basis: 0;
+    margin: 0 2% 0 0;
+    padding-top: 5px;
+    background: $gray-100;
+  }
+}
+
+.data-table-custom-name{
+  & tr{
+  height: 23px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  }
+}

@@ -1,0 +1,23 @@
+{
+	"QA": {
+		"URL": "https://unity-test.qcnet.com",
+		"AdminUsername": "UnityNextRegressionTestUser+1@bio-rad.com",
+		"AdminPassword": "Welcome1",
+		"AdminFirstName": "Sudhir",
+		"SetupUser1FirstName": "DeleteUser",
+		"SetupUser1LastName": "DeleteUser",
+		"SetupUser1Email": "UnityNextRegression"		
+	},
+	"STAGE": {
+		"SetupUser1FirstName": "Sampada",
+		"SetupUser1LastName": "Gulhane",
+		"SetupUser1Email": "sampada_gulhane",
+		"SetupUser2FirstName": "Test2",
+		"SetupUser2LastName": "User2",
+		"SetupUser2Email": "test2-user2",
+		"URL": "https://unity-stage.qcnet.com",
+		"AdminUsername": "sudhir_paranjape+stagelab@bio-rad.com",
+		"AdminPassword": "Welcome1",
+		"AdminFirstName": "Sudhir"
+	}
+}

@@ -1,0 +1,25 @@
+{
+	"DEV": {
+		"URL": "http://localhost:4200",
+		"Username": "nitin_ghugare+test_welcomewithoutdept5@bio-rad.com",
+		"Username2": "nitin_ghugare+dev_welcomeautomation1@bio-rad.com",
+		"Password": "Welcome1",
+		"FirstName": "Nitin",
+		"LabName":"Test",
+		"Dept":"TestWelcome",
+		"ManufacturerName":"Abbott",
+		"Instrument1Model":"Alinity c",
+		"controlName":"Anemia",
+		"lotNumber":"43310",
+		"AnalyteName":"Iron",
+		"UnitOfMeasure":"µg/dL",
+		"SelectedDecimal":"2",
+		"DataEntryType":"Point",
+		"GroupedByDept":"No",
+		"TrackByCR":"No",
+		"SelectedDecimal2":"4"
+	},
+	"QA": {},
+	"STAGE": {},
+	"DEV2": {}
+}

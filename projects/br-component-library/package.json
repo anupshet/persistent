@@ -1,0 +1,11 @@
+{
+  "name": "br-component-library",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "8.2.14",
+    "@angular/core": "8.2.14",
+    "@angular/animations": "8.2.14",
+    "@angular/material": "8.2.14",
+    "@angular/material-moment-adapter": "8.2.14"
+  }
+}

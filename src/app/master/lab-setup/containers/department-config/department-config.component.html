@@ -1,0 +1,8 @@
+<!-- © 2023 Bio - Rad Laboratories, Inc.All Rights Reserved. -->
+<unext-department-entry-component (saveLabConfigurationDepartment)="saveLabConfigurationDepartment($event)"
+  [departments]="selectedDepartment || departments" [location]="location" [contacts]="contacts"
+  [errorMessage]="errorMessage" [showArchivedFilterToggle]="showArchivedFilterToggle"
+  (deleteDepartmentId)="onDeleteDepartment($event)" [title]="labSetupDepartmentHeaderTitle"
+  [showSettings]="showSettings" [isToggledToNotArchived]="isToggledToNotArchived"
+  *ngIf="selectedDepartment && selectedDepartment.length === 1 || (!departments || departments.length <= 0)">
+</unext-department-entry-component>

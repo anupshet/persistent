@@ -1,0 +1,135 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../scss/main';
+
+.review-summary-component {
+    .scrollbar-wrapper {
+        height: calc(100vh - 95px);
+    }
+
+    .row {
+        padding: 0 $custom-space-base + $custom-space-xsmall;
+    }
+
+    strong.red {
+        color: $br-warn;
+    }
+
+    .big {
+        font-size: 21px;
+        letter-spacing: 0.25px;
+    }
+
+    .hd {
+        background: $light-grey;
+
+        .row {
+            padding-top: $custom-space-base + $custom-space-small;
+        }
+
+        h2 {
+            font-size: mat-font-size($br-typography, title);
+        }
+
+        button {
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+
+    .divider {
+        width: 100%;
+        height: 1px;
+        margin: $custom-space-small 0;
+        background: $gray-300;
+    }
+
+    .w-120px {
+        width: 120px;
+    }
+
+    p.big {
+        margin-bottom: 0.5rem;
+        color: $br-black-text-high-emphasis;
+    }
+
+
+    .ctn-comments {
+        word-wrap: break-word;
+    }
+}
+
+ul.reset,
+ul.reset .small {
+    margin: 0;
+    padding: 0;
+    font-size: 10px !important;
+    line-height: 2.22 !important;
+    color: #444 !important;
+
+    li {
+        list-style-type: none;
+        margin-left: 0;
+    }
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.allow-string-break-330 {
+    width: 330px;
+    word-wrap: break-word;
+    display: inline-block;
+
+    font-size: 16.7px;
+    line-height: 1.44;
+    letter-spacing: 0.15px;
+    color: $label-color;
+}
+
+.review-summary-component {
+
+    .header {
+        padding: 0 $custom-space-base + $custom-space-xsmall;
+    }
+
+    .flex-ctn-1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 22px 0 12px 0;
+        height: 100%;
+
+        .date {
+            font-size: 25px;
+            font-weight: normal;
+            letter-spacing: normal;
+            color: $label-color;
+        }
+
+        .time {
+            padding: 0 0 0 10px;
+            font-size: 16.7px;
+            line-height: 1.44;
+            letter-spacing: 0.15px;
+            color: $review-summary-time;
+        }
+
+        .close {
+            color: $close-icon;
+        }
+    }
+
+    h2 {
+        margin: 0;
+    }
+}
+
+::ng-deep {
+    .cdk-review-summary {
+        .mat-dialog-container {
+            background: $light-grey;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+        }
+    }
+}

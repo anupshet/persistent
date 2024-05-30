@@ -1,0 +1,36 @@
+patch-package
+--- a/node_modules/@okta/okta-signin-widget/dist/js/okta-sign-in.entry.js
++++ b/node_modules/@okta/okta-signin-widget/dist/js/okta-sign-in.entry.js
+@@ -224,14 +224,30 @@ return /******/ (function(modules) { // webpackBootstrap
+ 	
+ 	    OktaAuth = __webpack_require__(188);
+ 	    Util = __webpack_require__(189);
+-	    LoginRouter = __webpack_require__(313);
++		LoginRouter = __webpack_require__(313);
++		
++		// This is a patch to fix the local storage access issue in IE11
++		// In IE11 we want to store 
++		// Reported this issue mobx-angular git hub page, hopefull they will fix it
++		// https://github.com/okta/okta-signin-widget/issues/542
++		var tokenManager = {};
++		try
++		{
++			localStorage['try'];
++		}
++		catch (err) {        
++			tokenManager = {
++				storage: 'sessionStorage'
++			}
++		}		
+ 	
+ 	    authClient = new OktaAuth({
+ 	      url: options.baseUrl,
+ 	      transformErrorXHR: Util.transformErrorXHR,
+ 	      headers: {
+ 	        'X-Okta-User-Agent-Extended': 'okta-signin-widget-' + config.version
+-	      },
++		  },
++		  tokenManager: tokenManager,
+ 	      clientId: options.clientId,
+ 	      redirectUri: options.redirectUri
+ 	    });

@@ -1,0 +1,18 @@
+{"DEV":{	
+	"URL":	"https://unity-dev.qcnet.com/",
+	"Username":	"sampada_gulhane+dev20@bio-rad.com",
+	"Password":	"Welcome1",
+	"FirstName":	"Sampada",
+	"UsernameUser": "sudhir_paranjape+evalautouser@bio-rad.com",
+	"PasswordUser": "Welcome1",
+	"FirstNameUser":	"SudhirUser",
+	"Department": "Automation",
+	"Instrument": "AU480",
+	"Control": "Anemia",
+	"Analyte": "Transferrin"
+
+},
+"QA": {},
+"STAGE": {},
+"DEV2": {}
+}

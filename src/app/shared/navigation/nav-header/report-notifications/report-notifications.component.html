@@ -1,0 +1,119 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+
+<div class="reportNotifications">
+    <div class="topBar">
+        <span class="reportsTitle">{{'REPORTNOTIFICATIONS.REPORTS' | translate}}</span>
+        <span class="clearReportsButton spec-clearAll" (click)="dismissAllNotifications()"
+         *ngIf="notificationList?.length > 0">
+        {{'REPORTNOTIFICATIONS.CLEARALL' | translate}}
+        </span>
+    </div>
+    <div class="middlePart">
+        <!-- If there is no notifications this will be displayed -->
+        <div class="noNotificationsDiv" *ngIf="notificationList?.length === 0">
+            <div class="text"> {{'REPORTNOTIFICATIONS.NONOTIFICATIONSREPORT' | translate}} </div>
+        </div>
+
+        <!-- This will bve displayed in case of multiple notifications -->
+        <mat-tab-group mat-stretch-tabs #tabs *ngIf="notificationList?.length > 0 && notificationList?.length !== 0">
+            <!--Ready Tab-->
+            <mat-tab [disabled]="readyReports?.length === 0">
+                <perfect-scrollbar>
+                    <ng-template mat-tab-label class="tabsClass">
+                      <span>{{'REPORTNOTIFICATIONS.READY' | translate}}</span><span [ngClass]="(''+readyReports?.length).length <= 2 ? 'counter ready-c' : 'counter counterIncrement ready-c'">{{ readyReports?.length }}</span>
+                    </ng-template>
+                    <div *ngFor="let report of readyReports" class="cards ready-cards" >
+                        <div class="left-block spec-read" (click)="updateNotification(report)">
+                            <div class="ready-icon blue-background" *ngIf="!report?.isRead && report?.reportStatus === readyReport"></div>
+                            <div class="ready-icon green-background" *ngIf="!report?.isRead && report.reportStatus === readySavedReport"></div>
+                        </div>
+                        <div class="right-block" (click)="updateNotification(report)">
+                            <div class="titleName tab-one">
+                                <div class="titleNameStyle">
+                                    <div class="titleText">
+                                        {{getName(report)}}
+                                    </div>
+                                    <div class="removeIcon spec-single" >
+                                        <mat-icon class="removeCircleIcon" (click)="dismissSingleNotification(report?.id, $event)"
+                                            [svgIcon]="icons.removeCircle[24].name"></mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="subName">{{getDescription(report.reportName)}}&nbsp;<span>{{'REPORTNOTIFICATIONS.REPORT' | translate}}</span></div>
+                            <div class="subName2 for-ready">{{report.updatedTimestamp | uNextDate: 'mediumDate'}} {{'REPORTNOTIFICATIONS.AT' | translate}} {{report.updatedTimestamp | uNextDate: 'shortTime'}}<span class="subNameReportSaved2" *ngIf="report.reportStatus === readySavedReport">{{'REPORTNOTIFICATIONS.REPORTSAVED' | translate}}</span> </div>
+                        </div>
+                    </div>
+                </perfect-scrollbar>
+            </mat-tab>
+            <!--Ready Tab-->
+            <!--Generating Tab-->
+            <mat-tab [disabled]="generatingReports?.length === 0">
+                <perfect-scrollbar>
+                    <ng-template mat-tab-label class="tabsClass">
+                      <span>{{'REPORTNOTIFICATIONS.GENERATING' | translate}}</span><span [ngClass]="(''+generatingReports?.length).length <= 2 ? 'counter generating-c' : 'counter counterIncrement generating-c'">{{ generatingReports?.length }}</span>
+                    </ng-template>
+                    <div *ngFor="let report of generatingReports" class="cards">
+                        <div class="left-block">
+                            <div class="generatingIcon">
+                                <mat-spinner [diameter]="18" mode="indeterminate" positionGloballyCenter="true"
+                                    [strokeWidth]="2"></mat-spinner>
+                            </div>
+                        </div>
+                        <div class="right-block">
+                            <div class="titleName tab-two">
+                                <div class="titleText">
+                                    {{getName(report)}}
+                                </div>
+                            </div>
+                            <div class="subName">{{getDescription(report.reportName)}}&nbsp;<span>{{'REPORTNOTIFICATIONS.REPORT' | translate}}</span></div>
+                            <div class="subName2 for-generating" *ngIf="report.reportStatus === generatingReport">
+                              {{'REPORTNOTIFICATIONS.GENERATINGREPORT' | translate}}
+                            </div>
+                            <div class="subName2 for-generating" *ngIf="report.reportStatus === generatingSavingReport">
+                              {{'REPORTNOTIFICATIONS.SAVINGREPORT' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </perfect-scrollbar>
+            </mat-tab>
+            <!--Generating Tab-->
+            <!--Failed Tab-->
+            <mat-tab [disabled]="failedReports?.length === 0">
+                <perfect-scrollbar>
+                    <ng-template mat-tab-label class="tabsClass">
+                      <span>{{'REPORTNOTIFICATIONS.FAILED' | translate}}</span><span [ngClass]="(''+failedReports?.length).length <= 2 ? 'counter failed-c' : 'counter counterIncrement failed-c'">{{ failedReports?.length }}</span>
+                    </ng-template>
+                    <div *ngFor="let report of failedReports" class="cards">
+                        <div class="left-block">
+                            <div class="failed-icon-div">!</div>
+                        </div>
+                        <div class="right-block">
+                            <div class="titleName tab-three">
+                                <div class="titleNameStyle">
+                                    <div class="titleText">
+                                        {{getName(report)}}
+                                    </div>
+                                    <div class="removeIcon" (click)="dismissSingleNotification(report?.id, $event)">
+                                        <mat-icon class="removeCircleIcon"
+                                            [svgIcon]="icons.removeCircle[24].name"></mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="subName">{{getDescription(report.reportName)}}&nbsp;<span>{{'REPORTNOTIFICATIONS.REPORT' | translate}}</span></div>
+                            <div class="subName2 for-failed" *ngIf="report.reportStatus === failedReport">
+                              {{'REPORTNOTIFICATIONS.REPORTGENERATEFAILED' | translate}}
+                            </div>
+                            <div class="subName2 for-failed" *ngIf="report.reportStatus === failedSavingReport">
+                              {{'REPORTNOTIFICATIONS.SAVEREPORTFAILED' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </perfect-scrollbar>
+            </mat-tab>
+            <!--Failed Tab-->
+        </mat-tab-group>
+    </div>
+    <div class="bottomBar" (click)="navigateToPastReport()">
+        <div class="viewPastReportsText">{{'REPORTNOTIFICATIONS.VIEWPASTREPORTS' | translate}}</div>
+    </div>
+</div>

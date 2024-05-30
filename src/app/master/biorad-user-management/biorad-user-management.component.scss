@@ -1,0 +1,319 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+
+@import "../../../assets/scss/base/variables-peak";
+@import "../../../assets/scss/base/utilities";
+@import "../../../assets/scss/mixins/border-radius";
+@import "../../../assets/scss/variables";
+
+.biorad-user-management-component {
+  position: relative;
+  overflow: hidden;
+  height: calc(100vh - 100px);
+
+  .lose-changes-wrapper {
+    @include border-radius(3px);
+    padding: $custom-type-size-xxsmall;
+    border: 1px solid $carmine;
+    width: calc(100% - 80px) !important;
+
+    &.lose-changes-msg {
+      color: $carmine;
+    }
+  }
+
+  .close {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 10;
+  }
+
+  .arrow-icon {
+    margin-left: 5px;
+    width: 10px;
+  }
+
+  .rotate {
+    transform: rotate(180deg);
+  }
+
+  .sec-header {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+
+    .bio-rad-logo {
+      padding: 0px 0px 0px 10px;
+    }
+
+    .logo {
+      cursor: pointer;
+    }
+
+    .filter-header {
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .category-filter {
+        max-width: 150px;
+        margin: 0px 25px 0px 0px;
+      }
+
+      .search-field {
+        width: 340px;
+        position: relative;
+
+        .clear-search {
+          position: absolute;
+          top: -15px;
+          right: 0px;
+        }
+      }
+
+      .search-btn {
+        height: 30px;
+        min-width: 60px;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin: 0px 0px 0px 25px;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 500;
+        color: $component-cyan  !important;
+        opacity: 1;
+        background: $white  !important;
+        line-height: 30px;
+
+        &:disabled {
+          color: $gray-600  !important;
+        }
+      }
+
+      .set-width {
+        width: 18px;
+      }
+
+    }
+  }
+
+  .add-user-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 36px;
+  }
+
+  .main-ctn {
+    position: relative;
+    padding-left: 15px;
+    height: calc(100vh - 268px);
+
+    .mat-table {
+      .mat-row {
+        align-items: flex-start !important;
+      }
+
+      .mat-header-row {
+        min-height: 30px;
+        -ms-flex-align: center;
+        font-weight: 800;
+        background-color: $white;
+        border-bottom: 1px solid $bottom-border-color  !important;
+        box-shadow: none;
+
+        .mat-header-cell {
+          min-width: 150px;
+          font-weight: bold;
+          color: $blue  !important;
+          letter-spacing: 0.1rem;
+
+          .heading {
+            font-weight: normal;
+            letter-spacing: 2px;
+          }
+
+          .role-heading {
+            padding: 0px 0px 0px 57px !important;
+          }
+
+          &:first-of-type {
+            padding-left: ($custom-space-base + $custom-space-small);
+          }
+        }
+      }
+
+      ::ng-deep .mat-sort-header-arrow[style] {
+
+        // Hide default arrow stem
+        .mat-sort-header-stem {
+          display: none;
+        }
+
+        .mat-sort-header-indicator {
+          opacity: 1;
+          color: $black;
+          font-weight: bold;
+
+          // Hide default arrow as its composed of left, right and middle
+          .mat-sort-header-pointer-left,
+          .mat-sort-header-pointer-right,
+          .mat-sort-header-pointer-middle {
+            display: none;
+          }
+        }
+      }
+
+      mat-cell:first-child,
+      mat-footer-cell:first-child,
+      mat-header-cell:first-child {
+        padding-left: 0 !important;
+      }
+
+      mat-cell:last-child,
+      mat-footer-cell:last-child,
+      mat-header-cell:last-child {
+        padding-right: 0 !important;
+      }
+
+      .mat-row .mat-cell {
+        justify-content: left !important;
+
+        .user-edit {
+          cursor: pointer;
+          color: $blue-darker;
+        }
+
+        .userEdit-disable {
+          cursor: none !important;
+          color: black !important;
+          pointer-events: none !important;
+        }
+
+        .role-items {
+          display: flex;
+          flex-direction: column;
+          margin: 0px 0px 0px 18%;
+
+          .role-single-item {
+            margin: 5px 0px;
+          }
+        }
+      }
+
+      .user-fields {
+        flex-direction: column;
+      }
+
+      .single-order-field {
+        .mat-form-field {
+          width: 173px;
+          height: 78px;
+        }
+      }
+
+      .email-field {
+        width: 75%;
+
+        .mat-form-field {
+          height: 173px;
+        }
+      }
+
+      .user-role {
+        height: 150px;
+        width: 153px !important;
+        margin: 10px 0px 0px 17%;
+      }
+
+      .territoryId-block {
+        position: relative;
+        height: 210px !important;
+        align-items: flex-start !important;
+
+        .territoryId-item {
+          width: 173px;
+        }
+      }
+
+      .bottom-controls {
+        justify-content: flex-end;
+        width: 100%;
+        display: flex;
+        position: absolute;
+        bottom: 22px;
+        right: 10px;
+
+        .user-delete {
+          color: $red-light;
+          margin: 8px 35px 0 auto;
+          cursor: pointer;
+        }
+
+        .cancel-button {
+          min-width: 120px;
+          border: solid 1px rgba($black, 0.12);
+          margin: 0px 25px 0px 0px;
+        }
+
+        button {
+          min-width: 120px;
+        }
+      }
+    }
+  }
+
+  .extend-afterwarning {
+    height: calc(100vh - 331px) !important;
+  }
+
+  .single-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    background: $white;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .pagination-container {
+    margin: 0px 45px 2px 45px;
+
+    .custom-pagination {
+      display: flex;
+      justify-content: center;
+      margin: 18px 0;
+
+      .pagination-button {
+        margin: 0 10px;
+        padding: 0;
+        min-width: 45px;
+        background: $blue-darker;
+        color: $white;
+
+        &:disabled {
+          background-color: $gray-600;
+        }
+
+      }
+
+      .mat-stroked-button.mat-primary.selected {
+        background: $white;
+        border: 1px solid rgba($gray-600, 0.4);
+        color: $blue-darker;
+
+        &.disable-button {
+          color: $gray-600  !important;
+        }
+      }
+
+      .rotateArrow {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

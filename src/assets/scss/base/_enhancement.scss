@@ -1,0 +1,204 @@
+// Style guide: base.enhancement
+@mixin base\enhancement {
+    .w100 {
+        width: 100px;
+    }
+    
+    .w110 {
+        width: 110px;
+    }
+    
+    .ten-percent-width {
+        width: 10%;
+    }
+    
+    .full-width {
+        width: 100%;
+    }
+    
+    $height: 100 250 400 600;
+    
+    @each $item in $height {
+        .max-height-#{$item} {
+            max-height: #{$item}px
+        }
+    }
+    
+    .orange {
+        color: $br-orange;
+    }
+    
+    .blue {
+        color: $br-blueish;
+    }
+    
+    .card-blue {
+        color: $br-cardBlue;
+    }
+    .purple {
+        color: #b00020;
+    }
+    .orange{
+        color: #f69b44;
+    }    
+    .grey,
+    .grey:hover {
+        color: $br-grey;
+    }
+    
+    .red {
+        color: $br-color-warn;
+    }
+    
+    .bg-light-blue {
+        background-color: $br-superLightBlue;
+    }
+    
+    
+    .small {
+        font-size: mat-font-size($br-typography, caption);
+    
+        p {
+            margin-bottom: $custom-space-small + $custom-space-xsmall;
+        }
+    }
+    
+    p.small {
+        margin-bottom: $custom-space-small + $custom-space-xsmall;
+    }
+    
+    .nodecoration:hover {
+        text-decoration: none;
+    }
+    
+    .center {
+        text-align: center;
+    }
+    
+    .thin {
+        font-weight: 400;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .text-right {
+        text-align: right;
+    }
+    
+    .inline-block {
+        display: inline-block;
+    }
+    
+    .hide {
+        display: none;
+    }
+    
+    .right {
+        float: right;
+    }
+    
+    .scroll-y {
+        overflow-y: auto;
+    }
+    
+    .shadow {
+        box-shadow: 0 0 10px $gray-600; /* all latest browser */
+        -moz-box-shadow: 0 0 10px $gray-600; /* Firefox older version*/
+        -webkit-box-shadow: 0 0 5px $gray-600; /* Chrome/Safari older version */
+    }
+    
+    .top-big-margin {
+        margin-top: $custom-space-xxlarge - $custom-space-small;
+    }
+    
+    .row-tbl-appended {
+        background: mat-color($mat-grey, A100);
+        padding: $custom-space-small;
+        margin: 0;
+    }
+    
+    .mtn-15 {
+        margin-top: -15px;
+    }
+    
+    .pos-day {
+        position: absolute;
+        bottom: 15px;
+        left: -10px;
+    }
+    
+    .lh-125 {
+        line-height: 1.25rem;
+    }
+    
+    $break-small: 767px;
+    $break-large: 768px;
+
+    $list: 15 20 60 65 70 75 80 85 90 95 100;
+    @media screen and (max-height: $break-small) {
+        @each $item in $list {
+            .vh-#{$item}-mh {
+                max-height: #{$item}vh - 10vh
+            }
+        }
+    }
+    
+    @media screen and (min-height: $break-large) {
+        @each $item in $list {
+            .vh-#{$item}-mh {
+                max-height: #{$item}vh
+            }
+        }
+    }
+    
+    
+    @media screen and (max-height: $break-small) {
+        @each $item in $list {
+            .vh-#{$item}-scroll {
+                height: #{$item}vh - 10vh;
+                max-height: #{$item}vh - 10vh;
+                overflow: hidden;
+            }
+        }
+    }
+    
+    @media screen and (min-height: $break-large) {
+        @each $item in $list {
+            .vh-#{$item}-scroll {
+                height: #{$item}vh;
+                max-height: #{$item}vh;
+                overflow: hidden;
+            }
+        }
+    }
+    
+    .clear {
+        clear: both;
+    }
+    
+    .hr-divider {
+        background: $gray-600;
+    }
+
+  .small.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+        padding-bottom: .7em !important;
+        margin-top: -5px;
+
+
+        .mat-form-field-flex .mat-form-field-appearance-legacy .mat-form-field-infix {
+            padding: 0 !important;
+        }
+    }
+
+    .mat-form-field-subscript-wrapper {
+        overflow: visible !important;
+    }
+
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #fff !important;
+  }
+
+  .mat-form-field-label {
+      color: #9b9b9b !important;
+  }

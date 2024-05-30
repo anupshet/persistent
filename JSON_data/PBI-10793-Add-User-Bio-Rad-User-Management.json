@@ -1,0 +1,48 @@
+{
+	"DEV": {
+		"URL": "https://unity-dev.qcnet.com/login",
+		"AMUsername": "tushar_adeshara+accountmanager@bio-rad.com",
+		"AMPassword": "Welcome1",
+		"AMFirstName": "Tushar",
+
+		"FirstName" : "Mayank",
+		"LastName" : "Jatav",
+		"Email" : "mayank_jatay+devAuto@bio-rad.com",
+		"Role" : "BioRadManager",
+		"TerritoryID" : "",
+
+		"FirstNameTC15" : "Mayank",
+		"LastNameTC15" : "Jatav",
+		"EmailTC15" : "mayank_jatay+devAuto29@bio-rad.com",
+		"RoleTC15" : "CTSUser",
+		"TerritoryIDTC15" : "9542157",
+
+		"FirstNameTC16" : "Mayank",
+		"LastNameTC16" : "Jatav",
+		"EmailTC16" : "mayank_jatay+devAutoAdd15@bio-rad.com",
+		"RoleTC16" : "CTSUser",
+		"TerritoryIDTC16" : "9542157",
+
+		"FirstNameTC17" : "Mayank",
+		"LastNameTC17" : "Jatav",
+		"EmailTC17" : "mayank_jatay+devAutoAdd17@bio-rad.com",
+		"RoleTC17" : "CTSUser",
+		"TerritoryIDTC17" : "9542157",
+
+		"FirstNameTC18" : "Mayank",
+		"LastNameTC18" : "Jatav",
+		"EmailTC18" : "mayank_jatay+devAutoAddUsers18TC18@bio-rad.com",
+		"RoleTC18" : "CTSUser",
+		"TerritoryIDTC18" : "9542157",
+
+		"FirstNameTC19" : "Mayank",
+		"LastNameTC19" : "Jatav",
+		"EmailTC19" : "mayank_jatay+devAutoAddUsers1TC18@bio-rad.com",
+		"RoleTC19" : "CTSUser",
+		"TerritoryIDTC19" : "9542157"
+		
+	},
+	"QA": {},
+	"STAGE": {},
+	"DEV2": {}
+}

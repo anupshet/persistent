@@ -1,0 +1,19 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="wrapper">
+  <div class="flex-ctn">
+    <div class="flex-item-1">
+      <br-date-time-picker [translationLabels]="translationLabels" [currentLanguage]='currentLanguage' [displayInline]="true" [availableDateTo]="maxDate" [availableDateFrom]="minDate"
+        [selectedDateTime]="defaultDate" [readOnlyDate]="!showDatePicker" [canInputDate]="false"
+        [showChangeDateButton]="showChangeDateButton" [canSelectTime]="displayTime" [timeZone]="timeZone"
+        (dateSelected)="dateChanged($event)" (isTimeInputValid)="setTimeInputValid($event)" [isDisabled]="isDisabled">
+      </br-date-time-picker>
+    </div>
+    <div class="flex-item-2" *ngIf="!isDisabled">
+      <button mat-button tabindex="5001" color="primary" class="positive" id="cancelBtn" (click)="cancel()"
+        [disabled]="!enableCancel" i18n="@@BrEntrySaveComponent.Cancel">Cancel</button>
+      <button mat-raised-button tabindex="5000" color="primary" class="positive" id="submitBtn" (click)="submit()"
+        [disabled]="!enableSubmit || !isTimeInputValid" i18n="@@BrEntrySaveComponent.Submit">
+        <em class="mr-5"></em>Submit</button>
+    </div>
+  </div>
+</div><!-- /wrapper -->

@@ -1,0 +1,13 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="row">
+  <div class="remove-upper flex-container flex-column {'column': isLabExpired}">
+    <div class="main-text" id="spc_license_status">{{isLabExpired ? ('LICENSEINFO.EXPIRED' | translate) : ('LICENSEINFO.ACTIVE' | translate)}}</div>
+    <div class="sub-text" id="spc_license_exp_date" [class.text-danger]="isLabExpired" class="expiration-date mat-small">
+      {{'LICENSEINFO.EXP' | translate}} {{ expirationDate | uNextDate : 'mediumDate'}}
+    </div>
+  </div>
+  <div class="column" [hidden]="isLabExpired || !hasPermissionToAccess([permissions.LaunchLocation])">
+    <button button class="launch-btn" mat-raised-button color="primary" (click)="launchLab(location)"*ngIf="hasPermissionToAccess([permissions.LaunchLocation])" [hidden]="isLabExpired"> {{'LICENSEINFO.LAUNCHLAB' | translate}}</button>
+  </div>
+ </div>
+

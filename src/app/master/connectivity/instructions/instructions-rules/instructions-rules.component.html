@@ -1,0 +1,208 @@
+<!--© 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.-->
+<div class="instructions-rules-component">
+  <div class="ctn-form">
+    <div class="heading spec-heading"> {{'INSTRUCTIONSRULES.HEADING' | translate}} </div>
+    <div class="error-msg">{{'INSTRUCTIONSRULES.PLEASE' | translate}} </div>
+    <form class="dynamic-form" id="spec_instrumentForm" [formGroup]="instructionsForm">
+      <perfect-scrollbar class="dynamic-form-scrollbar">
+        <div class="scrollbar-wrapper">
+          <div class="flex">
+            <div class="instrument-name left-col">
+              <span>{{'INSTRUCTIONSRULES.CONFIGURATION' | translate}}</span>
+              <mat-form-field>
+                <input id="spec_inst_rules_inst_name" formControlName="instructionName" required matInput maxlength="25"
+                  placeholder="{{'INSTRUCTIONSRULES.CONFIGURATION' | translate}}">
+              </mat-form-field>
+              <mat-error
+                *ngIf="(displayDuplicateErrMsg || instructionsForm?.controls['instructionName']?.errors?.displayDuplicateErrMsg)">
+                {{'INSTRUCTIONSRULES.THIS' | translate}}</mat-error>
+            </div>
+            <div class="right-col">
+              <span>{{'INSTRUCTIONSRULES.SERIAL' | translate}}</span>
+              <mat-form-field>
+                <mat-select matInput name="edgeBoxIdentifier" panelClass="panel-width"
+                  formControlName="edgeBoxIdentifier" placeholder="{{'INSTRUCTIONSRULES.SERIAL' | translate}}">
+                  <mat-option *ngFor="let edgeBoxIdentifier of edgeBoxIdentifiers" [value]="edgeBoxIdentifier">
+                    {{ edgeBoxIdentifier}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <mat-radio-group id="spec_inst_rules_dataentry" formControlName="dataEntry">
+            <div class="flex">
+              <div class="left-col">
+                <span>{{'INSTRUCTIONSRULES.DATAENTRY' | translate}}</span>
+                <mat-radio-button id="spec_inst_rules_point_entry" color="primary" value="true" [checked]="isPoint"
+                  (change)="onPointDataEntryChange(true)">{{'INSTRUCTIONSRULES.POINT' | translate}}</mat-radio-button>
+              </div> <!-- /left-col -->
+              <div class="radio-btn-col"></div>
+              <div class="right-col">
+                <mat-radio-button id="spec_inst_rules_summary_entry" color="primary" value="false" [checked]="!isPoint"
+                  (change)="onPointDataEntryChange(false)">
+                  {{'INSTRUCTIONSRULES.SUMMARY' | translate}}</mat-radio-button>
+              </div> <!-- /right-col -->
+            </div> <!-- /flex -->
+          </mat-radio-group>
+          <div class="flex">
+            <div class="left-col">
+              <span>{{'INSTRUCTIONSRULES.INSTRUMENTCODE' | translate}}</span>
+              <mat-form-field>
+                <input id="spec_inst_rules_inst_code" formControlName="instrumentCode" required matInput maxlength="25"
+                  placeholder="{{'INSTRUCTIONSRULES.INSTRUMENTCODE' | translate}}">
+              </mat-form-field>
+            </div> <!-- /left-col -->
+            <div class="right-col">
+              <span>{{'INSTRUCTIONSRULES.STATICCODE' | translate}}</span>
+              <mat-form-field>
+                <input id="spec_inst_rules_static_inst_code" formControlName="staticInstrumentCode" matInput
+                  maxlength="25" placeholder="{{'INSTRUCTIONSRULES.STATIC' | translate}}">
+              </mat-form-field>
+            </div> <!-- /right-col -->
+          </div> <!-- /flex -->
+          <div class="flex">
+            <div class="left-col">
+              <span>{{'INSTRUCTIONSRULES.PRODUCTLOT' | translate}}</span>
+              <mat-form-field>
+                <input id="spec_inst_rules_product_code" formControlName="productLotLevel" required matInput
+                  maxlength="25" name="productLotLevel" placeholder="{{'INSTRUCTIONSRULES.PRODUCTLOT' | translate}}">
+              </mat-form-field>
+            </div> <!-- /left-col -->
+            <div class="right-col">
+              <span>{{'INSTRUCTIONSRULES.TESTCODE' | translate}}</span>
+              <mat-form-field>
+                <input id="spec_inst_rules_test_code" formControlName="testCode" required matInput maxlength="25"
+                  name="testCode" placeholder="{{'INSTRUCTIONSRULES.TESTCODE' | translate}}">
+              </mat-form-field>
+            </div> <!-- /right-col -->
+          </div> <!-- /flex -->
+          <div class="flex">
+            <div class="left-col">
+              <span>{{'INSTRUCTIONSRULES.FORMAT' | translate}}</span>
+              <mat-form-field>
+                <mat-select formControlName="dateTimeFormats" placeholder="{{'INSTRUCTIONSRULES.FORMATS' | translate}}">
+                  <mat-option *ngFor="let format of dateTimeFormat" [value]="format">{{format}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div> <!-- /left-col -->
+            <div class="right-col">
+              <span>{{'INSTRUCTIONSRULES.RESULTED' | translate}}</span>
+              <mat-form-field>
+                <input id="spec_inst_rules_date" formControlName="dateTimeResulted" required matInput maxlength="25"
+                  placeholder="{{'INSTRUCTIONSRULES.RESULTED' | translate}}">
+              </mat-form-field>
+            </div> <!-- /right-col -->
+          </div> <!-- /flex -->
+          <div class="flex">
+            <div class="left-col">
+              <span>{{'INSTRUCTIONSRULES.TIMERESULTED' | translate}}</span>
+              <mat-form-field>
+                <input id="spec_inst_rules_time" formControlName="timeResulted" matInput maxlength="25"
+                  placeholder="{{'INSTRUCTIONSRULES.TIMERESULT' | translate}}">
+              </mat-form-field>
+            </div> <!-- /left-col -->
+            <div class="right-col"></div> <!-- /right-col -->
+          </div> <!-- /flex -->
+          <mat-radio-group formControlName="capturedDateTime">
+            <div class="flex">
+              <div class="left-col">
+                <span>{{'INSTRUCTIONSRULES.CAPTURED' | translate}}</span>
+                <mat-radio-button id="spec_inst_rules_yes_button" [value]="true"
+                  color="primary" [checked]="capturedDateTime" (change)="onCapturedDateTimeChange(true)">{{'INSTRUCTIONSRULES.YES' | translate}}
+                </mat-radio-button>
+              </div> <!-- /left-col -->
+              <div class="radio-btn-col"></div>
+              <div class="right-col">
+                <mat-radio-button id="spec_inst_rules_no_button" [value]="false"
+                  color="primary" [checked]="!capturedDateTime" (change)="onCapturedDateTimeChange(false)">{{'INSTRUCTIONSRULES.NO' | translate}}
+                </mat-radio-button>
+              </div> <!-- /right-col -->
+            </div> <!-- /flex -->
+          </mat-radio-group>
+          <div *ngIf="!isPoint; else valueField">
+            <div class="flex">
+              <div class="left-col">
+                <span>{{'INSTRUCTIONSRULES.MEAN' | translate}}</span>
+                <mat-form-field>
+                  <input id="spec_inst_rules_mean" formControlName="mean" required matInput maxlength="25"
+                    placeholder="{{'INSTRUCTIONSRULES.MEAN' | translate}}">
+                </mat-form-field>
+              </div> <!-- /left-col -->
+              <div class="right-col">
+                <span>{{'INSTRUCTIONSRULES.SD' | translate}}</span>
+                <mat-form-field>
+                  <input id="spec_inst_rules_sd" formControlName="sd" required matInput maxlength="25" name="sd"
+                    placeholder="{{'INSTRUCTIONSRULES.SD' | translate}}">
+                </mat-form-field>
+              </div> <!-- /right-col -->
+            </div> <!-- /flex -->
+            <div class="flex">
+              <div class="left-col">
+                <span>{{'INSTRUCTIONSRULES.NUMBEROFPOINTS' | translate}}</span>
+                <mat-form-field>
+                  <input id="spec_inst_rules_points" formControlName="numPts" required matInput maxlength="25"
+                    placeholder="{{'INSTRUCTIONSRULES.NUMBEROFPOINTS' | translate}}">
+                </mat-form-field>
+              </div> <!-- /left-col -->
+              <div class="right-col"></div> <!-- /right-col -->
+            </div> <!-- /flex -->
+          </div>
+          <ng-template #valueField>
+            <div class="flex">
+              <div class="left-col">
+                <span>{{'INSTRUCTIONSRULES.VALUE' | translate}}</span>
+                <mat-form-field>
+                  <input id="spec_inst_rules_value" formControlName="resultValue" required matInput maxlength="25"
+                    placeholder="{{'INSTRUCTIONSRULES.VALUE' | translate}}">
+                </mat-form-field>
+              </div> <!-- /left-col -->
+              <div class="right-col"></div> <!-- /right-col -->
+            </div> <!-- /flex -->
+          </ng-template>
+          <mat-radio-group formControlName="decimalCommaSeparator">
+            <div class="flex">
+              <div class="left-col">
+                <span>{{'INSTRUCTIONSRULES.SEPARATOR' | translate}}</span>
+                <div class="fix-position-1">
+                  <mat-radio-button id="spec_inst_rules_decimal" [value]="isDecimal"
+                    color="primary" [checked]="isDecimal" (change)="onSeparatorChange(true)">{{'INSTRUCTIONSRULES.DECIMAL' | translate}}</mat-radio-button>
+                </div>
+              </div> <!-- /left-col -->
+              <div class="radio-btn-col"></div>
+              <div class="right-col">
+                <mat-radio-button id="spec_inst_rules_comma" [value]="!isDecimal"
+                  color="primary" [checked]="!isDecimal" (change)="onSeparatorChange(false)">{{'INSTRUCTIONSRULES.COMMA' | translate}}</mat-radio-button>
+              </div> <!-- /right-col -->
+            </div> <!-- /flex -->
+          </mat-radio-group>
+          <mat-radio-group formControlName="separateQualitativeQuantitative">
+            <div class="flex">
+              <div class="left-col">
+                <span>{{'INSTRUCTIONSRULES.QUALITATIVE' | translate}}</span>
+                <mat-radio-button id="spec_inst_rules_yes" [value]="!separateQualitativeQuantitative"
+                  color="primary" [checked]="!separateQualitativeQuantitative"
+                  (change)="onButtonChange(true)">{{'INSTRUCTIONSRULES.YES' | translate}}</mat-radio-button>
+              </div> <!-- /left-col -->
+              <div class="radio-btn-col"></div>
+              <div class="right-col">
+                <mat-radio-button id="spec_inst_rules_no" [value]="separateQualitativeQuantitative"
+                  color="primary" [checked]="separateQualitativeQuantitative"
+                  (change)="onButtonChange(false)">{{'INSTRUCTIONSRULES.NO' | translate}}</mat-radio-button>
+              </div> <!-- /right-col -->
+            </div> <!-- /flex -->
+          </mat-radio-group>
+
+        </div>
+      </perfect-scrollbar>
+      <div class="buttons">
+        <button mat-button mat-stroked-button color="primary" (click)="onCancel()">
+          <span id="spec-cancel">{{'INSTRUCTIONSRULES.CANCEL' | translate}}</span>
+        </button>
+        <button class="button-save" mat-button mat-flat-button color="primary" (click)="onSubmit()"
+          [disabled]="instructionsForm.invalid" *ngIf="hasPermissionToAccess([permissions.ConnectivityConfiguration])">
+          <span id="spec-save">{{'INSTRUCTIONSRULES.SAVE' | translate}}</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div> <!-- /instructions-rules-component -->

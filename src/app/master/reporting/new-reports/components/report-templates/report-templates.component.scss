@@ -1,0 +1,100 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../../../../assets/scss/variables";
+.mat-form-field-template-type {
+  width: 450px;
+  margin: 0px 60px 0px 0px;
+}
+
+.save-as-new-temp-btn {
+  height: 16px;
+  flex-grow: 0;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.14;
+  letter-spacing: 1.25px;
+  text-align: center;
+  color: $white;
+}
+
+.create-new-template-button {
+  height: 17px;
+  align-self: stretch;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  background-color: $blue;
+  overflow: hidden;
+}
+
+.plus-Icon {
+  fill: $white;
+}
+
+.template-menu-item {
+  height: 26px;
+  padding: 7px 14px;
+}
+
+.clear-temp-span {
+  width: 114px;
+  height: 24px;
+  flex-grow: 0;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: 0.42px;
+  text-align: left;
+  color: $black;
+}
+
+.perfect-scroll {
+  height: 208px;
+}
+
+.mat-icon-float {
+  float: right;
+  &:hover {
+    z-index: 1001;
+  }
+}
+
+::ng-deep .mat-select-css {
+  overflow: hidden !important;
+}
+
+::ng-deep .template-mat-menu-panel {
+  min-width: 130px !important;
+  .mat-menu-content {
+    width: auto !important;
+  }
+}
+
+.mat-option-css {
+  color: $black;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+}
+
+.mat-option-none {
+  visibility: hidden;
+}
+
+.no-perfect-scroll {
+  height: 0px;
+}
+
+button.mat-option-css[disabled] {
+  opacity: 0.4;
+  background-color: $button-primary-disabled-bg;
+}

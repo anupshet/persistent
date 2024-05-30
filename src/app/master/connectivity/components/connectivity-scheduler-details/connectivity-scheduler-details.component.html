@@ -1,0 +1,81 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc.All Rights Reserved. -->
+<div class="connectivity-scheduler-details-container">
+  <div class="scheduler-list-header">
+    <div class="pill-button-container flex-container">
+      <h2 class="mb-0">{{'CONNECTIVITYSCHEDULAR.SLIDE' | translate}}</h2>
+      <button mat-stroked-button color="primary" type="button" (click)="filterItems(_ReviewStatus.Empty)"
+        class="pill-button spec-need-review" [ngClass]="{'selected': reviewStatus === _ReviewStatus.Empty}">
+        {{'CONNECTIVITYSCHEDULAR.NEED' | translate}}
+        ({{getCount(_ReviewStatus.Empty)}})</button>
+      <button mat-stroked-button color="primary" type="button" (click)="filterItems(_ReviewStatus.Edited)"
+        class="pill-button spec-updated" [ngClass]="{'selected': reviewStatus === _ReviewStatus.Edited}">
+        {{'CONNECTIVITYSCHEDULAR.UPDATED' | translate}} ({{getCount(_ReviewStatus.Edited)}})</button>
+      <button mat-stroked-button color="primary" type="button" (click)="filterItems(_ReviewStatus.Accepted)"
+        class="pill-button spec-accepted" [ngClass]="{'selected': reviewStatus === _ReviewStatus.Accepted}">
+        {{'CONNECTIVITYSCHEDULAR.ACCEPTED' | translate}} ({{getCount(_ReviewStatus.Accepted)}})</button>
+      <span></span> <!-- Added to have proper alignment and distribution of area -->
+    </div>
+  </div>
+  <div class="scheduler-list-container" #schedulerListContainer>
+    <perfect-scrollbar [config]="{ suppressScrollY: false }">
+      <div
+        *ngFor="let item of analytesFiltered | slice:((selectedPageNumber -1) *recordsPerPage):(selectedPageNumber* recordsPerPage); let index=index;"
+        class="list-item flex-container spec-list-item" [ngClass]="{'expand': selectedItemIndex === index}"
+        #schedulerItem>
+        <div class="details">
+          <div class="secondary-text">{{item?.departmentName}} / {{item?.instrumentCustomName || item?.instrumentName}}
+            /
+            {{item?.controlCustomName || item?.controlName}} /
+            <span>{{'CONNECTIVITYSCHEDULAR.LOT' | translate}}</span> {{item?.controlLotNumber}}
+          </div>
+          <span>{{item?.analyteName}} / {{item?.reagentName}} / {{item?.lastRunReagentLotName}}</span>
+          <!--  analyte expand slide gen list -->
+          <unext-connectivity-slide-gen-list *ngIf="selectedItemIndex === index"
+            [availableReagentLotMetadata]="item?.availableReagentLotMetadata" [labLotTestId]="item?.id"
+            [singleSlideGenScheduleItem]="item?.slideGenSchedules" [lastRunReagentLotId]="item?.lastRunReagentLotId"
+            (closeUpdate)="onCancel($event)" [controlExpirationDate]="item?.controlExpirationDate" (updateSlideGenSchedules)="updateSlideGenSchedules($event)"
+            (onSchedulerRowsChanged)="schedulerRowsChanged(index)"></unext-connectivity-slide-gen-list>
+          <!-- slide gen list -->
+        </div>
+        <div class="buttons" *ngIf="selectedItemIndex !== index && reviewStatus === _ReviewStatus.Empty">
+          <button mat-stroked-button color="primary" type="button" class="spec-update-slidegen-list"
+            (click)="selectedItemIndex = index">{{'CONNECTIVITYSCHEDULAR.UPDATE' | translate}}</button>
+          <button mat-stroked-button color="primary" type="button" class="spec-cancel-slidegen-list" class="selected"
+            (click)="accept(item?.id)">{{'CONNECTIVITYSCHEDULAR.ACCEPT' | translate}}</button>
+        </div>
+        <div class="edit-button"
+          *ngIf="selectedItemIndex !== index && (reviewStatus === _ReviewStatus.Accepted || reviewStatus === _ReviewStatus.Edited)">
+          <button mat-stroked-button color="primary" type="button" class="selected" (click)="selectedItemIndex = index">
+            {{'CONNECTIVITYSCHEDULAR.EDIT' | translate}}</button>
+          <mat-icon [svgIcon]="icons.check[24].name"></mat-icon>
+        </div>
+      </div>
+      <div *ngIf="reviewStatus === _ReviewStatus.Empty && analytesFiltered.length === 0"
+        class="no-items spec-all-reviewed">
+        <h1 class="mb-0">{{'CONNECTIVITYSCHEDULAR.ALL' | translate}}</h1>
+      </div>
+    </perfect-scrollbar>
+  </div>
+  <div class="scheduler-footer flex-container stick-to-bottom">
+    <button type="button" class="spec-back" mat-button color="primary" (click)="back()">
+      {{'CONNECTIVITYSCHEDULAR.BACK' | translate}}</button>
+    <div class="pagination-section" *ngIf="pages.length > 1">
+      <button mat-stroked-button color="primary" type="button" (click)="selectPage(selectedPageNumber - 1)"
+        [disabled]="pages.length <= 1 || selectedPageNumber === 1" class="pagination-button arrow-button"
+        [ngClass]="{'selected': pages.length <= 1 || selectedPageNumber === 1}">
+        <mat-icon [svgIcon]="icons.navigateBefore[24].name"></mat-icon>
+      </button>
+      <button mat-stroked-button *ngFor="let page of pages" color="primary" type="button" class="pagination-button"
+        [ngClass]="{'selected': selectedPageNumber === page}" (click)="selectPage(page)"
+        [disabled]="selectedPageNumber === page">{{page}}</button>
+      <button mat-stroked-button color="primary" type="button" (click)="selectPage(selectedPageNumber + 1)"
+        [disabled]="pages.length <= 1 || selectedPageNumber === pages.length" class="pagination-button arrow-button"
+        [ngClass]="{'selected': pages.length <= 1 || selectedPageNumber === pages.length}">
+        <mat-icon [svgIcon]="icons.navigateNext[24].name"></mat-icon>
+      </button>
+    </div>
+    <button mat-raised-button color="primary" class="spec-upload" type="button" (click)="submit()"
+      [disabled]="disableUploadButton || !allAnalytesReviewed">
+      {{'CONNECTIVITYSCHEDULAR.UPLOAD' | translate}}</button>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div
+  *ngIf="hasPermissionToAccess([permissions.ControlAdd,permissions.ControlEdit,permissions.ControlAddViewOnly,permissions.ControlEditViewOnly]); else nonAdminUser">
+  <div class="control-management-component-hdr">
+    <button *ngIf="!showSettings && control?.displayName" mat-button color="primary"
+      [checkForPermission]="{'permissionsAllowed':[permissions.InstrumentEdit, permissions.InstrumentEditViewOnly],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+      (click)="gotoInstrumentSettings()">
+      <mat-icon [svgIcon]="icons.edit[24].name" class="edit-maticon"></mat-icon>
+      <span class="ml-10">{{'CONTROLMANAGEMENT.EDITINSTRUMENT' | translate}}
+      </span>
+    </button>
+    <h2 id="control-management-title">{{control?.displayName}}</h2>
+    <button *ngIf="showSettings" mat-button color="primary" (click)="redirectToDataTable()">
+      <mat-icon [svgIcon]="icons.menu[24].name"></mat-icon>
+      <span class="mat-body-1" id="spec_returnToControlData">{{'CONTROLMANAGEMENT.RETURNDATA' | translate}}</span>
+    </button>
+    <p *ngIf="showSettings && isArchived">{{'CONTROLMANAGEMENT.ITEMARCHIVED' | translate}} {{levelName}} {{'CONTROLMANAGEMENT.LEVEL' | translate}}</p>
+  </div>
+  <unext-control-config [showSettings]="showSettings" [hasNonBrLicense]="hasNonBrLicense"></unext-control-config>
+</div>
+<ng-template #nonAdminUser>
+  <p class="non-admin-user-message spec-message-control">
+    <span>{{'CONTROLMANAGEMENT.NOCONTROLADDED' | translate}}</span> {{control?.displayName}} </p>
+</ng-template>

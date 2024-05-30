@@ -1,0 +1,60 @@
+/* © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. */
+@import '../../../../../../assets/scss/variables';
+@import '../../../../../../assets/scss/base/variables-peak';
+
+:host ::ng-deep {
+  .label {
+    position: absolute;
+    display: none;
+  }
+
+  //////////////////////////////// second case
+
+  #xaxisDates > g:nth-child(even) {
+    display: none;
+  }
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke-width: 0;
+    // stroke: grey;
+  }
+
+  .axis text {
+    font-family: sans-serif;
+    font-size: $custom-type-size-xxsmall;
+    fill: $gray-600;
+  }
+
+  .tick line {
+    stroke: lightgrey;
+    opacity: 1;
+  }
+
+  .showPath {
+    visibility: visible;
+  }
+  .hidePath {
+    visibility: hidden;
+  }
+
+  .cross {
+    pointer-events: none;
+  }
+}
+
+.svgStyle {
+  width: 100%;
+  height: 200px;
+  margin-top: -20px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.chartContainer {
+  margin-bottom: -10px;
+  position: relative;
+}

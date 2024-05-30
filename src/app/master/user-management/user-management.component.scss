@@ -1,0 +1,428 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../assets/scss/base/utilities";
+@import "../../../assets/scss/mixins/border-radius";
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/base/variables-peak";
+
+.user-management-component {
+  position: relative;
+  overflow: hidden;
+  height: calc(100vh - 100px);
+
+  .user-edit-disable {
+    cursor: none !important;
+    color: black !important;
+    pointer-events: none !important;
+  }
+
+  .lose-changes-wrapper {
+    @include border-radius(3px);
+    padding: $custom-type-size-xxsmall;
+    border: 1px solid $carmine;
+    width: calc(100% - 80px) !important;
+
+    & .lose-changes-msg {
+      color: $carmine;
+    }
+  }
+
+  .close {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 10;
+  }
+
+  .sec-header {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+
+    .bio-rad-logo {
+      padding: 0px 0px 0px 10px;
+    }
+
+    .filter-header {
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .category-filter {
+        max-width: 150px;
+        margin: 0px 25px 0px 0px;
+      }
+
+      .search-field {
+        width: 340px;
+        position: relative;
+
+        .clear-search {
+          position: absolute;
+          top: -15px;
+          right: 0px;
+        }
+      }
+
+      .set-width {
+        width: 18px;
+      }
+
+      .heading {
+        font-size: 12px;
+        font-weight: normal;
+        color: $blue-darker;
+
+        &:disabled {
+          color: $gray-600  !important;
+        }
+      }
+
+      .search-btn {
+        height: 30px;
+        min-width: 60px;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin: 0px 0px 0px 25px;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 500;
+        color: $component-cyan  !important;
+        opacity: 1;
+        background: $white  !important;
+        line-height: 30px;
+
+        &:disabled {
+          color: $gray-600  !important;
+        }
+      }
+    }
+  }
+
+  .add-user-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .main-ctn {
+    position: relative;
+    padding: 0 15px;
+    height: calc(100vh - 268px);
+
+    perfect-scrollbar>.ps.ps--active-y>.ps__rail-y {
+      margin-top: 57px !important;
+    }
+
+    .mat-table {
+      min-width: fit-content;
+
+      ::ng-deep .mat-sort-header-arrow[style] {
+
+        // Hide default arrow stem
+        .mat-sort-header-stem {
+          display: none;
+        }
+
+        .mat-sort-header-indicator {
+          opacity: 1;
+          color: $black;
+          font-weight: bold;
+
+          // Hide default arrow as its composed of left, right and middle
+          .mat-sort-header-pointer-left,
+          .mat-sort-header-pointer-right,
+          .mat-sort-header-pointer-middle {
+            display: none;
+          }
+        }
+      }
+
+      .mat-header-row {
+        -ms-flex-align: center;
+        align-items: center;
+        font-weight: 800;
+        background-color: $white  !important;
+        border-bottom: 1px solid $bottom-border-color  !important;
+        box-shadow: none;
+
+        .mat-header-cell {
+          color: $blue-darker;
+          text-transform: uppercase;
+          letter-spacing: 0.2rem;
+          font-weight: 600;
+          justify-content: flex-start;
+          
+
+          .heading {
+            font-weight: normal;
+            letter-spacing: 2px;
+          }
+
+          &:first-of-type {
+            padding-left: ($custom-space-base + $custom-space-small);
+          }
+        }
+      }
+
+      mat-cell:first-child,
+      mat-footer-cell:first-child,
+      mat-header-cell:first-child {
+        padding-left: 0 !important;
+      }
+
+      mat-cell:last-child,
+      mat-footer-cell:last-child,
+      mat-header-cell:last-child {
+        padding-right: 0 !important;
+      }
+
+      .mat-row {
+        align-items: start;
+
+        .mat-cell {
+          justify-content: flex-start !important;
+          text-wrap: balance;
+          .user-edit {
+            cursor: pointer;
+            color: $blue-darker;
+          }
+        }
+      }
+
+      .user-fields {
+        flex-direction: column;
+      }
+
+      .single-order-field {
+        .mat-form-field {
+          width: 240px;
+          height: 78px;
+        }
+      }
+
+      .email-field {
+        .mat-form-field {
+          width: 250px;
+          height: 153px;
+        }
+      }
+
+      .user-role {
+        width: 80%;
+        height: 150px;
+      }
+
+      .list-item {
+        padding: 5px 0;
+      }
+
+      .locations-contols-container {
+        width: 90%;
+
+        .all-location {
+          padding: 28px 0 23px 0;
+        }
+
+        .location-error {
+          font-size: 75%;
+          margin-top: -22px;
+
+        }
+
+        .panel-item-selection-container {
+          max-height: 75px;
+        }
+      }
+
+      .bottom-controls {
+        justify-content: flex-end;
+        width: 100%;
+        display: flex;
+        margin: 75px 0px 16px 0px;
+
+        .cancel-button {
+          margin: 0px 20px 0px 0px;
+        }
+
+        .icn-delete {
+          color: $red-light;
+          width: 35px;
+          margin: -3px 5px;
+        }
+
+        .cancel-button,
+        .update-button,
+        .add-button {
+          min-width: 35%;
+        }
+      }
+
+      .arrow-icon {
+        margin-left: 5px;
+        width: 10px;
+      }
+
+      .rotate {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .extend-afterwarning {
+    height: calc(100vh - 331px) !important;
+  }
+
+  .scheduler-footer {
+    .pagination-section {
+      .pagination-button {
+        margin: 0 10px;
+        padding: 0;
+        min-width: 60px;
+        background: $blue;
+        color: $white;
+      }
+
+      .mat-stroked-button.mat-primary.selected {
+        background: $white;
+        border: 1px solid rgba($gray-600, 0.4);
+        color: $blue;
+
+        &.arrow-button {
+          color: $gray-600;
+        }
+      }
+    }
+
+    &.stick-to-bottom {
+      bottom: 0px;
+      position: absolute;
+      right: 0;
+      left: 0;
+      margin-bottom: 10px;
+    }
+
+    &.flex-container {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+
+  .mat-form-field {
+    margin-right: 4px;
+  }
+
+  .single-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    background: $white;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.mat-tree-node {
+  margin: 0px 6px 0px 0px;
+
+  .mat-icon-button i,
+  .mat-icon-button .mat-icon {
+    line-height: 16px;
+  }
+
+  .box {
+    position: absolute;
+  }
+}
+
+::ng-deep {
+  .location-overlay {
+    height: auto !important;
+
+    &:first-child .mat-pseudo-checkbox {
+      display: none;
+    }
+  }
+
+  .location-custom-error {
+    .mat-form-field-underline {
+      background-color: #d32f2f;
+    }
+
+    .mat-form-field-label {
+      color: #d32f2f;
+    }
+  }
+
+  .pseudo-options {
+    display: none !important;
+  }
+
+  .cdk-overlay-container .cdk-overlay-pane {
+    .location-panel {
+      transform: translateX(-15px) translateY(45px) !important;
+      width: 100%;
+      min-width: calc(100% + 90px) !important;
+      height: 256px;
+    }
+  }
+
+  .pagination-container {
+    margin: 0px 45px 2px 45px;
+
+    .custom-pagination {
+      display: flex;
+      justify-content: center;
+      margin: 18px 0;
+
+      .pagination-button {
+        margin: 0 10px;
+        padding: 0;
+        min-width: 45px;
+        background: $blue-darker;
+        color: $white;
+
+        &:disabled {
+          background-color: $gray-600;
+        }
+      }
+
+      .mat-stroked-button.mat-primary.selected {
+        background: $white;
+        border: 1px solid rgba($gray-600, 0.4);
+        color: $blue-darker;
+
+        &.disable-button {
+          color: $gray-600  !important;
+        }
+      }
+
+      .rotateArrow {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .box {
+    .mat-checkbox-label {
+      max-width: 190px;
+
+      .truncate {
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+  }
+  .add-user-tooltip {
+    background: rgb(165, 163, 163);
+    font-size: 16px;
+    justify-content: center;
+    text-align: justify;
+    min-width:200px;
+    position: absolute;
+    display: inline-block;
+  }
+}

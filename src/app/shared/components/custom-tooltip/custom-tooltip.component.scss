@@ -1,0 +1,102 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../../assets/scss/variables";
+
+.tooltip {
+  position: fixed;
+  background-color: $white;
+  border-radius: 5px;
+  padding: 8px;
+  opacity: 0;
+  box-shadow: $grey-darked 0px 2px 5px;
+  z-index: 1;
+
+  &::before {
+    filter: drop-shadow(0px 1px 2px $grey-darked);
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    border: 15px solid $white;
+  }
+
+  &::after {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    border: 15px solid $white;
+  }
+
+  &--visible {
+    opacity: 1;
+    transition: opacity 400ms;
+  }
+
+  &--left {
+    transform: translate(calc(-100% - 7px), -50%);
+
+    &::before {
+      border-top-color: transparent;
+      border-bottom-color: transparent;
+      border-right: none;
+      right: -14px;
+      top: calc(50% - 15px);
+    }
+
+    &::after {
+      right: -1px;
+      top: calc(50% - 15px);
+    }
+  }
+
+  &--right {
+    transform: translateY(-50%);
+    margin-left: 7px;
+
+    &::before {
+      border-top-color: transparent;
+      border-bottom-color: transparent;
+      border-left: none;
+      left: -15px;
+      top: calc(50% - 15px);
+    }
+
+    &::after {
+      left: -1px;
+      top: calc(50% - 15px);
+    }
+  }
+
+  .data {
+    position: relative;
+    z-index: 1;
+    padding: 7px;
+    min-width: 260px;
+    max-width: 350px;
+    word-break: break-all;
+
+    .header {
+      color: $grey-darked;
+    }
+
+    .list .parent {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .category {
+      color: $grey-darked;
+      font-size: 14px;
+      word-break: break-word;
+    }
+
+    .list {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    } 
+    .list-parent.vertical-ellipsis::after{
+      content: '...';
+      font-size: 22px;
+    }
+  }
+}

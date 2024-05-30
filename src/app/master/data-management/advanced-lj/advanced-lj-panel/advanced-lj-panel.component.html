@@ -1,0 +1,149 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.-->
+<div class="advanced-lj-panel-component">
+
+    <div class="content-not-scroll">
+
+        <button mat-button id="leftAdvLjButton" class="left-btn" [disabled]="leftButtonDisabled"
+            (click)="disableButtons()" *ngIf="isNavigationMenuPresent">
+            <mat-icon [svgIcon]="icons.navigateBefore[24].name" class="navigate-left"></mat-icon>
+        </button>
+        <button mat-button id="rightAdvLjButton" class="right-btn" [disabled]="rightButtonDisabled"
+            (click)="disableButtons()" *ngIf="isNavigationMenuPresent">
+            <mat-icon [svgIcon]="icons.navigateNext[24].name" class="navigate-right"></mat-icon>
+        </button>
+        <button mat-button [mat-dialog-close]="true" class="close-btn">
+            <mat-icon [svgIcon]="icons.close[24].name"></mat-icon>
+        </button>
+
+        <div class="flex">
+            <div class="box-1">
+                <h2 id="spec_advancedljpanel_analyteDisplayName" class="analyte-display-name mat-h5 mb-10">
+                    {{getAnalyteName()}}
+                    <span class="chevron" [ngClass]="{'opened' : showAnalyteDescription}"
+                        (click)="toggleAnalyteDescription()"></span>
+                    <!-- if you remove class opened will point into another direction-->
+                </h2>
+                <div *ngIf="!showAnalyteDescription">
+                    <dl class="description-block">
+                        <dt>
+                            <span id='spec_advancedljpanel_hierarchyText'>{{hierarchyText}}</span>
+                        </dt>
+                    </dl>
+                </div>
+                <div *ngIf="showAnalyteDescription">
+                    <unext-analyte-description id="spec_advancedljpanel_analyteDescription"
+                        [headerData]="analyteDescriptionData" [hierarchyText]="hierarchyText">
+                    </unext-analyte-description>
+                </div>
+
+            </div> <!-- /box-1 -->
+            <div class="box-2">
+                <div class="flex">
+                    <div class="bg-white mr-10">
+                        <button mat-button id="spec_advancedljpanel_downloadPdfElement" (click)="downloadPdf()"
+                            [disabled]="!displayChart || !chartPngSrc || chartPngSrc.length <= 0" class="download-btn">
+                            <mat-icon [svgIcon]="icons.download[24].name"
+                                [ngClass]="{'mat-icon-disabled' : !displayChart || !chartPngSrc || chartPngSrc.length <= 0}"></mat-icon>
+                        </button>
+                    </div>
+                    <div class="bg-white mr-10 chart-event-filter-outer">
+                        <mat-select name="chartEventFilter" multiple [(value)]="chartEventFilterSelection" panelClass="chart-event-filter" (selectionChange)="chartEventFilterChanged($event)">
+                            <mat-option [value]="ljChartEventReagentLot">
+                                {{'ADVANCEDLJPANEL.REAGENTLOT' | translate}}
+                            </mat-option>
+                            <mat-option [value]="ljChartEventCalibratorLot">
+                                {{'ADVANCEDLJPANEL.CALIBRATORLOT' | translate}}
+                            </mat-option>
+                            <mat-option [value]="ljChartEventMean" [ngStyle]="{ display: isOverlay ? 'none' : '' }">
+                                {{'ADVANCEDLJPANEL.MEAN' | translate}}
+                            </mat-option>
+                            <mat-option [value]="ljChartEventSd" [ngStyle]="{ display: isOverlay ? 'none' : '' }">
+                                {{'ADVANCEDLJPANEL.SD' | translate}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="bg-white ctn-unext-advanced-lj-levels mr-20">
+                        <unext-advanced-lj-levels [levelsInUse]="levelsInUse" (selectedLevels)="levelsChange($event)"
+                            (isOverlayChange)="isOverlayChange($event)"></unext-advanced-lj-levels>
+                    </div>
+                </div>
+            </div> <!-- /box-2 -->
+        </div> <!-- /flex -->
+
+        <div class="ctn-advanced-lj-timeframe">
+            <unext-advanced-lj-timeframe (emitDateOutput)="setTimeFrame($event.startDate, $event.endDate)"
+                [earliestDataDateTime]="earliestDataDateTime" [latestDataDateTime]="latestDataDateTime"
+                [currentAnalytePointResults]="currentAnalytePointResults" [runDateTime]="runDateTime">
+            </unext-advanced-lj-timeframe>
+        </div>
+    </div> <!-- /content-not-scroll -->
+
+    <div class="content-scroll" [ngClass]="{'description-expand' : showAnalyteDescription}">
+        <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: !(ljChart && displayChart) }">
+            <!-- AdvancedLjChartComponent START -->
+            <unext-advanced-lj-chart *ngIf="ljChart && displayChart" [ljChart]="ljChart" [comparisonStatistics]="comparisonStatistics"
+            [comparison]="comparison" [xAxisOption]="xAxisOption" (plotlyPng)="receivePlotlyPng($event)"></unext-advanced-lj-chart>
+            <div id="spec_advancedljpanel_noDataToDisplay" *ngIf="!displayChart">
+                {{'ADVANCEDLJPANEL.NODATA' | translate}} [{{timeFrameStartDate | uNextDate: 'mediumDate'}}] to [{{timeFrameEndDate | uNextDate: 'mediumDate'}}]
+            </div>
+        </perfect-scrollbar>
+    </div> <!-- / content-scroll-->
+
+    <!-- Dropdown options START -->
+    <div class="flex-container dropdowns-options">
+        <div class="dropdown-pair-1">
+            <mat-form-field class="space-right">
+                <mat-select placeholder="{{'ADVANCEDLJPANEL.YAXIS' | translate}}" [(value)]="yAxisOption"
+                    (selectionChange)="yAxisOptionChanged($event)" name="yAxisOption" [disabled]="isOverlay">
+                    <mat-option [value]="ljChartYaxisOptionEvalMean">
+                        {{'ADVANCEDLJPANEL.EVALMEAN' | translate}}
+                    </mat-option>
+                    <mat-option [value]="ljChartYaxisOptionCumulativeMean">
+                        {{'ADVANCEDLJPANEL.CUMMULATIVE' | translate}}
+                    </mat-option>
+                    <mat-option [value]="ljChartYaxisOptionZscore">
+                        {{'ADVANCEDLJPANEL.ZSCORE' | translate}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="{{'ADVANCEDLJPANEL.XAXIS' | translate}}"  [(value)]="xAxisOption"
+                    (selectionChange)="xAxisOptionChanged($event)" name="xAxis">
+                    <mat-option [value]="ljChartXaxisOptionSequence">
+                        {{'ADVANCEDLJPANEL.SEQUENCE' | translate}}
+                    </mat-option>
+                    <mat-option [value]="ljChartXaxisOptionDate">
+                        {{'ADVANCEDLJPANEL.DATE' | translate}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="dropdown-pair-2">
+            <mat-form-field class="space-right">
+                <mat-select placeholder="{{'ADVANCEDLJPANEL.COMPARISON' | translate}}" id="spec_advancedljpanel_comparisonOptions"
+                    [(ngModel)]="comparison" (ngModelChange)="changeSelectionDropdowns()" name="Comparison" [disabled]="isOverlay || yAxisOption === ljChartYaxisOptionZscore">
+                    <mat-option [value]="comparisonOptions.None">{{'ADVANCEDLJPANEL.NONE' | translate}}</mat-option>
+                    <mat-option *ngIf="!hasOnlyNonBrControl" [value]="comparisonOptions.PeerMeanSD">{{'ADVANCEDLJPANEL.PEERMEAN' | translate}}  </mat-option>
+                    <mat-option *ngIf="!hasOnlyNonBrControl" [value]="comparisonOptions.MethodMeanSD">{{'ADVANCEDLJPANEL.METHODMEAN' | translate}}</mat-option>
+                    <mat-option [value]="comparisonOptions.LabMeanSD">{{'ADVANCEDLJPANEL.LABMEAN' | translate}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="{{'ADVANCEDLJPANEL.DATERANGE' | translate}}" id="spec_advancedljpanel_dateOptions"
+                    [(ngModel)]="dateRange" (ngModelChange)="changeSelectionDropdowns()" name="dateRange" [disabled]="isOverlay || (comparison === comparisonOptions.LabMeanSD) || yAxisOption === ljChartYaxisOptionZscore">
+                    <mat-option [value]="dateRangeOptions.Days30">{{'ADVANCEDLJPANEL.THIRTY' | translate}}</mat-option>
+                    <mat-option [value]="dateRangeOptions.Days60">{{'ADVANCEDLJPANEL.SIXTY' | translate}}</mat-option>
+                    <mat-option [value]="dateRangeOptions.Days90">{{'ADVANCEDLJPANEL.NINTY' | translate}}</mat-option>
+                    <mat-option [value]="dateRangeOptions.Cumulative">{{'ADVANCEDLJPANEL.CUMULATIVE' | translate}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <!-- Dropdown options END -->
+
+    <!-- hidden  canvas added for calculating annotation width STARTS -->
+    <canvas id="annotation-canvas" #canvas></canvas>
+    <!-- hidden  canvas added for calculating annotation width  ENDS -->
+
+</div>
+<!--/ advanced-lj-panel-component -->

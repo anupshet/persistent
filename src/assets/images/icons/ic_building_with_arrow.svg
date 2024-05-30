@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="20px" viewBox="0 0 14 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title></title>
+    <g id="Miscellaneous" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Change-location" transform="translate(-867.000000, -16.000000)" fill="#FFFFFF">
+            <g id="noun_building_4206266" transform="translate(867.076968, 16.000000)">
+                <path d="M6.26733302,0 L6.26733302,3.06342495 L0.923032201,5.86046512 L0.923032201,14 L6.25323197,14 L6.76087004,14 L12.9230322,14 L12.9230322,0 L6.26733302,0 Z M6.26733302,12.5940803 L2.26263267,12.5940803 L2.26263267,6.73361522 L6.26733302,4.63213531 L6.26733302,12.5940803 Z M11.5975328,12.5940803 L10.2579323,12.5940803 L10.2579323,11.1881607 L8.91833185,11.1881607 L8.91833185,12.5940803 L7.57873138,12.5940803 L7.57873138,1.39112051 L11.5834317,1.39112051 L11.5834317,12.5940803 L11.5975328,12.5940803 Z" id="Shape" fill-rule="nonzero"></path>
+                <polygon id="Path" transform="translate(7.473365, 17.680338) rotate(180.000000) translate(-7.473365, -17.680338) " points="13.0236986 17.0765281 3.38911522 17.0765281 4.8460644 16.1889898 3.72126497 16 1.9230322 17.6598614 3.72126497 19.360677 4.8460644 18.8855085 3.38911522 18.2431948 13.0236986 18.2431948"></polygon>
+                <rect id="Rectangle" fill-rule="nonzero" x="3.10485038" y="7.53846154" width="2.18181818" height="2.15384615"></rect>
+                <polygon id="Path" points="11.1006664 17.1089744 1.46608302 17.1089744 2.9230322 16.221436 1.79823277 16.0324463 0 17.6923077 1.79823277 19.3931233 2.9230322 18.9179547 1.46608302 18.275641 11.1006664 18.275641"></polygon>
+                <rect id="Rectangle" fill-rule="nonzero" x="3.10485038" y="10.7692308" width="2.18181818" height="2.15384615"></rect>
+                <rect id="Rectangle" fill-rule="nonzero" x="8.55939584" y="1.07692308" width="2.18181818" height="2.15384615"></rect>
+                <rect id="Rectangle" fill-rule="nonzero" x="8.55939584" y="4.30769231" width="2.18181818" height="2.15384615"></rect>
+                <rect id="Rectangle" fill-rule="nonzero" x="8.55939584" y="7.53846154" width="2.18181818" height="2.15384615"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

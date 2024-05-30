@@ -1,0 +1,195 @@
+{
+	"data": {
+	  "getLabDetails": {
+		"labNumber": "100004",
+		"labName": "MASLAND ASSOCIATES",
+		"department": "Attention: John Doe LABORATORY",
+		"attention":"Sudhir Paranjape",
+        "address": {
+          "street": "1065 E. Broad St.",
+          "city": "Monticello, MS 39654",
+          "country": "USA"
+          }
+	  },
+	  "get_lab_lot_test_config": [
+		{
+		  "lab_lot_test": [
+			{
+			  "lot_config": {
+				"product_name": "Multiqual 1,2,3 Unassayed",
+				"master_lot_id": 1234,
+				"lot_number": "56650",
+				"lot_expiration_date": "30−Nov−2023"
+			  },
+			  "test_config": [
+				{
+				  "lab_instrument_custom_name": "AU480−284392",
+				  "lab_instrument_id": 2343,
+				  "test": {
+					"test_id": 2222,
+					"analyte_name": "Abumin",
+					"method_name": "Bromcresol Green (BCG)",
+					"instrument_name": "Beckman Coulter AU480",
+					"reagent_name": "ALB REF OSR6802",
+					"calibrator_name": "Chemistry Cal DR0070",
+					"testspec": [
+					  {
+						"reagent_lot_number": "Unspecified ***",
+						"calibrator_lot_number": "Unspecified ***"
+					  }
+					]
+				  },
+				  "lab_unit_name": "g/dL",
+				  "lab_unit_id": 65
+				},
+				{
+				  "lab_instrument_custom_name": "AU480−284392",
+				  "lab_instrument_id": 2343,
+				  "test": {
+					"test_id": 3333,
+					"analyte_name": "Alkaline Phosphatase",
+					"method_name": "PNPP, AMP Buffer",
+					"instrument_name": "AU5400",
+					"reagent_name": "ALB REF OSR6802",
+					"calibrator_name": "Cal 66300",
+					"testspec": [
+					  {
+						"reagent_lot_number": "Unspecified ***",
+						"calibrator_lot_number": "Unspecified ***"
+					  }
+					]
+				  },
+				  "lab_unit_name": "G/L",
+				  "lab_unit_id": 65
+				}
+			  ]
+			},
+			{
+			  "lot_config": {
+				"product_name": "Diabetes",
+				"master_lot_id": 12345,
+				"lot_number": "55760",
+				"lot_expiration_date": "31−Dec−2023"
+			  },
+			  "test_config": [
+				{
+				  "lab_instrument_custom_name": "AU480−284392",
+				  "lab_instrument_id": 2343,
+				  "test": {
+					"test_id": 4444,
+					"analyte_name": "Hemoglobin A1c",
+					"method_name": "Bromcresol Green (BCG)",
+					"instrument_name": "Beckman Coulter AU480",
+					"reagent_name": "HbA1c REF B00389",
+					"calibrator_name": "No Cal",
+					"testspec": [
+					  {
+						"reagent_lot_number": "Unspecified ***",
+						"calibrator_lot_number": "Unspecified ***"
+					  }
+					]
+				  },
+				  "lab_unit_name": "G/L",
+				  "lab_unit_id": 65
+				},
+				{
+				  "lab_instrument_custom_name": "AU480−284392",
+				  "lab_instrument_id": 2343,
+				  "test": {
+					"test_id": 5555,
+					"analyte_name": "Cholesterol, HDL",
+					"method_name": "Concanavaline A",
+					"instrument_name": "Beckman Coulter AU480",
+					"reagent_name": "25(OH) vitamin D REF B24838",
+					"calibrator_name": "25(OH) Vitamin D Cal REF B24839",
+					"testspec": [
+					  {
+						"reagent_lot_number": "Unspecified **",
+						"calibrator_lot_number": "Unspecified ***"
+					  }
+					]
+				  },
+				  "lab_unit_name": "%",
+				  "lab_unit_id": 65
+				}
+			  ]
+			}
+		  ]
+		}
+	  ],
+	  "getLHLabMonthStatsLevelWise": [
+		{
+		  "level": 1,
+		  "lms": [
+			{
+			  "lms_testid": 4444,
+			  "lms_year_month": "202111",
+			  "lms_mean": 5.01,
+			  "lms_sd": 0,
+			  "lms_cv": 0,
+			  "lms_num_points": 1,
+			  "lms_controllot_level": 1
+			},
+			{
+			  "lms_testid": 4444,
+			  "lms_year_month": "202110",
+			  "lms_mean": 5.12,
+			  "lms_sd": 0,
+			  "lms_cv": 0,
+			  "lms_num_points": 1,
+			  "lms_controllot_level": 1
+			},
+			{
+			  "lms_testid": 4444,
+			  "lms_year_month": "202109",
+			  "lms_mean": 5.01,
+			  "lms_sd": 0.134,
+			  "lms_cv": 2.7,
+			  "lms_num_points": 2,
+			  "lms_controllot_level": 1
+			}
+		  ],
+		  "cumulative_mean": 5.06,
+		  "cumulative_sd": 0.1,
+		  "cumulative_cv": 2,
+		  "cumulative_npts": 4
+		},
+		{
+		  "level": 2,
+		  "lms": [
+			{
+			  "lms_testid": 4444,
+			  "lms_year_month": "202111",
+			  "lms_mean": 9.53,
+			  "lms_sd": 0,
+			  "lms_cv": 0,
+			  "lms_num_points": 1,
+			  "lms_controllot_level": 1
+			},
+			{
+			  "lms_testid": 4444,
+			  "lms_year_month": "202110",
+			  "lms_mean": 9.51,
+			  "lms_sd": 0,
+			  "lms_cv": 0,
+			  "lms_num_points": 1,
+			  "lms_controllot_level": 1
+			},
+			{
+			  "lms_testid": 4444,
+			  "lms_year_month": "202109",
+			  "lms_mean": 9.46,
+			  "lms_sd": 0.057,
+			  "lms_cv": 0.6,
+			  "lms_num_points": 2,
+			  "lms_controllot_level": 1
+			}
+		  ],
+		  "cumulative_mean": 9.49,
+		  "cumulative_sd": 0.048,
+		  "cumulative_cv": 0.5,
+		  "cumulative_npts": 4
+		}
+	  ]
+	}
+  }

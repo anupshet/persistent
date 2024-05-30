@@ -1,0 +1,216 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../../../assets/scss/variables';
+
+.configurations-component {
+  padding: 30px 50px;
+  margin: 0px 0px 10px 10px;
+  height: calc(100vh - 250px);
+
+  .configuration-list {
+    padding-left: 10px;
+  }
+
+  .configuration-header {
+    padding: 5px 0 10px;
+
+
+    span.title {
+      font-size: 21px;
+      margin-right: 25px;
+    }
+
+    .create-link {
+      font-size: 15;
+    }
+  }
+
+  .configuration-list-table {
+    width: 100%;
+
+    th {
+      text-transform: uppercase;
+      font-size: 12.5px;
+      line-height: 1.28;
+      letter-spacing: 2px;
+      color: $label-color;
+      text-align: left;
+      padding-bottom: 8px;
+    }
+
+    .mat-cell {
+      padding: 10px 0;
+      font-size: 16px;
+      line-height: 1.68p;
+      letter-spacing: 0.5px;
+      color: $label-color;
+      text-align: left;
+
+      .icn-delete {
+        color: $carmine;
+        width: 35px;
+        margin: 0px 35px;
+      }
+
+      button.mat-focus-indicator.spec-edit-edge.mat-raised-button.mat-button-base.mat-primary,
+      button.mat-focus-indicator.spec-configure.mat-raised-button.mat-button-base.mat-primary {
+        width: 142px;
+        height: 34px;
+        font-size: 14.6px;
+      }
+
+      span.icn-delete-span {
+        width: 105px;
+        height: 24px;
+      }
+    }
+
+    .col-name {
+      width: 30%;
+    }
+
+    .col-header {
+      width: 30%;
+      font-size: 15px;
+
+      padding: 0;
+      background-color: $white;
+      outline: none;
+      color: $blue-darker;
+    }
+
+    td.col-action {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .edge-list {
+    margin: 0px 0px 40px 0px;
+  }
+
+  .transformers-heading {
+    font-size: 25px;
+    font-weight: 500;
+    margin: 3px;
+  }
+
+  .list {
+    display: flex;
+    margin: 15px 3px;
+    letter-spacing: 0.5px;
+
+    .name {
+      width: 330px;
+      font-size: 18px;
+      padding: 7px 10px;
+      color: $label-color;
+    }
+
+    button {
+      width: 145px;
+      height: 32px;
+      text-align: center;
+      margin: 0px 30px;
+    }
+
+    button.mat-focus-indicator.spec-edit-edge.mat-raised-button.mat-button-base.mat-primary {
+      width: 142px;
+      height: 28px;
+      margin: 15px 10px 20px 35px;
+      padding: 5px 16px 7px;
+      background-color: $blue-darker;
+    }
+
+    .spec-edit-edge {
+      width: 142px;
+      height: 28px;
+      margin: 15px 10px 20px 35px;
+      padding: 5px 16px 7px;
+      background-color: $blue-darker;
+    }
+
+    .icn-delete {
+      color: $carmine;
+      width: 35px;
+      margin: -4px 5px;
+    }
+  }
+
+  .no-transformer-msg {
+    font-size: 20px;
+    margin: 8px 15px;
+  }
+}
+
+.mat-table {
+  min-width: fit-content;
+
+  ::ng-deep .mat-sort-header-arrow[style] {
+
+    // Hide default arrow stem
+    .mat-sort-header-stem {
+      display: none;
+    }
+
+    .mat-sort-header-indicator {
+      opacity: 1;
+      color: $black;
+      font-weight: bold;
+
+      // Hide default arrow as its composed of left, right and middle
+      .mat-sort-header-pointer-left,
+      .mat-sort-header-pointer-right,
+      .mat-sort-header-pointer-middle {
+        display: none;
+      }
+    }
+  }
+
+  .mat-header-row {
+    -ms-flex-align: center;
+    align-items: center;
+    font-weight: 800;
+    background-color: $white  !important;
+    border-bottom: 1px solid $bottom-border-color  !important;
+    box-shadow: none;
+
+    .mat-header-cell {
+      color: $blue-darker;
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+      font-weight: 600;
+      justify-content: flex-start;
+      margin-left: 20px;
+    }
+  }
+
+  mat-cell:first-child,
+  mat-footer-cell:first-child,
+  mat-header-cell:first-child {
+    padding-left: 0 !important;
+  }
+
+  mat-cell:last-child,
+  mat-footer-cell:last-child,
+  mat-header-cell:last-child {
+    padding-right: 0 !important;
+  }
+
+  .mat-row {
+    align-items: start;
+
+    .mat-cell {
+      justify-content: flex-start !important;
+      margin-left: 20px;
+    }
+  }
+
+  .arrow-icon {
+    margin-left: 5px;
+    width: 10px;
+  }
+
+  .rotate {
+    transform: rotate(180deg);
+  }
+}

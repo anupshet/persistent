@@ -1,0 +1,36 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.  -->
+<div class="details-view error-log-container" *ngIf="showDetailsId === statusId && detailsFlag">
+  <div class="error-title">
+    <span>{{'ERRORLOG.ERRORLOG' | translate}}</span>
+  </div>
+  <perfect-scrollbar [config]="{ suppressScrollY: false , suppressScrollX: false}">
+    <div class="error-row-container conn-scrollbar error-row  spec-error-row">
+      <div class="title">{{errorTitle}}</div>
+      <div class="importErrorDetails"
+        *ngIf="importStatusData?.connErrorType === 'Import Error' && importStatusData?.errorCount > 0; else errorMessage">
+        <div *ngFor="let obj of groupedObject | keyvalue">
+          <div class="import-error-hierarchyPath  error-detail">{{obj.key}}</div>
+          <div class="error-log" *ngFor="let error of obj.value">
+            <div class="error-name error-detail">
+              {{error.details}}
+            </div>
+            <div class="error-count spec-error-count">
+              <span class="purple count-bold mr-2">{{error.count}}</span>
+              <span class="ml-7">{{'ERRORLOG.RESULTS' | translate}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #errorMessage>
+        <div class="error-name transformer-error-detail">
+          {{errorDetails}}
+        </div>
+      </ng-template>
+    </div>
+  </perfect-scrollbar>
+  <div class="clearfix mt-20 mr-10 mb-10">
+    <button mat-raised-button color="primary" (click)="close()" class="right spec_back">
+      <span>{{'ERRORLOG.CLOSE' | translate}}</span>
+    </button>
+  </div>
+</div>

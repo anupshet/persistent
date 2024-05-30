@@ -1,0 +1,15 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+.greeting-component {
+
+    &.display-inline {
+        display: inline;
+        h1 {
+            display: inline;
+        }
+    }
+
+    .small-font {
+        font-size: 35px;
+        font-weight: 400;
+    }
+}

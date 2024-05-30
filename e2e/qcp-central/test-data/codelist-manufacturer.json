@@ -1,0 +1,11 @@
+{
+  "QA": {
+    "URL": "https://qcpcentralqa.global.bio-rad.com/",
+    "Username": "amruta_karale+qaqcpadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "NewManufacturerName": "Test Manufacturer - 14-Apr-21"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

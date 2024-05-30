@@ -1,0 +1,230 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../../../assets/scss/base/variables-peak';
+@import '../../../../assets/scss/mixins/border-radius';
+@import "../../../../assets/scss/variables";
+
+.manage-expected-tests {
+  .dialog-header {
+    .manage-expected-tests-header-container {
+      align-self: stretch;
+      flex-grow: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      background-color: $white;
+
+      .manage-expected-tests-header {
+        flex-grow: 0;
+        font-family: Lato;
+        font-size: 34px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: 0.25px;
+        text-align: center;
+        color: $black;
+      }
+    }
+
+    .second-header-container {
+      align-self: stretch;
+      flex-grow: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 20px 0 21px;
+    
+      .second-header {
+        width: 963px;
+        flex-grow: 0;
+        font-family: Lato;
+        font-size: 21px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: 0.25px;
+        text-align: left;
+        color: $black;
+      }
+    
+      .additional-controls {
+        align-self: stretch;
+        flex-grow: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+        gap: 10px;
+        padding: 0 14px;
+      }
+    }
+
+    .close-button {
+      width: 24px;
+      height: 24px;
+      float: right;
+      position: relative;
+      color: $close-icon;
+      cursor: pointer;
+    }
+
+    .lose-changes-wrapper {
+        @include border-radius(3px);
+        padding:$custom-type-size-xxsmall;
+        border: 1px solid $carmine;
+      & .lose-changes-msg{
+        color: $carmine;
+      }
+    }
+  }
+
+  .product-secondary-text {
+    margin-left: 25px;
+    margin-top: -6px;
+    flex-grow: 0;
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: $br-grey;
+  }
+
+  .test-secondary-text {
+    margin-left: 25px;
+    margin-top: -6px;
+    flex-grow: 0;
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: $br-grey;
+  }
+
+  .level-checkboxes {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .level-checkbox {
+    flex-grow: 0;
+    margin-left: 25px;
+  }
+
+  .level-checkbox-label {
+    flex-grow: 0;
+    font-family: Lato;
+    font-size: 14.6px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.1;
+    letter-spacing: normal;
+    text-align: left;
+    color: $black;
+  }
+
+  .loading-message {
+    display: block;
+    text-align: center;
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.1;
+    letter-spacing: normal;
+    text-align: center;
+    padding: 260px;
+    color: $black;
+  }
+
+  .tree-data {
+    overflow-x: auto;
+    height: 540px;
+    width: 100%;
+  
+    .tree-node-container {
+      overflow-x: auto;
+      margin-left: 10px;
+      padding-top: 10px;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+      position: relative;
+    }
+
+    .tree-selection-text {
+      width: 248px;
+      height: 30px;
+      flex-grow: 0;
+      margin-left: 10px;
+      font-family: Lato;
+      font-size: 25px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: left;
+      color:$black;
+    }
+  
+    .select-items-text {
+      display: flex;
+      padding: 10px 0px 5px 10px;
+      width: 248px;
+      height: 30px;
+      flex-grow: 0;
+      font-family: Lato;
+      font-size: 25px;
+      line-height: normal;
+      text-align: left;
+      color: $black;
+    }
+  
+    mat-tree {
+      background: transparent;
+  
+      .mat-tree-node {
+        min-height: 35px;
+  
+        .mat-icon-button {
+          height: 35px;
+          width: 30px;
+          line-height: 35px;
+        }
+      }
+    }
+  
+    mat-icon {
+      vertical-align: top;
+    }
+
+    .nested-level {
+      margin-left: 18px;
+    }
+  
+    .arrow-button {
+      display: flex !important;
+      align-self: flex-start !important;
+    }
+  }
+  
+  .mat-dialog-content {
+    background-color: $gray-white;
+    padding: 0;
+    margin: 0;
+    max-height: none !important;
+  }
+}

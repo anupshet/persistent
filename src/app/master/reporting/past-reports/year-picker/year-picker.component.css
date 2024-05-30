@@ -1,0 +1,26 @@
+.year-picker .mat-calendar-period-button {
+  pointer-events: none;
+}
+
+.year-picker .mat-calendar-arrow {
+  display: none;
+}
+
+::ng-deep .mat-calendar-arrow {
+  display: none;
+}
+
+::ng-deep .mat-calendar-period-button {
+  pointer-events: none;
+}
+
+::ng-deep .mat-form-field {
+  width: 240px;
+  margin-right: 60px;
+}
+
+::ng-deep .mat-form-field .mat-input-element {
+  width: 240px;
+  margin-right: 60px;
+}
+/*# sourceMappingURL=year-picker.component.css.map */

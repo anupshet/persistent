@@ -1,0 +1,17 @@
+{
+	"DEV": {
+		"URL": "http://localhost:4200/login",
+		"BenchUsername": "mayank_jatay+BSAccountLT@bio-rad.com",
+		"Password": "BioBio1",
+		"FirstName": "Test",
+		"SupervisorUsername": "shital_limbhore+bioradLS-15018@bio-rad.com",
+		"PointAnalyte": "ALBUMIN",
+		"ControlName": "Assayed Chemistry",
+		"Departmentname": "D4",
+		"InstrumentName": "Alinity c",
+		"lev1Value": "3.1",
+		"lev2Value": "7.2"
+	},
+	"QA": {},
+	"STAGE": {}
+}

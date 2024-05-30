@@ -1,0 +1,22 @@
+{
+  "2642ab4c84d43f0f8a2d603a5ef85e38" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "53b352e91a155a77",
+      "status" : "failed",
+      "statusDetails" : "Failed: No element found using locator: By(xpath, .//mat-nav-list//div[contains(text(),\"LargeData\")])",
+      "time" : {
+        "start" : 1689855825876,
+        "stop" : 1689855852603,
+        "duration" : 26727
+      }
+    } ]
+  }
+}

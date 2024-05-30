@@ -1,0 +1,52 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="node-info-details-component">
+  <span class="trigger spec_icon" [matMenuTriggerFor]="menu" #trigger="matMenuTrigger" (click)="showNodeDetails()">
+    <span class="ic-info-24px"></span>
+  </span>
+
+  <mat-menu #menu="matMenu" [overlapTrigger]="false" class="info-tooltip-component-mat-menu">
+    <div ng-label-tmp>
+      <div *ngIf="headerData; else spinner" class="analyte-detail-tooltip-template">
+        <span class="analyte-header dark-grey mat-h2">{{'NODEINFODETAILS.ANALYTEDETAILS' | translate}}</span>
+        <dl class="mat-body-1">
+          <dt>{{'NODEINFODETAILS.INSTRUMENT' | translate}}</dt>
+          <dd *ngIf="headerData.instrumentAlias">{{ headerData.instrumentAlias }}</dd>
+          <dd *ngIf="!headerData.instrumentAlias">{{ headerData.instrumentName }}</dd>
+          <br />
+          <dt>{{'NODEINFODETAILS.PRODUCT' | translate}}</dt>
+          <dd>{{ headerData.customProductName ? headerData.customProductName : headerData.productName }}</dd>
+          <br />
+          <dt>{{'NODEINFODETAILS.LOTNUMBER' | translate}}</dt>
+          <dd>{{ headerData.productMasterLotNumber }}</dd>
+          <br />
+          <dt>{{'NODEINFODETAILS.ANALYTE' | translate}}</dt>
+          <dd>{{ headerData.analyteName }}</dd>
+          <br />
+          <dt>{{'NODEINFODETAILS.REAGENT' | translate}}</dt>
+          <dd>{{ headerData.reagentName }}</dd>
+          <br />
+          <dt>{{'NODEINFODETAILS.REAGENTLOT' | translate}} </dt>
+          <dd *ngIf="headerData.reagentLotNumber">{{ headerData.reagentLotNumber }}</dd>
+          <dd *ngIf="!headerData.reagentLotNumber"></dd>
+          <br />
+          <dt>{{'NODEINFODETAILS.METHOD' | translate}}</dt>
+          <dd>{{ headerData.method }}</dd>
+          <br />
+          <dt>{{'NODEINFODETAILS.UNIT' | translate}}</dt>
+          <dd>{{ headerData.unit }}</dd>
+          <br />
+          <dt>{{'NODEINFODETAILS.CALIBRATOR' | translate}}</dt>
+          <dd> {{ headerData.calibrator }}</dd>
+          <br />
+          <dt>{{'NODEINFODETAILS.CALIBRATORLOT' | translate}}</dt>
+          <dd *ngIf="headerData.calibratorLotNumber">{{ headerData.calibratorLotNumber }}</dd>
+        </dl>
+      </div>
+      <ng-template #spinner>
+        <div class="info-tooltip-component-mat-menu">
+          <mat-spinner [diameter]="50"></mat-spinner>
+        </div>
+      </ng-template>
+    </div>
+  </mat-menu>
+</div>

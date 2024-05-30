@@ -1,0 +1,21 @@
+// Main
+//
+// main.scss contains all the files that comprise the CSS for your skin. To get
+// started with skins, create or change variables in `_variables.scss` to
+// configure the underlying CSS. Add additional CSS/Sass to `_style.scss` which
+// is appended to the base CSS to complete the main.
+//
+
+@import 'variables';
+
+@include mat-core($br-typography);
+@include angular-material-theme($br-theme);
+
+@import '../../assets/scss/base/variables-peak';
+
+@import '../../assets/scss/vendor';
+
+@import '../../assets/scss/all';
+
+@include responsive-all;
+@import 'style';

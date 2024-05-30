@@ -1,0 +1,14 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="account-management">
+  <mat-tab-group class="tabs-group" animationDuration="0ms" selectedIndex="{{tabIndex}}"
+    (selectedTabChange)="changeTab($event)">
+    <mat-tab label="{{'ACCOUNTLIST.ACCOUNTS' | translate}}">
+      <unext-accounts-list *ngIf="tabIndex === 0 || hasPermissionToAccess([permissions.AccountListView])">
+      </unext-accounts-list>
+    </mat-tab>
+    <mat-tab label="{{'ACCOUNTLIST.LOCATION' | translate}}">
+      <unext-location-list *ngIf="tabIndex === 1 || hasPermissionToAccess([permissions.LocationListView])"
+        [accountId]="accountId"></unext-location-list>
+    </mat-tab>
+  </mat-tab-group>
+</div>

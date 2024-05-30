@@ -1,0 +1,8 @@
+<!-- /* © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.*/ -->
+<section class="reporting-component">
+  <mat-tab-group (selectedTabChange)="onTabSelect($event)" animationDuration="0ms" selectedIndex="{{tabIndex}}">
+    <mat-tab  label="{{ 'REPORTING.NEWREPORT' | translate }}"></mat-tab>
+    <mat-tab  label="{{ 'REPORTING.PASTREPORTS' | translate }}"></mat-tab>
+  </mat-tab-group>
+  <router-outlet></router-outlet>
+</section>

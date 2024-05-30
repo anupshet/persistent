@@ -1,0 +1,102 @@
+@import '../../../../../assets/scss/variables';
+@import '../../../../../assets/scss/base/variables-peak';
+@import '../../../../../assets/scss/mixins';
+
+.header {
+  z-index: 100;
+  position: relative;
+
+  .mat-icon {
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:before {
+      color: $br-white-text-high-emphasis;
+    }
+  }
+
+}
+
+.header-holder {
+  position: relative;
+  padding: ($custom-space-small + $custom-space-xsmall) $custom-space-small;
+  background: $menu-bg;
+  color: $br-white-text-high-emphasis;
+  @include media(tablet-and-up) {
+    padding-bottom: 0;
+    padding: 0 ($custom-space-base + $custom-space-small) 0 ($custom-space-large - $custom-space-xxsmall);
+  }
+
+  .flex-container {
+    padding: 0;
+  }
+
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: $custom-space-base - $custom-space-xxsmall;
+    margin-bottom: 0;
+
+    li {
+      padding: $custom-space-small;
+      margin-right: $custom-space-base;
+      border-bottom: 3px solid transparent;
+      list-style: none;
+
+      > a {
+        font-weight: 700;
+        color: rgba($white,.7);
+        // Prevents underline appearing on the header links.
+        text-decoration: none;
+        cursor: pointer;
+
+        &.disabled-link {
+          pointer-events: none;
+          cursor: default;
+          color: $white;
+          opacity: .45;
+        }
+      }
+      > a:hover, a:active, a:focus {
+        color: $br-white-text-high-emphasis;
+      }
+
+      &:active,&.active {
+        border-color: $br-orange;
+      }
+    }
+  }
+  h1 {
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .heading {
+    height: auto;
+    padding: 0;
+    background: none;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .summary {
+    margin: 2px 0 3px 6px;
+  }
+}
+
+h2 {
+  margin: auto 0;
+}
+
+.flex-container {
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-1 {
+  text-align: right;
+}

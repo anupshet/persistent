@@ -1,0 +1,27 @@
+{
+	"DEV": {
+		"NumberOfRoles": "2",
+		"URL": "https://unity-dev.qcnet.com/",
+		"AUMUsername" : "nitin_ghugare+L1_TestWelcomeScreenDev@bio-rad.com",
+		"LUMUsername" : "nitin_ghugare+L1_TestWelcomeScreenDev@bio-rad.com",
+		"LTUsername" : "nitin_ghugare+L1_TestWelcomeScreenDev@bio-rad.com",
+		"TUsername" : "nitin_ghugare+L1_TestWelcomeScreenDev@bio-rad.com",
+		"AumLsUsername" : "nitin_ghugare+L1_TestWelcomeScreenDev@bio-rad.com",
+		"AumLumLsUsername" : "nitin_ghugare+L1_TestWelcomeScreenDev@bio-rad.com",
+		"LumLtUsername" : "nitin_ghugare+L1_TestWelcomeScreenDev@bio-rad.com",
+		"LumTUsername" : "nitin_ghugare+L1_TestWelcomeScreenDev@bio-rad.com",
+		"CTSUsername" : "nitin_ghugare+L1_TestWelcomeScreenDev@bio-rad.com",
+		"LSUsername" : "nitin_ghugare+L1_TestWelcomeScreenDev@bio-rad.com",
+		"Password" : "Welcome1",
+		"FirstName" : "Sudhir",
+		"TransformerName" : "",
+		"FileName" : "",
+		"InstrumentCode" : "",
+		"Dept1Instr" : "",
+		"UpdateConfigurationEntity" : "Configuration Name",
+		"UpdatedConfigurationName" : "Test"
+	},
+	"QA": {},
+	"STAGE": {},
+	"DEV2": {}
+}

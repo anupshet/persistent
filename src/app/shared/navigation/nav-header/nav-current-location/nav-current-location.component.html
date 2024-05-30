@@ -1,0 +1,20 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div [ngClass]="{'displayFlex' : displayTitle === reportText}">
+    <div class="wrapper flex-wrapper" matTooltip="{{displayText | translate}}">
+        <button mat-icon-button class="backArrow spec_back_arrow"
+            *ngIf="!hideBackArrow && (nodeType !== currentLocationType || router.url.includes('reporting')) "
+            (click)="backButtonClick($event)">
+            <mat-icon [svgIcon]="icons.arrowBack[48].name" class="arrowBack"></mat-icon>
+        </button>
+        <div *ngIf="!useSmallFont" class="displayTitle">
+            <h4 class="mat-h4 mb-0 cursor-pointer spec_title" (click)="backButtonClick($event)">{{ getLabel(displayTitle) | titlecase}}</h4>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="useSmallFont" class="wrapper flex-wrapper">
+    <div class="displayTitle">
+        <a class="breadcrumb-item mat-body-1 mb-0 cursor-pointer" (click)="backButtonClick($event)">{{displayTitle}}</a> /
+        <a class="breadcrumb-item mat-body-1 mb-0 cursor-pointer" (click)="goToDashboard($event)" matTooltip="{{'TRANSLATION.GODASHBOARD' | translate }}">{{'TRANSLATION.DASHBOARD' | translate }}</a>
+    </div>
+</div>

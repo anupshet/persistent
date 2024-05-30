@@ -1,0 +1,387 @@
+{
+    "data": {
+      "get_lab_header_info": {
+        "lab_number": "100297",
+        "lab_name": "Bell Hospital",
+        "department": "Attention: Gerry Brown",
+        "address": {
+          "street": "901 Lakeshore Dr, Ishpeming, MI 49849",
+          "country": "USA"
+        }
+      },
+        "getLotInfo": {
+            "product_name": "Assayed Chemistry",
+            "lot_number": "65789V",
+            "lot_expiration_date": "31-Mar-2030"
+        },
+        "get_lab_lot_test": [
+            {
+              "lab_instrument": {
+                "instrument_id": 1347,
+                "instrument_name": "Dimension EXL",
+                "instrument_custom_name": "Dimension EXL",
+                "instrument_serial": "no-serial"
+              },
+              "lot_test_config": [
+                {
+                  "lot_config": {
+                    "product_name": "Multiqual 1,2,3 Unassayed",
+                    "master_lot_id": 1692,
+                    "lot_number": "56650",
+                    "lot_expiration_date": "30−Nov−2022"
+                  },
+                  "test_config": [
+                    {
+                      "lab_unit_name": "g/dL",
+                      "lab_unit_id": 15,
+                      "test": {
+                        "id": 233,
+                        "analyte_name": "Abumin",
+                        "method_name": "Bromcresol Purple (BCP)",
+                        "instrument_id": "1347",
+                        "instrument_name": "Dimension EXL",
+                        "reagent_category_id": 1,
+                        "reagent_category_name": "Generic Reagent",
+                        "reagent_id": 694,
+                        "reagent_name": "ALB REF OSR6802",
+                        "calibrator_name": "Cal 66300",
+                        "testspec": [
+                          {
+                            "id": 234,
+                            "reagent_lot_number": "Unspecified ***",
+                            "calibrator_lot_number": "Unspecified ***"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "lab_unit_name": "U/L",
+                      "lab_unit_id": 56,
+                      "test": {
+                        "id": 245,
+                        "analyte_name": "Alkaline Phosphatase",
+                        "method_name": "PNPP, AMP Buffer - IFCC Ref. Proc., Calibrated",
+                        "instrument_id": "1347",
+                        "instrument_name": "Dimension EXL",
+                        "reagent_category_id": 1,
+                        "reagent_category_name": "Generic Reagent",
+                        "reagent_id": 782,
+                        "reagent_name": "ALPI REF DF150",
+                        "calibrator_name": "ALPI Cal REF DC150",
+                        "testspec": [
+                          {
+                            "id": 246,
+                            "reagent_lot_number": "Unspecified ***",
+                            "calibrator_lot_number": "Unspecified ***"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "lot_config": {
+                    "product_name": "Pediatric",
+                    "master_lot_id": 1643,
+                    "lot_number": "44410",
+                    "lot_expiration_date": "31−Jul−2024"
+                  },
+                  "test_config": [
+                    {
+                      "lab_unit_name": "mg/dL",
+                      "lab_unit_id": 14,
+                      "test": {
+                        "id": 325,
+                        "analyte_name": "Bilirubin, Total/TBIL",
+                        "method_name": "Jendrassik Grof",
+                        "instrument_id": "1347",
+                        "instrument_name": "Dimension EXL",
+                        "reagent_category_id": 1,
+                        "reagent_category_name": "Generic Reagent",
+                        "reagent_id": 794,
+                        "reagent_name": "TBI REF DF167",
+                        "calibrator_name": "TBI/DBI Cal REF DC167",
+                        "testspec": [
+                          {
+                            "id": 326,
+                            "reagent_lot_number": "Unspecified ***",
+                            "calibrator_lot_number": "Unspecified ***"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+        "getLMS": [
+          {
+            "master_lot_id": 1692,
+            "testSpec": 234,
+            "data": [
+              {
+                "level": 1,
+                "year_month": "202202",
+                "mean": "2.35",
+                "sd": "0.050",
+                "cv": "2.1",
+                "num_point": "30",
+                "cum_mean": "2.38",
+                "cum_cv": "0.047",
+                "cum_sd": "2.0",
+                "cum_num_points": "639",
+                "peer_status": "true",
+                "analyte_id": "7",
+                "testid": "233",
+                "testspec_id": "234",
+                "pms": {
+                    "level": "1",
+                    "mean": "2.34",
+                    "sd": "0.063",
+                    "cv": "2.7",
+                    "num_points": "2319",
+                    "num_labs": "83",
+                    "cum_mean": "2.33",
+                    "cum_sd": "0.063",
+                    "cum_cv": "2.7",
+                    "cum_num_points": "74635",
+                    "cum_num_labs": "138",
+                    "cvr": "0.8", 
+                    "sdi": "0.15", 
+                    "cum_cvr": "0.7",
+                    "cum_sdi": "0.67"
+                },
+                "method_stat": {
+                    "mean": "2.39",
+                    "sd": "0.137",
+                    "cv": "5.8",
+                    "num_points": "8733",
+                    "num_labs": "197",
+                    "cum_mean": "2.41",
+                    "cum_sd": "0.115",
+                    "cum_cv": "4.8",
+                    "cum_num_points": "287000",
+                    "cum_num_lab": "361",
+                    "cvr": "0.4",
+                    "sdi": "-0.29",
+                    "cum_cvr": "0.4",
+                    "cum_sdi": "-0.28"
+                }
+              },
+              {
+                  "level": 3,
+                  "year_month": "202202",
+                  "mean": "4.03",
+                  "sd": "0.050",
+                  "cv": "1.2",
+                  "num_points": "30",
+                  "cum_mean": "4.09",            
+                  "cum_sd": "0.062",
+                  "cum_cv": "1.5",
+                  "cum_num_points": "635",
+                  "peer_status": "true",            
+                  "testid": "233",
+                  "testspec_id": "234",
+                  "pms": {
+                      "level": "3",
+                      "mean": "4.02",
+                      "sd": "0.080",
+                      "cv": "2.0",
+                      "num_points": "2351",
+                      "num_labs": "84",
+                      "cum_mean": "4.03",
+                      "cum_sd": "0.086",
+                      "cum_cv": "2.1",
+                      "cum_num_points": "77740",
+                      "cum_num_labs": "151",
+                      "cvr": "0.6", 
+                      "sdi": "0.08",
+                      "cum_cvr": "0.7",
+                      "cum_sdi": "0.68"
+                  },
+                  "method_stat": {
+                    "mean": "4.06",
+                    "sd": "0.190",
+                    "cv": "4.7",
+                    "num_points": "8824",
+                    "num_labs": "199",
+                    "cum_mean": "4.11",
+                    "cum_sd": "0.174",
+                    "cum_cv": "4.2",
+                    "cum_num_points": "291000",
+                    "cum_num_lab": "376",
+                    "cvr": "0.3",
+                    "sdi": "-0.15",
+                    "cum_cvr": "0.4",
+                    "cum_sdi": "-0.14"
+                }
+              }
+            ]
+          },
+          {
+            "master_lot_id": 1692,
+            "testSpec": 246,
+            "data": [
+              {
+                "level": 1,
+                "year_month": "202202",
+                "mean": "27.28",
+                "sd": "2.54",
+                "cv": "9.3",
+                "num_point": "31",
+                "cum_mean": "29.03",
+                "cum_cv": "2.37",
+                "cum_sd": "8.2",
+                "cum_num_points": "648",
+                "peer_status": "true",
+                "analyte_id": "7",
+                "testid": "233",
+                "testspec_id": "234",
+                "pms": {
+                    "level": "1",
+                    "mean": "29.14",
+                    "sd": "2.93",
+                    "cv": "10.01",
+                    "num_points": "2324",
+                    "num_labs": "80",
+                    "cum_mean": "30.97",
+                    "cum_sd": "2.95",
+                    "cum_cv": "9.5",
+                    "cum_num_points": "71701",
+                    "cum_num_labs": "132",
+                    "cvr": "0.9", 
+                    "sdi": "-0.64", 
+                    "cum_cvr": "0.9",
+                    "cum_sdi": "-0.66"
+                },
+                "method_stat": {
+                    "mean": "29.49",
+                    "sd": "2.55",
+                    "cv": "8.7",
+                    "num_points": "10200",
+                    "num_labs": "177",
+                    "cum_mean": "31.25",
+                    "cum_sd": "2.66",
+                    "cum_cv": "8.5",
+                    "cum_num_points": "334000",
+                    "cum_num_lab": "347",
+                    "cvr": "1.1",
+                    "sdi": "-0.87",
+                    "cum_cvr": "1.0",
+                    "cum_sdi": "-0.83"
+                }
+              },
+              {
+                  "level": 3,
+                  "year_month": "202202",
+                  "mean": "283.2",
+                  "sd": "5.02",
+                  "cv": "1.8",
+                  "num_points": "31",
+                  "cum_mean": "288.6",            
+                  "cum_sd": "7.60",
+                  "cum_cv": "2.6",
+                  "cum_num_points": "642",
+                  "peer_status": "true",            
+                  "testid": "233",
+                  "testspec_id": "234",
+                  "pms": {
+                      "level": "3",
+                      "mean": "285.2",
+                      "sd": "9.83",
+                      "cv": "3.4",
+                      "num_points": "2359",
+                      "num_labs": "81",
+                      "cum_mean": "292.0",
+                      "cum_sd": "9.41",
+                      "cum_cv": "3.2",
+                      "cum_num_points": "74891",
+                      "cum_num_labs": "145",
+                      "cvr": "0.5", 
+                      "sdi": "-0.20",
+                      "cum_cvr": "0.8",
+                      "cum_sdi": "-0.36"
+                  },
+                  "method_stat": {
+                    "mean": "297.1",
+                    "sd": "12.99",
+                    "cv": "4.4",
+                    "num_points": "10316",
+                    "num_labs": "177",
+                    "cum_mean": "297.3",
+                    "cum_sd": "14.28",
+                    "cum_cv": "4.8",
+                    "cum_num_points": "343000",
+                    "cum_num_lab": "361",
+                    "cvr": "0.4",
+                    "sdi": "-1.07",
+                    "cum_cvr": "0.5",
+                    "cum_sdi": "-0.67"
+                }
+              }
+            ]
+          },
+
+
+          {
+            "master_lot_id": 1643,
+            "testSpec": 326,
+            "data": [
+              {
+                "level": 2,
+                "year_month": "202202",
+                "mean": "16.84",
+                "sd": "0.270",
+                "cv": "1.6",
+                "num_point": "25",
+                "cum_mean": "17.19",
+                "cum_cv": "0.419",
+                "cum_sd": "2.4",
+                "cum_num_points": "259",
+                "peer_status": "true",
+                "analyte_id": "7",
+                "testid": "325",
+                "testspec_id": "326",
+                "pms": {
+                    "level": "2",
+                    "mean": "16.75",
+                    "sd": "0.453",
+                    "cv": "2.7",
+                    "num_points": "326",
+                    "num_labs": "20",
+                    "cum_mean": "16.83",
+                    "cum_sd": "0.463",
+                    "cum_cv": "2.8",
+                    "cum_num_points": "481",
+                    "cum_num_labs": "20",
+                    "cvr": "0.6", 
+                    "sdi": "0.20", 
+                    "cum_cvr": "0.9",
+                    "cum_sdi": "0.77"
+                },
+                "method_stat": {
+                    "mean": "16.74",
+                    "sd": "0.435",
+                    "cv": "2.6",
+                    "num_points": "1113",
+                    "num_labs": "34",
+                    "cum_mean": "16.78",
+                    "cum_sd": "0.449",
+                    "cum_cv": "2.7",
+                    "cum_num_points": "1499",
+                    "cum_num_lab": "34",
+                    "cvr": "0.6",
+                    "sdi": "0.23",
+                    "cum_cvr": "0.9",
+                    "cum_sdi": "0.91"
+                }
+              }
+            ]
+          }
+
+
+         
+        ]
+    }
+  }

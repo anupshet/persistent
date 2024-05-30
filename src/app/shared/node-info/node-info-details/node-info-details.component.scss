@@ -1,0 +1,9 @@
+@import '../../../../assets/scss/variables';
+.analyte-detail-tooltip-template{
+  .dark-grey{
+    color: $gray-700;
+  }
+ & dt{
+    color: $gray-700;
+  }
+}

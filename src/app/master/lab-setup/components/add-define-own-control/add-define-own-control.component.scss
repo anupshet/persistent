@@ -1,0 +1,162 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../lab-setup.component';
+@import '../../../../../assets/scss/variables';
+
+.input-row {
+  display: flex;
+}
+
+.customControlEntry {
+  max-width: 236px;
+}
+
+.input-container {
+  width: 100%;
+  vertical-align: top;
+}
+
+.expirationDate {
+  position: relative;
+  left: 10px;
+}
+
+.level-in-use {
+  margin-right: 10px;
+}
+
+.no-border {
+  border: none;
+}
+
+.ic-delete {
+  fill: $carmine;
+  height: 100%;
+}
+
+.action-container {
+  align-items: flex-start;
+  gap: 24px;
+  flex: 1 0 0;
+
+  .align {
+    display: flex;
+    height: 36px;
+    align-items: center;
+  }
+
+  .left {
+    @extend .align;
+    float: left;
+  }
+
+  .right {
+    @extend .align;
+    float: right;
+  }
+}
+
+.add-new-lot-btn {
+  position: relative;
+  bottom: 23px;
+}
+
+.ht{
+  height: 15px;
+}
+
+.add-lot {
+  color: $blue-light2;
+  width: 93px;
+  height: 14px;
+  flex-grow: 0;
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.88px;
+  text-align: right;
+  margin-left: 5px
+}
+
+.ic-add {
+  width: 12px;
+  height: 12px;
+  flex-grow: 0;
+  color: $blue-light2;
+}
+
+.delete-lot {
+  color: $carmine
+}
+
+
+.close-button {
+  display: flex;
+  justify-content: end;
+  padding-top: 5px;
+
+  .close {
+    cursor: pointer;
+    color: $gray-600;
+  }
+}
+
+.errorText {
+  position: relative;
+  bottom: 24px;
+  font-size: 12px;
+  color: $reject;
+}
+
+.checkboxErr {
+  position: relative;
+  bottom: 14px;
+}
+
+.option-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tooltip {
+  margin-left: 8px;
+}
+
+::ng-deep {
+  .cdk-overlay-pane:has(.additional-instrument-overlay) {
+    transform: translateX(0) !important;
+  }
+
+  .additional-instrument-overlay.mat-primary.mat-select-panel {
+    min-width: 100% !important;
+
+    .mat-option {
+      height: 64px;
+      line-height: 1em;
+      border-bottom: 1px solid rgba(33, 33, 33, 0.08);
+
+      &.mat-active {
+        background: $option-active;
+      }
+
+      .department-name {
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 14px;
+        line-height: 1.43;
+        letter-spacing: 0.25px;
+      }
+
+      .instrument-name {
+        color: $label-color;
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: 0.15px;
+      }
+
+      .mat-option-pseudo-checkbox {
+        position: absolute;
+        right: 5px;
+      }
+    }
+  }
+}

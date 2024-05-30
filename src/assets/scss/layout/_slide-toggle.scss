@@ -1,0 +1,53 @@
+// Style guide: layout.slidetoggle
+
+@mixin layout\slidetoggle {
+  .mat-slide-toggle {
+    @include clearfix();
+
+    .mat-slide-toggle-content {
+      // padding-left: $custom-space-base;
+
+      .inv &{
+        order: 2;
+      }
+    }
+  }
+
+  .mat-slide-toggle-label {
+    .inv &{
+      justify-content: flex-start;
+    }
+  }
+  
+  .mat-slide-toggle-bar {
+
+    .inv &{
+      margin: 0 $custom-space-base 0 0;
+      order: 1;
+    }
+  }
+
+  .on {
+    display: none;
+  }
+
+  .mat-checked{
+    .on {
+      display: block;
+    }
+    .off {
+      display: none;
+    }
+  }
+
+  .toggle-holder{
+    @include clearfix();
+    margin: $custom-space-small + $custom-space-xsmall 0 $custom-space-xsmall;
+
+    .name{
+      float: left;
+      letter-spacing: .4px;
+      margin: $custom-space-xxsmall $custom-space-small 0 0;
+    }
+  }
+}

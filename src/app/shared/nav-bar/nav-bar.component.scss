@@ -1,0 +1,40 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/base/variables-peak';
+
+.nav-bar-component {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 $custom-space-small;
+  color: $header-color;
+  height: 30px;
+  position: relative;
+  z-index: 100;
+
+  .items-right {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  h1 {
+    cursor: pointer;
+    margin-bottom: 0;
+    font-size: mat-font-size($br-typography, body-1);
+    font-weight: normal;
+    overflow: hidden;
+    opacity: .8;
+  }
+  
+  unext-user-bar,
+  unext-lab-bar,
+  unext-setting-bar,
+  button {
+    margin-left: $custom-space-small;
+  }
+
+}
+
+
+
+
+

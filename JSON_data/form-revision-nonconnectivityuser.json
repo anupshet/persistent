@@ -1,0 +1,21 @@
+{
+    "DEV": {
+        "URL": "http://localhost:4200/login",
+        "Username": "sudhir_paranjape+devnonc1@bio-rad.com",
+        "Password": "Welcome1",
+        "firstname":"Sudhir",
+        "ManagerName":"SudhirUser ParanjapeUser",
+        "mean":"20",
+        "SD":"25",
+        "Points":"20",
+        "DepartmentName":"dept",
+        "InstrumentName":"ARCHITECT c16000",
+        "ControlName":"Blood Gas",
+        "AnalyteName":"CO2 (Carbon Dioxide)",
+        "DepartmentName1":"dept",
+        "InstrumentName1":"Access",
+        "ControlName1":"Anemia",
+        "AnalyteName1":"Ferritin"
+        
+    }
+    }

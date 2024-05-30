@@ -1,0 +1,10 @@
+.overlay-div {
+  position: absolute !important;
+  top:0;
+  left:0;
+  display: block;
+  background:lightgray;
+  opacity:0.4;
+  z-index: 2;
+  cursor: default;
+}

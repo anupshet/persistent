@@ -1,0 +1,56 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<form [formGroup]="footerForm">
+  <div class="footer-component">
+    <div class="left-section">
+      <!-- uncomment for next Deta release -->
+      <!-- <span class="report-template">
+        {{'REPORTPREVIEWFOOTER.REPORTTEMPLATE' | translate}}
+      </span>
+
+      <mat-form-field class="mat-form-field-template-type">
+        <mat-label>Select a template</mat-label>
+        <mat-select #selector formControlName="templateInfo" placeholder="{{'REPORTPREVIEWFOOTER.SELECTTEMPLATE' | translate}}" [disableOptionCentering]="true"
+          panelClass="mat-select-css">
+          <div>
+            <div class="create-new-template-button" *ngIf="hasReportsCreateOrUpdateTemplate && hasReportsSaveAndDownloadPermission">
+              <mat-icon [svgIcon]="icons.addCircleOutline[24].name" class="addCircleOutline" class="plus-Icon"
+                (click)="saveNewTemplate()"></mat-icon>
+              <button mat-icon-button class="save-as-new-temp-btn"
+                (click)="saveNewTemplate()">
+                {{'REPORTPREVIEWFOOTER.SAVENEWTEMPLATE' | translate}}
+              </button>
+            </div>
+            <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}" class="perfect-scroll">
+              <mat-option *ngFor="let template of templateList" [value]="template" class="mat-option-css">
+                {{ template}}
+              </mat-option>
+            </perfect-scrollbar>
+          </div>
+        </mat-select>
+      </mat-form-field> -->
+      <!-- uncomment for next Deta release -->
+    </div>
+    <div class="right-section">
+      <ng-container
+        *ngIf="isMonthlyEvalReportType && hasReportsCorrectiveActionsEntryPermission && hasReportsSaveAndDownloadPermission">
+        <mat-checkbox class="checkbox" formControlName="signedBy">
+          <span class="checkbox-text">{{'REPORTPREVIEWFOOTER.SIGNYOURNAME' | translate}}</span>
+        </mat-checkbox>
+      </ng-container>
+      <!-- uncomment for next Deta release -->
+      <!-- <button mat-stroked-button class="btn-edit" (click)="editTemplate()" *ngIf="hasReportsCreateOrUpdateTemplate">
+        <span class="edit-report-text">
+          {{'REPORTPREVIEWFOOTER.EDITREPORT' | translate}}
+        </span>
+      </button> -->
+      <!-- uncomment for next Deta release -->
+      <button mat-raised-button color="primary" class="btn-save" *ngIf="hasReportsSaveAndDownloadPermission"
+        [disabled]="getSaveDisabledStatus()" (click)="savePdfInfo()">
+        <span class="save-report-text">
+          {{'REPORTPREVIEWFOOTER.SAVEREPORT' | translate}}
+        </span>
+      </button>
+
+    </div>
+  </div>
+</form>

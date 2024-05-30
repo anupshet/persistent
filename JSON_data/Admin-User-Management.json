@@ -1,0 +1,11 @@
+{
+	"QA": {
+		"ExistingUsername": "TFS",
+		"ExistingFirstname": "TFS",
+		"ExistingLastname": "Dev",
+		"ExistingEmail": "tfs-dev@mailinator.com"
+	},
+	"DEV": {},
+	"STAGE": {},
+	"DEV2": {}
+}

@@ -1,0 +1,64 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="tooltip" [ngClass]="['tooltip--'+position]" [class.tooltip--visible]="visible" [style.left]="left + 'px'"
+  [style.top]="top + 'px'">
+  <div class="data">
+    <div *ngIf="tooltip?.category === 'ControlGroup'">
+      <h2>{{heading}}
+      </h2>
+      <div class="list-parent">
+      <div #listContainer class="list" [ngStyle]="{'max-height': hasEllipsis ? maxHeight + 'px': 'auto'}">
+        <div class="category">{{subheading}}</div>
+        <div class="parent">{{tooltip?.data.name | uppercase}}</div>
+        <ng-container *ngFor="let group of this.tooltip?.data.groups">
+          <div class="category">{{group.name | uppercase}}</div>
+        </ng-container>
+      </div>
+      </div>
+    </div>
+    <div *ngIf="tooltip?.category === 'Analyte'">
+      <h2>{{heading}}</h2>
+      <div class="list-parent">
+      <div #listContainer class="list" [ngStyle]="{'max-height': hasEllipsis ? maxHeight + 'px': 'auto'}">
+        <ng-container *ngIf="tooltip?.data.length > 0">
+          <div *ngFor="let item of this.tooltip?.data" class="mb-10">
+             <div class="category">{{'CUSTOMTOOLTIP.INSTRUMENT' | translate}}</div>
+            <ng-container *ngFor="let parent of item.parent;let i=index;">
+              <div class="parent">{{parent.name | uppercase}}</div>
+              <ng-container *ngFor="let parentGroup of parent.groups;let i=index;">
+                <span class="category">{{parentGroup.name | uppercase}}<span *ngIf="i < (parent.groups.length - 1)">, </span></span>
+              </ng-container>
+            </ng-container>
+            <div class="category">{{subheading}}</div>
+            <div class="parent">{{item.name | uppercase}}</div>
+            <ng-container *ngFor="let group of item.groups;let i=index;">
+              <span class="category">{{group.name | uppercase}}<span *ngIf="i < (item.groups.length - 1)">, </span></span>
+            </ng-container>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="tooltip?.data.length == 0">
+          <div>{{'CUSTOMTOOLTIP.NODATACONFIGURED' | translate}}</div>
+        </ng-container>
+      </div>
+      </div>
+    </div>
+    <div *ngIf="tooltip?.category !== 'ControlGroup' && tooltip?.category !== 'Analyte'">
+      <h2>{{heading}}</h2>
+      <div class="list-parent">
+      <div #listContainer class="list" [ngStyle]="{'max-height': hasEllipsis ? maxHeight + 'px': 'auto'}">
+        <div class="category">{{subheading}}</div>
+        <ng-container *ngIf="tooltip?.data.length > 0">
+          <div *ngFor="let item of this.tooltip?.data" class="mb-10">
+            <div class="parent">{{item.name | uppercase}}</div>
+            <ng-container *ngFor="let group of item.groups;let i=index;">
+              <span class="category">{{group.name | uppercase}}<span *ngIf="i < (item.groups.length - 1)">, </span></span>
+            </ng-container>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="tooltip?.data.length == 0">
+          <div>{{'CUSTOMTOOLTIP.NODATACONFIGURED' | translate}}</div>
+        </ng-container>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

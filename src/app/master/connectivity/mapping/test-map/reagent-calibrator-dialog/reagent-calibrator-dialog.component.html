@@ -1,0 +1,91 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="scrollbar-wrapper">
+    <perfect-scrollbar>
+        <div class="form-wrapper">
+          <div class="flex-2">
+            <mat-icon (click)="closeDialog()">close</mat-icon>
+          </div>
+            <h2 class="reagent-calibrator-title" mat-dialog-title *ngIf="bothLotCodesExist()">
+                {{'REAGENTCALIBRATOR.SELECTREAGENT' | translate}}
+            </h2>
+            <h2 class="reagent-calibrator-title" mat-dialog-title *ngIf="onlyCalibratorLotCodeExists()">
+                {{'REAGENTCALIBRATOR.SELECTCALIBRATOR' | translate}}</h2>
+            <h2 class="reagent-calibrator-title" mat-dialog-title *ngIf="onlyReagentLotCodeExists()">
+                {{'REAGENTCALIBRATOR.SELECTREAGENTLOT' | translate}}</h2>
+            <h2 class="reagent-calibrator-title" mat-dialog-title *ngIf="noLotCodesExist()"></h2>
+            <div class="reagent-calibrator-subtitle mat-body-2">
+                {{this.data.testCard.analyteName}} ({{this.data.chip.code}}) {{this.data.testCard.methodName}}
+            </div>
+            <br />
+            <form [formGroup]="lotForm" (ngSubmit)="submitLotForm()">
+                <mat-dialog-content class="dialogContent">
+                    <div *ngIf="reagentLotCodeExists()">
+                        <div formArrayName="reagentLots">
+                            <div class="flex-container"
+                                *ngFor="let reagent of lotForm.get('reagentLots').controls; let i=index">
+                                <div [formGroupName]="i">
+                                    <div class="flex-1">
+                                        <div class="lotTitle mat-body-1">
+                                            {{'REAGENTCALIBRATOR.REAGENTCODE' | translate}}
+                                        </div>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="lotChipCode mat-body-2">
+                                            {{availableReagentCodes[i]}}
+                                        </div>
+                                    </div>
+                                    <div class="flex-1">
+                                        <mat-form-field>
+                                            <mat-select placeholder="{{'REAGENTCALIBRATOR.LOTNUMBER' | translate}}"
+                                                formControlName="reagentLotId" required>
+                                                <mat-option *ngFor="let lot of sortedReagentLots"
+                                                    [value]="lot.id">
+                                                    {{lot.lotNumber}}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="lotForm.invalid">
+                                                {{'REAGENTCALIBRATOR.REAGENTREQUIRED' | translate}}
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                    <div *ngIf="calibratorLotCodeExists()">
+                        <div class="flex-container">
+                            <div class="flex-1 lotTitle mat-body-1">
+                                {{'REAGENTCALIBRATOR.CALIBRATORCODE' | translate}}
+                            </div>
+                            <div class="flex-1 lotChipCode mat-body-2">
+                                {{getCalibratorLotCode()}}
+                            </div>
+                            <div class="flex-1">
+                                <mat-form-field>
+                                    <mat-select placeholder="{{'REAGENTCALIBRATOR.CALIBRATORLOT' | translate}}"
+                                        formControlName="reagentLots" required>
+                                        <mat-option *ngFor="let lot of this.data.testCard.calibratorLots"
+                                            [value]="lot.id">
+                                            {{lot.lotNumber}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="lotForm.invalid">
+                                        {{'REAGENTCALIBRATOR.CALIBRATOR' | translate}}</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                </mat-dialog-content>
+                <br />
+                <div class="flex-container align-right">
+                    <div class="flex-1">
+                        <button mat-raised-button color="primary" [disabled]="lotForm.invalid">
+                            {{'REAGENTCALIBRATOR.LINK' | translate}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </perfect-scrollbar>
+</div>

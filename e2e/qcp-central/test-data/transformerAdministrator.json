@@ -1,0 +1,29 @@
+{
+  "DEV": {
+    "DEVURL": "https://qcpcentraldevaws.global.bio-rad.com",
+    "Username": "shreynash_bothra+cts2@bio-rad.com",
+    "Password": "root@123",
+    "AccountNumber": "102623",
+    "DailyUsername": "shreynash_bothra+qcpdaily5@bio-rad.com",
+    "MarketingUsername": "shreynash_bothra+mkt4@bio-rad.com",
+    "Menu": "Migration",
+    "SubMenu": "WebConnect Transformer Administration"
+  },
+  "STAGE": {
+    "URL": "https://unity-stage.qcnet.com",
+    "Username": "sudhir_paranjape+stagelab@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sudhir",
+    "UsernameUser": "sudhir_paranjape+stagelabuser@bio-rad.com",
+    "PasswordUser": "Welcome1",
+    "FirstNameUser": "SudhirUser",
+    "DepartmentName": "Automation",
+    "InstrumentName": "ARCHITECT c16000",
+    "ProductName": "Assayed Chemistry",
+    "Analyte1": "Albumin",
+    "Analyte2": "Calcium",
+    "Analyte3": "Chloride"
+  },
+  "QA": {},
+  "DEV2": {}
+}

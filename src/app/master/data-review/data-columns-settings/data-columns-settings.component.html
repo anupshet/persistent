@@ -1,0 +1,51 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="data-column-settings-container">
+    <div #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menuLocations" class="nav-bar-button settings-menu">
+        <mat-icon [svgIcon]="navIconName"></mat-icon>
+        <span class="mat-small">
+        </span>
+    </div>
+
+    <div class="mat-col-container">
+        <form>
+            <mat-menu #menuLocations="matMenu" class="menu-box">
+                <div class="data-col-spec"></div>
+                <div class="data-column-settings-column-container">
+                    <div class="col-setting-header columns-Menu">
+                        <span class="columnHeader">
+                            {{ 'DATAREVIEW.DATACOLUMNSETTINGS.DATACOLUMNS' | translate}}
+                        </span>
+                        <span class="close-icon" (click)="cancel()">
+                            <mat-icon [svgIcon]="icons.close[24].name" clss="close-icon"></mat-icon>
+                        </span>
+                    </div>
+                        <div>
+                            <div class="checkboxItem" (click)="$event.stopPropagation();">
+                                <div class="colCheckBox" *ngFor="let col of displayColumns; let idx=index">
+                                    <label class="btn btn-outline-secondary">
+                                        <mat-checkbox class="ml-10 checkcolname form-control"
+                                            value="{{col.id}}" name="{{col.columnName}}"
+                                           [(ngModel)]= "col.isChecked" [ngModelOptions]="{standalone: true}"
+                                            (change)="toggleCheckboxes($event)">
+                                            <span class="column-label" [matTooltip]="'DATAREVIEW.DATACOLUMNSETTINGS.' + getLocalizationKey(col.columnName) | translate" matTooltipPosition="above" matTooltipClass="primary-tooltip">
+                                                {{ 'DATAREVIEW.DATACOLUMNSETTINGS.' + getLocalizationKey(col.columnName) | translate}}
+                                            </span>
+                                        </mat-checkbox>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="dataCol-footer-spec"></span>
+
+                        <div class="columnFooter">
+                            <button mat-button color="primary" id="closeBtn" type="button" (click)="close()">{{ 'DATAREVIEW.DATACOLUMNSETTINGS.CLOSE' | translate}}</button>
+                            <button mat-flat-button color="primary" id="updateBtn" type="submit" (click)="onUpdate()"
+                                class="spec_submit" [disabled]="isDisabled">{{ 'DATAREVIEW.DATACOLUMNSETTINGS.UPDATE' | translate}}</button>
+                        </div>
+                    </div>
+            </mat-menu>
+        </form>
+
+    </div>
+
+</div>

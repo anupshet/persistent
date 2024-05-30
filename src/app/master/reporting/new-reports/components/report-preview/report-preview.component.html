@@ -1,0 +1,38 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<section class="new-reports-preview">
+  <ngx-extended-pdf-viewer
+    class="report-preview-perfect-scrollbar"
+    height="100%"
+    [src]="pdfUrl"
+    [page]="page"
+    (pageChange)="pageChange($event)"
+    (pdfLoaded)="pdfLoaded($event.pagesCount)"
+    [useBrowserLocale]="true"
+    [showHandToolButton]="false"
+    [showFindButton]="false"
+    [showDownloadButton]="false"
+    [showSidebarButton]="false"
+    [showBookmarkButton]="false"
+    [showPresentationModeButton]="false"
+    [showOpenFileButton]="false"
+    [showPrintButton]="false"
+    [showRotateButton]="false"
+    [contextMenuAllowed]="false"
+    [showPropertiesButton]="false"
+    [showSecondaryToolbarButton]="false"
+    [showSpreadButton]="false"
+    [showScrollingButton]="false"
+    [textLayer]="false"
+    [showBorders]="false"
+    [showPagingButtons]="false"
+    [showZoomButtons]="false"
+    [zoom]="'page-width'"
+    [ignoreKeyboard]="true"
+    [backgroundColor]="'#edeeef'"
+  >
+  </ngx-extended-pdf-viewer>
+
+  <mat-icon *ngIf="showExpandIcon()" [class.full-screen-report]="isFullScreenMode"
+   [svgIcon]="icons.expandPreviewIcon[24].name"
+   (click)="showFullScreen()"></mat-icon>
+</section>

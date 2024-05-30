@@ -1,0 +1,19 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<section class="br-dialog" [style.width]="data?.customWidth ? data?.customWidth + 'px' : null">
+  <div class="flex-ctn-1">
+    <button *ngIf="data?.xbutton" mat-button [mat-dialog-close]="true" class="close-button" tabindex="0" (click)="onClick(dialogResult.None)">
+      <i class="material-icons">close</i>
+    </button>
+  </div>
+  <h2 class="dialog-title" *ngIf="data?.title || title">{{ title }}</h2>
+  <p class="dialog-message" *ngIf="data?.subTitle" mat-dialog-content>{{subTitle}}</p>
+  <hr class="border-line" />
+  <mat-button-toggle-group *ngIf="!data?.showConfirmButtonFirst" class="flex-ctn-2" #group="matButtonToggleGroup">
+    <button *ngIf="data?.cancelButton || cancelButtonLabel" mat-button mat-flat-button class="dialog-cancel" id="dialog_button1" (click)="onClick(dialogResult.Cancel)">{{ cancelButtonLabel }}</button>
+    <button *ngIf="data?.confirmButton || confirmButtonLabel" mat-button mat-flat-button class="dialog-ok" id="dialog_button2" (click)="onClick(dialogResult.OK)">{{ confirmButtonLabel }}</button>
+  </mat-button-toggle-group>
+  <mat-button-toggle-group *ngIf="data?.showConfirmButtonFirst" class="flex-ctn-2" #group="matButtonToggleGroup">
+    <button *ngIf="data?.confirmButton || confirmButtonLabel" mat-button mat-flat-button class="dialog-ok" id="dialog_button2" (click)="onClick(dialogResult.OK)">{{ confirmButtonLabel }}</button>
+    <button *ngIf="data?.cancelButton || cancelButtonLabel" mat-button mat-flat-button class="dialog-cancel" id="dialog_button1" (click)="onClick(dialogResult.Cancel)">{{ cancelButtonLabel }}</button>
+  </mat-button-toggle-group>
+</section>

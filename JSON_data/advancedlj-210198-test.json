@@ -1,0 +1,32 @@
+{
+  "QA OLD": {
+    "URL": "https://unity-test.qcnet.com/login",
+    "Username": "sudhir_paranjape+test186409@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sudhir",
+    "Department": "AdvancedLJ",
+    "Instrument": "ARCHITECT c4000",
+    "Control": "PBI-210198",
+    "Analyte": "Acetaminophen",
+    "image1": "ChartsAsPerZScore-test",
+    "image2": "MeanSDRegions-test",
+    "image3": "FlagsInSeparatedStackedChart-test",
+    "ReagentLot": "ACETAL3K-Option2-1",
+    "CalibratorLot": "Test CLot 2022"
+  },
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "Username": "UnityNextRegressionTestUser+1@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Regression",
+    "Department": "AdvancedLJ",
+    "Instrument": "Alinity c",
+    "Control": "Cardiac Markers Plus LT",
+    "Analyte": "Ammonia",
+    "image1": "ChartsAsPerZScore-test",
+    "image2": "MeanSDRegions-test",
+    "image3": "FlagsInSeparatedStackedChart-test",
+    "ReagentLot": "NewLot_Reg",
+    "CalibratorLot": "TestLot1"
+  }
+}

@@ -1,0 +1,197 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="centered-holder" *ngIf="!showScheduler">
+  <div class="holder">
+
+   <div *ngIf="isDefaultDialog" class="box" [ngClass]="dragClass">
+
+      <div class="descr">
+        <div class="grid-container">
+
+          <div class="grid-child">
+            <div class="select-holder">
+
+              <mat-form-field *ngIf="instructionsCount >=2">
+                <mat-select [(ngModel)]="multipleInstructionsSelectedValue"
+                  [disabled]="hasPermissionToAccess([permissions.ConnectivityUploadViewOnly])"
+                  (selectionChange)="onSelectionChange($event.value)" placeholder="{{'UPLOAD.NAME' | translate}}">
+                  <mat-option *ngFor="let option of configurationList" [matTooltip]="option.name" [value]="option">
+                    {{ option.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field *ngIf="instructionsCount === 1">
+                <mat-select [disabled]="true" placeholder="{{'UPLOAD.NAME' | translate}}"
+                  [(value)]="configurationList[0].id">
+                  <mat-option value="{{configurationList[0].id}}">{{configurationList[0].name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field *ngIf="instructionsCount === 0">
+                <mat-select [disabled]="true" placeholder="{{'UPLOAD.NAME' | translate}}">
+                </mat-select>
+              </mat-form-field>
+
+            </div>
+          </div>
+
+          <div class="grid-child">
+            <div class="form-group">
+              <mat-radio-group [(ngModel)]="dateType" (change)="onDateRangeChange();"
+                [disabled]="hasPermissionToAccess([permissions.ConnectivityUploadViewOnly])">
+                <mat-radio-button color="primary" value="all-dates" [checked]="!handlesSlideGen"
+                  [disabled]="handlesSlideGen">
+                  {{'UPLOAD.ALLDATES' | translate}}
+                </mat-radio-button>
+                <mat-radio-button color="primary" value="range-opened" [checked]="handlesSlideGen">
+                  {{'UPLOAD.DATERANGE' | translate}}
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div *ngIf="dateType === 'range-opened'" class="range-set {{dateType}}">
+              <div class="datepicker-set item-1">
+                <mat-form-field>
+                  <input matInput disabled [max]="today.value" (dateChange)="addStartDatePickerEvent('change', $event)"
+                    [matDatepicker]="startDatePicker" placeholder=" " [value]="labLocationDate">
+                  <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                  <mat-datepicker #startDatePicker [disabled]="isStartDatePickerDisabled"></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="to">
+                <span>{{'UPLOAD.TO' | translate}}</span>
+              </div>
+              <div class="datepicker-set item-2">
+                <mat-form-field>
+                  <input matInput disabled [min]="startDatePickerValue" [max]="tomorrow"
+                    (dateChange)="addEndDatePickerEvent('change', $event)" [matDatepicker]="endDatePicker"
+                    placeholder=" " [value]="endDatePickerValue">
+                  <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                  <mat-datepicker #endDatePicker [disabled]="isEndDatePickerDisabled"></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+            <small *ngIf="hasFileError && fileErrorObject?.isFileOptionsError && !hadEvent"
+              class="red error-msg">{{fileErrorObject.messages}}</small>
+          </div>
+        </div>
+
+      </div>
+      <div (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)" class="input-file"
+        [checkForPermission]="{'permissionsAllowed':[permissions.ConnectivityUpload],'hideIfNotPermitted':false,'disableIfNotPermitted':true}">
+        <input #fileInput type="file" multiple (change)="fileChange($event)">
+        <div class="headerCenter">
+          <div *ngIf="!fileList && !hasFileError" class="default">
+            <mat-icon [svgIcon]="icons.publish[48].name" class="publish"></mat-icon>
+            <h2 class="mb-0 browse-file-label">
+              <span>{{'UPLOAD.DROPFILES' | translate}}</span>
+              <span class="fake-btn" for="instrumentUpload">{{'UPLOAD.BROWSEFILES' | translate}}</span>
+            </h2>
+          </div>
+        </div>
+        <div class="headerCenter">
+          <div *ngIf="fileList || hasFileError" class="selected">
+            <div>
+              <mat-icon *ngIf="!hasFileError" [svgIcon]="icons.publish[48].name" class="publish"></mat-icon>
+            </div>
+            <div>
+              <mat-icon *ngIf="hasFileError && !fileErrorObject?.isFileOptionsError" [svgIcon]="icons.publish[48].name"
+                class="publish2"></mat-icon>
+            </div>
+            <div>
+              <h2 class="mb-0 browse-file-label">
+                <span>{{'UPLOAD.DROPFILES' | translate}} </span>
+                <span class="fake-btn" for="instrumentUpload">{{'UPLOAD.BROWSEFILES' | translate}}</span>
+              </h2>
+            </div>
+            <div>
+              <small *ngIf="hasFileError && !fileErrorObject?.isFileOptionsError && hadEvent"
+                class="red">{{fileErrorObject.messages}}</small>
+              <small *ngIf="hasWarning && !hasFileError" class="red">{{'UPLOAD.LARGEFILE' | translate}}</small>
+            </div>
+
+          </div>
+        </div>
+        <div class="aboveOthers">
+          <ul *ngFor="let file of selectedFiles; let i = index">
+            <!-- Limit display to 10 files regardless of number selected by the user i<=9 since it is 0 based -->
+            <li class="uploadFiles" *ngIf="i < 9">
+              <button mat-icon-button class="close-button" id="i" (click)="fileDelete(file.name)">
+                <mat-icon class="close-icon" color="warn">close</mat-icon>
+              </button> &nbsp;&nbsp; {{ file.name | truncate:[50] }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slidegen-prompt spec-slidegen-prompt"
+        *ngIf="instructionsCount > 0 && !handlesSlideGen && isInstructionOkay && hasSlideGenAnalytes">
+        <span class="prompt-text">{{'UPLOAD.ANALYTES' | translate}}</span>
+        <mat-radio-group [(ngModel)]="slideGenPromptValue"
+          [disabled]="hasPermissionToAccess([permissions.ConnectivityUploadViewOnly])"
+          (change)="updateSlidegenSelection($event.value)">
+          <mat-radio-button color="primary" value="yes">{{'UPLOAD.YES' | translate}}</mat-radio-button>
+          <mat-radio-button color="primary" value="no">{{'UPLOAD.NO' | translate}}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="flex-container">
+        <button type="button" mat-button color="primary" (click)="reset()" [disabled]="!canReset">
+          {{'UPLOAD.CANCEL' | translate}}
+        </button>
+        <!-- Upload button to display slidegen scheduler -->
+        <button mat-raised-button color="primary"
+          *ngIf="!showUploadButton && !handlesSlideGen && hasSlideGenAnalytes && hasPermissionToAccess([permissions.ConnectivityUpload])"
+          type="button" (click)="displaySlideGenScheduler()" class="spec-slidegen-upload-button"
+          [disabled]="!(hasFile && isDateRangeOkay && isInstructionOkay && slideGenPromptValue !== '') || hasFileError">
+          {{'UPLOAD.UPLOAD' | translate}}
+        </button>
+        <!-- Upload button to initiate file upload -->
+        <button mat-raised-button color="primary"
+          *ngIf="(showUploadButton || handlesSlideGen || !hasSlideGenAnalytes) && hasPermissionToAccess([permissions.ConnectivityUpload])"
+          type=" button" (click)="initFileUpload()"
+          [disabled]="!(hasFile && isDateRangeOkay && isInstructionOkay) || hasFileError"
+          class="spec-upload-button">{{'UPLOAD.UPLOAD' | translate}}</button>
+      </div>
+    </div>
+
+    <div *ngIf="isUploadInProgress" class="box uploading mat-body-2">
+      <div class="selected">
+        <span class="loader-anim">
+          <span>
+            <img src="assets/images/icn_loader2.png" alt="Element Loading">
+          </span>
+        </span>
+        <strong class="title">{{fileList[0].name}}</strong>
+        <p>{{'UPLOAD.UPLOADNGFILE' | translate}}</p>
+      </div>
+    </div>
+
+    <div *ngIf="isUploadSuccessful" class="box success mat-body-2">
+      <div class="selected">
+        <i class="material-icons">check</i>
+        <strong class="title">{{fileList[0].name}}</strong>
+        <p>{{'UPLOAD.DONE' | translate}}</p>
+      </div>
+    </div>
+
+    <div *ngIf="isMappingOrStatusDialog" class="box info mat-body-2">
+      <div class="selected">
+        <i class="icon-file"></i>
+        <strong class="title">{{fileList[0].name}}</strong>
+        <button mat-raised-button color="primary" (click)="routeTo('mapping')" class="margin-bottom">{{'UPLOAD.MAPFILE'
+          | translate}}</button>
+        <div>
+          <button mat-button color="primary" (click)="routeTo('status')">{{'UPLOAD.STATUS' | translate}}</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div *ngIf="showScheduler">
+  <unext-connectivity-scheduler
+    [disableUploadButton]="!(hasFile && isDateRangeOkay && isInstructionOkay) || hasFileError"
+    [labLocationId]="labLocationId" [analytes]="slideGenAnalytes" (goBack)="onBackFromScheduler()"
+    (upload)="initFileUpload($event)">
+  </unext-connectivity-scheduler>
+</div>

@@ -1,0 +1,15 @@
+{
+  "QA": {
+    "URL": "https://qcpcentralqa.global.bio-rad.com/",
+    "Username": "amruta_karale+qaqcpadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "MainMenu": "Code List",
+    "SubMenu": "Matrices",
+    "NewMatrixName": "TestAutomation_Matrix",
+    "FileName": "matrices.csv",
+    "Matrices": "Plasma"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

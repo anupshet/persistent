@@ -1,0 +1,18 @@
+@import '../../../../assets/scss/variables';
+@import '../../../../assets/scss/base/variables-peak';
+
+p {
+  color: $br-black;
+  margin-bottom: 0;
+}
+
+p label {
+  color: $br-grey;
+  font-weight: normal;
+}
+
+::ng-deep snack-bar-container.request-new-config {
+  background: $br-white;
+  width: 400px;
+  margin: $custom-space-base + $custom-space-small 0 0 0;
+}

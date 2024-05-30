@@ -1,0 +1,169 @@
+<!-- © 2023 Bio - Rad Laboratories, Inc.All Rights Reserved. -->
+<div>
+  <form [formGroup]="evaluationForm">
+    <div class="flex flex-end">
+      <button mat-icon-button class="dialog-close-button mr-5 mb-5 spec-close-button" (click)="cancel()">
+        <mat-icon [svgIcon]="icons.close[48].name" class=""></mat-icon>
+      </button>
+    </div>
+    <div *ngIf="displayWarning" class="flex space-between lose-changes-wrapper mr-10 ml-10" id="spec_warningBox">
+      <span class="lose-changes-msg">{{'EVALUATIONMEANSD.LOSECHANGES' | translate}}</span>
+      <span>
+        <button mat-stroked-button color="primary" (click)="resetTrackerService()">
+          {{'EVALUATIONMEANSD.EXITSAVING' | translate}}</button>
+        <button mat-flat-button color="primary" class="ml-15" (click)="onSubmit(evaluationForm.value, true)"
+          [disabled]="!evaluationForm.valid || isChildFormValid  || evaluationForm.pristine">
+          {{'EVALUATIONMEANSD.SAVEEXIT' | translate}}</button>
+      </span>
+    </div>
+    <input type="hidden" formControlName="childFormData">
+    <div class="evalution-form-wrapper">
+      <h2 class="mb-0 pl-10" mat-dialog-title>
+        <span
+          *ngIf="entity.nodeType == entityType.LabProduct">{{'EVALUATIONMEANSD.EVALUATION' | translate}} </span>
+        <span
+          *ngIf="entity.nodeType == entityType.LabTest">{{'EVALUATIONMEANSD.EVALUATIONMEAN' | translate}} </span>
+        <span id="spec_primaryText"
+          *ngIf="displayTitleMain && displayTitleMain.primaryText">{{displayTitleMain?.primaryText}}</span>
+        <span
+          *ngIf="(entity.nodeType == entityType.LabProduct && showControlLotInfo) || entity.nodeType == entityType.LabTest">
+          <span id="spec_secondaryText" *ngIf="displayTitleMain && displayTitleMain.secondaryText"
+            class="mat-small">({{displayTitleMain?.secondaryText}})</span>
+          <span id="spec_additionalText" *ngIf="displayTitleMain && displayTitleMain.additionalText"
+            class="mat-small">({{displayTitleMain?.additionalText}})</span>
+        </span>
+      </h2>
+
+      <!-- This div needed in next release -->
+      <!-- <div *ngIf="entity.nodeType == entityType.LabTest; else elseBlock">
+          <mat-form-field>
+            <mat-label>{{'EVALUATIONMEANSD.ANALYTE' | translate}} </mat-label>
+            <mat-select (selectionChange)="analyteSelectionChange($event)"
+              formControlName="analyteItemList">
+              <mat-option *ngFor="let item of displayAnalyteTitleList" [value]="item.node">
+                <span>{{item?.primaryText}}</span>
+                <span *ngIf="item.secondaryText" class="mat-small">({{item?.secondaryText}})</span>
+                <span *ngIf="item.additionalText" class="mat-small">({{item?.additionalText}})</span>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div> -->
+      <!-- <ng-template #elseBlock> -->
+      <!-- <h2 mat-dialog-title>
+            {{entity.displayName}}
+          </h2> -->
+      <!-- </ng-template> -->
+      <!-- </div> -->
+      <div class="evalution-mean-scroll-wrapper">
+        <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}">
+          <div class="pl-10 pr-10">
+            <div class="mb-15 pb-10 float-point-shadow">
+              <label>{{'EVALUATIONMEANSD.FLOATPOINTS' | translate}}</label>
+              <!-- <button mat-icon-button>
+                <mat-icon [svgIcon]="icons.info[24].name" class="info-icon"></mat-icon>
+              </button> -->
+              <br-info-tooltip>
+                <ng-template ng-label-tmp class="meansd-tooltip">
+                  <p>
+                    {{'EVALUATIONMEANSD.NUMBEROFPOINTS' | translate}}<br> {{'EVALUATIONMEANSD.SETVALUES' | translate}}
+                  </p>
+                </ng-template>
+              </br-info-tooltip>
+              <mat-form-field class="w-50 ml-25 pl-5">
+                <mat-label>{{'EVALUATIONMEANSD.POINTS' | translate}}</mat-label>
+                <input matInput formControlName="floatPoint"
+                  [checkForPermission]="{'permissionsAllowed':[permissions.EvalMeanSDCV],'hideIfNotPermitted':false,'disableIfNotPermitted':true}">
+              </mat-form-field>
+
+              <!-- TODO: Date set not in this release according to Zeplin -->
+              <!-- <span>
+                {{'EVALUATIONMEANSD.LASTSET' | translate}}
+              </span>
+              <span>{{date}}</span>
+              <span> {{'EVALUATIONMEANSD.AT' | translate}}</span>
+              <span>{{time}} </span> -->
+            </div>
+            <div class="flex item-center">
+              <mat-slide-toggle color="primary" id="spec_floatingStatistcs" (change)="toggleFloatingStatistcs($event)"
+                [disabled]="hasPermissionToAccess([permissions.EvalMeanSDCVViewOnly])"
+                formControlName="floatingStatistcsFlag">
+              </mat-slide-toggle>
+              <label class="ml-10" for="">{{'EVALUATIONMEANSD.FLOATINGSTATISTICS' | translate}}</label>
+            </div>
+            <mat-form-field class="flex float-type ml-40 pl-5" *ngIf="evaluationForm.value.floatingStatistcsFlag">
+                <mat-label>{{'EVALUATIONMEANSD.FLOATTYPE' | translate}}</mat-label>
+              <mat-select formControlName="timeFrame" (selectionChange)="onFloatTypeChange($event.value)"
+                [disabled]="hasPermissionToAccess([permissions.EvalMeanSDCVViewOnly])">
+                <mat-option *ngFor="let item of timeframeOptions; let timeframeIndex = index"
+                  [value]="timeframeIndex+1">{{item}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div id="spec_analyteList">
+              <div *ngFor="let item of displayAnalyteTitleList; let analyteIndex = index">
+                <div class="flex item-center mt-20 mb-20">
+                  <div *ngIf="entity.nodeType == entityType.LabProduct"
+                    [checkForPermission]="{'permissionsAllowed':[permissions.EvalMeanSDCV],'hideIfNotPermitted':false,'disableIfNotPermitted':true}">
+                    <h6 class="mat-h6 mb-0"
+                      *ngIf="displayAnalyteTitleList && displayAnalyteTitleList[analyteIndex].primaryText">
+                      <span id="spec_analytePrimaryText{{analyteIndex}}">
+                        {{displayAnalyteTitleList[analyteIndex].primaryText}}</span>
+                      <span id="spec_analyteSecondaryText{{analyteIndex}}"
+                        *ngIf="displayAnalyteTitleList && displayAnalyteTitleList[analyteIndex].secondaryText"
+                        class="mat-small">({{displayAnalyteTitleList[analyteIndex]?.secondaryText}})</span>
+                      <span id="spec_analyteAdditionalText{{analyteIndex}}"
+                        *ngIf="displayAnalyteTitleList && displayAnalyteTitleList[analyteIndex].additionalText"
+                        class="mat-small">({{displayAnalyteTitleList[analyteIndex]?.additionalText}})</span>
+                    </h6>
+                  </div>
+                  <span class="current-value ml-25" *ngIf="floatingStatisticsFlag && matchEntityIds(item.node)">
+                    {{'EVALUATIONMEANSD.CURRENTVALUE' | translate}}</span>
+                </div>
+                <mat-divider></mat-divider>
+                <div *ngIf="dummyAnalyteEvaluationMeanSdGroup && dummyAnalyteEvaluationMeanSdGroup[analyteIndex]"
+                  [checkForPermission]="{'permissionsAllowed':[permissions.EvalMeanSDCV],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+                  id="spec_levelEvaluationMeanSd" [ngClass]="{'disabled-section': item?.node?.isArchived}">
+                  <div
+                    *ngFor="let level of dummyAnalyteEvaluationMeanSdGroup[analyteIndex].levelEvaluationMeanSds; let levelIndex = index">
+                    <unext-level-evaluation-mean-sd [floatingStatisticsFlag]="floatingStatisticsFlag"
+                      [decimalPlaces]="decimalPlacesArray[analyteIndex].decimalPlaces"
+                      [isArchived]="item?.node?.isArchived"
+                      [levelEvaluationMeanSd]="analyteEvaluationMeanSdGroup[analyteIndex].levelEvaluationMeanSds[levelIndex]"
+                      [levelFloatingStatistics]="(floatingstatsData && floatingstatsData[analyteIndex] && floatingstatsData[analyteIndex].levelsData[levelIndex]) ? floatingstatsData[analyteIndex].levelsData[levelIndex] : null"
+                      (emitterLevelEvaluationMeanSd)="levelEvaluationMeanSdGroupFromChild($event)"
+                      (emitterLevelFormValid)="checkChildFormValid($event)"
+                      (emitterGetFloatValues)="getFloatValues($event)">
+                    </unext-level-evaluation-mean-sd>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer class="flex space-between mt-40"
+              [checkForPermission]="{'permissionsAllowed':[permissions.EvalMeanSDCV],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+              <!-- This span needed in next release -->
+              <!-- <span>{{'EVALUATIONMEANSD.PEERVALUE' | translate}}
+        </span> -->
+              <span>
+                <button *ngIf="selectedPage!==0" id="spec_backButton" [disabled]="displayWarning" class="mr-20" (click)="back()"
+                  mat-stroked-button color="primary">{{'EVALUATIONMEANSD.BACK' | translate}}</button>
+              </span>
+              <span>
+                <button (click)="cancel()" class="mr-20" id="spec_cancel" mat-stroked-button color="primary">
+                  {{'EVALUATIONMEANSD.CANCEL' | translate}}</button>
+                <button *ngIf="displayPaginationFlag" [disabled]="displayWarning" (click)="goToNext()" class="mr-20"
+                  id="spec_next" mat-stroked-button color="primary">{{'EVALUATIONMEANSD.GOTO' | translate}}</button>
+                <button *ngIf="!displayPaginationFlag" class="mr-20" id="spec_updateButton" mat-flat-button
+                  color="primary"
+                  [disabled]="!evaluationForm.valid || isChildFormValid  || evaluationForm.pristine || displayWarning || disableUpdateBtn"
+                  (click)="onSubmit(evaluationForm.value)">{{'EVALUATIONMEANSD.UPDATE' | translate}}</button>
+                <button *ngIf="displayPaginationFlag" id="spec_updateButton" mat-flat-button color="primary"
+                  [disabled]="!evaluationForm.valid || isChildFormValid  || evaluationForm.pristine || displayWarning"
+                  (click)="onSubmit(evaluationForm.value)">{{'EVALUATIONMEANSD.UPDATETO' | translate}}</button>
+              </span>
+            </footer>
+          </div>
+        </perfect-scrollbar>
+      </div>
+    </div>
+  </form>
+</div>

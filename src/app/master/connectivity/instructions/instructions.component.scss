@@ -1,0 +1,101 @@
+@import '../../../../assets/scss/variables';
+@import '../../../../assets/scss/base/variables-peak';
+@import '../../../../assets/scss/mixins';
+
+main {
+  overflow: visible;
+  background: $br-white;
+  height: calc(100vh - 80px);
+
+  &.step-1 {
+    background: $gray-200;
+  }
+}
+
+.hidden { display: none; }
+
+.content {
+  margin: 0 (-$custom-space-small);
+}
+
+
+.instructions-container {
+  height: calc(100vh - 160px);
+}
+
+.parsing-steps {
+  background: $br-white;
+  padding: $custom-space-xsmall ($custom-space-base + $custom-space-small) 0;
+
+  .headline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0 0 $custom-space-xsmall;
+
+    .flex-container {
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  h1 {
+    margin: 0 ($custom-space-base - $custom-space-xxsmall) 0 0;
+    color: rgba($black, 0.8);
+  }
+
+  .set-group {
+    @include media(tablet-and-up) {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 0 ($custom-space-large - $custom-space-xsmall) 0 0;
+    }
+
+    .label {
+      margin: $custom-space-small ($custom-space-small + $custom-space-xxsmall) 0 0;
+    }
+
+    .radios {
+      margin-right: $custom-space-small + $custom-space-xsmall;
+    }
+
+    .form-item {
+      width: 100%;
+      mat-form-field {
+        margin-top: 0;
+      }
+
+      @include media(tablet-and-up) {
+        width: 150px;
+      }
+    }
+
+    .note {
+      @extend %smaller-text;
+    }
+  }
+
+  .error-place {
+    font-size: $custom-type-size-xxsmall;
+    position: absolute;
+    bottom: -22px;
+    white-space: nowrap;
+  }
+
+  .text-box {
+    border: 1px solid $gray-400;
+    margin: 0;
+
+    .holder {
+      padding: ($custom-space-small + $custom-space-xsmall) $custom-space-base;
+      overflow: visible;
+      font: inherit;
+      line-height: 17px;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}

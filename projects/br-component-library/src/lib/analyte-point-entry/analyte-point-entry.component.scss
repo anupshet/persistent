@@ -1,0 +1,95 @@
+@import '../../scss/main';
+
+.analyte-point-entry-component {
+  background: $br-color-accent-050;
+  padding: 10px 40px 5px 10px;
+  margin-bottom: $custom-space-xxsmall;
+  cursor: pointer;
+}
+
+.heading-ctn {
+  display: flex;
+  flex-direction: row;
+}
+
+.heading-spacer {
+  width: $custom-type-size-xxsmall;
+}
+
+.product-lot-expiration-error {
+  color: $br-warn;
+  white-space: nowrap;
+}
+
+.flex-ctn {
+  display: flex;
+  justify-content: flex-start;
+
+  &.flex-ctn-1 {
+    background: $br-color-accent-050;
+    width: 100%;
+    padding: $custom-space-small $custom-space-base 0 $custom-space-large;
+    align-items: center;
+  }
+
+  .flex-item-1 {
+    width: 100%;
+    margin-right: 70px;
+    margin-top: -5px;
+  }
+
+  .flex-item-2 {
+    width: 80px;
+    padding: $custom-space-small + $custom-space-xsmall 0 0 $custom-space-base;
+  }
+
+  .link-text:first-child {
+    margin-left: 0;
+  }
+}
+
+
+mat-table {
+  width: 100%;
+  min-width: calc(270 + (6*90));
+  margin-right: 120px;
+
+  mat-row {
+    border: 0;
+    background: $br-color-accent-050;
+  }
+
+  mat-cell {
+    display: flex;
+    justify-content: left;
+  }
+
+  // mat-table adds padding by default?
+  mat-cell:last-of-type {
+    padding-right:0 !important;
+  }
+
+  mat-cell .flex-cell {
+    text-align: center;
+    padding-left: $custom-space-small + $custom-space-xsmall;
+    min-width: 90px;
+    
+    .mat-form-field {
+      width: 90px;
+      min-width: 90px;
+      // padding-top: $custom-type-size-xxlarge;
+      padding-top: 0;
+      margin-top: 5px;
+    }
+  }
+
+  mat-cell:first-child {
+    width: 110px;
+    max-width: 110px;
+    min-width: 110px;
+  }
+}
+
+.btns-control {
+  margin-left: -$custom-space-small;
+}

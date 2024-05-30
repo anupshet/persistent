@@ -1,0 +1,575 @@
+{"**Comment":"<<<<<<<<<<<<<<<<< Global and Generic Section >>>>>>>>>>>>>>>>>>"}
+{
+  "GlobalText": {
+    "CorrectiveActionHead": "<<CorrectiveAction>>",
+    "ReviewedByHead": "<<ReviewedBy>>",
+    "DateHead": "<<Date>>"
+  }
+}
+{"**Comment":"<<<<<<<<<<<<<<<<<< Page Section >>>>>>>>>>>>>>>>>>"}
+{
+  "Tags": {
+    "PageHeaderFooter": {
+      "LabNumber": ""
+    }
+  }
+}
+
+{"**Comment":"<<<<<<<<<<<<<<<<<< Page Section >>>>>>>>>>>>>>>>>>"}
+{
+  "Tags": {
+    "PageHeaderFooter": {
+      "LabNumber": ""
+    }
+  }
+}
+
+{"**Comment":"-------- Variables for PageHeaderFooter (1 per job) ------"}
+{
+  "PageHeaderFooter": {
+    "MediaSize": "Letter",
+    "Title": "<<MonthlyEvaluationReport>>",
+    "Subtitle": "Multiqual 1,2,3",
+    "LotNumber": "45860",
+    "Expiration": "30-Sep-2022",
+    "ReportMonth": "April 2022",
+    "LabNumber": "202645",
+    "LabName": "QA - For testing",
+    "Address1": "123",
+    "Address2": "",
+    "Address3": "Irvine, CA 92618",
+    "Address4": "<<Attention>>: John Doe",
+    "Address5": "Dept229440Peer",
+    "PrintedDate": "20-May-2022",
+    "PrintedTime": "11:20:56",
+    "CopyrightYear": "2022"
+  }
+}
+
+{
+  "TrailerPageSetup": {
+    "Class": "METrailerPage"
+  }
+}
+
+{
+  "MELabSummary": {
+    "DataWasSubmitted": true,
+    "WithinEstablishedParameters": false,
+    "SuppressWithinEstablishedParameters": false,
+    "SDIWarningThreshold": 2.0,
+    "CVRWarningThreshold": 2.0
+  }
+}
+{"**Comment":"-------- Setup for ME's lab (1 per job) ------"}
+{"**Comment":"<<<<<<<<<<<<<<<<<< Data Warning and Exclusion Section >>>>>>>>>>>>>>>>>>"}
+{"**Comment":"-------- Warnings/Exclusions (N per job) ------"}
+{
+  "MEAnalyte": {
+    "MethodGroup": {
+      "Levels": [
+        {
+          "MethodGroup": {
+            "Mean": "103.8",
+            "SD": "2.22",
+            "CV": "2.1",
+            "NoPoints": "4",
+            "NoLabs": "1"
+          },
+          "LevelNo": "1"
+        },
+        {
+          "MethodGroup": {
+            "Mean": "28.30",
+            "SD": "44.67",
+            "CV": "157.9",
+            "NoPoints": "30",
+            "NoLabs": "7"
+          },
+          "LevelNo": "2"
+        },
+        {
+          "MethodGroup": {
+            "Mean": "--",
+            "SD": "--",
+            "CV": "--",
+            "NoPoints": "--",
+            "NoLabs": ""
+          },
+          "LevelNo": "3"
+        }
+      ]
+    },
+    "Analyte": "Albumin",
+    "Method": "Bromcresol Green (BCG) - Vitros",
+    "Unit": "g/dL",
+    "Temp": "",
+    "InstrumentKits": [
+      {
+        "Instrument": "Ortho Clinical Diagnostics VITROS 250",
+        "Designation": "VITROS 250",
+        "Reagent": "ALB REF 198 8211 (Microslide) : VITROS Chemistry Cal Kit 4 - Slide Gen #25 - Unspecified ***",
+        "PeerGroupName": "VITROS 250",
+        "Levels": [
+          {
+            "Comparison": {
+              "PeerCVR": "0.0",
+              "MethodCVR": "28.4",
+              "PeerSDI": "0.00",
+              "MethodSDI": "-45.21"
+            },
+            "YourLab": {
+              "Mean": "3.50",
+              "SD": "2.12",
+              "CV": "60.6",
+              "NoPoints": "2"
+            },
+            "PeerGroup": {
+              "Mean": "--",
+              "SD": "--",
+              "CV": "--",
+              "NoPoints": "--",
+              "NoLabs": ""
+            },
+            "Exclusion": {
+              "Type": "CV",
+              "Submitted": "60.6%",
+              "LowAcceptable": "-11%",
+              "HighAcceptable": "11%"
+            },
+            "LevelNo": "1"
+          },
+          {
+            "Comparison": {
+              "PeerCVR": "0.0",
+              "MethodCVR": "0.0",
+              "PeerSDI": "-0.58",
+              "MethodSDI": "-0.59"
+            },
+            "YourLab": {
+              "Mean": "2.00",
+              "SD": "0.000",
+              "CV": "0.0",
+              "NoPoints": "1"
+            },
+            "PeerGroup": {
+              "Mean": "28.40",
+              "SD": "45.47",
+              "CV": "160.1",
+              "NoPoints": "15",
+              "NoLabs": "7"
+            },
+            "LevelNo": "2"
+          }
+        ]
+      },
+      {
+        "Instrument": "Ortho Clinical Diagnostics VITROS 250",
+        "Designation": "VITROS 250",
+        "Reagent": "ALB REF 198 8211 (Microslide) : VITROS Chemistry Cal Kit 4 - Slide Gen #27 - Unspecified ***",
+        "PeerGroupName": "VITROS 250",
+        "Levels": [
+          {
+            "Comparison": {
+              "PeerCVR": "0.0",
+              "MethodCVR": "3.2",
+              "PeerSDI": "0.00",
+              "MethodSDI": "-46.32"
+            },
+            "YourLab": {
+              "Mean": "1.05",
+              "SD": "0.071",
+              "CV": "6.7",
+              "NoPoints": "2"
+            },
+            "PeerGroup": {
+              "Mean": "--",
+              "SD": "--",
+              "CV": "--",
+              "NoPoints": "--",
+              "NoLabs": ""
+            },
+            "Exclusion": {
+              "Type": "CV",
+              "Submitted": "6.7%",
+              "LowAcceptable": "-11%",
+              "HighAcceptable": "11%"
+            },
+            "LevelNo": "1"
+          },
+          {
+            "Comparison": {
+              "PeerCVR": "0.0",
+              "MethodCVR": "0.0",
+              "PeerSDI": "-0.58",
+              "MethodSDI": "-0.59"
+            },
+            "YourLab": {
+              "Mean": "2.05",
+              "SD": "0.071",
+              "CV": "3.4",
+              "NoPoints": "2"
+            },
+            "PeerGroup": {
+              "Mean": "28.19",
+              "SD": "45.45",
+              "CV": "161.2",
+              "NoPoints": "15",
+              "NoLabs": "7"
+            },
+            "LevelNo": "2"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+
+{"**EndOfDataMarker**":""}
+
+{"**Comment":"<<<<<<<<<<<<<<<<<< Page Section >>>>>>>>>>>>>>>>>>"}
+{
+  "Tags": {
+    "PageHeaderFooter": {
+      "LabNumber": ""
+    }
+  }
+}
+
+{"**Comment":"-------- Variables for PageHeaderFooter (1 per job) ------"}
+{
+  "PageHeaderFooter": {
+    "MediaSize": "Letter",
+    "Title": "<<LaboratoryComparisonReport>>",
+    "Subtitle": "Multiqual 1,2,3",
+    "LotNumber": "45860",
+    "Expiration": "30-Sep-2022",
+    "ReportMonth": "April 2022",
+    "LabNumber": "202645",
+    "LabName": "QA - For testing",
+    "Address1": "123",
+    "Address2": "",
+    "Address3": "Irvine, CA 92618",
+    "Address4": "<<Attention>>: John Doe",
+    "Address5": "Dept229440Peer",
+    "PrintedDate": "20-May-2022",
+    "PrintedTime": "11:20:56",
+    "CopyrightYear": "2022"
+  }
+}
+
+
+{"**Comment":"<<<<<<<<<<<<<<<<<< Laboratory Comparison Section >>>>>>>>>>>>>>>>>>"}
+{
+  "LCAnalyte": {
+    "MethodGroup": {
+      "Levels": [
+        {
+          "MethodGroup": {
+            "Mon": {
+              "Mean": "103.8",
+              "SD": "2.22",
+              "CV": "2.1",
+              "NoPoints": "4",
+              "NoLabs": "1"
+            },
+            "Cum": {
+              "Mean": "2.23",
+              "SD": "0.449",
+              "CV": "20.1",
+              "NoPoints": "209225",
+              "NoLabs": "147"
+            }
+          },
+          "LevelNo": "1"
+        },
+        {
+          "MethodGroup": {
+            "Mon": {
+              "Mean": "28.30",
+              "SD": "44.67",
+              "CV": "157.9",
+              "NoPoints": "30",
+              "NoLabs": "7"
+            },
+            "Cum": {
+              "Mean": "3.29",
+              "SD": "1.10",
+              "CV": "33.5",
+              "NoPoints": "95207",
+              "NoLabs": "63"
+            }
+          },
+          "LevelNo": "2"
+        },
+        {
+          "MethodGroup": {
+            "Mon": {
+              "Mean": "--",
+              "SD": "--",
+              "CV": "--",
+              "NoPoints": "--",
+              "NoLabs": ""
+            },
+            "Cum": {
+              "Mean": "4.28",
+              "SD": "0.156",
+              "CV": "3.6",
+              "NoPoints": "200224",
+              "NoLabs": "139"
+            }
+          },
+          "LevelNo": "3"
+        }
+      ]
+    },
+    "Analyte": "Albumin",
+    "Method": "Bromcresol Green (BCG) - Vitros",
+    "Unit": "g/dL",
+    "Temp": "",
+    "InstrumentKits": [
+      {
+        "Instrument": "Ortho Clinical Diagnostics VITROS 250",
+        "Designation": "VITROS 250",
+        "Reagent": "ALB REF 198 8211 (Microslide) : VITROS Chemistry Cal Kit 4 - Slide Gen #25 - Unspecified ***",
+        "PeerGroupName": "VITROS 250",
+        "Levels": [
+          {
+            "Comparison": {
+              "Mon": {
+                "PeerCVR": "0.0",
+                "MethodCVR": "0.0",
+                "PeerSDI": "-0.58",
+                "MethodSDI": "-0.59"
+              },
+              "Cum": {
+                "PeerCVR": "0.0",
+                "MethodCVR": "0.0",
+                "PeerSDI": "-0.56",
+                "MethodSDI": "-1.17"
+              }
+            },
+            "YourLab": {
+              "Mon": {
+                "Mean": "2.00",
+                "SD": "0.000",
+                "CV": "0.0",
+                "NoPoints": "1"
+              },
+              "Cum": {
+                "Mean": "2.00",
+                "SD": "0.000",
+                "CV": "0.0",
+                "NoPoints": "1"
+              }
+            },
+            "PeerGroup": {
+              "Mon": {
+                "Mean": "28.40",
+                "SD": "45.47",
+                "CV": "160.1",
+                "NoPoints": "15",
+                "NoLabs": "7"
+              },
+              "Cum": {
+                "Mean": "26.56",
+                "SD": "44.22",
+                "CV": "166.5",
+                "NoPoints": "20",
+                "NoLabs": "7"
+              }
+            },
+            "LevelNo": "2"
+          }
+        ]
+      },
+      {
+        "Instrument": "Ortho Clinical Diagnostics VITROS 250",
+        "Designation": "VITROS 250",
+        "Reagent": "ALB REF 198 8211 (Microslide) : VITROS Chemistry Cal Kit 4 - Slide Gen #27 - Unspecified ***",
+        "PeerGroupName": "VITROS 250",
+        "Levels": [
+          {
+            "Comparison": {
+              "Mon": {
+                "PeerCVR": "0.0",
+                "MethodCVR": "0.0",
+                "PeerSDI": "-0.58",
+                "MethodSDI": "-0.59"
+              },
+              "Cum": {
+                "PeerCVR": "0.0",
+                "MethodCVR": "0.1",
+                "PeerSDI": "-0.61",
+                "MethodSDI": "-1.13"
+              }
+            },
+            "YourLab": {
+              "Mon": {
+                "Mean": "2.05",
+                "SD": "0.071",
+                "CV": "3.4",
+                "NoPoints": "2"
+              },
+              "Cum": {
+                "Mean": "2.05",
+                "SD": "0.071",
+                "CV": "3.4",
+                "NoPoints": "2"
+              }
+            },
+            "PeerGroup": {
+              "Mon": {
+                "Mean": "28.19",
+                "SD": "45.45",
+                "CV": "161.2",
+                "NoPoints": "15",
+                "NoLabs": "7"
+              },
+              "Cum": {
+                "Mean": "30.04",
+                "SD": "45.99",
+                "CV": "153.1",
+                "NoPoints": "21",
+                "NoLabs": "7"
+              }
+            },
+            "LevelNo": "2"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+{"**EndOfDataMarker**":""}
+
+
+
+{"**Comment":"-------- Variables for PageHeaderFooter (1 per job) ------"}
+{
+  "PageHeaderFooter": {
+    "MediaSize": "Letter",
+    "Title": "Laboratory Histogram",
+    "Subtitle": "Multiqual 1,2,3",
+    "LotNumber": "45860",
+    "Expiration": "30-Sep-2022",
+    "ReportMonth": "April 2022",
+    "LabNumber": "202645",
+    "LabName": "QA - For testing",
+    "Address1": "123",
+    "Address2": "",
+    "Address3": "Irvine, CA 92618",
+    "Address4": "<<Attention>>: John Doe",
+    "Address5": "Dept229440Peer",
+    "PrintedDate": "20-May-2022",
+    "PrintedTime": "11:20:56",
+    "CopyrightYear": "2022"
+  }
+}
+
+
+{"**Comment":"<<<<<<<<<<<<<<<<<< Laboratory Histogram Section >>>>>>>>>>>>>>>>>>"}
+{"**Comment":"<<<<<<<<<< Variables Lab Histogra (N per job) >>>>>>>>>"}
+{
+  "LHAnalyte": {
+    "StartMonth": 5,
+    "Analyte": "Albumin",
+    "Method": "Bromcresol Green (BCG) - Vitros",
+    "Unit": "g/dL",
+    "Temp": "",
+    "InstrumentKits": [
+      {
+        "Instrument": "Ortho Clinical Diagnostics VITROS 250",
+        "Designation": "VITROS 250",
+        "Reagent": "ALB REF 198 8211 (Microslide) : VITROS Chemistry Cal Kit 4 - Slide Gen #25 - Unspecified ***",
+        "PeerGroupName": "VITROS 250",
+        "Levels": [
+          {
+            "YourLab": {
+              "Months": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                {
+                  "Mean": "2.00",
+                  "SD": "0.000",
+                  "CV": "0.0",
+                  "NoPoints": "1"
+                }
+              ],
+              "Cum": {
+                "Mean": "2.00",
+                "SD": "0.000",
+                "CV": "0.0",
+                "NoPoints": "1"
+              }
+            },
+            "LHPeerGroup": {
+              "Mean": "26.56",
+              "SDSize": "44.2189778857807"
+            },
+            "LevelNo": "2"
+          }
+        ]
+      },
+      {
+        "Instrument": "Ortho Clinical Diagnostics VITROS 250",
+        "Designation": "VITROS 250",
+        "Reagent": "ALB REF 198 8211 (Microslide) : VITROS Chemistry Cal Kit 4 - Slide Gen #27 - Unspecified ***",
+        "PeerGroupName": "VITROS 250",
+        "Levels": [
+          {
+            "YourLab": {
+              "Months": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                {
+                  "Mean": "2.05",
+                  "SD": "0.071",
+                  "CV": "3.4",
+                  "NoPoints": "2"
+                }
+              ],
+              "Cum": {
+                "Mean": "2.05",
+                "SD": "0.071",
+                "CV": "3.4",
+                "NoPoints": "2"
+              }
+            },
+            "LHPeerGroup": {
+              "Mean": "30.04",
+              "SDSize": "45.9884141517239"
+            },
+            "LevelNo": "2"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+{"**EndOfDataMarker**":""}
+
+
+{"**EndOfDataMarker**":""}
+

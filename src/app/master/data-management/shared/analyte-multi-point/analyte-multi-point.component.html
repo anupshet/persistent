@@ -1,0 +1,132 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="heading-ctn mb-5 mt-5 ml-10" *ngIf="isMultiPointEntry() || isProductMasterLotExpired"
+  [class.no-previous-data]="isMultiPointEntry() && isLastDataEntry && analytePointView == null">
+  <span *ngIf="isMultiPointEntry()" class="test-analyte-name">{{ analyteEntry?.analyteName }}</span>
+  <span *ngIf="isMultiPointEntry() && isLastDataEntry && analytePointView == null" class="box test-analyte-name">
+    {{'ANALYTEMULTIPOINT.NODATA' | translate}}
+  </span>
+</div> <!-- /heading-ctn -->
+<div class="analyte-multi-point-component" (mouseenter)="mouseEnter(true)" (mouseleave)="mouseEnter(false)">
+  <div class="flex-ctn">
+    <div class="flex-item-1">
+      <mat-table [dataSource]="dataRows">
+        <ng-container [matColumnDef]="columnsToDisplay[0]">
+          <mat-cell class="date-picker" *matCellDef="let row; let rowIndex=index;">
+            <form [formGroup]="form">
+              <br-date-time-picker formControlName="analyteDate" *ngIf="rowIndex == 0 && isSinglePointEntry()"
+                (ngModelChange)="updateAnalyteDate()" [selectedDateTime]="analyteEntry?.analyteDateTime"
+                [readOnlyDate]="readOnlyDate" [timeZone]="timeZone" [displayInline]="false" [isDisabled]="isDisabled">
+              </br-date-time-picker>
+            </form>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container *ngFor="let col of columnsToDisplay | slice:1; let columnIndex=index;" [matColumnDef]="col">
+          <mat-cell *matCellDef="let row; let rowIndex=index;">
+            <div class="flex-cell" *ngIf="hasLevelSet(columnIndex); else emptyTemplate;">
+              <mat-form-field>
+                <label class="level-label level-{{col}}">
+                  {{col}}
+                </label>
+                <input matInput id="{{ levelIdentifier + analyteEntry?.cumulativeLevels[columnIndex]}}" maxlength="16"
+                  autocomplete="off" [brNumericValue]="regexRationalNumber" (ngModelChange)="levelDataChange($event)"
+                  [(ngModel)]="(getLevel(columnIndex)).data.value" tabindex="{{getTabIndex(columnIndex, rowIndex)}}"
+                  [disabled]="isProductMasterLotExpired || isArchived || isDisabled" (focus)="focus(true)"
+                  (focusout)="focus(false)" />
+              </mat-form-field>
+            </div>
+            <div class="fake-placeholder">
+              <div *ngIf="isLastDataEntry && analytePointView && findIndex(col) > -1" class="box">
+                <span class="trigger spec_trigger" [matMenuTriggerFor]="menu" #trigger="matMenuTrigger"
+                  (mouseover)="trigger.openMenu()" (mouseout)="trigger.closeMenu()" [ngClass]="{
+                    'is-last-data-entry': isLastDataEntry,
+                    'is-reject': getResultStatus(analytePointView.levelDataSet[foundIndex]?.data?.resultStatus) === 'red',
+                    'is-warning': getResultStatus(analytePointView.levelDataSet[foundIndex]?.data?.resultStatus) === 'yellow',
+                    'is-not-accepted': !analytePointView.levelDataSet[foundIndex]?.data?.isAccepted,
+                    'small-font': analytePointView.levelDataSet[foundIndex]?.decimalPlace === 4
+                  }">{{analytePointView.levelDataSet[foundIndex]?.data.value | uNextNumeric }}
+                </span>
+                <mat-menu #menu="matMenu" [overlapTrigger]="false" yPosition="above" [hasBackdrop]="false"
+                  class="info-tooltip-component-mat-menu">
+                  <div class="last-data-entry-popup">
+                    <div class="flex">
+                      <div class="item-1">
+                        <div>
+                          <span class="gray">{{'ANALYTEMULTIPOINT.LEVEL' | translate}} {{analytePointView.levelDataSet[foundIndex]?.level}}</span>
+
+                          <strong [ngClass]="{'strike': !analytePointView.levelDataSet[foundIndex]?.data?.isAccepted}">
+                            {{analytePointView.levelDataSet[foundIndex]?.data.value | uNextNumeric}}</strong>
+                        </div>
+                        <div class="bottom gray">
+                          {{analytePointView.analyteDateTime | uNextDate: 'mediumDate' }}
+                          <br/>
+                          {{analytePointView.analyteDateTime | uNextDate: 'shortTime' }}
+                        </div>
+                      </div> <!-- /item-1 -->
+                      <div class="item-2">
+                        <div class="row">
+                          <span class="label gray">{{'ANALYTEMULTIPOINT.MEAN' | translate}}</span>
+                          <span class="value" *ngIf="analytePointView.levelDataSet[foundIndex]?.data.mean !== 0">{{analytePointView.levelDataSet[foundIndex]?.data.mean | uNextNumeric }}</span>
+                        </div>
+                        <div class="row">
+                          <span class="label gray">{{'ANALYTEMULTIPOINT.SD' | translate}}</span>
+                          <span class="value" *ngIf="analytePointView.levelDataSet[foundIndex]?.data.sd !== 0">{{analytePointView.levelDataSet[foundIndex]?.data.sd | uNextNumeric}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="label gray">{{'ANALYTEMULTIPOINT.CV' | translate}}</span>
+                          <span class="value" *ngIf="getCalculatedCV(foundIndex) !== 0">{{getCalculatedCV(foundIndex) | uNextNumeric}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="label gray">{{'ANALYTEMULTIPOINT.ZSCORE' | translate}}</span>
+                          <span class="value" *ngIf="analytePointView.levelDataSet[foundIndex]?.data.z">{{analytePointView.levelDataSet[foundIndex]?.data.z | uNextNumeric}}</span>
+                        </div>
+                        <div class="row reason"
+                          *ngIf="analytePointView.levelDataSet[foundIndex]?.data &&
+                        analytePointView.levelDataSet[foundIndex]?.data.ruleViolated && analytePointView.levelDataSet[foundIndex]?.data.ruleViolated.length > 0">
+                          <span class="label gray">{{'ANALYTEMULTIPOINT.REASON' | translate}}</span>
+                          <div class="value-ctn">
+                            <span class="value"
+                              *ngFor="let reason of analytePointView.levelDataSet[foundIndex]?.data.ruleViolated">{{reason}}</span>
+                          </div>
+                        </div>
+                      </div> <!-- /item-2 -->
+                    </div> <!-- /flex -->
+                    <div *ngIf="analytePointView.userActions && analytePointView.userActions.length > 0"
+                      class="ctn-user-action">
+                      <p>{{analytePointView.userActions[0]?.actionName}}</p>
+                    </div>
+                  </div><!-- /last-data-entry-popup -->
+                </mat-menu>
+              </div>
+            </div> <!-- /fake-placeholder -->
+            <div>
+              <ng-template #emptyTemplate>
+                <mat-form-field class="hidden">
+                  <input matInput [disabled]="'true'" placeholder="{{'ANALYTEMULTIPOINT.NA' | translate}}" />
+                </mat-form-field>
+              </ng-template>
+            </div>
+          </mat-cell>
+        </ng-container>
+
+        <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+      </mat-table>
+    </div>
+    <div class="flex-item-2">&nbsp;</div>
+  </div>
+
+  <div class="relative ml-10 pb-10">
+    <form [formGroup]="changeLotForm" *ngIf="!isProductMasterLotExpired">
+      <br-change-lot formControlName="changeLot" [isInsertPastResultLinkVisible]="isSinglePointEntry()"
+        [selectedDate]="analyteEntry?.analyteDateTime" (ngModelChange)="updateChangeLotData()"
+        [reagentLots]="reagentLots" [calibratorLots]="calibratorLots" (editDate)="toggleEditDate($event)"
+        [translationLabelDictionary]="translationLabelDictionary" (getLots)="requestLots()" [isFormVisible]="false"
+        (isLotVisible)="isLotFormVisible($event)" [showOptions]="false" [labTestId]="analyteEntry?.labTestId"
+        [totalLevels]="(columnsToDisplay | slice:1)" [isArchived]="isArchived"
+        (requestNewConfig)="requestNewConfiguration($event)" [isPointEntry]="true"
+        [correctiveActions]="correctiveActions" [isDisabled]="isDisabled">
+      </br-change-lot>
+    </form>
+  </div>
+
+</div>

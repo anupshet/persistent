@@ -1,0 +1,89 @@
+{
+"DEV":
+    {
+
+        "URL":"https://unity-dev.qcnet.com",
+
+       
+        "AccountUserManager_Username":"monika_ghube+AccountUserManager@bio-rad.com",
+        "AccountUserManager_Password":"Welcome1",
+        "AccountUserManager_FirstName":"Monika",
+        
+        "LabUserManager_Username":"gopal_patil+LabUserManager@bio-rad.com",
+        "LabUserManager_Password":"Welcome1",
+        "LabUserManager_FirstName":"Gopal",
+        
+        "LabUserSupervisor_Username":"mayank_jatay+LabSuperviosr@bio-rad.com",
+        "LabUserSupervisor_Password":"Welcome1",
+        "LabUserSupervisor_FirstName":"Mayank",
+       
+       
+        "LeadTech_Username":"monika_ghube+LeadTech@bio-rad.com",
+        "LeadTech_Password":"Welcome1",
+        "LeadTech_FirstName":"Monika",
+        
+        "Tech_Username":"gopal_patil+Tech@bio-rad.com",
+        "Tech_Password":"Welcome1",
+        "Tech_FirstName":"Gopal",
+       
+        "LotViewerSales_Username":"vinayak_yadav+LotViewerSales@bio-rad.com",
+        "LotViewerSales_Password":"Welcome1",
+        "LotViewerSales_FirstName":"Vinayak",
+       
+        "BioRadUserManager_Username":"vinayak_yadav+Bio-RadManager@bio-rad.com",
+        "BioRadUserManager_Password":"Welcome1",
+        "BioRadUserManager_FirstName":"Vinayak",
+        
+        "CTSUser_Username":"vinayak_yadav+cts@bio-rad.com",
+        "CTSUser_Password":"Welcome1",
+        "CTSUser_FirstName":"Vinayak",
+        
+        "BioRadManager_CTSUser_Username":"vinayak_yadav+BioRadManager-Cts@bio-rad.com",
+        "BioRadManager_CTSUser_Password":"Welcome1",
+        "BioRadManager_CTSUser_FirstName":"Vinayak",
+       
+        "AccountUserManager_Supervisor_Username":"monika_ghube+AUM_S@bio-rad.com",
+        "AccountUserManager_Supervisor_Password":"Welcome1",
+        "AccountUserManager_Supervisor_FirstName":"Monika",
+
+        "AccountUserManager_LabUserManager_Supervisor_Username":"monika_ghube+AUM_LUM_LS@bio-rad.com",
+        "AccountUserManager_LabUserManager_Supervisor_Password":"Welcome1",
+        "AccountUserManager_LabUserManager_Supervisor_FirstName":"Monika",
+
+        "LabUserManager_Supervisor_Username":"gopal_patil+LUM_S@bio-rad.com",
+        "LabUserManager_Supervisor_Password":"Welcome1",
+        "LabUserManager_Supervisor_FirstName":"Gopal",
+
+
+        "LabUserManager_LeadTech_Username":"monika_ghube+LUM_LT@bio-rad.com",
+        "LabUserManager_LeadTech_Password":"Welcome1",
+        "LabUserManager_LeadTech_FirstName":"Monika",
+
+        "LabUserManager_Tech_Username":"monika_ghube+LUM_T@bio-rad.com",
+        "LabUserManager_Tech_Password":"Welcome1",
+        "LabUserManager_Tech_FirstName":"Monika",
+           
+
+
+
+            "LabName":"TestLab",
+			"CountryCreateAccount":"Iraq",
+			"AddressCreateAccount":"Addr1",
+			"Address2CreateAccount":"Addr2",
+			"Address3CreateAccount":"Addr3",
+			"StateCreateAccount":"MH",
+			"CityCreateAccount":"Pune",
+			"ZipCreateAccount":"411012",
+			"LabContactFirstName":"TestFName",
+			"LabContactLastName":"TestLName",
+			"LabContactEmail":"monika_ghube+AddAccount@bio-rad",
+			"LabContactEmailSearch":"sample_user2@bio-rad.com",
+            "groupName":"SampleGroup",
+            "ColumnNo1": "1",
+            "KeywordAccount": "TestLab-12",
+            "AccountNameColumn": "Account Name",
+            "UpdategroupName":"SampleGroup_Updated",
+            "expectedColumns":"LAB IDENTIFICATION,LAB CONTACT,ACCOUNT INFO,GROUP NAME,LOCATION(S),LICENSE TYPE,LICENSE STATUS"
+    }
+
+}

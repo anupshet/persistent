@@ -1,0 +1,35 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div cdkScrollable class="ctn-cdkScrollable" [ngClass]="{'turn-scroll-on': dragging}">
+    <div cdkDropList class="panel-items-list" (cdkDropListDropped)="drop($event)">
+        <div class="panel-item-box" *ngFor="let item of listItems" cdkDrag
+             (cdkDragReleased)="released()"
+             (cdkDragStarted)="started()"
+             (mousedown)="onMouseDown($event)"
+             (mouseup)="released()"
+             [matTooltip]="item.isLotExpired ? lotExpiredToolTip : ''" matTooltipPosition="left">
+            <div class="panel-item-contents">
+                <mat-icon [svgIcon]="icons.verticalBars[24].name" class="bars mr-5"></mat-icon>
+                <span [ngClass]="{'lot-expired': item.isLotExpired, 'lot-not-expired': !item.isLotExpired}">{{item.displayName}}</span>
+                <div class="stop-propagation">
+                    <unext-node-info class="panel-node-info" [analyteId]="item.id"></unext-node-info>
+                </div>
+            </div>
+            <div class="stop-propagation">
+                <mat-icon (click)="removeItem(item)" [svgIcon]="icons.close[48].name" class="close"></mat-icon>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="archived-items-container">
+  <div class="panel-item-box" *ngFor="let item of archivedItemList"
+    [matTooltip]="item.isLotExpired ? lotExpiredToolTip : ''" matTooltipPosition="left">
+    <div class="panel-item-contents">
+      <span [ngClass]="'archived'">{{item.displayName}}</span>
+      <unext-node-info class="panel-node-info" [analyteId]="item.id"></unext-node-info>
+    </div>
+    <div (click)="removeArchiveItem(item)" class="spec_close_archived_btn">
+      <mat-icon [svgIcon]="icons.close[48].name" class="close"></mat-icon>
+    </div>
+  </div>
+</div>

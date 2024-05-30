@@ -1,0 +1,101 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../../../assets/scss/variables";
+@import "../../../../../assets/scss/base/variables-peak";
+@import "../../../../../assets/scss/mixins";
+
+.aside {
+  background: $gray-100;
+  position: relative;
+  z-index: 15;
+
+  @include media(tablet-and-up) {
+    width: 300px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    border-right: 1px solid $gray-400;
+    height: calc(100vh - 30px);
+  }
+
+  +.mapping-area {
+    .container-fluid {
+      padding-top: $custom-space-base + $custom-space-xxsmall;
+    }
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-rows: auto;
+    position: absolute;
+    top: 35%;
+    bottom: 35%;
+    right: 20px;
+    margin-top: -$custom-space-small;
+  }
+
+  .count-first-child,
+  .count-second-child {
+    color: $gray-600;
+    font-size: mat-font-size($br-typography, caption);
+    line-height: 18px;
+  }
+
+
+  .count-first-child {
+    grid-row-start: 0;
+    grid-row-start: 1;
+    text-align: right;
+  }
+
+  .count-second-child {
+    grid-row-start: 1;
+    grid-row-start: 2;
+  }
+
+  .btn {
+    margin: $custom-space-xsmall;
+  }
+}
+
+
+.steps-list mat-panel-title .count,
+.steps-list mat-panel-title .count-first-child,
+.steps-list mat-panel-title .count-second-child {
+  text-transform: none;
+}
+
+.details button {
+  height: 42px;
+}
+
+.highlight,
+button.highlight {
+  background-color: rgba($blue-light, 0.22);
+  font-weight: bold;
+}
+
+.highlight .title,
+.highlight .count,
+.highlight .count-first-child,
+.highlight .count-second-child,
+.steps-list .highlight {
+  color: $gray-700;
+  font-weight: bold;
+}
+
+.hide {
+  display: none !important;
+}
+
+.title {
+  font-weight: bold !important;
+  color: $gray-700  !important;
+  background: none;
+  padding: 0;
+}
+
+mat-accordion mat-expansion-panel-header,
+mat-accordion .mat-expansion-panel-header {
+  max-height: 48px;
+  padding: 0;
+}

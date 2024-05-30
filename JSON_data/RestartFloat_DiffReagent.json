@@ -1,0 +1,38 @@
+{
+  "QA1": {
+    "URL": "https://unity-dev2.qcnet.com",
+    "Username": "shubham_damdhar+dev2lab@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Shubham",
+    "Department": "Department2New",
+    "Instrument": "VITROS 350",
+    "Control": "Multiqual 1,2,3",
+    "Analyte1": "Albumin",
+    "Analyte2": "Calcium",
+    "Analyte3": "Amylase",
+    "SlideGen1": "Slide Gen #06",
+    "SlideGen2": "Slide Gen #08",
+    "SlideGen3": "Slide Gen #10",
+    "SlideGen21": "Slide Gen #02",
+    "SlideGen22": "Slide Gen #03",
+    "SlideGen23": "Slide Gen #33"
+  },
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "Username": "UnityNextRegressionTestUser+1@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Regression",
+    "Department": "Vitros_2.40",
+    "Instrument": "VITROS 350",
+    "Control": "Cardiac Markers Plus LT",
+    "Analyte1": "Ammonia",
+    "Analyte2": "Cholesterol, HDL",
+    "Analyte3": "Amylase",
+    "SlideGen1": "Slide Gen #06",
+    "SlideGen2": "Slide Gen #08",
+    "SlideGen3": "Slide Gen #10",
+    "SlideGen21": "Slide Gen #24",
+    "SlideGen22": "Slide Gen #25",
+    "SlideGen23": "Slide Gen #26"
+  }
+}

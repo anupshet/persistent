@@ -1,0 +1,73 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../../../../../assets/scss/variables";
+@import "../../../../../../assets/scss/base/variables-peak";
+@import "../../../../../../assets/scss/mixins";
+
+.aside {
+
+  width: 210px;
+  padding: 0 0 0 10px;
+  margin: 0 10px 0 0;
+  text-align: center;
+  height: calc(100vh - 400px);
+  border-left: 1px solid $gray-200;
+
+  h3 {
+    font-weight: 700;
+  }
+
+  .btn-code {
+    border-radius: 70px;
+    padding: 5px 10px;
+    color: $blue-light;
+    background: $form-group-bg;
+    margin: 0 auto;
+    min-width: 180px;
+    border: 1px dashed $input-border-focus;
+
+    &:hover {
+      border-color: $blue-dark;
+      background: $blue;
+      color: $white;
+    }
+  }
+
+  .btn-wrapper-disabled {
+    display: inline-block;
+    text-align: center;
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .btn-wrapper {
+    display: inline-block;
+    text-align: center;
+
+    span.link {
+      display: block;
+      color: $blue;
+      font-size: $custom-type-size-xsmall;
+      cursor: pointer;
+      padding-top: 0;
+    }
+  }
+
+  .flex {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .link {
+    color: $blue;
+    font-size: $custom-type-size-xsmall;
+    cursor: pointer;
+    padding-top: 0;
+  }
+
+  .select {
+    background-color: lightblue;
+  }
+
+}

@@ -1,0 +1,36 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import '../../lab-setup.component';
+
+.control-entry-component {
+
+  .panel-content-border {
+    position: relative;
+
+    .btn-remove {
+      position: absolute;
+      top: -8px;
+      right: -5px;
+      z-index: 2;
+      color: #888;
+    }
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .control-lavels {
+    display: block !important;
+  }
+}
+
+::ng-deep {
+  .mat-autocomplete-panel.mat-autocomplete.br-search-control-overlay.mat-autocomplete-visible {
+    overflow: hidden;
+
+    .br-select-list {
+      max-height: 208px;
+      overflow: auto;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+    "Local":  {
+      "URL": "http://localhost:4200",
+      "AUM_Username": "vinay_malagi+acc_user_mngr@bio-rad.com", 
+      "AUM_Password": "Welcome1",
+      "LUM_Username": "vinay_malagi+Lab_user_mngr@bio-rad.com", 
+      "LUM_Password": "Welcome1",
+      "LS_Username": "vinay_malagi+loc1@bio-rad.com",
+      "LS_Password": "Welcome1",
+      "LS_FirstName": "vinay",
+      "LS_DepartmentName": " DEPT_NEW ",
+      "LS_InstrumentName": " AU480 - CUSTOM_2 ",
+      "LS_ControlName": " DIABETES ",
+      "LS_AnalyteName": " Ferritin ",      
+      "LUM+LS_Username": " vinay_malagi+lum_ls@bio-rad.com",
+      "LUM+LS_Password": "Welcome1",
+      "LUM+LS_FirstName": "VINAY",
+      "LUM+LS_DepartmentName": "dept_new",
+      "LUM+LS_InstrumentName": "AU480",
+      "LUM+LS_ControlName": "Anemia",
+      "LUM+LS_AnalyteName": "Ferritin",
+      "LT_Username": " vinay_malagi+lt_dev@bio-rad.com",
+      "LT_Password": "Bangalore1",
+      "LT_FirstName": "VINAY",
+      "LT_DepartmentName": "dept_new",
+      "LT_InstrumentName": "AU480",
+      "LT_ControlName": "Anemia",
+      "LT_AnalyteName": "Ferritin",
+      "Tech_Username": "vinay_malagi+tech@bio-rad.com",
+      "Tech_Password": "Welcome1",
+      "Tech_FirstName": "VINAY",
+      "Tech_DepartmentName": "dept_new",
+      "Tech_InstrumentName": "AU480",
+      "Tech_ControlName": "Anemia",
+      "Tech_AnalyteName": "Ferritin"
+      
+    },
+    "DEV": {},
+    "QA": {},
+    "STAGE": {}
+    
+  }

@@ -1,0 +1,198 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<header class="table-head">
+  <div class="flex-container">
+    <div class="search-location-form">
+      <mat-form-field class="field-Category remove-upper">
+        <mat-label>{{'LOCATIONLIST.CATEGORY' | translate}}</mat-label>
+        <mat-select [(ngModel)]="selectedCategory" [value]="selectedCategory">
+          <mat-option value={{locationFields.LocationLabInfo}}>{{'LOCATIONLIST.LAB' | translate}}
+          </mat-option>
+          <mat-option value={{locationFields.LocationContact}}>{{'LOCATIONLIST.LABCONTACT' | translate}}
+          </mat-option>
+          <mat-option value={{locationFields.LocationAccount}}>{{'LOCATIONLIST.ACCOUNT' | translate}}
+          </mat-option>
+          <mat-option value={{locationFields.LocationGroup}}>{{'LOCATIONLIST.GROUP' | translate}}
+          </mat-option>
+          <mat-option value={{locationFields.LocationLicenseType}}>{{'LOCATIONLIST.LICENSE' | translate}}</mat-option>
+          <mat-option value={{locationFields.LocationAddOns}}>
+            {{'LOCATIONLIST.ADDONS' | translate}}</mat-option>
+          <mat-option value={{locationFields.LocationSoldToShipTo}}>
+            {{'LOCATIONLIST.SOLD' | translate}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="remove-upper">
+        <input matInput [(ngModel)]="searchInput" name="searchInput" [value]="searchInput" id="locations-field"
+        placeholder="{{'LOCATIONLIST.KEYWORD' | translate}}" maxLength="100"
+        (keydown.enter)="searchFromLocations()">
+      </mat-form-field>
+      <button class="heading spec-search-btn" mat-button color="primary" (click)="searchFromLocations()"
+      [disabled]="!(selectedCategory && searchInput && searchInput.trim())">{{'LOCATIONLIST.SEARCH' | translate}}</button>
+      <button *ngIf="selectedCategory > 0 || (searchInput && searchInput.trim())" class="heading spec-reset-btn"
+        mat-button color="primary" (click)="reset()">
+        <mat-icon class="set-width" [svgIcon]="icons.refreshBlue[24].name"></mat-icon>
+        <span>{{'LOCATIONLIST.RESET' | translate}}</span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="table-container-shadow">
+  <div class="table-container">
+    <perfect-scrollbar [config]="{ suppressScrollY: false , suppressScrollX: false}">
+      <div class="location-list set-height">
+        <mat-table [dataSource]="locations | paginate: paginationConfig" matSort (matSortChange)="sortList($event)"
+          matSortActive="lab" matSortDirection="asc" matSortDisableClear>
+          <ng-container matColumnDef="lab">
+            <mat-header-cell class="spec-labIdentification-heading" *matHeaderCellDef mat-sort-header>
+              <span class="heading">{{'LOCATIONLIST.LAB' | translate}}</span>
+              <mat-icon class="arrow-icon spec-arrow-icon" [svgIcon]="icons.sortActive[24].name"
+                [ngClass]="{'rotate' : sortInfo?.direction === 'asc'}"
+                *ngIf="sortInfo?.active === displayedColumnsLocations[0] && sortInfo?.direction"></mat-icon>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let labLocation">
+              <div class="flex-container flex-column remove-upper">
+                <span class="main-text text-click lab-name"
+                  [checkForPermission]="{'permissionsAllowed':[permissions.ViewLocation],'hideIfNotPermitted':false,'disableIfNotPermitted':true}"
+                  (click)="openLocationDetails(labLocation) ">
+                  {{ labLocation?.labLocationName }}
+                </span>
+                <span class="sub-text">{{ getAddress(labLocation) }}</span>
+              </div>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="labContact">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              <span class="heading">{{'LOCATIONLIST.LABCONTACT' | translate}}</span>
+              <mat-icon class="arrow-icon" [svgIcon]="icons.sortActive[24].name"
+                [ngClass]="{'rotate' : sortInfo?.direction === 'asc'}"
+                *ngIf="sortInfo?.active === displayedColumnsLocations[1] && sortInfo?.direction"></mat-icon>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let labLocation">
+              <div class="flex-container flex-column remove-upper">
+                <span class="main-text remove-upper">
+                  {{ labLocation.labLocationContact?.name}}
+                </span>
+                <span class="sub-text">{{ labLocation.labLocationContact?.email }}</span>
+              </div>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="account">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              <span class="heading">{{'LOCATIONLIST.ACCOUNT' | translate}}</span>
+              <mat-icon class="arrow-icon" [svgIcon]="icons.sortActive[24].name"
+                [ngClass]="{'rotate' : sortInfo?.direction === 'asc'}"
+                *ngIf="sortInfo?.active === displayedColumnsLocations[2] && sortInfo?.direction"></mat-icon>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let labLocation">
+              <div class="flex-container flex-column remove-upper">
+                <span class="main-text">{{ labLocation?.accountName }}</span>
+                <span class="sub-text">{{ labLocation?.accountNumber }}</span>
+              </div>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="group">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              <span class="heading">{{'LOCATIONLIST.GROUP' | translate}}</span>
+              <mat-icon class="arrow-icon" [svgIcon]="icons.sortActive[24].name"
+                [ngClass]="{'rotate' : sortInfo?.direction === 'asc'}"
+                *ngIf="sortInfo?.active === displayedColumnsLocations[3] && sortInfo?.direction"></mat-icon>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let labLocation">
+              <div class="flex-container flex-column remove-upper">
+                <span class="main-text align-top">{{ labLocation?.groupName }}</span>
+              </div>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="locations">
+            <mat-header-cell *matHeaderCellDef>
+              <span class="heading">{{'LOCATIONLIST.LOCATIONS' | translate}}</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let labLocation">
+              <div class="flex-container flex-column">
+                <span class="main-text align-top">{{ labLocation?.locationCount }}</span>
+              </div>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="licenseType">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              <span class="heading">{{'LOCATIONLIST.LICENSE' | translate}}</span>
+              <mat-icon class="arrow-icon" [svgIcon]="icons.sortActive[24].name"
+                [ngClass]="{'rotate' : sortInfo?.direction === 'asc'}"
+                *ngIf="sortInfo?.active === displayedColumnsLocations[5] && sortInfo?.direction"></mat-icon>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let labLocation">
+              <div class="flex-container flex-column spec-licenseType sub-text remove-upper"
+                [ngClass]="hasMultipleLicenses(labLocation) ? 'sub-text' : 'main-text'">
+                <div *ngIf="labLocation.unityNextTier === 0">{{'LOCATIONLIST.PEER' | translate}}</div>
+                <div *ngIf="labLocation.unityNextTier === 1">{{'DATAREVIEW.LOCATIONLIST.DAILYQC' | translate}}</div>
+                <div *ngIf="labLocation.connectivityTier === 1">{{'LOCATIONLIST.UNUPLOAD' | translate}}</div>
+                <div *ngIf="labLocation.connectivityTier === 2">{{'LOCATIONLIST.UNCONNECT' | translate}}
+                </div>
+                <div *ngIf="labLocation.lotViewerLicense === 1">{{'LOCATIONLIST.LOTVIEWER' | translate}}
+                </div>
+                <div *ngIf="labLocation?.addOns?.valueAssignment === true">{{'LOCATIONLIST.VALUEASSIGNMENT' | translate}}</div>
+                <div *ngIf="noAvailableLicense(labLocation)">{{'LOCATIONLIST.NONE' | translate}}</div>
+              </div>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="addOns">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              <span class="heading">{{'LOCATIONLIST.ADDONS' | translate }}</span>
+              <mat-icon class="arrow-icon" [svgIcon]="icons.sortActive[24].name"
+                [ngClass]="{'rotate' : sortInfo?.direction === 'asc'}"
+                *ngIf="sortInfo?.active === displayedColumnsLocations[6] && sortInfo?.direction"></mat-icon>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let labLocation">
+              <div class="flex-container flex-column sub-text remove-upper">
+                <div *ngIf="labLocation?.addOnsFlags?.allowBR">{{'LOCATIONLIST.BIORAD' | translate}}</div>
+                <div *ngIf="labLocation?.addOnsFlags?.allowNonBR">{{'LOCATIONLIST.NONBIORAD' | translate}}</div>
+                <div *ngIf="labLocation?.addOnsFlags?.allowSiemensHematology">{{'LOCATIONLIST.SIEMENSHEMATOLOGY' | translate}}</div>
+                <div *ngIf="labLocation?.addOnsFlags?.allowSysmexHemostasis">{{'LOCATIONLIST.SYSMEXHEMOSTASIS' | translate}}</div>
+                <div *ngIf="labLocation?.addOnsFlags?.valueAssignment">{{'LOCATIONLIST.VALUEASSIGNMENT' | translate}}</div>
+              </div>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="licenseStatus">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              <span class="heading">{{'LOCATIONLIST.LICENSESTATUS' | translate}}</span>
+              <mat-icon class="arrow-icon" [svgIcon]="icons.sortActive[24].name"
+                [ngClass]="{'rotate' : sortInfo?.direction === 'asc'}"
+                *ngIf="sortInfo?.active === displayedColumnsLocations[7] && sortInfo?.direction"></mat-icon>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let labLocation">
+              <unext-licence-info [expirationDate]="labLocation.licenseExpirationDate" [location]="labLocation"></unext-licence-info>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumnsLocations; sticky: true"></mat-header-row>
+          <mat-row id="spec-row" *matRowDef="let row; columns: displayedColumnsLocations;"></mat-row>
+        </mat-table>
+        <div class="single-item spec_locations_loading remove-upper" *ngIf="!locations">
+          {{'LOCATIONLIST.LOADING' | translate}}</div>
+      <div class="single-item spec_locations_none_found remove-upper" *ngIf="locations && locations?.length <= 0">
+        {{'LOCATIONLIST.FOUND' | translate}}</div>
+      </div>
+    </perfect-scrollbar>
+  </div>
+</div>
+
+<div class="pagination-container" *ngIf="(locations && locations.length > 0) && totalPages > 1">
+  <pagination-template class="spec-pagination-control" id="paginationLocations" #p="paginationApi"
+    (pageChange)="onPageChange($event)" [maxSize]="maxSize">
+    <div class="custom-pagination">
+      <button mat-stroked-button color="primary" class="pagination-button spec-prev-button" (click)="p.previous()"
+        [ngClass]="{'selected disable-button' : p.isFirstPage()}" [disabled]="p.isFirstPage()">
+        <mat-icon [svgIcon]="icons.arrowBack[24].name"></mat-icon>
+      </button>
+      <div *ngFor="let page of p.pages, let index = index">
+        <button mat-stroked-button color="primary" class="pagination-button spec-page-button"
+          [ngClass]="{ 'selected' : p.getCurrent() === page.value }" (click)="p.setCurrent(page.value)">
+          {{ page.value }}
+        </button>
+      </div>
+      <button mat-stroked-button color="primary" class="pagination-button spec-next-button" (click)="p.next()"
+        [ngClass]="{'selected disable-button' : p.isLastPage()}" [disabled]="p.isLastPage()">
+        <mat-icon class="rotateArrow" [svgIcon]="icons.arrowBack[24].name"></mat-icon>
+      </button>
+    </div>
+  </pagination-template>
+</div>

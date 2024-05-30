@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAGI,oBAHgB,CAGhB,aAAa,CAAC;EACV,UAAU,EAAE,IAAI;CACnB",
+    "sources": [
+        "reporting.component.scss"
+    ],
+    "names": [],
+    "file": "reporting.component.css"
+}

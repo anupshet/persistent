@@ -1,0 +1,203 @@
+@import "../../../../../assets/scss/variables";
+@import "../../../../../assets/scss/base/variables-peak";
+@import "../../../../../assets/scss/mixins";
+
+.heading {
+  background: none;
+  height: auto;
+  padding: 21px 56px 11px 30px;
+  color: inherit;
+  overflow: hidden;
+}
+
+.btn-close {
+  position: absolute;
+  top: 22px;
+  right: 19px;
+  color: $gray-700;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: $custom-type-size-small;
+  line-height: 1;
+
+  &:hover {
+    color: $blue-light;
+  }
+
+  &:before {
+    content: "";
+  }
+}
+
+.report-area-multi-action {
+  height: calc(100vh - 218px);
+  @include media(tablet-and-up) {
+    padding-top: 0;
+  }
+}
+
+.report-area-single-action {
+  height: calc(100vh - 164px);
+  @include media(tablet-and-up) {
+    padding-top: 0;
+    height: calc(100vh - 71px);
+  }
+}
+
+.no-corrective-actions-permission {
+  height: calc(100vh - 80px);
+}
+
+.report-holder {
+  padding: 0 30px 26px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 44px;
+  img {
+    vertical-align: top;
+    max-width: 100%;
+  }
+}
+
+h3 {
+  font-size: $custom-type-size-xlarge;
+  font-weight: bold;
+  margin: 0 0 6px;
+}
+
+.footer-holder {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 7px 15px;
+  @include media(tablet-and-up) {
+    text-align: right;
+    padding: 7px 30px;
+  }
+}
+
+.form-elements {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  @include media(tablet-and-up) {
+    width: 100%;
+  }
+
+  .form-item {
+    width: 100%;
+    @include media(tablet-and-up) {
+      padding: 0 24px 0 0;
+      flex-grow: 1;
+      width: auto;
+    }
+  }
+
+  .form-check {
+    padding-top: 18px;
+    width: 50%;
+    text-align: left;
+    margin-top: 36px;
+  }
+
+  &.no-corrective-actions-permission {
+    justify-content: flex-end;
+
+    .form-check {
+      width: auto;
+      padding-top: 0;
+      margin-top: 0;
+    }
+  }
+}
+
+.form-elements-single-action {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  @include media(tablet-and-up) {
+    width: 70%;
+  }
+
+  .form-item-single-action {
+    width: 100%;
+    @include media(tablet-and-up) {
+      padding: 0 24px 0 0;
+      flex-grow: 1;
+      width: auto;
+    }
+  }
+
+  .form-check-single-action {
+    padding-top: 18px;
+    width: 100%;
+    text-align: left;
+    @include media(tablet-and-up) {
+      width: 220px;
+    }
+  }
+}
+
+.flex-ctn-exists-one-lot {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btns {
+  padding: 9px 0 0;
+  text-align: right;
+  @include media(tablet-and-up) {
+    width: 30%;
+  }
+}
+
+.correctiveActionScrollBar {
+  max-height: 200px;
+}
+
+.flex-ctn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 74px;
+}
+
+.signatureDiv {
+  margin-top: 0px;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.black-color {
+  color: $black;
+}
+.pdf-data-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.no-border {
+  border: none;
+}
+.pdf-viewer {
+  display: block;
+  padding-bottom: 20px;
+}
+.pdf-error {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  width: 100%;
+}
+
+
+.footer-holder {
+  justify-content: flex-end;
+  button {
+    margin-left: 10px;
+  }
+}

@@ -1,0 +1,70 @@
+// custom responsive
+
+// custom variables
+
+$custom-type-size-xxxsmall: 0.3125rem; //5px
+$custom-type-size-xxsmall: 0.625rem; //10px
+$custom-type-size-xsmall: 0.75rem; //12px
+$custom-type-size-small: 0.875rem; //14px
+$custom-type-size-base: 1rem; //16px
+$custom-type-size-large: 1.125rem; //18px
+$custom-type-size-xlarge: 1.25rem; //20px
+$custom-type-size-xxlarge: 1.5rem; //24px
+$custom-type-size-xxxlarge: 2rem; //32px
+$custom-type-size-xxxxlarge: 2.625rem; //42px
+$custom-type-size-xxxxxlarge: 3rem; //48px
+
+$font-size-xsmall: $custom-type-size-xsmall;
+$font-size-small: $custom-type-size-small;
+$font-size-base: $custom-type-size-base; //Removed for time being untill bootstrap variables are removed
+$font-size-large: $custom-type-size-base;
+$font-size-h1: $custom-type-size-xxlarge;
+$font-size-h2: $custom-type-size-xlarge;
+$font-size-h3: $custom-type-size-large;
+$font-size-h4: $custom-type-size-base;
+$font-size-h5: $custom-type-size-small;
+$font-size-h6: $custom-type-size-xsmall;
+$font-size-page-title: $custom-type-size-large;
+$li-font-size-subject: $custom-type-size-base; //Subject line size
+$fa-font-size-base: $custom-type-size-base; //icon base size
+
+// spacing
+$custom-space-xxsmall: 2.5px;
+$custom-space-xsmall: 5px;
+$custom-space-small: 10px;
+$custom-space-base: 20px;
+$custom-space-large: 40px;
+$custom-space-xlarge: 60px;
+$custom-space-xxlarge: 90px;
+
+// Line heights
+$headings-line-height: 1.2 !default;
+$line-height-base: 1.7142857143 !default; // 24/14  24px line height with base 14px font
+$line-height-large: 1.3333333333 !default; // extra decimals for Win 8.1 Chrome
+$line-height-medium: 1.4285714286 !default; // 20/14  20px line height with base 14px font
+$line-height-small: 1.5 !default;
+$line-height-medium-computed: round($line-height-medium * $font-size-base) !default; // 20px for 14px base
+
+// border-radius
+$custom-border-radius-small: 2px;
+$custom-border-radius-base: 4px;
+$custom-border-radius-large: 8px;
+
+//Max Width
+$max-width: 1140px;
+
+//== Responsive Breakpoints
+//
+$screen-xs: 576px !default;
+$screen-xs-min: $screen-xs !default;
+$screen-sm: 768px !default;
+$screen-sm-min: $screen-sm !default;
+$screen-md: 992px !default;
+$screen-md-min: $screen-md !default;
+$screen-lg: 1200px !default;
+$screen-lg-min: $screen-lg !default;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max: ($screen-sm-min - 1) !default;
+$screen-sm-max: ($screen-md-min - 1) !default;
+$screen-md-max: ($screen-lg-min - 1) !default;

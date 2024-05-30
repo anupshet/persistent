@@ -1,0 +1,304 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="biorad-user-management-component">
+  <div *ngIf="showSaveWarning" class="flex space-between lose-changes-wrapper mr-10 ml-10" id="spec_warningBox">
+    <span class="lose-changes-msg">{{'BIORADUSER.LOSECHANGES' | translate}}</span>
+    <span>
+      <button mat-stroked-button color="primary"
+        [mat-dialog-close]="true">{{'BIORADUSER.EXITWITHOUTSAVING' | translate}}</button>
+      <button mat-flat-button color="primary" class="ml-15"
+        (click)="saveRecord(true)" [disabled]="checkValuesAreEqual() || !userForm.valid">
+        {{'BIORADUSER.SAVEANDEXIT' | translate}}</button>
+    </span>
+  </div>
+
+  <button mat-icon-button class="close" (click)="closeDialog()" [disabled]="showSaveWarning">
+    <mat-icon [svgIcon]="icons.close[24].name"></mat-icon>
+  </button>
+
+  <div class="sec-header">
+    <div class="bio-rad-logo">
+      <a href="https://www.qcnet.com/" target="_blank" class="logo">
+        <img src="assets/images/logo.svg" />
+      </a>
+    </div>
+    <div class="filter-header">
+      <div class="category-filter">
+        <mat-form-field class="field-Category">
+          <mat-label >{{'BIORADUSER.CATEGORY' | translate}}</mat-label>
+          <mat-select [(ngModel)]="selectedField" [value]="selectedField" [disabled]="!bioradUsers || isUserFormOpened">
+            <mat-option
+              value={{bioradUserManagerFields.BioRadUserContactName}}>{{'BIORADUSER.NAME' | translate}}
+            </mat-option>
+            <mat-option
+              value={{bioradUserManagerFields.BioRadUserEmail}}>{{'BIORADUSER.EMAIL' | translate}}
+              </mat-option>
+            <mat-option
+              value={{bioradUserManagerFields.BioRadUserRole}}>{{'BIORADUSER.ROLE' | translate}}
+            </mat-option>
+            <mat-option
+              value={{bioradUserManagerFields.BioRadUserTerritoryId}}>{{'BIORADUSER.TERRITORY' | translate}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="search-field">
+        <mat-form-field>
+          <input matInput [(ngModel)]="searchInput" name="searchInput" (keydown.enter)="searchUsers()"
+            placeholder="{{'BIORADUSER.KEYWORD' | translate}}" [disabled]="!bioradUsers || isUserFormOpened">
+        </mat-form-field>
+      </div>
+      <button mat-button mat-flat-button color="primary" class="search-btn spec-search-btn" (click)="searchUsers()"
+        [disabled]="!(selectedField && searchInput && searchInput.trim()) || !bioradUsers || isUserFormOpened">
+        {{'BIORADUSER.SEARCH' | translate}}
+      </button>
+      <button *ngIf="selectedField > 0 || (searchInput && searchInput.trim())"
+        [disabled]="!bioradUsers || isUserFormOpened" class="heading spec-reset-btn" mat-button color="primary"
+         (click)="reset()">
+        <mat-icon class="set-width"
+          [svgIcon]="(!bioradUsers || isUserFormOpened) ? icons.refreshBlueDisabled[24].name : icons.refreshBlue[24].name">
+        </mat-icon>
+        <span>{{'BIORADUSER.RESET' | translate}}</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="add-user-btn">
+    <button color="primary" class="biorad-add-btn" mat-button (click)="addUserForm()"
+      [disabled]="!bioradUsers || isUserFormOpened">
+      <mat-icon [svgIcon]="icons.addCircleOutline[24].name" class="addCircleOutline">
+      </mat-icon>
+      <span> {{'BIORADUSER.ADDUSER' | translate}}</span>
+    </button>
+  </div>
+
+  <div class="main-ctn" [ngClass]="{'extend-afterwarning': showSaveWarning}">
+    <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}">
+      <form [formGroup]="userForm" autocomplete="off">
+        <mat-table #table [dataSource]="bioradUsers | paginate: paginationConfig" matSort
+          (matSortChange)="sortList($event)" matSortActive="BioRadUserContactName" matSortDirection="asc"
+          matSortDisableClear>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="BioRadUserContactName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="isUserFormOpened">
+              <span class="heading">{{'BIORADUSER.NAME' | translate}}</span>
+              <mat-icon class="arrow-icon spec-arrow-icon" [svgIcon]="icons.sortActive[24].name"
+                [ngClass]="{'rotate' : sortInfo?.direction === 'asc'}"
+                *ngIf="sortInfo?.active === displayedColumnsBioRadUserManagement[0] && sortInfo?.direction"></mat-icon>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let bioradUser;let i = index">
+              <div (click)="openFormForEdit(i)" class="user-edit"
+                [class.userEdit-disable]="showSaveWarning || isUserFormOpened" *ngIf="!bioradUser.isEditing">
+                {{bioradUser.firstName}} {{bioradUser.lastName}}
+              </div>
+              <div *ngIf="bioradUser.isEditing" class="user-fields">
+                <div class="single-order-field">
+                  <mat-form-field>
+                    <mat-label>{{'BIORADUSER.FIRSTNAME' | translate}}</mat-label>
+                    <input type="text" matInput name="firstName" id="firstName" formControlName="firstName">
+                    <mat-error
+                      *ngIf="checkForhasError('firstName', 'required')">{{'BIORADUSER.ENTERFIRSTNAME' | translate}}
+                    </mat-error>
+                    <mat-error
+                      *ngIf="checkForhasError('firstName', 'maxLength')">{{'BIORADUSER.HUNDRED' | translate}}
+                    </mat-error>
+                    <mat-error
+                      *ngIf="checkForhasError('firstName', 'pattern')">{{'BIORADUSER.INVALIDFIRSTNAME' | translate}}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="single-order-field">
+                  <mat-form-field>
+                    <mat-label>{{'BIORADUSER.LASTNAME' | translate}}</mat-label>
+                    <input type="text" matInput name="lastName" id="lastName" formControlName="lastName">
+                    <mat-error
+                      *ngIf="checkForhasError('lastName', 'required')">{{'BIORADUSER.ENTERLASTNAME' | translate}}
+                    </mat-error>
+                    <mat-error
+                      *ngIf="checkForhasError('lastName', 'maxLength')">{{'BIORADUSER.HUNDRED' | translate}}
+                    </mat-error>
+                    <mat-error
+                      *ngIf="checkForhasError('lastName', 'pattern')">{{'BIORADUSER.INVALIDLASTNAME' | translate}}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Email Column -->
+          <ng-container matColumnDef="BioRadUserEmail">
+            <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="isUserFormOpened">
+              <span class="heading">{{'BIORADUSER.EMAIL' | translate}}</span>
+              <mat-icon class="arrow-icon spec-arrow-icon" [svgIcon]="icons.sortActive[24].name"
+                [ngClass]="{'rotate' : sortInfo?.direction === 'asc'}"
+                *ngIf="sortInfo?.active === displayedColumnsBioRadUserManagement[1] && sortInfo?.direction"></mat-icon>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let bioradUser">
+              <ng-container *ngIf="!bioradUser.isEditing">
+                {{bioradUser.email}}
+              </ng-container>
+              <ng-container *ngIf="bioradUser.isEditing">
+                <div class="email-field">
+                  <mat-form-field>
+                    <mat-label>{{'BIORADUSER.EMAIL' | translate}}</mat-label>
+                    <input type="email" matInput name="userEmail" id="userEmail" formControlName="userEmail">
+                    <mat-error
+                      *ngIf="checkForhasError('userEmail', 'required')">{{'BIORADUSER.EMAILADDRESS' | translate}}</mat-error>
+                    <mat-error
+                      *ngIf="checkForhasError('userEmail', 'email')">{{'BIORADUSER.VALIDEMAILADDRESS' | translate}}
+                    </mat-error>
+                    <mat-error
+                      *ngIf="checkForhasError('userEmail', 'duplicateEmail')">{{'BIORADUSER.SAMEEMAILADDRESS' | translate}}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </ng-container>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Role Column -->
+          <ng-container matColumnDef="BioRadUserRole">
+            <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="isUserFormOpened">
+              <span class="heading role-heading">{{'BIORADUSER.ROLE' | translate}}</span>
+              <mat-icon class="arrow-icon spec-arrow-icon" [svgIcon]="icons.sortActive[24].name"
+                [ngClass]="{'rotate' : sortInfo?.direction === 'asc'}"
+                *ngIf="sortInfo?.active === displayedColumnsBioRadUserManagement[2] && sortInfo?.direction"></mat-icon>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let bioradUser;let i = index">
+              <ng-container *ngIf="!bioradUser.isEditing">
+                <div class="role-items">
+                  <div *ngFor="let role of bioradUser.userRoles" class="role-single-item">
+                    <ng-container [ngSwitch]="role">
+                      <span id="spec_bioradmanager_{{i}}" *ngSwitchCase="bioRadUserRoles.BioRadManager">{{'BIORADUSER.BIORADMANAGER' | translate}}</span>
+                      <span id="spec_ctsuser_{{i}}" *ngSwitchCase="bioRadUserRoles.CTSUser">{{'BIORADUSER.CTSUSER' | translate}}</span>
+                      <span id="spec_lotviewersales_{{i}}" *ngSwitchCase="bioRadUserRoles.LotViewerSales">{{'BIORADUSER.LOTVIEWERSALES' | translate}}</span>
+                      <span id="spec_qcpuser_{{i}}" *ngSwitchCase="bioRadUserRoles.QCPUser">{{'BIORADUSER.QCPADMIN' | translate}}</span>
+                      <span id="spec_qcpctsuser_{{i}}" *ngSwitchCase="bioRadUserRoles.QCPCTSUser">{{'BIORADUSER.QCPCTSUSER' | translate}}</span>
+                      <span id="spec_dailyuser_{{i}}" *ngSwitchCase="bioRadUserRoles.DailyUser">{{'BIORADUSER.QCPDAILYUSER' | translate}}</span>
+                      <span id="spec_marketinguser_{{i}}" *ngSwitchCase="bioRadUserRoles.MarketingUser">{{'BIORADUSER.QCPMARKETINGUSER' | translate}}</span>
+                    </ng-container>
+                  </div>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="bioradUser.isEditing">
+                <mat-form-field class="user-role">
+                  <mat-label>{{'BIORADUSER.ROLE' | translate}}</mat-label>
+                  <mat-select multiple formControlName="userRole" class="select-role"
+                    (selectionChange)="roleSelectionChange()">
+                    <mat-optgroup label="Unity Next">
+                      <mat-option
+                        value={{bioRadUserRoles.BioRadManager}}
+                        [disabled]="!isBioRadManager() || checkForSelectedValues(bioRadUserRoles.BioRadManager)" class="single-role">{{'BIORADUSER.BIORADMANAGER' | translate}}
+                      </mat-option>
+                      <mat-option value={{bioRadUserRoles.CTSUser}}
+                        [disabled]="!isBioRadManager() || checkForSelectedValues(bioRadUserRoles.CTSUser)" class="single-role">{{'BIORADUSER.CTSUSER' | translate}}
+                      </mat-option>
+                      <mat-option
+                        value={{bioRadUserRoles.LotViewerSales}}
+                        [disabled]="!isBioRadManager() || checkForSelectedValues(bioRadUserRoles.LotViewerSales)" class="single-role">{{'BIORADUSER.LOTVIEWERSALES' | translate}}
+                      </mat-option>
+                    </mat-optgroup>
+                    <mat-optgroup label="QCP Central">
+                      <mat-option value={{bioRadUserRoles.QCPUser}}
+                        [disabled]="!isQCPAdmin()" class="single-role">{{'BIORADUSER.QCPADMIN' | translate}}
+                      </mat-option>
+                      <mat-option value={{bioRadUserRoles.QCPCTSUser}}
+                        [disabled]="!isQCPAdmin()" class="single-role">{{'BIORADUSER.QCPCTSUSER' | translate}}
+                      </mat-option>
+                      <mat-option value={{bioRadUserRoles.DailyUser}}
+                        [disabled]="!isQCPAdmin()" class="single-role">{{'BIORADUSER.QCPDAILYUSER' | translate}}
+                      </mat-option>
+                      <mat-option value={{bioRadUserRoles.MarketingUser}}
+                        [disabled]="!isQCPAdmin()" class="single-role">{{'BIORADUSER.QCPMARKETINGUSER' | translate}}
+                      </mat-option>
+                    </mat-optgroup>
+                  </mat-select>
+                  <mat-error
+                    *ngIf="checkForhasError('userRole', 'required')">{{'BIORADUSER.SELECTONEROLE' | translate}}
+                  </mat-error>
+                </mat-form-field>
+              </ng-container>
+            </mat-cell>
+
+          </ng-container>
+
+          <!-- TerritoryId Column -->
+          <ng-container matColumnDef="BioRadUserTerritoryId">
+            <mat-header-cell *matHeaderCellDef>
+              <span class="heading">{{'BIORADUSER.TERRITORY' | translate}}</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let bioradUser;let i = index" [class.territoryId-block]="bioradUser.isEditing">
+              <ng-container *ngIf="!bioradUser.isEditing">
+                {{bioradUser.territoryId}}
+              </ng-container>
+              <ng-container *ngIf="bioradUser.isEditing && userForm.controls['territoryId']">
+                <mat-form-field class="territoryId-item">
+                  <mat-label>{{'BIORADUSER.TERRITORY' | translate}}</mat-label>
+                  <input type="text" matInput name="territoryId" id="territoryId" formControlName="territoryId">
+                  <mat-error
+                    *ngIf="checkForhasError('territoryId', 'required')">{{'BIORADUSER.ENTERTERRITORY' | translate}}</mat-error>
+                  <mat-error
+                    *ngIf="checkForhasError('territoryId', 'pattern')">{{'BIORADUSER.ENTERTERRITORY9' | translate}}
+                  </mat-error>
+                  <mat-error
+                    *ngIf="checkForhasError('territoryId', 'maxlength') || checkForhasError('territoryId', 'minlength')">
+                    {{'BIORADUSER.ENTERTERRITORY7' | translate}}</mat-error>
+                </mat-form-field>
+              </ng-container>
+              <div class="bottom-controls" *ngIf="bioradUser.isEditing">
+                <mat-icon class="user-delete spec-delete_{{i}}" [svgIcon]="icons.delete[24].name"
+                  (click)="openDeleteUserDialog(bioradUser)" *ngIf="isForEditForm && !bioradUser.disAllowDelete && hasEditDeleteForRoles(bioradUser)">
+                </mat-icon>
+                <button mat-button class="cancel-button" type="button" id="cancel-button" (click)="cancelForm()"
+                  color="primary">
+                  {{'BIORADUSER.CANCEL' | translate}}
+                </button>
+                <button class="add-biorad-user" type="button" (click)="saveRecord(false)" mat-raised-button
+                  color="primary" [disabled]=" !userForm.valid"
+                  *ngIf="!isForEditForm">
+                  {{'BIORADUSER.ADD' | translate}}
+                </button>
+                <button class="update-biorad-user" type="button" (click)="saveRecord(false)" mat-raised-button
+                  color="primary"
+                  [disabled]="checkValuesAreEqual() || !userForm.valid" *ngIf="isForEditForm">
+                  {{'BIORADUSER.UPDATE' | translate}}
+                </button>
+              </div>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumnsBioRadUserManagement; sticky: true"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumnsBioRadUserManagement;"></mat-row>
+        </mat-table>
+
+        <div class="single-item spec_bioradusers_loading" *ngIf="!bioradUsers">
+          {{'BIORADUSER.LOADINGBIORAD' | translate}}</div>
+        <div class="single-item spec_no_bioradusers_found" *ngIf="bioradUsers && bioradUsers?.length <= 0">{{'BIORADUSER.NOBIORAD' | translate}}</div>
+      </form>
+    </perfect-scrollbar>
+  </div>
+
+  <div class="pagination-container" *ngIf="(bioradUsers && bioradUsers.length > 0) && totalPages > 1">
+    <pagination-template class="spec-pagination-control" id="paginationBioRadUsers" #p="paginationApi"
+      (pageChange)="onBioRadUserPageChange($event)" [maxSize]="maxSize">
+      <div class="custom-pagination">
+        <button mat-stroked-button color="primary" class="pagination-button spec-prev-button" (click)="p.previous()"
+          [ngClass]="{'selected disable-button' : p.isFirstPage()}" [disabled]="p.isFirstPage() || isUserFormOpened">
+          <mat-icon [svgIcon]="icons.arrowBack[24].name"></mat-icon>
+        </button>
+        <div *ngFor="let page of p.pages, let index = index">
+          <button mat-stroked-button color="primary" class="pagination-button spec-page-button"
+            [disabled]="isUserFormOpened"
+            [ngClass]="{ 'selected' : p.getCurrent() === page.value, 'disable-button': isUserFormOpened }"
+            (click)="p.setCurrent(page.value)">
+            {{ page.value }}
+          </button>
+        </div>
+        <button mat-stroked-button color="primary" class="pagination-button spec-next-button" (click)="p.next()"
+          [ngClass]="{'selected disable-button' : p.isLastPage()}" [disabled]="p.isLastPage() || isUserFormOpened">
+          <mat-icon class="rotateArrow" [svgIcon]="icons.arrowBack[24].name"></mat-icon>
+        </button>
+      </div>
+    </pagination-template>
+  </div>
+</div>

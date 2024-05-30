@@ -1,0 +1,16 @@
+{
+  "QA": {
+    "URL": "https://qcpcentralqa.global.bio-rad.com/",
+    "Username": "amruta_karale+qaqcpadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "MainMenu": "Code List",
+    "SubMenu": "Analytes",
+    "SubMenuOption": "Analytes",
+    "NewAnalyteName": "TestAutomation_Analyte",
+    "FileName": "analytes.csv",
+    "Analyte": "11-Beta-OH-Androsterone"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

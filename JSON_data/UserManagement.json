@@ -1,0 +1,11 @@
+{"QA":{
+	"FirstName":	"AASampada",
+	"LastName":	"Gulhane",
+	"WarningMessage":	"Are you sure you want to delete this user?",
+	"Username":	"TFS Dev",
+	"Email":	"tfs-dev@mailinator.com"
+},
+"DEV": {},
+"STAGE": {},
+"DEV2": {}
+}

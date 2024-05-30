@@ -1,0 +1,17 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<ng-container *ngIf='dateTime' >
+    <ng-container *ngIf='showTimeZone else tmpContent' >
+      <span title="{{labLocationTimeZone}}">
+        <ng-container *ngTemplateOutlet="tmpContent"></ng-container>
+      </span>
+    </ng-container>
+</ng-container>
+
+<ng-template #tmpContent>
+  <span *ngIf="fromMultiDataEntry">{{dateTime | uDate: null : format}}</span>
+  <span *ngIf="!fromMultiDataEntry"> {{dateTime | uDate: labLocationTimeZone : format}}</span>
+</ng-template>
+
+
+
+

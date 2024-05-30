@@ -1,0 +1,15 @@
+@import '../../../../../assets/scss/base/variables-peak';
+@import '../../../../../assets/scss/base/utilities';
+@import '../../../../../assets/scss/mixins/border-radius';
+@import '../../../../../assets/scss/variables';
+
+
+.current-value-mean{
+  @include border-radius(3px);
+  background-color: rgba($black, 0.08);
+  padding: 1px $custom-type-size-xxxsmall;
+  text-align: center;
+  overflow: hidden;
+  margin-top:3px;
+}
+

@@ -1,0 +1,471 @@
+// Style guide: layout.pagesetup
+
+@mixin layout\pagesetup {
+  page-setup-custom-name,
+  page-setup-complete,
+  page-setup-deleted,
+  page-setup-delete-confirm,
+  page-setup-adding-hematology-instrument,
+  page-setup-hematology-selected,
+  page-setup-test-a,
+  page-setup-location-a,
+  page-setup-qc-product,
+  page-setup{
+    main{
+      height: calc(100vh - 41px);
+      @include media(tablet-and-up) {
+        height: calc(100vh - 30px);
+      }
+    }
+  }
+
+  .plan-area{
+    position: relative;
+    z-index: 1;
+    background: $gray-200;
+    margin: 0 -$custom-space-small;
+    height: calc(100vh - 40px);
+    @include media(tablet-and-up) {
+      margin: 0 -$custom-space-base 0 -$custom-space-small;
+      height: calc(100vh - 30px);
+      max-width: calc(100vw - 300px);
+    }
+    @include media(desktop-and-up) {
+      max-width: calc(100vw - 400px);
+    }
+
+    .ps-content{
+      padding: $custom-space-large + $custom-space-small $custom-space-base;
+      text-align: center;
+      min-height: 100%;
+    }
+
+    .holder{
+      display: inline-block;
+      vertical-align: top;
+      min-width: 570px;
+
+      &.right-indent{
+        padding-right: 121px;
+      }
+    }
+
+    .line{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .c-line{
+      @include size (224px, 32px);
+      border: 1px solid $gray-600;
+      border-width: 1px 1px 0;
+      border-radius: $custom-border-radius-large $custom-border-radius-large 0 0;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .group{
+      min-height: 1px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+      padding: $custom-space-large - $custom-space-xsmall 0 0 $custom-space-base;
+      margin: 0 -($custom-space-xxlarge + $custom-space-base + $custom-space-small) 0 $custom-space-xxlarge - $custom-space-xsmall;
+
+      &:before {
+        @include size (9px);
+        background: mat-color($mat-grey, A100);
+        border: 1px solid $gray-700;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        content: '';
+        left: 0;
+        z-index: 1;
+      }
+
+      .item{
+        width: 180px;
+        margin-left: auto;
+
+        &.type-new,
+        &.type-lab{
+          &:before {
+            position: absolute;
+            right: 100%;
+            bottom: 100%;
+            margin-bottom: -$custom-space-base;
+            border: 1px solid $gray-600;
+            border-width: 0 0 1px 1px;
+            border-radius: 0 0 0 $custom-border-radius-large;
+            @include size (29px, 9999px);
+            content: '';
+          }
+        }
+
+        &.type-new{
+          &:before {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .badge{
+      position: absolute;
+      right: -3px;
+      top: -8px;
+    }
+
+    .o-line-v{
+      display: block;
+      margin: 0 auto;
+      width: 10px;
+
+      &:after,
+      &:before {
+        display: block;
+        content: '';
+      }
+
+      &:before {
+        @include size (9px);
+        background: mat-color($mat-grey, A100);
+        border: 1px solid $gray-700;
+        border-radius: 50%;
+      }
+
+      &:after {
+        border-left: 1px solid $gray-600;
+        margin: 0 auto;
+        height: 25px;
+        width: 1px;
+      }
+    }
+
+    .column{
+      margin: 0 $custom-space-base;
+    }
+
+    .item{
+      position: relative;
+
+      .title{
+        @include size (180px, 44px);
+        text-align: left;
+        margin: 0 auto;
+        border: 2px solid $blue-darked;
+        background: $setup-item-bg;
+        color: $setup-item-color;
+        border-radius: $custom-border-radius-base;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        font-weight: normal;
+        font-size: mat-font-size($br-typography, caption);
+        line-height: 1.2;
+        cursor: pointer;
+        padding: 1px 6px;
+
+        .icon{
+          width: 22%;
+          align-self: center;
+          text-align: center;
+        }
+
+        .txt{
+          align-self: center;
+          width: 78%;
+
+          span{
+            display: block;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+        }
+
+        strong {
+          margin-top: -$custom-space-xxsmall;
+          display: block;
+          font-style: normal;
+          font-size: mat-font-size($br-typography, caption);
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+
+      &.type-dep{
+        .title{
+          border-color: $setup-item-dep-border;
+          background: $setup-item-dep-bg;
+        }
+
+        &.selected{
+          .title{
+            background: $setup-item-dep-bg-select;
+            border-color: $setup-item-dep-border-select;
+          }
+        }
+      }
+
+      &.type-lab{
+        .title{
+          border-color: $setup-item-lab-border;
+          background: $setup-item-lab-bg;
+        }
+
+        &.selected{
+          .title{
+            background: $setup-item-lab-bg-select;
+            border-color: $setup-item-lab-border-select;
+          }
+        }
+      }
+
+      &.type-chem{
+        .title{
+          border-color: $setup-item-chem-border;
+          background: $setup-item-chem-bg;
+        }
+
+        &.selected{
+          .title{
+            background: $setup-item-chem-bg-select;
+            border-color: $setup-item-chem-border-select;
+          }
+        }
+      }
+
+      &.type-new{
+        .title{
+          background: $setup-item-new-bg;
+          border-color: $setup-item-new-border;
+          color: inherit;
+          border-width: 1px;
+          padding: $custom-space-xxsmall $custom-space-small;
+        }
+      }
+    }
+
+    .bar{
+      z-index: 10;
+      background: mat-color($mat-grey, A100);
+      position: absolute;
+      bottom: 21px;
+      left: 18px;
+      box-shadow: 0 1px 2px 0 rgba($black, 0.21);
+      padding: $custom-space-small $custom-space-xsmall $custom-space-small;
+
+      .value{
+        border: 1px solid $gray-300;
+        border-width: 1px 0;
+        display: block;
+        text-align: center;
+        font-size: mat-font-size($br-typography, caption);
+        color: $gray-600;
+        margin: $custom-space-small 0;
+        padding: $custom-space-xsmall 0;
+      }
+    }
+  }
+
+  .edit-mode{
+    z-index: 1;
+    position: relative;
+    background: $gray-100 linear-gradient(to right, $gray-300, $gray-300 5%, rgba($gray-100, 0) 5%, rgba($gray-100, 0) 100%);
+    background-size: 28px 1px;
+    background-position: 50% -1px;
+    height: 100%;
+
+    &:before {
+      @include size (100%);
+      z-index: -1;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: linear-gradient(to bottom, $gray-300, $gray-300 5%, rgba($gray-100, 0) 5%, rgba($gray-100, 0) 100%);
+      background-size: 1px 28px;
+      background-position: 50% -1px;
+      content: '';
+    }
+  }
+
+  .btn-edit{
+    z-index: 10;
+    position: absolute;
+    right: 24px;
+    bottom: 15px;
+    border-radius: 50%;
+    background: $btn-bg;
+    color: $btn-color;
+    border: none;
+    @include size (56px);
+    line-height: 56px;
+    font-size: mat-font-size($br-typography, body-1);
+    cursor: pointer;
+    padding: 0;
+    box-shadow: 0 3px 3px 0 rgba($black, 0.24), 0 0 3px 0 rgba($black, 0.12);
+
+    &:hover {
+      color: mat-color($mat-grey, A100);
+      background: $btn-bg-hover;
+    }
+  }
+
+  .full-screen{
+    @include size (15px);
+    margin: 0 auto;
+    display: block;
+    @include hide-text;
+    background: none;
+    border: none;
+    padding: 0;
+    position: relative;
+    cursor: pointer;
+
+    &:before {
+      border: 1px solid $gray-600;
+      content: '';
+      position: absolute;
+      @include size (100%);
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    span:after,
+    &:after {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      margin-top: -$custom-space-xxsmall;
+      content: '';
+      background: mat-color($mat-grey, A100);
+    }
+
+    &:after {
+      top: 0;
+      left: 50%;
+      width: 5px;
+      height: 100%;
+      margin: 0 0 0 -$custom-space-xxsmall;
+    }
+
+    &:hover {
+      &:before {
+        border-color: $blue;
+      }
+    }
+  }
+
+  .zoom-out,
+  .zoom-in{
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: center;
+    display: block;
+    margin: 0 auto $custom-space-xsmall;
+    @include size (15px);
+    position: relative;
+    color: $gray-600;
+    cursor: pointer;
+    font-size: mat-font-size($br-typography, body-1);
+
+    &:after,
+    &:before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 5px;
+      @include size (5px, 1px);
+      background: $gray-600;
+    }
+
+    &:after {
+      @include size (1px, 5px);
+      top: 3px;
+      left: 5px;
+    }
+
+    i{
+      transform: scaleX(-1);
+      display: block;
+    }
+
+    &:hover {
+      color: $blue;
+
+      &:after,
+      &:before {
+        background: $blue;
+      }
+    }
+  }
+
+  .zoom-out{
+    margin: $custom-space-xsmall auto;
+
+    &:after {
+      display: none;
+    }
+  }
+
+  .chem-list{
+    margin: 0 auto 25px;
+    background: mat-color($mat-grey, A100);
+    width: 140px;
+    border: 1px solid $blue-dark;
+    border-width: 0 1px 1px;
+    border-radius: 0 0 $custom-border-radius-base $custom-border-radius-base;
+    text-align: left;
+    @extend %listreset;
+    overflow: hidden;
+    padding: $custom-space-xsmall $custom-space-small $custom-space-xsmall;
+    font-size: mat-font-size($br-typography, caption);
+
+    li{
+      position: relative;
+      padding: 0 0 $custom-space-xxsmall $custom-space-small;
+
+      &:before {
+        border: 1px solid $br-color-border;
+        border-width: 0 0 1px 1px;
+        border-radius: 0 0 0 $custom-border-radius-base;
+        @include size (5px, 800px);
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        margin-bottom: -$custom-space-xsmall;
+      }
+
+      &:after {
+        @include triangle(6px, $br-color-border, right);
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 2px;
+      }
+    }
+
+    .icon {
+      float: left;
+      width: 15px;
+      margin: 0 1px 0 0;
+    }
+
+    strong{
+      display: block;
+      font-weight: normal;
+      overflow: hidden;
+    }
+  }
+}

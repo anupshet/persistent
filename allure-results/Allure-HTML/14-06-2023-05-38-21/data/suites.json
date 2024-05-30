@@ -1,0 +1,26 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "Test Suite:Verify Error Dialog box for Selection parameter filters on Report page",
+    "children" : [ {
+      "name" : "Test case 1 :Verify Search logic",
+      "uid" : "d9ead2d9c256fd59",
+      "parentUid" : "42a0802cfc343001e7906e5e7177836b",
+      "status" : "failed",
+      "time" : {
+        "start" : 1686744507990,
+        "stop" : 1686744584474,
+        "duration" : 76484
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "42a0802cfc343001e7906e5e7177836b"
+  } ]
+}

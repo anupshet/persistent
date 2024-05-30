@@ -1,0 +1,9 @@
+{
+	"QA": {
+		"LogoutButton": "Logout",
+		"URL": "https://unity-test.qcnet.com/login"
+	},
+	"DEV": {},
+	"STAGE": {},
+	"DEV2": {}
+}

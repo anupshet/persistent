@@ -1,0 +1,249 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.-->
+<form class="result-form">
+  <button mat-fab color="warn" class="delete-icon"
+    [checkForPermission]="{'permissionsAllowed':[permissions.SingleDataEntryDelete],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+    matTooltip="{{'RUNEDITDATA.DELETE' | translate}}"  (click)="deleteRun(runIndex)">
+    <mat-icon [svgIcon]="icons.delete[48].name" class="white-icon"></mat-icon>
+  </button>
+  <div class="dialog-heading">
+    <div class="buttons-row">
+      <button mat-button [mat-dialog-close]="true">
+        <mat-icon [svgIcon]="icons.close[24].name"></mat-icon>
+      </button>
+      <button mat-button color="primary" class="done" [mat-dialog-close]="true">
+          {{'RUNEDITDATA.DONE' | translate}}
+      </button>
+    </div>
+    <div class="flex-ctn-1">
+      <h3 class="inline mr-4">{{analyteName}}</h3>
+      <!-- UN-18627 hiding Rules label if no rules violation AJT 6/2/2023 -->
+      <DIV *ngIf="runData?.runReasons.length > 0">
+        <span class="ml-60">{{'RUNEDITDATA.RULES' | translate}}</span>
+        <span class="ml-20">
+          <span *ngFor="let runReason of runData?.runReasons">{{runReason}} </span>
+        </span>
+      </DIV>
+    </div>
+    <section class="flex-ctn-1 component-run-new-data">
+      <div class="flex-item-1" id="editReagentCalibratorSection">
+        <!--- Get a list of all related Reagent-->
+        <mat-form-field>
+          <mat-select placeholder="{{'RUNEDITDATA.REAGENT' | translate}}"
+            [disabled]="!hasPermissionToAccess([permissions.SingleDataEntryEdit])" [(value)]="selectedReagentLotId"
+            [(ngModel)]="activeReagent" (ngModelChange)="selectedReagent(activeReagent)"
+            [ngModelOptions]="{standalone: true}" name="reagentLot" ngDefaultControl>
+            <mat-option *ngFor="let reagentLot of reagentLotsTrim" [(value)]="reagentLot.id">
+              {{reagentLot.lotNumber}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!--- Get a list of all related Calibrator-->
+        <mat-form-field class="calibrator-field">
+          <mat-select placeholder="{{'RUNEDITDATA.CALIBRATOR' | translate}}"
+            [disabled]="!hasPermissionToAccess([permissions.SingleDataEntryEdit])" [(value)]="selectedCalibratorLotId"
+            ngDefaultControl [(ngModel)]="activeCalibrator" (ngModelChange)="selectedCalibrator(activeCalibrator)"
+            [ngModelOptions]="{standalone: true}" name="calibratorLot">
+            <mat-option *ngFor="let calibratorLot of calibratorLotsTrim" [(value)]="calibratorLot.id">
+              {{calibratorLot.lotNumber}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="flex-item-2">
+        <mat-form-field>
+          <input class="unity-datepicker" matInput [matDatepicker]="picker" placeholder="{{'RUNEDITDATA.DATE' | translate}}"
+            [disabled]="!hasPermissionToAccess([permissions.SingleDataEntryEdit])" [formControl]="serializedDate"
+            (dateChange)="onDateChange($event.value)">
+          <mat-datepicker-toggle [disabled]="!hasPermissionToAccess([permissions.SingleDataEntryEdit])" matSuffix
+            [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker [disabled]="!hasPermissionToAccess([permissions.SingleDataEntryEdit])" #picker>
+          </mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="flex-item-3">
+        <mat-form-field>
+          <input matInput *ngIf="isTimeInputSupported" style="display:none">
+          <unext-time-picker-military
+            *ngIf="isTimeInputSupported"
+            [placeHolder]="'RUNEDITDATA.TIME' | translate"
+            [elementName]="time"
+            [timeDisabled]="!hasPermissionToAccess([permissions.SingleDataEntryEdit])"
+            [time]="selectedRunStringTime"
+            [showResetBtn]="false"
+            [emitValue]="selectedRunStringTime"
+            (timeChanged)="onTimeChange($event);validateDateTime();timeChanged();"
+        ></unext-time-picker-military>
+          <input *ngIf="!isTimeInputSupported" name="time" [(ngModel)]="selectedRunStringTime" type="text" maxlength="5"
+            matInput placeholder="{{'RUNEDITDATA.TIME' | translate}}"
+            (change)="validateDateTime();timeChanged();"
+            [disabled]="!hasPermissionToAccess([permissions.SingleDataEntryEdit])">
+            <span *ngIf="!isValidTimeFormat" class="red small error">
+              {{'RUNEDITDATA.INVALIDFORMAT' | translate}}
+            </span>
+            <span *ngIf="isValidTimeFormat && !isBeforeDay" class="red small error">
+              {{'RUNEDITDATA.TIMEOCCURS' | translate}}
+            </span>
+            <span *ngIf="isValidTimeFormat && !isBeforeNextRun" class="red small error">
+              {{'RUNEDITDATA.NEXTRESULT' | translate}}
+            </span>
+            <span *ngIf="isValidTimeFormat && !isAfterPreviousRun" class="red small error">
+              {{'RUNEDITDATA.PREVIOUSRESULT' | translate}}
+            </span>
+        </mat-form-field>
+      </div>
+      <div class="flex-item-4 ml-20">
+        <label>
+          <span>{{'RUNEDITDATA.RESTART' | translate}}</span>
+          <br-info-tooltip class="restratefloat-tooltip">
+            <ng-template ng-label-tmp>
+                <div>
+                    <p class="mb-10">{{'RUNEDITDATA.THISOPTION' | translate}}</p>
+                    <p>{{'RUNEDITDATA.SETVALUES' | translate}}</p>
+                </div>
+            </ng-template>
+          </br-info-tooltip>
+        </label>
+        <mat-slide-toggle color="primary" name="restartFloatstatistics" [(ngModel)]="restartFloatstatistics"
+          [disabled]="disableRestartFloatstatistics || !hasPermissionToAccess([permissions.RestartFloat])"
+          (change)="onRestartFloatChanged($event)" ngDefaultControl class="spec-restart-float-toggle">
+        </mat-slide-toggle>
+      </div>
+    </section>
+  </div>
+  <div *ngIf="activeReagentExpiredLot" class="expired-label">
+    {{'RUNEDITDATA.REAGENTEXPIRED' | translate}}
+  </div>
+  <div *ngIf="activeCalibratorExpiredLot" class="expired-label">
+    {{'RUNEDITDATA.CALIBRATOREXPIRED' | translate}}
+  </div>
+  <div class="content-scroll" *ngIf="pointDataResults">
+    <div class="levels level-4"
+      [ngClass]="{'level-5' : levelsInUse[levelIdx] === 5, 'level-6' : levelsInUse[levelIdx] === 6}">
+      <ng-template ngFor let-level [ngForOf]="levelsInUse" let-levelIdx="index">
+        <ng-template [ngIf]="isLevelInResult(level)">
+          <div class="level-info">
+            <h2 class="title">
+              <span>
+                <span>{{'RUNEDITDATA.LEVEL' | translate}}</span> {{levelsInUse[levelIdx]}}:</span>
+              <div class="w-60 content">
+                <!-- AJT UN17298 no longer formatting display of number since this is a data entry screen and the customer should see full data, not rounded value so they can properly edit -->
+                <mat-form-field>
+                  <input name="level" matInput (blur)="lvColVisibleState[levelIdx] = false"
+                    [brNumericValue]="regexRationalNumber" [(ngModel)]="pointDataResults[levelIdx].resultValue"
+                    [ngModelOptions]="{standalone: true}" autocomplete="off"
+                    [disabled]="!hasPermissionToAccess([permissions.SingleDataEntryEdit])">
+                </mat-form-field>
+              </div>
+            </h2>
+            <table>
+              <tr>
+                <th>{{'RUNEDITDATA.ZSCORE' | translate}}</th>
+                <th>{{'RUNEDITDATA.REASON' | translate}}</th>
+                <th>
+                  {{pointDataResults[levelIdx]?.meanEvaluationType === evaluationType.Floating ? 'Float': 'Fixed'}}
+                  <span>{{'RUNEDITDATA.MEAN' | translate}}</span>
+                </th>
+                <th>
+                  <span class="spec-sd-evaluation-type">
+                    {{pointDataResults[levelIdx]?.sdEvaluationType === evaluationType.Floating ? 'Float': 'Fixed'}}
+                  </span>
+                  <span>{{'RUNEDITDATA.SD' | translate}}</span>
+                </th>
+                <th>
+                  {{pointDataResults[levelIdx]?.cvEvaluationType === evaluationType.Floating ? 'Float': 'Fixed'}}
+                  <span>{{'RUNEDITDATA.CV' | translate}}</span>
+                </th>
+              </tr>
+              <tr>
+                <td>{{pointDataResults[levelIdx]?.zScoreData?.zScore | uNextNumeric:true}}</td>
+                <td *ngIf="pointDataResults[levelIdx]?.reasons?.length">
+                  <span *ngFor="let reason of pointDataResults[levelIdx]?.reasons">
+                    {{reason}}
+                  </span>
+                </td>
+                <td *ngIf="!pointDataResults[levelIdx]?.reasons?.length">-</td>
+                <td>{{pointDataResults[levelIdx]?.targetMean | uNextNumeric: decimalLevels[levelIdx] }}</td>
+                <td class="spec-sd" [ngClass]="{ 'grey': pointDataResults[levelIdx]?.sdIsCalculated}">{{pointDataResults[levelIdx]?.targetSD | uNextNumeric: decimalLevels[levelIdx]}}</td>
+                <td class="spec-cv" [ngClass]="{ 'grey': pointDataResults[levelIdx]?.cvIsCalculated}">{{pointDataResults[levelIdx]?.targetCV | uNextNumeric: 2 }}</td>
+              </tr>
+            </table>
+            <mat-radio-group class="radio-group" [disabled]="!hasPermissionToAccess([permissions.SingleDataEntryEdit])">
+              <mat-radio-button color="primary" [checked]="pointDataResults[levelIdx].isAccepted" value="true"
+                (change)="onRadioChange(levelIdx, true)">{{'RUNEDITDATA.ACCEPT' | translate}}
+              </mat-radio-button>
+              <mat-radio-button color="primary" [checked]="!pointDataResults[levelIdx].isAccepted" value="false"
+                (change)="onRadioChange(levelIdx, false)">{{'RUNEDITDATA.REJECT' | translate}}
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </ng-template>
+        <ng-template [ngIf]="!isLevelInResult(level)">
+          <div class="level-info">
+
+            <h2 class="title">
+              <span>
+                <span>{{'RUNEDITDATA.LEVEL' | translate}}</span> {{levelsInUse[levelIdx]}}:</span>
+              <div class="w-60 content">
+                <mat-form-field>
+                  <input name="level" matInput (blur)="lvColVisibleState[levelIdx] = false"
+                    [brNumericValue]="regexRationalNumber" [(ngModel)]="pointDataResults[levelIdx].resultValue"
+                    [ngModelOptions]="{standalone: true}"
+                    [disabled]="!hasPermissionToAccess([permissions.SingleDataEntryEdit])">
+                </mat-form-field>
+              </div>
+            </h2>
+            <table>
+              <tr>
+                <th>{{'RUNEDITDATA.ZSCORE' | translate}}</th>
+                <th>{{'RUNEDITDATA.REASON' | translate}}</th>
+                <th>{{'RUNEDITDATA.FIXEDMEAN' | translate}}</th>
+                <th>{{'RUNEDITDATA.FIXEDSD' | translate}}</th>
+                <th>{{'RUNEDITDATA.FIXEDCV' | translate}}</th>
+              </tr>
+              <tr>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            </table>
+            <mat-radio-group class="radio-group" [disabled]="!hasPermissionToAccess([permissions.SingleDataEntryEdit])">
+              <mat-radio-button color="primary" [checked]="pointDataResults[levelIdx].isAccepted" value="true"
+                (change)="onRadioChange(levelIdx, true)">{{'RUNEDITDATA.ACCEPT' | translate}}
+              </mat-radio-button>
+              <mat-radio-button color="primary" [checked]="!pointDataResults[levelIdx].isAccepted" value="false"
+                (change)="onRadioChange(levelIdx, false)">{{'RUNEDITDATA.REJECT' | translate}}
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </ng-template>
+      </ng-template>
+    </div>
+    <footer class="flex-ctn-2">
+      <mat-form-field class="flex-item-1 choose">
+        <mat-select [disabled]="!hasPermissionToAccess([permissions.SingleDataEntryEdit])"
+          placeholder="{{'RUNEDITDATA.CHOOSE' | translate}}" panelClass="action-panel-width" [(ngModel)]="selectedActionId"
+          name="selectedActionName" ngDefaultControl>
+          <mat-option *ngFor="let action of actions" [value]="action.actionId">
+            {{action.actionName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="flex-item-2  comment">
+        <textarea [readonly]="!hasPermissionToAccess([permissions.SingleDataEntryEdit])" tabindex="-1" matInput
+          matTextareaAutosize matAutosizeMaxRows="4" maxLength="1500" placeholder="{{'RUNEDITDATA.COMMENT' | translate}}"
+          name="enteredCommentContent"
+          [(ngModel)]="commentContent"></textarea>
+      </mat-form-field>
+      <div class="flex-item-3"
+        [checkForPermission]="{'permissionsAllowed':[permissions.SingleDataEntryEdit],'hideIfNotPermitted':true,'disableIfNotPermitted':false}">
+          <button mat-button color="primary" class="mr-5" [mat-dialog-close]="true">
+              {{'RUNEDITDATA.CANCEL' | translate}}
+          </button>
+        <button class="spec-submit-button" mat-flat-button color="primary" [disabled]="!enableSubmit()"
+          (click)="editRun()">{{'RUNEDITDATA.SUBMITUPDATES' | translate}}</button>
+      </div>
+    </footer>
+  </div>
+</form>

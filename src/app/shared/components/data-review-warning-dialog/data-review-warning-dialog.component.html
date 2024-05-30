@@ -1,0 +1,16 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+
+<div class="br-dialog">
+    <div class="hdr">
+      <mat-dialog-content class="mat-typography">
+        <p i18n="@@DataReviewWarningDialogComponent.description">
+          {{ data.message}}
+        </p>
+      </mat-dialog-content>
+      <mat-dialog-actions align="end">
+        <button class="spec_ok" mat-button mat-flat-button (click)="onCancel()"
+          i18n="@@DataReviewWarningDialogComponent.Ok">{{ data.cancelButtonText }}</button>
+      </mat-dialog-actions>
+    </div>
+  </div>
+  

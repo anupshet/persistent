@@ -1,0 +1,10 @@
+{
+  "DEV": {
+    "URL": "http://localhost:4200",
+    "AMUsername": "antonio_tavares+qa52720@bio-rad.com",
+    "AMPassword": "Welcome1x",
+    "AMFirstName": "Antonio"
+  },
+  "QA": {},
+  "STAGE": {}
+}

@@ -1,0 +1,11 @@
+@mixin  br-icon($background-color: inherit, $imgname: '', $height:$height, $width:$width, $ext: 'svg') {
+    @if ($background-color != inherit) {
+      background-color: $background-color;
+    }
+    -webkit-mask-image: url(#{$bds-imgpath}#{$imgname}.#{$ext});
+    mask-image: url(#{$bds-imgpath}#{$imgname}.svg);
+    background-image: url(#{$bds-imgpath}#{$imgname}.svg);
+    height: $height;
+    width: $width;
+    display: inline-block;
+}

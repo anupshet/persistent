@@ -1,0 +1,132 @@
+@import '../../../../../../../assets/scss/variables';
+@import '../../../../../../../assets/scss/base/variables-peak';
+@import '../../../../../../../assets/scss/mixins';
+
+.showArrowUp{
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  left: 135px;
+  top: -5px;
+  border-top-color: $white;
+  border-width: 5px;
+  z-index: 3;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid $gray-100;
+}
+.showArrowDown{
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  left: 135px;
+  top: 100%;
+  border: solid transparent;
+  border-top-color: $gray-100;
+  border-width: 5px;
+  z-index: 3;
+}
+.chart-popup {
+  background: $gray-100;
+  position: relative;
+  z-index: 100000000;
+  position: absolute;
+  box-shadow: 0 4px 4px 2px rgba($black, 0.12);
+  border: solid 1px $gray-400;
+  border-radius: 3px;
+  background: $white;
+
+  &:after {
+    border-top-color: $gray-400;
+    border-width: 6px;
+    z-index: 2;
+    left: 38px;
+  }
+  &.bottom:after,
+  &.bottom:before,
+  &.left:after,
+  &.left:before {
+    display: none
+  }
+  .chart-date {
+    display: block;
+    line-height: 20px;
+    padding: 5px 11px 5px 19px;
+    font-weight: bold;
+    color: $white;
+    background: $orange;
+    font-size: mat-font-size($br-typography, caption);
+    line-height: 16px;
+    color: $gray-600;
+    font-weight: normal;
+    padding: 0;
+    position: absolute;
+    top: 7px;
+    right:
+    12px;
+    background: none;
+
+   
+    .time {
+      float: right;
+      padding-left:10px;
+      clear: left;
+    }
+    
+  }
+  .levels {
+    h2 {
+      margin: 0 0 3px;
+      font-size: mat-font-size($br-typography, body-1);
+      color: $gray-700;
+      font-weight: normal;
+      margin: 0 0 5px;
+
+    }
+    .level-info {
+      padding: 10px;
+      border-bottom: 1px solid $gray-400;
+      padding: 10px 18px;
+      padding: 4px 11px;
+      border: none;
+    }
+  }
+  table {
+    font-size: $custom-type-size-xxsmall;
+    margin-top: 5px;
+    th {
+      font-size: mat-font-size($br-typography, caption);
+      color: $gray-600;
+    }
+    th,
+    td {
+      padding: 0 8px;
+      font-weight: normal;
+      border-left: 1px solid $gray-400;
+
+      &:first-child {
+        border: none;
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+.level-container {
+  padding: 4px 0 0;
+  margin: 0;
+  background: $gray-200;
+  position: relative;
+
+    position: relative;
+    z-index: 1;
+    padding: 0;
+
+  &:hover {
+      z-index: 61;
+  }
+}
+
+.no-wrap {
+  white-space: nowrap;
+}

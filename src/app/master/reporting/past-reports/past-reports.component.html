@@ -1,0 +1,9 @@
+<!--  © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="past-reports-wrapper">
+  <!-- Start Filter Component -->
+  <unext-past-reports-filter [dataSource]="dataSource" [originalData]="originalData" (filterChanged)="filterChanged($event)" [signedBylist]="signedBylist" (formReset)="formReset($event)"></unext-past-reports-filter>
+  <!-- End Filter Component -->
+  <!-- Start Table Component -->
+  <unext-past-reports-table [tableData]="dataSource" [resetFilter]="reset"></unext-past-reports-table>
+  <!-- End Table Component -->
+</div>

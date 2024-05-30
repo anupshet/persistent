@@ -1,0 +1,51 @@
+.mat-tab-body-active.mat-tab-body {
+    max-width: 100%;
+    background:#ebebeb
+  }
+
+.mat-form-field {
+  display: block;
+  width: 100%;
+}
+
+.mat-focused .mat-form-field-label {
+  color: $input-color-focus;
+}
+
+.mat-form-field-label {
+  color: $input-select-color;
+}
+
+.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  transform: none;
+}
+
+.mat-form-field-underline {
+  bottom: 0;
+  background: $input-border;
+}
+
+.mat-select-value {
+  color: $input-color;
+}
+
+.mat-form-field-ripple {
+  height: 1px;
+  background: $input-color-focus;
+}
+
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  border-top-color: $input-border-focus;
+}
+
+.mat-select-arrow {
+  border-top-color: $input-border;
+  border-width: 5px 4px;
+  margin: 0 $custom-space-xsmall;
+}
+
+//specific to search input field
+.search-text-form .mat-form-field-infix {
+  display: flex;
+  align-items: center;
+}

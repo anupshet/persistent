@@ -1,0 +1,15 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com/",
+    "Username": "sudhir_paranjape+eval@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sudhir",
+    "DepartmentName1": "109 Eval Mean SD Dept",
+    "InstrumentName1": "ADVIA 1650",
+    "ControlName": "qUAntify Plus",
+    "AnalyteName1": "Protein, Total, Urine/Spinal Fluid"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

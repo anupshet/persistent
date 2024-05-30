@@ -1,0 +1,33 @@
+{
+  "DEV": {
+    "URL": "https://unity-dev.qcnet.com/",
+		"Username": "shubham_damdhar+multi1loc1@bio-rad.com",
+		"Password": "Welcome1",
+		"FirstName": "Sourabh",
+    "UsernameAcc": "sudhir_paranjape+devdl@bio-rad.com",
+		"PasswordAcc": "Welcome1",
+		"FirstNameAcc": "Shubham",
+    "LastName" : "Patil1",
+    "Email" : "shubham_damdhar+multi1loc1@bio-rad.com",
+    "Email2" : "shubham_damdhar+multi1loc10@bio-rad.com",
+    "NewEmailEverytime" : "shubham_damdhar+multi1loc11@bio-rad.com",
+    "NewEmailEverytime2" : "shubham_damdhar+multi1loc12@bio-rad.com",
+    "NewEmailEverytime3" : "shubham_damdhar+multi1loc13@bio-rad.com",
+    "existingEmail" : "shubham_damdhar+multi1loc1g2@bio-rad.com",
+    "RoleTech" : " Technician ",
+    "RoleLeadTech" : " Lead Technician ",
+    "RoleLabSupervisor" : " Lab Supervisor ",
+    "RoleLabUser" : " Lab User Manager ",
+    "RoleAccountUser" : " Account User Manager ",
+    "RoleLabSupervison_User" : "Lab Supervisor_Lab User Manager",
+    "RoleTech_AccountManager" : "Technician_Account User Manager",
+    "RoleTech_Lab_AccountManager" : "Technician_Lab User Manager_Account User Manager",
+    "locationCategoryName" : "Email",
+    "Groupname1" : " Group2",
+    "Location1" : " Multi1Loc1-G1",
+    "DeptSelect1" : "Loc1-Grp2"
+  },
+  "DEV2": {},
+  "QA": {},
+  "STAGE": {}
+}

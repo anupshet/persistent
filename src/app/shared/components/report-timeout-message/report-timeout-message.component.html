@@ -1,0 +1,19 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="br-dialog">
+  <div class="hdr">
+    <mat-dialog-content class="mat-typography">
+      <div class="message-wrapper">
+        <p>{{'REPORTTIMEOUT.REPORT' | translate}} {{data.reportState}}, {{'REPORTTIMEOUT.NOTIFICATION' | translate}}
+          <span class="notification-icon">
+            <mat-icon [svgIcon]="icons.notificationsNone[24].name"></mat-icon>
+            <span class="notification-count">1</span>
+          </span>
+        </p>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button class="spec-ok" mat-button mat-flat-button (click)="onSubmit()">
+        {{'REPORTTIMEOUT.OK' | translate}}</button>
+    </mat-dialog-actions>
+  </div>
+</div>

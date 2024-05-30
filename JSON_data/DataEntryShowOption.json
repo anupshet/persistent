@@ -1,0 +1,26 @@
+{"QA":{	
+	"URL":	"https://unity-test.qcnet.com",
+	"Username":	"amruta_karale+test46@bio-rad.com",
+	"Password":	"Welcome1",
+	"FirstName":	"Amruta46",
+    "ProductName": "Blood Gas",
+    "TestName": "CO2 (Carbon Dioxide)",
+    "Test1": "1",
+    "Test2": "2",
+    "Test3": "3",
+    "Comment": "This is Test Comment",
+    "Analyte": "Creatinine",
+    "Test11": "11",
+    "Test21": "21",
+    "Test31": "31",
+    "MultiPointAnalyte": "Hemoglobin A1c",
+    "PointDepartment":  "Automation",
+    "PointInstrument":  "ARCHITECT c4000",
+    "PointControl": "Assayed Chemistry",
+    "PointAnalyte": "Creatinine",
+    "SummaryAnalyte": "Glucose"
+},
+"DEV": {},
+"STAGE": {},
+"DEV2": {}
+}

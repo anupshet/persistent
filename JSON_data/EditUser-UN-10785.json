@@ -1,0 +1,36 @@
+{
+	"DEV": {
+		"URL": "http://unity-dev.qcnet.com",
+		"Username": "nitin_ghugare+L1_TestWelcomeScreenDev@bio-rad.com",
+		"Password": "Welcome1",
+		"FirstName": "Nitin",
+		"NoGroupMessage": "No groups found",
+		"Lab": "Lab",
+		
+		"AccountNameColumn": "Account Name",
+		"AccountNumberColumn": "Account Number",
+		"emailCategoryName": "Email",
+		"emailKeyword": "sourabh_patil+dev0vvb1@bio-rad.com",
+
+		"nameCategoryName": "Name",
+		"userNameKeyword": "ABCD lastName",
+		"AddressColumn": "Address",
+		"LocationColumn": "Location(S)",
+		"roleCategoryName": "Role",
+		"roleKeyword": "User",
+		"locationCategoryName": "Location",
+		"locationKeyword": "MaxCure Hospital",
+
+
+		"UserNameColumnHeader":"Name",
+		"UserNameColumnNo":"1",
+		"UserEmailColumnHeader":"Email",
+		"UserEmailColumnNo":"2",
+		"UserRoleColumnHeader":"Role",
+		"UserRoleColumnNo":"3",
+		"UserLocationColumnHeader":"Location",
+		"UserLocationColumnNo":"4"
+	},
+	"QA": {},
+	"STAGE": {}
+}

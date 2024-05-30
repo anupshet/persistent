@@ -1,0 +1,54 @@
+{
+    "login": {
+        "email": "",
+        "password": "",
+        "wrong_password": "pass",
+        "welcome_message": "",
+        "invalid_password": "Error: The password is invalid or the user does not have a password.",
+        "invalid_email": "Error: There is no user record corresponding to this identifier. The user may have been deleted."
+    },
+
+    "labsetup": {
+        "location": "Michael's Dev 011521",
+        "department": "Vitro-01",
+        "manufacturer": "Siemens",
+        "instrument": "Dimension EXL",
+        "product": "Assayed Chemistry",
+        "lotno": "26450",
+        "analyte": "Glucose",
+        "reagent": "",
+        "calibrator": "",
+        "method": "",
+        "unit": "mg/dL",
+        "lotnumber": "BA9143"
+    },
+
+    "misc":{
+        "lblDepartManagement" : "ADD A DEPARTMENT",
+        "lblWhatDepartmentsAreIn": "What departments are in ",
+        "lblQuestionMark":"?",
+        "lblAddAnAnalyte": "ADD AN ANALYTE",
+        "lblAddAnalytesTo":"Add analytes to ",
+        "lblDailyDataOptions":"Daily data options",
+        "lblSignIn":"Sign In",
+        "sleep": 2000,
+        "statusverification": 60000
+    },
+    "fileupload":{
+        "fileToUpload" : "195141_rawData_short.txt",
+        "pointInstruction": "Mike-WC-Point",
+        "summaryInstruction": "Mike-WC-Summary",
+        "instCode": "ICode_98323",
+        "prodCodeL1": "PCode_98323 - 1",
+        "prodCodeL2": "PCode_98323 - 2",
+        "prodCodeL3": "PCode_98323 - 3",
+        "testCode": "ACode_98323",
+        "link": "Link",
+        "unlink": "Unlink",
+        "disable": "Disable",
+        "mappingFile": "Map File",
+        "status": "Status",
+        "upload": "Upload",
+        "connectivity": "Connectivity"
+    }
+}

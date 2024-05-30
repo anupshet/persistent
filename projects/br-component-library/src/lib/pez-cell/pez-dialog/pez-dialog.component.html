@@ -1,0 +1,73 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+
+
+<!-- This looks to  be unused -->
+
+<section class="pez-component">
+
+  <div class="bd">
+    <div *ngIf="isAction">
+      <p class="title_box" i18n="@@PezComponent.Actions">{{actionTitle}}</p>
+
+      <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}" class="content_area">
+        <ul class="reset">
+          <ng-template ngFor let-content [ngForOf]="pezData.contents">
+            <li>
+              <span class="user_full_name">{{content.userName}}&nbsp;</span>
+              <span class="small gray inline-block ml-2">
+                <span class="date_time">{{content?.dateTime | uNextDate: 'mediumDate': content?.pezDateTimeOffset}}</span>
+                <span class="date_time"> {{atText}} {{content?.dateTime | uNextDate: 'shortTime': content?.pezDateTimeOffset}}</span>
+              </span>
+              <p class="content_text">
+                {{content.text}}
+              </p>
+            </li>
+          </ng-template>
+        </ul>
+      </perfect-scrollbar>
+    </div>
+
+    <div *ngIf="isComment">
+      <p class="title_box" i18n="@@PezComponent.Comments" id="PezComponent.Comments">{{commentTitle}}</p>
+
+      <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}" class="content_area">
+        <ul class="reset">
+          <ng-template ngFor let-content [ngForOf]="pezData.contents">
+            <li>
+              <span class="user_full_name">{{content.userName}}</span>
+              <span class="small gray inline-block ml-2">
+                <span class="date_time">{{content?.dateTime | uNextDate: 'mediumDate': content?.pezDateTimeOffset}}</span>
+                <span class="date_time"> {{atText}} {{content?.dateTime | uNextDate: 'shortTime': content?.pezDateTimeOffset}}</span>
+              </span>
+              <p class="allow-string-break-330 content_text">
+                {{content.text}}
+              </p>
+            </li>
+          </ng-template>
+        </ul>
+      </perfect-scrollbar>
+    </div>
+
+    <div *ngIf="isUserInteraction">
+      <p class="title_box" id="PezComponent.ActionLogs">{{actionLogsTitle}}</p>
+
+      <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}" class="content_area">
+        <ul class="reset">
+          <ng-template ngFor let-content [ngForOf]="pezData.contents">
+            <li>
+              <span class="user_full_name">{{content.userName}}</span>
+              <span class="small gray inline-block ml-2">
+                <span>{{content?.dateTime | uNextDate: 'mediumDate' : content?.pezDateTimeOffset}}</span>
+                <span> {{atText}} {{content?.dateTime | uNextDate: 'shortTime': content?.pezDateTimeOffset}}</span>
+              </span>
+              <p class="content_text allow-string-break-330">
+                {{content.text}}
+              </p>
+            </li>
+          </ng-template>
+        </ul>
+      </perfect-scrollbar>
+    </div>
+  </div>
+
+</section>

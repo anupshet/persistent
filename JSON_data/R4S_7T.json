@@ -1,0 +1,30 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com",
+    "Username": "UnityNextRegressionTestUser+1@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Automation",
+    "LastName": "User",
+    "DepartmentName1": "Westgard_R4S",
+    "InstrumentName1": "ARCHITECT c16000",
+    "ProductName1": "Cardiac Markers Plus LT",
+    "Analyte1": "Acetaminophen",
+    "Analyte2": "Albumin",
+    "Value1": "reject",
+    "Value2": "warning",
+    "Value3": "disable",
+    "Rule1": "'R-4s",
+    "Rule2": "7T",
+    "DepartmentName2": "Westgard_7T",
+    "InstrumentName2": "Access 2",
+    "ProductName2": "Assayed Chemistry",
+    "Analyte4": "Digoxin",
+    "Analyte6": "Vitamin B12",
+    "Analyte5": "Digoxin",
+    "R4SRejWarnValue": "R4S",
+    "RejWarnValue7T": "7T"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

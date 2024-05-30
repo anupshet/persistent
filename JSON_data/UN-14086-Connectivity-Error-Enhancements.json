@@ -1,0 +1,18 @@
+{
+    "DEV": {
+        "URL": "https://unity-dev.qcnet.com/",
+        "Username": "mayank_jatay+connlab2@bio-rad.com",
+        "Password": "Welcome1",
+        "FirstName": "Dean",
+        "OutOfSequence": "../resources/UN-14086/2OutOfSequence.csv",
+        "RedundantData": "../resources/UN-14086/7RedundantData.csv",
+        "OutOfSequenceErrorMessage": "Out of sequence error. Please upload data in order of ascending date.",
+        "RedundantDataErrorMessage": "Failure due to redundant data",
+        "TransformerName" : "UFFTv4.2"
+    },
+    "QA": {
+        "URL": "https://unity-test.qcnet.com/login"
+    },
+    "STAGE": {},
+    "DEV2": {}
+}

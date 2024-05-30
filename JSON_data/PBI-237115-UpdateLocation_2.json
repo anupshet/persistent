@@ -1,0 +1,32 @@
+{
+	"DEV": {
+		"Order": "123456 qqq",
+		"UnityNextTier_Option": "None ",
+		"UN_InstalledProductField": "",
+		"ConnectivityTier_Option2": " UN Upload",
+		"CN_InstalledProductField": "",
+		"QCLotViewer_Option": "No",
+		"QC_InstalledProductField": "",
+		"Add_ons": "Value Assignments",
+		"Crossoverstudy": "Yes",
+		"LicenseLength": "24 Months",
+		"ExpiryDate": "10/14/2011",
+		"NumberOfUsers": "5",
+		"ShipTo": "1000000",
+		"SoldTo": "3000000",
+		"LabName": "AMain Lab 1",
+		"AddressCreateAccount": "123 Main St. Ste.#1",
+		"AddressCreateAccount2": "123 Main St. Ste.#1",
+		"Country": "Åland Islands",
+		"StateCreateAccount": "CA",
+		"CityCreateAccount": "Irvine",
+		"ZipCreateAccount": "92618",
+		"LabContactEmail": "sample_user1@bio-rad.com",
+		"LabContactFirstName": "Sample",
+		"LabContactLastName": "User",
+		"UNTO": "None",
+		"CTO": "UN Upload"
+	},
+	"QA": {},
+	"STAGE": {}
+}

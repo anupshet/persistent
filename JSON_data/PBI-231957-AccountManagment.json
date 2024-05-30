@@ -1,0 +1,33 @@
+{
+	"DEV": {
+		"URL": "http://localhost:4200/",
+		"AMUsername": "sudhir_paranjape+devqc@bio-rad.com",
+		"AMPassword": "Welcome1",
+		"AMFirstName": "Sudhir",
+		"DummyLabName": "cpdaaxlecqpnfedniyqsnbuiyfrynhjhnakzmbwvrlvidaizmodpwzcsqcrqzgkrlpgetxzcsdwbctjerumoldticvgowwqzvrsyvutyhnlrjqjmfbuunyhmppltrcgvjubxnisphqtvmuobydfwjuxhlbymrjmoddtfeibtxpejbpzlekspcantevxiyjaaaczzpjrtq",
+		"LabName": "TestLab",
+		"CountryCreateAccount": "United States",
+		"AddressCreateAccount": "Address1",
+		"Address2CreateAccount": "Address2",
+		"Address3CreateAccount": "Address3",
+		"DummyAddressCreateAccount1": "uugtibgpnoulzyygdqberroweuzymcjoeycodjykbndgzuwlarcvqimotcijwwclccapinchysmohekucyyppgnnzkwinxtcdfhpx",
+		"DummyAddressCreateAccount2": "uugtibgpnoulzyygdqberroweuzymcjoeycodjykbndgzuwlarcvqimotcijwwclccapinchysmohekucyyppgnnzkwinxtcdfhpx",
+		"DummyAddressCreateAccount3": "uugtibgpnoulzyygdqberroweuzymcjoeycodjykbndgzuwlarcvqimotcijwwclccapinchysmohekucyyppgnnzkwinxtcdfhpx",
+		"StateCreateAccount": "ABC",
+		"DummyStateCreateAccount": "ABCDE",
+		"CityCreateAccount": "Jacksonville",
+		"DummyCityCreateAccount": "fwnmbnuavsunpmdlywwrsfuujzvpykbvagbsunmwwqwekujbovkilavmwfmt",
+		"ZipCreateAccount": "611052",
+		"DummyZipCreateAccount": "123nlxizlzdazjayqnjjtfj",
+		"LabContactFirstName": "TestFirstName",
+		"DummyLabContactFirstName": "uemvajmwmgvyejkcfgkgkixqgayrtpjprsjjnlxmrrykbjsrcij",
+		"LabContactLastName": "TestLastName",
+		"DummyLabContactLastName": "uemvajmwmgvyejkcfgkgkixqgayrtpjprsjjnlxmrrykbjsrcij",
+		"LabContactEmail": "test@bio-rad",
+		"DummyLabContactEmail": "testbio-rad",
+		"DummyLabPhoneNumber": "23obrgqjghjpvqnrlnyowxhxrj"
+	},
+	"QA": {},
+	"STAGE": {},
+	"DEV2": {}
+}

@@ -1,0 +1,50 @@
+@import '../../../../assets/scss/base/variables-peak';
+@import '../../../../assets/scss/layout/new-lab-setup';
+
+.draganddrop-container{
+  border:dashed $custom-space-xxsmall $black-12-opacity;
+  padding: $custom-space-large $custom-space-small $custom-space-large+$custom-space-small $custom-space-small;
+  @include border-radius($custom-border-radius-large);
+  color: mat-color($mat-grey, A700, 5);
+  & #instrumentUpload{
+    display: none;
+  }
+  h2.browse-file-label{
+    margin-top: -24px;
+  }
+  .mat-icon-button{
+       width: 0px;
+       height: 0px;
+       line-height: 0px;
+  }
+  mat-icon{
+   &.publish{
+     width: 91px;
+     height: 91px;
+     color: $dark-secondary-text;
+   }
+   &.close{
+    width: 14px;
+    height: 14px;
+    justify-content: center;
+    display: flex;
+   }
+  }
+  label{
+    &.browse-file{
+      cursor: pointer;
+    }
+  }
+  .flex-box{
+    justify-content: center;
+    & .line-height-0{
+      line-height: 0px;
+    }
+    & .mat-h2{
+      line-height: 35px;
+    }
+  }
+  small {
+    display: block;
+  }
+}

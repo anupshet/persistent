@@ -1,0 +1,28 @@
+{
+	"DEV": {
+		"URL": "https://unity-dev.qcnet.com",
+		"AMUsername": "tushar_adeshara+accountmanager@bio-rad.com",
+		"AMPassword": "Welcome1",
+		"AMFirstName": "Tushar",
+		"Category": "Name",
+		"KeywordForName": "Mayank Jatav",
+		"ColumnNo1": "1",
+
+		"KeywordForEmail": "mayank_jatay+10793Admin@bio-rad.com",
+		"ColumnNo2": "2",
+
+		"KeywordForRole": "Bio-Rad Manager",
+		"ColumnNo3": "3",
+
+		"KeywordForTerritoryId": "9756473",
+		"ColumnNo4": "4",
+
+		"keyWordForPagi": "CTS",
+		"keyWordForNoPagi": "mayank_jatay+10793Admin@bio-rad.com"
+		
+		
+	},
+	"QA": {},
+	"STAGE": {},
+	"DEV2": {}
+}

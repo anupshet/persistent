@@ -1,0 +1,40 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="draganddrop-container text-center">
+  <div class="wrap" [class.disabled]="numberOfFilesViolationErrorMsg">
+    <div (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)" class="input-file">
+      <input type="file" id="instrumentUpload" name="instrumentUpload" [ngClass]="{'cursor-none': numberOfFilesViolationErrorMsg, 'cursor-pointer': !numberOfFilesViolationErrorMsg}"
+        (change)="fileChange($event)" [disabled]="numberOfFilesViolationErrorMsg" multiple #uploadSameFile>
+      <div *ngIf="!fileList" class="default">
+        <mat-icon [svgIcon]="icons.publish[48].name" class="publish"></mat-icon>
+        <h2 class="mb-0 browse-file-label">
+          <span >{{'UPLOADCONFIGFILE.DROPFILE' | translate}} </span>
+          <label class="br-text-primary mat-h2 browse-file" for="instrumentUpload">{{'UPLOADCONFIGFILE.BROWSE' | translate}}</label>
+        </h2>
+      </div>
+      <small class="red center" *ngIf="noFilesErrorMsg && showErrors">
+        {{'UPLOADCONFIGFILE.ATTACHFILE' | translate}}
+      </small>
+      <small class="red center" *ngIf="invalidFileExtensionErrorMsg">
+        {{'UPLOADCONFIGFILE.FILEEXTENSION' | translate}}
+      </small>
+      <small class="red center" *ngIf="fileSizeViolationErrorMsg">
+        {{'UPLOADCONFIGFILE.MAXIMUM' | translate}}
+        <br> {{'UPLOADCONFIGFILE.PLEASECHOOSE' | translate}}
+      </small>
+      <small class="center" *ngIf="numberOfFilesViolationErrorMsg && !numberOfFilesExceededErrorMsg">
+        {{'UPLOADCONFIGFILE.MAXNUMBER' | translate}}
+      </small>
+      <small class="red center" *ngIf="numberOfFilesExceededErrorMsg">
+        {{'UPLOADCONFIGFILE.MAXIMUMFILES' | translate}}
+      </small>
+    </div>
+  </div>
+  <div class="filename title flex-box flex-box-item-center grey" *ngFor="let file of files; let i = index">
+    <div class="line-height-0">
+      <button mat-icon-button (click)="onRemoveFile(i)">
+        <mat-icon [svgIcon]="icons.close[18].name" class="close"></mat-icon>
+      </button>
+    </div>
+    <div class="mat-h2 mb-0">{{file.name | truncate:[21] }}</div>
+  </div>
+</div>

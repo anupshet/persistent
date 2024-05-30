@@ -1,0 +1,10 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div *ngIf="manufacturersList &&  currentNode">
+  <unext-instrument-entry [manufacturers]="manufacturersList" [departmentId]="departmentId"
+    (loadInstruments)="onLoadInstruments($event.manufacturerId, $event.pointIndex)"
+    [title]="labSetupInstrumentHeaderTitle" [instrumentList]="instrumentList" [allInstrumentInDep]="allInstrumentInDep"
+    (restInstrumentConfigData)="restInstrumentConfigData()" (deletedInstrument)="onDeleteInstrument($event)"
+    (labInstruments)="saveLabConfigurationInstrument($event)" [isParentArchived]="isParentArchived"
+    (copyNodeRequest)="copyInstrument($event)">
+  </unext-instrument-entry>
+</div>

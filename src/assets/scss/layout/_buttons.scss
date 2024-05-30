@@ -1,0 +1,123 @@
+@mixin layout\buttons {
+
+  button.mat-raised,
+  button.mat-raised-button,
+ {
+    height: 40px;
+    min-width: 97px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 500;
+    color: $button-primary-color !important;
+    opacity: 1;
+    background: $button-primary-bg !important;
+
+    &.positive {
+      background: $green-dark !important;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &[type="submit"] {
+      padding-top: 2px;
+    }
+
+    &[disabled],
+    &[disabled][disabled],
+    &:disabled,
+    &.disabled {
+      color: $button-primary-color !important;
+      background: $button-primary-disabled-bg !important;
+      opacity: 1;
+    }
+
+    &[hidden] {
+      display: none;
+    }
+
+    &.deactivated,
+    &.deactivated:hover {
+      color: $button-primary-deactivated-color !important;
+      background: $button-primary-disabled-bg  !important;
+      cursor: default;
+      pointer-events: none;
+      opacity: 1;
+    }
+  }
+
+  button.mat-button {
+    font-weight: 600;
+
+    &[disabled],
+    &[disabled][disabled],
+    &:disabled,
+    &.disabled {
+      opacity: 0.7;
+    }
+  }
+
+  button.mat-flat,
+  button.mat-flat-button,
+ {
+    height: 40px;
+    min-width: 97px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 500;
+    color: $button-primary-color !important;
+    opacity: 1;
+    background: $button-primary-bg !important;
+
+    &.positive {
+      background: $green-dark !important;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &[type="submit"] {
+      padding-top: 2px;
+    }
+
+    &[disabled],
+    &[disabled][disabled],
+    &:disabled,
+    &.disabled {
+      color: $button-primary-color !important;
+      background: $button-primary-disabled-bg !important;
+      opacity: 1;
+    }
+
+    &[hidden] {
+      display: none;
+    }
+
+    &.deactivated,
+    &.deactivated:hover {
+      color: $button-primary-deactivated-color !important;
+      background: $button-primary-disabled-bg  !important;
+      cursor: default;
+      pointer-events: none;
+      opacity: 1;
+    }
+  }
+
+  button.mat-button {
+    font-weight: 600;
+
+    &[disabled],
+    &[disabled][disabled],
+    &:disabled,
+    &.disabled {
+      opacity: 0.7;
+    }
+  }
+}
+

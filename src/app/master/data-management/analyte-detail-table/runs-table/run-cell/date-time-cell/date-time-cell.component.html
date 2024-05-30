@@ -1,0 +1,9 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.-->
+<div class="date-time-cell">
+  <span class="month-day">{{runDateTime | uNextDate: 'mediumDate'}}</span><br/><br/>
+  <span class="time">{{runDateTime | uNextDate: 'shortTime'}}</span>
+  <div>
+    <em *ngIf="isInsert" class="icn-insert" matTooltip="{{'DTAETIMECELL.THIS' | translate}}" matTooltipPosition="below"></em>
+    <em *ngIf="isRestartFloat" class="icn-restart-float" matTooltip="{{'DTAETIMECELL.RESTART' | translate}}" matTooltipPosition="below"></em>
+  </div>
+</div>

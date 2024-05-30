@@ -1,0 +1,36 @@
+{
+  "QA": {
+    "URL": "https://qcpcentralqa.global.bio-rad.com/Index",
+    "Username": "amruta_karale+qaqcpadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "MainMenu": "Tiering",
+    "SubMenu": "InstrumentTiering",
+    "GroupName": "Abbott ARCHITECT/Alinity (c, i, ci models)",
+    "Manufacturer": "Abbott",
+    "Instrument": "ARCHITECT c8000",
+    "Product": "Fertility",
+    "Method": "Arsenazo I",
+    "Analyte": "Aluminum",
+    "InstrumentExcluded": "ARCHITECT i1000SR",
+    "ProductExcluded": "Fertility",
+    "MethodExcluded": "Arsenazo I",
+    "AnalyteExluded": "T3, Free",
+    "ExcludeAnalye": "Albumin",
+    "InstrumentAlreadyExcluded": "ARCHITECT i1000",
+    "All": "All"
+  },
+  "DEV": {
+    "URL": "https://qcpcentraldevaws.global.bio-rad.com/",
+    "Username": "amruta_karale+devqcpadmin@bio-rad.com",
+    "Password": "Welcome1",
+    "MainMenu": "Tiering",
+    "SubMenu": "InstrumentTiering",
+    "GroupName": "Abbott ARCHITECT/Alinity (c, i, ci models)",
+    "Manufacturer": "Abbott",
+    "Instrument": "ARCHITECT c8000",
+    "Product": "Fertility",
+    "Method": "Arsenazo I",
+    "Analyte": "Aluminum",
+    "ExcludeAnalye": "Albumin"
+  }
+}

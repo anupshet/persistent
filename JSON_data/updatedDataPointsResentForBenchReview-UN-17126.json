@@ -1,0 +1,16 @@
+{
+	"DEV": {
+			"URL": "http://localhost:4200/",
+			"Username": "rana_thakur+localDemo13945@bio-rad.com",
+			"Password": "Welcome1",
+			"FirstName": "rana",
+			"PanelNAme":"DemoPanel",
+      "LocationName":"Demo13945"
+			
+	},
+	"QA": {
+			"URL": "https://unity-test.qcnet.com/login"
+	},
+	"STAGE": {},
+	"DEV2": {}
+}

@@ -1,0 +1,171 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="mat-sidenav-wrapper" *ngIf="sideBarList && !showLocationSelector && !isLUM && showNavigation">
+  <mat-sidenav-container *ngIf="isArray(sideBarList)">
+    <div class="ctn-sidenav-closed">
+      <button mat-icon-button (click)="toggleNavbar();">
+        <mat-icon [svgIcon]="icons.menu[24].name"></mat-icon>
+      </button>
+      <div class="fake-items" *ngFor="let navItem of sideBarList;">
+        <em></em>
+      </div>
+    </div> <!-- /ctn-sidenav-closed -->
+    <mat-sidenav class="ctn-sidenav-opened" mode="side" id="sideNav" opened="true" role="navigation" #sideNav>
+      <div class="sidenav-expansion-panel">
+        <div class="sidenav-expansion-panel-header-controls">
+          <button class="spec_toggle_navbar" mat-icon-button (click)="toggleNavbar();">
+            <mat-icon [svgIcon]="icons.close[24].name"></mat-icon>
+          </button>
+        </div> <!-- /sidenav-expansion-panel-header-controls -->
+        <div class="perfect-scrollbar-wrapper mt-20">
+          <perfect-scrollbar [config]="{suppressScrollX: true, suppressScrollY: false}">
+            <div class="spec-panel-list"
+              *ngIf="showPanel && !showSortOpts && hasPermissionToAccess([permissions.PanelsView])">
+                <h2 *ngIf="sortedPanelList?.length > 0" class="mt-20 ml-10 mb-5">
+                    {{'NAV.SIDEMENU.PANELS' | translate}}
+                </h2>
+              <!-- Button will be restricted to Admin user once User Permission code is merged to panels branch  -->
+              <button color="primary" mat-button class="spec_gotoAddPanel mb-10 pl-10" *ngIf="!showSortOptsPanels"
+                [disabled]="isAddAPanelDisabled()"
+                [checkForPermission]="{'permissionsAllowed':[permissions.PanelsAdd, permissions.PanelsAddViewOnly],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+                (click)="gotoAddPanel()">
+                <mat-icon [svgIcon]="icons.addCircleOutline[24].name" class="addCircleOutline">
+                </mat-icon>
+                <span> {{'NAV.SIDEMENU.ADDPANEL' | translate}}</span>
+              </button>
+              <div *ngIf="sortedPanelList?.length > 1">
+                <div>
+                  <button color="primary" mat-button class="pl-10 pr-5 spec_panel_btn_sort"
+                    [disabled]="!canSortPanels()"
+                    [ngClass]="{'btn-sort': canSortPanels(), 'btn-sort-disabled': !canSortPanels()}"
+                    (click)="toggleSortOptionsPanels()">
+                    <mat-icon [svgIcon]="icons.sort[24].name" class="mr-5"></mat-icon>
+                    <span>{{'NAV.SIDEMENU.SORT' | translate}}</span>
+                  </button>
+                  <br-info-tooltip class="sub-vertical-align">
+                    <ng-template>{{'NAV.SIDEMENU.CUSTOMSORT' | translate}}</ng-template>
+                  </br-info-tooltip>
+                </div>
+                <div *ngIf="showSortOptsPanels" class="sort-opts-panels pb-10 left-bdr pl-10">
+                  <button mat-stroked-button class="spec_panel_btn_atoz" color="primary" type="submit"
+                    (click)="sortSideBarPanels(sortedPanelList)" [disabled]="disablePanelAZ">
+                    {{'NAV.SIDEMENU.ATOZ' | translate}}</button>
+                  <button mat-button class="spec_panel_btn_cancel" color="primary" type="submit"
+                    (click)="resetPanels(disablePanelDone)">{{'NAV.SIDEMENU.CANCEL' | translate}}</button>
+                  <button mat-flat-button class="spec_panel_btn_done" color="primary" [disabled]="disablePanelDone"
+                    type="submit" (click)="onSubmitPanel()">{{'NAV.SIDEMENU.DONE' | translate}}</button>
+                </div>
+              </div>
+
+              <ng-container *ngIf="!showSortOptsPanels;then panels; else customDragPanels ">
+              </ng-container>
+
+              <ng-template #panels>
+                <mat-nav-list *ngFor="let navItem of sortedPanelList; let i = index">
+                  <unext-nav-side-bar-link [isNodeSelected]='nodeSelected === navItem.node'
+                    (selectedNode)="setSelectedNode(navItem.node)" [primaryDisplayText]="navItem.primaryText"
+                    [secondaryDisplayText]="navItem.secondaryText" [additionalDisplayText]="navItem.additionalText"
+                    [showTooltip]="showTooltip" [nodeId]="navItem.node.id" [itemNodeType]="navItem.node.nodeType">
+                  </unext-nav-side-bar-link>
+                </mat-nav-list>
+              </ng-template>
+              <ng-template #customDragPanels>
+                <div class="ctn-cdkScrollable" cdkScrollable>
+                  <div cdkDropList class="panel-items-list left-bdr" (cdkDropListDropped)="drop($event, 'panel')">
+                    <div class="panel-item-box" *ngFor="let navItem of sortedPanelList" cdkDrag>
+                      <span>
+                        <mat-icon [svgIcon]="icons.verticalBars[24].name" class="bars mr-5"></mat-icon>
+                        <span>{{navItem.primaryText}}</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+            <!--  top-bdr is the class for black line separator between if panels is present -->
+            <div [ngClass]="{'top-bdr' : showPanel && hasPermissionToAccess([permissions.PanelsView]) }"
+              *ngIf="!selectedNode?.isArchived">
+              <button
+                *ngIf="selectedNode?.nodeType !== nodeType?.Panel && hasAddPermissionToAccess(selectedNode?.nodeType)"
+                color="primary" class="spec_goto_add_link pl-10" mat-button (click)="gotoAddLink()">
+                <mat-icon [svgIcon]="icons.addCircleOutline[24].name" class="addCircleOutline"></mat-icon>
+                <span class="upper-case">{{getLinkName(selectedNode?.nodeType)}}</span>
+              </button>
+            </div>
+            <div
+              *ngIf="!dataEntryMode && sortedSideBarList?.length > 1 && (selectedNode?.nodeType !== nodeType?.Panel || (selectedNode?.nodeType === nodeType?.Panel && isPanelMDEmode))">
+              <div *ngIf="showSideBarItems">
+                <button color="primary" mat-button class="pl-10 pr-5 spec_btn_sort" [disabled]="!canSortSideBar()"
+                  [ngClass]="{'btn-sort': canSortSideBar(), 'btn-sort-disabled': !canSortSideBar()}"
+                  (click)="toggleSortOptions()">
+                  <mat-icon [svgIcon]="icons.sort[24].name" class="mr-5"></mat-icon>
+                  <span>{{'NAV.SIDEMENU.SORT' | translate}}</span>
+                </button>
+                <br-info-tooltip class="sub-vertical-align">
+                  <ng-template>{{'NAV.SIDEMENU.CUSTOMSORT' | translate}}</ng-template>
+                </br-info-tooltip>
+              </div>
+              <div *ngIf="showSortOpts && showSideBarItems" class="sort-opts-panels mb-10">
+                <button mat-stroked-button class="spec_btn_atoz" color="primary" type="submit"
+                  (click)="sortSideBarItems(sortedSideBarList)" [disabled]="disableAZ">
+                  {{'NAV.SIDEMENU.ATOZ' | translate}}</button>
+                <button mat-button class="spec_btn_cancel" color="primary" type="submit"
+                  (click)="resetSideBarItems(disableDone)">{{'NAV.SIDEMENU.CANCEL' | translate}}</button>
+                <button mat-flat-button class="spec_btn_done" color="primary" [disabled]="disableDone" type="submit"
+                  (click)="onSubmit(isPanelMDEmode)">{{'NAV.SIDEMENU.DONE' | translate}}</button>
+              </div>
+            </div>
+            <div *ngIf="showSideBarItems" class="mt-10">
+              <ng-container *ngIf="!showSortOpts;then nodes; else customDragNodes">
+              </ng-container>
+            </div>
+            <ng-template #nodes>
+
+              <mat-nav-list *ngFor="let navItem of sortedSideBarList; let i = index">
+                <span *ngIf="showSortOpts">
+                  <mat-icon [svgIcon]="icons.verticalBars[24].name" class="bars mr-5"></mat-icon>
+                  <span>{{navItem.displayName}}</span>
+                </span>
+                <unext-nav-side-bar-link [isNodeSelected]='nodeSelected === navItem.node'
+                  (selectedNode)="setSelectedNode(navItem.node)" [primaryDisplayText]="navItem.primaryText"
+                  [secondaryDisplayText]="navItem.secondaryText" [isArchived]="!!navItem?.node?.isArchived"
+                  [additionalDisplayText]="navItem.additionalText" [showTooltip]="showTooltip"
+                  [nodeId]="navItem.node.id" [itemNodeType]="navItem.node.nodeType">
+                </unext-nav-side-bar-link>
+              </mat-nav-list>
+            </ng-template>
+
+            <ng-template #customDragNodes>
+              <div class="ctn-cdkScrollable" cdkScrollable>
+                <div cdkDropList class="panel-items-list" (cdkDropListDropped)="drop($event)">
+                  <div class="panel-item-box" *ngFor="let navItem of sortedSideBarList" cdkDrag>
+                    <span>
+                      <mat-icon [svgIcon]="icons.verticalBars[24].name" class="bars mr-5"></mat-icon>
+                      <span>{{navItem.primaryText}}</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+
+            <div *ngIf="showArchivedItemsToggle && !showSortOptsPanels && !showSortOpts" class="archived-items-section">
+              <div class="archived-items-toggle-section">
+                <label>{{'NAV.SIDEMENU.ARCHIVED' | translate}}</label>
+                <mat-slide-toggle color="primary" name="archivedItems" [(ngModel)]="isArchiveItemsToggleOn"
+                  (change)="toggleArchivedItems()" ngDefaultControl class="spec-archive-items-toggle archive-toggle">
+                </mat-slide-toggle>
+              </div>
+              <mat-nav-list *ngFor="let navItem of sortedSideBarArchiveList; let i = index" class="spec-archive-list">
+                <unext-nav-side-bar-link [isNodeSelected]='nodeSelected === navItem.node'
+                  (selectedNode)="setSelectedNode(navItem.node)" [primaryDisplayText]="navItem.primaryText"
+                  [secondaryDisplayText]="navItem.secondaryText" [isArchived]="!!navItem?.node?.isArchived"
+                  [additionalDisplayText]="navItem.additionalText" [showTooltip]="showTooltip"
+                  [nodeId]="navItem.node.id" [itemNodeType]="navItem.node.nodeType">
+                </unext-nav-side-bar-link>
+              </mat-nav-list>
+            </div>
+          </perfect-scrollbar>
+        </div>
+      </div> <!-- /sidenav-expansion-panel -->
+    </mat-sidenav> <!-- /ctn-sidenav-opened -->
+  </mat-sidenav-container>
+</div>

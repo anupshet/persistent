@@ -1,0 +1,25 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="br-dialog">
+  <div class="hdr">
+    <div (click)="closeDialog()">
+      <mat-icon [svgIcon]="icons.close[48].name" class="close error-close"></mat-icon>
+    </div>
+    <mat-dialog-content class="mat-typography">
+        <div class="message-wrapper" [ngSwitch]="errorCode">
+            <p *ngSwitchCase="errorStrings.labsetup071">{{'ERRORMESSAGE.DEPARTMENTEXISTS' | translate}}</p>
+            <p *ngSwitchCase="errorStrings.labsetup085">{{'ERRORMESSAGE.EMAIL' | translate}}</p>
+            <p *ngSwitchCase="errorStrings.labsetup086">{{'ERRORMESSAGE.LOCATION' | translate}}</p>
+            <p *ngSwitchCase="errorStrings.labsetup087">{{'ERRORMESSAGE.SHIP' | translate}}</p>
+            <p *ngSwitchCase="errorStrings.labsetup088">{{'ERRORMESSAGE.SAMENAME' | translate}}</p>
+            <p *ngSwitchCase="errorStrings.labsetup099">{{'ERRORMESSAGE.MIGRATION' | translate}}</p>
+            <p *ngSwitchCase="errorStrings.labsetup114">{{'ERRORMESSAGE.PRIMARYLAB' | translate}}</p>
+            <p *ngSwitchCase="errorStrings.codelist002">{{'ERRORMESSAGE.CONTROLEXISTS' | translate}}</p>
+            <p *ngSwitchDefault>{{'ERRORMESSAGE.SOMETHING' | translate}}</p>
+
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button class="spec_ok" mat-button mat-flat-button (click)="onSubmit()">{{'ERRORMESSAGE.OK' | translate}}</button>
+    </mat-dialog-actions>
+  </div>
+</div>

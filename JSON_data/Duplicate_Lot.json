@@ -1,0 +1,21 @@
+{
+  "QA": {
+    "URL": "https://unity-test.qcnet.com",
+    "Username": "sampada_gulhane+archive@bio-rad.com",
+    "Password": "Welcome1",
+    "FirstName": "Sampada",
+    "UserRoleUsername": "sampada_gulhane+archive@bio-rad.com",
+    "Department": "Duplicate Lots",
+    "Instrument": "ARCHITECT c16000",
+    "Control": "Assayed Chemistry",
+    "Analyte": "Acetaminophen",
+    "Analyte2": "Acid Phosphatase, Total",
+    "Analyte3": "Albumin",
+    "Lot": "26450",
+    "OldLot": "26460",
+    "NewLot": "26754"
+  },
+  "DEV": {},
+  "STAGE": {},
+  "DEV2": {}
+}

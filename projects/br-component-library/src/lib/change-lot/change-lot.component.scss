@@ -1,0 +1,88 @@
+// © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved.
+@import "../../scss/main";
+
+.change-lot-component {
+  display: flex;
+  width: 100%;
+
+  &.hidden {
+    height: 0px;
+    visibility: hidden;
+  }
+
+
+  .item-1 {
+    width: 50%;
+
+    margin-right: 40px;
+  }
+
+  .item-2 {
+    flex-grow: 2;
+
+    .lot-dropdown {
+      width: 220px;
+      float: left;
+    }
+  }
+
+
+
+  a {
+    color: $br-color-primary-700;
+    cursor: pointer;
+  }
+
+  .disable {
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.toggle-trigger {
+
+  &.hide {
+    display: none;
+  }
+
+  position: absolute;
+  z-index: 10;
+  bottom: -20px;
+  right: 20px;
+
+  cursor: pointer;
+  background: #FFF7E0;
+  border: 1px solid $gray-300;
+  border-top: 0;
+
+  width: 70px;
+  padding: 0 5px;
+  height: 20px;
+  text-align: center;
+  border-bottom-right-radius: 5px;
+  -moz-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -moz-border-bottom-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  margin: 0 auto;
+
+  &.isFormVisible {
+    .chevron:before {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.chevron::before {
+  border-style: solid;
+  border-width: 2px 2px 0 0;
+  border-color: $blue-light;
+  content: '';
+  display: inline-block;
+  height: 10px;
+  transform: rotate(135deg);
+  vertical-align: top;
+  width: 10px;
+}

@@ -1,0 +1,15 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+
+<div class="ctn-slider-button">
+  <button mat-button class="spec_prevButton navigate-left" (click)="goBack()" [disabled]="startLimitReached">
+    <mat-icon [svgIcon]="icons.navigateBefore[24].name" [ngClass]="{ 'filter-blue': !startLimitReached }"></mat-icon>
+  </button>
+  <span>{{max}} {{'ADVANCEDLJTIMEFRAME.DAYS' | translate}}</span>
+  <mat-slider class="spec_slider" (change)="onSliderChange()" color="primary" [invert]="true" [max]="max" [min]="min" [step]="step"
+    [thumbLabel]="sliderThumbLabel" [tickInterval]="tickInterval" [(ngModel)]="sliderValue" [thumbLabel]="true">
+  </mat-slider>
+  <span>{{min}} {{'ADVANCEDLJTIMEFRAME.DAY' | translate}}</span>
+  <button mat-button class="spec_nextButton navigate-right" (click)="goForward()" [disabled]="endLimitReached">
+    <mat-icon [svgIcon]="icons.navigateNext[24].name"  [ngClass]="{ 'filter-blue': !endLimitReached }"></mat-icon>
+  </button>
+</div> <!-- /ctn-slider-button -->

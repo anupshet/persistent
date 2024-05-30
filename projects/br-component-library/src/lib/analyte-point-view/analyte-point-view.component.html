@@ -1,0 +1,77 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="analyte-point-view-component">
+    <div *ngIf="showAnalyteName(analytePointView)" class="hdr-ctn">
+      <span class="analyte-name">{{ productName }}-{{productLotNumber}} {{analytePointView?.analyteName }}</span>
+    </div>
+    <div class="flex-ctn-1">
+      <div *ngIf="!displayNoData; else pointViewNoData" class="flex-item-1">
+        <table mat-table [dataSource]="getDataSource(analytePointView)">
+          <!-- Date -->
+          <ng-container matColumnDef="pointDateTime">
+            <td mat-cell *matCellDef class="analyte-date-time">
+              <span class="analyte-month-day">
+                {{ analytePointView?.analyteDateTime | uNextDate: 'mediumDate' }}
+                  <em *ngIf="analytePointView?.isInsert" class="icn-insert" matTooltip="This item has been inserted"
+                  matTooltipPosition="right"></em>
+              </span>
+              <span class="analyte-time mat-small">
+                {{ analytePointView?.analyteDateTime | uNextDate: 'shortTime' }}
+              </span>
+            </td>
+          </ng-container>
+
+          <!-- Level Data -->
+          <ng-container [matColumnDef]="col" *ngFor="let col of (columnsToDisplay | slice: 1); let columnIndex = index;">
+            <td mat-cell *matCellDef="let row;" [ngClass]="{ 'td-even': applyAlternateColumnStyling(columnIndex), 'data-col': true }">
+              <div *ngIf="getIndexFromLevelSummary(columnIndex) !== null; else emptyTemplate" class="flex-ctn-2 level-data-cell">
+
+                <div [ngClass]="['mark', 'radius-5', getBorderColor(analytePointView?.levelDataSet[getIndexFromLevelSummary(columnIndex)]?.data.resultStatus), !analytePointView?.levelDataSet[getIndexFromLevelSummary(columnIndex)]?.data?.isAccepted ? 'strike' : '' ]" *ngIf="showValueColumn()">
+                  {{analytePointView?.levelDataSet[getIndexFromLevelSummary(columnIndex)]?.data?.value | transformValue: analytePointView?.levelDataSet[getIndexFromLevelSummary(columnIndex)]?.decimalPlace}}
+                </div>
+
+                <div *ngIf="analytePointView?.levelDataSet[getIndexFromLevelSummary(columnIndex)]?.data?.displayZScore">
+                  {{analytePointView?.levelDataSet[getIndexFromLevelSummary(columnIndex)]?.data?.z | transformValue: analytePointView?.levelDataSet[getIndexFromLevelSummary(columnIndex)]?.decimalPlace}}
+                </div>
+
+                <div *ngIf="!analytePointView?.levelDataSet[getIndexFromLevelSummary(columnIndex)]?.data?.displayZScore" class="w-32">&nbsp;</div>
+
+                <div class="w-60"
+                  [matTooltip]="getAllRulesViolated(analytePointView?.levelDataSet[getIndexFromLevelSummary(columnIndex)].data?.ruleViolated)">
+                  <!-- choosing first element for sorting by severity of ruleViolations -->
+                  {{ analytePointView?.levelDataSet[getIndexFromLevelSummary(columnIndex)].data?.ruleViolated[0] }}
+                </div>
+              </div> <!-- /flex-ctn-2 -->
+            </td>
+          </ng-container>
+
+          <ng-template #emptyTemplate>
+            <div>
+              <div>
+                <span class="not-visible"></span>
+              </div>
+            </div>
+          </ng-template>
+
+          <!-- Display Rows -->
+          <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+        </table>
+      </div>
+      <ng-template #pointViewNoData>
+        <div class="hdr-ctn">
+          <span class="analyte-name">{{ productName }}-{{productLotNumber}} {{analyteNameNoData}}</span>
+          <br />
+          <span class="analyte-name blue">No Data</span>
+          <br/>
+        </div>
+      </ng-template>
+      <div class="flex-item-2 pez-placeholder">
+        <br-pez-cell
+          [actions]="analytePointView?.userActions"
+          [comments]="analytePointView?.userComments"
+          [interactions]="analytePointView?.userInteractions"
+          [pezDateTimeOffset]="dateTimeOffset"
+          (showReviewSummaryDialog)="openReviewSummaryDialog()">
+        </br-pez-cell>
+      </div>
+    </div><!-- /flex-ctn -->
+</div><!-- /analyte-point-view-component -->

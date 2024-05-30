@@ -1,0 +1,11 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="connectivity-model-container">
+  <div class="flex-container">
+    <unext-side-navigation></unext-side-navigation>
+    <main>
+      <unext-instrument-map *ngIf="renderInstrumentMap" [labLocationId]="labLocationId"></unext-instrument-map>
+      <unext-product-map *ngIf="renderProductMap"></unext-product-map>
+      <unext-test-map *ngIf="renderTestMap" [testChips]="testChips" [labLocationId]="labLocationId"></unext-test-map>
+    </main>
+  </div>
+</div>

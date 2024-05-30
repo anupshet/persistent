@@ -1,0 +1,1083 @@
+{
+  "data": {
+    "get_lab_header_info": {
+      "lab_number": "100297",
+      "lab_name": "Bell Hospital",
+      "department": "Attention: Gerry Brown",
+      "address": {
+        "street": "901 Lakeshore Dr, Ishpeming, MI 49849",
+        "country": "USA"
+      }
+    },
+    "get_lot_info": [
+      {
+        "product_name": "Multiqual 1,2,3",
+        "master_lot_id": 1698,
+        "lot_number": "45860",
+        "lot_expiration_date": "2023-11-30 00:00:00"
+      },
+      {
+        "product_name": "Multiqual 1,2,3 Unassayed",
+        "master_lot_id": 1692,
+        "lot_number": "56650",
+        "lot_expiration_date": "2023-11-30 00:00:00"
+      },
+      {
+        "product_name": "Pediatric",
+        "master_lot_id": 1643,
+        "lot_number": "44410",
+        "lot_expiration_date": "2023-11-30 00:00:00"
+      },
+      {
+        "product_name": "Spinal Fluid",
+        "master_lot_id": 1819,
+        "lot_number": "56470",
+        "lot_expiration_date": "2023-11-30 00:00:00"
+      }
+    ],
+    "get_lab_lot_test": [
+      {
+        "lab_instrument": {
+          "instrument_id": 1347,
+          "instrument_name": "Dimension EXL",
+          "instrument_custom_name": "Dimension EXL",
+          "instrument_serial": "no-serial"
+        },
+        "lot_test_config": [
+          {
+            "lot_config": {
+              "product_name": "Multiqual 1,2,3 Unassayed",
+              "master_lot_id": 1692,
+              "lot_number": "56650",
+              "lot_expiration_date": "2023-11-30 00:00:00"
+            },
+            "test_config": [
+              {
+                "lab_unit_name": "g/dL",
+                "lab_unit_id": 15,
+                "test": {
+                  "id": 233,
+                  "analyte_name": "Abumin",
+                  "method_name": "Bromcresol Purple (BCP)",
+                  "instrument_id": "1347",
+                  "instrument_name": "Dimension EXL",
+                  "reagent_category_id": 1,
+                  "reagent_category_name": "Generic Reagent",
+                  "reagent_id": 694,
+                  "reagent_name": "ALB REF OSR6802",
+                  "calibrator_name": "Cal 66300",
+                  "testspec": [
+                    {
+                      "id": 234,
+                      "reagent_lot_number": "Unspecified ***",
+                      "calibrator_lot_number": "Unspecified ***"
+                    }
+                  ]
+                }
+              },
+              {
+                "lab_unit_name": "U/L",
+                "lab_unit_id": 56,
+                "test": {
+                  "id": 245,
+                  "analyte_name": "Alkaline Phosphatase",
+                  "method_name": "PNPP, AMP Buffer - IFCC Ref. Proc., Calibrated",
+                  "instrument_id": "1347",
+                  "instrument_name": "Dimension EXL",
+                  "reagent_category_id": 1,
+                  "reagent_category_name": "Generic Reagent",
+                  "reagent_id": 782,
+                  "reagent_name": "ALPI REF DF150",
+                  "calibrator_name": "ALPI Cal REF DC150",
+                  "testspec": [
+                    {
+                      "id": 246,
+                      "reagent_lot_number": "Unspecified ***",
+                      "calibrator_lot_number": "Unspecified ***"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "lot_config": {
+              "product_name": "Pediatric",
+              "master_lot_id": 1643,
+              "lot_number": "44410",
+              "lot_expiration_date": "2023-11-30 00:00:00"
+            },
+            "test_config": [
+              {
+                "lab_unit_name": "mg/dL",
+                "lab_unit_id": 14,
+                "test": {
+                  "id": 325,
+                  "analyte_name": "Bilirubin, Total/TBIL",
+                  "method_name": "Jendrassik Grof",
+                  "instrument_id": "1347",
+                  "instrument_name": "Dimension EXL",
+                  "reagent_category_id": 1,
+                  "reagent_category_name": "Generic Reagent",
+                  "reagent_id": 794,
+                  "reagent_name": "TBI REF DF167",
+                  "calibrator_name": "TBI/DBI Cal REF DC167",
+                  "testspec": [
+                    {
+                      "id": 326,
+                      "reagent_lot_number": "Unspecified ***",
+                      "calibrator_lot_number": "Unspecified ***"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "lot_config": {
+              "product_name": "Spinal Fluid",
+              "master_lot_id": 1819,
+              "lot_number": "56470",
+              "lot_expiration_date": "2023-11-30 00:00:00"
+            },
+            "test_config": [
+              {
+                "lab_unit_name": "mg/dL",
+                "lab_unit_id": 14,
+                "test": {
+                  "id": 183,
+                  "analyte_name": "Glucose",
+                  "method_name": "Hexokinase",
+                  "instrument_id": "1347",
+                  "instrument_name": "Dimension EXL",
+                  "reagent_category_id": 1,
+                  "reagent_category_name": "Generic Reagent",
+                  "reagent_id": 823,
+                  "reagent_name": "GLUC REF DF40",
+                  "calibrator_name": "CHEM I Cal REF DC18B/C",
+                  "testspec": [
+                    {
+                      "id": 201,
+                      "reagent_lot_number": "Unspecified ***",
+                      "calibrator_lot_number": "Unspecified ***"
+                    }
+                  ]
+                }
+              },
+              {
+                "lab_unit_name": "g/L",
+                "lab_unit_id": 65,
+                "test": {
+                  "id": 494,
+                  "analyte_name": "Protein, Total, Urine/Spinal Fluid",
+                  "method_name": "Pyrogallol red",
+                  "instrument_id": "1347",
+                  "instrument_name": "Dimension EXL",
+                  "reagent_category_id": 1,
+                  "reagent_category_name": "Generic Reagent",
+                  "reagent_id": 852,
+                  "reagent_name": "UCFP REF DF26",
+                  "calibrator_name": "UCFP Cal REF DC45",
+                  "testspec": [
+                    {
+                      "id": 495,
+                      "reagent_lot_number": "Unspecified ***",
+                      "calibrator_lot_number": "Unspecified ***"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "getLHLabMonthStatsLevelWise": [
+      {
+        "master_lot_id": 1692,
+        "testSpec": 234,
+        "data": [
+          {
+            "level": 1,
+            "lms": [
+              {
+                "year_month": "202103",
+                "mean": "2.36",
+                "sd": "0.056",
+                "cv": "2.4",
+                "num_point": "33"
+              },
+              {
+                "year_month": "202104",
+                "mean": "2.40",
+                "sd": "0.030",
+                "cv": "1.3",
+                "num_point": "34"
+              },
+              {
+                "year_month": "202105",
+                "mean": "2.40",
+                "sd": "0.030",
+                "cv": "1.3",
+                "num_point": "34"
+              },
+              {
+                "year_month": "202106",
+                "mean": "2.38",
+                "sd": "0.045",
+                "cv": "1.9",
+                "num_point": "31"
+              },
+              {
+                "year_month": "202107",
+                "mean": "2.39",
+                "sd": "0.029",
+                "cv": "1.2",
+                "num_point": "36"
+              },
+              {
+                "year_month": "202108",
+                "mean": "2.37",
+                "sd": "0.046",
+                "cv": "1.9",
+                "num_point": "34"
+              },
+              {
+                "year_month": "202109",
+                "mean": "2.40",
+                "sd": "0.017",
+                "cv": "0.7",
+                "num_point": "35"
+              },
+              {
+                "year_month": "202110",
+                "mean": "2.41",
+                "sd": "0.035",
+                "cv": "1.5",
+                "num_point": "32"
+              },
+              {
+                "year_month": "202111",
+                "mean": "2.40",
+                "sd": "0.026",
+                "cv": "1.1",
+                "num_point": "31"
+              },
+              {
+                "year_month": "202112",
+                "mean": "2.38",
+                "sd": "0.037",
+                "cv": "1.6",
+                "num_point": "32"
+              },
+              {
+                "year_month": "202201",
+                "mean": "2.38",
+                "sd": "0.049",
+                "cv": "2.1",
+                "num_point": "32"
+              },
+              {
+                "year_month": "202202",
+                "mean": "2.35",
+                "sd": "0.050",
+                "cv": "2.1",
+                "num_point": "30"
+              }
+            ],
+            "cumulative_mean": 2.38,
+            "cumulative_sd": 0.047,
+            "cumulative_cv": 2,
+            "cumulative_npts": 639,
+            "cumulative_peer_mean": 2.33,
+            "cumulative_peer_sd": 0.0630466244825539
+          },
+          {
+            "level": 3,
+            "lms": [
+              {
+                "year_month": "202103",
+                "mean": "4.10",
+                "sd": "0.040",
+                "cv": "1.0",
+                "num_point": "33"
+              },
+              {
+                "year_month": "202104",
+                "mean": "4.10",
+                "sd": "0.030",
+                "cv": "0.7",
+                "num_point": "33"
+              },
+              {
+                "year_month": "202105",
+                "mean": "4.09",
+                "sd": "0.030",
+                "cv": "0.7",
+                "num_point": "34"
+              },
+              {
+                "year_month": "202106",
+                "mean": "4.08",
+                "sd": "0.040",
+                "cv": "1.0",
+                "num_point": "31"
+              },
+              {
+                "year_month": "202107",
+                "mean": "4.05",
+                "sd": "0.050",
+                "cv": "1.2",
+                "num_point": "34"
+              },
+              {
+                "year_month": "202108",
+                "mean": "4.06",
+                "sd": "0.050",
+                "cv": "1.2",
+                "num_point": "34"
+              },
+              {
+                "year_month": "202109",
+                "mean": "4.10",
+                "sd": "0.030",
+                "cv": "0.7",
+                "num_point": "35"
+              },
+              {
+                "year_month": "202110",
+                "mean": "4.13",
+                "sd": "0.050",
+                "cv": "1.2",
+                "num_point": "32"
+              },
+              {
+                "year_month": "202111",
+                "mean": "4.11",
+                "sd": "0.040",
+                "cv": "1.0",
+                "num_point": "31"
+              },
+              {
+                "year_month": "202112",
+                "mean": "4.08",
+                "sd": "0.050",
+                "cv": "1.2",
+                "num_point": "31"
+              },
+              {
+                "year_month": "202201",
+                "mean": "4.05",
+                "sd": "0.060",
+                "cv": "1.5",
+                "num_point": "32"
+              },
+              {
+                "year_month": "202202",
+                "mean": "4.03",
+                "sd": "0.050",
+                "cv": "1.2",
+                "num_point": "30"
+              }
+            ],
+            "cumulative_mean": 4.09,
+            "cumulative_sd": 0.062,
+            "cumulative_cv": 1.5,
+            "cumulative_npts": 635,
+            "cumulative_peer_mean": 4.03,
+            "cumulative_peer_sd": 0.0857504683371408
+          }
+        ]
+      },
+      {
+        "master_lot_id": 1692,
+        "testSpec": 246,
+        "data": [
+          {
+            "level": 1,
+            "lms": [
+              {
+                "year_month": "202103",
+                "mean": "30.67",
+                "sd": "1.11",
+                "cv": "3.6",
+                "num_point": "33"
+              },
+              {
+                "year_month": "202104",
+                "mean": "31.27",
+                "sd": "1.19",
+                "cv": "3.8",
+                "num_point": "34"
+              },
+              {
+                "year_month": "202105",
+                "mean": "31.95",
+                "sd": "1.26",
+                "cv": "3.9",
+                "num_point": "35"
+              },
+              {
+                "year_month": "202106",
+                "mean": "31.70",
+                "sd": "1.56",
+                "cv": "4.9",
+                "num_point": "30"
+              },
+              {
+                "year_month": "202107",
+                "mean": "28.94",
+                "sd": "1.53",
+                "cv": "5.3",
+                "num_point": "35"
+              },
+              {
+                "year_month": "202108",
+                "mean": "27.24",
+                "sd": "1.22",
+                "cv": "4.5",
+                "num_point": "38"
+              },
+              {
+                "year_month": "202109",
+                "mean": "28.79",
+                "sd": "1.30",
+                "cv": "4.5",
+                "num_point": "34"
+              },
+              {
+                "year_month": "202110",
+                "mean": "27.88",
+                "sd": "1.26",
+                "cv": "4.5",
+                "num_point": "34"
+              },
+              {
+                "year_month": "202111",
+                "mean": "26.24",
+                "sd": "1.95",
+                "cv": "7.4",
+                "num_point": "33"
+              },
+              {
+                "year_month": "202112",
+                "mean": "26.12",
+                "sd": "1.22",
+                "cv": "4.7",
+                "num_point": "33"
+              },
+              {
+                "year_month": "202201",
+                "mean": "25.75",
+                "sd": "1.08",
+                "cv": "4.2",
+                "num_point": "32"
+              },
+              {
+                "year_month": "202202",
+                "mean": "27.28",
+                "sd": "2.54",
+                "cv": "9.3",
+                "num_point": "31"
+              }
+            ],
+            "cumulative_mean": 29.03,
+            "cumulative_sd": 2.37,
+            "cumulative_cv": 8.2,
+            "cumulative_npts": 648,
+            "cumulative_peer_mean": 30.97,
+            "cumulative_peer_sd": 0.0857504683371408
+          },
+          {
+            "level": 3,
+            "lms": [
+              {
+                "year_month": "202103",
+                "mean": "291.5",
+                "sd": "5.10",
+                "cv": "1.7",
+                "num_point": "33"
+              },
+              {
+                "year_month": "202104",
+                "mean": "291.8",
+                "sd": "5.60",
+                "cv": "1.9",
+                "num_point": "33"
+              },
+              {
+                "year_month": "202105",
+                "mean": "294.2",
+                "sd": "7.20",
+                "cv": "2.4",
+                "num_point": "35"
+              },
+              {
+                "year_month": "202106",
+                "mean": "298.6",
+                "sd": "5.80",
+                "cv": "1.9",
+                "num_point": "30"
+              },
+              {
+                "year_month": "202107",
+                "mean": "288.1",
+                "sd": "5.90",
+                "cv": "2.0",
+                "num_point": "33"
+              },
+              {
+                "year_month": "202108",
+                "mean": "280.6",
+                "sd": "6.88",
+                "cv": "2.5",
+                "num_point": "35"
+              },
+              {
+                "year_month": "202109",
+                "mean": "276.4",
+                "sd": "3.99",
+                "cv": "1.4",
+                "num_point": "34"
+              },
+              {
+                "year_month": "202110",
+                "mean": "282.1",
+                "sd": "4.77",
+                "cv": "1.7",
+                "num_point": "34"
+              },
+              {
+                "year_month": "202111",
+                "mean": "285.9",
+                "sd": "6.68",
+                "cv": "2.3",
+                "num_point": "33"
+              },
+              {
+                "year_month": "202112",
+                "mean": "288.0",
+                "sd": "6.14",
+                "cv": "2.1",
+                "num_point": "32"
+              },
+              {
+                "year_month": "202201",
+                "mean": "281.4",
+                "sd": "4.02",
+                "cv": "1.4",
+                "num_point": "32"
+              },
+              {
+                "year_month": "202202",
+                "mean": "283.2",
+                "sd": "5.02",
+                "cv": "1.8",
+                "num_point": "31"
+              }
+            ],
+            "cumulative_mean": 288.6,
+            "cumulative_sd": 7.6,
+            "cumulative_cv": 2.6,
+            "cumulative_npts": 642,
+            "cumulative_peer_mean": 292,
+            "cumulative_peer_sd": 9.40919122930171
+          }
+        ]
+      },
+      {
+        "master_lot_id": 1643,
+        "testSpec": 326,
+        "data": [
+          {
+            "level": 2,
+            "lms": [
+              {
+                "year_month": "202103",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202104",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202105",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202106",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202107",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202108",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202109",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202110",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202111",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202112",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202201",
+                "mean": "17.47",
+                "sd": "0.282",
+                "cv": "1.6",
+                "num_point": "31"
+              },
+              {
+                "year_month": "202202",
+                "mean": "16.84",
+                "sd": "0.270",
+                "cv": "1.6",
+                "num_point": "25"
+              }
+            ],
+            "cumulative_mean": 17.19,
+            "cumulative_sd": 0.419,
+            "cumulative_cv": 2.4,
+            "cumulative_npts": 56,
+            "cumulative_peer_mean": 16.83,
+            "cumulative_peer_sd": 0.462941402760105
+          }
+        ]
+      },
+      {
+        "master_lot_id": 1643,
+        "testSpec": 201,
+        "data": [
+          {
+            "level": 1,
+            "lms": [
+              {
+                "year_month": "202103",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202104",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202105",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202106",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202107",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202108",
+                "mean": "62.20",
+                "sd": "0.447",
+                "cv": "0.7",
+                "num_point": "5"
+              },
+              {
+                "year_month": "202109",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202110",
+                "mean": "62.00",
+                "sd": "0.000",
+                "cv": "0.0",
+                "num_point": "1"
+              },
+              {
+                "year_month": "202111",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202112",
+                "mean": "62.50",
+                "sd": "0.707",
+                "cv": "1.1",
+                "num_point": "2"
+              },
+              {
+                "year_month": "202201",
+                "mean": "61.00",
+                "sd": "0.000",
+                "cv": "0.0",
+                "num_point": "1"
+              },
+              {
+                "year_month": "202202",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              }
+            ],
+            "cumulative_mean": 62.11,
+            "cumulative_sd": 0.601,
+            "cumulative_cv": 1,
+            "cumulative_npts": 9,
+            "cumulative_peer_mean": 61.61,
+            "cumulative_peer_sd": 1.55397117274798
+          },
+          {
+            "level": 2,
+            "lms": [
+              {
+                "year_month": "202103",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202104",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202105",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202106",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202107",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202108",
+                "mean": "29.60",
+                "sd": "0.548",
+                "cv": "1.9",
+                "num_point": "5"
+              },
+              {
+                "year_month": "202109",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202110",
+                "mean": "29.00",
+                "sd": "0.000",
+                "cv": "0.0",
+                "num_point": "1"
+              },
+              {
+                "year_month": "202111",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202112",
+                "mean": "30.00",
+                "sd": "0.000",
+                "cv": "0.0",
+                "num_point": "2"
+              },
+              {
+                "year_month": "202201",
+                "mean": "29.00",
+                "sd": "0.000",
+                "cv": "0.0",
+                "num_point": "1"
+              },
+              {
+                "year_month": "202202",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              }
+            ],
+            "cumulative_mean": 29.56,
+            "cumulative_sd": 0.527,
+            "cumulative_cv": 1.8,
+            "cumulative_npts": 9,
+            "cumulative_peer_mean": 28.94,
+            "cumulative_peer_sd": 1.15379489158179
+          }
+        ]
+      },
+      {
+        "master_lot_id": 1819,
+        "testSpec": 495,
+        "data": [
+          {
+            "level": 1,
+            "lms": [
+              {
+                "year_month": "202103",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202104",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202105",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202106",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202107",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202108",
+                "mean": "43.34",
+                "sd": "1.30",
+                "cv": "3.0",
+                "num_point": "5"
+              },
+              {
+                "year_month": "202109",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202110",
+                "mean": "43.80",
+                "sd": "0.000",
+                "cv": "0.0",
+                "num_point": "1"
+              },
+              {
+                "year_month": "202111",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202112",
+                "mean": "42.90",
+                "sd": "0.710",
+                "cv": "1.7",
+                "num_point": "2"
+              },
+              {
+                "year_month": "202201",
+                "mean": "42.60",
+                "sd": "0.000",
+                "cv": "0.0",
+                "num_point": "1"
+              },
+              {
+                "year_month": "202202",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              }
+            ],
+            "cumulative_mean": 43.21,
+            "cumulative_sd": 1.02,
+            "cumulative_cv": 2.4,
+            "cumulative_npts": 9,
+            "cumulative_peer_mean": 43.51,
+            "cumulative_peer_sd": 1.57463259366769
+          },
+          {
+            "level": 2,
+            "lms": [
+              {
+                "year_month": "202103",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202104",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202105",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202106",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202107",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202108",
+                "mean": "84.46",
+                "sd": "1.60",
+                "cv": "1.9",
+                "num_point": "5"
+              },
+              {
+                "year_month": "202109",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202110",
+                "mean": "82.40",
+                "sd": "0.000",
+                "cv": "0.0",
+                "num_point": "1"
+              },
+              {
+                "year_month": "202111",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              },
+              {
+                "year_month": "202112",
+                "mean": "84.90",
+                "sd": "0.000",
+                "cv": "0.0",
+                "num_point": "2"
+              },
+              {
+                "year_month": "202201",
+                "mean": "84.70",
+                "sd": "0.000",
+                "cv": "0.0",
+                "num_point": "1"
+              },
+              {
+                "year_month": "202202",
+                "mean": null,
+                "sd": null,
+                "cv": null,
+                "num_point": null
+              }
+            ],
+            "cumulative_mean": 84.36,
+            "cumulative_sd": 1.36,
+            "cumulative_cv": 1.6,
+            "cumulative_npts": 9,
+            "cumulative_peer_mean": 85.05,
+            "cumulative_peer_sd": 1.90220553490612
+          }
+        ]
+      }
+    ]
+  }
+}

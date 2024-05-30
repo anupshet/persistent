@@ -1,0 +1,118 @@
+.mat-card.module {
+    width: 330px;
+    height: 80px;
+    background-color: mat-color($mat-grey, A100);
+    border: none;
+    border-radius: $custom-border-radius-base;
+    padding: 15px 0 10px 0;
+    cursor: pointer;
+    box-shadow: none;
+
+    .card-content {
+      width: 100%;
+      margin: 0 $custom-space-small + $custom-space-xsmall;
+    }
+
+    .mat-card-title {
+      font-weight: bold;
+      font-size: mat-font-size($br-typography, body-2);
+      color: $gray-700;
+      margin-bottom: $custom-space-base;
+    }
+
+    .mat-card-subtitle {
+      display: flex;
+      justify-content: space-between;
+      font-size: mat-font-size($br-typography, body-2);
+      color: $gray-700;
+      margin-top: 0;
+    }
+
+    .card-link {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      .card-icon {
+        margin-right: $custom-space-xsmall;
+      }
+
+      &:hover {
+        color: $br-level-2;
+      }
+    }
+  }
+
+.mat-card.contact {
+    .mat-card-header {
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        background-color: $setup-item-bg;
+        padding: $custom-space-small + $custom-space-xsmall;
+        margin: (-($custom-space-small + $custom-space-xsmall)) (-($custom-space-small + $custom-space-xsmall)) $custom-space-small + $custom-space-xsmall;
+    }
+
+    .mat-card-title {
+        text-align: left;
+        color: mat-color($mat-grey, A100);
+    }
+
+    .mat-card-actions {
+        .footer-btn {
+          border-top: 1px solid $gray-400;
+
+          //Button Groups respponsive behaviour
+          .footer-btn-group {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: $custom-space-base 0;
+                padding: 0 $custom-space-base;
+            }
+        }
+    }
+  }
+
+  .mat-card.mapping {
+    min-width: 300px;
+    width: 300px;
+    min-height: 85px;
+    height: 100%;
+    border-radius: 10px;
+    background-color: $br-white;
+    border: solid 1px $gray-400;
+    padding: ($custom-space-small + $custom-space-xsmall);
+    margin: $custom-space-small;
+    align-items: flex-start;
+  
+    .mat-card-header {
+      .mat-card-header-text {
+        margin: 0px $custom-space-xxsmall;
+      }
+  
+      .mat-card-title {
+        height: 20px;
+        width: auto;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    
+      .mat-card-subtitle {
+        font-size: mat-font-size($br-typography, caption);
+        line-height: 1.33;
+        height: 15px;
+        width: auto;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+  
+    .mat-card-content {
+      padding-top: $custom-space-base - $custom-space-xxsmall;
+      padding-left: $custom-space-small;
+      font-size: mat-font-size($br-typography, body-2);
+    }
+  }

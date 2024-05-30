@@ -1,0 +1,52 @@
+@import "../../../../../../assets/scss/variables";
+
+.product-renewal-details-component {
+ 
+  .flex-container {
+    display: flex;
+  }
+
+  .flex-container.ctn-1 {
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 10px;
+
+    .mat-h1 {
+      width: 90%;
+    }
+
+    .icon-cancel {
+      min-width: 20px;
+      padding: 0;
+      margin-top: -20px;
+    }
+  }
+
+  .flex-container.ctn-3 {
+    justify-content: flex-end;
+    padding-bottom: 20px;
+
+    button {
+      margin-left: 10px;
+    }
+  }
+
+  label {
+    color: $br-black-text-medium-emphasis;
+
+    &.black {
+      color: $br-black-text-high-emphasis;
+    }
+  }
+
+  mat-checkbox {
+    display: block;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+
+  .strong {
+    font-weight: 600;
+  }
+
+}

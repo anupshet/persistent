@@ -1,0 +1,43 @@
+<!-- © 2023 Bio-Rad Laboratories, Inc. All Rights Reserved. -->
+<div class="data-entry-edit-component" *ngIf="previousReagentLot && previousCalibratorLot">
+  <button mat-fab color="warn" class="delete-icon" (click)="deleteData()"
+    [checkForPermission]="{'permissionsAllowed':[permissions.SingleDataEntryDelete],'hideIfNotPermitted':true,'disableIfNotPermitted':false}"
+    matTooltip="{{'DATAENTRYEDIT.DELETE' | translate}}"
+    matTooltipPosition="above">
+    <mat-icon class="white-icon">delete</mat-icon>
+  </button>
+
+  <div class="flex-ctn">
+
+    <div class="flex-ctn-hdr">
+      <div class="flex-item-1">&nbsp;</div>
+      <div class="flex-item-2">
+        <table>
+          <tr>
+            <ng-container *ngFor="let column of levelsToDisplay; let i = index">
+              <td class="level-{{ column }}">
+                <span class="mat-body-2">{{'DATAENTRYEDIT.LEVEL' | translate}} {{ column }}</span>
+              </td>
+            </ng-container>
+          </tr>
+        </table>
+      </div>
+      <div class="flex-item-3">&nbsp;</div>
+    </div><!-- /flex-ctn-hdr -->
+
+    <div [formGroup]="editFormGroup">
+      <br-analyte-summary-entry #analyteSummaryEntryEdit [translationLabels]="translationLabels" [isSingleEditMode]="isSummaryEditMode" [timeZone]="timeZone"
+        formControlName="analyteEntry" [isRunEntryMode]="isTabOrderRunEntry" (keydown.enter)="keytab($event)"
+        [enableSubmit]="canSubmit()" [selectedDate]="selectedDateTime" [availableDateTo]="currentDateTime"
+        [availableDateFrom]="availableDateFrom" [analyteEntryType]="analyteEntryType" [currentLanguage]='currentLanguage'
+        [translationLabelDictionary]="translationLabelDictionary" (submitEvent)="submitEventAsync()"
+        (getLots)="getLotsDataEntry()" (cancelEvent)="cancelEventAsync()" [isEditMode]="true"
+        [isSingleSummary]="isSummary" [showOptionsForm]="'true'" [testSpecId]="testSpecId"
+        [previousReagentLot]="previousReagentLot" [previousCalibratorLot]="previousCalibratorLot"
+        (requestNewConfig)="requestNewConfiguration($event)" class="spec-analyte-summary-entry"
+        [isDisabled]="!hasPermissionToAccess([permissions.SingleDataEntryEdit])">
+      </br-analyte-summary-entry>
+    </div>
+
+  </div><!-- /flex-ctn -->
+</div> <!-- /data-entry-edit-component-->
